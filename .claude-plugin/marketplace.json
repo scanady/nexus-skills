@@ -1,0 +1,72 @@
+{
+  "name": "forge-agents",
+  "owner": {
+    "name": "iFoundry",
+    "url": "https://github.com/scanady/forge-agents"
+  },
+  "metadata": {
+    "description": "AI skills, prompts, agents, and instructions for various applications",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "forge-agents",
+      "description": "Essential skills, prompts, agents, and instructions for AI platforms.",
+      "source": "./",
+      "strict": false,
+      "version": "1.0.0",
+      "author": {
+        "name": "iFoundry"
+      },
+      "repository": "https://github.com/scanady/forge-agents",
+      "license": "MIT",
+      "keywords": ["skills", "prompts", "agents", "instructions", "ai"],
+      "skills": [
+        "./skills/adsense-readiness",
+        "./skills/adsense-review",
+        "./skills/brainstorming",
+        "./skills/code-simplifier",
+        "./skills/customer-segmentation",
+        "./skills/doc-coauthoring",
+        "./skills/finishing-a-development-branch",
+        "./skills/frontend-design",
+        "./skills/humanizer",
+        "./skills/internal-comms",
+        "./skills/internal-comms-organizational-announcement",
+        "./skills/marketing-brand-copywriter",
+        "./skills/marketing-brand-guidelines",
+        "./skills/marketing-competitor-intel",
+        "./skills/marketing-cro-optimization",
+        "./skills/marketing-go-to-market-plan",
+        "./skills/marketing-ideas",
+        "./skills/marketing-lead-magnet-generator",
+        "./skills/marketing-linkedin-writer",
+        "./skills/marketing-outreach-specialist",
+        "./skills/marketing-pricing-strategist",
+        "./skills/marketing-product-hunt-launch-plan",
+        "./skills/marketing-viral-hook-creator",
+        "./skills/marketing-x-writer",
+        "./skills/mc-problem-solving-brief",
+        "./skills/mckinsey-problem-solving-brief",
+        "./skills/mcp-builder",
+        "./skills/nudge-unit",
+        "./skills/plugin-builder",
+        "./skills/product-engineer",
+        "./skills/product-overview-page",
+        "./skills/skill-reviewer",
+        "./skills/sop-creator",
+        "./skills/startup-strategic-planning",
+        "./skills/tech-prd-generator",
+        "./skills/tech-receiving-code-review",
+        "./skills/tech-requesting-code-review",
+        "./skills/tech-test-driven-development",
+        "./skills/tech-writing-plans",
+        "./skills/theme-factory",
+        "./skills/ux-design-personas",
+        "./skills/web-artifacts-builder",
+        "./skills/writing-skills",
+        "./skills/copilot-instructions-writer"
+      ]
+    }
+  ]
+}

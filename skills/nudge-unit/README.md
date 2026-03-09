@@ -1,0 +1,1 @@
+Apply nudge theory to influence people to purchase life insurance from the Example Life Insurance program by Example Life (https://www.example-co.com/). These are people that are are 40-80 years old and eligible for the program. They may not be existing partner members and may need a nudge to join and purchase life insurance.
