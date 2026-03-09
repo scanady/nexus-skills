@@ -1,0 +1,25 @@
+{
+  "name": "forge-agents",
+  "version": "1.0.0",
+  "description": "Agentic skills, prompts, agents, and instructions for AI platforms.",
+  "bin": {
+    "forge-agents": "./bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scanady/forge-agents"
+  },
+  "keywords": [
+    "skills",
+    "prompts",
+    "agents",
+    "instructions",
+    "ai"
+  ],
+  "author": "iFoundry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scanady/forge-agents/issues"
+  },
+  "homepage": "https://github.com/scanady/forge-agents#readme"
+}
