@@ -1,8 +1,9 @@
 # Testing
 sandbox/
 
-# Node modules
+# Modules
 node_modules/
+__pycache__/
 
 # Logs
 *.log
