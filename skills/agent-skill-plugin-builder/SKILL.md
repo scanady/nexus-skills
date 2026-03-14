@@ -1,5 +1,5 @@
 ---
-name: plugin-builder
+name: agent-skill-plugin-builder
 description: 'Create Cowork/Claude Code knowledge-work plugins from user requirements through a guided design process. Use when asked to "create a plugin", "build a plugin", "make a plugin", "scaffold a plugin", "new plugin", "plugin template", or when packaging skills, commands, and connectors into a distributable plugin for a specific role or workflow. Walks users through requirements gathering, component design, and generates the complete plugin directory structure.'
 ---
 

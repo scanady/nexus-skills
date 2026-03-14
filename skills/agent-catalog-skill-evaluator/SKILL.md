@@ -1,5 +1,5 @@
 ---
-name: skill-catalog-evaluator
+name: agent-catalog-skill-evaluator
 description: 'Scan, evaluate, and catalog large collections of agent skills into a structured JSON file. Use when asked to "catalog skills", "evaluate a skill collection", "review a skill repository", "audit skill quality", "scan skills folder", "build a skill inventory", "compare skill libraries", or when working with agent skill repositories like openclaw/skills or any collection following the Agent Skills specification (https://agentskills.io/specification). Handles massive repositories efficiently by scripting mechanical extraction and reserving LLM reasoning for qualitative evaluation.'
 license: MIT
 metadata:

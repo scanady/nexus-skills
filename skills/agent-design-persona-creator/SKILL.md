@@ -1,5 +1,5 @@
 ---
-name: agent-persona-creator
+name: agent-design-persona-creator
 description: "Create agent-agnostic AI personas using a four-layer architecture (Soul / Body / Faculty / Skill). Use when asked to create a persona, build a character, design an AI personality, make an agent persona, define a persona profile, or scaffold a persona bundle. Also use when someone wants to give an AI agent a persistent identity, backstory, or behavioral guide."
 license: MIT
 metadata:
@@ -10,7 +10,7 @@ metadata:
   role: specialist
   scope: design
   output-format: document
-  related-skills: brainstorming, agent-icon-creator
+  related-skills: product-spec-brainstorming, agent-design-icon-creator
 ---
 
 # Persona Creator

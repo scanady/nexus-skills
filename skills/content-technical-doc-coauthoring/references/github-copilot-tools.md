@@ -1,6 +1,6 @@
 # GitHub Copilot Agent Tools Reference (Doc Co-Authoring)
 
-This file translates the **portable, capability-based** instructions in the doc-coauthoring skill into **GitHub Copilot agent tool** operations.
+This file translates the **portable, capability-based** instructions in the content-technical-doc-coauthoring skill into **GitHub Copilot agent tool** operations.
 
 Scope:
 - This is a reference for *how to do the mechanics* in GitHub Copilot.

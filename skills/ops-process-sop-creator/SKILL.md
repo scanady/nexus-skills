@@ -1,5 +1,5 @@
 ---
-name: sop-creator
+name: ops-process-sop-creator
 description: Creates detailed Standard Operating Procedures (SOPs) for business processes. Use when user needs SOPs, process documentation, operational guides, workflow documentation, or step-by-step instructions for repeatable business processes.
 ---
 
@@ -16,7 +16,7 @@ Transform unstructured process descriptions into clear, actionable Standard Oper
 
 ### If $ARGUMENTS is empty or not provided:
 Respond with:
-"sop-creator loaded, describe the process you want to document"
+"ops-process-sop-creator loaded, describe the process you want to document"
 
 Then wait for the user to provide their process description in the next message.
 

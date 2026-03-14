@@ -1,0 +1,166 @@
+# forge-agents insurance taxonomy extension
+# Tier 1: Domain  |  Tier 2: Category
+#
+# This extension adds insurance-specific functions for direct-to-consumer life insurance
+# carriers. It only includes domains and categories that are not already covered in
+# docs/agent-taxonomy.yaml.
+#
+# prefix:      naming prefix for any skill/agent/prompt in that category
+#              e.g. Insurance Distribution > Quote & Application → "insurance-dist-apply-{name}"
+# description: user-facing "I want to..." statement to aid discovery
+#
+domains:
+
+  - name: Underwriting
+    prefix: underwriting
+    description: Assess risk and make coverage decisions for life insurance applicants
+    categories:
+      - name: Automated Risk Assessment
+        prefix: underwriting-auto
+        description: Build and maintain rules engines, decision trees, and automated underwriting models
+      - name: Evidence & Data Acquisition
+        prefix: underwriting-evidence
+        description: Order, process, and interpret medical and non-medical underwriting evidence
+      - name: Risk Classification
+        prefix: underwriting-classification
+        description: Classify applicants into risk classes and assign ratings and approvals
+      - name: Underwriting Quality & Audit
+        prefix: underwriting-quality
+        description: Review underwriting decisions for accuracy, consistency, and guideline adherence
+      - name: Simplified & Accelerated Programs
+        prefix: underwriting-programs
+        description: Design and optimize simplified-issue, accelerated, and guaranteed-issue underwriting programs
+
+  - name: Actuarial
+    prefix: actuarial
+    description: Price products, value liabilities, and analyze mortality and lapse experience
+    categories:
+      - name: Pricing & Rate Development
+        prefix: actuarial-pricing
+        description: Develop premium rates, test profitability, and model pricing scenarios
+      - name: Reserving & Valuation
+        prefix: actuarial-reserving
+        description: Calculate reserves, test adequacy, and support statutory and GAAP valuation work
+      - name: Experience Studies
+        prefix: actuarial-experience
+        description: Analyze actual versus expected mortality, lapse, and expense experience
+      - name: Predictive Modeling
+        prefix: actuarial-modeling
+        description: Build, validate, and monitor actuarial predictive models and assumptions
+      - name: Product Development
+        prefix: actuarial-product
+        description: Design life insurance product features, riders, and benefit structures
+
+  - name: Policy Administration
+    prefix: policy
+    description: Manage the full lifecycle of insurance policies from issuance to termination
+    categories:
+      - name: Policy Issuance & Onboarding
+        prefix: policy-issuance
+        description: Issue policies, generate welcome communications, and set up initial billing
+      - name: Policy Servicing
+        prefix: policy-servicing
+        description: Process changes, endorsements, beneficiary updates, and policy conversions
+      - name: Premium Billing & Collections
+        prefix: policy-billing
+        description: Manage billing cycles, payment processing, grace periods, and collections workflows
+      - name: Lapse & Retention
+        prefix: policy-retention
+        description: Monitor lapse risk, run conservation programs, and manage reinstatements
+      - name: Policy Termination
+        prefix: policy-termination
+        description: Process surrenders, expirations, maturities, and free-look cancellations
+
+  - name: Claims
+    prefix: claims
+    description: Receive, evaluate, and settle life insurance death benefit claims
+    categories:
+      - name: Claims Intake & FNOL
+        prefix: claims-intake
+        description: Receive first notice of loss, validate coverage, and register claims
+      - name: Claims Adjudication
+        prefix: claims-adjudication
+        description: Evaluate claims against policy terms, contestability periods, and exclusions
+      - name: Claims Investigation
+        prefix: claims-investigation
+        description: Investigate suspicious or contested claims and coordinate special investigations work
+      - name: Claims Settlement & Payment
+        prefix: claims-settlement
+        description: Calculate benefit amounts and disburse claim payments to beneficiaries
+      - name: Beneficiary Management
+        prefix: claims-beneficiary
+        description: Verify beneficiaries, manage disputes, and resolve designation issues
+
+  - name: Insurance Regulatory
+    prefix: insurance-reg
+    description: File products, respond to regulators, and maintain compliance with insurance laws
+    categories:
+      - name: State Filings & Approvals
+        prefix: insurance-reg-filings
+        description: Prepare and submit rate, form, and product filings to insurance regulators
+      - name: Market Conduct & Examinations
+        prefix: insurance-reg-conduct
+        description: Prepare for and respond to market conduct examinations and regulatory audits
+      - name: Regulatory Reporting
+        prefix: insurance-reg-reporting
+        description: Produce insurance regulatory reports, annual statements, and required filings
+      - name: Consumer Complaints
+        prefix: insurance-reg-complaints
+        description: Track, investigate, respond to, and resolve regulatory consumer complaints
+      - name: Licensing & Appointments
+        prefix: insurance-reg-licensing
+        description: Manage entity and producer licensing, appointments, and jurisdictional registrations
+
+  - name: Insurance Distribution
+    prefix: insurance-dist
+    description: Acquire customers through digital-first life insurance channels without physical agents
+    categories:
+      - name: Quote & Application
+        prefix: insurance-dist-apply
+        description: Build and optimize digital quote engines, online applications, and e-signature workflows
+      - name: Funnel & Conversion
+        prefix: insurance-dist-funnel
+        description: Analyze and improve quote-to-bind funnels and reduce application abandonment
+      - name: Affinity & Partner Channels
+        prefix: insurance-dist-partner
+        description: Manage affinity partnerships, co-branded programs, and API-based distribution relationships
+      - name: E-Delivery & Digital Fulfillment
+        prefix: insurance-dist-delivery
+        description: Deliver policies, disclosures, and required documents electronically with compliant consent
+      - name: Embedded Insurance
+        prefix: insurance-dist-embedded
+        description: Design and launch insurance offerings embedded in third-party customer journeys
+
+  - name: Reinsurance
+    prefix: reinsurance
+    description: Transfer and manage risk through reinsurance treaties and facultative placements
+    categories:
+      - name: Treaty Management
+        prefix: reinsurance-treaty
+        description: Negotiate, structure, and administer reinsurance treaties
+      - name: Facultative Placements
+        prefix: reinsurance-facultative
+        description: Place individual risks with reinsurers for cases outside treaty capacity
+      - name: Cession Accounting
+        prefix: reinsurance-accounting
+        description: Calculate and report ceded premiums, reserves, and recoveries
+      - name: Reinsurer Relations
+        prefix: reinsurance-relations
+        description: Manage reinsurer relationships, audits, and performance reviews
+
+  - name: Policyholder Engagement
+    prefix: policyholder
+    description: Communicate with policyholders through regulated notices, self-service, and proactive outreach
+    categories:
+      - name: Regulated Notices & Disclosures
+        prefix: policyholder-notices
+        description: Generate and deliver required notices, annual statements, and policy disclosures
+      - name: Proactive Outreach
+        prefix: policyholder-outreach
+        description: Design and run policyholder lifecycle outreach, reminders, and retention campaigns
+      - name: Digital Self-Service
+        prefix: policyholder-selfservice
+        description: Build and maintain policyholder portals, mobile experiences, and self-service tools
+      - name: Policyholder Education
+        prefix: policyholder-education
+        description: Create content that helps policyholders understand coverage, riders, and options

@@ -1,5 +1,5 @@
 ---
-name: customer-segmentation
+name: marketing-intel-customer-segmentation
 description: 'Expert-level customer segmentation analysis using hybrid qualitative/quantitative methods. Builds data-driven segment personas grounded in statistical profiles, not archetypes. Use when asked to "segment customers", "identify customer segments", "build buyer personas", "customer clustering", "market segmentation", "audience segmentation", "TAM analysis", "ICP definition", "customer profiling", "segment sizing", "segment prioritization", or when needing to understand who to target for acquisition, retention, upsell, or product-market fit.'
 ---
 
@@ -16,7 +16,7 @@ Produce validated, data-driven customer segments with statistical personas, oppo
 
 ### If $ARGUMENTS is empty or not provided:
 Respond with:
-"customer-segmentation loaded. Provide your business context, customer data, or segmentation objective to begin."
+"marketing-intel-customer-segmentation loaded. Provide your business context, customer data, or segmentation objective to begin."
 
 Then wait for the user to provide their requirements in the next message.
 

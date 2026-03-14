@@ -1,5 +1,5 @@
 ---
-name: github-copilot-instructions-writer
+name: agent-skill-copilot-instructions
 description: 'Creates expertly crafted GitHub Copilot custom instructions files (.instructions.md and copilot-instructions.md) tailored to specific domains, languages, frameworks, or repositories. Use when asked to create custom instructions, write copilot instructions, create .instructions.md files, set up copilot-instructions.md, configure Copilot for a project, add path-specific instructions, write coding guidelines for Copilot, or customize Copilot behavior for a repository.'
 ---
 
@@ -16,7 +16,7 @@ Create high-quality GitHub Copilot custom instructions files that give Copilot t
 
 ### If $ARGUMENTS is empty or not provided:
 Respond with:
-"github-copilot-instructions-writer loaded, describe the domain, language, framework, or repository you want instructions for"
+"agent-skill-copilot-instructions loaded, describe the domain, language, framework, or repository you want instructions for"
 
 Then wait for the user to provide their requirements in the next message.
 

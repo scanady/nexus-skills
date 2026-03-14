@@ -1,5 +1,5 @@
 ---
-name: agent-icon-creator
+name: agent-design-icon-creator
 description: 'Generate AI agent icons, profile avatars, and logos as 1:1 ratio images using Google AI Studio Nano Banana model. Use when asked to "create an icon", "make an avatar", "generate a logo", "design an agent icon", "make a profile picture", or when the user needs any square visual identity asset for an AI agent, bot, app, or project. Also use when the user says "brand icon", "agent branding", "bot avatar", or wants to visually represent an agent concept.'
 license: MIT
 metadata:
@@ -10,7 +10,7 @@ metadata:
   role: specialist
   scope: creation
   output-format: content
-  related-skills: forge-brand-strategist
+  related-skills: marketing-brand-strategist
 ---
 
 # Agent Icon Creator

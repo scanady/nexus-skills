@@ -1,5 +1,5 @@
 ---
-name: mckinsey-problem-solving-brief
+name: strategy-frameworks-mckinsey-brief
 description: Build executive-ready, board-level strategic problem-solving briefs using SCQ, MECE issue trees, hypothesis-driven analysis, and pyramid-structured recommendations. Use when asked for McKinsey-style strategy memos, root-cause diagnostics, turnaround plans, market-entry decisions, profitability fixes, steering committee briefs, or implementation roadmaps for complex business problems.
 ---
 
@@ -16,7 +16,7 @@ Produce a concise, board-ready strategic brief that diagnoses the root cause of 
 
 ### If $ARGUMENTS is empty or not provided:
 Respond with:
-"mckinsey-problem-solving-brief loaded, share the client context, core challenge, and constraints"
+"strategy-frameworks-mckinsey-brief loaded, share the client context, core challenge, and constraints"
 
 Then wait for the user to provide requirements in the next message.
 

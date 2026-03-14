@@ -1,5 +1,5 @@
 ---
-name: marketing-marketing-ideas
+name: marketing-campaign-ideas
 description: Produces the best marketing ideas for your business by analyzing your FOUNDER_CONTEXT and matching it against a curated database of 170+ proven marketing strategies. Use when user needs creative, actionable marketing ideas tailored to their business.
 ---
 
@@ -16,7 +16,7 @@ Analyze the user's business context and produce the 5 best marketing ideas from 
 
 ### If $ARGUMENTS is empty or not provided:
 Respond with:
-"marketing-ideas loaded, proceed with additional instructions or tell me what marketing goal you're focused on (e.g., more leads, buzz without paid ads, customer retention, crushing competitors, etc.)"
+"marketing-campaign-ideas loaded, proceed with additional instructions or tell me what marketing goal you're focused on (e.g., more leads, buzz without paid ads, customer retention, crushing competitors, etc.)"
 
 Then wait for the user to provide their requirements in the next message.
 

@@ -1,5 +1,5 @@
 ---
-name: brand-strategist
+name: marketing-brand-strategist
 description: "Expert brand naming and domain strategy skill. Use whenever the user wants to name a business, product, project, side hustle, website, app, or any venture and find an available domain for it. Also use when the user asks for domain name ideas, wants to brainstorm brand names, needs help choosing between name candidates, wants to rebrand or rename something, or asks for creative business name suggestions. Trigger on phrases like 'name my company', 'domain name ideas', 'what should I call my...', 'help me find a name', 'brand name for', 'I need a domain', or any request involving naming + domain availability. This skill should also trigger when the user is unhappy with generic name suggestions and wants more creative, strategically grounded options."
 ---
 

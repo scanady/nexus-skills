@@ -1,5 +1,5 @@
 ---
-name: humanizer
+name: content-copy-humanizer
 description: Remove signs of AI-generated writing from text. Use when asked to humanize text, de-slop writing, make AI text sound human, rewrite AI-generated content, clean up AI writing, or detect AI patterns. Based on Wikipedia's "Signs of AI writing" guide. Detects and fixes 26 patterns including: inflated symbolism, promotional language, -ing phrases, AI vocabulary, sycophancy, filler, hedging, em dashes, rule of three, transition overuse, and chatbot artifacts.
 allowed-tools:
   - Read
