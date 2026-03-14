@@ -107,6 +107,7 @@ After installation, use skills by typing:
 - `doc-coauthoring` - Guides users through a structured workflow for co-authoring documentation, proposals, and technical specs.
 - `humanizer` - Removes signs of AI-generated writing by detecting and fixing 26 AI writing patterns.
 - `internal-comms-organizational-announcement` - Drafts professional internal announcements for promotions, new hires, restructures, and leadership transitions.
+- `meeting-notes` - Creates clear, structured, distribution-ready meeting minutes with decisions, action items, and next steps.
 
 ### Strategy
 - `brainstorming` - Explores user intent, requirements, and design space before implementation on any creative or technical task.
