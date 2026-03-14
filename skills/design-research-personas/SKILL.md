@@ -1,5 +1,5 @@
 ---
-name: ux-design-personas
+name: design-research-personas
 description: 'Create UX/UI design artifacts from research through specs. Use when asked to build personas, journey maps, information architecture, content structure, navigation, user flows, UX/UI specs, screen mockups, layout rules, field rules, or interaction behaviors.'
 ---
 

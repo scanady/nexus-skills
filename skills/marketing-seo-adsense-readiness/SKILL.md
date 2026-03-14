@@ -1,5 +1,5 @@
 ---
-name: adsense-readiness
+name: marketing-seo-adsense-readiness
 description: 'Analyze websites and projects for Google AdSense compliance and readiness. Use when asked to check AdSense eligibility, audit a site for Google Ads, verify publisher policy compliance, prepare a site for monetization, or fix AdSense policy violations. Covers content quality, ad placement, privacy requirements, and technical standards.'
 ---
 

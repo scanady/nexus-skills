@@ -1,5 +1,5 @@
 ---
-name: marketing-outreach-specialist
+name: sales-outreach-specialist
 description: Crafts high-converting outreach messages and email sequences for cold outreach, LinkedIn DMs, and follow-ups. Use when user needs personalized outreach messages that book calls and get replies.
 ---
 

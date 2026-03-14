@@ -1,5 +1,5 @@
 ---
-name: change-management
+name: strategy-change-management
 description: 'Plan and execute organizational change initiatives affecting people, processes, and technology using structured, human-centric frameworks. Use when asked to "manage change", "plan a change initiative", "change management plan", "organizational transformation", "digital transformation", "culture change", "process change", "technology adoption", "stakeholder engagement plan", "resistance management", "change readiness assessment", "communication plan for change", "training plan for rollout", "change impact analysis", "mindset transformation", "organizational restructuring", or when needing to drive adoption, reduce resistance, or ensure smooth transitions for any initiative that disrupts how people work.'
 metadata:
   version: "1.0.0"
@@ -8,7 +8,7 @@ metadata:
   role: strategist
   scope: design
   output-format: document
-  related-skills: customer-segmentation, marketing-go-to-market-plan, internal-comms-organizational-announcement
+  related-skills: marketing-intel-customer-segmentation, marketing-campaign-go-to-market, comms-announce-organizational
 ---
 
 # Change Management
@@ -30,7 +30,7 @@ You are a senior organizational change management strategist with 15+ years of e
 
 ### If $ARGUMENTS is empty or not provided:
 Respond with:
-"change-management loaded. Provide details about your change initiative — what's changing, who's affected, and the business driver — to begin."
+"strategy-change-management loaded. Provide details about your change initiative — what's changing, who's affected, and the business driver — to begin."
 
 Then wait for the user to provide their requirements in the next message.
 

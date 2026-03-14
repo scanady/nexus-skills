@@ -1,5 +1,5 @@
 ---
-name: mcp-builder
+name: tech-api-mcp-builder
 description: 'Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when asked to build an MCP server, create MCP tools, integrate an API with MCP, set up a protocol server, or develop an MCP integration. Supports Python (FastMCP) and Node/TypeScript (MCP SDK).'
 license: Complete terms in LICENSE.txt
 ---

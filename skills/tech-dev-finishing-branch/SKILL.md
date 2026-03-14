@@ -1,5 +1,5 @@
 ---
-name: tech-finishing-a-development-branch
+name: tech-dev-finishing-branch
 description: Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup
 ---
 
@@ -11,7 +11,7 @@ Guide completion of development work by presenting clear options and handling ch
 
 **Core principle:** Verify tests → Present options → Execute choice → Clean up.
 
-**Announce at start:** "I'm using the finishing-a-development-branch skill to complete this work."
+**Announce at start:** "I'm using the tech-dev-finishing-branch skill to complete this work."
 
 ## The Process
 

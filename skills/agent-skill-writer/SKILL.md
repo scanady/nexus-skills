@@ -1,5 +1,5 @@
 ---
-name: skill-writer
+name: agent-skill-writer
 description: Use when creating new skills, editing existing skills, writing SKILL.md files, or verifying skills work before deployment. Covers skill structure, frontmatter, CSO (Claude Search Optimization),TDD-based skill testing, and bulletproofing against rationalization.
 metadata:
   domain: meta
@@ -7,7 +7,7 @@ metadata:
   role: specialist
   scope: guidance
   output-format: document
-  related-skills: skill-builder, tech-test-driven-development
+  related-skills: skill-builder, tech-quality-tdd
 ---
 
 # Writing Skills
@@ -20,7 +20,7 @@ You are a senior skill architect specializing in TDD-based skill authoring. You 
 
 **Core principle:** If you didn't watch an agent fail without the skill, you don't know if the skill teaches the right thing.
 
-**REQUIRED BACKGROUND:** You MUST understand superpowers:tech-test-driven-development before using this skill. That skill defines the fundamental RED-GREEN-REFACTOR cycle. This skill adapts TDD to documentation.
+**REQUIRED BACKGROUND:** You MUST understand superpowers:tech-quality-tdd before using this skill. That skill defines the fundamental RED-GREEN-REFACTOR cycle. This skill adapts TDD to documentation.
 
 ## Reference Guide
 
@@ -134,7 +134,7 @@ Use active voice, verb-first naming. Gerunds work well for processes:
 ### Cross-Referencing Skills
 
 Use skill name only with explicit requirement markers:
-- ✅ `**REQUIRED BACKGROUND:** You MUST understand superpowers:tech-test-driven-development`
+- ✅ `**REQUIRED BACKGROUND:** You MUST understand superpowers:tech-quality-tdd`
 - ❌ `@skills/testing/SKILL.md` (force-loads, burns context)
 
 ## Flowchart Usage

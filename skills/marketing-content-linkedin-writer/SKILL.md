@@ -1,5 +1,5 @@
 ---
-name: marketing-linkedin-writer
+name: marketing-content-linkedin-writer
 description: Creates viral LinkedIn posts using proven formats, post templates, and voice matching. Use when user needs engaging, high-performing posts for LinkedIn.
 ---
 

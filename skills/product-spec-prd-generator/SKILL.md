@@ -1,5 +1,5 @@
 ---
-name: tech-prd-generator
+name: product-spec-prd-generator
 description: Generates professional PRD (Product Requirements Document) files optimized for AI coding tools. Takes a rough product idea, asks clarifying questions, and outputs a structured PDF ready to feed into AI coding assistants.
 ---
 

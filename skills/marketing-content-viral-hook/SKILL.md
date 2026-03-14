@@ -1,5 +1,5 @@
 ---
-name: marketing-viral-hook-creator
+name: marketing-content-viral-hook
 description: Creates viral social media hooks using proven psychological patterns and trigger words. Use when user needs attention-grabbing openings for posts, threads, videos, or content.
 ---
 

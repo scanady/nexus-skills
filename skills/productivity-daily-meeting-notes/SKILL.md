@@ -1,5 +1,5 @@
 ---
-name: meeting-notes
+name: productivity-daily-meeting-notes
 description: Create comprehensive meeting minutes from provided meeting details, notes, transcripts, or rough summaries. Use when the user needs structured meeting minutes, board meeting notes, stakeholder updates, project meeting summaries, decision logs, action-item tracking, or when asked to recap a standup, document a retrospective, or summarize any structured discussion.
 metadata:
   version: "1.0.0"
@@ -8,7 +8,7 @@ metadata:
   role: specialist
   scope: writing
   output-format: document
-  related-skills: doc-coauthoring, sop-creator, internal-comms-organizational-announcement
+  related-skills: content-technical-doc-coauthoring, ops-process-sop-creator, comms-announce-organizational
 ---
 
 # Meeting Notes
@@ -34,7 +34,7 @@ Load detailed guidance only when needed:
 
 ### If `$ARGUMENTS` is empty or not provided:
 Respond with:
-`meeting-notes loaded, share the meeting details, notes, transcript, or rough recap`
+`productivity-daily-meeting-notes loaded, share the meeting details, notes, transcript, or rough recap`
 
 Then wait for the user to provide the meeting information.
 

@@ -12,7 +12,7 @@ Scan, evaluate, and catalog large collections of [Agent Skills](https://agentski
 ## Directory Structure
 
 ```
-skill-catalog-evaluator/
+agent-catalog-skill-evaluator/
 ├── SKILL.md                           # Skill instructions
 ├── README.md                          # This file
 ├── references/

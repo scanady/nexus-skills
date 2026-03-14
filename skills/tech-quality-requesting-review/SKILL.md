@@ -1,5 +1,5 @@
 ---
-name: tech-requesting-code-review
+name: tech-quality-requesting-review
 description: Use when completing tasks, implementing major features, or before merging to verify work meets requirements
 ---
 

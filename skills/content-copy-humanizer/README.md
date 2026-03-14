@@ -7,7 +7,7 @@ An AI skill that removes signs of AI-generated writing from text, making it soun
 Invoke the skill:
 
 ```
-/humanizer
+/content-copy-humanizer
 
 [paste your text here]
 ```

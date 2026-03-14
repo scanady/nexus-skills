@@ -1,5 +1,5 @@
 ---
-name: internal-comms-organizational-announcement
+name: comms-announce-organizational
 description: Draft professional internal announcements for organizational and role changes, including promotions, new hires, restructures, and leadership transitions.
 ---
 
@@ -22,7 +22,7 @@ Use this skill when you need to announce:
 
 ### If $ARGUMENTS is empty or not provided:
 Respond with:
-"internal-comms-organizational-announcement loaded, proceed with additional instructions"
+"comms-announce-organizational loaded, proceed with additional instructions"
 
 Then wait for the user to provide announcement details.
 

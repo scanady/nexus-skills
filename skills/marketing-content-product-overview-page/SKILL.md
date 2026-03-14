@@ -1,5 +1,5 @@
 ---
-name: product-overview-page
+name: marketing-content-product-overview-page
 description: 'Builds polished product overview pages with automated screenshot capture, scroll-triggered animations, and modern SaaS design patterns. Use when asked to create a product page, feature page, product overview, landing page with screenshots, product showcase, or feature tour. Automatically captures screenshots from live URLs or local apps using browser automation, then assembles them into production-grade HTML pages inspired by Stripe, Linear, Notion, and Bestow-style product marketing pages.'
 ---
 
@@ -21,7 +21,7 @@ Builds high-fidelity product overview pages — the kind of feature-rich marketi
 
 ### If $ARGUMENTS is empty or not provided:
 Respond with:
-"product-overview-page loaded — give me a URL to your product and describe the features you want to showcase"
+"marketing-content-product-overview-page loaded — give me a URL to your product and describe the features you want to showcase"
 
 Then wait for the user to provide their product details in the next message.
 

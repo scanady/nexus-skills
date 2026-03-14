@@ -1,5 +1,5 @@
 ---
-name: marketing-x-writer
+name: marketing-content-x-writer
 description: Creates viral X (Twitter) posts using proven formats, post templates, and creator voice matching. Use when user needs engaging, high-performing posts for X/Twitter.
 ---
 

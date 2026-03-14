@@ -265,7 +265,7 @@ This persona inherits the [Persona Constitution](soul/constitution.md) — unive
   "name": "<personaName>",
   "slug": "<slug>",
   "version": "1.0.0",
-  "framework": "agent-persona-creator",
+  "framework": "agent-design-persona-creator",
   "layers": {
     "soul": "soul/persona.json",
     "body": "persona.json#body",
@@ -289,7 +289,7 @@ This persona inherits the [Persona Constitution](soul/constitution.md) — unive
     <tool strings based on enabled faculties>
   ],
   "meta": {
-    "generatedBy": "agent-persona-creator",
+    "generatedBy": "agent-design-persona-creator",
     "generatedAt": "<ISO timestamp>"
   }
 }

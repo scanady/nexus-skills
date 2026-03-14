@@ -1,5 +1,5 @@
 ---
-name: nudge-unit
+name: content-behavioral-nudge-unit
 description: Act as a Behavioural Insights Team ("Nudge Unit") that applies nudge theory and choice architecture to any issue or goal. Use when asked to nudge behavior, design choice architecture, apply behavioural insights, influence decisions, change behavior, reduce friction, improve uptake/adoption/compliance, design defaults, or apply nudge theory. Delivers 3-5 automatic system (System 1) and 3-5 reflective system (System 2) interventions that are cheap, minimal, and preserve freedom of choice.
 ---
 

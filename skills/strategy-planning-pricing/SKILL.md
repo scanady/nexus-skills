@@ -1,5 +1,5 @@
 ---
-name: marketing-pricing-strategist
+name: strategy-planning-pricing
 description: Builds comprehensive pricing strategies by reading business context and asking targeted questions interactively. Use when user needs pricing plans, tier structures, price points, pricing model recommendations, or any pricing-related strategy for their product or service.
 ---
 
