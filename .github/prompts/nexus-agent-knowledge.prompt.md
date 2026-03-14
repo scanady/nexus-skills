@@ -1,0 +1,3 @@
+---
+agent: nexus-agent-knowledge
+---

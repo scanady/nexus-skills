@@ -1,0 +1,2990 @@
+{
+  "catalog_version": "1.0.0",
+  "generated_at": "2026-03-14T02:45:12Z",
+  "sources": [
+    {
+      "id": "source-1",
+      "type": "local",
+      "path": "/home/sean/_dev/forge-agents/skills",
+      "url": null,
+      "commit": null
+    }
+  ],
+  "summary": {
+    "total_skills": 44,
+    "evaluated": 44,
+    "parse_errors": 0,
+    "avg_usage_value": 3.89,
+    "avg_best_practices": 2.93,
+    "security_risk_distribution": {
+      "low": 39,
+      "medium": 5,
+      "high": 0
+    }
+  },
+  "skills": [
+    {
+      "name": "adsense-readiness",
+      "source_id": "source-1",
+      "path": "adsense-readiness/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "adsense-readiness",
+        "description": "Analyze websites and projects for Google AdSense compliance and readiness. Use when asked to check AdSense eligibility, audit a site for Google Ads, verify publisher policy compliance, prepare a site for monetization, or fix AdSense policy violations. Covers content quality, ad placement, privacy requirements, and technical standards.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 7,
+        "estimated_tokens": 1353
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 3,
+          "rationale": "Niche but solid use case for content publishers and website owners seeking AdSense monetization."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts, URLs, or credential references.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has valid frontmatter and structured workflow, but lacks metadata block and triggers field.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Analyzes websites and projects for Google AdSense policy compliance, identifying issues that would block approval. Primary output: compliance report with specific remediation steps.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "adsense-review",
+      "source_id": "source-1",
+      "path": "adsense-review/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "adsense-review",
+        "description": "Perform a comprehensive live-site review mimicking the Google AdSense approval process. Use when a site has been rejected by AdSense (especially for \"low value content\"), when preparing to submit/resubmit a site for AdSense approval, or when diagnosing why a site keeps getting flagged. Requires a URL. Crawls the live site and evaluates it against every criterion Google reviewers check: content quality/depth/originality, navigation/UX, technical compliance, privacy policy, ads.txt, Better Ads Standards, and more.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 5,
+        "estimated_tokens": 1675
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 3,
+          "rationale": "Niche but well-executed skill for publishers seeking live-site AdSense approval — specific audience, clear value."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts, external calls, or credential references.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has valid frontmatter and references, but lacks metadata block and triggers field.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Simulates the Google AdSense approval review process on live sites, identifying policy violations and content quality issues. Primary output: approval-readiness report with prioritized fixes.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "agent-icon-creator",
+      "source_id": "source-1",
+      "path": "agent-icon-creator/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "agent-icon-creator",
+        "description": "Generate AI agent icons, profile avatars, and logos as 1:1 ratio images using Google AI Studio Nano Banana model. Use when asked to \"create an icon\", \"make an avatar\", \"generate a logo\", \"design an agent icon\", \"make a profile picture\", or when the user needs any square visual identity asset for an AI agent, bot, app, or project. Also use when the user says \"brand icon\", \"agent branding\", \"bot avatar\", or wants to visually represent an agent concept.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "content",
+          "triggers": "agent icon, create icon, make avatar, generate logo, profile picture, agent branding, bot avatar, design icon, brand icon, visual identity",
+          "role": "specialist",
+          "scope": "creation",
+          "output_format": "content",
+          "related_skills": "forge-brand-strategist"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 4,
+        "estimated_tokens": 707
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 3,
+          "rationale": "Niche but solid — useful for teams building agent libraries who need branded visual assets."
+        },
+        "security_risk": {
+          "rating": "medium",
+          "rationale": "References Google AI Studio API key usage for image generation via Imagen 3.",
+          "findings": [
+            "References API key credential for Google AI Studio image generation API"
+          ]
+        },
+        "best_practices": {
+          "score": 4,
+          "rationale": "Has full metadata block, references directory, and clear workflow with role definition.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": true,
+            "triggers_field": true,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Generates branded AI agent icons and avatars as 1:1 square images using Google AI Studio's Imagen 3 API, following visual design guidelines for agent profiles and documentation. Primary output: image generation prompts and workflow guidance.",
+        "external_requirements_indicator": "has-external-dependencies",
+        "external_requirements": [
+          "Google AI Studio API (Imagen 3 for image generation)"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "agent-persona-creator",
+      "source_id": "source-1",
+      "path": "agent-persona-creator/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "agent-persona-creator",
+        "description": "Create agent-agnostic AI personas using a four-layer architecture (Soul / Body / Faculty / Skill). Use when asked to create a persona, build a character, design an AI personality, make an agent persona, define a persona profile, or scaffold a persona bundle. Also use when someone wants to give an AI agent a persistent identity, backstory, or behavioral guide.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "workflow",
+          "triggers": "create persona, build character, design personality, agent persona, persona profile, AI identity, persona bundle, persona definition, persona json, four-layer persona",
+          "role": "specialist",
+          "scope": "design",
+          "output_format": "document",
+          "related_skills": "brainstorming, agent-icon-creator"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 5,
+        "estimated_tokens": 1484
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — creating structured AI agent personas is a common need for teams building AI products and tools."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "No scripts or external calls; credential scanner false positive from discussion of API token concepts in persona content.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 4,
+          "rationale": "Full metadata block, references directory, structured four-layer architecture workflow, and rich content.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": true,
+            "triggers_field": true,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Creates structured AI agent personas using a four-layer architecture (Soul/Body/Faculty/Behavior), producing platform-agnostic YAML persona documents for any AI assistant. Primary output: complete persona YAML with behavioral guidelines.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "brainstorming",
+      "source_id": "source-1",
+      "path": "brainstorming/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "brainstorming",
+        "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 124
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 3,
+          "rationale": "Niche — primarily useful as a companion skill within Claude Code / subagent workflows before creative or technical work."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts, URLs, or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 2,
+          "rationale": "Minimal frontmatter with no metadata block, no references, and a very small body (124 tokens).",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": false,
+            "constraints_section": false,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Enforces a structured exploration phase before any creative or technical work, preventing premature implementation. Primary output: brainstorming session structure and decision checkpoint.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "business-performance-analyst",
+      "source_id": "source-1",
+      "path": "business-performance-analyst/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "business-performance-analyst",
+        "description": "Analyzes business performance across financial, operational, and strategic dimensions using MBA-level frameworks. Use when asked to analyze P&L statements, evaluate business performance, assess operational efficiency, build financial models, forecast revenue, diagnose profitability issues, review KPIs and metrics, perform variance analysis, create business cases, evaluate strategic options, assess unit economics, model scenarios, benchmark performance, or produce data-driven strategic recommendations — even if the user simply asks to \"look at the numbers\" or \"figure out what''s going wrong with the business.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "strategy",
+          "triggers": "business performance, P&L analysis, financial analysis, revenue forecast, profitability, KPI review, variance analysis, business case, unit economics, operational efficiency, strategic analysis, financial modeling, business metrics, margin analysis, cost structure, growth analysis, business statistics, managerial accounting, business modeling",
+          "role": "analyst",
+          "scope": "analysis",
+          "output_format": "report",
+          "related_skills": "strategy-research-analyst, mckinsey-problem-solving-brief, customer-segmentation, marketing-pricing-strategist"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 5,
+        "estimated_tokens": 1134
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — business performance analysis spans finance, operations, and strategy, applicable to most organizations."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external service calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 4,
+          "rationale": "Has full metadata block with domain/role/scope, structured workflow, and references directory.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": true,
+            "triggers_field": true,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Analyzes business performance across financial, operational, and strategic dimensions, producing KPI dashboards, variance analysis, and prioritized recommendations. Primary output: structured performance report with benchmarks.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "change-management",
+      "source_id": "source-1",
+      "path": "change-management/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "change-management",
+        "description": "Plan and execute organizational change initiatives affecting people, processes, and technology using structured, human-centric frameworks. Use when asked to \"manage change\", \"plan a change initiative\", \"change management plan\", \"organizational transformation\", \"digital transformation\", \"culture change\", \"process change\", \"technology adoption\", \"stakeholder engagement plan\", \"resistance management\", \"change readiness assessment\", \"communication plan for change\", \"training plan for rollout\", \"change impact analysis\", \"mindset transformation\", \"organizational restructuring\", or when needing to drive adoption, reduce resistance, or ensure smooth transitions for any initiative that disrupts how people work.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "strategy",
+          "triggers": "change management, organizational change, transformation, adoption, resistance, stakeholder engagement, change readiness, communication plan, training rollout, culture change, process change, technology change",
+          "role": "strategist",
+          "scope": "design",
+          "output_format": "document",
+          "related_skills": "customer-segmentation, marketing-go-to-market-plan, internal-comms-organizational-announcement"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 7,
+        "estimated_tokens": 2342
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful in enterprise contexts — organizational change is a constant need and well-structured support adds real value."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 4,
+          "rationale": "Full metadata block, references directory, structured frameworks, and substantial content (2342 tokens).",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": true,
+            "triggers_field": true,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Plans and executes organizational change management initiatives using structured frameworks (ADKAR, Kotter's 8-step), producing stakeholder communication plans, resistance management strategies, and adoption playbooks. Primary output: change management plan with timeline.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "customer-segmentation",
+      "source_id": "source-1",
+      "path": "customer-segmentation/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "customer-segmentation",
+        "description": "Expert-level customer segmentation analysis using hybrid qualitative/quantitative methods. Builds data-driven segment personas grounded in statistical profiles, not archetypes. Use when asked to \"segment customers\", \"identify customer segments\", \"build buyer personas\", \"customer clustering\", \"market segmentation\", \"audience segmentation\", \"TAM analysis\", \"ICP definition\", \"customer profiling\", \"segment sizing\", \"segment prioritization\", or when needing to understand who to target for acquisition, retention, upsell, or product-market fit.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 9,
+        "estimated_tokens": 2766
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — understanding customer segments is foundational to product, marketing, and sales strategy."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Large well-structured skill with references, but missing metadata block required for full spec compliance.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Performs expert-level customer segmentation using hybrid qualitative and quantitative methods, producing detailed segment profiles with personas, value propositions, and channel-specific targeting strategies. Primary output: segmentation analysis report.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "doc-coauthoring",
+      "source_id": "source-1",
+      "path": "doc-coauthoring/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "doc-coauthoring",
+        "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 618
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 3,
+          "rationale": "Niche but solid — useful for teams that need structured human-AI collaboration for documentation projects."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "No scripts or external calls; credential scanner false positive likely from doc template content.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has references directory and valid frontmatter but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": false,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Guides structured co-authoring of documentation by coordinating between human subject-matter expertise and AI writing capability. Primary output: professionally structured documentation artifacts.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "brand-strategist",
+      "source_id": "source-1",
+      "path": "forge-brand-strategist/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "brand-strategist",
+        "description": "Expert brand naming and domain strategy skill. Use whenever the user wants to name a business, product, project, side hustle, website, app, or any venture and find an available domain for it. Also use when the user asks for domain name ideas, wants to brainstorm brand names, needs help choosing between name candidates, wants to rebrand or rename something, or asks for creative business name suggestions. Trigger on phrases like 'name my company', 'domain name ideas', 'what should I call my...', 'help me find a name', 'brand name for', 'I need a domain', or any request involving naming + domain availability. This skill should also trigger when the user is unhappy with generic name suggestions and wants more creative, strategically grounded options.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 3,
+        "estimated_tokens": 487
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 3,
+          "rationale": "Niche but solid — useful for founders and brand teams naming businesses or products."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has references directory and valid frontmatter but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": false,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Develops brand naming strategies and domain name recommendations, helping founders create memorable, well-positioned brand identities with domain availability guidance. Primary output: brand name shortlist with rationale and domain options.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "github-copilot-instructions-writer",
+      "source_id": "source-1",
+      "path": "github-copilot-instructions-writer/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "github-copilot-instructions-writer",
+        "description": "Creates expertly crafted GitHub Copilot custom instructions files (.instructions.md and copilot-instructions.md) tailored to specific domains, languages, frameworks, or repositories. Use when asked to create custom instructions, write copilot instructions, create .instructions.md files, set up copilot-instructions.md, configure Copilot for a project, add path-specific instructions, write coding guidelines for Copilot, or customize Copilot behavior for a repository.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 4,
+        "estimated_tokens": 778
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful for any developer team using GitHub Copilot — custom instructions significantly improve AI coding assistance quality."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external service calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has references directory and clear scope, but lacks metadata block with domain/role/triggers.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Creates GitHub Copilot custom instructions files (.instructions.md, copilot-instructions.md) with domain-specific coding standards and rules for developer teams. Primary output: ready-to-use .instructions.md and copilot-instructions.md files.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "humanizer",
+      "source_id": "source-1",
+      "path": "humanizer/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "humanizer",
+        "description": "Remove signs of AI-generated writing from text. Use when asked to humanize text, de-slop writing, make AI text sound human, rewrite AI-generated content, clean up AI writing, or detect AI patterns. Based on Wikipedia's \"Signs of AI writing\" guide. Detects and fixes 26 patterns including: inflated symbolism, promotional language, -ing phrases, AI vocabulary, sycophancy, filler, hedging, em dashes, rule of three, transition overuse, and chatbot artifacts.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": {},
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 787
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — rewriting AI-generated text to sound human is one of the most common content editing requests."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Contains a single Wikipedia documentation URL as a content reference; no scripts or runtime network calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 2,
+          "rationale": "Minimal frontmatter with no metadata block, no references directory, and limited structure.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Removes AI-writing patterns from text, rewriting content to eliminate overused phrases, hedging language, and formulaic structures while preserving meaning. Primary output: revised human-sounding text.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "internal-comms-organizational-announcement",
+      "source_id": "source-1",
+      "path": "internal-comms-organizational-announcement/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "internal-comms-organizational-announcement",
+        "description": "Draft professional internal announcements for organizational and role changes, including promotions, new hires, restructures, and leadership transitions.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 97
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 3,
+          "rationale": "Useful for managers and HR professionals, but very narrow scope — covers only one document type."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 2,
+          "rationale": "Minimal skill at only 97 tokens — no metadata block, no references, no structured workflow.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": false,
+            "constraints_section": false,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Drafts professional internal communications for organizational changes including promotions, departures, and restructures. Primary output: announcement message formatted for internal distribution.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-brand-copywriter",
+      "source_id": "source-1",
+      "path": "marketing-brand-copywriter/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "marketing-brand-copywriter",
+        "description": "Writes marketing copy using proven copywriting frameworks. Use when user needs copy for ads (Facebook, Instagram, TikTok, YouTube), landing pages, sales pages, email sequences, LinkedIn posts, product descriptions, or any marketing content.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 4,
+        "estimated_tokens": 1428
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 5,
+          "rationale": "Essential — virtually every business needs high-quality marketing copy, and structured copywriting frameworks add significant value over baseline AI output."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with references directory; no scripts or external calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Substantial content with references but lacks metadata block with domain/triggers.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Writes marketing copy using proven frameworks (AIDA, PAS, FAB) for ads, landing pages, email campaigns, and social media, matched to brand voice and audience segment. Primary output: conversion-optimized copy in multiple formats.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-competitor-intel",
+      "source_id": "source-1",
+      "path": "marketing-competitor-intel/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "marketing-competitor-intel",
+        "description": "Analyzes competitors using web research to provide verified business metrics, actionable leverage strategies, and predicted next moves. Use when user needs competitive intelligence, competitor analysis, market positioning insights, or strategic leverage opportunities.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 404
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — competitor analysis is a fundamental business need across every industry."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Facebook Ads Library URL is a content reference pointing users to a research resource, not a runtime API call.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 2,
+          "rationale": "Minimal skill with no metadata, no references directory, and limited structure.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": false,
+            "constraints_section": false,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Analyzes competitors using web research to extract verified metrics, market positioning, messaging analysis, and actionable competitive intelligence. Primary output: structured competitor analysis report.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-cro-optimization",
+      "source_id": "source-1",
+      "path": "marketing-cro-optimization/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "marketing-cro-optimization",
+        "description": "Analyzes landing pages and provides detailed CRO (Conversion Rate Optimization) recommendations. Use when user provides a landing page URL or HTML/CSS code and needs optimization advice to maximize conversions, signups, or sales. Extracts page elements, audits against proven CRO principles, and delivers actionable recommendations in report format.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 5,
+        "estimated_tokens": 1766
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — CRO analysis applies to any business with a web presence and directly impacts revenue."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with references; no scripts or external calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Large, well-structured skill with references but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Analyzes landing pages with conversion psychology principles and A/B testing frameworks, producing prioritized CRO recommendations with expected impact estimates. Primary output: conversion audit report with ranked optimizations.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-go-to-market-plan",
+      "source_id": "source-1",
+      "path": "marketing-go-to-market-plan/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "marketing-go-to-market-plan",
+        "description": "Analyzes the founder's business context to deliver 3 best go-to-market strategies tailored to their current stage, product, and market. Asks up to 10 diagnostic questions when needed to understand product readiness, target market clarity, competitive positioning, and distribution channels. Use when user needs go-to-market strategy, launch planning, market entry strategy, or actionable GTM roadmap.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 577
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — go-to-market planning is essential for any product launch and founders often lack structured frameworks."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 2,
+          "rationale": "No metadata block, no references directory, and limited structural scaffolding.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": false,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Analyzes founder business context to produce 3 tailored go-to-market strategies with specific channel playbooks, target audience definitions, and launch timelines. Primary output: prioritized GTM strategy document.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-marketing-ideas",
+      "source_id": "source-1",
+      "path": "marketing-ideas/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "marketing-marketing-ideas",
+        "description": "Produces the best marketing ideas for your business by analyzing your FOUNDER_CONTEXT and matching it against a curated database of 170+ proven marketing strategies. Use when user needs creative, actionable marketing ideas tailored to their business.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 2067
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — generating contextual marketing ideas from business context is a high-frequency request across all business types."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with references; no scripts or external calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Large, well-structured skill with references and business context integration but no metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Generates high-quality, contextual marketing ideas by analyzing FOUNDER_CONTEXT and business stage, producing creative campaign concepts, growth tactics, and channel strategies. Primary output: prioritized marketing idea list with execution notes.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-lead-magnet-generator",
+      "source_id": "source-1",
+      "path": "marketing-lead-magnet-generator/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "marketing-lead-magnet-generator",
+        "description": "Creates viral lead magnet posts that drive comments and DMs. Produces 2 versions - a quick punchy format and a detailed format with bullet points. Use when user needs social media posts to give away a lead magnet in exchange for engagement.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 859
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — social media lead magnet posts are a core tactic for content-driven businesses and creators."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with references directory; no scripts or external calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has references directory and structured output with two post variants, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": false,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Creates viral social media posts designed to drive comments and DMs that convert to leads, producing quick and comprehensive variants with psychological hook patterns. Primary output: two ready-to-post lead magnet variations.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-linkedin-writer",
+      "source_id": "source-1",
+      "path": "marketing-linkedin-writer/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "marketing-linkedin-writer",
+        "description": "Creates viral LinkedIn posts using proven formats, post templates, and voice matching. Use when user needs engaging, high-performing posts for LinkedIn.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 3,
+        "estimated_tokens": 1042
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 5,
+          "rationale": "Essential — LinkedIn is the primary B2B content channel and creating high-performing posts is a near-universal need."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "No scripts or external calls; credential scan flag is a false positive from post template content.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Substantial content with references and voice-matching workflow, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Creates viral LinkedIn posts by analyzing the user's voice samples and applying proven post formats with hooks, formatting, and engagement tactics. Primary output: platform-optimized LinkedIn posts matched to creator voice.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-outreach-specialist",
+      "source_id": "source-1",
+      "path": "marketing-outreach-specialist/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "marketing-outreach-specialist",
+        "description": "Crafts high-converting outreach messages and email sequences for cold outreach, LinkedIn DMs, and follow-ups. Use when user needs personalized outreach messages that book calls and get replies.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 3,
+        "estimated_tokens": 1012
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — high-converting outreach is critical for sales and partnership development across all business types."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with references; no scripts or external calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has references directory and channel-specific templates, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Crafts high-converting cold outreach messages and multi-step email sequences for LinkedIn, email, and other channels using personalization frameworks and conversion psychology. Primary output: ready-to-send outreach messages and follow-up sequences.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-pricing-strategist",
+      "source_id": "source-1",
+      "path": "marketing-pricing-strategist/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "marketing-pricing-strategist",
+        "description": "Builds comprehensive pricing strategies by reading business context and asking targeted questions interactively. Use when user needs pricing plans, tier structures, price points, pricing model recommendations, or any pricing-related strategy for their product or service.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 256
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — pricing strategy is a high-impact, underaddressed need for most early-stage and growth businesses."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 2,
+          "rationale": "No metadata block, no references, and limited structural scaffolding at 256 tokens.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": false,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Builds comprehensive pricing strategies by analyzing business context and competitive positioning, recommending pricing models, tiers, and psychological pricing tactics. Primary output: pricing strategy recommendation with tiered options.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-product-hunt-launch-plan",
+      "source_id": "source-1",
+      "path": "marketing-product-hunt-launch-plan/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "marketing-product-hunt-launch-plan",
+        "description": "Creates a comprehensive, personalized Product Hunt launch plan to rank #1. Use when user needs a step-by-step Product Hunt launch strategy, launch checklist, or wants to maximize their Product Hunt success.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 1037
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 3,
+          "rationale": "Niche but well-executed — specifically valuable for SaaS and indie products preparing Product Hunt launches."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with references; Product Hunt is subject matter, not a runtime dependency.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has references directory and structured launch timeline, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": false,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Creates comprehensive Product Hunt launch plans with pre-launch preparation, day-of execution guides, community engagement tactics, and upvote optimization strategies. Primary output: personalized launch playbook with timeline.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-viral-hook-creator",
+      "source_id": "source-1",
+      "path": "marketing-viral-hook-creator/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "marketing-viral-hook-creator",
+        "description": "Creates viral social media hooks using proven psychological patterns and trigger words. Use when user needs attention-grabbing openings for posts, threads, videos, or content.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 4,
+        "estimated_tokens": 999
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — hooks are the single most impactful element of social media content and universally needed by content creators."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "No scripts or external calls; credential scan flag is a false positive from social media template content.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has references directory and psychological pattern frameworks, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Creates viral social media hooks using psychological trigger patterns (curiosity, controversy, specificity) and platform-specific formats, generating multiple variants for A/B testing. Primary output: hook variations optimized for LinkedIn, X, and Instagram.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-x-writer",
+      "source_id": "source-1",
+      "path": "marketing-writer-social-x/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "marketing-x-writer",
+        "description": "Creates viral X (Twitter) posts using proven formats, post templates, and creator voice matching. Use when user needs engaging, high-performing posts for X/Twitter.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 4,
+        "estimated_tokens": 2093
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 5,
+          "rationale": "Essential — X (Twitter) content creation with voice matching and proven formats is a near-universal need for brands and creators."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with references; no scripts or external calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Substantial content with references and voice-matching workflow, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Creates viral X (Twitter) posts and threads by matching creator voice from samples and applying data-backed viral formats with hooks, formatting, and engagement patterns. Primary output: platform-optimized X posts and threads.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "mckinsey-problem-solving-brief",
+      "source_id": "source-1",
+      "path": "mckinsey-problem-solving-brief/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "mckinsey-problem-solving-brief",
+        "description": "Build executive-ready, board-level strategic problem-solving briefs using SCQ, MECE issue trees, hypothesis-driven analysis, and pyramid-structured recommendations. Use when asked for McKinsey-style strategy memos, root-cause diagnostics, turnaround plans, market-entry decisions, profitability fixes, steering committee briefs, or implementation roadmaps for complex business problems.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 276
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful for consultants, executives, and business analysts who need structured strategic problem-solving frameworks."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 2,
+          "rationale": "No metadata block, no references directory, and minimal structural scaffolding at 276 tokens.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": false,
+            "constraints_section": false,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Builds executive-ready strategic problem-solving briefs using McKinsey-style SCQ (Situation/Complication/Question) frameworks and MECE issue trees. Primary output: board-level strategic brief with structured recommendations.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "mcp-builder",
+      "source_id": "source-1",
+      "path": "mcp-builder/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "mcp-builder",
+        "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when asked to build an MCP server, create MCP tools, integrate an API with MCP, set up a protocol server, or develop an MCP integration. Supports Python (FastMCP) and Node/TypeScript (MCP SDK).",
+        "license": "Complete terms in LICENSE.txt",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": true,
+        "file_count": 10,
+        "estimated_tokens": 4570
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful for developers building AI tool integrations — MCP is the emerging standard for LLM tool connectivity."
+        },
+        "security_risk": {
+          "rating": "medium",
+          "rationale": "Has Python scripts directory and fetches SDK documentation from raw GitHub URLs for reference loading.",
+          "findings": [
+            "Has scripts/ directory with Python code",
+            "Fetches raw SDK documentation from GitHub (modelcontextprotocol Python and TypeScript SDKs) — read-only reference fetches"
+          ]
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Large, detailed skill with scripts and references, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Guides developers through building high-quality MCP (Model Context Protocol) servers with implementation patterns, best practices, and live SDK reference loading for Python and TypeScript. Primary output: complete MCP server implementation with tests.",
+        "external_requirements_indicator": "has-external-dependencies",
+        "external_requirements": [
+          "GitHub (raw content fetch for MCP SDK documentation)",
+          "Python 3.x or Node.js 18+ (for generated MCP server implementations)"
+        ],
+        "script_languages": [
+          "python"
+        ],
+        "license": "Complete terms in LICENSE.txt"
+      }
+    },
+    {
+      "name": "nudge-unit",
+      "source_id": "source-1",
+      "path": "nudge-unit/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "nudge-unit",
+        "description": "Act as a Behavioural Insights Team (\"Nudge Unit\") that applies nudge theory and choice architecture to any issue or goal. Use when asked to nudge behavior, design choice architecture, apply behavioural insights, influence decisions, change behavior, reduce friction, improve uptake/adoption/compliance, design defaults, or apply nudge theory. Delivers 3-5 automatic system (System 1) and 3-5 reflective system (System 2) interventions that are cheap, minimal, and preserve freedom of choice.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 4,
+        "estimated_tokens": 548
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 3,
+          "rationale": "Niche but solid — behavioral design is a specialized discipline with valuable applications in policy, product, and communications."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with references; no scripts or external calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has references directory and structured analytical framework, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": false,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Applies nudge theory and choice architecture principles to redesign policies, communications, and environments to improve outcomes without restricting individual choice. Primary output: behavioral design recommendations with implementation guidance.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "plugin-builder",
+      "source_id": "source-1",
+      "path": "plugin-builder/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "plugin-builder",
+        "description": "Create Cowork/Claude Code knowledge-work plugins from user requirements through a guided design process. Use when asked to \"create a plugin\", \"build a plugin\", \"make a plugin\", \"scaffold a plugin\", \"new plugin\", \"plugin template\", or when packaging skills, commands, and connectors into a distributable plugin for a specific role or workflow. Walks users through requirements gathering, component design, and generates the complete plugin directory structure.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 3,
+        "estimated_tokens": 1888
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful for teams using Claude Cowork or Claude Code who want to package domain expertise into distributable plugins."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "All detected URLs are documentation and example references (Claude product pages, Anthropic GitHub repo); none are runtime API calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Substantial skill with references and structured design process, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Guides users through creating knowledge-work plugins for Claude Cowork/Claude Code by bundling skills, slash commands, and MCP connectors into distributable packages through a structured phase-based design process. Primary output: complete plugin directory structure with all component files.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "product-overview-page",
+      "source_id": "source-1",
+      "path": "product-overview-page/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "product-overview-page",
+        "description": "Builds polished product overview pages with automated screenshot capture, scroll-triggered animations, and modern SaaS design patterns. Use when asked to create a product page, feature page, product overview, landing page with screenshots, product showcase, or feature tour. Automatically captures screenshots from live URLs or local apps using browser automation, then assembles them into production-grade HTML pages inspired by Stripe, Linear, Notion, and Bestow-style product marketing pages.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 3,
+        "estimated_tokens": 1614
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 3,
+          "rationale": "Niche but solid — useful for product teams that need polished overview pages with interactive elements."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Detected URLs are localhost and placeholder template values in skill content, not runtime API calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has references and structured output workflow, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Builds polished product overview pages with scroll-triggered animations and screenshot integration, generating complete HTML/CSS/JS implementations. Primary output: production-ready product overview page code.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "product-reverse-engineer",
+      "source_id": "source-1",
+      "path": "product-reverse-engineer/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "product-reverse-engineer",
+        "description": "Performs a thorough review of an existing project and produces a product overview, functional specification, and technical design document suitable for greenfield rebuilding. Use when asked to \"reverse engineer a project\", \"document a codebase\", \"create technical documentation from code\", \"extract architecture from a project\", \"create a functional spec from existing code\", \"document system design\", \"create a product overview\", or when the goal is to produce product-agnostic documentation that captures what a system does and how it is built.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "2.0.0",
+          "domain": "engineering",
+          "triggers": "reverse engineer, document project, extract architecture, functional spec, technical design, system documentation, greenfield documentation, codebase review, product documentation, product overview",
+          "role": "architect",
+          "scope": "analysis",
+          "output_format": "report",
+          "related_skills": "tech-prd-generator, tech-writing-plans, sop-creator"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": true,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 9,
+        "estimated_tokens": 1155
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — reverse-engineering existing products into structured documentation saves significant time for teams inheriting projects."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with references; no scripts or external calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 4,
+          "rationale": "Has full metadata block with domain/role/scope, references directory, and structured analytical workflow.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": true,
+            "triggers_field": true,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Reviews existing codebases to produce comprehensive product documentation including feature inventory, functional requirements, and technical architecture specifications. Primary output: structured product overview document and requirements baseline.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "skill-catalog-evaluator",
+      "source_id": "source-1",
+      "path": "skill-catalog-evaluator/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "skill-catalog-evaluator",
+        "description": "Scan, evaluate, and catalog large collections of agent skills into a structured JSON file. Use when asked to \"catalog skills\", \"evaluate a skill collection\", \"review a skill repository\", \"audit skill quality\", \"scan skills folder\", \"build a skill inventory\", \"compare skill libraries\", or when working with agent skill repositories like openclaw/skills or any collection following the Agent Skills specification (https://agentskills.io/specification). Handles massive repositories efficiently by scripting mechanical extraction and reserving LLM reasoning for qualitative evaluation.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "meta",
+          "triggers": "catalog skills, evaluate skills, scan skills, skill inventory, skill audit, skill collection review, skill repository, skill library, openclaw skills, skill quality report",
+          "role": "research-analyst",
+          "scope": "analysis",
+          "output_format": "report",
+          "related_skills": "skill-reviewer, skill-evaluator, skill-builder"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 7,
+        "estimated_tokens": 1618
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful for teams managing large agent skill repositories who need structured quality assessment and catalog generation."
+        },
+        "security_risk": {
+          "rating": "medium",
+          "rationale": "Has Python scripts that scan local filesystems and can optionally clone GitHub repositories; network calls are limited to git clone for GitHub sources.",
+          "findings": [
+            "Has scripts/ directory with Python automation (scan_skills.py, assemble_catalog.py)",
+            "Optional git clone for GitHub repository sources"
+          ]
+        },
+        "best_practices": {
+          "score": 5,
+          "rationale": "Exemplary spec compliance — full metadata block, references, scripts, conditional reference loading table, structured workflow, and explicit constraints.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": true,
+            "triggers_field": true,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Scans Agent Skill collections (local or GitHub), mechanically extracts metadata, and evaluates each skill on 8 dimensions to produce a structured JSON catalog. Primary output: skill-catalog.json with per-skill evaluations and aggregate statistics.",
+        "external_requirements_indicator": "has-external-dependencies",
+        "external_requirements": [
+          "Python 3.x (for scan_skills.py and assemble_catalog.py)",
+          "git (optional, for GitHub repository scanning)"
+        ],
+        "script_languages": [
+          "python"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "skill-writer",
+      "source_id": "source-1",
+      "path": "skill-writer/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "skill-writer",
+        "description": "Use when creating new skills, editing existing skills, writing SKILL.md files, or verifying skills work before deployment. Covers skill structure, frontmatter, CSO (Claude Search Optimization),TDD-based skill testing, and bulletproofing against rationalization.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": "meta",
+          "triggers": "create skill, write skill, build skill, edit skill, test skill, SKILL.md, skill authoring, skill template, scaffold skill, skill structure, TDD for documentation",
+          "role": "specialist",
+          "scope": "guidance",
+          "output_format": "document",
+          "related_skills": "skill-builder, tech-test-driven-development"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 7,
+        "estimated_tokens": 3049
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 5,
+          "rationale": "Essential meta-skill — creating and validating Agent Skills is foundational for anyone building or maintaining skill libraries."
+        },
+        "security_risk": {
+          "rating": "medium",
+          "rationale": "Has JavaScript scripts directory with package installation commands for scaffolding.",
+          "findings": [
+            "Has scripts/ directory with JavaScript scaffolding code",
+            "Install commands detected (npm install or equivalent)"
+          ]
+        },
+        "best_practices": {
+          "score": 5,
+          "rationale": "Exemplary — full metadata block, references directory, scripts, structured workflow, triggers, and clear role definition.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": true,
+            "triggers_field": true,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": true
+          }
+        },
+        "core_capabilities": "Creates, edits, and validates Agent Skills (SKILL.md files) following the Agent Skills specification, with automated scaffolding and validation. Primary output: spec-compliant SKILL.md files with optional supporting directory structure.",
+        "external_requirements_indicator": "has-external-dependencies",
+        "external_requirements": [
+          "Node.js / npm (for skill scaffolding scripts)"
+        ],
+        "script_languages": [
+          "javascript"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "sop-creator",
+      "source_id": "source-1",
+      "path": "sop-creator/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "sop-creator",
+        "description": "Creates detailed Standard Operating Procedures (SOPs) for business processes. Use when user needs SOPs, process documentation, operational guides, workflow documentation, or step-by-step instructions for repeatable business processes.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 317
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — standard operating procedures are needed in virtually every organization for process documentation."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 2,
+          "rationale": "Minimal frontmatter at 317 tokens — no metadata block, no references directory.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Creates detailed Standard Operating Procedures written at a 5th-grade reading level through a clarifying question workflow, producing version-controlled step-by-step documentation. Primary output: structured SOP document with quality verification checklist.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "startup-strategic-planning",
+      "source_id": "source-1",
+      "path": "startup-strategic-planning/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "startup-strategic-planning",
+        "description": "Analyzes the founder's business context to deliver the 3 highest-impact next moves for growth (marketing or sales). Asks up to 10 diagnostic questions when needed to uncover bottlenecks, struggles, and opportunities. Use when user needs strategic guidance, next steps, growth planning, or actionable business strategy.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 560
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — founders and early-stage teams regularly need actionable strategic direction tailored to their specific context."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 2,
+          "rationale": "No metadata block, no references directory, and no structured constraints section.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": false,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Analyzes founder business context to deliver 3 specific, high-impact growth moves with detailed playbooks, exact tactics, and immediate first actions tailored to the business stage and constraints. Primary output: 3-move strategic plan with execution playbooks.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "strategy-research-analyst",
+      "source_id": "source-1",
+      "path": "strategy-research-analyst/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "strategy-research-analyst",
+        "description": "Performs competitive analysis, technology trend assessment, signal classification, opportunity scoring, threat identification, and strategic intelligence briefings. Use when asked to research competitors, analyze market trends, assess technology signals, produce strategic briefings, evaluate threats and opportunities, perform industry analysis, score market opportunities, or deliver competitive intelligence.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "strategy",
+          "triggers": "competitive analysis, market research, technology trends, threat assessment, opportunity scoring, signal classification, strategic intelligence, competitor research, industry analysis, market sizing, SWOT",
+          "role": "analyst",
+          "scope": "analysis",
+          "output_format": "report",
+          "related_skills": "customer-segmentation, marketing-competitor-intel"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 166
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — competitive intelligence and signal classification are needed by strategy teams, product managers, and executives."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external calls.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has metadata block with domain/role/scope, but very small body (166 tokens) — lacks references directory and constraints section.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": true,
+            "triggers_field": true,
+            "role_definition": true,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "knowledge_reference": true,
+            "reference_usage": false,
+            "concise_instructions": true
+          }
+        },
+        "core_capabilities": "Performs competitive intelligence analysis with signal classification, confidence scoring, and threat assessment, producing structured intelligence briefings from daily alerts to weekly strategic reports. Primary output: classified intelligence brief with confidence ratings.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "tech-code-simplifier",
+      "source_id": "source-1",
+      "path": "tech-code-simplifier/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "tech-code-simplifier",
+        "description": "Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Use when asked to simplify code, clean up code, refactor for readability, reduce complexity, apply coding standards, or improve code elegance. Focuses on recently modified code unless instructed otherwise.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 78
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — code simplification and readability improvements benefit every development team."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 2,
+          "rationale": "Very minimal at 78 tokens — no metadata, no references, limited structure but clear scope.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Simplifies recently modified code for clarity and maintainability without changing behavior, applying project-specific conventions and eliminating code smells and anti-patterns. Primary output: refactored code with improved readability.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "tech-finishing-a-development-branch",
+      "source_id": "source-1",
+      "path": "tech-finishing-a-development-branch/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "tech-finishing-a-development-branch",
+        "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 260
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful for development workflows — structured branch completion with verified options prevents common mistakes."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content; git and gh CLI are invoked through the agent's existing terminal access, not additional external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Clear structured workflow with explicit options, constraints, and a quick reference table, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Guides completion of development work by verifying tests pass, presenting 4 structured integration options (merge, PR, keep, discard), and executing the chosen workflow including git worktree cleanup. Primary output: integrated and cleaned development branch.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "tech-prd-generator",
+      "source_id": "source-1",
+      "path": "tech-prd-generator/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "tech-prd-generator",
+        "description": "Generates professional PRD (Product Requirements Document) files optimized for AI coding tools. Takes a rough product idea, asks clarifying questions, and outputs a structured PDF ready to feed into AI coding assistants.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 751
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — generating structured, AI-optimized PRDs from rough ideas saves significant product planning time."
+        },
+        "security_risk": {
+          "rating": "medium",
+          "rationale": "Instructions include running 'npx md-to-pdf' which installs and executes an npm package for PDF conversion.",
+          "findings": [
+            "Instructions invoke 'npx md-to-pdf' to install and run an npm package for PDF conversion"
+          ]
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Has references directory with PRD template and structured clarifying question workflow, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": true,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Transforms rough product ideas into comprehensive AI-ready PRDs through a clarifying question workflow, saving output as both Markdown and PDF. Primary output: structured PRD document with acceptance criteria, data models, and AI implementation notes.",
+        "external_requirements_indicator": "has-external-dependencies",
+        "external_requirements": [
+          "Node.js / npx (for md-to-pdf PDF conversion)"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "tech-receiving-code-review",
+      "source_id": "source-1",
+      "path": "tech-receiving-code-review/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "tech-receiving-code-review",
+        "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 276
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful for development workflows — structured, technically rigorous code review reception prevents implementation errors."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Clear structured workflow with forbidden patterns, source-specific handling, and concrete examples, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Enforces technically rigorous code review responses — verifying before implementing, structured pushback reasoning, and factual acknowledgment without performative agreement. Primary output: evaluated and prioritized implementation plan responding to feedback.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "tech-requesting-code-review",
+      "source_id": "source-1",
+      "path": "tech-requesting-code-review/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "tech-requesting-code-review",
+        "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 326
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful for developer workflow — structured code review dispatch as a regular practice improves code quality systematically."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content; subagent dispatch is a platform capability, not an external dependency.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Clear workflow with integration guidance and example patterns, but lacks metadata block.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Dispatches a code-reviewer subagent with a structured review template after completing development tasks, providing severity-triaged feedback and an action protocol. Primary output: code review initiation with tracked follow-up actions.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "tech-test-driven-development",
+      "source_id": "source-1",
+      "path": "tech-test-driven-development/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "tech-test-driven-development",
+        "description": "Use when implementing any feature or bugfix, before writing implementation code",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 871
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 5,
+          "rationale": "Essential — TDD discipline is foundational software engineering practice that prevents a broad class of defects and improves design."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 3,
+          "rationale": "Detailed Red-Green-Refactor constraints with concrete good/bad examples, but lacks metadata block and references directory.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": true,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Enforces strict Red-Green-Refactor TDD discipline, requiring a failing test before any implementation code, with explicit verification steps for each phase. Primary output: test-first implementations with verified Red-Green-Refactor cycle completion.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "tech-writing-plans",
+      "source_id": "source-1",
+      "path": "tech-writing-plans/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "tech-writing-plans",
+        "description": "Use when you have a spec or requirements for a multi-step task, before touching code",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 150
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful for developer workflows — structured implementation plans prevent scope creep and missed context during multi-step development."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 2,
+          "rationale": "Minimal at 150 tokens — no metadata, no references, and limited structural scaffolding.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": false,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Creates comprehensive bite-sized implementation plans for multi-step development tasks with exact file paths, code samples, test commands, and expected outputs for every step. Primary output: structured implementation plan document saved to docs/plans/.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    },
+    {
+      "name": "ux-design-personas",
+      "source_id": "source-1",
+      "path": "ux-design-personas/SKILL.md",
+      "url": null,
+      "frontmatter": {
+        "name": "ux-design-personas",
+        "description": "Create UX/UI design artifacts from research through specs. Use when asked to build personas, journey maps, information architecture, content structure, navigation, user flows, UX/UI specs, screen mockups, layout rules, field rules, or interaction behaviors.",
+        "license": null,
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": null,
+          "domain": null,
+          "triggers": null,
+          "role": null,
+          "scope": null,
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 6,
+        "estimated_tokens": 748
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 4,
+          "rationale": "Broadly useful — UX artifacts from personas to screen specs are needed throughout product development by designers and product teams."
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "Pure prompt content with no scripts or external dependencies.",
+          "findings": []
+        },
+        "best_practices": {
+          "score": 2,
+          "rationale": "No metadata block, no references directory, and limited structural scaffolding despite covering a broad scope.",
+          "checklist": {
+            "valid_frontmatter": true,
+            "description_quality": true,
+            "metadata_block": false,
+            "triggers_field": false,
+            "role_definition": false,
+            "structured_workflow": true,
+            "constraints_section": false,
+            "reference_usage": false,
+            "concise_instructions": true,
+            "knowledge_reference": false
+          }
+        },
+        "core_capabilities": "Creates UX/UI design artifacts including personas, journey maps, information architecture, content structure, navigation flows, and screen layout specs. Primary output: complete set of UX documentation artifacts from research through production-ready specs.",
+        "external_requirements_indicator": "self-contained",
+        "external_requirements": [
+          "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "unspecified"
+      }
+    }
+  ]
+}
