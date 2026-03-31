@@ -153,7 +153,7 @@ Bad: "Follow REST principles", "Handle errors properly"
 Good: "Conduct the full interview before writing the spec", "Never accept vague requirements ('make it fast' — push for measurable targets)", "Use structured question tools for choices that can be predetermined"
 Bad: "Be thorough", "Ask good questions"
 
-**Example skills**: feature-forge, ux-design-personas, sop-creator, product-requirements, tech-prd-generator
+**Example skills**: feature-forge, design-research-personas, ops-process-sop-creator, product-requirements, product-spec-prd-generator
 
 ---
 
@@ -188,7 +188,7 @@ Bad: "Be thorough", "Ask good questions"
 Good: "Match brand voice (see references/brand-voice.md)", "Never use passive voice in CTAs", "Include one specific data point per claim", "LinkedIn posts: 150–300 words, no hashtag spam"
 Bad: "Write engagingly", "Be on-brand"
 
-**Example skills**: marketing-brand-copywriter, marketing-linkedin-writer, marketing-x-writer, internal-comms, humanizer
+**Example skills**: marketing-content-brand-copywriter, marketing-content-linkedin-writer, marketing-content-x-writer, comms-announce-organizational, content-copy-humanizer
 
 ---
 
@@ -224,4 +224,4 @@ Bad: "Write engagingly", "Be on-brand"
 Good: "Every recommendation must cite evidence from the research", "Distinguish between findings (observable) and recommendations (interpretive)", "Never recommend without addressing the strongest counterargument"
 Bad: "Be objective", "Support your claims"
 
-**Example skills**: customer-segmentation, marketing-competitor-intel, marketing-pricing-strategist, adsense-readiness
+**Example skills**: marketing-intel-customer-segmentation, marketing-intel-competitor, strategy-planning-pricing, marketing-seo-adsense-readiness

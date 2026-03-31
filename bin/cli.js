@@ -40,6 +40,21 @@ function getAvailableSkills() {
   }
 }
 
+// Synchronous confirmation prompt
+function confirm(question) {
+  process.stdout.write(`${question} [y/N] `);
+  let input = '';
+  const buf = Buffer.alloc(1);
+  while (true) {
+    const n = fs.readSync(0, buf, 0, 1);
+    if (n === 0) break;
+    const ch = buf.toString();
+    if (ch === '\n') break;
+    input += ch;
+  }
+  return input.trim().toLowerCase() === 'y';
+}
+
 // Copy directory recursively
 function copyDir(src, dest) {
   fs.mkdirSync(dest, { recursive: true });
@@ -63,7 +78,10 @@ function parseArgs(args) {
     command: null,
     skills: [],
     agents: [],
-    global: true // default to global install (preserves existing behavior)
+    global: false, // default to project install
+    listMode: 'bare', // full | bare | count
+    upgrade: false,
+    overwrite: false
   };
 
   let i = 0;
@@ -86,6 +104,16 @@ function parseArgs(args) {
       result.global = false;
     } else if (arg === '--global' || arg === '-g') {
       result.global = true;
+    } else if (arg === '--count' || arg === '-c') {
+      result.listMode = 'count';
+    } else if (arg === '--names' || arg === '-n') {
+      result.listMode = 'bare';
+    } else if (arg === '--full' || arg === '-f') {
+      result.listMode = 'full';
+    } else if (arg === '--upgrade' || arg === '-u') {
+      result.upgrade = true;
+    } else if (arg === '--overwrite' || arg === '-o') {
+      result.overwrite = true;
     } else if (!arg.startsWith('-')) {
       if (!result.command) {
         result.command = arg;
@@ -103,9 +131,24 @@ function parseArgs(args) {
 }
 
 // List available skills
-function listSkills() {
+function listSkills(listMode = 'full') {
   const skills = getAvailableSkills();
 
+  if (listMode === 'count') {
+    console.log(skills.length);
+    return;
+  }
+
+  if (listMode === 'bare') {
+    if (skills.length === 0) {
+      console.log('  No skills found.\n');
+      return;
+    }
+    skills.forEach(skill => console.log(skill));
+    return;
+  }
+
+  // full (default)
   console.log('\n📦 Available skills:\n');
 
   if (skills.length === 0) {
@@ -153,7 +196,7 @@ function getTargetDirs(agents, isGlobal) {
 }
 
 // Install skills
-function installSkills(selectedSkills, agents, isGlobal) {
+function installSkills(selectedSkills, agents, isGlobal, upgrade, overwrite) {
   const availableSkills = getAvailableSkills();
 
   // If no specific skills selected, install all
@@ -182,33 +225,72 @@ function installSkills(selectedSkills, agents, isGlobal) {
     return;
   }
 
+  // When upgrading, collect existing skills across all targets and confirm
+  if (upgrade && !overwrite) {
+    const existingSkills = new Set();
+    for (const { dir } of targets) {
+      for (const skill of skillsToInstall) {
+        if (fs.existsSync(path.join(dir, skill))) {
+          existingSkills.add(skill);
+        }
+      }
+    }
+    if (existingSkills.size > 0) {
+      console.log('\n⚠️  The following skills will be deleted and replaced:');
+      [...existingSkills].forEach(s => console.log(`   • ${s}`));
+      if (!confirm('\nProceed with upgrade?')) {
+        console.log('\n❌ Upgrade cancelled.\n');
+        return;
+      }
+    }
+  }
+
   const scope = isGlobal ? 'global' : 'project';
-  console.log(`\n🚀 Installing forge-agents (${scope})...\n`);
+  const action = upgrade ? 'Upgrading' : 'Installing';
+  console.log(`\n🚀 ${action} forge-agents (${scope})...\n`);
 
-  for (const { agent, name, dir } of targets) {
+  let totalInstalled = 0, totalUpgraded = 0, totalSkipped = 0;
+
+  for (const { name, dir } of targets) {
     fs.mkdirSync(dir, { recursive: true });
-
     console.log(`${name} (${dir}):`);
-    skillsToInstall.forEach(skill => {
+
+    for (const skill of skillsToInstall) {
       const src = path.join(SKILLS_DIR, skill);
       const dest = path.join(dir, skill);
+      const exists = fs.existsSync(dest);
+
+      if (exists && !upgrade) {
+        console.log(`  ⏭  ${skill} (already installed)`);
+        totalSkipped++;
+        continue;
+      }
 
       try {
+        if (exists) {
+          fs.rmSync(dest, { recursive: true, force: true });
+        }
         copyDir(src, dest);
-        console.log(`  ✅ ${skill}`);
+        if (exists) {
+          console.log(`  🔄 ${skill}`);
+          totalUpgraded++;
+        } else {
+          console.log(`  ✅ ${skill}`);
+          totalInstalled++;
+        }
       } catch (err) {
         console.log(`  ❌ ${skill} - ${err.message}`);
       }
-    });
+    }
     console.log('');
   }
 
-  console.log('✨ Installation complete!\n');
-  console.log('Usage:');
-  skillsToInstall.forEach(skill => {
-    console.log(`  /${skill}`);
-  });
-  console.log('');
+  console.log('✨ Done!\n');
+  const parts = [];
+  if (totalInstalled > 0) parts.push(`${totalInstalled} installed`);
+  if (totalUpgraded > 0) parts.push(`${totalUpgraded} upgraded`);
+  if (totalSkipped > 0) parts.push(`${totalSkipped} skipped`);
+  if (parts.length > 0) console.log(`   ${parts.join(', ')}`);
 }
 
 // Show help
@@ -226,8 +308,13 @@ Commands:
 Options:
   --skill, -s <name>   Install specific skill(s) (repeatable)
   --agent, -a <agent>  Target agent(s) (repeatable, default: github-copilot)
-  --global, -g         Install globally (default)
-  --project, -p        Install to current project directory
+  --project, -p        Install to current project directory (default)
+  --global, -g         Install globally
+  --upgrade, -u        Replace existing skills with latest versions (prompts for confirmation)
+  --overwrite, -o      Skip confirmation when upgrading
+  --names, -n          List skill names only (default)
+  --full, -f           List skills with names and descriptions
+  --count, -c          Print only the count of available skills
 
 Supported Agents:
   claude-code          ~/.claude/skills/      .claude/skills/
@@ -239,21 +326,25 @@ Examples:
   npx forge-agents install --skill sop-creator
   npx forge-agents install -a github-copilot -a codex
   npx forge-agents install -a github-copilot --skill humanizer -p
+  npx forge-agents install --upgrade
+  npx forge-agents install --upgrade --overwrite
   npx forge-agents list
+  npx forge-agents list --names
+  npx forge-agents list --count
 `);
 }
 
 // Main
 function main() {
   const args = process.argv.slice(2);
-  const { command, skills, agents, global: isGlobal } = parseArgs(args);
+  const { command, skills, agents, global: isGlobal, listMode, upgrade, overwrite } = parseArgs(args);
 
   switch (command) {
     case 'install':
-      installSkills(skills, agents, isGlobal);
+      installSkills(skills, agents, isGlobal, upgrade, overwrite);
       break;
     case 'list':
-      listSkills();
+      listSkills(listMode);
       break;
     case 'help':
     case '--help':
