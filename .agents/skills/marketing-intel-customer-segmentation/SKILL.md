@@ -37,7 +37,7 @@ Before doing ANYTHING else, you MUST read every file in `./references/`. This is
 **DO NOT PROCEED** to Step 2 until you have read all reference files and have their content in context.
 
 ### 2. Check for Project Context
-Check for project-level context files relevant to the task (e.g., `README.md`, `BUSINESS_CONTEXT.md`, docs in `references/`), then use that context to personalize the output.
+Check for project-level context files relevant to the task (e.g., `README.md`, `FOUNDER_CONTEXT.md`, docs in `references/`), then use that context to personalize the output.
 
 ### 3. Define the Segmentation Objective
 Clarify the primary goal before any analysis. Ask the user (or extract from their input):
