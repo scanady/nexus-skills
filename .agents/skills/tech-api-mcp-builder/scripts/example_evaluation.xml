@@ -1,0 +1,23 @@
+<evaluation>
+   <!-- Example: GitHub MCP server evaluation questions -->
+   <qa_pair>
+      <question>Find the repository that was archived in Q3 2023 and had previously been the most forked project in the organization. What was the primary programming language used in that repository?</question>
+      <answer>Python</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Among all bugs reported in January 2024 that were marked as critical priority, which assignee resolved the highest percentage of their assigned bugs within 48 hours? Provide the assignee's username.</question>
+      <answer>alex_eng</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Find the pull request merged in Q1 2024 that modified the most files across different directories. What was the title of that pull request?</question>
+      <answer>Migrate authentication to OAuth 2.1</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Look at all releases published in 2023. Which release had the longest gap (in days) from the previous release? Provide the release tag name.</question>
+      <answer>v2.4.0</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Find discussions about AI model launches with animal codenames. One model needed a specific safety designation that uses the format ASL-X. What number X was being determined for the model named after a spotted wild cat?</question>
+      <answer>3</answer>
+   </qa_pair>
+</evaluation>
