@@ -50,7 +50,7 @@ npx forge-agents install --upgrade
 **Install targets by agent:**
 - `github-copilot` → `.agents/skills/` (project) or `~/.copilot/skills/` (global)
 - `claude-code` → `.claude/skills/` (project) or `~/.claude/skills/` (global)
-- `codex` → `.agents/skills/` (project)
+- `codex` → `.agents/skills/` (project) or `~/.codex/skills/` (global)
 
 The default scope is `--project`. Use `--global` for personal skills you want available across all repos.
 
@@ -77,7 +77,7 @@ Use these to package a skill as a `.zip` file for manual import into Claude or o
 .\bin\export-skill.ps1 research-deep-reading-analyst
 ```
 
-Output is written to `output/<skill-name>.zip`. The zip preserves the folder structure required by Claude (`<skill-name>/SKILL.md`, ...`).
+Output is written to `output/<skill-name>.zip`. The zip preserves the folder structure required by Claude (`<skill-name>/SKILL.md`, ...).
 
 Use the export scripts when:
 - Sharing a skill outside of GitHub (e.g., sending to a teammate)
