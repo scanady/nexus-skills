@@ -18,7 +18,7 @@
 
 ## CLI — `npx forge-agents`
 
-Use the CLI to install skills into an AI agent's skills directory. It supports GitHub Copilot, Claude Code, and Codex.
+Use the CLI to install skills into an AI agent's skills directory. It supports the Agent Skills standard path plus GitHub Copilot, Claude Code, and Codex.
 
 When consuming this repo externally, use `npx forge-agents`. When working inside this repo directly, use `node bin/cli.js` instead.
 
@@ -28,7 +28,7 @@ When consuming this repo externally, use `npx forge-agents`. When working inside
 # List all available skills
 npx forge-agents list
 
-# Install all skills into the current project (GitHub Copilot, default)
+# Install all skills into the current project (Agent Skills standard, default)
 npx forge-agents install
 
 # Install a specific skill
@@ -48,6 +48,7 @@ npx forge-agents install --upgrade
 ```
 
 **Install targets by agent:**
+- `agent-skills` → `.agents/skills/` (project) or `~/.agents/skills/` (global)
 - `github-copilot` → `.agents/skills/` (project) or `~/.copilot/skills/` (global)
 - `claude-code` → `.claude/skills/` (project) or `~/.claude/skills/` (global)
 - `codex` → `.agents/skills/` (project) or `~/.codex/skills/` (global)

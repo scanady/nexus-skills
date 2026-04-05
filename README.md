@@ -25,7 +25,7 @@ git clone https://github.com/scanady/forge-agents
 cd forge-agents
 ```
 
-Install all skills into the current project (default agent: GitHub Copilot):
+Install all skills into the current project (default target: Agent Skills standard):
 
 ```bash
 node bin/cli.js install
@@ -61,7 +61,8 @@ node bin/cli.js list
 
 | Agent | Global path | Project path |
 |-------|------------|--------------|
-| `github-copilot` (default) | `~/.copilot/skills/` | `.agents/skills/` |
+| `agent-skills` (default) | `~/.agents/skills/` | `.agents/skills/` |
+| `github-copilot` | `~/.copilot/skills/` | `.agents/skills/` |
 | `claude-code` | `~/.claude/skills/` | `.claude/skills/` |
 | `codex` | `~/.codex/skills/` | `.agents/skills/` |
 

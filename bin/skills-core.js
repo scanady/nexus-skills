@@ -1,208 +1,223 @@
-import fs from 'fs';
-import path from 'path';
-import { execSync } from 'child_process';
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
 
-/**
- * Extract YAML frontmatter from a skill file.
- * Current format:
- * ---
- * name: skill-name
- * description: Use when [condition] - [what it does]
- * ---
- *
- * @param {string} filePath - Path to SKILL.md file
- * @returns {{name: string, description: string}}
- */
-function extractFrontmatter(filePath) {
-    try {
-        const content = fs.readFileSync(filePath, 'utf8');
-        const lines = content.split('\n');
+const PROJECT_ROOT = path.join(__dirname, '..');
+const SKILLS_DIR = path.join(PROJECT_ROOT, 'skills');
+const OUTPUT_DIR = path.join(PROJECT_ROOT, 'output');
 
-        let inFrontmatter = false;
-        let name = '';
-        let description = '';
-
-        for (const line of lines) {
-            if (line.trim() === '---') {
-                if (inFrontmatter) break;
-                inFrontmatter = true;
-                continue;
-            }
-
-            if (inFrontmatter) {
-                const match = line.match(/^(\w+):\s*(.*)$/);
-                if (match) {
-                    const [, key, value] = match;
-                    switch (key) {
-                        case 'name':
-                            name = value.trim();
-                            break;
-                        case 'description':
-                            description = value.trim();
-                            break;
-                    }
-                }
-            }
-        }
-
-        return { name, description };
-    } catch (error) {
-        return { name: '', description: '' };
+const AGENTS = {
+    'agent-skills': {
+        name: 'Agent Skills',
+        aliases: ['agents', 'agentskills', 'standard'],
+        projectDir: '.agents/skills',
+        globalDir: path.join(os.homedir(), '.agents', 'skills')
+    },
+    'claude-code': {
+        name: 'Claude Code',
+        aliases: ['claude'],
+        projectDir: '.claude/skills',
+        globalDir: path.join(os.homedir(), '.claude', 'skills')
+    },
+    'github-copilot': {
+        name: 'GitHub Copilot',
+        aliases: ['copilot'],
+        projectDir: '.agents/skills',
+        globalDir: path.join(os.homedir(), '.copilot', 'skills')
+    },
+    'codex': {
+        name: 'OpenAI Codex',
+        aliases: ['openai-codex'],
+        projectDir: '.agents/skills',
+        globalDir: path.join(os.homedir(), '.codex', 'skills')
     }
+};
+
+const DEFAULT_AGENT = 'agent-skills';
+const SKILL_NAME_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+function stripWrappingQuotes(value) {
+    if (!value) {
+        return '';
+    }
+
+    const trimmed = value.trim();
+    if ((trimmed.startsWith('"') && trimmed.endsWith('"')) || (trimmed.startsWith("'") && trimmed.endsWith("'"))) {
+        return trimmed.slice(1, -1).trim();
+    }
+
+    return trimmed;
 }
 
-/**
- * Find all SKILL.md files in a directory recursively.
- *
- * @param {string} dir - Directory to search
- * @param {string} sourceType - 'personal' or 'superpowers' for namespacing
- * @param {number} maxDepth - Maximum recursion depth (default: 3)
- * @returns {Array<{path: string, name: string, description: string, sourceType: string}>}
- */
-function findSkillsInDir(dir, sourceType, maxDepth = 3) {
-    const skills = [];
-
-    if (!fs.existsSync(dir)) return skills;
-
-    function recurse(currentDir, depth) {
-        if (depth > maxDepth) return;
-
-        const entries = fs.readdirSync(currentDir, { withFileTypes: true });
-
-        for (const entry of entries) {
-            const fullPath = path.join(currentDir, entry.name);
-
-            if (entry.isDirectory()) {
-                // Check for SKILL.md in this directory
-                const skillFile = path.join(fullPath, 'SKILL.md');
-                if (fs.existsSync(skillFile)) {
-                    const { name, description } = extractFrontmatter(skillFile);
-                    skills.push({
-                        path: fullPath,
-                        skillFile: skillFile,
-                        name: name || entry.name,
-                        description: description || '',
-                        sourceType: sourceType
-                    });
-                }
-
-                // Recurse into subdirectories
-                recurse(fullPath, depth + 1);
-            }
-        }
-    }
-
-    recurse(dir, 0);
-    return skills;
-}
-
-/**
- * Resolve a skill name to its file path, handling shadowing
- * (personal skills override superpowers skills).
- *
- * @param {string} skillName - Name like "superpowers:brainstorming" or "my-skill"
- * @param {string} superpowersDir - Path to superpowers skills directory
- * @param {string} personalDir - Path to personal skills directory
- * @returns {{skillFile: string, sourceType: string, skillPath: string} | null}
- */
-function resolveSkillPath(skillName, superpowersDir, personalDir) {
-    // Strip superpowers: prefix if present
-    const forceSuperpowers = skillName.startsWith('superpowers:');
-    const actualSkillName = forceSuperpowers ? skillName.replace(/^superpowers:/, '') : skillName;
-
-    // Try personal skills first (unless explicitly superpowers:)
-    if (!forceSuperpowers && personalDir) {
-        const personalPath = path.join(personalDir, actualSkillName);
-        const personalSkillFile = path.join(personalPath, 'SKILL.md');
-        if (fs.existsSync(personalSkillFile)) {
-            return {
-                skillFile: personalSkillFile,
-                sourceType: 'personal',
-                skillPath: actualSkillName
-            };
-        }
-    }
-
-    // Try superpowers skills
-    if (superpowersDir) {
-        const superpowersPath = path.join(superpowersDir, actualSkillName);
-        const superpowersSkillFile = path.join(superpowersPath, 'SKILL.md');
-        if (fs.existsSync(superpowersSkillFile)) {
-            return {
-                skillFile: superpowersSkillFile,
-                sourceType: 'superpowers',
-                skillPath: actualSkillName
-            };
-        }
-    }
-
-    return null;
-}
-
-/**
- * Check if a git repository has updates available.
- *
- * @param {string} repoDir - Path to git repository
- * @returns {boolean} - True if updates are available
- */
-function checkForUpdates(repoDir) {
-    try {
-        // Quick check with 3 second timeout to avoid delays if network is down
-        const output = execSync('git fetch origin && git status --porcelain=v1 --branch', {
-            cwd: repoDir,
-            timeout: 3000,
-            encoding: 'utf8',
-            stdio: 'pipe'
-        });
-
-        // Parse git status output to see if we're behind
-        const statusLines = output.split('\n');
-        for (const line of statusLines) {
-            if (line.startsWith('## ') && line.includes('[behind ')) {
-                return true; // We're behind remote
-            }
-        }
-        return false; // Up to date
-    } catch (error) {
-        // Network down, git error, timeout, etc. - don't block bootstrap
-        return false;
-    }
-}
-
-/**
- * Strip YAML frontmatter from skill content, returning just the content.
- *
- * @param {string} content - Full content including frontmatter
- * @returns {string} - Content without frontmatter
- */
-function stripFrontmatter(content) {
+function parseFrontmatter(content) {
     const lines = content.split('\n');
+    const metadata = {};
     let inFrontmatter = false;
-    let frontmatterEnded = false;
-    const contentLines = [];
 
     for (const line of lines) {
         if (line.trim() === '---') {
             if (inFrontmatter) {
-                frontmatterEnded = true;
-                continue;
+                break;
             }
+
             inFrontmatter = true;
             continue;
         }
 
-        if (frontmatterEnded || !inFrontmatter) {
-            contentLines.push(line);
+        if (!inFrontmatter) {
+            continue;
+        }
+
+        const match = line.match(/^([A-Za-z0-9_-]+):\s*(.*)$/);
+        if (!match) {
+            continue;
+        }
+
+        metadata[match[1]] = stripWrappingQuotes(match[2]);
+    }
+
+    return metadata;
+}
+
+function extractFrontmatter(filePath) {
+    try {
+        return parseFrontmatter(fs.readFileSync(filePath, 'utf8'));
+    } catch (error) {
+        return {};
+    }
+}
+
+function getAvailableSkills() {
+    try {
+        return fs.readdirSync(SKILLS_DIR)
+            .filter(name => {
+                const skillPath = path.join(SKILLS_DIR, name);
+                return fs.statSync(skillPath).isDirectory() &&
+                    fs.existsSync(path.join(skillPath, 'SKILL.md'));
+            })
+            .sort((left, right) => left.localeCompare(right));
+    } catch (error) {
+        return [];
+    }
+}
+
+function getSkillRecord(skillName) {
+    const skillPath = path.join(SKILLS_DIR, skillName);
+    const skillFile = path.join(skillPath, 'SKILL.md');
+    const metadata = fs.existsSync(skillFile) ? extractFrontmatter(skillFile) : {};
+
+    return {
+        name: skillName,
+        path: skillPath,
+        skillFile,
+        metadata
+    };
+}
+
+function validateSkillStructure(skillPath) {
+    const folderName = path.basename(skillPath);
+    const skillFile = path.join(skillPath, 'SKILL.md');
+    const errors = [];
+    const warnings = [];
+
+    if (!SKILL_NAME_PATTERN.test(folderName) || folderName.length > 64) {
+        errors.push('Skill folder name must match the Agent Skills naming rules (lowercase letters, numbers, single hyphens, max 64 chars).');
+    }
+
+    if (!fs.existsSync(skillFile)) {
+        errors.push('Missing SKILL.md.');
+        return { errors, warnings, metadata: {} };
+    }
+
+    const metadata = extractFrontmatter(skillFile);
+    if (!metadata.name) {
+        errors.push('SKILL.md frontmatter is missing the required name field.');
+    } else {
+        if (metadata.name !== folderName) {
+            errors.push(`SKILL.md name must match the folder name (${folderName}).`);
+        }
+
+        if (!SKILL_NAME_PATTERN.test(metadata.name) || metadata.name.length > 64) {
+            errors.push('SKILL.md name does not satisfy the Agent Skills naming rules.');
         }
     }
 
-    return contentLines.join('\n').trim();
+    if (!metadata.description) {
+        errors.push('SKILL.md frontmatter is missing the required description field.');
+    } else if (metadata.description.length > 1024) {
+        warnings.push('SKILL.md description exceeds the Agent Skills recommended maximum of 1024 characters.');
+    }
+
+    return { errors, warnings, metadata };
 }
 
-export {
+function normalizeAgentName(value) {
+    if (!value) {
+        return null;
+    }
+
+    const normalized = value.trim().toLowerCase();
+    if (AGENTS[normalized]) {
+        return normalized;
+    }
+
+    return Object.keys(AGENTS).find(agent => AGENTS[agent].aliases.includes(normalized)) || null;
+}
+
+function getSupportedAgents() {
+    return Object.keys(AGENTS);
+}
+
+function getTargetGroups(agentNames, isGlobal) {
+    const invalid = [];
+    const groups = new Map();
+
+    for (const rawAgent of agentNames) {
+        const agent = normalizeAgentName(rawAgent);
+        if (!agent) {
+            invalid.push(rawAgent);
+            continue;
+        }
+
+        const config = AGENTS[agent];
+        const dir = isGlobal ? config.globalDir : path.resolve(config.projectDir);
+        const key = `${isGlobal ? 'global' : 'project'}:${dir}`;
+        const existing = groups.get(key);
+
+        if (existing) {
+            if (!existing.agents.includes(agent)) {
+                existing.agents.push(agent);
+                existing.labels.push(config.name);
+            }
+            continue;
+        }
+
+        groups.set(key, {
+            dir,
+            agents: [agent],
+            labels: [config.name]
+        });
+    }
+
+    return {
+        targets: [...groups.values()],
+        invalid
+    };
+}
+
+module.exports = {
+    AGENTS,
+    DEFAULT_AGENT,
+    OUTPUT_DIR,
+    PROJECT_ROOT,
+    SKILLS_DIR,
+    SKILL_NAME_PATTERN,
     extractFrontmatter,
-    findSkillsInDir,
-    resolveSkillPath,
-    checkForUpdates,
-    stripFrontmatter
+    getAvailableSkills,
+    getSkillRecord,
+    getSupportedAgents,
+    getTargetGroups,
+    normalizeAgentName,
+    parseFrontmatter,
+    validateSkillStructure
 };
