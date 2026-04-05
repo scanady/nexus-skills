@@ -122,7 +122,7 @@ function parseArgs(args) {
     i++;
   }
 
-  // Default to claude-code if no agents specified
+  // Default to GitHub Copilot if no agents are specified
   if (result.agents.length === 0) {
     result.agents.push(DEFAULT_AGENT);
   }

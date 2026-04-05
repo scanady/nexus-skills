@@ -6,14 +6,16 @@ This repository contains skills, prompts, agents, and instructions.
 
 ### Via npx (recommended)
 
+Use `npx forge-agents` when consuming this package externally.
+
 ```bash
-npx skills add https://github.com/scanady/forge-agents
+npx forge-agents install
 ```
 
 Install a specific skill:
 
 ```bash
-npx skills add https://github.com/scanady/forge-agents --skill product-spec-prd-generator
+npx forge-agents install --skill product-spec-prd-generator
 ```
 
 ### Local install (from cloned repo)
@@ -41,11 +43,13 @@ Install to multiple agents at once:
 node bin/cli.js install -a github-copilot -a claude-code -a codex
 ```
 
-Install to the current project instead of globally:
+Install globally instead of to the current project:
 
 ```bash
-node bin/cli.js install --skill product-spec-prd-generator -p
+node bin/cli.js install --skill product-spec-prd-generator -g
 ```
+
+The CLI defaults to project installs. Use `-g` or `--global` when you want the skill available across repos.
 
 List available skills:
 
