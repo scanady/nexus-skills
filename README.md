@@ -23,7 +23,7 @@ git clone https://github.com/scanady/forge-agents
 cd forge-agents
 ```
 
-Install all skills globally (default agent: GitHub Copilot):
+Install all skills into the current project (default agent: GitHub Copilot):
 
 ```bash
 node bin/cli.js install
