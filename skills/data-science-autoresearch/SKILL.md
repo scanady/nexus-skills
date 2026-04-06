@@ -54,6 +54,41 @@ The autoresearch pattern is built on a simple but powerful loop:
 
 ## Core Workflow
 
+### Phase 0: Data Readiness (Pre-Flight)
+
+Before the autonomous loop begins, ensure the data is understood, clean, and feature-complete. This phase is human-guided — the agent does not run autonomously here. Skip this phase only when the data is already well-understood and prepared (e.g., a known benchmark dataset).
+
+Load `references/data-readiness.md` for detailed guidance on each step.
+
+**Step 1 — Exploratory Data Analysis (EDA):**
+- Profile the dataset: row count, column types, cardinalities, null rates, basic statistics
+- Visualize distributions of key features and the target variable
+- Check class balance (for classification) or target distribution (for regression)
+- Compute correlation matrix between features and target — flag highly correlated feature pairs
+- Identify potential data leakage: features that are proxies for the target or derived from future information
+- Examine outliers and decide whether to clip, winsorize, or leave them
+- Check that train/validation splits have similar distributions
+
+**Step 2 — Data Cleansing:**
+- Document null handling decisions per feature (drop, impute with median/mode/zero, flag-and-impute)
+- Handle duplicates: exact duplicates (drop), near-duplicates (investigate)
+- Fix data type issues: strings that should be numeric, dates that need encoding, inconsistent categorical labels
+- Apply outlier treatment decided in EDA (clip bounds become fixed constants in `prepare.py`)
+- Validate referential integrity across related features (e.g., payments_made ≤ expected_payments)
+
+**Step 3 — Domain Feature Engineering (Round 1):**
+- Create features that require business/domain knowledge and lock them into `prepare.py`
+- These are features the autonomous agent should NOT experiment with — they represent ground-truth domain logic
+- See the Feature Engineering Split section below for what belongs here vs. in `train.py`
+
+**Step 4 — Data Quality Gates:**
+- Minimum completeness: no feature used in training has > 5% nulls after cleansing (or document why)
+- Class balance assessment: if imbalance ratio > 10:1, document the strategy (metric choice, class weighting, oversampling)
+- Train/val distribution check: KS test or visual comparison on key features — flag drift > 0.1
+- Feature-target leakage scan: no feature has > 0.95 AUC with the target on its own (unless it's a known strong signal)
+
+**Produce:** A data readiness report summarizing EDA findings, cleansing decisions, engineered features, and quality gate results. This report informs the design of `prepare.py`.
+
 ### Phase 1: Problem Decomposition
 
 Interview the user to understand their problem deeply before designing any component.
@@ -67,6 +102,8 @@ Interview the user to understand their problem deeply before designing any compo
 - What constraints exist? (latency, model size, inference cost, regulatory)
 
 **Produce:** A problem brief — one page covering domain, objective, data profile, compute envelope, and success criteria.
+
+**Note:** Phase 0 and Phase 1 can run in either order or in parallel. If you already have the data, start with Phase 0 while scoping the problem. If you're starting from scratch, define the problem first, then acquire and assess the data.
 
 ### Phase 2: Evaluation Design
 
@@ -82,18 +119,43 @@ The evaluation metric and harness are the most critical components. A bad metric
 
 ### Phase 3: Data Pipeline & Infrastructure
 
-Design the prepare script — the fixed, read-only infrastructure the agent relies on.
+Design the prepare script — the fixed, read-only infrastructure the agent relies on. Incorporate the cleansing decisions and domain features from Phase 0.
 
 Load `references/data-pipeline.md` for data preparation patterns.
 
 **Components:**
 - **Data acquisition**: Download, extract, validate
-- **Preprocessing**: Cleaning, tokenization, encoding, splitting
+- **Preprocessing**: Cleaning (per Phase 0 decisions), encoding, splitting
+- **Domain features**: Business-logic features engineered in Phase 0, locked as fixed transforms
 - **Dataloader**: Efficient batching, shuffling, sequence handling
 - **Evaluation harness**: The function that computes the primary metric on the validation set
 - **Constants**: Fixed values the agent cannot change (time budget, sequence length, eval tokens, etc.)
 
 **Design principle:** Everything that must remain constant across experiments lives here. The agent cannot modify this file. If something should be experimentable, it belongs in the train script instead.
+
+#### Feature Engineering Split
+
+Feature engineering spans two files. The split is deliberate — it keeps domain knowledge fixed while letting the agent explore learned representations.
+
+**`prepare.py` (fixed, read-only) — Domain features:**
+- Features requiring business logic or domain expertise (e.g., "policy in surrender period" flag, affordability quartile, tenure bucket)
+- Explicit interaction terms with known actuarial/domain meaning (e.g., premium_to_income_ratio)
+- Cleaning transforms: null imputation strategy, outlier clip bounds, categorical encoding scheme
+- Calendar/time-derived features (day of week, month, seasonality flags)
+- Aggregation features from transaction history (rolling averages, cumulative counts)
+
+These are locked because changing them between experiments breaks comparability — you can't tell if a metric improvement came from the model or the data.
+
+**`train.py` (agent-modifiable) — Learned features:**
+- Learned embeddings for categorical features (instead of label encoding)
+- Cross-feature attention or interaction layers (letting the model discover non-obvious combinations)
+- Polynomial or higher-order feature layers within the network
+- Feature selection via learned gating or attention weights
+- Input normalization variants (layer norm, batch norm on input, learned scaling)
+
+These are safe for the agent to experiment with because they don't change the raw input data — they change how the model interprets it.
+
+**Rule of thumb:** If creating the feature requires knowing something about the business domain that isn't in the data itself, it belongs in `prepare.py`. If it's a mathematical transform the model could theoretically learn, it belongs in `train.py`.
 
 ### Phase 4: Training Script Design
 
@@ -159,8 +221,7 @@ Assemble all components and verify the system works end-to-end before handing it
 Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
-|-------|-----------|-----------|
-| Evaluation Metrics | `references/evaluation-design.md` | Designing the primary metric and evaluation harness |
+|-------|-----------|-----------|| Data Readiness | `references/data-readiness.md` | Running Phase 0 — EDA, cleansing, domain feature engineering, quality gates || Evaluation Metrics | `references/evaluation-design.md` | Designing the primary metric and evaluation harness |
 | Model Selection | `references/model-selection.md` | Choosing model architecture for the user's problem type |
 | Data Pipeline | `references/data-pipeline.md` | Designing the prepare script and data infrastructure |
 | Agent Program | `references/program-design.md` | Writing the program.md agent instructions |
@@ -168,6 +229,9 @@ Load detailed guidance based on context:
 ## Constraints
 
 ### MUST DO
+- Run Phase 0 (Data Readiness) when working with real-world or unfamiliar data — skip only for well-known benchmarks
+- Document all data cleansing decisions before locking them into the prepare script — undocumented transforms are invisible tech debt
+- Explicitly split feature engineering between `prepare.py` (domain features) and `train.py` (learned features) — never leave the boundary ambiguous
 - Interview the user about their problem before designing any component — never assume the problem type or data format
 - Design the evaluation metric first, before the model or training script — the metric defines what "progress" means
 - Validate that the primary metric correlates with the user's real-world success criteria through concrete scenarios
@@ -190,19 +254,22 @@ Load detailed guidance based on context:
 - Design experiments without a results logging schema — untracked experiments are wasted compute
 - Bundle multiple problems into one autoresearch system — each system optimizes for exactly one metric
 - Hardcode hyperparameters in the prepare script that should be experimentable — anything the agent should tune belongs in the train script
+- Let the agent modify data cleansing logic or domain feature definitions — these are fixed decisions from Phase 0
+- Skip EDA and data quality gates when working with real-world data — garbage in, garbage out applies double in an autonomous loop
 
 ## Output Deliverables
 
 When the design is complete, produce:
 
 1. **Problem Brief** — Domain, objective, data profile, compute envelope, success criteria
-2. **Evaluation Specification** — Primary metric definition, secondary metrics, evaluation function pseudocode, validation data strategy
-3. **Prepare Script** (`prepare.py`) — Complete data pipeline, tokenizer, dataloader, evaluation harness, and fixed constants
-4. **Training Script** (`train.py`) — Baseline model architecture, optimizer, training loop with all experimentable knobs clearly marked
-5. **Agent Program** (`program.md`) — Full agent instructions: setup protocol, scope, experiment loop, logging format, decision criteria, autonomy rules
-6. **Results Schema** — Column definitions for experiment tracking (commit, metric, resource usage, status, description)
-7. **Quick Start Guide** — Step-by-step instructions to initialize and launch the autonomous research loop
+2. **Data Readiness Report** — EDA findings, cleansing decisions, domain features engineered, quality gate results (skip for benchmark datasets)
+3. **Evaluation Specification** — Primary metric definition, secondary metrics, evaluation function pseudocode, validation data strategy
+4. **Prepare Script** (`prepare.py`) — Complete data pipeline, cleansing transforms, domain features, dataloader, evaluation harness, and fixed constants
+5. **Training Script** (`train.py`) — Baseline model architecture, optimizer, training loop with all experimentable knobs clearly marked
+6. **Agent Program** (`program.md`) — Full agent instructions: setup protocol, scope, experiment loop, logging format, decision criteria, autonomy rules
+7. **Results Schema** — Column definitions for experiment tracking (commit, metric, resource usage, status, description)
+8. **Quick Start Guide** — Step-by-step instructions to initialize and launch the autonomous research loop
 
 ## Knowledge Reference
 
-autoresearch, nanochat, autonomous ML research, experiment tracking, evaluation harness, bits per byte, validation loss, model architecture search, hyperparameter optimization, neural architecture search, PyTorch, training loop, gradient accumulation, learning rate scheduling, Muon optimizer, AdamW, Lion optimizer, mixed precision training, Flash Attention, BPE tokenization, experiment reproducibility, ablation studies, git-based experiment branching, wall-clock time budget, self-improving systems, Transformer, Mamba, Mamba-2, state space models, S4, Hyena, RWKV, xLSTM, RetNet, Jamba, Griffin, Mixture of Experts, MoE, Diffusion Transformer, DiT, latent diffusion, flow matching, VAE, GAN, ConvNeXt, EfficientNet, Vision Transformer, ViT, PatchTST, temporal CNN, WaveNet, Graph Neural Networks, GCN, GAT, GraphSAGE, equivariant GNN, KAN, Kolmogorov-Arnold Networks, FT-Transformer, TabNet, linear attention, sparse attention, sliding window attention, RoPE, ALiBi
+autoresearch, nanochat, autonomous ML research, experiment tracking, evaluation harness, bits per byte, validation loss, model architecture search, hyperparameter optimization, neural architecture search, PyTorch, training loop, gradient accumulation, learning rate scheduling, Muon optimizer, AdamW, Lion optimizer, mixed precision training, Flash Attention, BPE tokenization, experiment reproducibility, ablation studies, git-based experiment branching, wall-clock time budget, self-improving systems, Transformer, Mamba, Mamba-2, state space models, S4, Hyena, RWKV, xLSTM, RetNet, Jamba, Griffin, Mixture of Experts, MoE, Diffusion Transformer, DiT, latent diffusion, flow matching, VAE, GAN, ConvNeXt, EfficientNet, Vision Transformer, ViT, PatchTST, temporal CNN, WaveNet, Graph Neural Networks, GCN, GAT, GraphSAGE, equivariant GNN, KAN, Kolmogorov-Arnold Networks, FT-Transformer, TabNet, linear attention, sparse attention, sliding window attention, RoPE, ALiBi, exploratory data analysis, EDA, data profiling, data cleansing, data quality, feature engineering, domain features, learned features, data readiness, class imbalance, outlier treatment, null imputation, data leakage detection, train-validation distribution check, feature-target correlation
