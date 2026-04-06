@@ -1,319 +1,585 @@
 # PRD Template Structure
 
-This template defines the structure for Product Requirements Documents optimized for AI coding tools.
+This template defines the structure for expert-level Product Requirements Documents grounded in modern PM best practices. It covers new products and new features. Use every applicable section; mark non-applicable sections as "N/A — [reason]" rather than omitting them.
 
 ---
 
 ## Document Sections
 
 ### 1. Document Header
+
 ```markdown
 # [Product Name] — Product Requirements Document
 
 **Version:** 1.0
 **Date:** [YYYY-MM-DD]
-**Author:** [Name]
-**Status:** Draft | Review | Approved
+**Author:** [Name / PRD Generator]
+**Status:** Draft | In Review | Approved
+**Stakeholders:** [Engineering Lead, Design Lead, CEO, etc.]
+**Last Updated:** [YYYY-MM-DD]
+**Change Log:** [v1.0 — Initial draft]
 ```
 
-### 2. Executive Summary
-One paragraph (3-5 sentences) covering:
-- What the product does
-- Who it's for
-- The core problem it solves
-- Expected outcome
+---
 
-**Example:**
-> "ChurnGuard is a SaaS tool that predicts which customers are at risk of churning and recommends retention actions. It targets B2B SaaS companies with 100+ customers who struggle with reactive churn management. By analyzing usage patterns, support tickets, and billing data, ChurnGuard provides a daily risk score and suggested interventions. The expected outcome is a 15-25% reduction in monthly churn."
+### 2. Universal Idea Model
 
-### 3. Problem Statement
-Structure:
-- **Current state:** What exists now and why it's broken
-- **Pain points:** 3-5 specific problems users face
-- **Impact:** Business cost of not solving this
+The single sentence that defines what this product is and why it exists. Every section of the PRD should be traceable back to it.
 
-### 4. Goals & Success Metrics
-
-| Goal | Metric | Target | Measurement Method |
-|------|--------|--------|-------------------|
-| Primary goal | KPI | Specific number | How to measure |
-| Secondary goal | KPI | Specific number | How to measure |
-
-**Example:**
-| Goal | Metric | Target | Measurement Method |
-|------|--------|--------|-------------------|
-| Reduce churn | Monthly churn rate | < 3% | Billing system |
-| Increase retention actions | Actions taken per alert | > 60% | In-app tracking |
-
-### 5. User Personas
-
-For each persona:
 ```markdown
-#### [Persona Name]
-- **Role:** [Job title]
-- **Goals:** What they're trying to accomplish
-- **Pain points:** Current frustrations
-- **Technical proficiency:** Low / Medium / High
-- **Usage context:** When and how they'll use this
+## Universal Idea Model
+
+> "An [object/product type] for [class of users] that [does something specific] in order to [achieve a goal].
+> Users benefit by [getting something tangible] when [they are in a specific situation]."
 ```
 
-### 6. Functional Requirements
+**Example:**
+> "An AI-powered onboarding wizard for new SaaS users that personalizes the setup sequence based on role and goals in order to reduce time-to-value. Users benefit by reaching their first 'aha moment' faster when they first activate the product."
 
-Use this format for EVERY feature:
+**If you cannot complete this sentence cleanly, the problem is not yet understood well enough to write a PRD.**
+
+---
+
+### 3. Executive Summary
+
+4-6 sentences covering: what the product does, who it's for, the core problem it solves, the approach, and the expected measurable outcome.
 
 ```markdown
-#### FR-[XXX]: [Feature Name]
+## Executive Summary
 
-**Description:** [One sentence explaining what this does]
+[Product Name] is a [type of product] for [primary user] that [core function]. It addresses [the specific problem] by [the approach]. The expected outcome is [measurable result] within [timeframe].
+```
 
-**User story:** As a [persona], I want to [action] so that [benefit].
+---
+
+### 4. Problem Statement
+
+```markdown
+## Problem Statement
+
+**Current state:** [What exists today and why it is broken or insufficient]
+
+**Root cause:** [Why the problem persists — underlying cause, not just symptoms]
+
+**Pain points:**
+1. [Specific, observable pain — with data/evidence where available]
+2. [Specific pain]
+3. [Specific pain]
+
+**Impact:** [Business and user cost of NOT solving this — quantify where possible]
+- User impact: [e.g., 5+ hours/week lost per person]
+- Business impact: [e.g., 25% churn in first 30 days; avg. 2 delayed sprints per quarter]
+
+**Evidence:** [Customer interviews, survey data, support tickets, analytics — cite sources]
+```
+
+---
+
+### 5. Goals & Success Metrics
+
+```markdown
+## Goals & Success Metrics
+
+**North Star Metric:** [The single most important number that captures core value delivery]
+> Example: "Weekly Active Teams — teams with ≥3 members creating tasks in a 7-day window"
+
+**Failure Threshold:** [The result that would trigger a reassessment or pivot]
+> Example: "If Week-4 retention is below 30% after 90 days, reassess core value proposition"
+
+### Leading Metrics (early signals)
+| Metric | Target | Measurement | Timeline |
+|--------|--------|-------------|----------|
+| [Activation rate] | [> 60%] | [Analytics] | [30 days] |
+| [Time-to-first-value] | [< 24h] | [Event tracking] | [30 days] |
+
+### Lagging Metrics (business outcomes)
+| Goal | Metric | Target | Measurement | Timeline |
+|------|--------|--------|-------------|----------|
+| [Retain users] | [Week-4 retention] | [> 50%] | [Analytics] | [90 days] |
+| [Drive revenue] | [Paid conversion] | [> 8%] | [Billing system] | [90 days] |
+```
+
+---
+
+### 6. User Personas
+
+Maximum 3 primary personas. More creates unfocused requirements. Each must be named and specific — "users who want productivity" is not a persona.
+
+```markdown
+## User Personas
+
+### Persona 1: [Name]
+- **Role:** [Job title and company context]
+- **Goals:** [What they are trying to accomplish — specific, not generic]
+- **Pain points:** [Current frustrations — observable behaviors, not assumed]
+- **Technical proficiency:** Low | Medium | High
+- **Usage context:** [When, where, and how often they will use this]
+- **Representative quote:** "[A sentence this person would actually say about the problem]"
+
+### Persona 2: [Name]
+[Same structure]
+
+### Persona 3: [Name] *(if applicable)*
+[Same structure]
+```
+
+---
+
+### 7. Assumptions & Constraints
+
+```markdown
+## Assumptions & Constraints
+
+### Assumptions
+These are the hypotheses this product bets on. If any prove false, the strategy may need to change.
+
+1. [Assumption — e.g., "Users have existing GitHub accounts and repos to connect"]
+2. [Assumption — e.g., "Teams prefer async communication over live standups"]
+3. [Assumption — e.g., "Slack integration will drive adoption better than email"]
+4. [Continue — aim for 3-7 named assumptions]
+
+### Constraints
+- **Timeline:** [e.g., MVP must ship in 6 weeks]
+- **Team:** [e.g., 2 engineers, 1 designer]
+- **Budget:** [e.g., infrastructure cost must stay under $500/month at launch]
+- **Compliance:** [e.g., GDPR not required for initial US-only launch; SOC2 required within 6 months]
+- **Technical:** [e.g., must integrate with existing Salesforce CRM]
+```
+
+---
+
+### 8. Out of Scope (v1)
+
+As strategically important as the features list. Every item not explicitly excluded is implicitly included — until the argument happens mid-sprint.
+
+```markdown
+## Out of Scope (v1)
+
+The following are explicitly deferred to v2 or later:
+
+- [Feature — e.g., "Multi-language support"]
+- [Feature — e.g., "Mobile native apps (responsive web only in v1)"]
+- [Feature — e.g., "Admin bulk-import tools"]
+- [Feature — e.g., "Enterprise SSO"]
+- [Feature — e.g., "AI-generated suggestions"]
+
+These items are not rejected — they are deferred to protect focus and deliver a sharp v1 that tests the core value.
+```
+
+---
+
+### 9. Functional Requirements
+
+Organize as Themes → Epics → User Stories where scope warrants. For smaller products, Epics → User Stories is sufficient.
+
+```markdown
+## Functional Requirements
+
+### Feature Prioritization (MoSCoW)
+- **Must-have:** Without this, the product cannot launch or core value is not delivered
+- **Should-have:** Important for v1; include if capacity allows
+- **Could-have:** Nice to have; defer if time-constrained
+- **Won't-have (v1):** Explicitly deferred — see Out of Scope section
+
+---
+
+### Epic 1: [Epic Name]
+*[One sentence describing the large capability this epic covers]*
+
+#### FR-001: [Feature Name]
+
+**Description:** [One sentence — what this feature does and for whom]
+
+**User story:** As a [persona name], I want to [specific action] so that [meaningful outcome this enables].
+
+**Priority:** Must-have | Should-have | Could-have
+**Priority rationale:** [Why this tier — "Product cannot launch without this" or "Critical for activation but not for basic functionality"]
 
 **Acceptance criteria:**
-- [ ] [Specific, testable criterion]
-- [ ] [Specific, testable criterion]
-- [ ] [Specific, testable criterion]
+- [ ] [Specific, testable, binary criterion — a QA engineer can write a test case from this]
+- [ ] [e.g., "Task creation modal opens in < 200ms on a standard connection"]
+- [ ] [e.g., "Title field is required (3-200 chars); form blocks submission if empty"]
+- [ ] [e.g., "New task appears in board view without page reload"]
 
-**Priority:** P0 (MVP) | P1 (Important) | P2 (Nice to have)
+**Dependencies:** [FR-XXX, or "None"]
+**Open questions:** [Any unresolved decisions about this feature]
 
-**Dependencies:** [List any dependencies on other features]
+---
+
+#### FR-002: [Feature Name]
+[Same structure]
 ```
 
-**Priority definitions:**
-- P0 — Must have for launch. Product doesn't work without it.
-- P1 — Important for first version. Include if time permits.
-- P2 — Nice to have. Can wait for v2.
+**Priority distribution guideline:** Must-have ~30-40%, Should-have ~30-40%, Could-have ~15-20%, Won't-have remainder.
 
-### 7. Non-Functional Requirements
+---
 
-Cover these categories as applicable:
+### 10. Non-Functional Requirements
 
 ```markdown
-#### Performance
-- Page load time: [target]
-- API response time: [target]
-- Concurrent users supported: [number]
+## Non-Functional Requirements
 
-#### Security
-- Authentication method: [OAuth, JWT, etc.]
-- Data encryption: [at rest, in transit]
-- Compliance requirements: [GDPR, SOC2, etc.]
+### Performance
+- Page load time (initial): < [X]s on [connection type]
+- API response time (p95): < [X]ms
+- Concurrent users at launch: [N]
+- Expected peak load: [N requests/minute]
 
-#### Scalability
-- Expected initial load: [users/requests]
-- Growth target: [users/requests in X months]
-- Scaling approach: [horizontal, vertical, auto-scale]
+### Security
+- Authentication: [e.g., OAuth2 / JWT / session-based — describe the method, not the vendor]
+- Authorization: [RBAC / role model description]
+- Encryption: At rest ([AES-256]) and in transit ([TLS 1.3])
+- Compliance: [GDPR / SOC2 / HIPAA / None for v1]
+- PII handling: [What personal data is stored and how it is protected]
 
-#### Availability
-- Uptime target: [99.9%, etc.]
-- Backup frequency: [daily, hourly]
-- Disaster recovery: [RTO, RPO]
+### Reliability & Availability
+- Uptime target: [99.9%]
+- Backup frequency: [Daily snapshots]
+- RTO: [4 hours]
+- RPO: [1 hour]
+
+### Scalability
+- Initial load: [N users / N requests/day]
+- 12-month growth target: [N users / N requests/day]
+- Scaling approach: [Horizontal / auto-scale / etc.]
+
+### Accessibility
+- Standard: [WCAG 2.1 AA / None for v1]
+- Requirements: [Keyboard navigation, screen reader support, etc.]
 ```
 
-### 8. Technical Architecture
+---
+
+### 11. Technical Architecture
 
 ```markdown
-#### System Overview
-[High-level description of the system architecture]
+## Technical Architecture
 
-#### Technology Stack
-- **Frontend:** [Framework, language]
-- **Backend:** [Framework, language]
-- **Database:** [Type, service]
-- **Hosting:** [Provider, service]
-- **Key libraries:** [List major dependencies]
+### System Overview
+[Describe the system in plain English — what the major components are and how they relate. AI coding tools interpret prose better than abstract diagrams.]
 
-#### Architecture Diagram (Description)
-[Describe the system flow in text — AI tools will interpret this]
+### System Type
+[e.g., "Single-page web application with a REST API backend and a relational database. Deployed as a cloud-hosted service."]
 
-Example:
-"User requests flow through a Next.js frontend → API Gateway → Express.js backend → PostgreSQL database. Background jobs run on a separate worker service using Bull queues. File uploads go to S3 with CloudFront CDN."
+### Deployment Model
+[e.g., "Cloud-hosted, always-on service" / "On-premise, single-tenant" / "Serverless / edge-deployed functions"]
+
+### System Components
+| Component | Purpose |
+|-----------|--------|
+| [e.g., Web client] | [What it does — user-facing UI layer] |
+| [e.g., API layer] | [Handles business logic and data access] |
+| [e.g., Database] | [Persistent storage for [data categories]] |
+| [e.g., Background processor] | [Handles async jobs — [examples]] |
+| [e.g., File storage] | [Stores [asset types]] |
+
+### Data Flow Description
+[Describe how data moves through the system in plain English — no tool names required.]
+[e.g., "User requests go through the web client to the API layer, which reads from and writes to the database. Background jobs are queued by the API and processed asynchronously. File uploads are stored separately and served via a CDN."]
+
+### External Boundaries
+[What external services or systems does this product depend on or integrate with? Describe by category, not by product name.]
+[e.g., "Version control platform (read access to repos)", "Team messaging platform (send notifications)", "Payment processor (subscription billing)"]
 ```
 
-### 9. API Specifications
+---
 
-For each endpoint:
+### 12. API Specifications
 
 ```markdown
+## API Specifications
+
 #### [HTTP Method] /api/[endpoint]
 
-**Purpose:** [What this endpoint does]
-
+**Purpose:** [One sentence]
 **Authentication:** Required | Optional | None
 
 **Request:**
 ```json
 {
-  "field": "type — description"
+  "field_name": "string — description",
+  "field_name_2": "number — description"
 }
 ```
 
 **Response (200):**
 ```json
 {
-  "field": "type — description"
+  "id": "uuid",
+  "field": "value"
 }
 ```
 
 **Error responses:**
-- 400: [When this occurs]
-- 401: [When this occurs]
-- 404: [When this occurs]
-```
-
-### 10. UI/UX Requirements
-
-For each screen/view:
-
-```markdown
-#### [Screen Name]
-
-**Purpose:** [What the user accomplishes here]
-
-**Key elements:**
-- [Element 1]: [Description and behavior]
-- [Element 2]: [Description and behavior]
-
-**User flow:**
-1. User does [action]
-2. System responds with [response]
-3. User sees [result]
-
-**States:**
-- Empty state: [What shows when no data]
-- Loading state: [Loading behavior]
-- Error state: [Error handling]
-```
-
-### 11. Data Models
-
-```markdown
-#### [Model Name]
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| id | UUID | Yes | Primary key |
-| field_name | string | Yes | Description |
-| created_at | timestamp | Yes | Creation timestamp |
-
-**Relationships:**
-- [Relationship type] to [Other Model]
-
-**Indexes:**
-- [field_name] — for [query type]
-```
-
-### 12. Integration Points
-
-For each external service:
-
-```markdown
-#### [Service Name]
-
-**Purpose:** [Why this integration exists]
-
-**Integration type:** REST API | Webhook | SDK | OAuth
-
-**Data exchanged:**
-- Inbound: [What we receive]
-- Outbound: [What we send]
-
-**Authentication:** [How we authenticate]
-
-**Rate limits:** [If applicable]
-
-**Fallback behavior:** [What happens if this fails]
-```
-
-### 13. Edge Cases & Error Handling
-
-```markdown
-#### Edge Cases
-
-| Scenario | Expected Behavior |
-|----------|-------------------|
-| [Scenario 1] | [How system handles it] |
-| [Scenario 2] | [How system handles it] |
-
-#### Error Handling Strategy
-
-- **User-facing errors:** [How to display]
-- **System errors:** [How to log/alert]
-- **Retry logic:** [When and how to retry]
-- **Graceful degradation:** [What still works when X fails]
-```
-
-### 14. Testing Requirements
-
-```markdown
-#### Unit Tests
-- [Component/Function] — [What to test]
-
-#### Integration Tests
-- [Flow/Integration] — [What to verify]
-
-#### E2E Tests
-- [User journey] — [Critical path to test]
-
-#### Performance Tests
-- [Scenario] — [Target metric]
-```
-
-### 15. Implementation Notes for AI
-
-**THIS SECTION IS CRITICAL — It tells the AI coding tool how to build this.**
-
-```markdown
-#### Build Order
-1. [First thing to build — usually data models]
-2. [Second thing — usually API endpoints]
-3. [Third thing — usually frontend components]
-...
-
-#### File Structure Suggestion
-```
-/src
-  /components
-  /pages
-  /api
-  /lib
-  /types
-```
-
-#### Critical Implementation Details
-- [Detail 1]: [Specific instruction]
-- [Detail 2]: [Specific instruction]
-
-#### Code Style Preferences
-- [Language/framework conventions]
-- [Naming conventions]
-- [File organization rules]
-
-#### Libraries to Use
-- [Library] for [purpose] — [why this one]
-
-#### Libraries to Avoid
-- [Library] — [reason]
-
-#### Common Pitfalls
-- [Pitfall 1]: [How to avoid]
-- [Pitfall 2]: [How to avoid]
-
-#### Testing Approach
-- Write tests for [priority areas]
-- Skip tests for [low-risk areas]
-- Use [testing library] for [purpose]
+- 400: [Missing/invalid input]
+- 401: [Unauthorized]
+- 404: [Resource not found]
+- 429: [Rate limit exceeded]
 ```
 
 ---
 
-## Template Usage Notes
+### 13. UI/UX Requirements
 
-1. **Not all sections required** — Skip sections that don't apply. A landing page PRD doesn't need API specs.
+```markdown
+## UI/UX Requirements
 
-2. **Specificity beats completeness** — One well-defined feature is better than ten vague ones.
+### [Screen/View Name]
 
-3. **Acceptance criteria are mandatory** — If you can't write testable acceptance criteria, the feature isn't defined enough.
+**Purpose:** [What the user is trying to accomplish here]
 
-4. **Priorities matter** — P0 features should be 30-40% of total. If everything is P0, nothing is.
+**Key user needs:**
+- [What the user must be able to do]
+- [What information they need to see]
 
-5. **AI-specific section is not optional** — This is what makes the PRD actually useful for AI coding tools.
+**User flow:**
+1. User [action]
+2. System [observable response]
+3. User [next action or outcome]
+
+**States:**
+- **Empty state:** [Not blank — provide context and a call to action]
+- **Loading state:** [Skeleton / spinner]
+- **Error state:** [Plain language message + recovery action]
+- **Success state:** [Confirmation and next step]
+```
+
+---
+
+### 14. Data Models
+
+```markdown
+## Data Models
+
+### [Model Name]
+
+| Field | Type | Required | Constraints | Description |
+|-------|------|----------|-------------|-------------|
+| id | UUID | Yes | PK, auto-generated | Primary identifier |
+| [field_name] | string | Yes | max 200 chars | [Purpose] |
+| [field_name_2] | integer | No | > 0 | [Purpose] |
+| created_at | timestamp | Yes | UTC | Creation time |
+| updated_at | timestamp | Yes | UTC | Last modification |
+| deleted_at | timestamp | No | UTC, soft delete | Null = not deleted |
+
+**Relationships:**
+- [Model] has many [OtherModel] via [foreign key]
+- [Model] belongs to [OtherModel]
+
+**Indexes:**
+- `[field_name]` — for [query type]
+- `[field_1, field_2]` — for [composite query type]
+```
+
+---
+
+### 15. Integration Points
+
+```markdown
+## Integration Points
+
+### [Service Name]
+
+**Purpose:** [Why this integration exists — user need it serves]
+**Integration type:** REST API | Webhook | SDK | OAuth | Embed
+**Data exchanged:**
+- Inbound: [What we receive]
+- Outbound: [What we send]
+**Authentication:** [API key / OAuth token / etc.]
+**Rate limits:** [Relevant limits and how we handle them]
+**Fallback:** [What still works if this integration fails]
+**Required for launch:** Yes | No
+```
+
+---
+
+### 16. Edge Cases & Error Handling
+
+```markdown
+## Edge Cases & Error Handling
+
+### Edge Cases
+
+| Scenario | Expected Behavior | Priority |
+|----------|-------------------|----------|
+| [Empty form submission] | [Block; highlight required fields] | Must handle |
+| [Network drops mid-upload] | [Resume on reconnect; notify user] | Should handle |
+| [Concurrent edits to same record] | [Last-write-wins with conflict notification] | Should handle |
+
+### Error Handling Strategy
+
+- **User-facing errors:** Plain language + recovery action; never expose stack traces
+- **System errors:** Log to [service]; alert on-call if error rate exceeds [threshold]
+- **Validation:** Inline field-level messages; do not reset form on error
+- **Retry logic:** Exponential backoff for transient failures; max [N] retries
+- **Graceful degradation:** [What still works if [service X] is unavailable]
+```
+
+---
+
+### 17. Risks & Mitigations
+
+```markdown
+## Risks & Mitigations
+
+| Risk | Likelihood | Impact | Mitigation |
+|------|-----------|--------|------------|
+| [e.g., API rate limits under high usage] | Medium | High | Cache data; exponential backoff; show stale data with timestamp |
+| [e.g., Low activation if onboarding is complex] | High | High | Limit onboarding to ≤3 steps; run usability test pre-launch |
+| [e.g., Key dependency delayed] | Low | High | Identify fallback or parallel path |
+
+**Risk review cadence:** At each sprint planning session.
+```
+
+---
+
+### 18. Testing Requirements
+
+```markdown
+## Testing Requirements
+
+### Unit Tests
+- [Component/Function] — [What critical logic to test]
+
+### Integration Tests
+- [API/Flow] — [What interaction to verify end-to-end]
+
+### E2E Tests (Critical Paths)
+- [User journey] — [e.g., "Sign up → complete onboarding → create first item"]
+
+### Performance Tests
+- [Scenario] — [e.g., "100 concurrent users; p95 API < 300ms"]
+
+### Usability Tests (Pre-launch)
+- [Persona + task] — [e.g., "New user completes onboarding without assistance"]
+```
+
+---
+
+### 19. Release Criteria
+
+```markdown
+## Release Criteria
+
+| Dimension | Criterion | Met? |
+|-----------|-----------|------|
+| **Functionality** | All Must-have features complete and verified | [ ] |
+| **Usability** | Onboarding completion ≥ [X]% in usability test | [ ] |
+| **Reliability** | Zero P0 bugs; crash rate < [0.1%] | [ ] |
+| **Performance** | p95 API < [300ms]; page load < [2s] | [ ] |
+| **Supportability** | Runbook exists; on-call set up; error alerting live | [ ] |
+
+**Launch is blocked if Functionality or Reliability criteria are unmet.**
+```
+
+---
+
+### 20. Launch Strategy
+
+```markdown
+## Launch Strategy
+
+**Target launch date:** [Date or sprint milestone]
+
+### Milestones
+| Milestone | Date | Owner |
+|-----------|------|-------|
+| Alpha (internal) | [Date] | [Team] |
+| Beta (limited users) | [Date] | [Team] |
+| GA | [Date] | [Team] |
+
+### Rollout
+- **Initial audience:** [Who gets access first and why]
+- **Approach:** [Phased / full / invite-only]
+- **30/60/90 day checkpoints:** [What we measure to confirm we are on track]
+
+### PRD Update Triggers
+[Conditions that require updating this document — new user research, sprint retro findings, data signals, strategy shifts]
+```
+
+---
+
+### 21. Open Questions
+
+```markdown
+## Open Questions
+
+| # | Question | Context / Options | Owner | Decision Needed By |
+|---|----------|-------------------|-------|--------------------|
+| 1 | [e.g., Auto-close task when PR merges?] | [Option A: auto-close. Option B: prompt user.] | Product | Sprint 2 kickoff |
+| 2 | [e.g., Pricing for teams > 10 members?] | [Per-seat vs flat rate] | CEO | Before public launch |
+```
+
+---
+
+### 22. Implementation Notes for AI
+
+**MANDATORY — provides implementation context for AI coding tools without prescribing specific technologies.**
+
+```markdown
+## Implementation Notes for AI
+
+### Build Order
+1. Data schema and persistence layer (always start here)
+2. Authentication and authorization
+3. Core API / business logic endpoints
+4. Background processing and integrations
+5. User interface components
+6. End-to-end flows, edge cases, and polish
+
+### Key Behavioral Constraints
+[Rules the implementation must respect regardless of technology choice.]
+
+- [e.g., "All timestamps must be stored in UTC and converted to the user's local timezone on display"]
+- [e.g., "User-generated content must use soft deletes — records are flagged as deleted, never permanently removed"]
+- [e.g., "Status changes must provide immediate UI feedback — do not wait for server confirmation before updating the interface"]
+- [e.g., "All user-facing record identifiers should be human-readable (e.g., TASK-001), not internal database IDs"]
+
+### Data Integrity Rules
+[Business rules the data layer must enforce.]
+
+- [e.g., "A task must always belong to exactly one project; orphaned tasks are not permitted"]
+- [e.g., "Changing a subscription tier must log the previous tier for audit purposes"]
+
+### Security Requirements
+- [e.g., "All API endpoints that return user data must verify the requesting user has permission to see that specific record"]
+- [e.g., "File uploads must be scanned before being made accessible to other users"]
+
+### Common Pitfalls to Avoid
+- [e.g., "Do not expose database row IDs in public URLs — use slugs or opaque identifiers"]
+- [e.g., "Pagination must be cursor-based, not offset-based, to handle real-time data correctly"]
+```
+
+---
+
+### 23. Appendix
+
+```markdown
+## Appendix
+
+### Glossary
+| Term | Definition |
+|------|-----------|
+| [Term] | [Product/domain-specific definition] |
+
+### Research & Evidence
+- [Links or summaries of customer interviews, surveys, analytics that informed this PRD]
+
+### Competitive Notes
+- [Key differentiators vs. Competitor A, Competitor B]
+
+### Version History
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 1.0 | [Date] | [Author] | Initial draft |
+```
+
+---
+
+## Usage Notes
+
+**The PRD does NOT define:** Visual design specifics, exact UI implementation, specific frameworks or libraries, programming languages, or hosting providers — those belong in a technical design document. Technology choices change; the PRD's functional and non-functional requirements should remain stable.
+
+**The PRD DOES define:** What users need to accomplish, why it matters, how success is measured, what is in scope, what is not in scope, and the architectural constraints the implementation must satisfy.
+
+**Living document:** Update when user research reveals new insights, sprint reviews surface constraints, or data shows assumptions were wrong. Add a changelog entry every time.

@@ -2,11 +2,11 @@
 
 - `skills/` — Skills available for install and export. Each skill is a self-contained folder.
 - `prompts/` — Standalone prompt files for specific agents or use cases.
+- `bin/` — CLI and export scripts (see below).
+- `docs/` — Reference docs, taxonomy files, agent planning notes.
+- `output/` — Generated files (zips, catalog JSON/HTML). Not checked in by default.
 - `prompts-sandbox/` — Experimental or in-progress prompts, not production-ready.
 - `skills-sandbox/` — Experimental skills under development.
-- `bin/` — CLI and export scripts (see below).
-- `output/` — Generated files (zips, catalog JSON/HTML). Not checked in by default.
-- `docs/` — Reference docs, taxonomy files, agent planning notes.
 
 ## Skill Conventions
 
