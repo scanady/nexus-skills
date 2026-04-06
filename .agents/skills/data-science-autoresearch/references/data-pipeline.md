@@ -2,13 +2,14 @@
 
 ## Prepare Script Structure
 
-The prepare script is the fixed, read-only infrastructure. It handles everything the agent should NOT touch:
+The prepare script is the fixed, read-only infrastructure. It handles everything the agent should NOT touch. When Phase 0 (Data Readiness) has been completed, the cleansing decisions and domain features from that phase are implemented here as fixed transforms.
 
 ```
 prepare.py (or prepare script)
 ├── Constants (time budget, sequence length, eval tokens, etc.)
 ├── Data acquisition (download, extract, validate)
-├── Preprocessing (clean, tokenize, encode, split)
+├── Preprocessing (clean per Phase 0 decisions, encode, split)
+├── Domain features (business-logic features from Phase 0, locked)
 ├── Dataloader (efficient batching and iteration)
 └── Evaluation function (compute primary metric)
 ```
@@ -66,6 +67,45 @@ def download_data():
 | Tabular | UCI ML repo, Kaggle, domain-specific | CSV/Parquet |
 
 ## Preprocessing
+
+### Data Cleansing (from Phase 0)
+
+Implement the cleansing decisions documented in the Data Readiness Report as deterministic transforms. Each transform should be a clear function with a docstring explaining the decision and rationale:
+
+```python
+def clean_data(df):
+    """
+    Apply fixed cleansing transforms from Phase 0 Data Readiness.
+    
+    Each transform corresponds to a documented decision:
+    - Null imputation strategy per feature
+    - Outlier clip bounds
+    - Categorical standardization
+    - Duplicate removal
+    """
+    # Example: clip income at business limits (Phase 0 decision: outlier treatment)
+    df["income"] = df["income"].clip(0, 500_000)
+    
+    # Example: impute nulls (Phase 0 decision: null handling)
+    df["feature_a"] = df["feature_a"].fillna(df["feature_a"].median())
+    
+    return df
+```
+
+### Domain Feature Engineering (from Phase 0)
+
+Implement domain features documented in the Data Readiness Report. These require business knowledge and are NOT experimentable by the autonomous agent:
+
+```python
+def create_domain_features(df):
+    """
+    Create business-logic features locked during Phase 0.
+    These are fixed across all experiments.
+    """
+    df["premium_to_income_ratio"] = df["annual_premium"] / df["income"].clip(1)
+    df["is_new_policy"] = (df["policy_age_months"] < 24).astype(int)
+    return df
+```
 
 ### Tokenization (for text problems)
 
