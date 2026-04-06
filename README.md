@@ -18,6 +18,26 @@ Install a specific skill:
 npx forge-agents install --skill product-spec-prd-generator
 ```
 
+### Via GitHub (no npm publish required)
+
+Run the CLI directly from the GitHub repository:
+
+```bash
+npx github:scanady/forge-agents install
+```
+
+Install a specific skill from GitHub:
+
+```bash
+npx github:scanady/forge-agents install --skill data-science-autoresearch
+```
+
+Install globally from GitHub:
+
+```bash
+npm install -g github:scanady/forge-agents
+```
+
 ### Local install (from cloned repo)
 
 ```bash

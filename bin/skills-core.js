@@ -101,6 +101,18 @@ function getAvailableSkills() {
     }
 }
 
+function isLocalMode() {
+    if (process.env.FORGE_AGENTS_FORCE_REMOTE === '1') {
+        return false;
+    }
+
+    try {
+        return fs.statSync(SKILLS_DIR).isDirectory();
+    } catch (error) {
+        return false;
+    }
+}
+
 function getSkillRecord(skillName) {
     const skillPath = path.join(SKILLS_DIR, skillName);
     const skillFile = path.join(skillPath, 'SKILL.md');
@@ -217,6 +229,7 @@ module.exports = {
     getSkillRecord,
     getSupportedAgents,
     getTargetGroups,
+    isLocalMode,
     normalizeAgentName,
     parseFrontmatter,
     validateSkillStructure
