@@ -9,8 +9,15 @@ const {
   extractFrontmatter,
   getAvailableSkills,
   getSupportedAgents,
-  getTargetGroups
+  getTargetGroups,
+  isLocalMode,
+  parseFrontmatter
 } = require('./skills-core');
+const {
+  downloadRemoteSkill,
+  fetchRemoteSkillFrontmatter,
+  fetchRemoteSkillList
+} = require('./github-fetch');
 
 // Synchronous confirmation prompt
 function confirm(question) {
@@ -102,9 +109,37 @@ function parseArgs(args) {
   return result;
 }
 
+async function getSkillList() {
+  if (isLocalMode()) {
+    return getAvailableSkills();
+  }
+
+  return fetchRemoteSkillList();
+}
+
+async function getSkillMetadata(skill) {
+  if (isLocalMode()) {
+    const skillPath = path.join(SKILLS_DIR, skill, 'SKILL.md');
+    return extractFrontmatter(skillPath);
+  }
+
+  const content = await fetchRemoteSkillFrontmatter(skill);
+  return parseFrontmatter(content);
+}
+
+async function installSkill(skill, destinationDir) {
+  if (isLocalMode()) {
+    const src = path.join(SKILLS_DIR, skill);
+    copyDir(src, destinationDir);
+    return;
+  }
+
+  await downloadRemoteSkill(skill, destinationDir);
+}
+
 // List available skills
-function listSkills(listMode = 'full') {
-  const skills = getAvailableSkills();
+async function listSkills(listMode = 'full') {
+  const skills = await getSkillList();
 
   if (listMode === 'count') {
     console.log(skills.length);
@@ -128,22 +163,21 @@ function listSkills(listMode = 'full') {
     return;
   }
 
-  skills.forEach(skill => {
-    const skillPath = path.join(SKILLS_DIR, skill, 'SKILL.md');
-    const metadata = extractFrontmatter(skillPath);
+  for (const skill of skills) {
+    const metadata = await getSkillMetadata(skill);
     const description = metadata.description || 'No description';
 
     console.log(`  • ${skill}`);
     console.log(`    ${description}\n`);
-  });
+  }
 
   console.log('Install all:     npx forge-agents install');
   console.log('Install one:     npx forge-agents install --skill ops-process-sop-creator\n');
 }
 
 // Install skills
-function installSkills(selectedSkills, agents, isGlobal, upgrade, overwrite) {
-  const availableSkills = getAvailableSkills();
+async function installSkills(selectedSkills, agents, isGlobal, upgrade, overwrite) {
+  const availableSkills = await getSkillList();
 
   // If no specific skills selected, install all
   const skillsToInstall = selectedSkills.length > 0
@@ -161,7 +195,7 @@ function installSkills(selectedSkills, agents, isGlobal, upgrade, overwrite) {
 
   if (skillsToInstall.length === 0) {
     console.log('\n❌ No valid skills to install.\n');
-    listSkills();
+    await listSkills();
     return;
   }
 
@@ -198,7 +232,8 @@ function installSkills(selectedSkills, agents, isGlobal, upgrade, overwrite) {
 
   const scope = isGlobal ? 'global' : 'project';
   const action = upgrade ? 'Upgrading' : 'Installing';
-  console.log(`\n🚀 ${action} forge-agents (${scope})...\n`);
+  const source = isLocalMode() ? 'local bundle' : 'GitHub';
+  console.log(`\n🚀 ${action} forge-agents (${scope}, source: ${source})...\n`);
 
   let totalInstalled = 0, totalUpgraded = 0, totalSkipped = 0;
 
@@ -207,7 +242,6 @@ function installSkills(selectedSkills, agents, isGlobal, upgrade, overwrite) {
     console.log(`${labels.join(', ')} (${dir}):`);
 
     for (const skill of skillsToInstall) {
-      const src = path.join(SKILLS_DIR, skill);
       const dest = path.join(dir, skill);
       const exists = fs.existsSync(dest);
 
@@ -221,7 +255,7 @@ function installSkills(selectedSkills, agents, isGlobal, upgrade, overwrite) {
         if (exists) {
           fs.rmSync(dest, { recursive: true, force: true });
         }
-        copyDir(src, dest);
+        await installSkill(skill, dest);
         if (exists) {
           console.log(`  🔄 ${skill}`);
           totalUpgraded++;
@@ -291,16 +325,16 @@ Examples:
 }
 
 // Main
-function main() {
+async function main() {
   const args = process.argv.slice(2);
   const { command, skills, agents, global: isGlobal, listMode, upgrade, overwrite } = parseArgs(args);
 
   switch (command) {
     case 'install':
-      installSkills(skills, agents, isGlobal, upgrade, overwrite);
+      await installSkills(skills, agents, isGlobal, upgrade, overwrite);
       break;
     case 'list':
-      listSkills(listMode);
+      await listSkills(listMode);
       break;
     case 'help':
     case '--help':
@@ -317,4 +351,7 @@ function main() {
   }
 }
 
-main();
+main().catch(error => {
+  console.error(`\n❌ ${error.message}\n`);
+  process.exit(1);
+});

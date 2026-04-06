@@ -1,13 +1,20 @@
 {
   "name": "forge-agents",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Agentic skills, prompts, agents, and instructions for AI platforms.",
   "bin": {
-    "forge-agents": "./bin/cli.js"
+    "forge-agents": "bin/cli.js"
   },
+  "files": [
+    "bin/cli.js",
+    "bin/github-fetch.js",
+    "bin/skills-core.js",
+    "README.md",
+    "LICENSE.md"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/scanady/forge-agents"
+    "url": "git+https://github.com/scanady/forge-agents.git"
   },
   "keywords": [
     "skills",
