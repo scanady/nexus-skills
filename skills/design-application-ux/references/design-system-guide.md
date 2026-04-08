@@ -1,6 +1,12 @@
 # Design System Guide for Application UX
 
-This reference covers design token structures, component patterns, and implementation standards for application interfaces. Read this file when implementing screens or building component libraries.
+This reference provides a structural framework for building design systems — token architecture, component patterns, and implementation standards. The specific values (colors, sizes, fonts) shown throughout are illustrative defaults. Override them to match the application's brand, domain, and user needs. The *structure* (how tokens are layered, how components expose variants, how themes are swapped) is the transferable standard; the *values* are project-specific.
+
+See also:
+- [Core UI/UX Principles](./ui-ux-principles.md)
+- [Application Aesthetics Guidelines](./aesthetics-guidelines.md)
+- [Technical Implementation Patterns](./technical-implementation-patterns.md)
+- [Application Layout Patterns](./application-layout-patterns.md)
 
 ## Table of Contents
 
@@ -9,11 +15,15 @@ This reference covers design token structures, component patterns, and implement
 3. Typography Scale
 4. Spacing and Layout
 5. Elevation and Shadows
-6. Component API Patterns
-7. Responsive Strategy
-8. Accessibility Standards
-9. Dark Mode Implementation
-10. Platform-Specific Patterns
+6. Icon System
+7. Animation and Motion Tokens
+8. Data Visualization Tokens
+9. Component API Patterns
+10. Responsive Strategy
+11. Accessibility Standards
+12. Dark Mode Implementation
+13. Brand Customization Layer
+14. Platform-Specific Patterns
 
 ## 1. Design Token Architecture
 
@@ -219,7 +229,153 @@ Use `--radius-md` for most interactive components (buttons, inputs, cards). Use 
 - Prefer border-based separation over shadows for flat/minimal designs
 - In dark themes, reduce shadow opacity by 50% or use lighter border colors instead
 
-## 6. Component API Patterns
+## 6. Icon System
+
+**Icon size tokens:**
+```css
+:root {
+  --icon-xs: 12px;   /* Inline with small text, badges */
+  --icon-sm: 16px;   /* Inline with body text, table cells, compact buttons */
+  --icon-md: 20px;   /* Default: nav items, standard buttons, form field icons */
+  --icon-lg: 24px;   /* Page headers, feature cards, prominent actions */
+  --icon-xl: 32px;   /* Empty states, feature highlights */
+  --icon-2xl: 48px;  /* Hero empty states, onboarding illustrations */
+}
+```
+
+**Icon design constraints:**
+- **Stroke width**: Use 1.5px stroke for 20-24px icons, 1px for 16px icons, 2px for 32px+ icons. Maintain consistent stroke weight within each size tier.
+- **Optical alignment**: Icons inside buttons should optionally reduce by 1-2px from the standard size at that tier. A 20px icon in a button may render at 18px for optical balance with the label text.
+- **Color**: Icons inherit `currentColor` by default and should never have hard-coded fill colors. Apply color through the parent element's text color.
+- **Touch targets**: The clickable area around an icon must meet minimum target sizes (44x44px mobile, 32x32px desktop) regardless of the icon's visual size. Use padding, not scaling.
+- **Icon-only buttons**: Always include `aria-label` with a descriptive action label. Always include a tooltip on hover for sighted users.
+
+**Recommended icon pairing with text:**
+| Context | Icon Size | Gap Between Icon and Text |
+|---------|-----------|--------------------------|
+| Navigation item | 20px | 12px (--space-3) |
+| Button with icon | 16-18px | 8px (--space-2) |
+| Table cell status | 16px | 6px (--space-1-5) |
+| Badge / tag | 12px | 4px (--space-1) |
+| Section heading | 20-24px | 8-12px |
+
+## 7. Animation and Motion Tokens
+
+**Duration tokens:**
+```css
+:root {
+  --duration-instant: 0ms;
+  --duration-fast: 100ms;     /* Hover states, color transitions */
+  --duration-normal: 150ms;   /* Button presses, micro-interactions */
+  --duration-moderate: 250ms; /* Panel slides, dropdowns, accordions */
+  --duration-slow: 350ms;     /* Page transitions, modal enter/exit */
+  --duration-slower: 500ms;   /* Complex choreographed transitions */
+}
+```
+
+**Easing tokens:**
+```css
+:root {
+  --ease-default: cubic-bezier(0.25, 0.1, 0.25, 1.0);     /* General purpose */
+  --ease-in: cubic-bezier(0.42, 0, 1, 1);                   /* Elements exiting */
+  --ease-out: cubic-bezier(0, 0, 0.58, 1);                  /* Elements entering */
+  --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);            /* Elements moving */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);         /* Playful/bouncy enter */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);            /* Elegant fast-out */
+}
+```
+
+**Standard transition compositions:**
+```css
+:root {
+  --transition-colors: color var(--duration-fast) var(--ease-default),
+                       background-color var(--duration-fast) var(--ease-default),
+                       border-color var(--duration-fast) var(--ease-default);
+  --transition-opacity: opacity var(--duration-normal) var(--ease-default);
+  --transition-transform: transform var(--duration-normal) var(--ease-out);
+  --transition-shadow: box-shadow var(--duration-fast) var(--ease-default);
+  --transition-all-micro: all var(--duration-normal) var(--ease-default);
+}
+```
+
+**Reduced motion override:**
+```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+## 8. Data Visualization Tokens
+
+**Categorical color palette** (for charts with distinct categories):
+```css
+:root {
+  --chart-cat-1: #2563eb;  /* Blue */
+  --chart-cat-2: #7c3aed;  /* Purple */
+  --chart-cat-3: #db2777;  /* Pink */
+  --chart-cat-4: #ea580c;  /* Orange */
+  --chart-cat-5: #ca8a04;  /* Yellow */
+  --chart-cat-6: #16a34a;  /* Green */
+  --chart-cat-7: #0891b2;  /* Cyan */
+  --chart-cat-8: #4f46e5;  /* Indigo */
+}
+```
+
+**Sequential color palette** (for magnitude/intensity, single hue):
+```css
+:root {
+  --chart-seq-1: var(--blue-100);
+  --chart-seq-2: var(--blue-200);
+  --chart-seq-3: var(--blue-300);
+  --chart-seq-4: var(--blue-400);
+  --chart-seq-5: var(--blue-500);
+  --chart-seq-6: var(--blue-600);
+  --chart-seq-7: var(--blue-700);
+  --chart-seq-8: var(--blue-800);
+}
+```
+
+**Diverging color palette** (for above/below threshold, positive/negative):
+```css
+:root {
+  --chart-div-neg-3: #dc2626;  /* Strong negative */
+  --chart-div-neg-2: #f87171;
+  --chart-div-neg-1: #fca5a5;
+  --chart-div-neutral: #e5e7eb;
+  --chart-div-pos-1: #86efac;
+  --chart-div-pos-2: #4ade80;
+  --chart-div-pos-3: #16a34a;  /* Strong positive */
+}
+```
+
+**Chart typography and spacing:**
+```css
+:root {
+  --chart-font-size: 11px;
+  --chart-font-family: var(--font-sans);
+  --chart-label-color: var(--color-text-secondary);
+  --chart-grid-color: var(--color-border-default);
+  --chart-axis-color: var(--color-text-tertiary);
+  --chart-tooltip-bg: var(--color-surface-overlay);
+  --chart-tooltip-shadow: var(--shadow-md);
+  --chart-bar-radius: var(--radius-sm);
+  --chart-line-width: 2px;
+  --chart-dot-radius: 4px;
+}
+```
+
+**Chart design rules:**
+- Maximum 6-8 categories in a single chart; group smaller slices into "Other"
+- Always include axis labels, units, and a chart title
+- Use consistent color mapping across all charts on the same page (if "Revenue" is blue in one chart, it is blue in every chart)
+- Tooltips on hover for precise values — never rely on reading exact values from axes
+- Responsive: charts should resize with their container; use SVG-based renderers or responsive chart libraries
+
+## 9. Component API Patterns
 
 Design components with consistent prop/variant structures:
 
@@ -254,7 +410,7 @@ Design components with consistent prop/variant structures:
 - Stack: newest on top, max 3 visible, queue the rest
 - Include a dismiss button on all toasts
 
-## 7. Responsive Strategy
+## 10. Responsive Strategy
 
 **Breakpoints:**
 ```css
@@ -272,7 +428,7 @@ Design components with consistent prop/variant structures:
 - Form layouts: 2-column at lg+, single column below
 - Modals: full-screen on mobile (`< md`), centered overlay on desktop
 
-## 8. Accessibility Standards
+## 11. Accessibility Standards
 
 Every implementation must meet WCAG 2.1 AA as a baseline:
 
@@ -302,7 +458,7 @@ Every implementation must meet WCAG 2.1 AA as a baseline:
 - No hover-only interactions on mobile; always provide a tap alternative
 - Respect `prefers-reduced-motion` and `prefers-color-scheme`
 
-## 9. Dark Mode Implementation
+## 12. Dark Mode Implementation
 
 Use semantic tokens that swap values per theme, not component-level overrides:
 
@@ -336,7 +492,57 @@ Use semantic tokens that swap values per theme, not component-level overrides:
 - Images and illustrations may need a dark-mode variant or a subtle overlay to reduce glare.
 - Test all states in both themes: empty, error, loading, and populated.
 
-## 10. Platform-Specific Patterns
+## 13. Brand Customization Layer
+
+When building a design system that serves a specific brand, override primitive tokens at the brand level while keeping the semantic and component token structure intact.
+
+**Brand override file structure:**
+```css
+/* brand-tokens.css — loaded after base tokens */
+:root {
+  /* Override primary hue to match brand */
+  --brand-hue: 210;       /* Brand's primary hue (HSL) */
+  --brand-sat: 80%;       /* Brand saturation */
+
+  /* Generate primary scale from brand hue */
+  --primary-50:  hsl(var(--brand-hue), var(--brand-sat), 97%);
+  --primary-100: hsl(var(--brand-hue), var(--brand-sat), 93%);
+  --primary-200: hsl(var(--brand-hue), var(--brand-sat), 85%);
+  --primary-300: hsl(var(--brand-hue), var(--brand-sat), 72%);
+  --primary-400: hsl(var(--brand-hue), var(--brand-sat), 58%);
+  --primary-500: hsl(var(--brand-hue), var(--brand-sat), 48%);
+  --primary-600: hsl(var(--brand-hue), var(--brand-sat), 40%);
+  --primary-700: hsl(var(--brand-hue), var(--brand-sat), 33%);
+  --primary-800: hsl(var(--brand-hue), var(--brand-sat), 26%);
+  --primary-900: hsl(var(--brand-hue), var(--brand-sat), 18%);
+
+  /* Override neutral temperature */
+  --neutral-hue: 220;     /* Tinted neutrals matching brand */
+  --neutral-sat: 10%;     /* Keep low for functional neutrals */
+
+  /* Override font families */
+  --font-sans: 'Custom Brand Font', system-ui, sans-serif;
+  --font-mono: 'Custom Mono Font', 'Fira Code', monospace;
+
+  /* Override radius to match brand personality */
+  --radius-sm: 3px;       /* Sharper = more technical */
+  --radius-md: 5px;
+  --radius-lg: 8px;
+
+  /* Override elevation model (flat brands can reduce shadows) */
+  --shadow-xs: none;
+  --shadow-sm: 0 0 0 1px var(--color-border-default);
+}
+```
+
+**Brand customization principles:**
+- Override primitives, not semantics. Change the hue scale, not `--color-action-primary`.
+- Keep the semantic token layer intact so that dark mode, accessibility, and component patterns continue to work.
+- Maximum two custom fonts (one sans, one mono or one serif). Additional fonts degrade performance and consistency.
+- Test the brand overrides against all component states (hover, active, focus, disabled, error) in both light and dark themes before shipping.
+- Document departures from the base system. If the brand requires a radius larger than 12px or a non-standard shadow, record the rationale.
+
+## 14. Platform-Specific Patterns
 
 **Web applications:**
 - Support browser zoom up to 200% without horizontal scrolling

@@ -31,7 +31,7 @@
 ### [design](#design)
 
 - [marketing-content-product-overview-page](#design)
-- [design-research-personas](#design)
+- [design-research-ux-artifacts](#design)
 
 ### [content](#content)
 
@@ -96,7 +96,7 @@
 | name | description | status |
 | --- | --- | --- |
 | marketing-content-product-overview-page | Builds polished product overview pages with automated screenshot capture and modern SaaS design patterns. | active |
-| design-research-personas | Creates UX/UI design artifacts from research through specs, including personas, journey maps, and interaction behaviors. | active |
+| design-research-ux-artifacts | Creates one or more research-backed UX artifacts, including personas, journey maps, information architecture, UX/UI specs, and screen layouts. | active |
 
 ## content
 

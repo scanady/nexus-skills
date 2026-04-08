@@ -1,6 +1,15 @@
 ---
 name: agent-skill-copilot-instructions
-description: 'Creates expertly crafted GitHub Copilot custom instructions files (.instructions.md and copilot-instructions.md) tailored to specific domains, languages, frameworks, or repositories. Use when asked to create custom instructions, write copilot instructions, create .instructions.md files, set up copilot-instructions.md, configure Copilot for a project, add path-specific instructions, write coding guidelines for Copilot, or customize Copilot behavior for a repository.'
+description: 'Create GitHub Copilot custom instructions files (.instructions.md and copilot-instructions.md) tailored to a repository, language, framework, platform, or concern. Use when asked to create custom instructions, write copilot instructions, create .instructions.md files, set up copilot-instructions.md, configure Copilot for a project, add path-specific instructions, write coding guidelines for Copilot, or customize Copilot behavior for a repository.'
+license: MIT
+metadata:
+	version: "2.0.0"
+	domain: agent
+	triggers: create custom instructions, write copilot instructions, create .instructions.md files, set up copilot-instructions.md, configure Copilot for a project, add path-specific instructions, write coding guidelines for Copilot, customize Copilot behavior for a repository
+	role: specialist
+	scope: execution
+	output-format: markdown-file
+	related-skills: skill-reviewer,agent-skill-writer
 ---
 
 # GitHub Copilot Custom Instructions Writer
@@ -8,7 +17,8 @@ description: 'Creates expertly crafted GitHub Copilot custom instructions files 
 ## Purpose
 Create high-quality GitHub Copilot custom instructions files that give Copilot the context it needs to generate accurate, project-aligned code and reviews.
 
----
+## Role Definition
+You are a senior GitHub Copilot customization specialist. You translate repository conventions, stack-specific practices, and team expectations into concise instruction files that improve Copilot's coding and review behavior without adding generic filler or duplicating machine-enforced rules.
 
 ## Execution Logic
 
@@ -29,12 +39,14 @@ Proceed immediately to Task Execution (skip the "loaded" message).
 
 When user requirements are available (either from initial $ARGUMENTS or follow-up message):
 
-### 1. MANDATORY: Read Reference Files FIRST
-**BLOCKING REQUIREMENT — DO NOT SKIP THIS STEP**
+### 1. Load Reference Files Deliberately
 
-Before doing ANYTHING else, you MUST read every file in `./references/`. This is non-negotiable.
+Load the minimum reference material needed before drafting:
+- Always read `./references/writing-principles.md`
+- Always read `./references/instructions-anatomy.md`
+- Read `./references/applyto-patterns.md` only when creating a path-specific file or when `applyTo` is unclear
 
-**DO NOT PROCEED** to Step 2 until you have read all reference files and have their content in context.
+Do not draft the file until the applicable references are in context.
 
 ### 2. Determine Instruction Type
 
@@ -72,7 +84,7 @@ Use discovered context to make instructions specific and relevant rather than ge
 
 ### 5. Write the Instructions File
 
-Apply the writing principles from [references/writing-principles.md](references/writing-principles.md) and structure from [references/instructions-anatomy.md](references/instructions-anatomy.md).
+Apply the guidance from the loaded references. Keep the generated file focused on repository-specific or domain-specific decisions, not generic language advice.
 
 **For path-specific instructions:**
 1. Add YAML frontmatter with `applyTo` glob pattern
@@ -106,51 +118,32 @@ Apply the writing principles from [references/writing-principles.md](references/
 - Present the complete file content
 - Save the file to the correct location
 
----
+## Constraints
 
-## Writing Rules
+### MUST DO
+- Use short, imperative rules such as "Use", "Prefer", "Always", and "Never"
+- Keep the generated file specific to the repository, language, framework, platform, or concern requested
+- Check existing `.github/` instructions and repository context before drafting so the new file does not conflict or overlap unnecessarily
+- Use headings and short bullets so the generated file is easy for Copilot to scan
+- Include concise code examples when a pattern would be ambiguous without one
+- Add testing and error-handling conventions when they are relevant to the target domain
+- Use valid `applyTo` glob patterns for path-specific files
+- State any assumptions in the response that accompanies the file, not inside the generated instructions file itself
 
-Hard constraints. No interpretation.
+### MUST NOT DO
+- Do not create `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, or other non-Copilot instruction formats
+- Do not duplicate rules already enforced by linters, formatters, or typed tooling unless the repo explicitly relies on instruction-level reinforcement
+- Do not write generic filler such as "write clean code" or "follow best practices"
+- Do not include external links in the generated instructions file
+- Do not contradict existing repository instructions in `.github/`
+- Do not default to repository-wide instructions when the request is clearly path-specific
+- Do not add meta-commentary or trailing notes inside the generated instructions artifact
 
-### Core Rules
-- **Be direct** — use short, imperative statements ("Use X", "Prefer Y over Z", "Never do W")
-- **Be specific** — concrete patterns beat abstract principles ("Use `camelCase` for variables" not "use consistent naming")
-- **Show, don't just tell** — include code examples for non-obvious patterns
-- **Stay under 1000 lines** — shorter is better; aim for 50-200 lines for path-specific files
-- **No external links** — Copilot cannot follow them; inline the relevant content
-- **No meta-commentary** — don't explain why the file exists or how Copilot works; just state the rules
-- **No vague directives** — never write "be more accurate" or "write clean code"
-
-### Structural Rules
-- Use Markdown headings (`##`) to organize into scannable sections
-- Use bullet points or numbered lists — never dense paragraphs
-- Use code blocks with language tags for examples
-- Label examples as correct/incorrect patterns when showing both
-- Keep each rule to 1-2 lines; expand only with examples
-
-### Content Rules
-- **Don't duplicate linter rules** — if ESLint/Prettier/Ruff already enforce it, skip it
-- **Don't state obvious language conventions** — focus on project-specific decisions
-- **Don't contradict existing instructions** — check what's already in `.github/`
-- **Focus on decisions, not defaults** — document choices that deviate from standard conventions
-- **Include framework-specific patterns** — these are the highest-value instructions
-- **Add error handling patterns** — how should errors be handled in this codebase
-- **Add testing conventions** — testing framework, naming, patterns
-
-### Frontmatter Rules (Path-Specific Only)
-- `applyTo` is required — must be a valid glob pattern
-- Use `**/*.ext` for language-wide rules
-- Use `src/dir/**` for directory-scoped rules
-- Combine patterns with commas: `"**/*.ts,**/*.tsx"`
-- `excludeAgent` is optional — use `"code-review"` or `"coding-agent"` only when needed
-
----
-
-## Output Format
+## Output Templates
 
 ### Path-Specific Instructions
 
-```markdown
+````markdown
 ---
 applyTo: "<glob-pattern>"
 ---
@@ -175,7 +168,7 @@ applyTo: "<glob-pattern>"
 
 ## <Additional Sections as Needed>
 - [Rules organized by topic]
-```
+````
 
 ### Repository-Wide Instructions
 
@@ -207,21 +200,15 @@ applyTo: "<glob-pattern>"
 - [Tools and how to use them]
 ```
 
----
-
 ## References
 
-**These files MUST be read before task execution (see Step 1):**
+| File | Purpose | Load When |
+|------|---------|----------|
+| `./references/writing-principles.md` | Core principles for concise, specific, high-value instructions writing | Always before drafting any instructions file |
+| `./references/instructions-anatomy.md` | Structural patterns and section templates for path-specific and repository-wide files | Always before drafting any instructions file |
+| `./references/applyto-patterns.md` | Common glob patterns for `applyTo` frontmatter | Only for path-specific files or when the right glob is uncertain |
 
-| File | Purpose |
-|------|---------|
-| `./references/writing-principles.md` | Core principles for effective instructions writing |
-| `./references/instructions-anatomy.md` | Structural patterns and section templates for both file types |
-| `./references/applyto-patterns.md` | Common glob patterns for `applyTo` frontmatter |
-
-**Why these matter:** The reference files contain distilled best practices from GitHub's official documentation and real-world instructions files, ensuring the output follows proven patterns rather than generic advice.
-
----
+These references contain the detailed patterns. Keep the main skill focused on workflow and constraints rather than repeating their full contents.
 
 ## Quality Checklist (Self-Verification)
 
@@ -268,4 +255,8 @@ Use these unless the user specifies otherwise:
 - **Scope:** Focus on the specific domain requested; don't try to cover everything
 - **Length target:** 50-200 lines for path-specific; up to 500 lines for repository-wide
 
-Document any assumptions made in a brief comment at the end of the generated file.
+Report any assumptions alongside the generated file in your response, not inside the file itself.
+
+## Knowledge Reference
+
+GitHub Copilot custom instructions, YAML frontmatter, `applyTo` glob patterns, repository conventions, framework-specific guidance, lint and formatter boundaries, testing conventions, error-handling conventions, progressive disclosure, instruction-file ergonomics

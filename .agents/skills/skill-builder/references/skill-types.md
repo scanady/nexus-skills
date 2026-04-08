@@ -153,7 +153,7 @@ Bad: "Follow REST principles", "Handle errors properly"
 Good: "Conduct the full interview before writing the spec", "Never accept vague requirements ('make it fast' — push for measurable targets)", "Use structured question tools for choices that can be predetermined"
 Bad: "Be thorough", "Ask good questions"
 
-**Example skills**: feature-forge, design-research-personas, ops-process-sop-creator, product-requirements, product-spec-prd-generator
+**Example skills**: feature-forge, design-research-ux-artifacts, ops-process-sop-creator, product-requirements, product-spec-prd-generator
 
 ---
 

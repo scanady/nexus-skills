@@ -6,7 +6,7 @@ description: Generates professional PRD (Product Requirements Document) files us
 # PRD Generator
 
 ## Purpose
-Transform a rough product idea into a comprehensive, expert-level Product Requirements Document (Markdown) through targeted discovery questions and structured output grounded in product management best practices.
+Transform a rough product idea into a comprehensive, expert-level Product Requirements Document (markdown) through targeted discovery questions and structured output grounded in product management best practices.
 
 ---
 
