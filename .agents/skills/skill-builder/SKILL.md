@@ -46,11 +46,21 @@ Identify which archetype fits the requested skill. Delegate to the archetype cla
 
 ### Step 2: Build the Frontmatter
 
-Construct rich frontmatter using the `metadata` block. This enables discoverability and explicit skill chaining:
+Construct rich frontmatter using the `metadata` block. This enables discoverability and explicit skill chaining.
+
+**Naming convention.** Skill names must follow the `domain-category-descriptor` pattern — three segments joined by hyphens. The first two segments (`domain-category`) map to a valid prefix from the agent taxonomy (see `agent-taxonomy.yaml`); the third (`descriptor`) uniquely identifies the skill within that category.
+
+| Segment | Description | Example |
+|---------|-------------|---------|
+| `domain` | Top-level domain from taxonomy | `tech`, `marketing`, `product`, `strategy` |
+| `category` | Category within the domain | `quality`, `content`, `spec`, `dev` |
+| `descriptor` | What uniquely identifies this skill | `tdd`, `linkedin-writer`, `prd-generator` |
+
+Examples: `tech-quality-tdd`, `tech-dev-finishing-branch`, `marketing-content-linkedin-writer`, `product-spec-prd-generator`, `strategy-research-analyst`.
 
 ```yaml
 ---
-name: skill-name
+name: domain-category-descriptor
 description: 'What it does. Use when [specific triggers]. Invoke for [key use cases].'
 license: <license>
 metadata:
@@ -245,6 +255,7 @@ Load detailed guidance based on context:
 
 ### MUST DO
 - Classify the skill archetype before designing any section — the archetype drives every other decision
+- Follow the `domain-category-descriptor` naming pattern — two-segment taxonomy prefix (`domain-category`) plus a unique `descriptor`; confirm the prefix exists in `agent-taxonomy.yaml` before finalizing the name
 - Use rich frontmatter with a `metadata` block including domain, triggers, role, scope, output-format, and related-skills
 - Write descriptions that combat undertriggering — explicitly name edge-case activation scenarios
 - Use the "Load When" conditional reference table — not the "read all references upfront" pattern
@@ -262,6 +273,7 @@ Load detailed guidance based on context:
 
 ### MUST NOT DO
 - Design any section before identifying the skill archetype
+- Name a skill without following the `domain-category-descriptor` pattern — do not use flat names (`my-skill`), reversed segments, or prefixes that don't exist in the taxonomy
 - Use "read ALL reference files before proceeding" upfront loading
 - Write workflow steps that describe AI reasoning ("Understand → Generate") instead of expert domain process
 - Write vague MUST NOT DO items ("don't skip security", "avoid bad patterns")
@@ -280,6 +292,7 @@ Load detailed guidance based on context:
 Before finalizing the generated skill, verify:
 
 - [ ] Archetype identified and all sections reflect it consistently
+- [ ] `name` follows `domain-category-descriptor` pattern with a valid taxonomy prefix (e.g., `tech-quality-tdd`, not `tdd-tech` or `my-skill`)
 - [ ] `name` matches folder name, lowercase with hyphens only
 - [ ] `description` includes WHAT the skill does, WHEN to use it, and trigger keywords
 - [ ] `metadata` block includes domain, triggers, role, scope, output-format, related-skills

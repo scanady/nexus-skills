@@ -9,7 +9,7 @@ metadata:
    role: ux-designer
    scope: design-and-implementation
    output-format: code
-   related-skills: design-research-personas
+   related-skills: design-research-ux-artifacts
 ---
 
 Design and build distinctive, production-grade application interfaces. This skill covers the full UX design process for functional software: discovery, information architecture, interaction design, visual design, and implementation. It produces real working code with exceptional attention to both usability and aesthetic quality.
@@ -26,8 +26,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 | --- | --- | --- |
+| Core UI/UX design principles and decision framework | `references/ui-ux-principles.md` | Starting any design project, making UX tradeoff decisions, establishing design direction |
+| Visual identity, brand expression, and distinctive design | `references/aesthetics-guidelines.md` | Choosing visual direction, translating brand into UI, refining application personality, avoiding generic AI-style patterns |
 | Design tokens and component implementation | `references/design-system-guide.md` | Building screens, components, dashboards, coded mockups, or component libraries |
-| Application visual direction and anti-generic styling | `references/aesthetics-guidelines.md` | Choosing visual direction, refining application personality, or avoiding generic AI-style UI patterns |
+| Navigation, layout, form, and search implementation | `references/technical-implementation-patterns.md` | Implementing navigation systems, form patterns, search/filter, state management, performance optimization |
+| Application shell archetypes and page composition | `references/application-layout-patterns.md` | Choosing app shell structure, designing specific page types, responsive layout decisions |
 
 ## Output Modes
 

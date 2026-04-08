@@ -29,7 +29,7 @@ npx github:scanady/forge-agents install
 Install a specific skill from GitHub:
 
 ```bash
-npx github:scanady/forge-agents install --skill data-science-autoresearch
+npx github:scanady/forge-agents install --skill data-ai-autoresearch
 ```
 
 Install globally from GitHub:
@@ -126,7 +126,7 @@ After installation, use skills by typing:
 
 ### Design
 - `marketing-content-product-overview-page` - Builds polished product overview pages with automated screenshot capture and modern SaaS design patterns.
-- `design-research-personas` - Creates UX/UI design artifacts from research through specs, including personas, journey maps, and interaction behaviors.
+- `design-research-ux-artifacts` - Creates one or more research-backed UX artifacts, including personas, journey maps, information architecture, UX/UI specs, and screen layouts.
 
 ### Content
 - `content-technical-doc-coauthoring` - Guides users through a structured workflow for co-authoring documentation, proposals, and technical specs.

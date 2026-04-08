@@ -70,6 +70,7 @@ Create `evals/evals.json` with 2–5 test cases. Each test case has a prompt, ex
 - Include at least one edge case (malformed input, ambiguous request, boundary condition)
 - Use realistic context (file paths, column names, domain-specific terms)
 - Start with 2–3 cases; expand after the first iteration
+- When the output artifact is a skill (e.g., evaluating skill-builder), include assertions for structural conventions such as the `domain-category-descriptor` name pattern (e.g., `"The generated skill name follows the domain-category-descriptor pattern with a valid taxonomy prefix"`) alongside output-quality assertions
 
 ### Step 3: Run Evals
 
@@ -264,6 +265,7 @@ Load detailed guidance based on context:
 ### MUST DO
 - Run each test case in a clean context with no leftover state from previous runs
 - Run both with_skill and without_skill (or old_skill) for every test case to establish a comparison baseline
+- When the skill under evaluation produces skill artifacts (SKILL.md files), include an assertion that the generated skill name follows the `domain-category-descriptor` naming pattern
 - Record timing data (tokens, duration) for every run
 - Write assertions only after seeing the first round of outputs, not before
 - Require concrete evidence for every PASS verdict — quote or reference the actual output

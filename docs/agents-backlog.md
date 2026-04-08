@@ -93,8 +93,8 @@
 
 ### [technology-ai-ml](#technology-ai-ml)
 
-- [tech-fine-tuning-expert](#technology-ai-ml)
-- [tech-ml-pipeline](#technology-ai-ml)
+- [data-ai-post-training-expert](#technology-ai-ml)
+- [data-ai-ml-pipeline](#technology-ai-ml)
 - [tech-prompt-engineer](#technology-ai-ml)
 - [tech-rag-architect](#technology-ai-ml)
 - [tech-spec-miner](#technology-ai-ml)
@@ -256,8 +256,8 @@
 
 | name | description | status |
 | --- | --- | --- |
-| tech-fine-tuning-expert | Use when fine-tuning LLMs, training custom models, or optimizing model performance for specific tasks. Invoke for parameter-efficient methods, dataset preparation, or model adaptation. | backlog |
-| tech-ml-pipeline | Use when building ML pipelines, orchestrating training workflows, automating model lifecycle, implementing feature stores, or managing experiment tracking systems. | backlog |
+| data-ai-post-training-expert | Use when designing or implementing LLM post-training workflows, including supervised fine-tuning, parameter-efficient adaptation, preference optimization, reward modeling, RLHF, distillation, or deployment packaging. Invoke for SFT, LoRA/QLoRA/PEFT, DPO/ORPO/PPO/GRPO, preference dataset preparation, adapter merging, model compression, and serving tradeoffs. | backlog |
+| data-ai-ml-pipeline | Use when designing or implementing end-to-end ML pipeline systems, or when a request spans multiple lifecycle stages such as feature engineering, training orchestration, experiment tracking, validation, and deployment automation. Invoke for reproducible ML platforms, feature stores, training workflows, model registries, and MLOps systems that must fit into a production pipeline rather than a one-off script. | backlog |
 | tech-prompt-engineer | Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs. | backlog |
 | tech-rag-architect | Use when building RAG systems, vector databases, or knowledge-grounded AI applications requiring semantic search, document retrieval, or context augmentation. | backlog |
 | tech-spec-miner | Use when understanding legacy or undocumented systems, creating documentation for existing code, or extracting specifications from implementations. Invoke for legacy analysis, code archaeology, undocumented features. | backlog |

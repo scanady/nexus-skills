@@ -38,6 +38,7 @@ You are a senior skill architect specializing in agent system design and skill q
 | Check | Requirement |
 |-------|-------------|
 | `name` present | 1-64 chars, lowercase alphanumeric + hyphens, no leading/trailing/consecutive hyphens |
+| `name` pattern | Must follow `domain-category-descriptor` format — two-segment taxonomy prefix plus unique descriptor (e.g., `tech-quality-tdd`). Flag as `[W]` if name is flat (`my-skill`) or prefix doesn't map to a known domain+category |
 | `name` matches folder | Directory name must exactly match the `name` field |
 | `description` present | 1-1024 chars, non-empty |
 | `description` quality | Explains WHAT the skill does AND WHEN to use it, includes trigger keywords |
@@ -140,6 +141,7 @@ These checks apply structural patterns from skill-builder. Flag as warnings — 
 | Check | Standard |
 |-------|----------|
 | Rich `metadata` block | Should include `domain`, `triggers`, `role`, `scope`, `output-format`, `related-skills` |
+| `domain` aligns with name prefix | The `domain` metadata field should match the first segment of the skill name (e.g., a `tech-quality-*` skill should have `domain: tech`). Misalignment is a routing hint gap — flag as `[W]` |
 | `triggers` field | Must be comma-separated keywords users will actually say — not categories |
 | `related-skills` field | Enables explicit skill chaining — flag absence as a missed opportunity |
 | Conditional reference loading | References should use a "Load When" routing table, not "read all files upfront" |
