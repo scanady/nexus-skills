@@ -81,6 +81,24 @@ These are the specific signals that Google reviewers look for. If a site trigger
 
 ---
 
+## E-E-A-T & Author Authenticity Signals
+
+These signals are increasingly central to how Google's quality systems evaluate content authenticity. They are distinct from word count and topic coverage — a site can have 30 well-written posts and still fail on these signals.
+
+26. **Anonymous or generic team bylines**: All content attributed to "Team," "Admin," "Staff," the site name, or no byline at all, with no linked author bio or credentials. Google's systems look for identifiable human authorship as a trust proxy.
+
+27. **Burst publication pattern**: All or most posts published within a short window (e.g., 10-15 posts over 7-14 days) rather than over weeks or months. Organic sites build content gradually; bulk publishing is a strong AI-generation signal.
+
+28. **Uniform post length across all articles**: Every post is approximately the same length (±15%), regardless of topic complexity. Human editorial content naturally varies in length based on subject matter. Uniform length is a strong indicator of batch AI generation.
+
+29. **Absence of personal voice or experience**: No post contains personal anecdotes, first-person perspective, specific real-world details, or original opinion. Content reads as plausible and grammatically correct but could have been written by anyone with no subject-matter experience.
+
+30. **No author bio or credentials**: Author names appear on bylines but link to no profile page, credentials, social presence, or About section. An author who exists nowhere outside the site is treated as a fabricated attribution by Google's E-E-A-T signals.
+
+**Combined risk:** If signals 27, 28, and 29 are all present (burst publication + uniform length + no personal voice), this is one of the highest-confidence AI-batch-content patterns. Even if individual posts read acceptably, the pattern as a whole is likely to trigger a low-value-content rejection.
+
+---
+
 ## Common Site Types That Get Rejected
 
 ### Portfolio/Business Sites with Only Service Pages
@@ -100,8 +118,10 @@ These are the specific signals that Google reviewers look for. If a site trigger
 **Fix:** Add substantial written descriptions, reviews, guides, or educational content alongside media.
 
 ### Tool/App Sites
-**Problem:** Site is primarily a tool (calculator, converter, etc.) with minimal text.
-**Fix:** Add educational content, guides, tutorials, and FAQs around the tool's topic.
+**Problem:** Site is primarily a tool (calculator, converter, database, etc.) with minimal text.
+**Fix (two-branched):**
+- **(a) If entity/detail pages already contain substantive prose blocks** (real descriptions, contextual information, editorial content beyond structured fields): Reposition them as informational content by optimizing title tags, meta descriptions, heading structure, and adding relevant schema markup. These pages may already satisfy AdSense content requirements if they provide genuine user value — a blog is not automatically the fix.
+- **(b) If detail pages are thin** (mostly structured data fields, ratings, or brief labels with no prose): Enrich entity pages with original descriptions, context, and editorial commentary. Also add educational guides, tutorials, and FAQs around the tool's topic to build a substantive content layer.
 
 ### Wiki/Directory Sites
 **Problem:** Site has many pages but each is very thin (just a name, brief description, links).
