@@ -206,6 +206,35 @@ An AdSense account already exists with your information.
 
 ---
 
+## 9. Restricted / Sensitive Category — Low Fill or Rejection Despite Good Content
+
+**What Google's (or a partner network's) review shows:**
+Site may pass content quality review and receive AdSense approval, but then generate near-zero ad fill, extremely low RPM, or in some regions a rejection notice citing category-level policy restrictions.
+
+**What it means:**
+Sites in alcohol, gambling, dating, pharmaceutical, and related niches fall under Google's "sensitive categories." AdSense may technically serve ads on these sites, but most advertisers opt out of sensitive categories by default. If the publisher has not adjusted their Blocking Controls to permit sensitive category ads, fill rates can collapse to near-zero even after a successful approval — a monetization failure that happens post-approval and is often misattributed to site quality.
+
+**Common triggers:**
+- Alcohol review, recipe, or spirits education site: approved but impressions not monetizing
+- Gambling tips, casino review, or sports betting site: approved but RPMs extremely low
+- Dating advice or relationship content site: minimal ad fill despite good traffic
+- Pharmaceutical information, supplement, or health-adjacent site: low fill or category rejection
+- Any niche site that never configured Blocking Controls after receiving AdSense approval
+
+**How to fix:**
+1. In your AdSense account, go to **Brand Safety > Blocking Controls > Sensitive Categories**
+2. Review which sensitive categories map to your site's niche and adjust opt-in settings accordingly
+3. If your niche is primarily alcohol, food, or beverage content, consider supplementing AdSense with **GourmetAds** or (once traffic thresholds are met) **Mediavine**, both of which are better optimized for food and drink content
+4. For gambling or betting content, explore niche-specific networks (e.g., **Catfish Ads**) appropriate for your jurisdiction
+5. Ensure your privacy policy explicitly addresses the sensitive category where required (e.g., age-gating disclosure language for alcohol content)
+6. If operating in a jurisdiction where the category is prohibited by AdSense entirely, note that no Blocking Controls adjustment will resolve category-level rejection — an alternative network is the only path
+
+**Relevant policy:**
+- https://support.google.com/adsense/answer/10015918
+- https://support.google.com/adsense/answer/9713
+
+---
+
 ## Meta-Issue: Repeated Rejections
 
 **Problem:** Each rejection and resubmission without substantial changes can make future approvals harder. Google may throttle review frequency for sites that keep resubmitting without fixing issues.

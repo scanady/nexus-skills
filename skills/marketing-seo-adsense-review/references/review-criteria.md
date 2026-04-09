@@ -69,6 +69,7 @@ This is the single most important category. "Low value content" is the #1 reject
   - 4: Content appears dated, last update months ago
   - 2: Content appears stale, possibly abandoned
   - 0: No dates visible, appears unmaintained
+- **WARN flag — Burst Publication Pattern:** Even if content is recent, flag a `WARN` if all of the following are true: all or most posts were published within a 2-week window AND posts are attributed to a generic/anonymous byline AND posts are approximately uniform in length. Recency does not offset the AI-batch-content signal. Burst-published content is evaluated as a freshness AND authenticity risk regardless of how recent the publication date is. Score this criterion no higher than 4 when the burst pattern is present.
 
 ### 1.6 Text-to-Visual Ratio
 - Is there enough text content relative to images/video/other media?

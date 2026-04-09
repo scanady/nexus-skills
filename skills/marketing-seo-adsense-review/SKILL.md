@@ -60,6 +60,23 @@ Common rejection reasons to watch for:
 - **Content policy violations**
 - **Traffic source issues**
 
+### 2a. Identify Site Type (BEFORE Crawling)
+
+Before beginning the crawl, classify the site into one of these types based on the URL, homepage, and any user-provided context:
+
+- **Editorial/Blog** — Article-driven content, news, commentary
+- **Tool/Calculator** — Single or multi-function utility (converters, generators, calculators)
+- **Database/Directory** — Entity-based pages (recipes, products, companies, places, apps, ingredients)
+- **E-commerce** — Product listings and purchases
+- **Portfolio/Business** — Services, credentials, case studies
+- **Hybrid** — Combination of the above
+
+**If the site type is Database, Directory, or Tool**, activate a specific analysis branch for Step 4:
+- Are the entity/detail pages substantive? Do they contain **meaningful prose blocks** beyond structured data fields (names, prices, ratings, tags)?
+  - If **yes (substantive prose exists):** Flag the **repositioning path** — detail pages may already qualify as informational content with proper title tags, meta descriptions, and schema markup. Do not default to "add a blog" until you have evaluated whether the detail pages satisfy content depth requirements.
+  - If **no (mostly structured fields, minimal prose):** Flag **content enrichment** as the primary fix — entity pages need added descriptions, context, and editorial commentary before AdSense submission.
+- Record the site type in the report header. It will affect which diagnostic questions apply in Step 4.
+
 ### 3. Crawl the Live Site
 
 **This step is critical. You must actually visit and analyze the live site.**
@@ -102,7 +119,18 @@ For EACH page visited, document:
 - **Ads Present**: Any existing ad placements visible?
 - **Issues Found**: Specific problems detected
 
-#### 3d. Technical Checks
+#### 3d. Blog Content Pattern Check (Required for sites with blog or article sections)
+
+If the site has blog or article content, perform this check across ALL blog posts found before proceeding to Step 4:
+
+- **Publication date spread**: Note the date of every post. **Flag** if all or most posts were published within a 2-week window, regardless of how recent they are.
+- **Byline attribution**: Note the author name(s). **Flag** if all posts use a generic byline (e.g., "Team," "Admin," "Staff," site name, or no byline at all) with no linked author bio or credentials.
+- **Post length consistency**: Estimate content length across posts. **Flag** if every post is approximately the same length (±15%), suggesting batch generation rather than organic editorial production.
+- **Voice and experience signals**: Does any post include personal anecdotes, specific real-world experience, first-person perspective, or original opinion? **Flag** if none do.
+
+If **2 or more** of these patterns are present simultaneously, include a `WARN: AI Batch Content Pattern Detected` finding in the report that lists each triggered signal. This pattern is one of the most reliable AI-content flags Google's systems use and is a high-risk rejection signal even when the content reads as acceptable in isolation.
+
+#### 3e. Technical Checks
 Visit these specific URLs:
 - `{domain}/ads.txt` — Check existence and validity
 - `{domain}/privacy-policy` or `{domain}/privacy` — Check existence and completeness
@@ -181,6 +209,7 @@ This is the #1 reason sites get rejected. Be brutally honest.
 - Better Ads Standards compliance
 - No deceptive/misleading content
 - Content in a supported language
+- **Restricted category check**: Is the site in a sensitive-but-legal niche (alcohol, gambling, pharmaceuticals, dating, firearms)? If yes, note that the site may pass content review but receive near-zero ad fill if the publisher has not opted in to restricted categories in AdSense Blocking Controls. Flag this as an action item in the remediation roadmap even if content quality is otherwise good.
 
 #### Phase 6: Search Engine Presence
 - Does the site appear to be indexed by Google?
