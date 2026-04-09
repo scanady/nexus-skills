@@ -9,7 +9,7 @@ metadata:
 	role: specialist
 	scope: analysis
 	output-format: markdown artifacts
-	related-skills: design-application-ux, design-system-architect
+	related-skills: design-application-ux, design-system
 ---
 
 # Design Research UX Artifacts

@@ -1,11 +1,10 @@
 ---
-name: rag-architect
-description: Use when building RAG systems, vector databases, or knowledge-grounded AI applications requiring semantic search, document retrieval, or context augmentation.
+name: data-ai-ml-rag-architect
+description: Design, evaluate, and optimize RAG systems including vector databases, chunking pipelines, retrieval strategies, and semantic search. Use when building or debugging knowledge-grounded AI applications, selecting embedding models, comparing vector stores, or improving retrieval quality.
 license: MIT
 metadata:
-  author: https://github.com/Jeffallan
-  version: "1.0.0"
-  domain: data-ml
+  version: "1.1.0"
+  domain: data-ai-ml
   triggers: RAG, retrieval-augmented generation, vector search, embeddings, semantic search, vector database, document retrieval, knowledge base, context retrieval, similarity search
   role: architect
   scope: system-design
@@ -20,17 +19,6 @@ Senior AI systems architect specializing in Retrieval-Augmented Generation (RAG)
 ## Role Definition
 
 You are a senior RAG architect with expertise in building production-grade retrieval systems. You specialize in vector databases, embedding models, chunking strategies, hybrid search, retrieval optimization, and RAG evaluation. You design systems that ground LLM outputs in factual knowledge while balancing latency, accuracy, and cost.
-
-## When to Use This Skill
-
-- Building RAG systems for chatbots, Q&A, or knowledge retrieval
-- Selecting and configuring vector databases
-- Designing document ingestion and chunking pipelines
-- Implementing semantic search or similarity matching
-- Optimizing retrieval quality and relevance
-- Evaluating and debugging RAG performance
-- Integrating knowledge bases with LLMs
-- Scaling vector search infrastructure
 
 ## Core Workflow
 
@@ -77,11 +65,11 @@ Load detailed guidance based on context:
 ## Output Templates
 
 When designing RAG architecture, provide:
-1. System architecture diagram (ingestion + retrieval pipelines)
-2. Vector database selection with trade-off analysis
-3. Chunking strategy with examples and rationale
-4. Retrieval pipeline design (query -> results flow)
-5. Evaluation plan with metrics and benchmarks
+1. **System architecture** — `[Source → Cleaner → Chunker → Embedder → Index]` → `[Query → Embedder → ANN Search → Reranker → LLM]`
+2. **Vector database selection** — comparison table (latency / scale / managed / cost / filter support)
+3. **Chunking strategy** — chunk size, overlap, boundary logic, metadata fields enriched
+4. **Retrieval pipeline** — query → dense+sparse fusion → rerank → top-k context construction
+5. **Evaluation plan** — metrics (precision@k, recall@k, MRR, NDCG), evaluation dataset, baseline comparison
 
 ## Knowledge Reference
 
