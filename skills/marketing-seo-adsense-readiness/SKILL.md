@@ -28,6 +28,22 @@ Configuration: ads.txt, privacy policy, terms of service
 - Privacy policy page
 - Cookie consent implementation
 
+**Classify the site type before proceeding.** The site type changes which content quality checks apply:
+
+- **Editorial/Blog** — Article-driven content, news, commentary
+- **Tool/Calculator** — Single or multi-function utility (converters, generators, calculators)
+- **Database/Directory** — Entity-based pages (recipes, products, companies, places, ingredients)
+- **E-commerce** — Product listings and purchases
+- **Portfolio/Business** — Services, credentials, case studies
+- **Hybrid** — Combination of the above
+
+**If the site is a Database, Directory, or Tool type**, apply this additional check during Step 3:
+- Do the entity/detail pages contain **prose blocks** (descriptions, context, editorial content) beyond structured fields (names, ratings, prices, tags)?
+  - If **yes**: The site may qualify as informational content — flag as "reposition path" (SEO structure, schema, meta descriptions) rather than defaulting to "add a blog."
+  - If **no**: Flag content enrichment as the primary readiness gap.
+
+Record the site type in the report header.
+
 ### 2. Policy Compliance Audit
 
 Run through each policy category. See [references/policies.md](references/policies.md) for complete policy details.
@@ -38,6 +54,7 @@ Run through each policy category. See [references/policies.md](references/polici
 - [ ] No low-value or "lorem ipsum" placeholder content
 - [ ] No scraped or auto-generated thin content
 - [ ] Content in a supported language
+- [ ] **Restricted/sensitive category check**: If the site is in a sensitive-but-legal niche (alcohol, gambling, pharmaceuticals, dating, firearms), note that approval is possible but ad fill may be near-zero unless the publisher opts in to restricted categories in AdSense Blocking Controls (Brand Safety > Blocking Controls > Sensitive Categories). Flag this as an explicit action item in the readiness report even if content quality is otherwise strong.
 
 #### Inventory Value Checklist
 - [ ] No ads on pages under construction
@@ -66,12 +83,31 @@ Run through each policy category. See [references/policies.md](references/polici
 
 Evaluate content against Google's quality guidelines. See [references/quality-guidelines.md](references/quality-guidelines.md).
 
-**Questions to evaluate:**
+**Core value questions:**
 1. Does the page provide substantial value vs similar sites?
 2. Is content original and not duplicated across pages?
 3. Is the site well-organized with clear navigation?
 4. Does the content match what's promised (no bait-and-switch)?
 5. Would a user return to this site?
+
+**E-E-A-T signal checklist (Expertise, Experience, Authoritativeness, Trustworthiness):**
+- [ ] Content is attributed to a named author (not "Team," "Admin," or the site name)
+- [ ] Author has a bio or linked profile with credentials relevant to the topic
+- [ ] About page establishes who runs the site and their expertise
+- [ ] Content demonstrates genuine knowledge, personal experience, or original perspective — not just plausible-sounding generalities
+
+**Blog/article content pattern check** (required if the site has a blog or news section):
+- [ ] Posts are spread across more than one 2-week window (not all published in a single burst)
+- [ ] Post lengths vary naturally by topic — not all approximately the same word count
+- [ ] At least some posts include personal voice, first-person detail, or experience-specific content
+- [ ] Bylines are not all identical generic team attributions
+
+If **2 or more** of the pattern checks are flagged, note a `WARN: Publication Pattern Risk` in the report. A burst-published, uniformly-sized, anonymously-bylined content set is a high-confidence AI-batch-content signal that will likely trigger rejection even if individual posts read acceptably.
+
+**Site-type–specific content check:**
+- For **database/directory/tool** sites: Apply the reposition vs. enrich branch evaluation defined in Step 1 — do not default to "add a blog" without first assessing whether existing entity pages already contain substantive prose.
+- For **editorial/blog** sites: Verify minimum 15-20 pages of 300-500+ word original content.
+- For **e-commerce** sites: Verify product pages include original descriptions, not manufacturer copy.
 
 ### 4. Generate Recommendations Report
 

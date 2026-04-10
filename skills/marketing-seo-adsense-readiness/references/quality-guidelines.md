@@ -148,3 +148,23 @@ If the answer to #10 is "yes," the page likely shouldn't have ads.
 - **User engagement** - Comments, shares, return visits
 - **Mobile-friendly** - Responsive design, fast loading
 - **Accessibility** - Usable by people with disabilities
+
+---
+
+## E-E-A-T & Author Authenticity Signals
+
+Google's quality systems increasingly evaluate content authenticity through authorship and publication patterns, not just word count or topic coverage. A site can have 30 well-written posts and still fail on these signals.
+
+### Author attribution signals
+- **Named authorship** — Every content page should have a byline with a real, identifiable person. Generic attributions ("Team," "Admin," "Staff," the site name) are a trust and quality penalty.
+- **Author credentials** — Linked author bio with subject-matter credentials, professional background, or relevant personal experience. An author who exists nowhere outside the site is treated as fabricated attribution.
+- **About page identity** — Site must establish who runs it and why they are credible on the topic. Vague corporate-style About pages without named individuals undermine E-E-A-T.
+
+### Publication pattern signals
+These patterns are among the most reliable AI-batch-content indicators Google's systems use:
+
+- **Burst publishing** — All or most posts published within a 7-14 day window. Legitimate editorial sites build content over time; bulk publishing is a strong AI-generation signal regardless of content quality.
+- **Uniform post length** — Every article approximately the same word count (±15%) across diverse topics. Topic complexity naturally drives length variation; uniformity indicates batch generation.
+- **No personal voice** — Content reads as plausible and correct but contains no first-person perspective, personal anecdotes, specific real-world details, or original opinion. Could have been produced by anyone with no subject-matter experience.
+
+**Combined-risk threshold:** If burst publishing, uniform length, and absent personal voice are all present simultaneously, this is a high-confidence AI-batch-content pattern. Treat it as a critical issue in the readiness report, not a warning.
