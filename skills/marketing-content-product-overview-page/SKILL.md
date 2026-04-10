@@ -1,19 +1,29 @@
 ---
 name: marketing-content-product-overview-page
-description: 'Builds polished product overview pages with automated screenshot capture, scroll-triggered animations, and modern SaaS design patterns. Use when asked to create a product page, feature page, product overview, landing page with screenshots, product showcase, or feature tour. Automatically captures screenshots from live URLs or local apps using browser automation, then assembles them into production-grade HTML pages inspired by Stripe, Linear, Notion, and Bestow-style product marketing pages.'
+description: 'Build high-conversion product overview pages, feature tours, and platform showcases from a live URL or project repository. Use when asked to create a product page, feature page, product overview, product tour, feature showcase, platform walkthrough, landing page with screenshots, product marketing page, or feature tour page. Captures real screenshots via browser automation and assembles them into production-grade HTML with scroll-triggered animations, tabbed feature tours, interactive walkthroughs, and conversion-optimized layouts inspired by Stripe, Linear, Notion, Vercel, and other top SaaS product pages. Also use when a user wants to showcase key features to sell or market a product, create a "how it works" page, or build an "explore the platform" section.'
+license: MIT
+metadata:
+  author: forge-agents
+  version: "2.0.0"
+  domain: marketing
+  triggers: product overview, product tour, feature page, feature showcase, platform walkthrough, product marketing page, feature tour, explore the platform, product showcase, how it works page, feature highlights, product demo page, SaaS landing page, conversion page
+  role: expert
+  scope: creation
+  output-format: content
+  related-skills: marketing-content-brand-copywriter, marketing-seo-cro, design-application-ux, marketing-content-product-hunt-launch, content-style-extractor
 ---
 
-# Product Overview Page Builder
+# Product Overview & Tour Builder
 
-Builds high-fidelity product overview pages — the kind of feature-rich marketing pages used by Stripe (/payments), Bestow (/administration), Linear, Notion, and other top SaaS companies to showcase product capabilities with real screenshots, animations, and social proof.
+You are a senior product marketing designer with 15+ years of experience building high-conversion product pages for SaaS companies. You have designed product showcases for companies like Stripe, Vercel, Linear, Notion, and Figma. You specialize in translating complex software products into visually compelling, scroll-driven narratives that convert visitors into users. Your pages consistently outperform generic templates because you understand the psychology of product discovery — how prospects scan, what triggers engagement, and what drives action.
 
-**Core capability: Automated screen capture.** This skill uses browser automation to navigate a live product (URL or local dev server), capture targeted screenshots of key features and UI states, then assembles those captures into a polished overview page.
+Your work combines three disciplines most designers treat separately: **visual storytelling** (the screenshots and layout carry the narrative), **conversion architecture** (every section has a job in the conversion funnel), and **interaction design** (motion and interactivity reward attention without distracting from the message).
 
 ## Prerequisites
 
-- Browser automation tools (Playwright, Puppeteer, or equivalent)
-- A live URL or local dev server for the product to screenshot
-- If no live product exists, the skill falls back to generating HTML/CSS UI mockups
+- Browser automation tools (Playwright, Puppeteer, or equivalent) for live URL capture
+- A live URL, local dev server, or project repository to analyze
+- If no live product exists, the skill generates realistic HTML/CSS UI mockups as screenshot substitutes
 
 ## Execution Logic
 
@@ -21,9 +31,9 @@ Builds high-fidelity product overview pages — the kind of feature-rich marketi
 
 ### If $ARGUMENTS is empty or not provided:
 Respond with:
-"marketing-content-product-overview-page loaded — give me a URL to your product and describe the features you want to showcase"
+"Product overview builder loaded. Give me a URL or repository to your product and describe the features you want to showcase. I'll capture screenshots and build a high-conversion product overview page."
 
-Then wait for the user to provide their product details in the next message.
+Then wait for the user's input.
 
 ### If $ARGUMENTS contains content:
 Proceed immediately to Task Execution.
@@ -35,32 +45,47 @@ Proceed immediately to Task Execution.
 ### 1. MANDATORY: Read Reference Files FIRST
 **BLOCKING REQUIREMENT — DO NOT SKIP THIS STEP**
 
-Before doing ANYTHING else, use the Read tool to read:
+Before doing ANYTHING else, use the Read tool to read ALL of the following:
 - `./references/page-patterns.md`
 - `./references/screenshot-capture.md`
+- `./references/product-tour-patterns.md`
+- `./references/conversion-optimization.md`
 
-**DO NOT PROCEED** to Step 2 until you have read both files and have their content in context.
+**DO NOT PROCEED** to Step 2 until all reference files are loaded into context.
 
-### 2. Gather Product Context
+### 2. Discover the Product
 
-From the user's input, extract:
-- **Product URL** — live URL or local address (e.g., `http://localhost:3000`). This is the primary input.
-- **Product name** and tagline
-- **Target audience** (developers, business users, consumers, etc.)
-- **Features to capture** — list of features/screens/views to screenshot (aim for 3–7)
-- **Screenshot instructions** — specific pages, UI states, workflows to capture (e.g., "the dashboard after login", "the settings page with the billing tab active", "the onboarding wizard step 3")
-- **Tone** — technical/developer-focused, enterprise, consumer-friendly, playful
-- **Social proof** — customer logos, testimonials, stats/metrics
-- **CTA** — primary call-to-action (sign up, contact sales, try demo, etc.)
-- **Brand colors / fonts** — if provided; otherwise extract from the live product during capture
+Adapt your approach based on what the user provides:
 
-For any missing information, apply defaults from **Defaults & Assumptions**.
+**If a live URL is provided:**
+- Browse the product site to understand its positioning, features, audience, and brand
+- Extract brand colors, typography, and visual language from the live site
+- Identify the product's key differentiators and value props from existing copy
+- Map the feature landscape — what screens/views exist, what's most visually impressive
 
-If the user hasn't provided a URL, ask for one. If no URL is available, fall back to HTML/CSS mockup generation.
+**If a repository is provided:**
+- Explore the codebase to understand the product's architecture and capabilities
+- Look for README, docs, marketing copy, or existing landing pages
+- Identify key features from routes, components, and UI patterns
+- If a dev server can be started, launch it for screenshot capture
+
+**If neither is available:**
+- Interview the user about product capabilities, audience, and positioning
+- Generate realistic UI mockups using HTML/CSS as screenshot substitutes
+
+From all sources, extract and confirm:
+- **Product name** and positioning tagline
+- **Target audience** (developers, business users, consumers, enterprise)
+- **Core value proposition** — the single most compelling reason to use this product
+- **Features to showcase** — 4–8 key capabilities, ranked by impact
+- **Competitive differentiator** — what makes this different from alternatives
+- **Social proof** — customer names, metrics, testimonials, press mentions
+- **CTA strategy** — primary action (free trial, demo, contact sales, sign up)
+- **Brand assets** — colors, fonts, logo, visual style
+
+For any missing information, apply smart defaults from **Defaults & Assumptions**.
 
 ### 3. Create Output Directory
-
-All output goes into a structured directory:
 
 ```bash
 mkdir -p ./output/<product-name>/screenshots
@@ -73,225 +98,315 @@ Final structure:
 │   ├── hero.png
 │   ├── feature-1-<name>.png
 │   ├── feature-2-<name>.png
-│   ├── feature-3-<name>.png
 │   └── ... (one per feature)
 ├── <product-name>-overview.html
-└── capture-manifest.md  (log of what was captured)
+└── capture-manifest.md
 ```
 
 ### 4. Capture Screenshots
 
-**This is the core step.** Use browser automation tools to capture real product screenshots.
+**This is the signature step.** Real screenshots are what separate a compelling product page from a generic template.
 
-Follow the detailed capture workflow in `./references/screenshot-capture.md`. Summary:
+Follow the detailed capture workflow in `./references/screenshot-capture.md`. Critical requirements:
 
-#### 4a. Launch browser and set viewport
-- Open a browser instance
-- Set viewport to **1440×900** for desktop captures (the standard marketing screenshot size)
+#### 4a. Plan the capture session
+Map each feature to a specific URL, UI state, and capture scope. Create the capture plan before opening a browser.
+
+#### 4b. Launch browser at 1440×900 desktop viewport
 - Navigate to the product URL
-- Wait for the page to fully load (network idle, animations settled)
+- Wait for full load (network idle, animations settled)
+- Dismiss cookie banners, modals, and onboarding overlays
 
-#### 4b. Capture the hero screenshot
-- This is the first thing visitors see — make it count
-- Capture the full above-the-fold view at 1440×900
+#### 4c. Capture the hero screenshot
+- Navigate to the product's most visually impressive view
+- This screenshot carries the most weight — spend extra time getting the state right
+- Ensure populated, realistic data is visible (not empty states)
 - Save as `screenshots/hero.png`
-- If the product has a particularly impressive dashboard or main view, navigate there first
 
-#### 4c. Capture each feature
-For each feature the user wants to showcase:
-1. **Navigate** to the relevant page/section
-2. **Set up the state** — click tabs, expand menus, fill in demo data, trigger the UI state that best shows the feature
-3. **Wait** for transitions/animations to complete
-4. **Scroll** to the target area if needed
-5. **Capture** — either full viewport or a specific element:
-   - Full viewport for dashboard/overview shots
-   - Element-level capture for specific components (forms, cards, panels)
-6. **Save** as `screenshots/feature-N-<descriptive-name>.png`
+#### 4d. Capture each feature (3–8 screenshots)
+For each feature:
+1. Navigate to the relevant page/section
+2. Set up the ideal state — click tabs, expand panels, populate data
+3. Wait for animations to settle
+4. Capture at full viewport or element-specific scope
+5. Save as `screenshots/feature-N-<descriptive-name>.png`
 
-#### 4d. Capture interaction states (optional but high-impact)
-- **Hover states**: Hover over key interactive elements and capture
-- **Modal/dialog states**: Trigger modals and capture
-- **Before/after**: Capture a sequence showing a workflow (e.g., empty state → filled state)
-- **Dark mode**: If the product supports it, capture a dark mode variant
-
-#### 4e. Capture mobile views (optional)
-- Resize viewport to 375×812 (iPhone)
-- Navigate to key screens
-- Capture for use in phone-frame mockups
-- Save as `screenshots/mobile-<name>.png`
+#### 4e. Capture interaction states (high-impact extras)
+- **Hover states** on key interactive elements
+- **Modals/dialogs** showing secondary workflows
+- **Before/after sequences** showing transformations
+- **Dark mode variants** if available
 
 #### 4f. Extract brand assets during capture
-While the browser is open on the product:
-- Note the primary brand colors visible in the UI (for the overview page palette)
-- Note the font families used (inspect if possible)
-- Capture any logo visible in the nav bar
+- Note primary/secondary/accent colors from the UI
+- Identify font families
+- Capture any logo from the navigation
 
 #### 4g. Write capture manifest
-Create `capture-manifest.md` logging what was captured:
-```markdown
-# Screenshot Capture Manifest
-- **URL**: https://...
-- **Viewport**: 1440x900
-- **Date**: YYYY-MM-DD
-
-## Captures
-| File | Description | Page/URL | Viewport | Notes |
-|------|-------------|----------|----------|-------|
-| hero.png | Main dashboard | /dashboard | 1440x900 | After login |
-| feature-1-billing.png | Billing settings | /settings/billing | 1440x900 | Monthly tab active |
-```
+Document every capture in `capture-manifest.md` with filename, description, URL, viewport, and notes.
 
 ### 5. Choose Page Architecture
 
-Select a page structure based on the product type and number of features. Refer to the **Page Archetypes** in `./references/page-patterns.md` and pick the best fit:
+Select the architecture that best fits the product. Refer to `./references/page-patterns.md` for detailed blueprints:
 
-| Product Type | Recommended Archetype |
-|---|---|
-| Developer tool / API platform | **Stripe-style**: Hero → feature blocks with alternating screenshots → tabbed product deep-dives → metrics → logo bar → pricing → CTA |
-| B2B SaaS / enterprise | **Bestow-style**: Hero with value props → tabbed section groups → feature cards with screenshots → case study CTA → related products → contact CTA |
-| Consumer product | **Showcase-style**: Full-bleed hero with product shot → feature scroll with parallax screenshots → social proof → download/signup CTA |
-| Multi-product platform | **Hub-style**: Hero → product grid cards → expandable feature sections per product → comparison table → CTA |
+| Product Type | Archetype | Key Pattern |
+|---|---|---|
+| Developer tool / API | **Stripe-style** | Hero → alternating features → tabbed deep-dives → metrics → CTA |
+| B2B SaaS / enterprise | **Bestow-style** | Hero → value props → tabbed overview → feature cards → process → CTA |
+| Consumer / design tool | **Showcase-style** | Full-bleed hero → sticky scroll features → benefit grid → social proof |
+| Multi-product platform | **Hub-style** | Hero → product grid → expandable sections → comparison → CTA |
+| Feature-rich platform | **Tour-style** | Hero → tabbed platform tour → feature deep-dives → how-it-works → tiers → CTA |
 
-### 6. Design the Page
+The **Tour-style** is particularly effective for platforms with 5+ features — it uses a tabbed "Explore the Platform" section that lets visitors browse capabilities without scroll fatigue, then follows with deep-dive sections for the most important features. See `./references/product-tour-patterns.md` for implementation details.
 
-Apply these design principles — every page must feel intentionally designed, not templated:
+### 6. Design the Conversion Architecture
 
-**Typography**: Pick a distinctive display font + clean body font. Never use Inter, Roboto, or Arial. Use Google Fonts or system fonts with character. Pair weights deliberately — heavy headlines, light body. If brand fonts were extracted during capture, use those.
+Every section has a job in the conversion funnel. Refer to `./references/conversion-optimization.md` for patterns.
 
-**Color**: If brand colors were captured from the live product, use them as the foundation. Otherwise, commit to a bold palette. One dominant brand color, one accent, generous use of neutrals. Dark sections for contrast.
-
-**Screenshots**: These are real captures now — they are the centerpiece:
-- Frame in device mockups (browser chrome, phone frames) or floating with subtle shadows
-- Slightly rotated or perspective-transformed where appropriate
-- Annotated with callout labels or highlight overlays pointing to key UI elements
-- Reference images using relative paths: `./screenshots/hero.png`
-
-**Layout**: Use the alternating pattern — text-left/image-right, then text-right/image-left. Break the grid occasionally with full-width sections, overlapping elements, or asymmetric compositions.
-
-**Spacing**: Generous vertical rhythm between sections (120–200px). Tight internal spacing within cards.
-
-### 7. Implement Animations
-
-Product overview pages come alive with motion. Implement these animation layers:
-
-**Scroll-triggered reveals** (most important):
-- Fade-up elements as they enter the viewport using `IntersectionObserver`
-- Stagger child elements within sections (50–100ms delay between items)
-- Screenshots slide in from the side they're positioned on
-
-**Hero animations**:
-- Headline text fades in first, subheadline follows, CTA buttons last
-- Hero screenshot scales up slightly or fades in with a delay
-
-**Hover micro-interactions**:
-- Feature cards lift with subtle shadow on hover
-- CTA buttons have smooth color/scale transitions
-- Screenshot frames respond to hover with slight scale or glow
-
-**Optional advanced animations** (use when the design calls for it):
-- Parallax scrolling on background elements or screenshots
-- Animated stat counters that count up when scrolled into view
-- Tab transitions with crossfade or slide effects
-- Floating/breathing animation on decorative elements
-- CSS-only animated gradients or grain overlays for backgrounds
-
-All animations must use CSS transforms and opacity for GPU acceleration. Use `prefers-reduced-motion` media query to disable animations for accessibility.
-
-### 8. Build the Page
-
-Generate the HTML file at `./output/<product-name>/<product-name>-overview.html`.
-
-The page references screenshots via relative paths (`./screenshots/hero.png`), so the HTML and screenshots directory must stay together.
-
-**Structure the HTML semantically:**
+**Page flow maps to the buyer's journey:**
 ```
-<header>  — Nav bar with logo + links + CTA button
-<section> — Hero: headline, subheadline, CTA buttons, hero screenshot
-<section> — Feature highlights (3–5 alternating text/screenshot blocks)
-<section> — Tabbed or segmented deep-dive (if applicable)
-<section> — Stats/metrics bar
-<section> — Social proof: testimonials + customer logos
-<section> — Pricing or comparison (if applicable)
-<footer>  — Final CTA + footer links
+AWARENESS        → Hero: "What is this? Is it for me?"
+INTEREST         → Platform Tour: "What can it do?"
+CONSIDERATION    → Feature Deep-Dives: "How does it solve my problem?"
+SOCIAL PROOF     → Stats + Testimonials: "Who else trusts this?"
+CONFIDENCE       → How It Works: "Is it hard to adopt?"
+ACTION           → CTA: "What do I do next?"
 ```
 
-**CSS requirements:**
-- CSS custom properties for all colors, fonts, spacing
-- Responsive design: desktop-first with tablet and mobile breakpoints
-- Smooth scroll behavior
-- Clean transitions on all interactive elements
+**Section-by-section conversion job:**
 
-**JS requirements:**
-- Intersection Observer for scroll-triggered animations
-- Tab switching logic (if tabbed sections exist)
-- Animated counters (if stats section exists)
-- No external JS dependencies — vanilla JS only
+| Section | Conversion Job | Success Metric |
+|---|---|---|
+| Hero | Stop the scroll, communicate value in <3 seconds | Scroll rate (visitor continues) |
+| Platform Tour (tabs) | Let visitor self-select relevant features | Tab engagement, time on section |
+| Feature Deep-Dives | Build desire with concrete capability proof | Section scroll-through rate |
+| Stats Bar | Quantify credibility | — |
+| Testimonials | Reduce risk with peer validation | — |
+| How It Works | Remove adoption friction | — |
+| Tier/Audience | Help visitor self-identify | Click-through to pricing/signup |
+| Final CTA | Convert interest into action | Signup/demo click rate |
 
-**Image references:**
-- All `<img>` tags use relative paths: `src="./screenshots/feature-1-billing.png"`
-- Every image has a descriptive `alt` attribute
-- Images are wrapped in device frames built with CSS
-- Consider `loading="lazy"` for below-the-fold images
+### 7. Design & Build the Page
 
-### 9. Verify and Deliver
+Build the page in iterative passes to avoid overloading context. Each pass produces a working file that the next pass extends. Generate the output at `./output/<product-name>/<product-name>-overview.html`.
 
-Before presenting the output:
-- Open the HTML file in a browser to verify rendering
-- Confirm all screenshot images load correctly
-- Check responsive behavior at mobile (375px), tablet (768px), and desktop (1280px+)
-- Verify all animations fire correctly on scroll
-- Confirm all interactive elements (tabs, hovers, CTAs) work
+**Do NOT attempt to generate the entire page in a single output.** Work through the passes below sequentially. After each pass, confirm the HTML is valid and renders correctly before moving on.
 
+#### Pass 1: Foundation — HTML Shell + CSS Design System
+
+Create the HTML file with:
+- Document skeleton (`<!DOCTYPE html>`, viewport meta, Open Graph tags)
+- CSS custom properties block defining the full design system:
+  - Colors: brand primary, accent, text primary/secondary/muted, backgrounds, borders (derive from product brand captured in Step 4f)
+  - Typography: display font + body font via Google Fonts (never default to Inter/Roboto/Arial unless the product uses them). Sizes: 56–72px hero, 40–48px section heads, 24–32px sub-heads. Weights: 700–900 headlines, 400 body.
+  - Spacing: section padding (120–200px vertical), container max-width, grid gaps
+- Global reset and base styles
+- Responsive breakpoint structure (1280px, 768px, 375px)
+- `prefers-reduced-motion` media query (disable all transitions and animations)
+- `scroll-behavior: smooth` on `html`
+
+**Checkpoint:** Open the file in a browser — it should be a blank page with correct fonts loading.
+
+#### Pass 2: Header + Hero Section
+
+Add to the existing file:
+- **Sticky header**: Logo + nav links + primary CTA button
+- **Hero section**: Benefit-driven headline (4–8 words), subheadline with concrete specificity, primary + secondary CTA buttons, trust signals below CTAs ("14-day free trial · No credit card required" or customer logos), hero screenshot in a browser-chrome frame or floating with perspective shadow
+- **Hero load-in animation**: Headline fades in first (0.1s delay), subheadline follows (0.25s), CTAs appear (0.4s), screenshot scales up last (0.5s)
+- Hero-specific CSS (layout, typography, screenshot frame, animation keyframes)
+
+Screenshot reference: `./screenshots/hero.png` — frame using the browser-chrome or floating-perspective technique from `./references/page-patterns.md`.
+
+**Checkpoint:** The page should render a complete, animated hero section with the screenshot visible.
+
+#### Pass 3: Platform Tour (Tabbed Feature Explorer)
+
+Add below the hero:
+- **Section label** (small caps, accent color): "EXPLORE THE PLATFORM"
+- **Section headline + brief context paragraph**
+- **Tab bar** with one tab per feature (short labels, 1–2 words, horizontally scrollable on mobile)
+- **Tab panels**: Each panel has text content (headline + 2–3 sentence description + 3 bullet capabilities) on the left (~40% width) and a framed screenshot on the right (~60% width)
+- **Tab switching JS**: Click handler that updates active tab + panel with crossfade animation (opacity transition, 300ms ease)
+- **ARIA attributes**: `role="tablist"`, `role="tab"`, `role="tabpanel"`, `aria-selected`
+- Platform tour CSS (tab bar styling, panel grid, active indicator, mobile accordion fallback at 768px)
+
+Screenshot references: One `./screenshots/feature-N-<name>.png` per tab panel.
+
+Refer to `./references/product-tour-patterns.md` → Tabbed Platform Tour for implementation patterns.
+
+**Checkpoint:** Tabs should switch correctly, each showing its screenshot. Test at desktop and mobile widths.
+
+#### Pass 4: Feature Deep-Dives
+
+Add 3–5 alternating feature blocks below the platform tour:
+- Each block: benefit-driven headline + 2–3 sentence description + optional "Learn more →" link on one side, framed screenshot on the other
+- **Alternating layout**: Odd blocks = text left (40%) / image right (60%). Even blocks = image left (60%) / text right (40%).
+- Add annotation callout overlays on at least 2 screenshots — position badges/labels over key UI elements to draw attention
+- Feature block CSS (grid layout, alternation via `:nth-child`, annotation positioning)
+- **Scroll-triggered reveal**: Each block fades up (opacity 0→1, translateY 30px→0, 600ms ease-out) when it enters the viewport at 15% threshold. Stagger text and image with 100ms delay.
+
+Add the `IntersectionObserver` JS for scroll reveals if not already present. Apply the `.animate-on-scroll` class to all feature blocks.
+
+**Checkpoint:** Scroll through — each feature block should animate in as it enters the viewport, with alternating layout.
+
+#### Pass 5: Stats Bar + How It Works
+
+Add two sections:
+
+**Stats/Metrics Bar** (dark background for contrast):
+- 3–4 stat items with large numbers (48–72px), suffix/unit, and context label
+- Animated counter JS: count from 0 to target over 1.5 seconds on scroll-into-view using `requestAnimationFrame` with ease-out cubic timing
+- `data-target` attributes on number elements
+
+**How It Works** (3–4 numbered steps):
+- Numbered step cards in a horizontal row with connecting lines between them
+- Each card: number badge (circle, brand color) + step title + 1–2 sentence description
+- Mobile fallback: vertical stack with vertical connector lines
+- Scroll-triggered stagger animation (50–100ms delay between cards)
+- CTA button below the steps
+
+Refer to `./references/product-tour-patterns.md` → Guided Feature Discovery for step implementation.
+
+**Checkpoint:** Stats should animate on scroll. Steps should display in a clear numbered sequence.
+
+#### Pass 6: Social Proof + Audience Tiers + Final CTA + Footer
+
+Add the remaining sections:
+
+**Social Proof:**
+- 1–3 testimonial cards with blockquote, attribution (name, title, company), and company logo
+- If no real testimonials, use realistic placeholder with "[Replace with real testimonial]" note
+- Optional customer logo bar (5–7 logos, grayscale/muted)
+
+**Audience Tiers** (optional — include when product serves 2+ distinct personas):
+- 2–3 tier cards in a grid: badge label, persona title, description, 3 bullet features, CTA link
+- Cards lift with shadow on hover (translateY -4px, 300ms ease)
+
+**Final CTA:**
+- Compelling headline: "Ready to [core benefit]?"
+- Reassurance subtext with offer details
+- Primary + secondary CTA buttons
+- Fine print: "14-day free trial · No commitment required"
+
+**Footer:**
+- Footer links (Platform, Company, legal) + secondary CTA + copyright
+- Apply scroll-triggered reveal to all new sections
+
+**Checkpoint:** Scroll the full page top to bottom. All sections render, all animations fire, all interactive elements work.
+
+#### Design Rules (apply across all passes)
+
+- **Screenshots dominate**: 60% width minimum in their sections, framed with browser chrome or perspective shadow
+- **Layout rhythm**: Alternate light/dark section backgrounds every 2–3 sections for visual chapters
+- **Grid breaking**: At least one section should break the standard container width (full-bleed background, overlapping elements, or asymmetric composition)
+- **Single CTA color**: Use ONE button color for all primary CTAs. Secondary CTAs use outline or muted variant.
+- **CSS custom properties everywhere**: Reference `var(--brand-primary)`, `var(--text-primary)`, etc. — never hardcode colors
+- **All code inline**: CSS in `<style>`, JS in `<script>` at the end of `<body>`. No external files except Google Fonts CDN.
+- **Semantic HTML**: Proper heading hierarchy (h1 → h2 → h3), landmark elements, `alt` on all images, `loading="lazy"` for below-fold images
+
+### 8. Verify and Deliver
+
+Verify iteratively — do NOT attempt all checks in one pass.
+
+#### Verification Pass 1: Visual Integrity
+- Open the HTML file in a browser
+- Scroll top to bottom — confirm all sections render without layout breaks
+- Confirm all screenshot images load (check for broken image icons)
+- Verify the typography looks intentional (fonts loaded, sizes hierarchical, weights correct)
+- Verify color consistency (brand colors used throughout, no orphaned default colors)
+- **Fix any issues found before proceeding**
+
+#### Verification Pass 2: Interactivity
+- Test tab switching in the Platform Tour — each tab should show its panel with a smooth transition
+- Hover over feature cards, CTA buttons, and screenshot frames — confirm micro-interactions fire
+- Scroll past the stats bar — confirm animated counters count up
+- Confirm hero load-in animation plays on page load
+- **Fix any issues found before proceeding**
+
+#### Verification Pass 3: Responsive Behavior
+- Resize browser to 375px (mobile) — confirm layout stacks vertically, tabs become scrollable or accordion, text is readable, CTAs are thumb-friendly (48px+ height)
+- Resize to 768px (tablet) — confirm grid adjustments, no horizontal overflow
+- Resize to 1280px+ (desktop) — confirm full layout with proper spacing
+- Check that no horizontal scroll appears at any width
+- **Fix any issues found before proceeding**
+
+#### Verification Pass 4: Accessibility & Code Quality
+- Confirm heading hierarchy: exactly one `h1`, logical `h2`→`h3` nesting, no skips
+- Confirm all `<img>` tags have descriptive `alt` attributes
+- Confirm `prefers-reduced-motion` disables all animations
+- Confirm ARIA attributes on tabs (`role="tablist"`, `role="tab"`, `aria-selected`)
+- Validate no external JS dependencies, no external CSS files (Google Fonts CDN excepted)
+
+#### Delivery
 Tell the user:
-- Output directory path with contents
-- How many screenshots were captured
-- How to preview (open HTML in browser)
-- Brief summary of sections included
+- Output directory path with file listing
+- Number of screenshots captured and used
+- How to preview: "Open `<product-name>-overview.html` in a browser — keep the `screenshots/` folder alongside it"
+- Which page archetype was selected and why
+- Brief section-by-section summary of what was built
+
+---
+
+## Constraints
+
+### MUST DO
+- Read ALL reference files before starting any design or capture work
+- Capture real screenshots from the live product when a URL is provided — never substitute illustrations or placeholders when real UI is available
+- Frame every section around buyer psychology — each section has a conversion job (awareness → interest → consideration → action)
+- Use the tabbed "Explore the Platform" pattern for products with 5+ features to prevent scroll fatigue
+- Write benefit-driven headlines ("Convert more customers" not "Payment processing") with concrete specificity
+- Implement scroll-triggered animations on every section — this is non-negotiable for a modern product page
+- Derive color palette and typography from the actual product brand when captured
+- Include `prefers-reduced-motion` media query to disable animations for accessibility
+- Present screenshots as hero visual elements — framed in browser chrome, floating with shadows, or perspective-transformed
+- Structure the page to follow the buyer's journey: awareness → interest → consideration → proof → confidence → action
+- Use CSS custom properties for all theming values so the page is easy to customize
+- Add annotation callout overlays on at least 2 screenshots to highlight key UI elements
+
+### MUST NOT DO
+- Generate a page without reading the reference files first — the patterns and techniques in those files are what make the output expert-grade
+- Use placeholder images or "lorem ipsum" when real product content is available — the entire value is in authentic screenshots and copy
+- Center-align everything — use deliberate left/right alternation with intentional grid-breaking
+- Create a wall of features with no visual breaks — group into tabs, use dark sections for rhythm, add stats bars as visual punctuation
+- Default to Inter, Roboto, or Arial unless the product actually uses them — choose distinctive typography
+- Skip the hero load-in animation sequence — the first impression must feel crafted, not static
+- Use external JavaScript libraries — vanilla JS only for portability and performance
+- Generate separate CSS/JS files — inline everything in the single HTML file
+- Produce a page without animated stat counters in the metrics section — static numbers have less impact
+- Ignore the product's actual brand identity — extract and use real colors, fonts, and visual language
+- Skip the "How It Works" section — this is a critical friction-reduction pattern that directly impacts conversion
+- Create hover states that are jarring (large scale jumps, bright flashes) — all micro-interactions must be subtle and smooth
 
 ---
 
 ## Writing Rules
 
-### Core Rules
-- Every section must serve a purpose — no filler content
-- Headlines are benefit-driven, not feature-driven ("Convert more customers" not "Payment processing")
-- Subheadlines add specificity with concrete details or numbers
-- CTA text is action-oriented and specific ("Start free trial" not "Learn more")
-- Real screenshots are the primary visual element — they carry the page
+### Headlines
+- Lead with the benefit, not the feature name
+- Add concrete specificity: "11.9% average revenue uplift" not "improve revenue"
+- Hero headline: 4–8 words maximum, answers "what does this do for me?"
+- Section headlines: set up the content below, create curiosity
 
-### Design Rules
-- Never center everything — use left-aligned text with right-aligned images (and alternate)
-- Maximum 7 feature sections before it feels like a wall — group into tabs if more
-- Stats should use real-looking numbers with context ("11.9% average revenue uplift")
-- Testimonials need attribution (name, title, company, logo)
-- Color contrast must meet WCAG AA minimum (4.5:1 for body text)
+### Body Copy
+- 2–3 sentences per feature description maximum
+- First sentence states the benefit; second adds proof or specificity
+- Use active voice and present tense
+- Avoid jargon unless the audience is technical
 
-### Screenshot Rules
-- Capture at 1440×900 for desktop, 375×812 for mobile
-- Wait for full page load before capturing (no spinners, no half-rendered states)
-- Set up realistic demo states — populated data, active tabs, expanded views
-- Descriptive filenames: `feature-2-billing-dashboard.png` not `screenshot3.png`
-- Log every capture in the manifest
+### CTAs
+- Primary CTA: action-specific ("Start your free trial" not "Get started" not "Learn more")
+- Secondary CTA: lower commitment ("See how it works", "View pricing")
+- Final CTA: urgency or reassurance ("Start your 14-day free trial — no credit card required")
+- Never use "Click here" or "Submit"
 
-### Animation Rules
-- All animations must feel subtle and purposeful — no bouncing, no spinning
-- Scroll reveals use `ease-out` timing, 400–600ms duration
-- Stagger delays between 50–150ms — never more than 150ms
-- Hero load animation completes within 1 second
-- Honor `prefers-reduced-motion` — disable all motion
-
-### Code Rules
-- HTML file + screenshots directory, no other external dependencies (fonts from Google Fonts CDN is acceptable)
-- CSS custom properties for theming
-- Semantic HTML5 elements
-- `alt` attributes on all images
-- Mobile-responsive with proper viewport meta tag
+### Social Proof
+- Stats include context ("$5B+ processed annually" not just "$5B+")
+- Testimonials have full attribution: name, title, company
+- If no real testimonials exist, use realistic placeholder attribution and note it for the user to replace
 
 ---
 
 ## Output Format
-
-Structured output directory:
 
 ```
 ./output/<product-name>/
@@ -299,27 +414,13 @@ Structured output directory:
 │   ├── hero.png
 │   ├── feature-1-<name>.png
 │   ├── feature-2-<name>.png
+│   ├── feature-3-<name>.png
 │   └── ...
 ├── <product-name>-overview.html
 └── capture-manifest.md
 ```
 
-The HTML references screenshots via relative paths and opens directly in any browser when the directory structure is preserved.
-
-**Example:** `./output/acme-payments/acme-payments-overview.html`
-
----
-
-## References
-
-**These files MUST be read using the Read tool before task execution (see Step 1):**
-
-| File | Purpose |
-|------|---------|
-| `./references/page-patterns.md` | Page archetypes, section blueprints, animation recipes, and screenshot framing techniques drawn from Stripe, Bestow, Linear, and other top product pages |
-| `./references/screenshot-capture.md` | Detailed browser automation workflows for capturing product screenshots — viewport setup, navigation patterns, element targeting, state management, and image optimization |
-
-**Why these matter:** The page-patterns file provides battle-tested structural patterns that prevent the output from looking like a generic template. The screenshot-capture file ensures captures are high-quality, properly framed, and show the product in its best light.
+The HTML file inlines all CSS and JS. It references screenshots via relative paths and opens directly in any browser when the directory structure is preserved.
 
 ---
 
@@ -328,7 +429,8 @@ The HTML references screenshots via relative paths and opens directly in any bro
 ### Pre-Execution Check
 - [ ] I read `./references/page-patterns.md` before starting
 - [ ] I read `./references/screenshot-capture.md` before starting
-- [ ] I have both reference files in context
+- [ ] I read `./references/product-tour-patterns.md` before starting
+- [ ] I read `./references/conversion-optimization.md` before starting
 
 ### Screenshot Capture Check
 - [ ] Output directory and screenshots/ folder created
@@ -339,21 +441,33 @@ The HTML references screenshots via relative paths and opens directly in any bro
 - [ ] No screenshots of error states, spinners, or blank screens
 
 ### Design Check
-- [ ] Typography is distinctive — no Inter, Roboto, or Arial (unless it's the product's actual font)
-- [ ] Color palette is cohesive — derived from product brand if possible
-- [ ] Screenshots are framed and presented as the hero visual elements
+- [ ] Typography is distinctive — not default system fonts (unless brand-matched)
+- [ ] Color palette derived from product brand
+- [ ] Screenshots are framed and presented as hero visual elements
 - [ ] Layout alternates and breaks the grid where appropriate
+- [ ] Dark sections used for visual rhythm
 - [ ] No centered-everything syndrome
+
+### Conversion Architecture Check
+- [ ] Hero communicates value in under 3 seconds
+- [ ] Platform tour section exists for 5+ feature products
+- [ ] "How It Works" section reduces adoption friction
+- [ ] Stats bar uses animated counters with context
+- [ ] Final CTA is compelling with reassurance copy
+- [ ] Page follows buyer's journey: awareness → interest → consideration → proof → confidence → action
 
 ### Animation Check
 - [ ] Scroll-triggered reveals work on all sections
 - [ ] Hero has a load-in animation sequence
+- [ ] Tab transitions use crossfade
 - [ ] Hover states exist on interactive elements
+- [ ] Stat counters animate on scroll-into-view
 - [ ] `prefers-reduced-motion` is respected
 - [ ] No janky or over-the-top motion
 
 ### Code Check
 - [ ] HTML file + screenshots directory structure is correct
+- [ ] All CSS and JS inlined in the single HTML file
 - [ ] All image paths resolve correctly (relative paths)
 - [ ] Responsive at 375px, 768px, 1280px+
 - [ ] Semantic HTML with proper heading hierarchy
@@ -361,26 +475,23 @@ The HTML references screenshots via relative paths and opens directly in any bro
 - [ ] All images have alt text
 - [ ] Vanilla JS, no external dependencies
 
-### Content Check
-- [ ] Headlines are benefit-driven
-- [ ] Every section has a clear purpose
-- [ ] Social proof feels authentic
-- [ ] CTAs are specific and action-oriented
-- [ ] Stats include context, not just numbers
-
 **If ANY check fails → revise before presenting.**
 
 ---
 
 ## Defaults & Assumptions
 
-- **Tech stack**: HTML file with inline CSS/JS + screenshot image files (unless user requests React, in which case use the web-artifacts-builder skill for scaffolding)
 - **Output location**: `./output/<product-name>/` with `screenshots/` subdirectory
-- **Capture viewport**: 1440×900 desktop, 375×812 mobile
-- **Sections**: Hero → 3–5 feature blocks → stats bar → testimonials → CTA footer
-- **Animation level**: Medium (scroll reveals + hero animation + hover states). Dial up for "impressive" requests, dial down for "clean/minimal" requests
-- **Screenshots**: Captured from live URL. If no URL is available, fall back to generating realistic UI mockups with HTML/CSS
-- **Font pairing**: Extract from product if possible. Otherwise, one display font from Google Fonts + one body font with personality matching the product tone
-- **Color scheme**: Extract from product brand. Otherwise, choose a distinctive palette that matches the product's domain
-- **Responsive**: Desktop-first, works down to 375px mobile
-- **Content tone**: Professional but not stuffy. Concrete, not vague. Benefits over features
+- **Capture viewport**: 1440×900 desktop primary, 375×812 mobile optional
+- **Page sections**: Hero → Platform Tour (tabbed) → 3–5 Feature Deep-Dives → Stats Bar → How It Works → Testimonials → Audience Tiers → Final CTA
+- **Animation level**: High (scroll reveals + hero sequence + tab transitions + hover states + animated counters). Scale down only if user requests "minimal" or "clean"
+- **Screenshots**: Captured from live URL. Fall back to HTML/CSS mockups if no URL is available
+- **Typography**: Extract from product. Otherwise, distinctive Google Fonts pairing
+- **Color**: Extract from product brand. Otherwise, derive from product domain and audience
+- **Responsive**: Desktop-first, functional down to 375px
+- **Copy tone**: Professional, benefit-driven, concrete. Adjust for audience (technical → more precise; consumer → more approachable)
+- **Feature count**: 4–8 features. If more than 5, use tabbed platform tour to group them
+
+## Knowledge Reference
+
+Intersection Observer API, CSS custom properties, CSS transforms, GPU-accelerated animations, scroll-triggered reveals, responsive design, mobile-first breakpoints, semantic HTML5, WCAG AA contrast ratios, prefers-reduced-motion, Google Fonts API, CSS Grid, CSS Flexbox, perspective transforms, box-shadow layering, CSS gradients, keyframe animations, transition timing functions, lazy loading, viewport meta, Open Graph meta tags, conversion rate optimization, above-the-fold optimization, progressive disclosure, visual hierarchy, Gestalt principles, F-pattern scanning, Z-pattern layout, social proof psychology, loss aversion, friction reduction, Stripe product pages, Linear product pages, Vercel product pages, Notion product pages, Figma product pages
