@@ -5,6 +5,10 @@ prompts-sandbox/
 # Modules
 node_modules/
 __pycache__/
+.venv/
+
+# Environment
+.env
 
 # Logs
 *.log

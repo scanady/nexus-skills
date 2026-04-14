@@ -1,12 +1,12 @@
 ---
 name: marketing-content-product-overview-page
-description: 'Build high-conversion product overview pages, feature tours, and platform showcases from a live URL or project repository. Use when asked to create a product page, feature page, product overview, product tour, feature showcase, platform walkthrough, landing page with screenshots, product marketing page, or feature tour page. Captures real screenshots via browser automation and assembles them into production-grade HTML with scroll-triggered animations, tabbed feature tours, interactive walkthroughs, and conversion-optimized layouts inspired by Stripe, Linear, Notion, Vercel, and other top SaaS product pages. Also use when a user wants to showcase key features to sell or market a product, create a "how it works" page, or build an "explore the platform" section.'
+description: 'Build high-conversion product overview pages, feature tours, and platform showcases from a live URL or project repository. Use when asked to create a product page, feature page, product overview, product tour, feature showcase, platform walkthrough, landing page with screenshots, product marketing page, or feature tour page. Captures real screenshots via Playwright browser automation and generates supplementary visuals (architecture diagrams, process flows, comparison graphics) via Google AI Studio Gemini image generation. Assembles everything into production-grade HTML with scroll-triggered animations, tabbed feature tours, interactive walkthroughs, and conversion-optimized layouts inspired by Stripe, Linear, Notion, Vercel, and other top SaaS product pages. Also use when a user wants to showcase key features to sell or market a product, create a "how it works" page, or build an "explore the platform" section.'
 license: MIT
 metadata:
   author: forge-agents
-  version: "2.0.0"
+  version: "3.0.0"
   domain: marketing
-  triggers: product overview, product tour, feature page, feature showcase, platform walkthrough, product marketing page, feature tour, explore the platform, product showcase, how it works page, feature highlights, product demo page, SaaS landing page, conversion page
+  triggers: product overview, product tour, feature page, feature showcase, platform walkthrough, product marketing page, feature tour, explore the platform, product showcase, how it works page, feature highlights, product demo page, SaaS landing page, conversion page, architecture diagram, process flow, product screenshots
   role: expert
   scope: creation
   output-format: content
@@ -21,9 +21,12 @@ Your work combines three disciplines most designers treat separately: **visual s
 
 ## Prerequisites
 
-- Browser automation tools (Playwright, Puppeteer, or equivalent) for live URL capture
+- **Playwright** browser automation for live URL screenshot capture (preferred over Puppeteer for reliability and API quality)
 - A live URL, local dev server, or project repository to analyze
+- **Python 3** with `google-genai` and `python-dotenv` packages for image generation (`pip install -r ./scripts/requirements.txt`)
+- **Google AI Studio API key** — copy `.env.example` to `.env` and set `GOOGLE_AI_STUDIO_API_KEY` for generating architecture diagrams, process flows, and other supplementary visuals via the bundled `scripts/generate.py`
 - If no live product exists, the skill generates realistic HTML/CSS UI mockups as screenshot substitutes
+- If no API key is available, skip generated images and rely on screenshots + HTML/CSS mockups only
 
 ## Execution Logic
 
@@ -48,6 +51,7 @@ Proceed immediately to Task Execution.
 Before doing ANYTHING else, use the Read tool to read ALL of the following:
 - `./references/page-patterns.md`
 - `./references/screenshot-capture.md`
+- `./references/image-generation.md`
 - `./references/product-tour-patterns.md`
 - `./references/conversion-optimization.md`
 
@@ -89,30 +93,37 @@ For any missing information, apply smart defaults from **Defaults & Assumptions*
 
 ```bash
 mkdir -p ./output/<product-name>/screenshots
+mkdir -p ./output/<product-name>/generated
 ```
 
 Final structure:
 ```
 ./output/<product-name>/
-├── screenshots/
+├── screenshots/              # Playwright-captured product UI
 │   ├── hero.png
 │   ├── feature-1-<name>.png
 │   ├── feature-2-<name>.png
 │   └── ... (one per feature)
+├── generated/                # Gemini-generated diagrams and visuals
+│   ├── generated-architecture-overview.png
+│   ├── generated-process-<name>.png
+│   └── ... (2-4 supplementary visuals)
 ├── <product-name>-overview.html
 └── capture-manifest.md
 ```
 
-### 4. Capture Screenshots
+### 4. Capture Screenshots with Playwright
 
 **This is the signature step.** Real screenshots are what separate a compelling product page from a generic template.
 
-Follow the detailed capture workflow in `./references/screenshot-capture.md`. Critical requirements:
+Follow the detailed capture workflow in `./references/screenshot-capture.md`. Use **Playwright** as the browser automation tool. Critical requirements:
 
 #### 4a. Plan the capture session
 Map each feature to a specific URL, UI state, and capture scope. Create the capture plan before opening a browser.
 
-#### 4b. Launch browser at 1440×900 desktop viewport
+#### 4b. Launch Playwright browser at 1440×900 desktop viewport
+
+Use Playwright MCP tools (`browser_navigate`, `browser_snapshot`, `browser_click`) or Playwright script automation:
 - Navigate to the product URL
 - Wait for full load (network idle, animations settled)
 - Dismiss cookie banners, modals, and onboarding overlays
@@ -144,6 +155,65 @@ For each feature:
 
 #### 4g. Write capture manifest
 Document every capture in `capture-manifest.md` with filename, description, URL, viewport, and notes.
+
+### 4.5. Generate Supplementary Visuals with Google AI Studio
+
+After capturing screenshots, identify visual gaps — concepts that can't be shown with a screenshot. Follow the detailed workflow in `./references/image-generation.md`.
+
+#### 4.5a. Identify what needs generation
+
+Review the page architecture and determine which sections need non-screenshot visuals:
+
+| Section | Candidate Visual | Generate? |
+|---|---|---|
+| Architecture / "Under the Hood" | System architecture diagram | Yes — no UI screen shows this |
+| How It Works | Process flow diagram | Yes — abstract workflow |
+| Integrations | Ecosystem/integration map | Yes — shows connections |
+| Hero background | Abstract branded background | Optional — only if the product lacks a strong hero screenshot |
+| Before/After | Comparison graphic | Optional — for transformation stories |
+
+**Limit generated images to 2–4 per page.** The majority of visuals must be real Playwright screenshots.
+
+#### 4.5b. Verify API key availability
+
+Check that `GOOGLE_AI_STUDIO_API_KEY` is available — either in `.env` file or as an environment variable. If not available:
+- Ask the user to copy `.env.example` to `.env` and add their key
+- If the user declines, skip image generation and note which sections will use text-only layouts or HTML/CSS diagram alternatives
+
+#### 4.5c. Generate each image
+
+For each identified visual, use the bundled `scripts/generate.py` script:
+
+1. **Construct the prompt** using templates from `./references/image-generation.md` — always use brand colors extracted during screenshot capture (Step 4f)
+2. **Run the script**:
+   ```bash
+   python3 ./scripts/generate.py \
+     --prompt "Generate an image: [constructed prompt]" \
+     --output ./output/<product-name>/generated/generated-<type>-<descriptive-name>.png
+   ```
+   Or for long prompts, save to a file first and use `--prompt-file`.
+3. **The script handles** model selection (defaults to `gemini-3-pro-image-preview` with automatic fallback), retries on transient errors, and auto-corrects the output file extension based on actual format
+4. **Verify** the output file was saved successfully (check terminal output for path and size)
+
+**Prompt construction rules:**
+- Always specify aspect ratio ("wide 16:9" for diagrams, not square)
+- Use brand colors from Step 4f — never use default colors when brand colors are known
+- Include "professional quality, production-ready" for output quality
+- Keep labels short (2–3 words) — generated images with dense text become unreadable
+- Prefix prompt with "Generate an image:" to ensure image output mode
+
+#### 4.5d. Document generated images in the capture manifest
+
+Append generated images to `capture-manifest.md` with a separate "Generated Images" section:
+
+```markdown
+## Generated Images
+
+| File | Type | Prompt Summary | Brand Colors Used | Notes |
+|------|------|----------------|-------------------|-------|
+| generated-architecture-overview.png | Architecture diagram | System architecture with API, auth, data layers | #1E3A5F, #00D4FF | Isometric style |
+| generated-process-onboarding.png | Process flow | 4-step user onboarding flow | #334155, #059669 | Left-to-right flow |
+```
 
 ### 5. Choose Page Architecture
 
@@ -249,9 +319,9 @@ Add the `IntersectionObserver` JS for scroll reveals if not already present. App
 
 **Checkpoint:** Scroll through — each feature block should animate in as it enters the viewport, with alternating layout.
 
-#### Pass 5: Stats Bar + How It Works
+#### Pass 5: Stats Bar + How It Works + Generated Visuals
 
-Add two sections:
+Add two sections, incorporating generated images where available:
 
 **Stats/Metrics Bar** (dark background for contrast):
 - 3–4 stat items with large numbers (48–72px), suffix/unit, and context label
@@ -261,13 +331,30 @@ Add two sections:
 **How It Works** (3–4 numbered steps):
 - Numbered step cards in a horizontal row with connecting lines between them
 - Each card: number badge (circle, brand color) + step title + 1–2 sentence description
+- If a **process flow diagram** was generated in Step 4.5, display it as a full-width visual above or alongside the step cards
+- Image reference: `./generated/generated-process-<name>.png`
 - Mobile fallback: vertical stack with vertical connector lines
 - Scroll-triggered stagger animation (50–100ms delay between cards)
 - CTA button below the steps
 
-Refer to `./references/product-tour-patterns.md` → Guided Feature Discovery for step implementation.
+**Architecture / Under the Hood** (optional — include for technical products):
+- If an **architecture diagram** was generated in Step 4.5, add a section showcasing the system design
+- Section headline: "Built for [Scale / Performance / Reliability]" or "Under the Hood"
+- Full-width generated diagram with descriptive caption
+- Image reference: `./generated/generated-architecture-overview.png`
+- 2–3 bullet points highlighting key architectural decisions below the diagram
 
-**Checkpoint:** Stats should animate on scroll. Steps should display in a clear numbered sequence.
+**Integrations** (optional — include when product has third-party integrations):
+- If an **integration ecosystem map** was generated in Step 4.5, display it here
+- Section headline: "Connects with Your Stack" or "Integrations"
+- Full-width generated ecosystem map
+- Image reference: `./generated/generated-integration-ecosystem.png`
+- Optional grid of integration logos below the map
+
+Refer to `./references/product-tour-patterns.md` → Guided Feature Discovery for step implementation.
+Refer to `./references/image-generation.md` for generated image integration patterns.
+
+**Checkpoint:** Stats should animate on scroll. Steps should display in a clear numbered sequence. Generated diagrams should render at full width with proper framing.
 
 #### Pass 6: Social Proof + Audience Tiers + Final CTA + Footer
 
@@ -340,8 +427,8 @@ Verify iteratively — do NOT attempt all checks in one pass.
 #### Delivery
 Tell the user:
 - Output directory path with file listing
-- Number of screenshots captured and used
-- How to preview: "Open `<product-name>-overview.html` in a browser — keep the `screenshots/` folder alongside it"
+- Number of screenshots captured (via Playwright) and generated images (via Gemini) used
+- How to preview: "Open `<product-name>-overview.html` in a browser — keep the `screenshots/` and `generated/` folders alongside it"
 - Which page archetype was selected and why
 - Brief section-by-section summary of what was built
 
@@ -350,8 +437,10 @@ Tell the user:
 ## Constraints
 
 ### MUST DO
-- Read ALL reference files before starting any design or capture work
-- Capture real screenshots from the live product when a URL is provided — never substitute illustrations or placeholders when real UI is available
+- Read ALL reference files before starting any design or capture work (including `./references/image-generation.md`)
+- Capture real screenshots from the live product using **Playwright** when a URL is provided — never substitute illustrations or placeholders when real UI is available
+- Use **Google AI Studio Gemini** via the bundled `scripts/generate.py` for generating supplementary visuals (architecture diagrams, process flows, integration maps) — never for faking product UI screenshots
+- Verify `GOOGLE_AI_STUDIO_API_KEY` is configured in `.env` or environment before attempting image generation — prompt the user if not configured
 - Frame every section around buyer psychology — each section has a conversion job (awareness → interest → consideration → action)
 - Use the tabbed "Explore the Platform" pattern for products with 5+ features to prevent scroll fatigue
 - Write benefit-driven headlines ("Convert more customers" not "Payment processing") with concrete specificity
@@ -366,6 +455,10 @@ Tell the user:
 ### MUST NOT DO
 - Generate a page without reading the reference files first — the patterns and techniques in those files are what make the output expert-grade
 - Use placeholder images or "lorem ipsum" when real product content is available — the entire value is in authentic screenshots and copy
+- Generate fake product UI screenshots with AI image generation — always use Playwright for real UI captures
+- Use AI-generated images as the primary visual on any section where a real screenshot is available
+- Hardcode API keys in prompts, scripts, or skill files — always reference environment variables
+- Generate more than 4 AI-generated images per page — screenshots should dominate
 - Center-align everything — use deliberate left/right alternation with intentional grid-breaking
 - Create a wall of features with no visual breaks — group into tabs, use dark sections for rhythm, add stats bars as visual punctuation
 - Default to Inter, Roboto, or Arial unless the product actually uses them — choose distinctive typography
@@ -410,11 +503,16 @@ Tell the user:
 
 ```
 ./output/<product-name>/
-├── screenshots/
+├── screenshots/                  # Playwright-captured product UI
 │   ├── hero.png
 │   ├── feature-1-<name>.png
 │   ├── feature-2-<name>.png
 │   ├── feature-3-<name>.png
+│   └── ...
+├── generated/                    # Gemini-generated diagrams and visuals
+│   ├── generated-architecture-overview.png
+│   ├── generated-process-<name>.png
+│   ├── generated-integration-ecosystem.png
 │   └── ...
 ├── <product-name>-overview.html
 └── capture-manifest.md
@@ -429,16 +527,27 @@ The HTML file inlines all CSS and JS. It references screenshots via relative pat
 ### Pre-Execution Check
 - [ ] I read `./references/page-patterns.md` before starting
 - [ ] I read `./references/screenshot-capture.md` before starting
+- [ ] I read `./references/image-generation.md` before starting
 - [ ] I read `./references/product-tour-patterns.md` before starting
 - [ ] I read `./references/conversion-optimization.md` before starting
 
 ### Screenshot Capture Check
+- [ ] Playwright used for all product UI captures
 - [ ] Output directory and screenshots/ folder created
 - [ ] Hero screenshot captured at 1440×900
 - [ ] Each feature has a dedicated screenshot
 - [ ] Screenshots show realistic, populated UI states (not empty/loading)
 - [ ] capture-manifest.md documents all captures
 - [ ] No screenshots of error states, spinners, or blank screens
+
+### Generated Image Check
+- [ ] `GOOGLE_AI_STUDIO_API_KEY` verified before generation (or generation skipped gracefully)
+- [ ] Generated images limited to 2–4 per page
+- [ ] No generated fake UI screenshots — all UI visuals are Playwright captures
+- [ ] Brand colors from Step 4f used in all generated image prompts
+- [ ] Generated images saved to `./generated/` directory with `generated-` prefix
+- [ ] Generated images documented in capture-manifest.md
+- [ ] Aspect ratio is 16:9 for diagrams (not square)
 
 ### Design Check
 - [ ] Typography is distinctive — not default system fonts (unless brand-matched)
@@ -485,7 +594,8 @@ The HTML file inlines all CSS and JS. It references screenshots via relative pat
 - **Capture viewport**: 1440×900 desktop primary, 375×812 mobile optional
 - **Page sections**: Hero → Platform Tour (tabbed) → 3–5 Feature Deep-Dives → Stats Bar → How It Works → Testimonials → Audience Tiers → Final CTA
 - **Animation level**: High (scroll reveals + hero sequence + tab transitions + hover states + animated counters). Scale down only if user requests "minimal" or "clean"
-- **Screenshots**: Captured from live URL. Fall back to HTML/CSS mockups if no URL is available
+- **Screenshots**: Captured from live URL using Playwright. Fall back to HTML/CSS mockups if no URL is available
+- **Generated images**: 2–4 supplementary visuals via Google AI Studio Gemini when API key is available. Skip gracefully if unavailable
 - **Typography**: Extract from product. Otherwise, distinctive Google Fonts pairing
 - **Color**: Extract from product brand. Otherwise, derive from product domain and audience
 - **Responsive**: Desktop-first, functional down to 375px
@@ -494,4 +604,4 @@ The HTML file inlines all CSS and JS. It references screenshots via relative pat
 
 ## Knowledge Reference
 
-Intersection Observer API, CSS custom properties, CSS transforms, GPU-accelerated animations, scroll-triggered reveals, responsive design, mobile-first breakpoints, semantic HTML5, WCAG AA contrast ratios, prefers-reduced-motion, Google Fonts API, CSS Grid, CSS Flexbox, perspective transforms, box-shadow layering, CSS gradients, keyframe animations, transition timing functions, lazy loading, viewport meta, Open Graph meta tags, conversion rate optimization, above-the-fold optimization, progressive disclosure, visual hierarchy, Gestalt principles, F-pattern scanning, Z-pattern layout, social proof psychology, loss aversion, friction reduction, Stripe product pages, Linear product pages, Vercel product pages, Notion product pages, Figma product pages
+Intersection Observer API, CSS custom properties, CSS transforms, GPU-accelerated animations, scroll-triggered reveals, responsive design, mobile-first breakpoints, semantic HTML5, WCAG AA contrast ratios, prefers-reduced-motion, Google Fonts API, CSS Grid, CSS Flexbox, perspective transforms, box-shadow layering, CSS gradients, keyframe animations, transition timing functions, lazy loading, viewport meta, Open Graph meta tags, conversion rate optimization, above-the-fold optimization, progressive disclosure, visual hierarchy, Gestalt principles, F-pattern scanning, Z-pattern layout, social proof psychology, loss aversion, friction reduction, Stripe product pages, Linear product pages, Vercel product pages, Notion product pages, Figma product pages, Playwright browser automation, Playwright MCP tools, screenshot capture, Google AI Studio, Gemini Nano Banana, image generation API, architecture diagrams, process flow diagrams, integration ecosystem maps
