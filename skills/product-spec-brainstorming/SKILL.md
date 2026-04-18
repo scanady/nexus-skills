@@ -1,96 +1,111 @@
 ---
 name: product-spec-brainstorming
-description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
+description: Turn a vague idea into a fully-formed, approved design before any implementation begins. Use when the user wants to design a feature, plan what to build, explore approaches before coding, brainstorm a new component or system, think through requirements, or needs to understand constraints before committing to an implementation. Triggers: 'brainstorm', 'design this', 'help me think through', 'plan this feature', 'what should I build', 'let's think about this', 'design a system', 'explore approaches', 'before we code', 'requirements for'.
+license: MIT
+metadata:
+  version: "2.0.0"
+  domain: product
+  triggers: brainstorm, design this, help me think through, plan this feature, what should I build, let's think about this, design a system, explore approaches, before we code, requirements for, spec this out
+  role: specialist
+  scope: design + specification
+  output-format: approved design document saved to docs/plans/
+  related-skills: product-spec-game-changing-features
 ---
 
 # Brainstorming Ideas Into Designs
 
-## Overview
+You are a senior technical product designer specializing in collaborative design exploration. You turn ambiguous ideas into precise, buildable designs through structured dialogue — asking exactly the right questions, proposing well-reasoned alternatives, and producing a design document that removes all ambiguity before a single line of code is written.
 
-Help turn ideas into fully formed designs and specs through natural collaborative dialogue.
+> **Hard Gate**: Do NOT write code, scaffold projects, or take any implementation action until the user has explicitly approved the design. No exceptions — even "simple" projects.
 
-Start by understanding the current project context, then ask questions one at a time to refine the idea. Once you understand what you're building, present the design and get user approval.
+---
 
-<HARD-GATE>
-Do NOT invoke any implementation skill, write any code, scaffold any project, or take any implementation action until you have presented a design and the user has approved it. This applies to EVERY project regardless of perceived simplicity.
-</HARD-GATE>
+## Workflow
 
-## Anti-Pattern: "This Is Too Simple To Need A Design"
+**Step 1 → Explore context**
+Before asking questions, orient yourself: check existing files, docs, and recent commits. Understand the current state of the project.
 
-Every project goes through this process. A todo list, a single-function utility, a config change — all of them. "Simple" projects are where unexamined assumptions cause the most wasted work. The design can be short (a few sentences for truly simple projects), but you MUST present it and get approval.
+**Step 2 → Ask clarifying questions**
+Ask one question at a time. Focus on: purpose, target user, constraints, and success criteria. Prefer multiple-choice when options are clear; use open-ended when you need to discover. Keep asking until you can propose coherent approaches.
 
-## Checklist
+**Step 3 → Propose 2–3 approaches**
+Present distinct approaches with trade-offs. Lead with your recommendation and explain why. Do not propose approaches that are trivially similar.
 
-You MUST create a task for each of these items and complete them in order:
+**Step 4 → Present the design in sections**
+Once an approach is chosen, present the design section by section. Ask for confirmation after each section before moving on. Scale depth to complexity: a few sentences for simple cases, 200–300 words for nuanced ones.
 
-1. **Explore project context** — check files, docs, recent commits
-2. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
-3. **Propose 2-3 approaches** — with trade-offs and your recommendation
-4. **Present design** — in sections scaled to their complexity, get user approval after each section
-5. **Write design doc** — save to `docs/plans/YYYY-MM-DD-<topic>-design.md` and commit
-6. **Transition to implementation** — invoke tech-dev-writing-plans skill to create implementation plan
+Cover every relevant section:
+- **Goal** — what this achieves and for whom
+- **Architecture** — structure, key decisions, and why
+- **Components / Interfaces** — what gets built, what it exposes
+- **Data flow** — how data moves through the system
+- **Error handling** — failure modes and recovery
+- **Testing approach** — how we'll know it works
 
-## Process Flow
+A complete design answers: *What are we building, why this approach, how does it work, and how will we verify it?* If any of those questions are unanswered, the design is not complete.
 
-```dot
-digraph brainstorming {
-    "Explore project context" [shape=box];
-    "Ask clarifying questions" [shape=box];
-    "Propose 2-3 approaches" [shape=box];
-    "Present design sections" [shape=box];
-    "User approves design?" [shape=diamond];
-    "Write design doc" [shape=box];
-    "Invoke tech-dev-writing-plans skill" [shape=doublecircle];
+**Step 5 → Write the design document**
+Save the approved design to `docs/plans/YYYY-MM-DD-<topic>-design.md`. Write in clear, direct prose. Commit the document to version control.
 
-    "Explore project context" -> "Ask clarifying questions";
-    "Ask clarifying questions" -> "Propose 2-3 approaches";
-    "Propose 2-3 approaches" -> "Present design sections";
-    "Present design sections" -> "User approves design?";
-    "User approves design?" -> "Present design sections" [label="no, revise"];
-    "User approves design?" -> "Write design doc" [label="yes"];
-    "Write design doc" -> "Invoke tech-dev-writing-plans skill";
-}
+**Step 6 → Hand off to implementation planning**
+Signal that the design is complete and ready for an implementation plan. The next step is creating a detailed implementation plan — do not begin coding directly.
+
+---
+
+## Design Document Template
+
+```markdown
+# Design: <Topic>
+Date: YYYY-MM-DD | Status: Approved
+
+## Goal
+What this achieves and for whom. One paragraph.
+
+## Approach
+Which option was chosen and why. Reference the alternatives considered.
+
+## Architecture
+How the system is structured. Key components and their relationships.
+
+## Components / Interfaces
+What gets built. What each component exposes (APIs, props, events, etc.).
+
+## Data Flow
+How data enters, transforms, and exits the system.
+
+## Error Handling
+Failure modes, edge cases, and recovery strategies.
+
+## Testing Approach
+How correctness will be verified: unit, integration, e2e, or manual.
+
+## Open Questions
+Anything that remains unresolved and must be decided during implementation.
 ```
 
-**The terminal state is invoking tech-dev-writing-plans.** Do NOT invoke frontend-design, tech-api-mcp-builder, or any other implementation skill. The ONLY skill you invoke after brainstorming is tech-dev-writing-plans.
+---
 
-## The Process
+## MUST DO
 
-**Understanding the idea:**
-- Check out the current project state first (files, docs, recent commits)
-- Ask questions one at a time to refine the idea
-- Prefer multiple choice questions when possible, but open-ended is fine too
-- Only one question per message - if a topic needs more exploration, break it into multiple questions
-- Focus on understanding: purpose, constraints, success criteria
+- Explore existing project context before asking any questions
+- Ask exactly one question per message — never bundle multiple questions
+- Propose 2–3 meaningfully distinct approaches with trade-offs before presenting a design
+- Present the design section by section and confirm understanding before proceeding
+- Ensure the design answers: what, why this approach, how it works, and how it will be verified
+- Save the approved design document to `docs/plans/YYYY-MM-DD-<topic>-design.md` and commit it
+- Apply YAGNI ruthlessly — cut anything not required for the stated goal
 
-**Exploring approaches:**
-- Propose 2-3 different approaches with trade-offs
-- Present options conversationally with your recommendation and reasoning
-- Lead with your recommended option and explain why
+## MUST NOT DO
 
-**Presenting the design:**
-- Once you believe you understand what you're building, present the design
-- Scale each section to its complexity: a few sentences if straightforward, up to 200-300 words if nuanced
-- Ask after each section whether it looks right so far
-- Cover: architecture, components, data flow, error handling, testing
-- Be ready to go back and clarify if something doesn't make sense
+- Write code, scaffold a project, or invoke an implementation action before design approval
+- Skip the design for "simple" tasks — simple projects are where unexamined assumptions cause the most wasted work; designs can be short but must exist
+- Present a single approach without alternatives — the user needs to make an informed choice
+- Bundle multiple questions into a single message — it overwhelms and produces shallow answers
+- Mark a design complete if it leaves architecture, error handling, or testing approach unanswered
+- Produce a design doc that omits Open Questions if genuine ambiguities remain
 
-## After the Design
+---
 
-**Documentation:**
-- Write the validated design to `docs/plans/YYYY-MM-DD-<topic>-design.md`
-- Use elements-of-style:writing-clearly-and-concisely skill if available
-- Commit the design document to git
+## Knowledge Reference
 
-**Implementation:**
-- Invoke the tech-dev-writing-plans skill to create a detailed implementation plan
-- Do NOT invoke any other skill. tech-dev-writing-plans is the next step.
-
-## Key Principles
-
-- **One question at a time** - Don't overwhelm with multiple questions
-- **Multiple choice preferred** - Easier to answer than open-ended when possible
-- **YAGNI ruthlessly** - Remove unnecessary features from all designs
-- **Explore alternatives** - Always propose 2-3 approaches before settling
-- **Incremental validation** - Present design, get approval before moving on
-- **Be flexible** - Go back and clarify when something doesn't make sense
+Requirement elicitation, collaborative design, YAGNI, incremental validation, design documentation, architecture decision records, component design, interface contracts, data flow diagrams, error handling patterns, test strategy, trade-off analysis, software design principles

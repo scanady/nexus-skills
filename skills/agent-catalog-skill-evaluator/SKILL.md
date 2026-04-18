@@ -9,7 +9,7 @@ metadata:
   role: research-analyst
   scope: analysis
   output-format: report
-  related-skills: skill-reviewer, skill-evaluator, skill-builder
+  related-skills: skill-architect, skill-evaluator
 ---
 
 # Skill Catalog Evaluator

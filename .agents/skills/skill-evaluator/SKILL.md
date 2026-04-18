@@ -9,7 +9,7 @@ metadata:
   role: evaluation-engineer
   scope: analysis
   output-format: report
-  related-skills: skill-builder, skill-reviewer
+  related-skills: skill-architect
 ---
 
 # Skill Evaluator

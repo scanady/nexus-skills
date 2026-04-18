@@ -9,7 +9,6 @@ metadata:
 	role: specialist
 	scope: execution
 	output-format: markdown-file
-	related-skills: skill-reviewer,agent-skill-writer
 ---
 
 # GitHub Copilot Custom Instructions Writer
