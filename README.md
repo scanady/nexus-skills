@@ -6,16 +6,16 @@ This repository contains skills, prompts, agents, and instructions.
 
 ### Via npx (recommended)
 
-Use `npx forge-agents` when consuming this package externally.
+Use `npx nexus-agents` when consuming this package externally.
 
 ```bash
-npx forge-agents install
+npx nexus-agents install
 ```
 
 Install a specific skill:
 
 ```bash
-npx forge-agents install --skill product-spec-prd-generator
+npx nexus-agents install --skill product-spec-prd-generator
 ```
 
 ### Via GitHub (no npm publish required)
@@ -23,26 +23,26 @@ npx forge-agents install --skill product-spec-prd-generator
 Run the CLI directly from the GitHub repository:
 
 ```bash
-npx github:scanady/forge-agents install
+npx github:scanady/nexus-agents install
 ```
 
 Install a specific skill from GitHub:
 
 ```bash
-npx github:scanady/forge-agents install --skill data-ai-autoresearch
+npx github:scanady/nexus-agents install --skill data-ai-autoresearch
 ```
 
 Install globally from GitHub:
 
 ```bash
-npm install -g github:scanady/forge-agents
+npm install -g github:scanady/nexus-agents
 ```
 
 ### Local install (from cloned repo)
 
 ```bash
-git clone https://github.com/scanady/forge-agents
-cd forge-agents
+git clone https://github.com/scanady/nexus-agents
+cd nexus-agents
 ```
 
 Install all skills into the current project (default target: Agent Skills standard):
