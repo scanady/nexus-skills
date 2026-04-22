@@ -1,18 +1,18 @@
 # Red Team Adversarial
 
-Adversarial thinking and red teaming for finding weaknesses before adversaries do.
+Adversarial thinking for finding weaknesses before adversaries do.
 
-## Core Principle
+Ask: **"If someone wanted to break, exploit, or game this, how would they do it?"**
 
-Red teaming asks: **"If someone wanted to break, exploit, or game this, how would they do it?"** The Fool adopts the mindset of an adversary — not to cause harm, but to find vulnerabilities before real adversaries do. This applies beyond security: competitors, disgruntled users, perverse incentives, and regulatory challenges are all adversarial forces.
+Applies beyond security — competitors, disgruntled users, perverse incentives, and regulatory challenges are all adversarial forces.
 
 ## Process
 
-1. **Identify the asset** — What are you protecting? (system, decision, strategy, product)
-2. **Construct adversary personas** — Who would attack this and why?
-3. **Map attack vectors** — How would each persona exploit weaknesses?
-4. **Assess impact** — Rank by likelihood x impact
-5. **Design defenses** — Specific countermeasures for the highest-ranked vectors
+1. **Asset** — What are you protecting? (system, decision, strategy, product)
+2. **Personas** — Who would attack this and why?
+3. **Vectors** — How would each persona exploit weaknesses?
+4. **Rank** — By likelihood × impact
+5. **Defend** — Specific countermeasures for highest-ranked vectors
 
 ## Adversary Persona Construction
 
@@ -32,13 +32,13 @@ Generic "attackers" produce generic findings. Specific personas produce actionab
 
 | Persona | Motivation | Typical Vectors |
 |---------|-----------|----------------|
-| **External Attacker** | Financial gain, data theft | API exploitation, credential stuffing, injection attacks |
-| **Competitor** | Market advantage | Feature copying, talent poaching, FUD campaigns |
-| **Disgruntled Insider** | Revenge, financial gain | Privilege escalation, data exfiltration, sabotage |
-| **Careless User** | None (accidental) | Misconfiguration, weak passwords, sharing credentials |
-| **Regulator** | Compliance enforcement | Audit findings, data handling violations, accessibility gaps |
-| **Opportunistic Gamer** | Personal benefit | Exploiting loopholes in business logic, referral fraud |
-| **Activist** | Ideological goals | Public embarrassment, data leaks, service disruption |
+| External Attacker | Financial gain, data theft | API exploitation, credential stuffing, injection attacks |
+| Competitor | Market advantage | Feature copying, talent poaching, FUD campaigns |
+| Disgruntled Insider | Revenge, financial gain | Privilege escalation, data exfiltration, sabotage |
+| Careless User | Accidental | Misconfiguration, weak passwords, credential sharing |
+| Regulator | Compliance enforcement | Audit findings, data handling violations, accessibility gaps |
+| Opportunistic Gamer | Personal benefit | Exploiting loopholes, referral fraud, business logic abuse |
+| Activist | Ideological goals | Public embarrassment, data leaks, service disruption |
 
 ### Domain-Specific Personas
 
@@ -52,8 +52,6 @@ Generic "attackers" produce generic findings. Specific personas produce actionab
 
 ## Attack Vector Identification
 
-### By Category
-
 | Category | Vectors | Example |
 |----------|---------|---------|
 | **Technical** | Injection, auth bypass, race conditions, SSRF | SQL injection in search parameter |
@@ -61,11 +59,11 @@ Generic "attackers" produce generic findings. Specific personas produce actionab
 | **Social** | Phishing, pretexting, authority exploitation | "I'm the CEO, I need access now" |
 | **Operational** | Supply chain, dependency poisoning, insider threat | Compromised npm package in build pipeline |
 | **Information** | Data leakage, metadata exposure, timing attacks | User enumeration via login error messages |
-| **Economic** | Resource exhaustion, denial of wallet, asymmetric cost | Lambda invocation flood causing $50K bill |
+| **Economic** | Resource exhaustion, denial of wallet, asymmetric cost | Lambda flood causing $50K bill |
 
 ### Attack Tree Construction
 
-For complex systems, build attack trees to map paths to a goal.
+Map paths to a goal for complex systems.
 
 ```
 Goal: Steal user payment data
@@ -75,7 +73,7 @@ Goal: Steal user payment data
 │   └── Exploit unpatched database CVE
 ├── Path 2: Intercept in transit
 │   ├── Downgrade TLS via misconfigured CDN
-│   └── Man-in-the-middle on internal service mesh
+│   └── MITM on internal service mesh
 └── Path 3: Abuse application logic
     ├── Export feature with insufficient access control
     └── Admin panel with default credentials
@@ -84,8 +82,6 @@ Goal: Steal user payment data
 ## Perverse Incentive Detection
 
 Systems create incentives. Sometimes those incentives reward the wrong behavior.
-
-### Questions to Surface Perverse Incentives
 
 | Question | What It Reveals |
 |----------|----------------|
@@ -99,21 +95,19 @@ Systems create incentives. Sometimes those incentives reward the wrong behavior.
 
 | Pattern | Example | Consequence |
 |---------|---------|-------------|
-| Metric gaming | "Lines of code" as productivity metric | Verbose, unmaintainable code |
+| Metric gaming | "Lines of code" as productivity | Verbose, unmaintainable code |
 | Reward hacking | Referral bonus with no verification | Fake accounts for self-referral |
-| Race to the bottom | "Fastest response time" as SLA | Teams avoid taking complex tickets |
-| Cobra effect | Bounty for reporting bugs | Team introduces bugs to claim bounties |
-| Information asymmetry | Users know more than the system | Adverse selection in marketplace pricing |
+| Race to the bottom | "Fastest response time" as SLA | Teams avoid complex tickets |
+| Cobra effect | Bug bounty without controls | Team introduces bugs to claim bounties |
+| Information asymmetry | Users know more than system | Adverse selection in marketplace pricing |
 
 ## Competitive Response Analysis
-
-When the "adversary" is a competitor.
 
 | Scenario | Analysis Framework |
 |----------|-------------------|
 | Feature parity | What can they copy? How fast? What's our defensible moat? |
 | Price war | Can they sustain lower prices? What's their cost structure? |
-| Talent poaching | Which roles are critical? How replaceable? What's our retention advantage? |
+| Talent poaching | Which roles are critical? What's our retention advantage? |
 | Platform risk | Are we dependent on their platform? What's the switch cost? |
 | FUD campaign | What claims could they make? Which are hardest to refute? |
 
@@ -142,9 +136,9 @@ When the "adversary" is a competitor.
 
 | # | Vector | Adversary | Likelihood | Impact | Risk Score |
 |---|--------|-----------|-----------|--------|------------|
-| 1 | [Specific attack] | [Who] | High/Med/Low | High/Med/Low | [L x I] |
-| 2 | [Specific attack] | [Who] | High/Med/Low | High/Med/Low | [L x I] |
-| 3 | [Specific attack] | [Who] | High/Med/Low | High/Med/Low | [L x I] |
+| 1 | [Specific attack] | [Who] | High/Med/Low | High/Med/Low | [L × I] |
+| 2 | [Specific attack] | [Who] | High/Med/Low | High/Med/Low | [L × I] |
+| 3 | [Specific attack] | [Who] | High/Med/Low | High/Med/Low | [L × I] |
 
 ### Perverse Incentives
 

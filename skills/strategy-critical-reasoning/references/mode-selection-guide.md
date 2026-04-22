@@ -1,10 +1,8 @@
 # Mode Selection Guide
 
-How to recommend the right reasoning mode when the user selects "You choose" or when auto-recommending.
+Auto-recommend or present to user when "You choose" is selected.
 
 ## Signal-to-Mode Mapping
-
-Analyze the user's language and context to identify which mode fits best.
 
 | User Signal | Recommended Mode | Rationale |
 |-------------|-----------------|-----------|
@@ -48,49 +46,46 @@ Analyze the user's language and context to identify which mode fits best.
 
 ## Multi-Mode Sequencing
 
-Some situations benefit from running 2 modes in sequence.
-
 ### Recommended Sequences
 
 | Sequence | When to Use |
 |----------|-------------|
-| Socratic → Dialectic | User has an untested idea. Surface assumptions first, then argue the counter. |
-| Pre-mortem → Red Team | High-stakes system launch. Find internal failures, then external attacks. |
-| Evidence Audit → Socratic | Data-driven proposal. Audit the evidence, then question the interpretation. |
-| Dialectic → Pre-mortem | Strategic decision. Argue the counter, then stress-test the surviving position. |
+| Socratic → Dialectic | Untested idea: surface assumptions first, then argue the counter |
+| Pre-mortem → Red Team | High-stakes launch: find internal failures, then external attacks |
+| Evidence Audit → Socratic | Data-driven proposal: audit evidence, then question interpretation |
+| Dialectic → Pre-mortem | Strategic decision: argue the counter, then stress-test surviving position |
 
 ### When to Suggest Multi-Mode
 
-Recommend a second pass when:
-- The first mode reveals a category of risk the user hadn't considered
-- The thesis survives the first challenge largely intact (it may need harder testing)
-- The domain spans two mapping categories (e.g., a security architecture decision)
+- First mode reveals a risk category user hadn't considered
+- Thesis survives first challenge largely intact (may need harder testing)
+- Domain spans two mapping categories (e.g., security architecture decision)
 
 ### When NOT to Suggest Multi-Mode
 
-- The user's question is narrow and specific
-- The first mode already surfaced actionable changes
-- The user signals they want to move on
+- Question is narrow and specific
+- First mode already surfaced actionable changes
+- User signals they want to move on
 
 ## Auto-Recommendation Format
-
-When presenting the recommendation, use this structure:
 
 ```
 Based on [specific context signal], I recommend **[Mode Name]** because [1-sentence rationale].
 
-[If a secondary mode is relevant:]
+[If secondary mode relevant:]
 After that, a follow-up with **[Secondary Mode]** would [1-sentence benefit].
 ```
 
-Then confirm with `AskUserQuestion`:
-- Option 1: Recommended mode (with "(Recommended)" label)
+Present as options:
+- Option 1: Recommended mode `(Recommended)`
 - Option 2: Secondary mode if applicable
-- Option 3: "Let me pick" — return to the full mode selection
+- Option 3: "Let me pick" — return to full mode selection
 
 ## Edge Cases
 
-- **Vague context**: Default to Socratic Questioning — it surfaces what matters
-- **Multiple concerns**: Recommend Pre-mortem Analysis — it covers breadth naturally
-- **User is emotional/frustrated**: Default to Dialectic Synthesis — steel manning validates their position before challenging it
-- **Technical vs business split**: Match the mode to which side the user emphasizes
+| Situation | Default | Reason |
+|-----------|---------|--------|
+| Vague context | Socratic Questioning | Surfaces what matters |
+| Multiple concerns | Pre-mortem Analysis | Covers breadth naturally |
+| User is emotional | Dialectic Synthesis | Steel manning validates before challenging |
+| Technical vs business split | Match user's emphasis | Follow where the user's concern lives |
