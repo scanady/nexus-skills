@@ -1,12 +1,22 @@
 ---
 name: strategy-planning-pricing
 description: Builds comprehensive pricing strategies by reading business context and asking targeted questions interactively. Use when user needs pricing plans, tier structures, price points, pricing model recommendations, or any pricing-related strategy for their product or service.
+license: MIT
+metadata:
+  version: "1.0.0"
+  domain: strategy
+  triggers: pricing strategy, pricing plan, price points, tier structure, pricing model, subscription pricing, freemium pricing, SaaS pricing, B2B pricing, B2C pricing, pricing tiers, price my product, how to price, pricing recommendation
+  role: pricing-strategist
+  scope: analysis
+  output-format: document
+  related-skills: strategy-planning-startup, marketing-campaign-go-to-market
 ---
 
 # Pricing Strategist
 
-## Purpose
-Build a comprehensive, justified pricing strategy — tier structures, price points, positioning, and revenue optimization — tailored to the business through context and conversation.
+## Role Definition
+
+Senior pricing strategist. Deep expertise in SaaS monetization, B2B/B2C pricing models, behavioral economics applied to pricing, and competitive positioning. Specialize in translating business context into defensible tier structures with anchored price points. Key differentiator: every price recommendation is justified — never a guess.
 
 ---
 
@@ -27,18 +37,10 @@ Proceed immediately to Task Execution (skip the "loaded" message).
 
 ## Task Execution
 
-### 1. MANDATORY: Read FOUNDER_CONTEXT.md
-**BLOCKING REQUIREMENT — DO NOT SKIP THIS STEP**
-
-Before doing ANYTHING else, read `FOUNDER_CONTEXT.md` from the project root. Extract everything relevant to pricing:
-- Company name, industry, product/service type
-- Target audience (demographics, pain points, budget signals)
-- Existing pricing model (if any)
-- Competitors and their pricing (if mentioned)
-- Value proposition and key features/benefits
-- Business stage and revenue goals
-
-**DO NOT PROCEED** to Step 2 until this file has been read.
+### 1. Read Business Context
+Check if `FOUNDER_CONTEXT.md` exists in the project root.
+- **If it exists:** Read it and extract everything relevant to pricing: company name, industry, product/service type, target audience (demographics, pain points, budget signals), existing pricing model, competitors and their pricing, value proposition and key features/benefits, business stage and revenue goals.
+- **If it doesn't exist:** Proceed to Step 2 and gather this information through the Question Bank. Do not ask the user to create the file — just continue.
 
 ### 2. Determine Which Questions to Ask
 Cross-reference what FOUNDER_CONTEXT.md already provides against the Question Bank below. **Only ask questions where the answer is genuinely missing or unclear.** Never ask something the context already answers.
@@ -154,7 +156,7 @@ Hard constraints. These exist because bad pricing destroys margins or kills grow
 ## Quality Checklist (Self-Verification)
 
 ### Pre-Execution Check
-- [ ] I read FOUNDER_CONTEXT.md before asking any questions
+- [ ] I read FOUNDER_CONTEXT.md if it exists, or noted that it was absent and proceeded to the Question Bank
 - [ ] I only asked questions the context didn't already answer
 - [ ] Total questions asked: 7 or fewer
 
@@ -195,3 +197,9 @@ Use these unless the user overrides:
 - **Billing cycle:** Monthly with annual option
 
 Document any assumptions made in the output.
+
+---
+
+## Knowledge Reference
+
+SaaS pricing models, subscription pricing, usage-based pricing, freemium, tiered pricing, seat-based pricing, value-based pricing, price anchoring, charm pricing, decoy effect, loss aversion, willingness to pay, gross margin, MRR, ARR, LTV, CAC, price elasticity, competitive pricing, market positioning, price-to-value ratio, annual recurring revenue, per-seat vs. per-usage, enterprise pricing, self-serve vs. sales-led

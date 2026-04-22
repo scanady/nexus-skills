@@ -9,7 +9,7 @@ metadata:
   role: specialist
   scope: analysis
   output-format: report
-  related-skills: strategy-critical-reasoning, strategy-frameworks-mckinsey-brief, product-lens
+  related-skills: strategy-critical-reasoning, strategy-frameworks-mckinsey-brief, product-strategy-validator
 ---
 
 # Council
@@ -206,7 +206,7 @@ Adversarial collaboration, pre-mortem analysis, red teaming, steel manning, anch
 
 - `strategy-critical-reasoning` — adversarial challenge and evidence audit for a single position
 - `strategy-frameworks-mckinsey-brief` — formalize the outcome when the decision becomes a strategic brief
-- `product-lens` — run a product diagnostic before convening a council on a feature or build decision
+- `product-strategy-validator` — run a product diagnostic before convening a council on a feature or build decision
 
 ## Example
 

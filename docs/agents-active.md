@@ -5,7 +5,7 @@
 ### [marketing](#marketing)
 
 - [marketing-content-brand-copywriter](#marketing)
-- [marketing-intel-competitor](#marketing)
+- [strategy-market-competitor-intel](#strategy)
 - [marketing-seo-cro](#marketing)
 - [marketing-campaign-go-to-market](#marketing)
 - [marketing-campaign-ideas](#marketing)
@@ -30,7 +30,8 @@
 
 ### [design](#design)
 
-- [marketing-content-product-overview-page](#design)
+- [design-product-overview-builder](#design)
+- [design-product-overview-recorder](#design)
 - [design-research-ux-artifacts](#design)
 
 ### [content](#content)
@@ -66,7 +67,7 @@
 | name | description | status |
 | --- | --- | --- |
 | marketing-content-brand-copywriter | Writes marketing copy using proven copywriting frameworks for ads, landing pages, emails, and social content. | active |
-| marketing-intel-competitor | Analyzes competitors using web research to provide verified business metrics and actionable leverage strategies. | active |
+| strategy-market-competitor-intel | Analyzes competitors using web research to provide verified business metrics and actionable leverage strategies. | active |
 | marketing-seo-cro | Audits landing pages against proven CRO principles and delivers actionable recommendations to maximize conversions. | active |
 | marketing-campaign-go-to-market | Delivers the 3 best go-to-market strategies tailored to the founder's current stage, product, and market. | active |
 | marketing-campaign-ideas | Produces the best marketing ideas by matching business context against a database of 170+ proven strategies. | active |
@@ -95,7 +96,8 @@
 
 | name | description | status |
 | --- | --- | --- |
-| marketing-content-product-overview-page | Builds polished product overview pages with automated screenshot capture and modern SaaS design patterns. | active |
+| design-product-overview-builder | Builds polished product overview pages with automated screenshot capture and modern SaaS design patterns. | active |
+| design-product-overview-recorder | Records polished UI demo videos with Playwright browser automation, cursor overlay, subtitle narration, and storytelling flow. | active |
 | design-research-ux-artifacts | Creates one or more research-backed UX artifacts, including personas, journey maps, information architecture, UX/UI specs, and screen layouts. | active |
 
 ## content

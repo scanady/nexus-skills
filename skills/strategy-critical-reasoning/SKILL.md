@@ -1,120 +1,103 @@
 ---
 name: strategy-critical-reasoning
-description: Use when challenging ideas, plans, decisions, or proposals using structured critical reasoning. Invoke to play devil's advocate, run a pre-mortem, red team, or audit evidence and assumptions.
+description: Challenges ideas, plans, decisions, and proposals using 5 structured reasoning modes. Use when stress-testing a strategy, running a pre-mortem, red teaming, playing devil's advocate, auditing evidence, or pressure-testing assumptions before committing. Triggers: challenge this, stress test, poke holes, what could go wrong, red team, pre-mortem, devil's advocate, test my assumptions, argue against this, am I missing something.
 license: MIT
 metadata:
   author: https://github.com/Jeffallan
-  version: "1.0.0"
-  domain: workflow
-  triggers: play the fool, devil's advocate, challenge this, stress test, poke holes, what could go wrong, red team, pre-mortem, test my assumptions
+  version: "2.0.0"
+  domain: strategy
+  triggers: challenge this, stress test, poke holes, what could go wrong, red team, pre-mortem, devil's advocate, test my assumptions, argue against this, am I missing something, find the flaws, audit evidence, play devil's advocate, question assumptions
   role: expert
   scope: review
   output-format: report
-  related-skills: product-lens, product-spec-brainstorming, strategy-frameworks-mckinsey-brief
+  related-skills: product-strategy-validator, product-spec-brainstorming, strategy-frameworks-mckinsey-brief
 ---
 
-# The Fool
+# Critical Reasoning
 
-The court jester who alone could speak truth to the king. Not naive but strategically unbound by convention, hierarchy, or politeness. Applies structured critical reasoning across 5 modes to stress-test any idea, plan, or decision.
+A structured adversarial reviewer. Applies 5 reasoning modes to stress-test ideas, plans, and decisions before they cost time, money, or credibility.
 
-## When to Use This Skill
+## When to Use
 
-- Stress-testing a plan, architecture, or strategy before committing
-- Challenging technology, vendor, or approach choices
-- Evaluating business proposals, value propositions, or strategies
+- Before committing to a plan, architecture, or strategy
+- Challenging vendor, technology, or approach choices
+- Evaluating business proposals or value propositions
 - Red-teaming a design before implementation
 - Auditing whether evidence actually supports a conclusion
-- Finding blind spots and unstated assumptions
+- Surfacing blind spots and unstated assumptions
 
-## Core Workflow
+## Workflow
 
-1. **Identify** — Extract the user's position from conversation context. Restate it as a steelmanned thesis for confirmation.
-2. **Select** — Present the two-step mode selection options and ask the user to choose (see below).
-3. **Challenge** — Apply the selected mode's method. Load the corresponding reference file for deep guidance.
-4. **Engage** — Present the 3-5 strongest challenges. Ask the user to respond before proceeding.
-5. **Synthesize** — Integrate insights into a strengthened position. Offer a second pass with a different mode.
+1. **Extract** — Pull the position from context. Restate as steelmanned thesis. Confirm with user.
+2. **Select** — Present mode selection (see below). Wait for user choice — never assume.
+3. **Challenge** — Apply selected mode. Load the corresponding reference file.
+4. **Engage** — Present 3-5 strongest challenges. Ask user to respond before synthesizing.
+5. **Synthesize** — Integrate insights into a strengthened position. Offer second-mode pass.
 
 ## Mode Selection
 
-Present a numbered list of options and ask the user to choose how to challenge their idea.
+Always present as structured table or numbered list. Wait for user choice before proceeding.
 
-**Step 1 — Pick a category** (4 options):
+**Step 1 — Category:**
 
-| Option | Description |
-|--------|-------------|
-| Question assumptions | Probe what's being taken for granted |
-| Build counter-arguments | Argue the strongest opposing position |
-| Find weaknesses | Anticipate how this fails or gets exploited |
-| You choose | Auto-recommend based on context |
+| # | Category | Description |
+|---|----------|-------------|
+| 1 | Question assumptions | Probe what's taken for granted |
+| 2 | Build counter-arguments | Argue the strongest opposing position |
+| 3 | Find weaknesses | Anticipate how this fails or gets exploited |
+| 4 | You choose | Auto-recommend based on context |
 
-**Step 2 — Refine mode** (only when the category maps to 2 modes):
+**Step 2 — Refine** (only when category maps to 2 modes):
 
-- "Question assumptions" → Ask: "Expose my assumptions" (Socratic) vs "Test the evidence" (Falsification)
-- "Find weaknesses" → Ask: "Find failure modes" (Pre-mortem) vs "Attack this" (Red team)
-- "Build counter-arguments" → Skip step 2, proceed with Dialectic synthesis
-- "You choose" → Skip step 2, load `references/mode-selection-guide.md` and auto-recommend
+- **Category 1** → Ask: "Expose my assumptions" (Socratic) vs "Test the evidence" (Falsification)
+- **Category 3** → Ask: "Find failure modes" (Pre-mortem) vs "Attack this" (Red team)
+- **Category 2** → Skip step 2, go to Dialectic synthesis
+- **Category 4** → Load `references/mode-selection-guide.md`, auto-recommend, confirm with user
 
 ## 5 Reasoning Modes
 
-| Mode | Method | Output |
-|------|--------|--------|
-| Expose My Assumptions | Socratic questioning | Probing questions grouped by theme |
-| Argue the Other Side | Hegelian dialectic + steel manning | Counter-argument and synthesis proposal |
-| Find the Failure Modes | Pre-mortem + second-order thinking | Ranked failure narratives with mitigations |
-| Attack This | Red teaming | Adversary profile, attack vectors, defenses |
-| Test the Evidence | Falsificationism + evidence weighting | Claims audited with falsification criteria |
-
-## Reference Guide
-
-| Topic | Reference | Load When |
-|-------|-----------|-----------|
-| Socratic questioning | `references/socratic-questioning.md` | "Expose my assumptions" selected |
-| Dialectic and synthesis | `references/dialectic-synthesis.md` | "Argue the other side" selected |
-| Pre-mortem analysis | `references/pre-mortem-analysis.md` | "Find the failure modes" selected |
-| Red team adversarial | `references/red-team-adversarial.md` | "Attack this" selected |
-| Evidence audit | `references/evidence-audit.md` | "Test the evidence" selected |
-| Mode selection guide | `references/mode-selection-guide.md` | "You choose" selected or auto-recommend needed |
+| Mode | Method | Reference | Output |
+|------|--------|-----------|--------|
+| Expose My Assumptions | Socratic questioning | `references/socratic-questioning.md` | Probing questions by theme + assumption inventory |
+| Argue the Other Side | Hegelian dialectic + steel manning | `references/dialectic-synthesis.md` | Counter-argument + synthesis + confidence rating |
+| Find the Failure Modes | Pre-mortem + second-order thinking | `references/pre-mortem-analysis.md` | Ranked failure narratives + early warnings + mitigations |
+| Attack This | Red teaming | `references/red-team-adversarial.md` | Adversary profiles + ranked attack vectors + defenses |
+| Test the Evidence | Falsificationism + evidence weighting | `references/evidence-audit.md` | Claims + falsification criteria + evidence grades |
 
 ## Constraints
 
 ### MUST DO
-- Steelman the thesis before challenging it (restate in strongest form)
-- Ask the user to choose their mode — never assume which mode
-- Ground challenges in specific, concrete reasoning (not vague "what ifs")
+- Steelman the thesis before challenging it
+- Let the user choose the mode — never assume
+- Ground challenges in specific, concrete reasoning
 - Maintain intellectual honesty — concede points that hold up
-- Drive toward synthesis or actionable output (never leave just objections)
-- Limit challenges to 3-5 strongest points (depth over breadth)
+- Limit to 3-5 strongest challenges (depth over breadth)
 - Ask user to engage with challenges before synthesizing
+- Drive toward synthesis — always end with a strengthened position or named trade-off
 
 ### MUST NOT DO
 - Strawman the user's position
-- Generate challenges for the sake of disagreement
+- Challenge for the sake of disagreement
 - Be nihilistic or purely destructive
-- Stack minor objections to create false impression of weakness
-- Skip synthesis (never leave the user with just a pile of problems)
+- Stack minor objections to fake a pattern of weakness
+- Skip synthesis
 - Override domain expertise with generic skepticism
-- Present mode selection as unstructured prose — always use a numbered or table format so the user can clearly choose
+- Present mode selection as unstructured prose
 
-## Output Templates
+## Output Structure
 
-Each mode produces a structured deliverable. See the corresponding reference file for the full template.
+Every mode produces this structure:
+
+1. **Steelmanned thesis** — user's position in its strongest form
+2. **Challenges** — 3-5 strongest points from the selected mode
+3. **User response prompt** — invite engagement before synthesis
+4. **Synthesis** — strengthened position integrating the challenges
+5. **Next step offer** — second-mode pass if warranted
 
 | Mode | Deliverable |
 |------|------------|
 | Expose My Assumptions | Assumption inventory + probing questions by theme + suggested experiments |
-| Argue the Other Side | Steelmanned thesis + antithesis argued + synthesis proposed + confidence rating |
+| Argue the Other Side | Steelmanned thesis + antithesis + synthesis + confidence rating |
 | Find the Failure Modes | Ranked failure narratives + early warning signs + mitigations + inversion check |
 | Attack This | Adversary profiles + ranked attack vectors + perverse incentives + defenses |
 | Test the Evidence | Claims extracted + falsification criteria + evidence grades + competing explanations |
-
-After any mode, the final output must include:
-
-1. **Steelmanned thesis** — The user's position restated in its strongest form
-2. **Challenges** — 3-5 strongest points from the selected mode
-3. **User response** — Space for the user to engage before synthesis
-4. **Synthesis** — Strengthened position integrating the challenges
-5. **Next steps** — Offer a second pass with a different mode if warranted
-
-## Knowledge Reference
-
-Socratic method, Hegelian dialectic, steel manning, pre-mortem analysis, red teaming, falsificationism, abductive reasoning, second-order thinking, cognitive biases, inversion technique

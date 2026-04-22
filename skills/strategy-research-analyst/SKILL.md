@@ -8,7 +8,7 @@ metadata:
   role: analyst
   scope: analysis
   output-format: report
-  related-skills: marketing-intel-customer-segmentation, marketing-intel-competitor
+  related-skills: marketing-intel-customer-segmentation, strategy-market-competitor-intel
 ---
 
 # Strategy Research Analyst

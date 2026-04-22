@@ -1,16 +1,12 @@
 # Socratic Questioning
 
-Structured question frameworks for exposing assumptions and deepening understanding.
+Structured question frameworks for exposing assumptions. Goal: help user discover gaps in their own reasoning — every question should produce "I hadn't thought about that."
 
-## Core Principle
-
-Socratic questioning does not argue. It asks. The goal is to help the user discover gaps in their own reasoning by surfacing what they have not examined. Every question should create a moment of "I hadn't thought about that."
+Does not argue. Asks.
 
 ## Question Categories
 
-### 1. Definitional Questions
-
-Challenge vague or overloaded terms.
+### 1. Definitional
 
 | Pattern | Example |
 |---------|---------|
@@ -18,31 +14,25 @@ Challenge vague or overloaded terms.
 | "How would you define X to someone unfamiliar?" | "How would you explain 'real-time' to a non-engineer?" |
 | "Are there cases where X means something different?" | "Does 'fast' mean the same thing for API response and batch job?" |
 
-### 2. Evidential Questions
-
-Probe the basis for beliefs.
+### 2. Evidential
 
 | Pattern | Example |
 |---------|---------|
 | "What evidence supports this?" | "What data shows users actually want this feature?" |
 | "How do you know X is true?" | "How do you know the current system can't handle the load?" |
 | "What would change your mind?" | "What metric would convince you this approach is wrong?" |
-| "Is this based on data or intuition?" | "Is the 'users hate the current flow' claim from research or assumption?" |
+| "Is this data or intuition?" | "Is the 'users hate the current flow' claim from research or assumption?" |
 
-### 3. Logical Questions
-
-Test the reasoning chain.
+### 3. Logical
 
 | Pattern | Example |
 |---------|---------|
 | "Does X necessarily lead to Y?" | "Does adding caching necessarily improve user experience?" |
 | "What assumptions connect X to Y?" | "What has to be true for microservices to improve velocity?" |
 | "Could the opposite also be true?" | "Could a monolith actually ship faster in this case?" |
-| "Are you conflating correlation with causation?" | "Did the refactor cause the improvement, or was it the new hire?" |
+| "Correlation or causation?" | "Did the refactor cause the improvement, or was it the new hire?" |
 
-### 4. Perspective-Shifting Questions
-
-Force consideration of other viewpoints.
+### 4. Perspective-Shifting
 
 | Pattern | Example |
 |---------|---------|
@@ -51,9 +41,7 @@ Force consideration of other viewpoints.
 | "What does this look like in 2 years?" | "Will this abstraction still make sense when the team doubles?" |
 | "Who loses if this succeeds?" | "If we adopt this vendor, what capability do we give up?" |
 
-### 5. Consequential Questions
-
-Trace the implications.
+### 5. Consequential
 
 | Pattern | Example |
 |---------|---------|
@@ -64,13 +52,11 @@ Trace the implications.
 
 ## Assumption Detection Signals
 
-Watch for language that hides assumptions.
-
 | Signal Phrase | Hidden Assumption |
 |---------------|-------------------|
-| "Obviously..." | The speaker hasn't questioned this |
+| "Obviously..." | Speaker hasn't questioned this |
 | "Everyone knows..." | Consensus hasn't been verified |
-| "It just makes sense..." | The reasoning chain hasn't been articulated |
+| "It just makes sense..." | Reasoning chain hasn't been articulated |
 | "We always..." | Historical pattern assumed to be optimal |
 | "There's no other way..." | Alternatives haven't been explored |
 | "It's simple..." | Complexity has been underestimated |
@@ -79,24 +65,21 @@ Watch for language that hides assumptions.
 
 ## Domain-Adapted Question Banks
 
-### Technical Decisions
-
+### Technical
 - What are you optimizing for? Are you sure that's the right dimension?
 - What's the simplest version that tests the core assumption?
-- What constraint are you treating as fixed that might actually be flexible?
+- What constraint are you treating as fixed that might be flexible?
 - How would you build this if you had to ship in one week?
 - What's the most expensive thing to change later?
 
-### Business Decisions
-
+### Business
 - Who is the customer for this decision? Are you sure?
 - What would make this a bad investment in hindsight?
 - How does this compare to doing nothing?
 - What's the opportunity cost of this choice?
 - If a competitor made the opposite choice, would you be worried?
 
-### Strategic Decisions
-
+### Strategic
 - What has to be true for this strategy to work?
 - Which of those assumptions are you least confident about?
 - What's the fastest way to test the riskiest assumption?
@@ -105,7 +88,7 @@ Watch for language that hides assumptions.
 
 ## Output Template
 
-```markdown
+\`\`\`markdown
 ## Assumption Inventory
 
 | # | Assumption | Type | Confidence |
@@ -116,19 +99,19 @@ Watch for language that hides assumptions.
 
 ### [Theme 1: e.g., "User Behavior"]
 1. [Question targeting assumption #X]
-2. [Follow-up question deepening the probe]
+2. [Follow-up deepening the probe]
 
 ### [Theme 2: e.g., "Technical Feasibility"]
 1. [Question targeting assumption #Y]
-2. [Follow-up question]
+2. [Follow-up]
 
 ### [Theme 3: e.g., "Business Viability"]
 1. [Question targeting assumption #Z]
-2. [Follow-up question]
+2. [Follow-up]
 
 ## Suggested Experiments
 
-| Assumption | Experiment | Effort | Signal |
-|-----------|-----------|--------|--------|
-| [Riskiest assumption] | [How to test it] | Low/Med/High | [What result means] |
-```
+| Assumption to Test | Experiment | Time to Answer |
+|-------------------|-----------|----------------|
+| [Assumption] | [Concrete test] | [Days/weeks] |
+\`\`\`
