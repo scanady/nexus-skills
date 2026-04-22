@@ -3,7 +3,7 @@ name: data-ai-autoresearch
 description: "Design autonomous AI research systems inspired by Karpathy's autoresearch framework. Use when asked to 'set up autoresearch', 'design an autonomous training loop', 'create an AI research experiment', 'build a self-improving model pipeline', 'autonomous model training', 'autoresearch for my problem', or when the user has a problem/challenge that could benefit from autonomous iterative model training with automated evaluation. Also use when asked to 'design evaluation criteria for model training', 'create a training harness', 'set up experiment tracking for ML', or when someone wants an AI agent to autonomously explore model architectures, hyperparameters, or training strategies to solve a specific problem."
 license: MIT
 metadata:
-  author: forge-agents
+  author: nexus-agents
   version: "1.1.0"
   domain: data
   triggers: autoresearch, autonomous research, autonomous training, self-improving model, iterative model training, experiment loop, automated ML research, model evaluation harness, training pipeline design, autonomous AI experiments, autoresearch framework, research automation, ML experiment design

@@ -1,9 +1,9 @@
 {
-  "name": "forge-agents",
+  "name": "nexus-agents",
   "version": "1.0.1",
   "description": "Agentic skills, prompts, agents, and instructions for AI platforms.",
   "bin": {
-    "forge-agents": "bin/cli.js"
+    "nexus-agents": "bin/cli.js"
   },
   "files": [
     "bin/cli.js",
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scanady/forge-agents.git"
+    "url": "git+https://github.com/scanady/nexus-agents.git"
   },
   "keywords": [
     "skills",
@@ -26,7 +26,7 @@
   "author": "iFoundry",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/scanady/forge-agents/issues"
+    "url": "https://github.com/scanady/nexus-agents/issues"
   },
-  "homepage": "https://github.com/scanady/forge-agents#readme"
+  "homepage": "https://github.com/scanady/nexus-agents#readme"
 }

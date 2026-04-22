@@ -16,35 +16,35 @@
 - One skill per folder — do not bundle unrelated capabilities into one skill
 - Skill names follow the pattern `domain-category-descriptor` (e.g., `tech-quality-tdd`)
 
-## CLI — `npx forge-agents`
+## CLI — `npx nexus-agents`
 
 Use the CLI to install skills into an AI agent's skills directory. It supports the Agent Skills standard path plus GitHub Copilot, Claude Code, and Codex.
 
-When consuming this repo externally, use `npx forge-agents`. When working inside this repo directly, use `node bin/cli.js` instead.
+When consuming this repo externally, use `npx nexus-agents`. When working inside this repo directly, use `node bin/cli.js` instead.
 
 **Common commands:**
 
 ```bash
 # List all available skills
-npx forge-agents list
+npx nexus-agents list
 
 # Install all skills into the current project (Agent Skills standard, default)
-npx forge-agents install
+npx nexus-agents install
 
 # Install a specific skill
-npx forge-agents install --skill marketing-content-linkedin-writer
+npx nexus-agents install --skill marketing-content-linkedin-writer
 
 # Install globally (user-level, not project-level)
-npx forge-agents install --global
+npx nexus-agents install --global
 
 # Install for a specific agent
-npx forge-agents install --agent claude-code
+npx nexus-agents install --agent claude-code
 
 # Install to multiple agents at once
-npx forge-agents install -a github-copilot -a claude-code -a codex
+npx nexus-agents install -a github-copilot -a claude-code -a codex
 
 # Upgrade (replace) already-installed skills
-npx forge-agents install --upgrade
+npx nexus-agents install --upgrade
 ```
 
 **Install targets by agent:**

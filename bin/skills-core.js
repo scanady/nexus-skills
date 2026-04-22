@@ -102,7 +102,7 @@ function getAvailableSkills() {
 }
 
 function isLocalMode() {
-    if (process.env.FORGE_AGENTS_FORCE_REMOTE === '1') {
+    if (process.env.NEXUS_AGENTS_FORCE_REMOTE === '1') {
         return false;
     }
 

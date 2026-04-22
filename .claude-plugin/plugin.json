@@ -1,8 +1,8 @@
 {
-  "name": "forge-agents",
+  "name": "nexus-agents",
   "owner": {
     "name": "iFoundry",
-    "url": "https://github.com/scanady/forge-agents"
+    "url": "https://github.com/scanady/nexus-agents"
   },
   "metadata": {
     "description": "AI skills, prompts, agents, and instructions for various applications",
@@ -10,7 +10,7 @@
   },
   "plugins": [
     {
-      "name": "forge-agents",
+      "name": "nexus-agents",
       "description": "Essential skills, prompts, agents, and instructions for AI platforms.",
       "source": "./",
       "strict": false,
@@ -18,7 +18,7 @@
       "author": {
         "name": "iFoundry"
       },
-      "repository": "https://github.com/scanady/forge-agents",
+      "repository": "https://github.com/scanady/nexus-agents",
       "license": "MIT",
       "keywords": ["skills", "prompts", "agents", "instructions", "ai"],
       "skills": [

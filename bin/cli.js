@@ -171,8 +171,8 @@ async function listSkills(listMode = 'full') {
     console.log(`    ${description}\n`);
   }
 
-  console.log('Install all:     npx forge-agents install');
-  console.log('Install one:     npx forge-agents install --skill ops-process-sop-creator\n');
+  console.log('Install all:     npx nexus-agents install');
+  console.log('Install one:     npx nexus-agents install --skill ops-process-sop-creator\n');
 }
 
 // Install skills
@@ -233,7 +233,7 @@ async function installSkills(selectedSkills, agents, isGlobal, upgrade, overwrit
   const scope = isGlobal ? 'global' : 'project';
   const action = upgrade ? 'Upgrading' : 'Installing';
   const source = isLocalMode() ? 'local bundle' : 'GitHub';
-  console.log(`\n🚀 ${action} forge-agents (${scope}, source: ${source})...\n`);
+  console.log(`\n🚀 ${action} nexus-agents (${scope}, source: ${source})...\n`);
 
   let totalInstalled = 0, totalUpgraded = 0, totalSkipped = 0;
 
@@ -288,10 +288,10 @@ function showHelp() {
     .join('\n');
 
   console.log(`
-forge-agents - Agentic skills for founders
+nexus-agents - Agentic skills for founders
 
 Usage:
-  npx forge-agents <command> [options]
+  npx nexus-agents <command> [options]
 
 Commands:
   install              Install skills
@@ -312,15 +312,15 @@ Supported Agents:
 ${supportedAgents}
 
 Examples:
-  npx forge-agents install
-  npx forge-agents install --skill ops-process-sop-creator
-  npx forge-agents install -a agent-skills -a claude-code -a github-copilot -a codex
-  npx forge-agents install -a github-copilot --skill content-copy-humanizer -p
-  npx forge-agents install --upgrade
-  npx forge-agents install --upgrade --overwrite
-  npx forge-agents list
-  npx forge-agents list --names
-  npx forge-agents list --count
+  npx nexus-agents install
+  npx nexus-agents install --skill ops-process-sop-creator
+  npx nexus-agents install -a agent-skills -a claude-code -a github-copilot -a codex
+  npx nexus-agents install -a github-copilot --skill content-copy-humanizer -p
+  npx nexus-agents install --upgrade
+  npx nexus-agents install --upgrade --overwrite
+  npx nexus-agents list
+  npx nexus-agents list --names
+  npx nexus-agents list --count
 `);
 }
 

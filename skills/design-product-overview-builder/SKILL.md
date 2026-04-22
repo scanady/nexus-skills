@@ -3,7 +3,7 @@ name: design-product-overview-builder
 description: 'Build high-conversion product overview pages, feature tours, and platform showcases from a live URL or project repository. Use when asked to create a product page, feature page, product overview, product tour, feature showcase, platform walkthrough, landing page with screenshots, product marketing page, or feature tour page. Captures real screenshots via Playwright browser automation and generates supplementary visuals (architecture diagrams, process flows, comparison graphics) via Google AI Studio Gemini image generation. Assembles everything into production-grade HTML with scroll-triggered animations, tabbed feature tours, interactive walkthroughs, and conversion-optimized layouts inspired by Stripe, Linear, Notion, Vercel, and other top SaaS product pages. Also use when a user wants to showcase key features to sell or market a product, create a "how it works" page, or build an "explore the platform" section.'
 license: MIT
 metadata:
-  author: forge-agents
+  author: nexus-agents
   version: "3.0.0"
   domain: design
   triggers: product overview, product tour, feature page, feature showcase, platform walkthrough, product marketing page, feature tour, explore the platform, product showcase, how it works page, feature highlights, product demo page, SaaS landing page, conversion page, architecture diagram, process flow, product screenshots
