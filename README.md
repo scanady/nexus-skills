@@ -102,7 +102,7 @@ After installation, use skills by typing:
 
 ### Marketing
 - `marketing-content-brand-copywriter` - Writes marketing copy using proven copywriting frameworks for ads, landing pages, emails, and social content.
-- `marketing-intel-competitor` - Analyzes competitors using web research to provide verified business metrics and actionable leverage strategies.
+- `strategy-market-competitor-intel` - Analyzes competitors using web research to provide verified business metrics and actionable leverage strategies.
 - `marketing-seo-cro` - Audits landing pages against proven CRO principles and delivers actionable recommendations to maximize conversions.
 - `marketing-campaign-go-to-market` - Delivers the 3 best go-to-market strategies tailored to the founder's current stage, product, and market.
 - `marketing-campaign-ideas` - Produces the best marketing ideas by matching business context against a database of 170+ proven strategies.
@@ -125,7 +125,8 @@ After installation, use skills by typing:
 - `tech-dev-writing-plans` - Creates structured implementation plans from specs or requirements before touching code.
 
 ### Design
-- `marketing-content-product-overview-page` - Builds polished product overview pages with automated screenshot capture and modern SaaS design patterns.
+- `design-product-overview-builder` - Builds polished product overview pages with automated screenshot capture and modern SaaS design patterns.
+- `design-product-overview-recorder` - Records polished UI demo videos with Playwright browser automation, cursor overlay, subtitle narration, and storytelling flow.
 - `design-research-ux-artifacts` - Creates one or more research-backed UX artifacts, including personas, journey maps, information architecture, UX/UI specs, and screen layouts.
 
 ### Content

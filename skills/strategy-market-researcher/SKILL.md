@@ -9,7 +9,7 @@ metadata:
 	role: analyst
 	scope: analysis
 	output-format: report
-	related-skills: research-ops, strategy-research-analyst, marketing-intel-competitor, data-analysis-business-performance
+	related-skills: research-ops, strategy-research-analyst, strategy-market-competitor-intel, data-analysis-business-performance
 ---
 
 # Market Research
@@ -200,7 +200,7 @@ Use adjacent skills when the ask crosses into a narrower lane:
 |-------|-----------|
 | `research-ops` | The task needs fresh evidence gathering across multiple research lanes or should become a repeatable monitoring workflow |
 | `strategy-research-analyst` | The ask is more about threat and opportunity scanning than a direct recommendation memo |
-| `marketing-intel-competitor` | The user needs a single-competitor deep dive or leverage-oriented battlecard output |
+| `strategy-market-competitor-intel` | The user needs a single-competitor deep dive or leverage-oriented battlecard output |
 | `data-analysis-business-performance` | The recommendation depends on financial modeling, KPI analysis, or quantified business performance scenarios |
 
 ## Constraints

@@ -9,7 +9,7 @@ metadata:
   role: analyst
   scope: research
   output-format: report
-  related-skills: strategy-research-analyst, marketing-intel-competitor
+  related-skills: strategy-research-analyst, strategy-market-competitor-intel
 ---
 
 # Research Analyst
