@@ -3,7 +3,7 @@ name: agent-design-persona-creator
 description: "Create agent-agnostic AI personas using a four-layer architecture (Soul / Body / Faculty / Skill). Use when asked to create a persona, build a character, design an AI personality, make an agent persona, define a persona profile, or scaffold a persona bundle. Also use when someone wants to give an AI agent a persistent identity, backstory, or behavioral guide."
 license: MIT
 metadata:
-  author: forge-agents
+  author: nexus-agents
   version: "1.0.0"
   domain: workflow
   triggers: create persona, build character, design personality, agent persona, persona profile, AI identity, persona bundle, persona definition, persona json, four-layer persona

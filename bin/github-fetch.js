@@ -2,16 +2,16 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path');
 
-const REPO_OWNER = process.env.FORGE_AGENTS_REPO_OWNER || 'scanady';
-const REPO_NAME = process.env.FORGE_AGENTS_REPO_NAME || 'forge-agents';
-const REPO_REF = process.env.FORGE_AGENTS_REPO_REF || 'main';
+const REPO_OWNER = process.env.NEXUS_AGENTS_REPO_OWNER || 'scanady';
+const REPO_NAME = process.env.NEXUS_AGENTS_REPO_NAME || 'nexus-agents';
+const REPO_REF = process.env.NEXUS_AGENTS_REPO_REF || 'main';
 const SKILLS_PATH = 'skills';
 
 function httpsGet(url) {
   return new Promise((resolve, reject) => {
     https.get(url, {
       headers: {
-        'User-Agent': 'forge-agents-cli',
+        'User-Agent': 'nexus-agents-cli',
         'Accept': 'application/vnd.github+json'
       }
     }, (response) => {
