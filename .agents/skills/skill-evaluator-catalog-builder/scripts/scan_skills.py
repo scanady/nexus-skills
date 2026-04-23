@@ -108,9 +108,7 @@ def detect_script_languages(scripts_dir: Path) -> list[str]:
     if not scripts_dir.is_dir():
         return ["none"]
 
-    for f in scripts_dir.rglob("*"):
-        if not f.is_file():
-            continue
+    for f in _iter_files(scripts_dir):
         # Check extension
         ext = f.suffix.lower()
         if ext in ext_map:
@@ -129,6 +127,28 @@ def detect_script_languages(scripts_dir: Path) -> list[str]:
             pass
 
     return sorted(languages) if languages else ["none"]
+
+
+# Directories that are runtime/generated and should be excluded from file counts
+RUNTIME_DIRS = {
+    ".venv", "venv", "env", ".env",
+    "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache",
+    "node_modules", ".npm", ".yarn", ".pnpm-store",
+    ".git", ".svn", ".hg",
+    "dist", "build", ".next", ".nuxt", ".output",
+    ".tox", ".nox",
+    "target",  # Rust/Java
+    ".gradle", ".mvn",
+}
+
+
+def _iter_files(directory: Path):
+    """Recursively yield files, skipping runtime/generated directories."""
+    for entry in directory.rglob("*"):
+        if any(part in RUNTIME_DIRS for part in entry.parts):
+            continue
+        if entry.is_file():
+            yield entry
 
 
 # Patterns that indicate external service usage
@@ -180,9 +200,7 @@ def detect_external_indicators(skill_dir: Path, skill_text: str) -> dict:
     # Scan scripts/ if present
     scripts_dir = skill_dir / "scripts"
     if scripts_dir.is_dir():
-        for f in scripts_dir.rglob("*"):
-            if not f.is_file():
-                continue
+        for f in _iter_files(scripts_dir):
             try:
                 with open(f, "r", encoding="utf-8", errors="ignore") as fh:
                     content = fh.read(50_000)  # Cap at 50KB per file
@@ -241,12 +259,8 @@ def detect_license(skill_dir: Path, frontmatter: dict | None) -> str:
 
 
 def count_files(skill_dir: Path) -> int:
-    """Count total files in a skill directory."""
-    count = 0
-    for _ in skill_dir.rglob("*"):
-        if _.is_file():
-            count += 1
-    return count
+    """Count total files in a skill directory, excluding runtime/generated folders."""
+    return sum(1 for _ in _iter_files(skill_dir))
 
 
 def estimate_tokens(skill_dir: Path) -> int:
@@ -269,8 +283,8 @@ def estimate_tokens(skill_dir: Path) -> int:
         ".ps1",
         ".pl",
     }
-    for f in skill_dir.rglob("*"):
-        if f.is_file() and f.suffix.lower() in text_exts:
+    for f in _iter_files(skill_dir):
+        if f.suffix.lower() in text_exts:
             try:
                 with open(f, "r", encoding="utf-8", errors="ignore") as fh:
                     total_lines += sum(1 for _ in fh)

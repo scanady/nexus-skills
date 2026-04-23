@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:v="urn:schemas-microsoft-com:vml"
+      xmlns:o="urn:schemas-microsoft-com:office:office"
+      lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
+  <!--[if gte mso 9]>
+  <xml><o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+  </o:OfficeDocumentSettings></xml>
+  <![endif]-->
+  <title>{{subject}}</title>
+  <style type="text/css">
+    /* === DESIGN TOKENS — replace with brand values === */
+    /* --color-bg-body: #f4f4f5 */
+    /* --color-bg-content: #ffffff */
+    /* --color-brand-primary: #4f46e5 */
+    /* --color-text-primary: #111827 */
+    /* --color-text-secondary: #6b7280 */
+    /* --color-border: #e5e7eb */
+    /* --color-promo-bg: #fdf4ff */
+    /* --color-button-bg: #4f46e5 */
+    /* --color-button-text: #ffffff */
+
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    table { border-collapse: collapse !important; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+    a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; }
+    u + #body a { color: inherit; text-decoration: none; font-size: inherit; font-family: inherit; font-weight: inherit; line-height: inherit; }
+
+    @media screen and (max-width: 600px) {
+      .email-container { width: 100% !important; }
+      .mobile-full { width: 100% !important; display: block !important; }
+      .mobile-padding { padding: 20px 16px !important; }
+      .mobile-text { font-size: 16px !important; line-height: 1.6 !important; }
+      .mobile-h1 { font-size: 26px !important; line-height: 1.3 !important; }
+      .mobile-price { font-size: 32px !important; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #111827 !important; }
+      .body-bg { background-color: #111827 !important; }
+      .content-bg { background-color: #1f2937 !important; }
+      .promo-bg { background-color: #2e1065 !important; }
+      .text-primary { color: #f9fafb !important; }
+      .text-secondary { color: #9ca3af !important; }
+      .border-color { border-color: #374151 !important; }
+      .logo-light { display: none !important; }
+      .logo-dark { display: inline-block !important; }
+    }
+  </style>
+</head>
+<body id="body" style="margin: 0; padding: 0; background-color: #f4f4f5;">
+
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+         class="body-bg" style="background-color: #f4f4f5;">
+    <tr>
+      <td align="center" style="padding: 24px 0;">
+
+        <table role="presentation" class="email-container" cellspacing="0" cellpadding="0" border="0"
+               width="600" style="max-width: 600px; background-color: #ffffff;" align="center">
+
+          <!-- HEADER -->
+          <tr>
+            <td class="content-bg mobile-padding"
+                style="padding: 24px 32px; background-color: #ffffff; border-bottom: 1px solid #e5e7eb; text-align: center;">
+              <!--[if !mso]><!-->
+              <img src="{{logo_url}}" width="140" height="auto" alt="{{company_name}}"
+                   class="logo-light"
+                   style="display: inline-block; max-width: 140px; height: auto;">
+              <img src="{{logo_url_dark}}" width="140" height="auto" alt="{{company_name}}"
+                   class="logo-dark"
+                   style="display: none; max-width: 140px; height: auto;">
+              <!--<![endif]-->
+              <!--[if mso]>
+              <img src="{{logo_url}}" width="140" alt="{{company_name}}" style="display:block; margin:0 auto;">
+              <![endif]-->
+            </td>
+          </tr>
+
+          <!-- HERO PROMO BLOCK -->
+          <tr>
+            <td class="promo-bg mobile-padding"
+                style="padding: 0; background-color: #fdf4ff; text-align: center;">
+              <img src="{{hero_image_url}}" width="600" height="auto" alt="{{hero_image_alt}}"
+                   style="display: block; width: 100%; max-width: 600px; height: auto; border: 0;">
+            </td>
+          </tr>
+
+          <!-- OFFER HEADLINE -->
+          <tr>
+            <td class="promo-bg mobile-padding"
+                style="padding: 36px 32px 28px; background-color: #fdf4ff; text-align: center;">
+              <!-- Eyebrow label -->
+              <p style="margin: 0 0 8px 0; font-family: 'Inter', Arial, Helvetica, sans-serif;
+                        font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+                        text-transform: uppercase; color: #7c3aed;">
+                {{offer_eyebrow}}
+              </p>
+              <h1 class="text-primary mobile-h1"
+                  style="margin: 0 0 12px 0; font-family: 'Inter', Arial, Helvetica, sans-serif;
+                         font-size: 30px; font-weight: 800; line-height: 1.2; color: #111827;">
+                {{promo_headline}}
+              </h1>
+              <p class="text-secondary"
+                 style="margin: 0 0 20px 0; font-family: 'Inter', Arial, Helvetica, sans-serif;
+                        font-size: 16px; line-height: 1.6; color: #6b7280;">
+                {{promo_subheadline}}
+              </p>
+
+              <!-- Offer / Price highlight -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center"
+                     style="margin: 0 auto 24px;">
+                <tr>
+                  <td style="padding: 12px 24px; background-color: #7c3aed; border-radius: 8px; text-align: center;">
+                    <span class="mobile-price"
+                          style="font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 24px;
+                                 font-weight: 800; color: #ffffff; display: block;">
+                      {{offer_value}}
+                    </span>
+                    <span style="font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 13px;
+                                 color: #e9d5ff; display: block; margin-top: 2px;">
+                      {{offer_detail}}
+                    </span>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Countdown / Urgency (optional) -->
+              <p style="margin: 0 0 20px 0; font-family: 'Inter', Arial, Helvetica, sans-serif;
+                        font-size: 14px; font-weight: 600; color: #b91c1c;">
+                {{urgency_text}}
+              </p>
+
+              <!-- CTA Button -->
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml"
+                xmlns:w="urn:schemas-microsoft-com:office:word"
+                href="{{action_url}}"
+                style="height:52px; v-text-anchor:middle; width:240px;"
+                arcsize="8%" strokecolor="#7c3aed" fillcolor="#7c3aed">
+                <w:anchorlock/>
+                <center style="color:#ffffff; font-family:Arial,sans-serif; font-size:18px; font-weight:bold;">
+                  {{button_text}}
+                </center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-->
+              <a href="{{action_url}}"
+                 style="display: inline-block; background-color: #7c3aed; color: #ffffff;
+                        font-family: 'Inter', Arial, Helvetica, sans-serif; font-size: 18px;
+                        font-weight: 700; line-height: 52px; padding: 0 32px;
+                        text-decoration: none; border-radius: 6px; -webkit-text-size-adjust: none;">
+                {{button_text}}
+              </a>
+              <!--<![endif]-->
+
+              <!-- Terms / fine print -->
+              <p style="margin: 16px 0 0 0; font-family: 'Inter', Arial, Helvetica, sans-serif;
+                        font-size: 12px; line-height: 1.5; color: #9ca3af;">
+                {{promo_terms}}
+              </p>
+            </td>
+          </tr>
+
+          <!-- DIVIDER -->
+          <tr>
+            <td style="padding: 0 32px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td class="border-color"
+                      style="border-top: 1px solid #e5e7eb; font-size: 0; line-height: 0;">&nbsp;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- SOCIAL PROOF / SUPPORTING COPY -->
+          <tr>
+            <td class="content-bg mobile-padding"
+                style="padding: 32px; background-color: #ffffff; text-align: center;">
+              <p class="text-primary"
+                 style="margin: 0 0 20px 0; font-family: 'Inter', Arial, Helvetica, sans-serif;
+                        font-size: 16px; line-height: 1.7; color: #111827;">
+                {{supporting_copy}}
+              </p>
+
+              <!-- Testimonial (optional) -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"
+                     style="border-left: 3px solid #7c3aed;">
+                <tr>
+                  <td style="padding: 12px 16px;">
+                    <p style="margin: 0 0 8px 0; font-family: 'Inter', Arial, Helvetica, sans-serif;
+                              font-size: 15px; font-style: italic; line-height: 1.6; color: #374151;">
+                      "{{testimonial_quote}}"
+                    </p>
+                    <p style="margin: 0; font-family: 'Inter', Arial, Helvetica, sans-serif;
+                              font-size: 13px; font-weight: 600; color: #6b7280;">
+                      — {{testimonial_attribution}}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- DIVIDER -->
+          <tr>
+            <td style="padding: 0 32px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td class="border-color"
+                      style="border-top: 1px solid #e5e7eb; font-size: 0; line-height: 0;">&nbsp;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td class="content-bg mobile-padding"
+                style="padding: 24px 32px; background-color: #ffffff; text-align: center;">
+              <p class="text-secondary"
+                 style="margin: 0 0 8px 0; font-family: 'Inter', Arial, Helvetica, sans-serif;
+                        font-size: 13px; line-height: 1.5; color: #6b7280;">
+                {{company_name}} · {{company_address}}
+              </p>
+              <p style="margin: 0; font-family: 'Inter', Arial, Helvetica, sans-serif;
+                        font-size: 13px; line-height: 1.5; color: #9ca3af;">
+                You're receiving this promotional email as a {{company_name}} subscriber.
+                <a href="{{unsubscribe_url}}"
+                   style="color: #9ca3af; text-decoration: underline;">Unsubscribe</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
