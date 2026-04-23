@@ -1,18 +1,18 @@
 # Skill Catalog Evaluator
 
-Scan, evaluate, and catalog large collections of [Agent Skills](https://agentskills.io/specification) into a structured JSON file with scores across usage value, security risk, best practices, and more.
+Scan, evaluate, and catalog large collections of [Agent Skills](https://agentskills.io/specification) into a structured JSON file with scores across usage value, security risk, executability, invocability, and more.
 
 ## What It Does
 
 - **Scans** a local folder or GitHub repository for `SKILL.md` files
 - **Extracts** frontmatter, directory structure, script languages, license, and external dependency indicators — mechanically, with no LLM cost
-- **Evaluates** each skill on 8 dimensions (usage value, security risk, best practices, core capabilities, external requirements, script languages, license)
+- **Evaluates** each skill on 12 dimensions (usage value, security risk, executability, invocability, token efficiency, over-specification risk, skill pattern, core capabilities, external requirements, script languages, license)
 - **Produces** a `skill-catalog.json` with per-skill evaluations and aggregate summary statistics
 
 ## Directory Structure
 
 ```
-agent-catalog-skill-evaluator/
+skill-evaluator-catalog-builder/
 ├── SKILL.md                           # Skill instructions
 ├── README.md                          # This file
 ├── references/
@@ -40,7 +40,7 @@ agent-catalog-skill-evaluator/
 
 ### Compare skill quality
 
-> "Evaluate this skill repository and show me the top-rated skills by usage value and best practices"
+> "Evaluate this skill repository and show me the top-rated skills by usage value and executability"
 
 ## Scripts
 

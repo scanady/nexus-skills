@@ -5,7 +5,7 @@ Build validated, data-driven customer segments that drive marketing, sales, and 
 ## Usage
 
 ```
-/marketing-intel-customer-segmentation
+/marketing-customer-segmentation
 
 [describe your business, objective, and available data]
 ```
@@ -13,7 +13,7 @@ Build validated, data-driven customer segments that drive marketing, sales, and 
 Or provide context directly:
 
 ```
-/marketing-intel-customer-segmentation We're a direct-to-consumer life insurance company selling simplified-issue term and whole life policies through an affinity partnership (similar to the New York Life AARP program). We have 850K active policyholders, a 78% lapse rate over 10 years, and need to reduce early-term lapse while identifying which prospect segments to prioritize for digital acquisition. We have application data, customer policy data, payment history, and call center logs, but no psychographic data. We want to build segments that are actionable for both marketing and retention teams.
+/marketing-customer-segmentation We're a direct-to-consumer life insurance company selling simplified-issue term and whole life policies through an affinity partnership (similar to the New York Life AARP program). We have 850K active policyholders, a 78% lapse rate over 10 years, and need to reduce early-term lapse while identifying which prospect segments to prioritize for digital acquisition. We have application data, customer policy data, payment history, and call center logs, but no psychographic data. We want to build segments that are actionable for both marketing and retention teams.
 ```
 
 ## What You'll Get

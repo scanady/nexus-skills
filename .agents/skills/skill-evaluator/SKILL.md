@@ -30,6 +30,7 @@ Create the evaluation workspace alongside the skill directory. Each iteration ge
 
 ```
 <skill-name>-workspace/
+├── static-analysis.json    # Pre-eval static assessment (you author in Step 2)
 ├── evals/
 │   ├── evals.json          # Test cases and assertions (you author this)
 │   └── files/              # Input files referenced by test cases
@@ -46,9 +47,56 @@ Create the evaluation workspace alongside the skill directory. Each iteration ge
     └── benchmark.json       # Aggregated statistics
 ```
 
+Also classify the skill under test as a **Skill Pattern** before running any evals:
+- **Pattern A** — Instructions-only. No `scripts/` directory and no MCP/subagent references. No special infra needed.
+- **Pattern B** — Script-backed. Has a `scripts/` directory with executable code. Requires a working script environment (Python, Node, etc.) in the eval context.
+- **Pattern C** — MCP/subagent-orchestrated. References MCP servers or delegates to subagents. Requires stub agents or a live MCP connection for evals to run meaningfully.
+
+Record the pattern in `static-analysis.json` along with any infra requirements. Pattern affects which test case categories are required (see Step 2).
+
 ### Step 2: Design Test Cases
 
-Create `evals/evals.json` with 2–5 test cases. Each test case has a prompt, expected output, and optional input files. Read [references/eval-design.md](references/eval-design.md) for detailed guidance on writing good test prompts.
+Before writing test cases, read the skill under test and save a static pre-eval assessment to `static-analysis.json` at the workspace root. This takes a single read — no agent runs — and seeds more targeted test cases by predicting where the skill is likely to fail.
+
+Score these dimensions using the rubrics in `skills/skill-evaluator-catalog-builder/references/evaluation-criteria.md`:
+
+```json
+// static-analysis.json
+{
+  "skill_name": "<skill-name>",
+  "skill_pattern": "A",
+  "complexity_class": "detailed",
+  "executability": {
+    "completeness": 4,
+    "determinism": 3,
+    "consistency": 4,
+    "usability": 3,
+    "predicted_failure_modes": [
+      "Low determinism: agent may interpret branching conditions differently across runs",
+      "Low usability: workflow references a hardcoded output path — over-specification risk"
+    ]
+  },
+  "invocability": {
+    "score": 4,
+    "name_specific": true,
+    "triggers_populated": true,
+    "false_positive_risk": "low",
+    "notes": "Description could add trigger phrases for indirect invocation patterns"
+  },
+  "over_specification_risk": {
+    "flagged": false,
+    "notes": ""
+  }
+}
+```
+
+Use findings to shape the test suite:
+- **Low completeness or determinism** → add edge-case and ambiguous-input test cases; assert the workflow steps are followed in order
+- **Low invocability or false-positive risk** → add invocability test cases (see requirements below)
+- **Over-specification flagged** → add over-specification variant test cases (see [references/eval-design.md](references/eval-design.md))
+- **Pattern B/C** → add one security test case targeting the highest-risk sub-dimension
+
+Then create `evals/evals.json` with 2–5 test cases. Each test case has a prompt, expected output, and optional input files. Read [references/eval-design.md](references/eval-design.md) for detailed guidance on writing good test prompts.
 
 ```json
 {
@@ -71,6 +119,8 @@ Create `evals/evals.json` with 2–5 test cases. Each test case has a prompt, ex
 - Use realistic context (file paths, column names, domain-specific terms)
 - Start with 2–3 cases; expand after the first iteration
 - When the output artifact is a skill (e.g., evaluating skill-builder), include assertions for structural conventions such as the `domain-category-descriptor` name pattern (e.g., `"The generated skill name follows the domain-category-descriptor pattern with a valid taxonomy prefix"`) alongside output-quality assertions
+- Include exactly **two invocability test cases**: one should-trigger (indirect phrasing the skill should still catch) and one should-not-trigger (an adjacent task the skill should NOT activate for). See [references/eval-design.md](references/eval-design.md) for prompt examples
+- For **Pattern B/C skills**: include one security test case targeting the highest-risk sub-dimension identified in `static-analysis.json` (e.g., adversarial filename input, prompt injection in user-supplied content)
 
 ### Step 3: Run Evals
 
@@ -259,6 +309,7 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | Test case and assertion design | `references/eval-design.md` | Writing test prompts, designing assertions, structuring evals.json |
 | Pattern analysis and iteration | `references/pattern-analysis.md` | Interpreting benchmark results, investigating patterns, planning next iteration |
+| Static pre-eval scoring rubrics | `skills/skill-evaluator-catalog-builder/references/evaluation-criteria.md` | Scoring executability, invocability, and over-specification risk in Step 2 |
 
 ## Constraints
 

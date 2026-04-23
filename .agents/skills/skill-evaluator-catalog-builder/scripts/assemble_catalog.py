@@ -65,12 +65,29 @@ def build_skill_entry(scan_entry: dict, eval_entry: dict | None, source_id: str,
     # Default evaluation if not provided
     default_eval = {
         "usage_value": {"score": 0, "rationale": "Not evaluated"},
-        "security_risk": {"rating": "unknown", "rationale": "Not evaluated", "findings": []},
-        "best_practices": {
-            "score": 0,
+        "security_risk": {
+            "rating": "unknown",
             "rationale": "Not evaluated",
-            "checklist": {},
+            "findings": [],
+            "sub_scores": {
+                "data_privacy": 0,
+                "prompt_injection": 0,
+                "illegal_content": 0,
+                "bias": 0,
+                "system_integrity": 0,
+                "untrusted_communication": 0,
+            },
         },
+        "executability": {
+            "score": 0,
+            "completeness": 0,
+            "determinism": 0,
+            "consistency": 0,
+            "usability": 0,
+            "rationale": "Not evaluated",
+        },
+        "invocability": {"score": 0, "rationale": "Not evaluated"},
+        "over_specification_risk": {"flagged": False, "rationale": "Not evaluated"},
         "core_capabilities": "Not evaluated",
         "external_requirements_indicator": "unknown",
         "external_requirements": ["unknown"],
@@ -83,6 +100,24 @@ def build_skill_entry(scan_entry: dict, eval_entry: dict | None, source_id: str,
     # Always override script_languages and license from scan data (mechanical)
     evaluation["script_languages"] = scan_entry.get("script_languages", ["none"])
     evaluation["license"] = scan_entry.get("license", "unspecified")
+
+    # Enrich structure with computed fields
+    structure = dict(scan_entry.get("structure", {}))
+    tokens = structure.get("estimated_tokens", 0)
+    if "complexity_class" not in structure:
+        if tokens < 800:
+            structure["complexity_class"] = "compact"
+        elif tokens <= 1200:
+            structure["complexity_class"] = "detailed"
+        else:
+            structure["complexity_class"] = "comprehensive"
+    if "skill_pattern" not in structure:
+        if structure.get("has_agents"):
+            structure["skill_pattern"] = "C"
+        elif structure.get("has_scripts"):
+            structure["skill_pattern"] = "B"
+        else:
+            structure["skill_pattern"] = "A"
 
     return {
         "name": scan_entry.get("name", "unknown"),
@@ -105,7 +140,7 @@ def build_skill_entry(scan_entry: dict, eval_entry: dict | None, source_id: str,
                 "related_skills": metadata.get("related-skills") or metadata.get("related_skills"),
             },
         },
-        "structure": scan_entry.get("structure", {}),
+        "structure": structure,
         "evaluation": evaluation,
     }
 
@@ -124,25 +159,45 @@ def compute_summary(skill_entries: list[dict]) -> dict:
         for s in skill_entries
         if s["evaluation"]["usage_value"]["score"] > 0
     ]
-    bp_scores = [
-        s["evaluation"]["best_practices"]["score"]
+    exec_scores = [
+        s["evaluation"]["executability"]["score"]
         for s in skill_entries
-        if s["evaluation"]["best_practices"]["score"] > 0
+        if s["evaluation"].get("executability", {}).get("score", 0) > 0
+    ]
+    invoc_scores = [
+        s["evaluation"]["invocability"]["score"]
+        for s in skill_entries
+        if s["evaluation"].get("invocability", {}).get("score", 0) > 0
     ]
 
     risk_dist = {"low": 0, "medium": 0, "high": 0}
+    complexity_dist = {"compact": 0, "detailed": 0, "comprehensive": 0}
+    pattern_dist = {"A": 0, "B": 0, "C": 0}
+    over_spec_flagged = 0
     for s in skill_entries:
         rating = s["evaluation"]["security_risk"]["rating"]
         if rating in risk_dist:
             risk_dist[rating] += 1
+        cc = s["structure"].get("complexity_class", "")
+        if cc in complexity_dist:
+            complexity_dist[cc] += 1
+        sp = s["structure"].get("skill_pattern", "")
+        if sp in pattern_dist:
+            pattern_dist[sp] += 1
+        if s["evaluation"].get("over_specification_risk", {}).get("flagged", False):
+            over_spec_flagged += 1
 
     return {
         "total_skills": total,
         "evaluated": evaluated,
         "parse_errors": parse_errors,
         "avg_usage_value": round(sum(usage_scores) / len(usage_scores), 2) if usage_scores else 0,
-        "avg_best_practices": round(sum(bp_scores) / len(bp_scores), 2) if bp_scores else 0,
+        "avg_executability": round(sum(exec_scores) / len(exec_scores), 2) if exec_scores else 0,
+        "avg_invocability": round(sum(invoc_scores) / len(invoc_scores), 2) if invoc_scores else 0,
         "security_risk_distribution": risk_dist,
+        "complexity_distribution": complexity_dist,
+        "pattern_distribution": pattern_dist,
+        "over_specification_flagged": over_spec_flagged,
     }
 
 

@@ -40,6 +40,18 @@ The delta is the core decision metric:
 - **Near-zero pass_rate delta**: Skill isn't adding value — investigate why
 - **Negative pass_rate delta**: Skill is actively harmful — rollback
 
+#### Complexity Class Context
+
+Interpret token delta relative to the skill's complexity class from `static-analysis.json`:
+
+| Complexity Class | Token Range | High Token Delta Is... |
+|-----------------|-------------|------------------------|
+| **compact** | < 800 tokens | A red flag — skill is small but expensive to follow; look for wasted steps |
+| **detailed** | 800–1,200 tokens | Expected — a 20–40% increase over baseline is normal |
+| **comprehensive** | > 1,200 tokens | Expected — thoroughness has a cost; focus on pass rate delta instead |
+
+A compact skill with a token delta larger than its own baseline cost likely has inefficient instructions (redundant validation, unnecessary reference loading, repeated steps). Read the execution transcript to find the bottleneck.
+
 ### Per-Eval Breakdown
 
 The `per_eval` array reveals which test cases the skill handles well and which it struggles with. Focus iteration effort on test cases with the largest gap between expected and actual pass rates.
@@ -77,6 +89,21 @@ If one eval takes 3x longer or uses 3x more tokens than others:
 1. Read the execution transcript for that eval
 2. Look for: wasted steps, unnecessary validation, repeated attempts, loading unneeded references
 3. Simplify the relevant skill instructions or add guardrails
+
+### Step 5: Correlate Static Predictions with Dynamic Results
+
+Compare the `predicted_failure_modes` in `static-analysis.json` against the actual pattern of assertion failures. This validates the static model and sharpens your iteration priorities.
+
+| Static Prediction | Look for in Dynamic Results |
+|------------------|-----------------------------|
+| Low completeness | Agent stalls mid-workflow, asks clarifying questions, or skips required steps |
+| Low determinism | High stddev on pass rates; same assertion passes in some runs, fails in others |
+| Low consistency | Different runs produce different tool names, paths, or output formats for the same task |
+| Low usability | Assertions fail when test inputs vary slightly from the skill's assumed context |
+| Over-specification flagged | Assertions pass for the original instance but fail on the over-specification variant case |
+| Low invocability | Should-trigger case fails (skill not selected); should-not-trigger case fails (skill incorrectly selected) |
+
+When a predicted failure mode is confirmed by dynamic results, the iteration fix is clear. When a prediction doesn't match (e.g., low determinism predicted but stddev is low), the static rubric may have been too conservative — update the `static-analysis.json` notes for future reference.
 
 ## Planning Improvements
 

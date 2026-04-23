@@ -1,5 +1,5 @@
 ---
-name: agent-catalog-skill-evaluator
+name: skill-evaluator-catalog-builder
 description: 'Scan, evaluate, and catalog large collections of agent skills into a structured JSON file. Use when asked to "catalog skills", "evaluate a skill collection", "review a skill repository", "audit skill quality", "scan skills folder", "build a skill inventory", "compare skill libraries", or when working with agent skill repositories like openclaw/skills or any collection following the Agent Skills specification (https://agentskills.io/specification). Handles massive repositories efficiently by scripting mechanical extraction and reserving LLM reasoning for qualitative evaluation.'
 license: MIT
 metadata:
@@ -29,6 +29,7 @@ Load detailed guidance based on context:
 | Evaluation rubrics | `references/evaluation-criteria.md` | Before scoring any skill on qualitative dimensions |
 | Output JSON schema | `references/json-schema.md` | Before writing the final catalog JSON |
 | Security patterns | `references/security-patterns.md` | When evaluating skills that use scripts, fetch URLs, or reference external services |
+| HTML catalog viewer | `templates/skill-catalog.html` | When generating the HTML catalog view alongside the JSON |
 
 ## Catalog Workflow
 
@@ -72,15 +73,27 @@ Process skills in batches of 5–10. For each skill in the batch:
 
 1. **Read the scan data** — frontmatter, structure, detected patterns
 2. **Read SKILL.md body** — use the excerpt from scan results; only read the full file if the excerpt is insufficient for scoring
-3. **Score each dimension** — apply the rubrics from the evaluation criteria reference
+3. **Score each dimension** — apply the rubrics from the evaluation criteria reference, in this order:
+   - Score **Usage Value** (1–5)
+   - Score **Security Risk**: assign six sub-scores (1–5 each), derive composite rating (low/medium/high); load `references/security-patterns.md` for pattern examples
+   - Score **Executability**: assign four sub-scores (completeness, determinism, consistency, usability), compute average for `score`
+   - Score **Invocability** (1–5) — check both trigger reliability and false-positive risk
+   - Classify **Token Efficiency**: use `estimated_tokens` from scan data to assign `complexity_class` (compact/detailed/comprehensive)
+   - Flag **Over-Specification Risk** (true/false)
+   - Classify **Skill Pattern** (A/B/C) based on presence of `scripts/` directory and MCP/subagent references
+   - Extract **Core Capabilities**, **External Requirements**, **Script Languages**, **License**
 
 #### Evaluation Dimensions
 
 | Dimension | Type | Output |
 |-----------|------|--------|
 | **Usage Value** | Qualitative (1–5) | How useful is this skill to most users? |
-| **Security Risk** | Qualitative (low/medium/high) | Are there security concerns, external calls, or credential handling? |
-| **Best Practices** | Qualitative (1–5) | How well-designed is the skill per Agent Skills spec? |
+| **Security Risk** | Qualitative (low/medium/high) + 6 sub-scores (1–5 each) | Are there security concerns, external calls, or credential handling? |
+| **Executability** | Qualitative (1–5) + 4 sub-scores (completeness, determinism, consistency, usability) | How completely and precisely can an agent follow this skill's workflow? |
+| **Invocability** | Qualitative (1–5) | Will the skill trigger reliably and only when appropriate? |
+| **Token Efficiency** | Class (compact / detailed / comprehensive) | What is the skill's token footprint? |
+| **Over-Specification Risk** | Binary flag | Does the skill hardcode instance-specific values that reduce reusability? |
+| **Skill Pattern** | Class (A / B / C) | Is the skill instructions-only, script-backed, or MCP-orchestrated? |
 | **Core Capabilities** | Extracted | What does the skill actually do? (1–3 sentence summary) |
 | **External Requirements Indicator** | Binary | Does the skill's workflow require external services/tools to run? (not the same as mentioning them) |
 | **External Requirements** | Extracted list | Runtime dependencies only — APIs/services/CLIs the skill itself must call or invoke. Exclude platforms mentioned as subject matter or content references. |
@@ -95,12 +108,22 @@ Merge scan data and evaluations into the final catalog JSON file. Save to the us
 
 Run `scripts/assemble_catalog.py` if available, or construct the JSON directly. The output must conform to the schema in the reference.
 
-### Step 5: Generate Summary Report
+### Step 5: Generate HTML Catalog View
 
-After the catalog JSON is written, produce a brief markdown summary for the user:
+After the catalog JSON is written, copy `templates/skill-catalog.html` to the same output directory as `skill-catalog.json`. The HTML file loads the JSON automatically when both files are in the same folder.
+
+```bash
+cp <skill-path>/templates/skill-catalog.html <output-directory>/skill-catalog.html
+```
+
+If the user specified a custom output path for the JSON, place the HTML in the same directory. Open `skill-catalog.html` in a browser (or serve the folder over HTTP) to view the interactive catalog. The HTML viewer supports search, filtering by domain/category/risk, sorting, grid/list toggle, and light/dark themes.
+
+### Step 6: Generate Summary Report
+
+After the catalog JSON and HTML are written, produce a brief markdown summary for the user:
 
 - Total skills scanned
-- Score distribution (usage value, best practices)
+- Score distribution (usage value, executability, invocability)
 - High-risk skills (security risk = high)
 - Skills with external dependencies
 - Top-rated skills by usage value
@@ -141,8 +164,9 @@ After the catalog JSON is written, produce a brief markdown summary for the user
 ## Output Template
 
 1. **Catalog JSON file** — `skill-catalog.json` conforming to the schema, containing all skills with evaluations
-2. **Summary report** — Markdown table with score distributions, highlights, and warnings
-3. **Scan log** — List of skills found, any parse errors, and skipped entries
+2. **HTML catalog viewer** — `skill-catalog.html` copied from `templates/skill-catalog.html`, placed in the same directory as the JSON for interactive browsing
+3. **Summary report** — Markdown table with score distributions, highlights, and warnings
+4. **Scan log** — List of skills found, any parse errors, and skipped entries
 
 ## Knowledge Reference
 

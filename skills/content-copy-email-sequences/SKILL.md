@@ -3,18 +3,31 @@ name: content-copy-email-sequences
 description: 'Design and write structured email sequences, drip campaigns, and lifecycle programs. Use when asked for "email sequence", "drip campaign", "welcome emails", "onboarding emails", "nurture sequence", "re-engagement emails", "email automation", "lifecycle emails", "win-back emails", "billing emails", or "email copy". Covers full sequence design: triggers, timing, subject lines, body copy, CTAs, segmentation, and optimization.'
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   domain: content
-  triggers: email sequence, drip campaign, welcome emails, nurture sequence, onboarding emails, re-engagement emails, email automation, lifecycle emails, win-back emails, billing emails, email copy, email flow, lifecycle campaign, nurture flow, post-purchase emails
+  triggers: email sequence, drip campaign, welcome emails, nurture sequence, onboarding emails, re-engagement emails, email automation, lifecycle emails, win-back emails, billing emails, email copy, email flow, lifecycle campaign, nurture flow, post-purchase emails, event-based emails, educational sequence, new customers series, cancelled customer win-back, product update email, seasonal promotion, pricing update email, new user invite, failed payment, cancellation survey, renewal reminder, NPS email, review request email, referral email, upsell email
   role: specialist
   scope: creation
   output-format: content
-  related-skills: content-copy-humanizer, content-copy-caveman
+  related-skills: content-copy-humanizer, content-copy-caveman, content-copy-email-template-builder
 ---
 
 # Email Sequence Specialist
 
 Senior email sequence strategist + copywriter. Deep in lifecycle automation, drip architecture, behavioral triggers. Specialize in sequence scaffolding, copy that converts, timing logic, segmentation by stage/behavior. Produce sequences that move people through funnel without burning list.
+
+## Product Context Check
+
+Before asking questions, check for existing product marketing context:
+- If `.agents/product-marketing-context.md` exists → read it first
+- Use that context. Ask only for gaps specific to this task — don't re-ask what's already covered
+
+## Core Principles
+
+- **One email, one job** — one purpose, one CTA per email. No multi-tasking
+- **Value before ask** — earn trust through useful content before selling
+- **Relevance over volume** — fewer, better emails beat more generic ones
+- **Clear path forward** — every email moves them somewhere specific. Vague = ignored
 
 ## Workflow
 
@@ -30,6 +43,8 @@ Gather before writing. Minimum needed:
 - Trial / win-back
 - Billing recovery
 - Campaign / promotional
+- Event-based (action triggers: feature use, milestone, inactivity)
+- Educational (value-first, product-agnostic teaching)
 
 **Audience context**
 - Who enters? What triggered them?
@@ -118,6 +133,13 @@ Conditions: [optional — segment/behavior rule]
 - Length by type: 50–125w transactional · 150–300w educational · up to 500w story-driven
 - Read aloud test: sounds human? Ship it
 
+**Personalization rules:**
+- Use first name (fallback: "there" or "friend" — never blank)
+- B2B: add company name, role, or plan tier where natural
+- Dynamic content by segment: stage, behavior, use case
+- Triggered sends > time-based sends — action-based is always more relevant
+- Examples: feature used → milestone hit → inactivity trigger → limit reached
+
 ---
 
 ### Phase 4: Optimize
@@ -149,108 +171,41 @@ Add to every sequence output:
 
 ## Sequence Templates
 
-### Welcome (Post-Signup)
+Each sequence type has a dedicated template file with blueprint, email-by-email breakdown, segmentation, copy rules, metrics, and audit checklist. See [references/sequence-templates.md](references/sequence-templates.md) for the full index.
 
-| # | Timing | Purpose | Subject pattern |
-|---|---|---|---|
-| 1 | Immediate | Welcome + single next step | "Welcome to [X] — here's step one" |
-| 2 | Day 1–2 | Quick win | "Get your first [result] in 10 min" |
-| 3 | Day 3–4 | Origin story / why | "Why we built [X]" |
-| 4 | Day 5–6 | Social proof | "How [Customer] achieved [Result]" |
-| 5 | Day 7–8 | Overcome objection | "[Common objection]? Here's the fix" |
-| 6 | Day 9–11 | Feature highlight | "Have you tried [Feature] yet?" |
-| 7 | Day 12–14 | Conversion | "Ready to [upgrade/commit]?" |
+**Quick reference:**
 
----
+| Sequence | Emails | Span | Trigger |
+|----------|--------|------|---------|
+| Welcome | 5–7 | 14 days | Signup / lead magnet |
+| Lead Nurture | 6–8 | 21 days | Pre-sale list entry |
+| Onboarding | 5–7 | 14 days | Account created |
+| New Customers | 3–5 | 14 days | Paid conversion |
+| Re-Engagement | 3–4 | 14 days | 30–60 days inactivity |
+| Trial Win-Back | 3–4 | 30 days | Trial expiry |
+| Cancelled Win-Back | 2–3 | 90 days | Active cancellation |
+| Billing Recovery | 3–4 | 14 days | Payment failure |
+| Campaign / Seasonal | 2–4 | campaign duration | Calendar event / launch |
 
-### Lead Nurture (Pre-Sale)
 
-| # | Timing | Purpose |
-|---|---|---|
-| 1 | Immediate | Deliver lead magnet + brief intro |
-| 2 | Day 2–3 | Expand on topic, establish expertise |
-| 3 | Day 4–5 | Problem deep-dive, show empathy |
-| 4 | Day 6–8 | Solution framework — educational, not salesy |
-| 5 | Day 9–11 | Case study + soft CTA |
-| 6 | Day 12–14 | Differentiation vs. alternatives |
-| 7 | Day 15–18 | Objection handler |
-| 8 | Day 19–21 | Direct offer + urgency if available |
-
----
-
-### Re-Engagement
-
-| # | Timing | Purpose | Subject pattern |
-|---|---|---|---|
-| 1 | Day 0 | Check-in | "Is everything okay, [Name]?" |
-| 2 | Day 2–3 | Value reminder | "Remember when you [achieved X]?" |
-| 3 | Day 5–7 | Incentive | "We miss you — here's something" |
-| 4 | Day 10–14 | Last chance | "Should we stop emailing you?" |
-
-Email 4 = list hygiene. No response = suppress. Honest + direct — not guilt.
-
----
-
-### Onboarding (Product Users)
-
-Supports in-app flow. Email complements, not duplicates.
-
-| # | Timing | Purpose |
-|---|---|---|
-| 1 | Immediate | Confirm signup + single critical action |
-| 2 | Day 1 | Nudge if step 1 incomplete |
-| 3 | Day 2–3 | Feature highlight with specific use case |
-| 4 | Day 4–5 | Customer success story |
-| 5 | Day 7 | Check-in + offer help |
-| 6 | Day 10–12 | Advanced tip for engaged users |
-| 7 | Day 14+ | Upgrade/trial conversion prompt |
-
----
-
-### Billing Recovery (Failed Payment)
-
-| # | Timing | Tone |
-|---|---|---|
-| 1 | Day 0 | Friendly — card likely expired |
-| 2 | Day 3 | Reminder — service at risk |
-| 3 | Day 7 | Urgent — account suspending soon |
-| 4 | Day 10–14 | Final — what they'll lose |
-
-Copy rule: assume accident, not intent. Single CTA → update payment link. No guilt. No threats.
-
----
-
-### Trial Win-Back
-
-| # | Timing | Focus |
-|---|---|---|
-| 1 | Day 1 post-expiry | What they're missing |
-| 2 | Day 7 | Gather feedback — what held them? |
-| 3 | Day 14 | Incentive (discount/extended trial) |
-| 4 | Day 30 | Final reach-out, door still open |
-
-Segment by trial engagement:
-- High engagement → remove friction to convert
-- Low engagement → offer fresh start + more onboarding
-- Zero engagement → ask what happened, offer demo/call
-
----
 
 ## Lifecycle Coverage Reference
 
 Audit checklist — use to spot gaps in existing programs:
 
-**Onboarding:** new users series · new customers series · setup step reminders · invite sequence
+**Onboarding:** new users series · new customers series · setup step reminders · new user invite sequence
 
-**Retention:** upgrade to paid · upgrade tier · ask for review · proactive support · usage reports · NPS · referral program
+**Retention:** upgrade to paid · upgrade to higher tier · ask for review (after milestone/positive support, not after billing issues) · proactive support (trigger: usage drop, failed actions) · usage reports (weekly/monthly value digest) · NPS survey (quarterly or post-milestone) · referral program
 
-**Billing:** switch to annual · failed payment recovery · cancellation survey · renewal reminder
+**Billing:** switch to annual · failed payment recovery · cancellation survey · upcoming renewal reminder (14–30 days prior)
 
-**Usage:** daily/weekly/monthly digest · event notifications · milestone celebrations
+**Usage:** daily/weekly/monthly digest · key event notifications · milestone celebrations
 
-**Win-Back:** expired trials · cancelled customers
+**Win-Back:** expired trials · cancelled customers (30/60/90 days)
 
-**Campaigns:** monthly newsletter · seasonal promotions · product update announcements · pricing change communications
+**Campaigns:** monthly newsletter · seasonal promotions · product update announcements · industry news roundup · pricing change communications
+
+See [references/email-types.md](references/email-types.md) for full trigger · goal · copy approach per type.
 
 ---
 
@@ -274,17 +229,31 @@ Audit checklist — use to spot gaps in existing programs:
 - Don't recommend batch blasts when behavioral triggers are applicable
 - Don't reference specific email platforms by name — keep output platform-agnostic
 - Don't write past email 1 without knowing the sequence goal
+- Don't skip personalization when user data exists — generic = lower performance
+- Don't treat new customers same as new users — they've converted, serve them accordingly
+- Don't send win-back with guilt or desperation tone — updates + value only
 
 ---
 
 ## Output Checklist
 
+- [ ] Product marketing context checked (`.agents/product-marketing-context.md` if exists)
 - [ ] Sequence type confirmed, goal stated
 - [ ] Sequence blueprint block written (name, trigger, goal, timing, exit conditions)
 - [ ] Each email has: number, purpose, timing, subject, preview, body, CTA
 - [ ] Copy follows hook → context → value → CTA → sign-off
 - [ ] Subject lines: 40–60 chars, clear > clever
 - [ ] Preview text: 90–140 chars, extends subject
+- [ ] Personalization options noted (merge fields, dynamic content, triggered sends)
 - [ ] Segmentation options included
 - [ ] Test recommendations included
 - [ ] Benchmark metrics listed
+
+---
+
+## References
+
+- [references/copy-guidelines.md](references/copy-guidelines.md) — copy structure, personalization, segmentation, A/B testing, metrics
+- [references/email-types.md](references/email-types.md) — full lifecycle email type catalog with triggers, goals, copy approach, and audit checklist
+- [references/sequence-templates.md](references/sequence-templates.md) — index of all sequence template files
+- [assets/templates/](assets/templates/) — per-sequence template files (blueprint + emails + segmentation + checklist)
