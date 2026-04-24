@@ -112,6 +112,14 @@ DOMAIN_CONFIG: dict[str, dict[str, Any]] = {
             "do", "dont", "code_good", "code_bad", "severity",
         ],
     },
+    "forms": {
+        "file": "forms.csv",
+        "search_cols": ["category", "issue", "keywords", "description"],
+        "output_cols": [
+            "category", "issue", "platform", "description",
+            "do", "dont", "code_good", "code_bad", "severity",
+        ],
+    },
 }
 
 # ---------------------------------------------------------------------------

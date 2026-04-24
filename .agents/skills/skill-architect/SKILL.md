@@ -1,11 +1,11 @@
 ---
 name: skill-architect
-description: 'Full lifecycle skill management — build, review, and optimize Agent Skills. Use when asked to "create a skill", "build a skill", "scaffold a skill", "make a new skill", "review a skill", "audit a skill", "improve a skill", "optimize a skill", "add metadata to a skill", "refine metadata", or "update skill frontmatter". Handles the full lifecycle: classifies archetype, scaffolds new skills, reviews existing skills for spec compliance and best practices, and updates metadata for discoverability. Use whenever the user is working on a SKILL.md file or wants to create one.'
+description: 'Full lifecycle management for Agent Skills — scaffold a new skill, review an existing SKILL.md for spec compliance and routing quality, or refine metadata. Use when asked to "create a skill", "build a skill", "scaffold a skill", "review a skill", "audit a skill", "improve a skill", "optimize skill triggers", "fix skill description", or "update skill frontmatter". Covers archetype classification, description and trigger optimization, collision detection against neighbor skills, and metadata routing. Use whenever the user is authoring or editing a SKILL.md file.'
 license: MIT
 metadata:
   version: "1.0.0"
   domain: meta
-  triggers: create skill, build skill, scaffold skill, new skill, review skill, audit skill, improve skill, optimize skill, check skill quality, validate SKILL.md, skill metadata, refine metadata, update frontmatter, skill lifecycle, skill architect
+  triggers: create skill, review skill, audit skill, scaffold skill, optimize skill triggers, fix skill description, refine skill metadata, update skill frontmatter, validate SKILL.md, skill collision check
   role: skill-architect
   scope: design
   output-format: specification
@@ -70,7 +70,12 @@ metadata:
 ---
 ```
 
-Use `agents/description-optimizer.md` to write `description`. Description = primary trigger — must cover direct, indirect, edge-case activation.
+**Description and triggers are the only signals the router sees.** Before writing either, load `references/description-and-triggers.md` — it defines the rules, quality tests, collision detection, and tradeoffs. Then delegate to `agents/description-optimizer.md` to draft and validate the `description`.
+
+Minimum bar before leaving this step:
+- Description is 150–400 chars, opens with the differentiator vs. nearest neighbor, contains 3–6 quoted user-language phrases, includes a WHEN clause
+- `triggers` has 6–10 entries — verb-object user phrases, no morphological duplicates, no phrases already in the description, no category-only terms
+- Collision check run: top trigger phrases were compared against the 2–3 nearest neighbor skills; overlap was eliminated or disambiguated (leading qualifier, `anti-triggers`, or `priority`)
 
 ### B3: Write the Role Definition
 
@@ -172,6 +177,20 @@ Load SKILL.md. Scan for bundled resources (scripts/, references/, assets/, agent
 | Knowledge Reference vocabulary | Comma-separated tech/standards list at end |
 | Agent decomposition (if `agents/`) | Slim orchestrator; no logic duplication |
 
+**Description & triggers (routing layer):** load `references/description-and-triggers.md` and apply the review checklist at its end. Key failure modes to flag:
+
+| Check | Finding | Classification |
+|-------|---------|---------------|
+| Description 150–400 chars | Over-long → trying to be too many things; under-length → missing WHEN clause | `[W]` |
+| First sentence distinguishes skill from nearest neighbor | Interchangeable with neighbor → collision | `[E]` |
+| Description includes 3–6 quoted user-language phrases | None or only category terms → under-triggering risk | `[W]` |
+| Triggers count 6–10 | >12 → dilution; <4 → coverage gap | `[W]` |
+| Every trigger is verb-object, user-authored, distinctive | Morphological duplicates, skill-name echoes, jargon, category-only terms | `[W]` |
+| No trigger duplicated inside the description | Duplication wastes a trigger slot | `[S]` |
+| Collision scan vs nearest 2–3 neighbors | Shared phrases with ≥2 neighbors, not disambiguated | `[E]` |
+| Narrow-skill protection | Narrow skill shadowed by a broader neighbor with overlapping phrasing | `[E]` |
+| PUSH sentence used only when skill needs broad activation | PUSH on a narrow skill → over-triggering | `[W]` |
+
 Load `references/platform-agnostic.md` for cross-platform portability checks. Load `references/agent-skills-spec.md` for frontmatter field rules.
 
 **Project conventions** (load `references/best-practices.md` for full detail):
@@ -266,6 +285,7 @@ Update only `metadata` fields. Confirm YAML valid and spec-compliant. Every adde
 | Platform agnosticism | `references/platform-agnostic.md` | Reviewing for platform-specific coupling or writing cross-platform instructions |
 | Spec compliance | `references/agent-skills-spec.md` | Checking frontmatter rules, name validation, progressive disclosure |
 | Metadata fields | `references/metadata-fields.md` | Choosing values for `domain`, `triggers`, `role`, `scope`, or extended routing fields |
+| Description & trigger optimization | `references/description-and-triggers.md` | Writing or reviewing `description` and `metadata.triggers` — collision detection, narrowness tradeoffs, trigger count, overlap resolution |
 | Project conventions | `references/best-practices.md` | Building or reviewing any skill in this repo — covers output paths, input sources, self-containment, credentials, setup docs, and skill coupling |
 
 ## Bundled Resources
@@ -293,7 +313,9 @@ Update only `metadata` fields. Confirm YAML valid and spec-compliant. Every adde
 - Detect intent → route to correct phase before starting
 - In **Review**: complete full checklist before proposing or applying fixes; classify every finding as `[E#]`, `[W#]`, or `[S#]`; run `scripts/validate.py` first
 - In **Metadata**: preserve `description`, `name`, `license`, `compatibility`, `allowed-tools` exactly unless user asks otherwise; ground every added field in skill content; verify `domain` aligns with name prefix
-- In **Build**: classify archetype before designing; use `domain-category-descriptor` naming; delegate to `agents/description-optimizer.md` for descriptions; apply project conventions from `references/best-practices.md` (no hard-coded paths, no hard-coded credentials, self-contained structure, setup docs if config required)
+- In **Build**: classify archetype before designing; use `domain-category-descriptor` naming; load `references/description-and-triggers.md` before writing the description or `triggers`; delegate to `agents/description-optimizer.md` for descriptions; apply project conventions from `references/best-practices.md` (no hard-coded paths, no hard-coded credentials, self-contained structure, setup docs if config required)
+- Run a collision scan against the 2–3 nearest neighbor skills before finalizing any description or trigger list — compare opening sentences and top trigger phrases
+- Keep `triggers` to 6–10 verb-object user phrases; cut morphological duplicates, skill-name echoes, and category-only terms
 - Run `agents/comparator.md` after applying review fixes
 - Run functional evaluation when user requests or after significant structural fixes
 - When `agents/` exists: verify orchestrator pattern, single responsibility per agent, no logic duplication
@@ -301,7 +323,12 @@ Update only `metadata` fields. Confirm YAML valid and spec-compliant. Every adde
 ### MUST NOT DO
 - Apply review changes before completing the full review pass
 - Change protected metadata fields (`description`, `name`, `license`, `compatibility`, `allowed-tools`) without explicit user request
-- Classify a description as passing if it omits trigger keywords or WHEN scenarios
+- Classify a description as passing if it omits trigger keywords, WHEN scenarios, or a first-sentence differentiator vs. nearest neighbor
+- Ship a description whose opening sentence is interchangeable with a neighbor skill's — that is a collision, flag as `[E]`
+- Stuff `triggers` past ~12 entries; additional variants past that point dilute routing signal rather than improve it
+- Duplicate phrases between `description` and `triggers` — pick one surface
+- Add a PUSH sentence to a narrow, purpose-specific skill — it causes over-triggering and shadows narrower neighbors
+- Use category-only terms (`quality`, `design`, `meta`) as triggers when `domain` already covers them
 - Set `domain` to a value that conflicts with the skill name's domain prefix without flagging the discrepancy
 - Force quantitative scoring onto subjective skills — present for human judgment
 - Grade functional evaluation without running against actual test prompts

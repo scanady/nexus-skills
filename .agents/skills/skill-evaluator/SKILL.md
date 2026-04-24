@@ -1,11 +1,11 @@
 ---
 name: skill-evaluator
-description: 'Evaluate agent skills through structured eval-driven iteration. Use when asked to "evaluate a skill", "test a skill with evals", "benchmark a skill", "run skill evals", "grade skill output", "write assertions for a skill", "compare skill vs baseline", or "iterate on a skill using eval results". Implements the full evaluation loop: design test cases, run with-skill and without-skill comparisons, write assertions, grade outputs, aggregate benchmarks, analyze patterns, collect human feedback, and iterate.'
+description: 'Run structured evaluation cycles against an Agent Skill — design test cases, compare with-skill vs without-skill runs, write assertions, grade outputs with evidence, aggregate pass rates, and iterate. Use when asked to "evaluate a skill", "test a skill with evals", "benchmark a skill", "run skill evals", "grade skill output", "write assertions for a skill", or "iterate on a skill using eval results". Also covers routing-quality evals: invocability, collision against neighbor skills, over-specification risk.'
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   domain: meta
-  triggers: evaluate skill, test skill, benchmark skill, run evals, grade skill output, write assertions, skill eval, compare skill baseline, iterate skill, eval-driven, skill quality, pass rate
+  triggers: evaluate skill, run skill evals, benchmark skill, grade skill output, write skill assertions, compare skill vs baseline, iterate on skill evals, test skill invocability, check skill collision
   role: evaluation-engineer
   scope: analysis
   output-format: report
@@ -81,6 +81,11 @@ Score these dimensions using the rubrics in `skills/skill-evaluator-catalog-buil
     "name_specific": true,
     "triggers_populated": true,
     "false_positive_risk": "low",
+    "description_length_chars": 287,
+    "trigger_count": 8,
+    "nearest_neighbors": ["skill-architect", "skill-reinterpreter"],
+    "collision_risk": "low",
+    "collision_notes": "Opening sentence distinguishes evaluator (eval cycles) from architect (build/review) and reinterpreter (rebuild). No shared top-5 trigger phrases.",
     "notes": "Description could add trigger phrases for indirect invocation patterns"
   },
   "over_specification_risk": {
@@ -90,10 +95,18 @@ Score these dimensions using the rubrics in `skills/skill-evaluator-catalog-buil
 }
 ```
 
+Routing-layer fields to capture under `invocability`:
+- `description_length_chars` — flag if >500 (skill trying to be too many things) or <100 (missing WHEN clause)
+- `trigger_count` — flag if <4 (coverage gap) or >12 (signal dilution)
+- `nearest_neighbors` — 2–3 skills in the same domain or with overlapping vocabulary
+- `collision_risk` — low/medium/high based on shared phrases with neighbors' descriptions and triggers
+- `collision_notes` — specific overlapping phrases or interchangeable opening sentences
+
 Use findings to shape the test suite:
 - **Low completeness or determinism** → add edge-case and ambiguous-input test cases; assert the workflow steps are followed in order
 - **Low invocability or false-positive risk** → add invocability test cases (see requirements below)
-- **Over-specification flagged** → add over-specification variant test cases (see [references/eval-design.md](references/eval-design.md))
+- **Medium or high collision risk** → add a **collision test case** (see Extended Coverage Categories in `references/eval-design.md`) — a prompt in the neighbor skill's territory that this skill should NOT win
+- **Over-specification flagged** → add over-specification variant test cases
 - **Pattern B/C** → add one security test case targeting the highest-risk sub-dimension
 
 Then create `evals/evals.json` with 2–5 test cases. Each test case has a prompt, expected output, and optional input files. Read [references/eval-design.md](references/eval-design.md) for detailed guidance on writing good test prompts.
@@ -120,6 +133,7 @@ Then create `evals/evals.json` with 2–5 test cases. Each test case has a promp
 - Start with 2–3 cases; expand after the first iteration
 - When the output artifact is a skill (e.g., evaluating skill-builder), include assertions for structural conventions such as the `domain-category-descriptor` name pattern (e.g., `"The generated skill name follows the domain-category-descriptor pattern with a valid taxonomy prefix"`) alongside output-quality assertions
 - Include exactly **two invocability test cases**: one should-trigger (indirect phrasing the skill should still catch) and one should-not-trigger (an adjacent task the skill should NOT activate for). See [references/eval-design.md](references/eval-design.md) for prompt examples
+- When `static-analysis.json` records medium or high `collision_risk`, include a **collision test case**: a prompt squarely in a neighbor skill's territory. Assertion: this skill does NOT activate. See [references/eval-design.md](references/eval-design.md)
 - For **Pattern B/C skills**: include one security test case targeting the highest-risk sub-dimension identified in `static-analysis.json` (e.g., adversarial filename input, prompt injection in user-supplied content)
 
 ### Step 3: Run Evals
@@ -310,12 +324,16 @@ Load detailed guidance based on context:
 | Test case and assertion design | `references/eval-design.md` | Writing test prompts, designing assertions, structuring evals.json |
 | Pattern analysis and iteration | `references/pattern-analysis.md` | Interpreting benchmark results, investigating patterns, planning next iteration |
 | Static pre-eval scoring rubrics | `skills/skill-evaluator-catalog-builder/references/evaluation-criteria.md` | Scoring executability, invocability, and over-specification risk in Step 2 |
+| Description & trigger optimization | `../skill-architect/references/description-and-triggers.md` | Scoring `invocability` and `collision_risk` in `static-analysis.json`; interpreting routing-layer failures in iteration |
 
 ## Constraints
 
 ### MUST DO
 - Run each test case in a clean context with no leftover state from previous runs
 - Run both with_skill and without_skill (or old_skill) for every test case to establish a comparison baseline
+- Score `invocability` and `collision_risk` in `static-analysis.json` — check description length, trigger count, and overlap with 2–3 nearest neighbor skills
+- Include both invocability test cases (should-trigger and should-not-trigger) in every eval suite
+- Include a collision test case whenever `collision_risk` is medium or high
 - When the skill under evaluation produces skill artifacts (SKILL.md files), include an assertion that the generated skill name follows the `domain-category-descriptor` naming pattern
 - Record timing data (tokens, duration) for every run
 - Write assertions only after seeing the first round of outputs, not before
