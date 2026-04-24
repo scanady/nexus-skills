@@ -148,6 +148,25 @@ Every eval suite must include exactly two invocability test cases, regardless of
 - Should-trigger: "The response follows the skill's structured workflow rather than answering generically"
 - Should-not-trigger: "The response addresses the request directly without invoking a pipeline design workflow"
 
+### Collision Cases
+
+Include a collision test case whenever `static-analysis.json` records medium or high `collision_risk`. This tests whether a narrower neighbor skill is being shadowed, or whether this skill is over-reaching into a neighbor's territory.
+
+**How to construct:**
+1. Identify the nearest neighbor skill (same domain, or overlapping vocabulary).
+2. Write a prompt that is squarely that neighbor's responsibility \u2014 use the neighbor's own trigger phrases and output words.
+3. Assert: this skill does NOT activate; the neighbor wins.
+
+*Example \u2014 evaluating `skill-architect` with `skill-reinterpreter` as neighbor:*
+- Prompt: "Take my existing skill at `skills/foo/` and rebuild it from scratch in a new folder, then delete the original."
+- Assertion: "The skill-architect does NOT activate \u2014 this is a reinterpretation task owned by skill-reinterpreter."
+
+*Example \u2014 evaluating `skill-architect` with `skill-evaluator` as neighbor:*
+- Prompt: "Run test cases against my skill and tell me if the outputs meet the assertions."
+- Assertion: "The skill-architect does NOT activate \u2014 this is an evaluation task owned by skill-evaluator."
+
+Collision cases are distinct from the should-not-trigger invocability case: invocability tests generic adjacent tasks; collision tests a specific, identified neighbor skill. Include both when collision risk is flagged.
+
 ### Security Cases (Pattern B/C Skills Only)
 
 For skills with `scripts/` directories or MCP/subagent delegation, include one security test case per eval suite targeting the highest-risk sub-dimension from `static-analysis.json`.

@@ -1,11 +1,12 @@
 ---
 name: content-copy-clear-writing
-description: 'Apply Strunk writing rules and eliminate AI prose patterns to produce clear, concise prose for humans. Use when writing or editing documentation, README files, commit messages, UI copy, error messages, reports, or any human-facing text. Invoke for: "write docs", "draft README", "edit for clarity", "make this concise", "fix this commit message", "rewrite this", "remove AI language", "tighten this up".'
+description: 'Apply Strunk writing rules to produce clear, concise prose for humans. Use when writing or editing documentation, README files, commit messages, UI copy, error messages, or any human-facing text.'
 license: MIT
 metadata:
   version: "1.0.0"
   domain: content
-  triggers: write documentation, draft README, edit for clarity, make this concise, improve this prose, rewrite this, fix commit message, write UI text, write error message, write report, tighten this up, human-readable, clear writing, concise writing, no puffery, remove AI language, active voice, omit needless words, proofread, copyedit, edit my writing, grammar check, plain English, clean up, avoid jargon, strunk, elements of style, technical writing, prose review
+  triggers: write documentation, draft README, edit for clarity, make this concise, tighten this up, write UI copy, write error message, omit needless words, apply strunk
+  anti-triggers: humanize text, de-slop writing, detect AI patterns, rewrite AI content, clean up AI writing
   role: editor
   scope: creation
   output-format: content
@@ -17,7 +18,7 @@ metadata:
 
 Cut fluff. Write specific. Kill AI patterns. Apply Strunk.
 
-## Role
+## Role Definition
 
 Senior prose editor. Expert in Strunk's *Elements of Style*, technical documentation, AI-pattern detection. Write tight, active, concrete prose. Strip puffery — say what it does, not what it "enables" or "fosters."
 

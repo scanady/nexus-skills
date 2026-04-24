@@ -1,11 +1,11 @@
 ---
 name: skill-reinterpreter
-description: 'Create a new interpretation of an existing skill while preserving the original intent, objective, and goals. Use when asked to reinterpret a skill, clone-and-improve a skill, refresh a skill with best practices, replace a skill with a new version, or create a new skill inspired by another skill and delete the original.'
+description: 'Rebuild an existing Agent Skill from scratch in a new folder while preserving intent and outcomes, then delete the original. Use when asked to "reinterpret a skill", "clone and improve a skill", "rebuild a skill from scratch", "refresh a skill with current best practices", or "replace a skill with a new version". Distinct from skill-architect (which edits in place) and skill-evaluator (which tests) — this skill creates a new folder, fully rewrites every file including references and scripts, then removes the source.'
 license: MIT
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   domain: agent
-  triggers: reinterpret skill, clone and improve skill, replace skill, rebuild skill, refresh skill, skill rewrite, inspired by existing skill, delete original skill
+  triggers: reinterpret skill, rebuild skill from scratch, clone and improve skill, replace skill with new version, refresh skill with best practices, delete original skill after rewrite
   role: architect
   scope: design
   output-format: specification
@@ -103,6 +103,15 @@ Use `skill-architect` as the design framework:
 - Run a full review pass against quality and compliance expectations
 - Draft all replacement content in `content-copy-caveman` **full** mode
 
+**Routing-layer rebuild (mandatory):** load `../../.agents/skills/skill-architect/references/description-and-triggers.md` before writing the replacement's `description` or `triggers`. Apply its full rule set:
+- Extract the semantic core; narrow if it overlaps with an existing skill in `skills/`
+- Run a collision scan against the 2–3 nearest neighbor skills — opening sentences must not be interchangeable
+- Description 150–400 chars, 3–6 quoted user-language phrases in the WHEN clause, differentiator in sentence one
+- Triggers 6–10 entries, verb-object, user-authored, distinctive, no duplication with the description, no morphological variants, no category-only terms
+- No PUSH sentence on a narrow, purpose-specific skill
+
+Do not carry over the source skill's description or triggers unchanged — they are the most common source of original quality problems and are explicitly in scope for the rebuild.
+
 Reinterpretation applies to EVERY file in the skill, not just SKILL.md:
 
 | File type | Reinterpretation approach |
@@ -187,6 +196,7 @@ If status is failure:
 | Topic | Reference | Load When |
 |---|---|---|
 | Skill lifecycle design and review | `../../.agents/skills/skill-architect/SKILL.md` | Always before reinterpretation work |
+| Description & trigger optimization | `../../.agents/skills/skill-architect/references/description-and-triggers.md` | Always before rewriting the replacement's `description` or `triggers` |
 | Compressed caveman communication mode | `../../.agents/skills/content-copy-caveman/SKILL.md` | Always before writing replacement skill content |
 | Repo conventions for skill naming and structure | `../../.github/copilot-instructions.md` | Always before file creation/deletion |
 
@@ -196,6 +206,7 @@ If status is failure:
 - Preserve source intent, objective, and goals in the replacement
 - Use `skill-architect` principles to improve structure and quality
 - Apply `content-copy-caveman` at full intensity while drafting replacement skill prose
+- Rebuild the `description` and `triggers` from scratch per `description-and-triggers.md` rules — run a collision scan against nearest neighbor skills, keep triggers to 6–10 verb-object user phrases, avoid duplication between description and triggers
 - Create a new skill folder under `skills/` (do not overwrite source folder in place)
 - Keep the source skill unchanged until replacement validation is complete
 - Ensure the replacement is a genuine reinterpretation, not near-copy content
@@ -212,6 +223,9 @@ If status is failure:
 - Do not keep both old and new skills when replacement mode is requested
 - Do not delete the source skill before replacement validation passes
 - Do not copy any source file verbatim into the replacement — not SKILL.md, not scripts, not references, not assets
+- Do not carry over the source `description` or `triggers` unchanged — rebuild them through `description-and-triggers.md`
+- Do not ship a replacement whose opening sentence is interchangeable with a neighbor skill's — that is a collision
+- Do not stuff `triggers` past ~12 entries; do not include morphological variants, skill-name echoes, or category-only terms
 - Do not skip reinterpretation of any file found in the source skill directory
 - Do not copy-paste script code from source and make only cosmetic edits — rewrite from the behavior contract
 - Do not copy reference file prose and only reformat it — rewrite the content with new structure

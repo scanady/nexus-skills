@@ -7,6 +7,7 @@ See also:
 - [Application Aesthetics Guidelines](./aesthetics-guidelines.md) — Visual identity and brand expression
 - [Design System Guide](./design-system-guide.md) — Token architecture and component specs
 - [Application Layout Patterns](./application-layout-patterns.md) — Navigation models and page archetypes
+- [Form Controls Guide](./form-controls-guide.md) — Input type selection and form control patterns
 
 ## 1. Component Architecture
 A robust component architecture separates presentation from logic.
@@ -20,7 +21,7 @@ Choosing where state lives impacts complexity and performance.
 
 *   **Server State (e.g., SWR, React Query, Apollo):** Manage asynchronous data fetching, caching, synchronization, and optimistic UI updates through dedicated data-fetching libraries. Server state does not belong in global application state.
 *   **Local UI State (e.g., useState, useReducer):** State that only affects a specific component (e.g., "is this modal open?", "is this dropdown expanded?") should live locally in that component.
-*   **Global Application State (e.g., Zustand, Redux, Context Context):** State that must be accessed across deeply nested components (like the authenticated user session, shopping cart, or a dark mode toggle) should live globally, but global state should be kept as thin as possible.
+*   **Global Application State (e.g., Zustand, Redux, React Context):** State that must be accessed across deeply nested components (like the authenticated user session, shopping cart, or a dark mode toggle) should live globally, but global state should be kept as thin as possible.
 
 ## 3. Styling Strategy
 Styling should be maintainable, scalable, and highly cohesive.
@@ -32,7 +33,7 @@ Styling should be maintainable, scalable, and highly cohesive.
 ## 4. Performance Optimization
 Do not build applications that are slow to run on an average machine.
 
-*   **Code Splitting and Lazy Loading:** Routes and large third-party dependencies should be dynamically imported or chunks. Never load a 5MB graphing library on the initial page load if the user is on the login screen.
+*   **Code Splitting and Lazy Loading:** Routes and large third-party dependencies should be dynamically imported or code-split. Never load a 5MB graphing library on the initial page load if the user is on the login screen.
 *   **Virtualization:** Long lists (over 100-200 items, or complex row structures) should use windowing/virtualization (e.g., `react-virtual`) to render only the DOM nodes currently visible.
 *   **Debouncing and Throttling:** Rapid, continuous user input like typing in a real-time search box, resizing windows, or scrolling must be debounced or throttled to prevent blocking the main thread.
 *   **Image Optimization:** Use modern formats (`WebP`, `AVIF`), enforce `loading="lazy"` for below-the-fold assets, and properly size `srcset` values for responsive sizing. Provide `width` and `height` attributes to prevent Cumulative Layout Shift (CLS).
@@ -46,7 +47,7 @@ Accessibility (a11y) is not optional. It must be built into the foundation.
 *   **Announcements (`aria-live`):** When dynamic content successfully changes without a page reload (e.g., form submissions, loading completions), use `aria-live` regions to announce the result to assistive technologies.
 
 ## 6. API and Error Handling Architecture
-*   **Centralized Error Handling:** Catch HTTP errors in one central place (e.g., an Axios interceptor) rather than rewriting `try/catch` logic 100 times. If a request returns a `401 Unauthorized`, automatically redirect to logic.
+*   **Centralized Error Handling:** Catch HTTP errors in one central place (e.g., an Axios interceptor) rather than rewriting `try/catch` logic 100 times. If a request returns a `401 Unauthorized`, automatically redirect to the login page.
 *   **Idempotent Retries:** For critical paths (like saving data), ensure API operations are retryable without side effects, and build fallback UI logic for offline states.
 *   **Graceful Degradation:** The application should not completely break if a non-critical third-party service (like an analytics script or an avatar loading service) goes down.
 
@@ -90,7 +91,7 @@ Navigation is the skeleton of the application. The wrong navigation model makes 
 
 ## 9. Form Design Patterns
 
-Forms are the primary input mechanism for most applications. Poor form design directly causes abandonment and errors.
+Forms are the primary input mechanism for most applications. Poor form design directly causes abandonment and errors. This section covers form **layout and behavior**. For choosing the right **input control** for each field (radio vs dropdown vs combobox vs transfer list, slider vs number input, etc.), see [Form Controls Guide](./form-controls-guide.md).
 
 **Layout principles:**
 - Single-column forms outperform multi-column forms for completion rate — use multi-column only when fields are logically paired (first name + last name, city + state + zip).

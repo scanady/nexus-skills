@@ -43,9 +43,11 @@ Avoid:
 
 This is one of the most important metadata fields for routing. Use it to reinforce and clarify routing signal without changing the existing `description`.
 
+For the full rule set — trigger count, quality tests, collision detection, and tradeoffs — load `references/description-and-triggers.md`. Summary below.
+
 Use:
 - direct user phrases someone would type
-- action-oriented keywords
+- action-oriented keywords (verb + object)
 - short noun phrases tied to the task
 
 Good trigger patterns:
@@ -58,8 +60,11 @@ Bad trigger patterns:
 - abstract categories only
 - internal implementation jargon users would never say
 - redundant copies of the skill name with no added routing value
+- morphological variants of the same phrase (`create skill`, `creating skills`, `skill creation`)
+- phrases already present in the `description` — no double-dipping
+- category terms already covered by `domain`
 
-Aim for 6 to 12 strong triggers, separated by commas.
+Aim for **6 to 10** strong triggers, separated by commas. More than 12 dilutes routing signal. Fewer than 4 misses obvious phrasings.
 
 ### role
 

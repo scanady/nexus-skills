@@ -1,15 +1,17 @@
 ---
 name: design-application-ux
-description: 'Design and build distinctive, production-grade application interfaces for portals, dashboards, admin panels, SaaS products, mobile apps, and end-to-end product UI/UX. Use this skill when the user asks to build a web or mobile application, design a dashboard, create an admin portal, build a SaaS interface, design application screens or flows, audit or redesign an existing app''s UX, create a design system for a product, mock up application workflows, or plan UI/UX for any functional software product. Also trigger when the user mentions user types (enterprise, consumer, B2B, internal tools), asks about information architecture, navigation patterns, or wants to apply brand strategy to an application interface. This skill is specifically for functional applications, not marketing sites or landing pages. Generates creative, polished code and design that avoids generic AI aesthetics while prioritizing usability, task completion, and domain-appropriate patterns.'
+description: 'Design and build complete, multi-screen functional application interfaces as production-grade code — portals, dashboards, admin panels, SaaS products, internal tools, mobile apps. Use when asked to "build an app", "design an application", "redesign a portal", "build a dashboard UI", "design admin panel screens", or "implement a working product UI end-to-end". For full application builds that need real code across multiple screens and flows — not for single-component styling (use design-ui-system-advisor), sitemaps only (use design-application-sitemap), design tokens (use design-system-architect), or research artifacts (use design-research-ux-artifacts).'
 license: MIT
 metadata:
-   version: "2.0.0"
+   version: "2.3.0"
    domain: design
-   triggers: build dashboard, design portal, create admin panel, build SaaS interface, app interface, application UX, design system, wireframe app, mock up screens, audit UX, redesign app, user flows, navigation patterns, build an app, create a dashboard, web app design, mobile app design, UI/UX design, admin UI, internal tool
+   triggers: build an application, design a full app UI, redesign a portal, build admin panel screens, implement dashboard UI, design SaaS product interface, end-to-end app UI in code, build internal tool UI, ship multi-screen product interface
+   anti-triggers: design system, design tokens, sitemap, information architecture document, single component styling, landing page, marketing page, user research, persona creation
    role: ux-designer
-   scope: design-and-implementation
+   scope: implementation
    output-format: code
-   related-skills: design-research-ux-artifacts
+   priority: specific
+   related-skills: design-application-sitemap, design-system-architect, design-ui-system-advisor, design-research-ux-artifacts, design-research-ux-researcher
 ---
 
 Design and build distinctive, production-grade application interfaces. This skill covers the full UX design process for functional software: discovery, information architecture, interaction design, visual design, and implementation. It produces real working code with exceptional attention to both usability and aesthetic quality.
@@ -30,6 +32,7 @@ Load detailed guidance based on context:
 | Visual identity, brand expression, and distinctive design | `references/aesthetics-guidelines.md` | Choosing visual direction, translating brand into UI, refining application personality, avoiding generic AI-style patterns |
 | Design tokens and component implementation | `references/design-system-guide.md` | Building screens, components, dashboards, coded mockups, or component libraries |
 | Navigation, layout, form, and search implementation | `references/technical-implementation-patterns.md` | Implementing navigation systems, form patterns, search/filter, state management, performance optimization |
+| Form control and input type selection | `references/form-controls-guide.md` | Choosing between radios, checkboxes, dropdowns, comboboxes, sliders, transfer lists, and other input controls based on data characteristics |
 | Application shell archetypes and page composition | `references/application-layout-patterns.md` | Choosing app shell structure, designing specific page types, responsive layout decisions |
 
 ## Output Modes
@@ -105,7 +108,7 @@ Applications are built from components, not pages. Design the component system, 
 *Layout*: App shell, sidebar, top bar, content area, split pane, panel group
 *Navigation*: Nav items, breadcrumbs, tabs, steppers, command palette
 *Data display*: Tables (sortable, filterable, paginated), cards, stat blocks, charts, timelines, activity feeds
-*Data input*: Forms, field groups, inline editing, search, filters, date/time pickers
+*Data input*: Forms, field groups, inline editing, search, filters, date/time pickers. When choosing a specific input control (radio vs dropdown vs combobox vs transfer list, slider vs number input, tag input vs checkbox group, etc.), consult `references/form-controls-guide.md` — the choice is driven by data type, single vs multi-value, and the number of options, not visual preference.
 *Feedback*: Toasts, alerts, progress indicators, skeleton loaders, empty states
 *Overlays*: Modals, drawers, popovers, dropdown menus, command palette
 *Actions*: Buttons (primary, secondary, ghost, destructive), button groups, FABs, split buttons
@@ -162,6 +165,7 @@ When auditing, produce a concrete assessment document with specific findings, no
 - Define the complete token set (color, type, spacing, surfaces, elevation) before building any reusable components.
 - Implement all four base screen states (empty, loading, populated, error) for every primary view.
 - Match component density, interaction model, and information hierarchy to the application's user type and operating context.
+- Choose form controls based on data type, cardinality (single vs multi-value), and number of options — not visual variety. Consult `references/form-controls-guide.md` whenever designing or reviewing a form field.
 - Produce concrete audit findings tied to specific screens, components, or flows when reviewing an existing app — no vague recommendations.
 - Use realistic sample data that reflects actual domain content, not lorem ipsum or placeholder values.
 
@@ -174,6 +178,7 @@ When auditing, produce a concrete assessment document with specific findings, no
 - Do not exceed the requested output mode — no full application when a mockup was asked for.
 - Do not hard-code color hex values, pixel sizes, or magic numbers into components — use design tokens.
 - Do not duplicate token definitions or component standards already covered by `references/design-system-guide.md`.
+- Do not use radio or checkbox groups for lists longer than ~7 options, unsearchable dropdowns for lists over ~20 options, sliders without a visible numeric value, placeholder-as-label, or free-text inputs for known enumerations. See `references/form-controls-guide.md` §9 (anti-patterns).
 
 ## Knowledge Reference
 
