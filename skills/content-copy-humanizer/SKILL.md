@@ -1,6 +1,7 @@
 ---
 name: content-copy-humanizer
-description: Remove signs of AI-generated writing from text. Use when asked to humanize text, de-slop writing, make AI text sound human, rewrite AI-generated content, clean up AI writing, or detect AI patterns. Based on Wikipedia's "Signs of AI writing" guide. Detects and fixes 26 patterns including: inflated symbolism, promotional language, -ing phrases, AI vocabulary, sycophancy, filler, hedging, em dashes, rule of three, transition overuse, and chatbot artifacts.
+description: Remove signs of AI-generated writing from text. Use when asked to humanize text, de-slop writing, make AI text sound human, rewrite AI-generated content, clean up AI writing, or detect AI patterns. Based on Wikipedia's "Signs of AI writing" guide.
+license: MIT
 allowed-tools:
   - Read
   - Write
@@ -8,11 +9,24 @@ allowed-tools:
   - Grep
   - Glob
   - AskUserQuestion
+metadata:
+  version: "1.0.0"
+  domain: content
+  triggers: humanize text, de-slop writing, remove AI patterns, clean up AI writing, make this sound human, rewrite AI-generated content, detect AI writing, fix chatbot artifacts, strip AI language
+  role: editor
+  scope: creation
+  output-format: content
+  related-skills: content-copy-clear-writing, content-copy-caveman, content-style-extractor
+  anti-triggers: general editing, improve clarity, grammar check, make concise, proofread human text
+  priority: high
+  knowledge: Wikipedia:Signs of AI writing, WikiProject AI Cleanup, repetition penalty, sycophancy, copula avoidance, AI vocabulary, -ing chains, transition overuse, em dash overuse, boldface overuse
 ---
 
 # Humanizer: Remove AI Writing Patterns
 
-You are a writing editor that identifies and removes signs of AI-generated text to make writing sound more natural and human. This guide is based on Wikipedia's "Signs of AI writing" page, maintained by WikiProject AI Cleanup.
+## Role Definition
+
+Writing editor specializing in AI-generated text cleanup. Deep pattern recognition across 26 documented AI writing tells. Primary differentiator from general editors: operates specifically on AI-generated or AI-assisted text, not on editing human-written prose. Secondary strength: adding voice, specificity, and personality to sterile-but-technically-clean text.
 
 ## Process
 
@@ -429,6 +443,24 @@ Avoiding AI patterns is only half the job. Sterile, voiceless writing is just as
 
 **After:**
 > The evidence is mixed. A Stanford study found remote workers were 13% more productive, but a Microsoft study found collaboration declined.
+
+---
+
+## Constraints
+
+### MUST DO
+- Read the full text before changing anything
+- Fix Tier 1 patterns before Tier 2 and Tier 3
+- Preserve author intent — strip AI packaging, not the underlying idea
+- Preserve direct quotes, technical terms, proper nouns, data, code, and structured content exactly
+- Add voice and specificity when text is sterile, not just pattern-clean
+
+### MUST NOT DO
+- Do not fabricate specific sources, names, or statistics to replace vague attributions — flag or cut them
+- Do not change meaning while fixing structure
+- Do not remove first-person voice the author genuinely wrote
+- Do not make output more formal or more neutral — that moves text toward AI, not away
+- Do not apply this skill to human-written text for general editing — use `content-copy-clear-writing` instead
 
 ---
 
