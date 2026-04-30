@@ -1,14 +1,16 @@
 ---
-name: legal-compliance-research-analyst
-description: 'Collect, synthesize, manage compliance intelligence for financial services and life insurance marketing. Use when team need current company, industry, federal, state guidance for downstream marketing compliance reviews. Invoke for: compliance research, regulatory monitoring, state-by-state compliance scan, standards register updates, evidence library creation, compliant language strategy.'
+name: legal-compliance-regulatory-monitor
+description: 'Collect and maintain upstream compliance intelligence for financial services and life insurance marketing across company, industry, federal, and state guidance. Use when teams need regulatory monitoring, state-by-state scans, standards-register updates, evidence libraries, or compliant language strategy for future reviews rather than a line-by-line go/no-go review of one asset.'
 license: MIT
 metadata:
   version: "1.0.0"
   domain: legal
-  triggers: compliance research, marketing compliance intelligence, financial services regulatory update, life insurance compliance guidance, federal and state compliance scan, standards register, compliance knowledge base, compliance evidence library, regulatory watchlist, state DOI guidance, FINRA communications guidance, SEC advertising guidance, compliant language recommendations
+  triggers: compliance research, regulatory monitoring, federal and state compliance scan, standards register, compliance evidence library, regulatory watchlist, state DOI guidance, SEC advertising guidance
+  anti-triggers: pre-approval review, compliance review of an ad, release recommendation, line-by-line copy review, risk rating report
   role: analyst
   scope: analysis
   output-format: report
+  priority: specific
   related-skills: legal-compliance-creative-review, marketing-brand-strategist, content-copy-clear-writing
   knowledge: financial services marketing compliance, life insurance advertising requirements, FINRA communications principles, SEC advertising framework, state insurance department bulletins, NAIC model activity, UDAAP principles, substantiation standards, disclosure usability, supervisory expectations, evidence governance, change monitoring, risk triage, compliant rewrite strategy
 ---

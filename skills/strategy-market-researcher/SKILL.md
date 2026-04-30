@@ -1,14 +1,16 @@
 ---
 name: strategy-market-researcher
-description: 'Conducts decision-oriented market research, competitor analysis, investor diligence, market sizing, and vendor scans with source attribution, explicit assumptions, and recommendation-ready synthesis. Use when asked to size a market, compare competitors, evaluate an investor or fund, research a technology vendor, assess industry trends, pressure-test a business thesis, or turn current evidence into a business decision.'
+description: 'Produce decision-ready market research with explicit assumptions, sizing logic, diligence, and recommendation-oriented synthesis. Use when asked to "size a market", "compare competitors", "evaluate an investor", "research a vendor", "assess industry trends", or pressure-test a business thesis rather than summarize headlines or score strategic signals.'
 license: MIT
 metadata:
 	version: "1.0.0"
 	domain: strategy
-	triggers: market research, competitor analysis, competitive analysis, market sizing, TAM SAM SOM, investor diligence, fund research, vendor research, technology scan, industry intelligence, thesis validation, market trends, category research
+	triggers: market sizing, TAM SAM SOM, investor diligence, fund research, vendor research, technology scan, thesis validation, category research, compare competitors
+	anti-triggers: weekly AI news, daily briefing, news roundup, signal classification, threat assessment, AI monthly brief
 	role: analyst
 	scope: analysis
 	output-format: report
+	priority: specific
 	related-skills: research-ops, strategy-research-analyst, strategy-market-competitor-intel, data-analysis-business-performance
 ---
 

@@ -1,15 +1,17 @@
 ---
-name: research-dtc-insurance-landscape-brief
-description: "Performs deep multi-platform research on direct-to-consumer (DTC) life insurance — covering product launches, carrier changes, insurtech funding, regulatory moves, consumer sentiment, and market trends. Designed for weekly, monthly, or quarterly cadences — not daily trending feeds. Synthesizes findings into strategic intelligence briefings with time-bucketed analysis (This Period / Emerging / Horizon), impact assessment, and distribution guidance. Use when asked for 'life insurance landscape', 'DTC insurance brief', 'insurance industry update', 'insurtech trends', or any request for a comprehensive view of recent DTC life insurance developments."
+name: research-dtc-insurance-market-intelligence
+description: "Track DTC life insurance market intelligence across carrier moves, distribution shifts, regulation, funding, and consumer signal over weekly, monthly, or quarterly windows. Use when asked for 'life insurance market intelligence', 'DTC insurance monitoring', 'insurance market watch', 'carrier movement tracking', or 'insurtech signal report' rather than generic news monitoring or AI research."
 license: MIT
 metadata:
   version: "1.0.0"
   domain: research
-  triggers: life insurance landscape, DTC insurance, insurance industry update, insurtech trends, life insurance market, insurance regulation, term life, embedded insurance, direct insurance, carrier update, life insurance brief, insurance roundup, insurance monthly brief, LIMRA update, insurance intelligence
+  triggers: life insurance market intelligence, DTC insurance monitoring, insurance market watch, carrier movement tracking, insurtech signal report, insurance regulation tracking, LIMRA signal watch, direct insurance market monitoring
+  anti-triggers: AI landscape brief, generic topic news, daily briefing, weekly AI news, market sizing, investor diligence
   role: analyst
   scope: research
   output-format: report
   cadence: weekly | monthly | quarterly
+  priority: specific
   related-skills: research-ai-landscape-brief, strategy-research-analyst, research-analyst
 ---
 

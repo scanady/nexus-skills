@@ -116,7 +116,7 @@
 - [tech-code-reviewer](#technology-quality-security)
 - [tech-playwright-expert](#technology-quality-security)
 - [tech-secure-code-guardian](#technology-quality-security)
-- [tech-security-reviewer](#technology-quality-security)
+- [tech-security-audit-lead](#technology-quality-security)
 - [tech-test-master](#technology-quality-security)
 
 ### [technology-language-specialists](#technology-language-specialists)
@@ -283,7 +283,7 @@
 | tech-code-reviewer | Use when reviewing pull requests, conducting code quality audits, or identifying security vulnerabilities. Invoke for PR reviews, code quality checks, refactoring suggestions. | backlog |
 | tech-playwright-expert | Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke for browser automation, E2E tests, Page Object Model, test flakiness, visual testing. | backlog |
 | tech-secure-code-guardian | Use when implementing authentication/authorization, securing user input, or preventing OWASP Top 10 vulnerabilities. Invoke for authentication, authorization, input validation, encryption, OWASP Top 10 prevention. | backlog |
-| tech-security-reviewer | Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews. | backlog |
+| tech-security-audit-lead | Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews. | backlog |
 | tech-test-master | Use when writing tests, creating test strategies, or building automation frameworks. Invoke for unit tests, integration tests, E2E, coverage analysis, performance testing, security testing. | backlog |
 
 ## technology-language-specialists

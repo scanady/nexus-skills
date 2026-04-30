@@ -1,16 +1,18 @@
 ---
-name: tech-security-reviewer
-description: Conduct security audits and produce prioritized vulnerability reports with CVSS severity ratings and remediation guidance. Use when reviewing code for vulnerabilities, running SAST scans, scanning for secrets, performing penetration testing, or auditing cloud infrastructure and DevSecOps pipelines.
+name: tech-security-audit-lead
+description: Run broad security audit engagements across code, dependencies, secrets, infrastructure, and DevSecOps controls, then deliver a prioritized vulnerability report with remediation guidance. Use when asked for a 'security audit', 'SAST scan', 'secret scan', 'penetration test', or 'cloud security review' rather than a code-focused OWASP exploitability analysis.
 license: MIT
 allowed-tools: Read, Grep, Glob, Bash, Write
 metadata:
   version: "1.1.0"
   domain: tech
-  triggers: security review, vulnerability scan, SAST, security audit, penetration test, code audit, security analysis, infrastructure security, DevSecOps, cloud security, compliance audit
+  triggers: security audit, SAST scan, secret scan, penetration test, cloud security review, infrastructure security audit, DevSecOps security review, vulnerability report
+  anti-triggers: OWASP 2025 analysis, exploitability-first code review, attack surface mapping only, auth bypass hunt, injection-focused review
   role: specialist
   scope: review
   output-format: report
-  related-skills: secure-code-guardian, code-reviewer, tech-devops-engineer, cloud-architect, kubernetes-specialist
+  priority: specific
+  related-skills: tech-security-vulnerability-analyst, secure-code-guardian, code-reviewer, tech-devops-engineer, cloud-architect, kubernetes-specialist
 ---
 
 # Security Reviewer

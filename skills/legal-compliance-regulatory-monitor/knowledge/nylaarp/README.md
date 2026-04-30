@@ -12,7 +12,7 @@
 
 This knowledge base contains the compliance intelligence infrastructure for the AARP Life Insurance Program. It is designed to support the creative compliance review process, regulatory research, and ongoing compliance monitoring for all marketing and advertising materials produced for this program.
 
-**Built using:** `legal-compliance-research-analyst` skill + `legal-compliance-creative-review` skill
+**Built using:** `legal-compliance-regulatory-monitor` skill + `legal-compliance-creative-review` skill
 
 ---
 
@@ -50,4 +50,4 @@ This knowledge base contains the compliance intelligence infrastructure for the 
 ## Related Skills
 
 - [`legal-compliance-creative-review`](../../../legal-compliance-creative-review/SKILL.md) — Use to conduct line-by-line review of marketing materials against these standards
-- [`legal-compliance-research-analyst`](../../SKILL.md) — Use to research and update this intelligence system as regulations evolve
+- [`legal-compliance-regulatory-monitor`](../../SKILL.md) — Use to research and update this intelligence system as regulations evolve

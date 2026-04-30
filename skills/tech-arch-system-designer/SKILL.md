@@ -5,11 +5,12 @@ license: MIT
 metadata:
   version: "1.0.0"
   domain: tech
-  triggers: architecture, system design, design pattern, microservices, monolith, event-driven, CQRS, ADR, architecture decision record, scalability, NFR, non-functional requirements, database selection, distributed systems, technical design, infrastructure design, review architecture, tech stack
+  triggers: architecture, system design, design pattern, microservices, monolith, event-driven, CQRS, scalability, NFR, non-functional requirements, database selection, distributed systems, technical design, infrastructure design, review architecture, tech stack
+  anti-triggers: write an ADR, capture architecture decision record, log a decision, ADR template only
   role: architect
   scope: design
   output-format: document
-  related-skills: tech-dev-git-workflow
+  related-skills: tech-dev-commit-push
 ---
 
 # System Designer

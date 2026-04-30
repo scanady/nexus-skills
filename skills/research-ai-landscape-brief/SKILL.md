@@ -1,14 +1,16 @@
 ---
 name: research-ai-landscape-brief
-description: "Performs deep multi-platform research on AI innovation, advancements, and releases from the last 30 days. Searches GitHub trending (daily/weekly velocity), arXiv preprints (cs.AI, cs.LG, cs.CL), Reddit, X/Twitter, TikTok, Instagram, Hacker News, Polymarket, Bluesky, Truth Social, and web sources. Tracks frontier signal across known researchers and labs before mass coverage. Synthesizes findings into strategic intelligence briefings with time-bucketed analysis (This Week / This Month / Horizon), impact assessment, and applicability guidance. Use when asked for 'AI landscape', 'AI developments this month', 'what's new in AI', 'AI research briefing', 'AI innovation roundup', 'latest AI releases', 'AI trends', 'what happened in AI', 'AI monthly brief', 'AI intelligence report', 'deep research on AI', 'frontier AI', 'AI preprints', 'trending AI repos', or any request for a comprehensive view of recent AI developments across the ecosystem."
+description: "Produce a deep 30-day AI landscape brief that combines GitHub velocity, arXiv preprints, social signals, and web reporting into one strategic view. Use when asked for 'AI landscape brief', 'AI monthly brief', 'AI research briefing', 'frontier AI update', 'AI ecosystem roundup', or 'AI trends this month' rather than a short daily or weekly news digest."
 license: MIT
 metadata:
   version: "1.0.0"
   domain: research
-  triggers: AI landscape, AI developments, AI innovation, AI releases, AI trends, latest AI news, AI monthly brief, AI intelligence report, AI research briefing, what's new in AI, AI roundup, AI deep research, AI advancements, AI ecosystem, AI weekly, AI recap
+  triggers: AI landscape brief, AI monthly brief, AI research briefing, frontier AI update, AI ecosystem roundup, AI trends this month, AI intelligence report, trending AI repos, AI preprint roundup
+  anti-triggers: weekly AI news, daily AI briefing, generic topic news, market sizing, investor diligence, insurance landscape
   role: analyst
   scope: research
   output-format: report
+  priority: specific
   related-skills: research-weekly-ai-news, strategy-research-analyst, research-analyst
 ---
 

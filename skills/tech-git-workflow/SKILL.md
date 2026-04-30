@@ -1,15 +1,17 @@
 ---
 name: tech-git-workflow
-description: Guide developers on Git workflow patterns, branching strategies, commit conventions, merge vs rebase decisions, conflict resolution, and collaborative development best practices. Use when asked to "set up a branching strategy", "write a commit message", "resolve merge conflicts", "choose between rebase and merge", "set up GitFlow", "write a PR description", "manage releases", "configure Git aliases", "review a PR", "undo a Git mistake", or when starting a new project's version control conventions.
+description: Advise on team Git workflow design: branching strategy, merge vs rebase, commit conventions, PR process, release flow, and conflict handling. Use when asked to 'set up a branching strategy', 'choose between rebase and merge', 'resolve merge conflicts', 'write a PR description', or define version-control conventions rather than commit or push the current repo state.
 license: MIT
 metadata:
   version: "1.0.0"
   domain: tech
-  triggers: git workflow, branching strategy, commit message, merge vs rebase, conflict resolution, PR description, pull request template, gitflow, trunk-based development, github flow, release management, git config, branch naming, undo git mistake, git hooks, conventional commits
+  triggers: branching strategy, merge vs rebase, conflict resolution, PR description, pull request template, gitflow, trunk-based development, github flow, release management
+  anti-triggers: commit this repo, push my work, stage these files, save current changes, commit and push
   role: specialist
   scope: advisory
   output-format: instructions, commands, templates
-  related-skills: tech-dev-finishing-branch, tech-quality-tdd, tech-quality-requesting-review
+  priority: specific
+  related-skills: tech-dev-commit-push, tech-dev-finishing-branch, tech-quality-tdd, tech-quality-requesting-review
 ---
 
 # Git Workflow

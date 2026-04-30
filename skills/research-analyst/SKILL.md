@@ -1,15 +1,17 @@
 ---
 name: research-analyst
-description: "Researches and synthesizes recent news, events, announcements, and press for any topic, industry, company, or competitor. Delivers structured briefings covering the last 30 days. Use when asked for 'news about [topic]', 'what's happening in [industry]', 'competitor news', 'recent developments in [area]', 'industry updates', 'market news', 'press coverage', 'latest announcements from [company]', or any request for current-events research on a specific subject."
+description: "Research and summarize recent news, announcements, and press for a user-specified topic, company, or industry when no domain-specific briefing skill fits better. Use when asked for 'news about [topic]', 'what's happening in [industry]', 'competitor news', 'recent developments in [area]', 'press coverage', or 'latest announcements from [company]' rather than an AI-only digest, insurance landscape brief, or strategy memo."
 license: MIT
 metadata:
   version: "1.0.0"
   domain: research
-  triggers: research news, industry news, competitor news, market updates, recent developments, press coverage, announcements, what's happening in, latest news about, news roundup, current events, industry briefing, competitive intelligence news, sector updates
+  triggers: news about a topic, what's happening in an industry, competitor news, recent developments, press coverage, latest announcements from a company, current events research, industry news briefing
+  anti-triggers: weekly AI news, AI landscape brief, life insurance landscape, market sizing, investor diligence, threat assessment
   role: analyst
   scope: research
   output-format: report
-  related-skills: strategy-research-analyst, strategy-market-competitor-intel
+  priority: broad
+  related-skills: research-ai-landscape-brief, research-dtc-insurance-market-intelligence, research-weekly-ai-news, strategy-research-analyst, strategy-market-competitor-intel
 ---
 
 # Research Analyst

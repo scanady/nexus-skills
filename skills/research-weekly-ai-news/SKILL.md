@@ -1,15 +1,17 @@
 ---
 name: research-weekly-ai-news
-description: "Aggregates and summarizes the latest AI news from multiple sources. Delivers categorized briefings with direct links to original articles. Use when asked for 'weekly AI news', 'AI updates this week', 'latest AI developments', 'daily AI briefing', 'what's new in AI', 'AI industry news', or 'AI breakthroughs'."
+description: "Aggregate the latest AI headlines into a concise daily or weekly digest with direct source links and light categorization. Use when asked for 'weekly AI news', 'AI updates this week', 'daily AI briefing', 'AI headlines', 'AI news digest', or 'latest AI developments' rather than a deeper monthly landscape or strategy report."
 license: MIT
 metadata:
   version: "1.0.0"
   domain: research
-  triggers: weekly AI news, daily AI briefing, AI updates, latest AI developments, what's new in AI, AI industry news, AI breakthroughs, AI announcements, AI recap
+  triggers: weekly AI news, AI updates this week, daily AI briefing, AI news digest, AI headlines, latest AI developments, AI announcements roundup, AI recap
+  anti-triggers: AI monthly brief, frontier AI update, market sizing, investor diligence, generic topic news, insurance landscape
   role: specialist
   scope: research
   output-format: structured-report
-  related-skills: strategy-research-analyst
+  priority: specific
+  related-skills: research-ai-landscape-brief, research-analyst, strategy-research-analyst
 ---
 
 # Research Weekly AI News

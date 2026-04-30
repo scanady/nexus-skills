@@ -296,6 +296,7 @@ Usage:
 Commands:
   install              Install skills
   list                 List available skills
+  audit-overlap        Find duplicate and overlapping skills
 
 Options:
   --skill, -s <name>   Install specific skill(s) (repeatable)
@@ -311,6 +312,13 @@ Options:
 Supported Agents:
 ${supportedAgents}
 
+Audit options (audit-overlap):
+  --threshold, -t <n>  Minimum overlap score to report (default: 0.20)
+  --top <n>            Limit to top N pairs
+  --json-only          Write JSON report only
+  --md-only            Write Markdown report only
+  --output, -o <dir>   Output directory (default: output/)
+
 Examples:
   npx nexus-agents install
   npx nexus-agents install --skill ops-process-sop-creator
@@ -321,6 +329,8 @@ Examples:
   npx nexus-agents list
   npx nexus-agents list --names
   npx nexus-agents list --count
+  node bin/cli.js audit-overlap
+  node bin/cli.js audit-overlap --threshold 0.30 --top 25
 `);
 }
 
@@ -335,6 +345,9 @@ async function main() {
       break;
     case 'list':
       await listSkills(listMode);
+      break;
+    case 'audit-overlap':
+      require('./skill-overlap-report').run(process.argv.slice(3));
       break;
     case 'help':
     case '--help':
