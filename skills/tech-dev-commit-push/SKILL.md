@@ -1,15 +1,17 @@
 ---
-name: tech-dev-git-workflow
-description: Full git lifecycle skill — inspect diff, craft tight conventional commit messages, stage, commit, push. Use when asked to commit changes, write a commit message, push work, commit and push, save to remote, stage changes, or complete a git workflow.
+name: tech-dev-commit-push
+description: Execute the current repo's commit-and-push cycle: inspect the diff, draft a tight commit message, stage the right files, commit, and push. Use when asked to 'commit changes', 'push work', 'stage changes', 'write this commit message', or 'commit and push' rather than design a branching strategy or explain Git policy.
 license: MIT
 metadata:
   version: "1.0.0"
   domain: tech
-  triggers: commit, push, git workflow, write commit message, commit and push, push changes, push to github, push this, stage changes, commit message, git commit, git push, save to remote, push to remote
+  triggers: commit changes, commit and push, push work, stage changes, write this commit message, git commit this repo, push this branch, save to remote
+  anti-triggers: branching strategy, merge vs rebase, conflict resolution, PR template, release management, gitflow
   role: developer
   scope: workflow
   output-format: command
-  related-skills: content-copy-caveman
+  priority: specific
+  related-skills: tech-git-workflow, content-copy-caveman
 ---
 
 # Git Workflow

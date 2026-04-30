@@ -1,16 +1,18 @@
 ---
 name: agent-design-persona-creator
-description: "Create agent-agnostic AI personas using a four-layer architecture (Soul / Body / Faculty / Skill). Use when asked to create a persona, build a character, design an AI personality, make an agent persona, define a persona profile, or scaffold a persona bundle. Also use when someone wants to give an AI agent a persistent identity, backstory, or behavioral guide."
+description: "Create agent persona bundles with persistent identity, backstory, behavior, and four-layer configuration (Soul / Body / Faculty / Skill). Use when asked to create a persona, build a character, design an AI personality, make an agent persona, define a persona bundle, or give an agent a behavioral guide rather than generate logos, icons, or avatars."
 license: MIT
 metadata:
   author: nexus-agents
   version: "1.0.0"
   domain: workflow
-  triggers: create persona, build character, design personality, agent persona, persona profile, AI identity, persona bundle, persona definition, persona json, four-layer persona
+  triggers: create a persona, build a character, design an AI personality, make an agent persona, persona bundle, AI identity, persona json, four-layer persona
+  anti-triggers: create an icon, make an avatar, generate a logo, profile picture, visual identity asset
   role: specialist
   scope: design
   output-format: document
-  related-skills: product-spec-brainstorming, agent-design-icon-creator
+  priority: specific
+  related-skills: product-spec-brainstorming, agent-design-visual-identity
 ---
 
 # Persona Creator
