@@ -1,14 +1,16 @@
 ---
 name: strategy-research-analyst
-description: 'Performs competitive analysis, technology trend assessment, signal classification, opportunity scoring, threat identification, and strategic intelligence briefings. Use when asked to research competitors, analyze market trends, assess technology signals, produce strategic briefings, evaluate threats and opportunities, perform industry analysis, score market opportunities, or deliver competitive intelligence.'
+description: 'Score competitive, technology, and market signals to produce strategic intelligence with confidence, impact, threats, and opportunities. Use when asked for "competitive analysis", "threat assessment", "opportunity scoring", "signal classification", "strategic intelligence", or a decision-oriented competitor brief rather than a simple news roundup or TAM/SAM/SOM study.'
 metadata:
   version: "1.0.0"
   domain: strategy
-  triggers: competitive analysis, market research, technology trends, threat assessment, opportunity scoring, signal classification, strategic intelligence, competitor research, industry analysis, market sizing, SWOT
+  triggers: competitive analysis, threat assessment, opportunity scoring, signal classification, strategic intelligence, competitor threat analysis, technology signal assessment, industry intelligence, strategic briefing
+  anti-triggers: weekly AI news, daily briefing, news roundup, market sizing, investor diligence, generic press coverage
   role: analyst
   scope: analysis
   output-format: report
-  related-skills: marketing-intel-customer-segmentation, strategy-market-competitor-intel
+  priority: specific
+  related-skills: strategy-market-researcher, research-analyst, research-ai-landscape-brief, marketing-intel-customer-segmentation, strategy-market-competitor-intel
 ---
 
 # Strategy Research Analyst

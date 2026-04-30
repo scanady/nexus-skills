@@ -1,15 +1,17 @@
 ---
 name: legal-compliance-creative-review
-description: 'Run a structured creative compliance review for marketing and sales materials in regulated industries, especially financial services and life insurance. Use when teams need pre-publication review of ads, email copy, social posts, landing pages, scripts, brochures, producer materials, and campaign concepts against brand standards, company policy, industry guidance, and regulatory requirements. Invoke for: compliance review, marketing compliance, creative review, brand compliance, FINRA review, SEC review, insurance advertising review, risk rating, remediation guidance, compliant alternative language.'
+description: 'Run line-by-line pre-publication compliance review on a specific marketing or sales asset in regulated industries, especially financial services and life insurance. Use when teams need an ad, email, landing page, script, brochure, or social post checked for release readiness, risk rating, remediation guidance, and compliant alternative language rather than upstream regulatory monitoring or standards-library research.'
 license: MIT
 metadata:
   version: "1.0.0"
   domain: legal
-  triggers: compliance review, creative compliance, marketing compliance review, brand standards review, policy compliance check, FINRA 2210 review, SEC 482 review, insurance advertising compliance, regulatory copy review, pre-approval review, risk rating report, remediation recommendations, compliant rewrite
+  triggers: compliance review, marketing compliance review, pre-approval review, regulatory copy review, insurance advertising compliance, FINRA 2210 review, risk rating report, compliant rewrite
+  anti-triggers: compliance research, regulatory monitoring, standards register, evidence library, state-by-state scan, guidance watchlist
   role: specialist
   scope: analysis
   output-format: report
-  related-skills: legal-compliance-research-analyst, marketing-brand-strategist, content-copy-clear-writing, sales-outreach-specialist
+  priority: specific
+  related-skills: legal-compliance-regulatory-monitor, marketing-brand-strategist, content-copy-clear-writing, sales-outreach-specialist
   knowledge: financial services marketing compliance, life insurance advertising rules, FINRA 2210, SEC Act 1933 Rule 482, SEC Act 1940 Rule 34b-1, NAIC model advertising guidance, state DOI advertising expectations, UDAAP principles, CFPB marketing supervision themes, unfair claims practices considerations, testimonial and endorsement disclosure, performance claim substantiation, fair balance, required disclosure design, suitability messaging risk, privacy and consent expectations
 ---
 

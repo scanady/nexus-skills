@@ -15,7 +15,7 @@
 - [strategy-planning-pricing](#marketing)
 - [marketing-campaign-product-hunt-launch](#marketing)
 - [marketing-content-viral-hook](#marketing)
-- [marketing-content-x-writer](#marketing)
+- [marketing-content-x-thread-builder](#marketing)
 
 ### [technology](#technology)
 
@@ -72,12 +72,12 @@
 | marketing-campaign-go-to-market | Delivers the 3 best go-to-market strategies tailored to the founder's current stage, product, and market. | active |
 | marketing-campaign-ideas | Produces the best marketing ideas by matching business context against a database of 170+ proven strategies. | active |
 | marketing-content-lead-magnet | Creates viral lead magnet posts that drive comments and DMs in quick and detailed formats. | active |
-| marketing-content-linkedin-writer | Creates viral LinkedIn posts using proven formats, post templates, and voice matching. | active |
+| marketing-content-linkedin-writer | Creates LinkedIn-native authority posts for founders and professional audiences using voice matching and platform-specific structures. | active |
 | sales-outreach-specialist | Crafts high-converting outreach messages and email sequences for cold outreach and LinkedIn DMs. | active |
 | strategy-planning-pricing | Builds comprehensive pricing strategies, tier structures, and price point recommendations interactively. | active |
 | marketing-campaign-product-hunt-launch | Creates a comprehensive, personalized Product Hunt launch plan to rank #1. | active |
 | marketing-content-viral-hook | Creates viral social media hooks using proven psychological patterns and trigger words. | active |
-| marketing-content-x-writer | Creates viral X (Twitter) posts using proven formats and creator voice matching. | active |
+| marketing-content-x-thread-builder | Creates tweetstorms, hot takes, and fast-moving X threads using creator voice matching and feed-native brevity. | active |
 
 ## technology
 

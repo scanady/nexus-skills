@@ -1,6 +1,17 @@
 ---
-name: marketing-content-x-writer
-description: Creates viral X (Twitter) posts using proven formats, post templates, and creator voice matching. Use when user needs engaging, high-performing posts for X/Twitter.
+name: marketing-content-x-thread-builder
+description: Creates tweetstorms, hot takes, and fast-moving X threads using creator-voice matching, punchy hooks, and feed-native brevity. Use when asked for 'a tweetstorm', 'an X thread', 'a Twitter hot take', 'feed-ready X copy', or thread-first social content rather than polished LinkedIn narrative writing.
+license: MIT
+metadata:
+   version: "1.0.0"
+   domain: marketing
+   triggers: tweetstorm, X thread, Twitter hot take, feed-ready X copy, thread-first social content, tweet-sized opinion
+   anti-triggers: LinkedIn thought leadership, founder LinkedIn update, long professional narrative, carousel caption, lead magnet post, LinkedIn post
+   role: writer
+   scope: creation
+   output-format: content
+   priority: specific
+   related-skills: marketing-content-linkedin-writer, marketing-content-viral-hook, marketing-content-lead-magnet
 ---
 
 # X Writer

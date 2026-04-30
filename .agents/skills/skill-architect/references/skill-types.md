@@ -188,7 +188,7 @@ Bad: "Be thorough", "Ask good questions"
 Good: "Match brand voice (see references/brand-voice.md)", "Never use passive voice in CTAs", "Include one specific data point per claim", "LinkedIn posts: 150–300 words, no hashtag spam"
 Bad: "Write engagingly", "Be on-brand"
 
-**Example skills**: marketing-content-brand-copywriter, marketing-content-linkedin-writer, marketing-content-x-writer, comms-announce-organizational, content-copy-humanizer
+**Example skills**: marketing-content-brand-copywriter, marketing-content-linkedin-writer, marketing-content-x-thread-builder, comms-announce-organizational, content-copy-humanizer
 
 ---
 

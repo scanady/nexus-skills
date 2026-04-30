@@ -1,6 +1,17 @@
 ---
 name: marketing-content-linkedin-writer
-description: Creates viral LinkedIn posts using proven formats, post templates, and voice matching. Use when user needs engaging, high-performing posts for LinkedIn.
+description: Creates LinkedIn-native authority posts for founders, operators, and professional audiences using save-worthy story arcs, insight framing, and voice matching. Use when asked for 'LinkedIn thought leadership', 'a founder LinkedIn update', 'a professional LinkedIn narrative', or polished LinkedIn copy rather than tweets or thread-first content.
+license: MIT
+metadata:
+   version: "1.0.0"
+   domain: marketing
+   triggers: LinkedIn thought leadership, founder LinkedIn update, professional LinkedIn narrative, LinkedIn authority post, LinkedIn carousel caption, polished LinkedIn copy
+   anti-triggers: tweetstorm, X thread, tweet draft, viral one-liner, short hot take
+   role: writer
+   scope: creation
+   output-format: content
+   priority: specific
+   related-skills: marketing-content-x-thread-builder, marketing-content-viral-hook, marketing-content-lead-magnet
 ---
 
 # LinkedIn Writer
