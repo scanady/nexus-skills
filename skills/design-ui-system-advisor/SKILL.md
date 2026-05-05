@@ -1,6 +1,6 @@
 ---
 name: design-ui-system-advisor
-description: "UI/UX design intelligence for web and mobile. Use when building, designing, reviewing, or implementing: website, landing page, dashboard, SaaS app, e-commerce, admin panel, form, survey, wizard, portfolio, mobile app. Triggers: design system, color palette, typography, UI style, accessibility, UX review, chart type, form design, picking form controls, radio vs dropdown, autocomplete, slider, rating, transfer list, date picker, stack guidelines, choose fonts, implement layout, build component, review UI code. Knowledge base: 50+ styles, 97 palettes, 57 font pairings, 99 UX rules, 40 form-control patterns, 25 chart types, 9 stacks (React, Next.js, Vue, Nuxt, Svelte, SwiftUI, React Native, Flutter, html-tailwind)."
+description: UI/UX design intelligence for web and mobile. Use when building, designing, reviewing, or implementing: website, landing page, dashboard, SaaS app, e-commerce, admin panel, form, survey, wizard, portfolio, mobile app. Triggers: design system, color palette, typography, UI style, accessibility, UX review, chart type, form design, picking form controls, radio vs dropdown, autocomplete, slider, rating, transfer list, date picker, stack guidelines, choose fonts, implement layout, build component, review UI code. Knowledge base: 50+ styles, 97 palettes, 57 font pairings, 99 UX rules, 40 form-control patterns, 25 chart types, 9 stacks (React, Next.js, Vue, Nuxt, Svelte, SwiftUI, React Native, Flutter, html-tailwind).
 license: MIT
 metadata:
   version: "1.1.0"

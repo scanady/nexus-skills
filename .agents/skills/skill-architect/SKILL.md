@@ -1,6 +1,6 @@
 ---
 name: skill-architect
-description: 'Full lifecycle management for Agent Skills — scaffold a new skill, review an existing SKILL.md for spec compliance and routing quality, or refine metadata. Use when asked to "create a skill", "build a skill", "scaffold a skill", "review a skill", "audit a skill", "improve a skill", "optimize skill triggers", "fix skill description", or "update skill frontmatter". Covers archetype classification, description and trigger optimization, collision detection against neighbor skills, and metadata routing. Use whenever the user is authoring or editing a SKILL.md file.'
+description: Full lifecycle management for Agent Skills — scaffold a new skill, review an existing SKILL.md for spec compliance and routing quality, or refine metadata. Use when asked to "create a skill", "build a skill", "scaffold a skill", "review a skill", "audit a skill", "improve a skill", "optimize skill triggers", "fix skill description", or "update skill frontmatter". Covers archetype classification, description and trigger optimization, collision detection against neighbor skills, and metadata routing. Use whenever the user is authoring or editing a SKILL.md file.
 license: MIT
 metadata:
   version: "1.0.0"

@@ -1,6 +1,6 @@
 ---
 name: product-spec-reverse-engineer
-description: 'Performs a thorough review of an existing project and produces a product overview, functional specification, and technical design document suitable for greenfield rebuilding. Use when asked to "reverse engineer a project", "document a codebase", "create technical documentation from code", "extract architecture from a project", "create a functional spec from existing code", "document system design", "create a product overview", or when the goal is to produce product-agnostic documentation that captures what a system does and how it is built.'
+description: Performs a thorough review of an existing project and produces a product overview, functional specification, and technical design document suitable for greenfield rebuilding. Use when asked to "reverse engineer a project", "document a codebase", "create technical documentation from code", "extract architecture from a project", "create a functional spec from existing code", "document system design", "create a product overview", or when the goal is to produce product-agnostic documentation that captures what a system does and how it is built.
 license: MIT
 metadata:
   version: "2.0.0"

@@ -1,6 +1,6 @@
 ---
 name: personal-communication-style
-description: 'Review and rewrite content to match Sean Canady''s personal writing and communication style. Use when writing emails, memos, documents, executive communications, strategy briefs, or any written output that should sound like Sean. Also use when reviewing or editing drafts for voice and tone consistency. Covers directness, structure, formatting conventions, register adaptation, and anti-pattern removal.'
+description: Review and rewrite content to match Sean Canady''s personal writing and communication style. Use when writing emails, memos, documents, executive communications, strategy briefs, or any written output that should sound like Sean. Also use when reviewing or editing drafts for voice and tone consistency. Covers directness, structure, formatting conventions, register adaptation, and anti-pattern removal.
 license: MIT
 metadata:
   version: "2.0.0"

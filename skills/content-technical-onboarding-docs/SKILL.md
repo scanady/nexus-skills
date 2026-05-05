@@ -1,6 +1,6 @@
 ---
 name: content-technical-onboarding-docs
-description: 'Create user-friendly project onboarding docs that lead readers functionally first: a functional README, functional quickstart guides, and a separate technical overview. Use when asked to "write a README", "create quickstart guides", "document onboarding paths", "write a technical overview", or "generate getting started docs" for a repo.'
+description: Create user-friendly project onboarding docs that lead readers functionally first: a functional README, functional quickstart guides, and a separate technical overview. Use when asked to "write a README", "create quickstart guides", "document onboarding paths", "write a technical overview", or "generate getting started docs" for a repo.
 license: MIT
 metadata:
   author: scanady

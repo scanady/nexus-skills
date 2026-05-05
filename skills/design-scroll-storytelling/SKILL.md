@@ -1,6 +1,6 @@
 ---
 name: design-scroll-storytelling
-description: 'Builds scroll-driven web experiences — parallax storytelling, cinematic animations, sticky sections, interactive narratives. Use when: scroll animation, scroll storytelling, parallax design, cinematic website, interactive narrative, Apple-style product scroll, NY Times-style interactives, GSAP ScrollTrigger, Framer Motion scroll, CSS scroll-timeline, scroll snapping, scroll-driven animation.'
+description: Builds scroll-driven web experiences — parallax storytelling, cinematic animations, sticky sections, interactive narratives. Use when: scroll animation, scroll storytelling, parallax design, cinematic website, interactive narrative, Apple-style product scroll, NY Times-style interactives, GSAP ScrollTrigger, Framer Motion scroll, CSS scroll-timeline, scroll snapping, scroll-driven animation.
 license: MIT
 metadata:
   version: "1.0.0"

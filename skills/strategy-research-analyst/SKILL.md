@@ -1,6 +1,6 @@
 ---
 name: strategy-research-analyst
-description: 'Score competitive, technology, and market signals to produce strategic intelligence with confidence, impact, threats, and opportunities. Use when asked for "competitive analysis", "threat assessment", "opportunity scoring", "signal classification", "strategic intelligence", or a decision-oriented competitor brief rather than a simple news roundup or TAM/SAM/SOM study.'
+description: Score competitive, technology, and market signals to produce strategic intelligence with confidence, impact, threats, and opportunities. Use when asked for "competitive analysis", "threat assessment", "opportunity scoring", "signal classification", "strategic intelligence", or a decision-oriented competitor brief rather than a simple news roundup or TAM/SAM/SOM study.
 metadata:
   version: "1.0.0"
   domain: strategy

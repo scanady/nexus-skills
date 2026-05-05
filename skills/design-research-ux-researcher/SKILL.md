@@ -1,6 +1,6 @@
 ---
 name: design-research-ux-researcher
-description: 'Senior UX researcher and designer. Use when conducting user research, creating data-driven personas, mapping customer journeys, planning usability tests, synthesizing research findings, or validating design decisions with evidence. Invoke for discovery research, generative studies, evaluative testing, insight synthesis, and design recommendations backed by user data.'
+description: Senior UX researcher and designer. Use when conducting user research, creating data-driven personas, mapping customer journeys, planning usability tests, synthesizing research findings, or validating design decisions with evidence. Invoke for discovery research, generative studies, evaluative testing, insight synthesis, and design recommendations backed by user data.
 license: MIT
 metadata:
   version: "1.0.0"

@@ -1,6 +1,6 @@
 ---
 name: strategy-persona-builder
-description: 'Creates research-grounded digital twin personas of real people that function as AI-powered strategic advisors, mentors, and reviewers. Use when asked to "create a digital twin", "build an advisor persona", "simulate how [person] would advise", "make an AI mentor", "create an AI version of [person]", "build a review persona based on [person]", "set up a decision advisor", "replicate how [person] thinks", or when the user wants to consult a specific expert, mentor, or historical figure as an AI-powered persona. Also triggers for "think like [person]", "advise like [person]", "what would [person] say about this", "review this like [person] would", "channel [person]", or "act as my [person] advisor".'
+description: Creates research-grounded digital twin personas of real people that function as AI-powered strategic advisors, mentors, and reviewers. Use when asked to "create a digital twin", "build an advisor persona", "simulate how [person] would advise", "make an AI mentor", "create an AI version of [person]", "build a review persona based on [person]", "set up a decision advisor", "replicate how [person] thinks", or when the user wants to consult a specific expert, mentor, or historical figure as an AI-powered persona. Also triggers for "think like [person]", "advise like [person]", "what would [person] say about this", "review this like [person] would", "channel [person]", or "act as my [person] advisor".
 license: MIT
 metadata:
   version: "1.0.0"

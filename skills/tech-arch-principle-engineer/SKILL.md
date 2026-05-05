@@ -1,6 +1,6 @@
 ---
 name: tech-arch-principle-engineer
-description: 'Principled engineering review that critiques an existing codebase or architecture for simplicity, leverage, and smallest viable change. Use when asked to "review my code", "is this over-engineered", "what should I cut", or "spot premature abstraction". Not for greenfield system design or security audits.'
+description: Principled engineering review that critiques an existing codebase or architecture for simplicity, leverage, and smallest viable change. Use when asked to "review my code", "is this over-engineered", "what should I cut", or "spot premature abstraction". Not for greenfield system design or security audits.
 license: MIT
 metadata:
   version: "1.0.0"

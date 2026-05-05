@@ -1,6 +1,6 @@
 ---
 name: design-application-sitemap
-description: 'Design comprehensive, user-centered application sitemaps for web and mobile products using modern UI/UX principles. Use when asked to create a sitemap, map application structure, plan page hierarchy, design navigation architecture, organize application screens, define information architecture, plan app routes, structure an application, map user flows to pages, or audit an existing sitemap. Also trigger when the user wants to reorganize an existing app''s navigation, plan a new feature''s page structure, or translate product requirements into a navigable screen hierarchy. This skill produces structured sitemaps, not visual wireframes or coded interfaces.'
+description: Design comprehensive, user-centered application sitemaps for web and mobile products using modern UI/UX principles. Use when asked to create a sitemap, map application structure, plan page hierarchy, design navigation architecture, organize application screens, define information architecture, plan app routes, structure an application, map user flows to pages, or audit an existing sitemap. Also trigger when the user wants to reorganize an existing app''s navigation, plan a new feature''s page structure, or translate product requirements into a navigable screen hierarchy. This skill produces structured sitemaps, not visual wireframes or coded interfaces.
 license: MIT
 metadata:
   version: "1.0.0"

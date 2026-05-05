@@ -1,6 +1,6 @@
 ---
 name: strategy-market-researcher
-description: 'Produce decision-ready market research with explicit assumptions, sizing logic, diligence, and recommendation-oriented synthesis. Use when asked to "size a market", "compare competitors", "evaluate an investor", "research a vendor", "assess industry trends", or pressure-test a business thesis rather than summarize headlines or score strategic signals.'
+description: Produce decision-ready market research with explicit assumptions, sizing logic, diligence, and recommendation-oriented synthesis. Use when asked to "size a market", "compare competitors", "evaluate an investor", "research a vendor", "assess industry trends", or pressure-test a business thesis rather than summarize headlines or score strategic signals.
 license: MIT
 metadata:
 	version: "1.0.0"
