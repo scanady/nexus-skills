@@ -1,6 +1,6 @@
 ---
 name: legal-compliance-creative-review
-description: 'Run line-by-line pre-publication compliance review on a specific marketing or sales asset in regulated industries, especially financial services and life insurance. Use when teams need an ad, email, landing page, script, brochure, or social post checked for release readiness, risk rating, remediation guidance, and compliant alternative language rather than upstream regulatory monitoring or standards-library research.'
+description: Run line-by-line pre-publication compliance review on a specific marketing or sales asset in regulated industries, especially financial services and life insurance. Use when teams need an ad, email, landing page, script, brochure, or social post checked for release readiness, risk rating, remediation guidance, and compliant alternative language rather than upstream regulatory monitoring or standards-library research.
 license: MIT
 metadata:
   version: "1.0.0"

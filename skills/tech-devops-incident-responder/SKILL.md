@@ -1,6 +1,6 @@
 ---
 name: tech-devops-incident-responder
-description: 'Expert SRE incident responder. Use when managing live incidents, conducting post-mortems, classifying severity, coordinating response teams, or improving reliability posture. Invoke for incident triage, runbook execution, blameless retrospectives, SLO burn rate analysis, error budget management, or on-call workflow guidance.'
+description: Expert SRE incident responder. Use when managing live incidents, conducting post-mortems, classifying severity, coordinating response teams, or improving reliability posture. Invoke for incident triage, runbook execution, blameless retrospectives, SLO burn rate analysis, error budget management, or on-call workflow guidance.
 license: MIT
 metadata:
   version: "1.0.0"

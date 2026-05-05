@@ -1,6 +1,6 @@
 ---
 name: content-copy-email-template-builder
-description: 'Design and build production-ready HTML email templates that are on-brand, responsive, and importable into email platforms (Resend, Postmark, Mailgun, SendGrid, Mailchimp, Customer.io, Kit, etc.). Use when asked for "HTML email template", "email template code", "responsive email", "branded email template", "import email template", "transactional email design", "email design system", "email component", "email layout", or "ESP template". Covers full template design: layout, typography, color system, components, responsive behavior, dark mode, and platform export.'
+description: Design and build production-ready HTML email templates that are on-brand, responsive, and importable into email platforms (Resend, Postmark, Mailgun, SendGrid, Mailchimp, Customer.io, Kit, etc.). Use when asked for "HTML email template", "email template code", "responsive email", "branded email template", "import email template", "transactional email design", "email design system", "email component", "email layout", or "ESP template". Covers full template design: layout, typography, color system, components, responsive behavior, dark mode, and platform export.
 license: MIT
 metadata:
   version: "1.0.0"

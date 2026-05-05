@@ -1,6 +1,6 @@
 ---
 name: marketing-customer-segmentation
-description: 'Expert-level customer segmentation analysis using hybrid qualitative/quantitative methods. Builds data-driven segment personas grounded in statistical profiles, not archetypes. Use when asked to "segment customers", "identify customer segments", "build buyer personas", "customer clustering", "market segmentation", "audience segmentation", "TAM analysis", "ICP definition", "customer profiling", "segment sizing", "segment prioritization", or when needing to understand who to target for acquisition, retention, upsell, or product-market fit.'
+description: Expert-level customer segmentation analysis using hybrid qualitative/quantitative methods. Builds data-driven segment personas grounded in statistical profiles, not archetypes. Use when asked to "segment customers", "identify customer segments", "build buyer personas", "customer clustering", "market segmentation", "audience segmentation", "TAM analysis", "ICP definition", "customer profiling", "segment sizing", "segment prioritization", or when needing to understand who to target for acquisition, retention, upsell, or product-market fit.
 ---
 
 # Customer Segmentation

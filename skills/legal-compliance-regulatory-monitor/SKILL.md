@@ -1,6 +1,6 @@
 ---
 name: legal-compliance-regulatory-monitor
-description: 'Collect and maintain upstream compliance intelligence for financial services and life insurance marketing across company, industry, federal, and state guidance. Use when teams need regulatory monitoring, state-by-state scans, standards-register updates, evidence libraries, or compliant language strategy for future reviews rather than a line-by-line go/no-go review of one asset.'
+description: Collect and maintain upstream compliance intelligence for financial services and life insurance marketing across company, industry, federal, and state guidance. Use when teams need regulatory monitoring, state-by-state scans, standards-register updates, evidence libraries, or compliant language strategy for future reviews rather than a line-by-line go/no-go review of one asset.
 license: MIT
 metadata:
   version: "1.0.0"

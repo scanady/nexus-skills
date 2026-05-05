@@ -1,6 +1,6 @@
 ---
 name: design-application-ux
-description: 'Design and build complete, multi-screen functional application interfaces as production-grade code — portals, dashboards, admin panels, SaaS products, internal tools, mobile apps. Use when asked to "build an app", "design an application", "redesign a portal", "build a dashboard UI", "design admin panel screens", or "implement a working product UI end-to-end". For full application builds that need real code across multiple screens and flows — not for single-component styling (use design-ui-system-advisor), sitemaps only (use design-application-sitemap), design tokens (use design-system-architect), or research artifacts (use design-research-ux-artifacts).'
+description: Design and build complete, multi-screen functional application interfaces as production-grade code — portals, dashboards, admin panels, SaaS products, internal tools, mobile apps. Use when asked to "build an app", "design an application", "redesign a portal", "build a dashboard UI", "design admin panel screens", or "implement a working product UI end-to-end". For full application builds that need real code across multiple screens and flows — not for single-component styling (use design-ui-system-advisor), sitemaps only (use design-application-sitemap), design tokens (use design-system-architect), or research artifacts (use design-research-ux-artifacts).
 license: MIT
 metadata:
    version: "2.3.0"
