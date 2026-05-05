@@ -1,6 +1,6 @@
 ---
 name: strategy-exec-presentation-designer
-description: 'Design structured executive presentation outlines that drive engagement, alignment, decisions, and follow-up. Use when asked to "create a presentation", "build an exec deck", "prepare for a leadership meeting", "design a steering committee presentation", "structure a decision meeting", "plan an executive briefing", "outline a progress review", "prepare a readout", or when needing to organize any internal presentation for a leadership or executive audience — whether the goal is information sharing, progress updates, research findings, decisions, or a hybrid of objectives.'
+description: Design structured executive presentation outlines that drive engagement, alignment, decisions, and follow-up. Use when asked to "create a presentation", "build an exec deck", "prepare for a leadership meeting", "design a steering committee presentation", "structure a decision meeting", "plan an executive briefing", "outline a progress review", "prepare a readout", or when needing to organize any internal presentation for a leadership or executive audience — whether the goal is information sharing, progress updates, research findings, decisions, or a hybrid of objectives.
 metadata:
   version: "1.0.0"
   domain: strategy

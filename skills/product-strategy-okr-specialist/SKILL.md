@@ -1,6 +1,6 @@
 ---
 name: product-strategy-okr-specialist
-description: 'OKR cascade architect and metrics strategist for product leaders. Translates company strategy into aligned, measurable OKRs across company, product, and team levels. Defines KPIs and metric trees for any product area. Use when building OKR cascades, aligning product goals to company strategy, scoring OKR alignment, generating team-level goal breakdowns, running quarterly planning, defining product KPIs, building metric frameworks, or selecting leading vs lagging indicators.'
+description: OKR cascade architect and metrics strategist for product leaders. Translates company strategy into aligned, measurable OKRs across company, product, and team levels. Defines KPIs and metric trees for any product area. Use when building OKR cascades, aligning product goals to company strategy, scoring OKR alignment, generating team-level goal breakdowns, running quarterly planning, defining product KPIs, building metric frameworks, or selecting leading vs lagging indicators.
 license: MIT
 metadata:
   version: "1.0.0"

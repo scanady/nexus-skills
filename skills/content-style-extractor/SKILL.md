@@ -1,6 +1,6 @@
 ---
 name: content-style-extractor
-description: 'Extract meta-level design principles, content style, tone, and structural patterns from source content. Use when asked to analyze content style, extract design patterns, reverse-engineer a content format, deconstruct a writing style, capture content DNA, create a style blueprint, extract tone and voice, analyze content structure, or when the user wants to replicate the "feel" of content without copying it. Produces a reusable design blueprint that captures what makes content effective — not the content itself.'
+description: Extract meta-level design principles, content style, tone, and structural patterns from source content. Use when asked to analyze content style, extract design patterns, reverse-engineer a content format, deconstruct a writing style, capture content DNA, create a style blueprint, extract tone and voice, analyze content structure, or when the user wants to replicate the "feel" of content without copying it. Produces a reusable design blueprint that captures what makes content effective — not the content itself.
 license: MIT
 metadata:
   author: scanady

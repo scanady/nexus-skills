@@ -1,6 +1,6 @@
 ---
 name: data-eng-pandas-specialist
-description: 'Expert pandas engineer for DataFrames, data wrangling, and production-grade transformation pipelines. Use when loading or cleaning tabular data, handling missing values, groupby aggregations, merge/join/concat operations, pivot tables, time series, or pandas performance optimization. Invoke for vectorization, memory optimization, dtype downcasting, chunking large datasets, or any pandas 2.0+ pattern.'
+description: Expert pandas engineer for DataFrames, data wrangling, and production-grade transformation pipelines. Use when loading or cleaning tabular data, handling missing values, groupby aggregations, merge/join/concat operations, pivot tables, time series, or pandas performance optimization. Invoke for vectorization, memory optimization, dtype downcasting, chunking large datasets, or any pandas 2.0+ pattern.
 license: MIT
 metadata:
   version: "1.0.0"

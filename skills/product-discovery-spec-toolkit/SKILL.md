@@ -1,10 +1,6 @@
 ---
 name: product-discovery-spec-toolkit
-description: >
-  PM toolkit for feature prioritization, customer discovery, and spec writing.
-  Guides RICE scoring, interview insight extraction, and PRD creation. Use when
-  asked to prioritize features, score backlog, analyze customer interviews,
-  write PRDs, plan quarterly roadmaps, or run product discovery workflows.
+description: PM toolkit for feature prioritization, customer discovery, and spec writing. Guides RICE scoring, interview insight extraction, and PRD creation. Use when asked to prioritize features, score backlog, analyze customer interviews, write PRDs, plan quarterly roadmaps, or run product discovery workflows.
 license: MIT
 metadata:
   version: "1.0.0"

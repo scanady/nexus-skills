@@ -1,6 +1,6 @@
 ---
 name: content-copy-email-sequences
-description: 'Design and write structured email sequences, drip campaigns, and lifecycle programs. Use when asked for "email sequence", "drip campaign", "welcome emails", "onboarding emails", "nurture sequence", "re-engagement emails", "email automation", "lifecycle emails", "win-back emails", "billing emails", or "email copy". Covers full sequence design: triggers, timing, subject lines, body copy, CTAs, segmentation, and optimization.'
+description: Design and write structured email sequences, drip campaigns, and lifecycle programs. Use when asked for "email sequence", "drip campaign", "welcome emails", "onboarding emails", "nurture sequence", "re-engagement emails", "email automation", "lifecycle emails", "win-back emails", "billing emails", or "email copy". Covers full sequence design: triggers, timing, subject lines, body copy, CTAs, segmentation, and optimization.
 license: MIT
 metadata:
   version: "1.1.0"

@@ -1,6 +1,6 @@
 ---
 name: product-vision-strategy
-description: 'Product vision and strategy architect for product leaders. Applies structured frameworks — JTBD, North Star, Horizon Model, Opportunity Solution Tree, Wardley Mapping, and more — to define product direction, validate strategic bets, and align teams. Use when setting product vision, running strategy workshops, choosing a strategic framework, mapping customer jobs-to-be-done, identifying innovation horizons, building opportunity trees, prioritizing strategic bets, or pressure-testing a product direction.'
+description: Product vision and strategy architect for product leaders. Applies structured frameworks — JTBD, North Star, Horizon Model, Opportunity Solution Tree, Wardley Mapping, and more — to define product direction, validate strategic bets, and align teams. Use when setting product vision, running strategy workshops, choosing a strategic framework, mapping customer jobs-to-be-done, identifying innovation horizons, building opportunity trees, prioritizing strategic bets, or pressure-testing a product direction.
 license: MIT
 metadata:
   version: "1.0.0"

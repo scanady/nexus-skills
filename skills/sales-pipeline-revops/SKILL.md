@@ -1,7 +1,6 @@
 ---
 name: sales-pipeline-revops
-description: >
-  Use when user wants help with revenue operations, lead lifecycle, MQL/SQL definitions, lead scoring, lead routing, pipeline stages, deal desk, CRM automation, or data hygiene. Triggers: "RevOps", "revenue operations", "lead scoring", "lead routing", "MQL", "SQL", "pipeline stages", "deal desk", "CRM automation", "marketing-to-sales handoff", "speed-to-lead", "leads not reaching sales", "pipeline health", "CRM workflows", "lead qualification", "when should marketing hand off to sales".
+description: Use when user wants help with revenue operations, lead lifecycle, MQL/SQL definitions, lead scoring, lead routing, pipeline stages, deal desk, CRM automation, or data hygiene. Triggers: "RevOps", "revenue operations", "lead scoring", "lead routing", "MQL", "SQL", "pipeline stages", "deal desk", "CRM automation", "marketing-to-sales handoff", "speed-to-lead", "leads not reaching sales", "pipeline health", "CRM workflows", "lead qualification", "when should marketing hand off to sales".
 license: MIT
 metadata:
   version: "1.0.0"

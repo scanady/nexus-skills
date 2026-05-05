@@ -1,6 +1,6 @@
 ---
 name: skill-reinterpreter
-description: 'Rebuild an existing Agent Skill from scratch in a new folder while preserving intent and outcomes, then delete the original. Use when asked to "reinterpret a skill", "clone and improve a skill", "rebuild a skill from scratch", "refresh a skill with current best practices", or "replace a skill with a new version". Distinct from skill-architect (which edits in place) and skill-evaluator (which tests) — this skill creates a new folder, fully rewrites every file including references and scripts, then removes the source.'
+description: Rebuild an existing Agent Skill from scratch in a new folder while preserving intent and outcomes, then delete the original. Use when asked to "reinterpret a skill", "clone and improve a skill", "rebuild a skill from scratch", "refresh a skill with current best practices", or "replace a skill with a new version". Distinct from skill-architect (which edits in place) and skill-evaluator (which tests) — this skill creates a new folder, fully rewrites every file including references and scripts, then removes the source.
 license: MIT
 metadata:
   version: "1.2.0"

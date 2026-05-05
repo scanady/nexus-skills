@@ -1,6 +1,6 @@
 ---
 name: research-dtc-insurance-market-intelligence
-description: "Track DTC life insurance market intelligence across carrier moves, distribution shifts, regulation, funding, and consumer signal over weekly, monthly, or quarterly windows. Use when asked for 'life insurance market intelligence', 'DTC insurance monitoring', 'insurance market watch', 'carrier movement tracking', or 'insurtech signal report' rather than generic news monitoring or AI research."
+description: Track DTC life insurance market intelligence across carrier moves, distribution shifts, regulation, funding, and consumer signal over weekly, monthly, or quarterly windows. Use when asked for 'life insurance market intelligence', 'DTC insurance monitoring', 'insurance market watch', 'carrier movement tracking', or 'insurtech signal report' rather than generic news monitoring or AI research.
 license: MIT
 metadata:
   version: "1.0.0"

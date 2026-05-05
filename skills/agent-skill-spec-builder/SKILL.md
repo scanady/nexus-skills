@@ -1,6 +1,6 @@
 ---
 name: agent-skill-spec-builder
-description: 'Create complex, multi-phase workflow skills using specification-driven decomposition with typed steps, explicit state, and verification. Use when the user needs a skill with structured control flow, branching, iteration, parallel execution, or subagent composition — not a simple single-prompt skill. Use when asked for a "workflow skill", "multi-step skill", "skill with branching", "skill with parallel steps", "complex skill", or when a skill request implies long-horizon orchestration that benefits from explicit state management and typed operations.'
+description: Create complex, multi-phase workflow skills using specification-driven decomposition with typed steps, explicit state, and verification. Use when the user needs a skill with structured control flow, branching, iteration, parallel execution, or subagent composition — not a simple single-prompt skill. Use when asked for a "workflow skill", "multi-step skill", "skill with branching", "skill with parallel steps", "complex skill", or when a skill request implies long-horizon orchestration that benefits from explicit state management and typed operations.
 license: MIT
 metadata:
   author: scanady
