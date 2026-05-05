@@ -1,6 +1,6 @@
 ---
 name: research-analyst
-description: "Research and summarize recent news, announcements, and press for a user-specified topic, company, or industry when no domain-specific briefing skill fits better. Use when asked for 'news about [topic]', 'what's happening in [industry]', 'competitor news', 'recent developments in [area]', 'press coverage', or 'latest announcements from [company]' rather than an AI-only digest, insurance landscape brief, or strategy memo."
+description: Research and summarize recent news, announcements, and press for a user-specified topic, company, or industry when no domain-specific briefing skill fits better. Use when asked for 'news about [topic]', 'what's happening in [industry]', 'competitor news', 'recent developments in [area]', 'press coverage', or 'latest announcements from [company]' rather than an AI-only digest, insurance landscape brief, or strategy memo.
 license: MIT
 metadata:
   version: "1.0.0"

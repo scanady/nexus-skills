@@ -1,6 +1,6 @@
 ---
 name: skill-evaluator
-description: 'Run structured evaluation cycles against an Agent Skill — design test cases, compare with-skill vs without-skill runs, write assertions, grade outputs with evidence, aggregate pass rates, and iterate. Use when asked to "evaluate a skill", "test a skill with evals", "benchmark a skill", "run skill evals", "grade skill output", "write assertions for a skill", or "iterate on a skill using eval results". Also covers routing-quality evals: invocability, collision against neighbor skills, over-specification risk.'
+description: Run structured evaluation cycles against an Agent Skill — design test cases, compare with-skill vs without-skill runs, write assertions, grade outputs with evidence, aggregate pass rates, and iterate. Use when asked to "evaluate a skill", "test a skill with evals", "benchmark a skill", "run skill evals", "grade skill output", "write assertions for a skill", or "iterate on a skill using eval results". Also covers routing-quality evals: invocability, collision against neighbor skills, over-specification risk.
 license: MIT
 metadata:
   version: "1.1.0"

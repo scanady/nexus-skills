@@ -1,6 +1,6 @@
 ---
 name: design-product-overview-recorder
-description: 'Record polished UI demo videos with Playwright browser automation. Use when asked to create a demo video, screen recording, product walkthrough, feature tutorial, or UI demo. Produces WebM videos with visible cursor overlay, natural pacing, subtitle narration, and storytelling flow. Use for documentation, onboarding, stakeholder presentations, or product showcases.'
+description: Record polished UI demo videos with Playwright browser automation. Use when asked to create a demo video, screen recording, product walkthrough, feature tutorial, or UI demo. Produces WebM videos with visible cursor overlay, natural pacing, subtitle narration, and storytelling flow. Use for documentation, onboarding, stakeholder presentations, or product showcases.
 license: MIT
 metadata:
   author: nexus-agents

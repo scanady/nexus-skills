@@ -1,6 +1,6 @@
 ---
 name: design-system-architect
-description: 'Create or audit a reusable product design system for an application interface. Use when asked to define design tokens, colors, typography, spacing, radius, shadows, component consistency rules, styling review criteria, or to audit UI consistency, review styling pull requests, detect generic AI-generated UI patterns, or package a visual system into reusable artifacts.'
+description: Create or audit a reusable product design system for an application interface. Use when asked to define design tokens, colors, typography, spacing, radius, shadows, component consistency rules, styling review criteria, or to audit UI consistency, review styling pull requests, detect generic AI-generated UI patterns, or package a visual system into reusable artifacts.
 license: MIT
 metadata:
 	version: "2.0.0"

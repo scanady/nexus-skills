@@ -1,6 +1,6 @@
 ---
 name: data-ai-product-specialist
-description: 'Build production-ready AI product features with robust LLM integration, retrieval quality, safety controls, AI UX trust patterns, and cost-aware operations. Use when designing, implementing, or reviewing AI-powered product capabilities.'
+description: Build production-ready AI product features with robust LLM integration, retrieval quality, safety controls, AI UX trust patterns, and cost-aware operations. Use when designing, implementing, or reviewing AI-powered product capabilities.
 license: Apache-2.0
 metadata:
   version: "1.0.0"

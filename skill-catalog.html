@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forge Agents — Skill Catalog</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #242736;
+    --surface3: #2e3245;
+    --border: #343848;
+    --text: #e2e4f0;
+    --text-muted: #8b90a8;
+    --text-dim: #5a5f78;
+    --accent: #6c72f7;
+    --accent-glow: rgba(108,114,247,0.15);
+    --green: #22c55e;
+    --yellow: #eab308;
+    --red: #ef4444;
+    --orange: #f97316;
+    --purple: #a855f7;
+    --cyan: #06b6d4;
+    --pink: #ec4899;
+    --low-bg: rgba(34,197,94,0.12);
+    --low-text: #4ade80;
+    --med-bg: rgba(234,179,8,0.12);
+    --med-text: #fbbf24;
+    --high-bg: rgba(239,68,68,0.12);
+    --high-text: #f87171;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: linear-gradient(135deg, #1a1d27 0%, #0f1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 24px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header-logo {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .header-logo span { color: var(--accent); }
+  .header-meta {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-left: auto;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1400px; margin: 0 auto; padding: 24px; }
+
+  /* ── DASHBOARD ── */
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .stat-card.accent { border-color: var(--accent); background: var(--accent-glow); }
+  .stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+  .stat-value { font-size: 2rem; font-weight: 700; line-height: 1; color: var(--text); }
+  .stat-sub { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ── RISK DISTRIBUTION BAR ── */
+  .risk-bar-wrap { grid-column: span 2; min-width: 0; }
+  .risk-bar-track {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 2px;
+    margin: 10px 0 8px;
+  }
+  .risk-bar-seg { height: 100%; border-radius: 2px; }
+  .risk-bar-labels { display: flex; gap: 16px; }
+  .risk-bar-label { font-size: 0.75rem; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
+  .risk-bar-label::before { content: ''; width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .risk-bar-label.low::before { background: var(--green); }
+  .risk-bar-label.med::before { background: var(--yellow); }
+  .risk-bar-label.high::before { background: var(--red); }
+
+  /* ── CONTROLS ── */
+  .controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .search-box {
+    flex: 1;
+    min-width: 200px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    color: var(--text);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-box::placeholder { color: var(--text-dim); }
+  .search-box:focus { border-color: var(--accent); }
+  .filter-select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    color: var(--text);
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .filter-select:focus { border-color: var(--accent); }
+  .control-button {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    color: var(--text);
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .control-button:hover { border-color: var(--accent); color: var(--accent); }
+  .catalog-source {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+  .results-count { color: var(--text-muted); font-size: 0.82rem; margin-left: auto; }
+
+  /* ── GRID ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 16px;
+  }
+
+  /* ── SKILL CARD ── */
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .skill-card:hover { border-color: #4a4f6a; transform: translateY(-1px); }
+  .skill-card.hidden { display: none; }
+
+  .card-header {
+    padding: 16px 18px 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .card-title-group { flex: 1; min-width: 0; }
+  .card-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-category { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+  .risk-badge {
+    flex-shrink: 0;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .card-name-link {
+    color: inherit;
+    text-decoration: none;
+  }
+  .card-name-link:hover {
+    color: var(--accent);
+  }
+  .risk-low { background: var(--low-bg); color: var(--low-text); }
+  .risk-medium { background: var(--med-bg); color: var(--med-text); }
+  .risk-high { background: var(--high-bg); color: var(--high-text); }
+
+  /* ── SCORES ROW ── */
+  .scores-row {
+    padding: 12px 18px;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .score-item { display: flex; flex-direction: column; gap: 4px; }
+  .score-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); }
+  .score-stars { display: flex; gap: 2px; }
+  .star { width: 12px; height: 12px; border-radius: 2px; }
+  .star.filled { background: var(--accent); }
+  .star.empty { background: var(--surface3); }
+  .score-num { font-size: 0.78rem; color: var(--text-muted); margin-top: 1px; }
+
+  /* ── TAGS ROW ── */
+  .tags-row {
+    padding: 10px 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 500;
+    background: var(--surface2);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  .tag.has { background: rgba(108,114,247,0.08); color: var(--accent); border-color: rgba(108,114,247,0.25); }
+  .tag.lang-python { background: rgba(234,179,8,0.08); color: #fbbf24; border-color: rgba(234,179,8,0.2); }
+  .tag.lang-javascript { background: rgba(234,179,8,0.08); color: #fbbf24; border-color: rgba(234,179,8,0.2); }
+  .tag.ext { background: rgba(249,115,22,0.08); color: #fb923c; border-color: rgba(249,115,22,0.2); }
+  .tag.lic { background: rgba(34,197,94,0.08); color: #4ade80; border-color: rgba(34,197,94,0.2); }
+
+  /* ── CAPABILITIES ── */
+  .capabilities {
+    padding: 12px 18px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  /* ── ACCORDION ── */
+  .accordion { border-top: 1px solid var(--border); }
+  .accordion-item { border-bottom: 1px solid var(--border); }
+  .accordion-item:last-child { border-bottom: none; }
+  .accordion-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-align: left;
+    transition: color 0.15s, background 0.15s;
+  }
+  .accordion-trigger:hover { color: var(--text); background: rgba(255,255,255,0.02); }
+  .accordion-trigger .chevron {
+    transition: transform 0.2s;
+    font-size: 0.7rem;
+    opacity: 0.5;
+  }
+  .accordion-trigger[aria-expanded="true"] .chevron { transform: rotate(180deg); opacity: 1; }
+  .accordion-trigger[aria-expanded="true"] { color: var(--text); }
+  .accordion-body {
+    display: none;
+    padding: 4px 18px 14px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .accordion-body.open { display: block; }
+
+  /* ── CHECKLIST ── */
+  .checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; margin-top: 8px; }
+  .check-item { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; }
+  .check-item .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .dot.pass { background: var(--green); }
+  .dot.fail { background: var(--surface3); border: 1px solid var(--border); }
+
+  /* ── RATIONALE TEXT ── */
+  .rationale { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+  .findings-list { list-style: none; margin-top: 6px; display: flex; flex-direction: column; gap: 4px; }
+  .findings-list li {
+    padding: 4px 8px;
+    background: var(--high-bg);
+    color: var(--high-text);
+    font-size: 0.75rem;
+    border-radius: 4px;
+  }
+  .findings-list li::before { content: '⚠ '; }
+  .ext-list { list-style: none; margin-top: 6px; display: flex; flex-direction: column; gap: 3px; }
+  .ext-list li { font-size: 0.78rem; padding: 3px 0; color: var(--text-muted); }
+  .ext-list li::before { content: '▸ '; color: var(--accent); }
+  .detail-grid { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; margin-top: 6px; }
+  .detail-key { font-size: 0.72rem; color: var(--text-dim); text-align: right; }
+  .detail-val { font-size: 0.75rem; color: var(--text-muted); }
+
+  /* ── LICENSE ── */
+  .section-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 4px; }
+
+  /* ── NO RESULTS ── */
+  .no-results { text-align: center; padding: 60px 20px; color: var(--text-muted); display: none; }
+  .no-results.visible { display: block; }
+
+  /* ── FOOTER ── */
+  .page-footer { text-align: center; padding: 32px 0 24px; color: var(--text-dim); font-size: 0.78rem; }
+
+  /* ── LIGHT MODE ── */
+  .light {
+    --bg: #f4f5f9;
+    --surface: #ffffff;
+    --surface2: #edf0f7;
+    --surface3: #dde1ed;
+    --border: #d0d5e8;
+    --text: #1a1d2e;
+    --text-muted: #5a6080;
+    --text-dim: #9299b8;
+    --accent: #4f56e8;
+    --accent-glow: rgba(79,86,232,0.1);
+    --low-bg: rgba(22,163,74,0.1);
+    --low-text: #16a34a;
+    --med-bg: rgba(202,138,4,0.1);
+    --med-text: #b45309;
+    --high-bg: rgba(220,38,38,0.1);
+    --high-text: #dc2626;
+  }
+  .light .site-header {
+    background: linear-gradient(135deg, #ffffff 0%, #f4f5f9 100%);
+  }
+  .light .skill-card:hover { border-color: #b0b8d8; }
+  .light .accordion-trigger:hover { background: rgba(0,0,0,0.03); }
+
+  /* ── THEME TOGGLE ── */
+  .theme-toggle {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 12px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+  .theme-toggle:hover { color: var(--text); border-color: var(--accent); }
+  .theme-toggle .theme-icon { font-size: 0.95rem; }
+
+  @media (max-width: 600px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .risk-bar-wrap { grid-column: span 1; }
+    .checklist { grid-template-columns: 1fr; }
+  }
+
+  /* ── VIEW TOGGLE ── */
+  .view-toggle {
+    display: flex;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .view-btn {
+    background: none;
+    border: none;
+    padding: 7px 11px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1;
+    transition: color 0.15s, background 0.15s;
+  }
+  .view-btn:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+  .view-btn.active { color: var(--accent); background: var(--accent-glow); }
+
+  /* ── TABLE VIEW ── */
+  .skills-table-wrap { display: none; overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+  .skills-table-wrap.visible { display: block; }
+  .skills-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .skills-table thead th {
+    background: var(--surface2);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .skills-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+  .skills-table tbody tr:last-child { border-bottom: none; }
+  .skills-table tbody tr:hover { background: var(--surface2); }
+  .skills-table tbody tr.hidden { display: none; }
+  .skills-table td { padding: 10px 14px; vertical-align: top; color: var(--text-muted); }
+  .tbl-name-cell { display: flex; align-items: center; gap: 8px; min-width: 180px; }
+  .tbl-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
+  .tbl-skill-name { font-weight: 600; color: var(--text); font-size: 0.85rem; white-space: nowrap; }
+  .col-desc { max-width: 400px; line-height: 1.4; font-size: 0.8rem; }
+  .col-score { white-space: nowrap; }
+  .col-score .score-stars { margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">forge<span>agents</span> / skills</div>
+    <div class="header-meta" id="headerMeta"></div>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark mode">
+      <span class="theme-icon" id="themeIcon">🌙</span>
+      <span id="themeLabel">Light mode</span>
+    </button>
+  </div>
+</header>
+
+<main class="page">
+  <div class="dashboard" id="dashboard"></div>
+
+  <div class="controls">
+    <input class="search-box" type="search" id="searchBox" placeholder="Search skills by name, capability, or keyword…" />
+    <select class="filter-select" id="riskFilter">
+      <option value="">All Risk Levels</option>
+      <option value="low">Low Risk</option>
+      <option value="medium">Medium Risk</option>
+      <option value="high">High Risk</option>
+    </select>
+    <select class="filter-select" id="domainFilter">
+      <option value="">All Domains</option>
+    </select>
+    <select class="filter-select" id="categoryFilter">
+      <option value="">All Categories</option>
+    </select>
+    <select class="filter-select" id="sortBy">
+      <option value="name">Sort: Name</option>
+      <option value="usage">Sort: Usage Value</option>
+      <option value="exec">Sort: Executability</option>
+      <option value="tokens">Sort: Token Size</option>
+    </select>
+    <div class="view-toggle">
+      <button class="view-btn active" id="viewGridBtn" onclick="setView('grid')" title="Grid view">⊞</button>
+      <button class="view-btn" id="viewListBtn" onclick="setView('list')" title="List view">≡</button>
+    </div>
+    <button class="control-button" id="openCatalogButton" type="button">Open Catalog</button>
+    <input id="catalogPicker" type="file" accept=".json,application/json" hidden />
+    <span class="catalog-source" id="catalogSource">Source: skill-catalog.json</span>
+    <span class="results-count" id="resultsCount"></span>
+  </div>
+
+  <div class="skills-grid" id="skillsGrid"></div>
+  <div class="skills-table-wrap" id="skillsTableWrap">
+    <table class="skills-table">
+      <thead>
+        <tr>
+          <th>Skill</th>
+          <th>Domain</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Usage Value</th>
+          <th>Executability</th>
+          <th>Risk</th>
+        </tr>
+      </thead>
+      <tbody id="skillsTableBody"></tbody>
+    </table>
+  </div>
+  <div class="no-results" id="noResults">No skills match your filters.</div>
+</main>
+
+<footer class="page-footer" id="pageFooter"></footer>
+
+<script>
+let CATALOG;
+let controlsBound = false;
+let currentView = 'grid';
+
+const SEGMENT_LABELS = {
+  ai: 'AI',
+  api: 'API',
+  cro: 'CRO',
+  mcp: 'MCP',
+  prd: 'PRD',
+  seo: 'SEO',
+  tdd: 'TDD',
+  ux: 'UX',
+  adsense: 'AdSense'
+};
+
+function formatTaxonomyLabel(value) {
+  if (!value) return 'Other';
+  return value
+    .split(/[-_]/)
+    .filter(Boolean)
+    .map(part => SEGMENT_LABELS[part] || (part.charAt(0).toUpperCase() + part.slice(1)))
+    .join(' ');
+}
+
+function parseSkillName(name) {
+  const parts = String(name || '').split('-').filter(Boolean);
+
+  if (parts.length >= 3) {
+    return {
+      domain: parts[0],
+      category: parts[1],
+      skill: parts.slice(2).join('-')
+    };
+  }
+
+  if (parts.length === 2) {
+    return {
+      domain: parts[0],
+      category: 'general',
+      skill: parts[1]
+    };
+  }
+
+  if (parts.length === 1) {
+    return {
+      domain: 'other',
+      category: 'general',
+      skill: parts[0]
+    };
+  }
+
+  return {
+    domain: 'other',
+    category: 'general',
+    skill: 'unknown'
+  };
+}
+
+function getSkillTaxonomy(skill) {
+  return parseSkillName(skill.name);
+}
+
+// ── CATEGORY ICON + COLOR ──
+const CATEGORY_STYLES = {
+  'marketing': { icon: '📣', bg: '#1e1230', color: '#c084fc' },
+  'tech': { icon: '⚙️', bg: '#0f1f30', color: '#38bdf8' },
+  'agent': { icon: '🤖', bg: '#10201a', color: '#34d399' },
+  'product': { icon: '🎯', bg: '#121a1a', color: '#2dd4bf' },
+  'productivity': { icon: '⚡', bg: '#101a14', color: '#4ade80' },
+  'strategy': { icon: '🧠', bg: '#101520', color: '#818cf8' },
+  'design': { icon: '🎨', bg: '#1a1020', color: '#e879f9' },
+  'sales': { icon: '🤝', bg: '#1a1410', color: '#fdba74' },
+  'content': { icon: '✍️', bg: '#151324', color: '#f9a8d4' },
+  'data': { icon: '📊', bg: '#1a1410', color: '#fb923c' },
+  'comms': { icon: '📢', bg: '#102019', color: '#5eead4' },
+  'ops': { icon: '📋', bg: '#1a1410', color: '#fdba74' },
+  'Other': { icon: '◦', bg: '#1a1a1a', color: '#94a3b8' }
+};
+
+function stars(score, max=5) {
+  let html = '<div class="score-stars">';
+  for (let i=1; i<=max; i++) html += `<div class="star ${i<=score?'filled':'empty'}"></div>`;
+  html += '</div>';
+  return html;
+}
+
+function riskBadge(rating) {
+  const map = { low: 'risk-low', medium: 'risk-medium', high: 'risk-high' };
+  const label = { low: 'Low Risk', medium: 'Med Risk', high: 'High Risk' };
+  return `<span class="risk-badge ${map[rating]||'risk-low'}">${label[rating]||rating}</span>`;
+}
+
+function execSubScoresHtml(exec) {
+  const dims = [
+    ['completeness', 'Completeness'],
+    ['determinism', 'Determinism'],
+    ['consistency', 'Consistency'],
+    ['usability', 'Usability'],
+  ];
+  return '<div class="checklist">' +
+    dims.map(([k, label]) => {
+      const score = exec[k] || 0;
+      return `<div class="check-item"><div class="dot ${score >= 3 ? 'pass' : 'fail'}"></div><span>${label}: ${score}/5</span></div>`;
+    }).join('') + '</div>';
+}
+
+function buildCard(skill) {
+  const ev = skill.evaluation;
+  const taxonomy = getSkillTaxonomy(skill);
+  const domain = taxonomy.domain;
+  const category = taxonomy.category;
+  const domainLabel = formatTaxonomyLabel(domain);
+  const categoryLabel = formatTaxonomyLabel(category);
+  const style = CATEGORY_STYLES[domain] || CATEGORY_STYLES['Other'];
+  const st = skill.structure;
+  const nameHtml = skill.url
+    ? `<a href="${skill.url}" class="card-name-link" target="_blank" rel="noopener noreferrer" title="Open ${skill.name} in repository">${skill.name}</a>`
+    : skill.name;
+
+  // Tags
+  const tags = [];
+  if (st.has_scripts && ev.script_languages && ev.script_languages[0] !== 'none') {
+    ev.script_languages.forEach(l => { if (l !== 'none') tags.push(`<span class="tag lang-${l}">${l} script</span>`); });
+  }
+  if (st.has_references) tags.push('<span class="tag has">references</span>');
+  if (st.has_agents) tags.push('<span class="tag has">sub-agents</span>');
+  if (ev.external_requirements_indicator !== 'self-contained') tags.push('<span class="tag ext">external deps</span>');
+  if (ev.license && ev.license !== 'unspecified') tags.push(`<span class="tag lic">${ev.license}</span>`);
+  if (st.estimated_tokens) tags.push(`<span class="tag">${st.estimated_tokens} tokens</span>`);
+
+  // Security findings
+  let findingsHtml = '';
+  if (ev.security_risk && ev.security_risk.findings && ev.security_risk.findings.length > 0) {
+    findingsHtml = '<ul class="findings-list">' + ev.security_risk.findings.map(f => `<li>${f}</li>`).join('') + '</ul>';
+  }
+
+  // External requirements
+  let extHtml = '';
+  if (ev.external_requirements && !(ev.external_requirements.length === 1 && ev.external_requirements[0] === 'none')) {
+    extHtml = '<ul class="ext-list">' + ev.external_requirements.map(r => `<li>${r}</li>`).join('') + '</ul>';
+  } else {
+    extHtml = '<p style="font-size:0.8rem;color:var(--text-dim);margin-top:4px">Self-contained — no external dependencies</p>';
+  }
+
+  // Checklist
+  const subScoreHtml = ev.executability ? execSubScoresHtml(ev.executability) : '';
+
+  const uniqueId = skill.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+
+  return `
+<div class="skill-card" data-name="${skill.name.toLowerCase()}" data-domain="${domain}" data-category="${category}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}">
+  <div class="card-header">
+    <div class="card-icon" style="background:${style.bg};color:${style.color}">${style.icon}</div>
+    <div class="card-title-group">
+      <div class="card-name" title="${skill.name}">${nameHtml}</div>
+      <div class="card-category">${domainLabel} / ${categoryLabel}</div>
+    </div>
+    ${riskBadge(ev.security_risk?.rating||'low')}
+  </div>
+
+  <div class="capabilities">${ev.core_capabilities||''}</div>
+
+  <div class="scores-row">
+    <div class="score-item">
+      <div class="score-label">Usage Value</div>
+      ${stars(ev.usage_value?.score||0)}
+      <div class="score-num">${ev.usage_value?.score||0} / 5</div>
+    </div>
+    <div class="score-item">
+      <div class="score-label">Executability</div>
+      ${stars(ev.executability?.score||0)}
+      <div class="score-num">${ev.executability?.score||0} / 5</div>
+    </div>
+    <div class="score-item" style="margin-left:auto">
+      <div class="score-label">File Count</div>
+      <div style="font-size:1.4rem;font-weight:700;line-height:1;color:var(--text)">${st.file_count||1}</div>
+      <div class="score-num">files</div>
+    </div>
+  </div>
+
+  <div class="tags-row">${tags.join('')}</div>
+
+  <div class="accordion">
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this, '${uniqueId}-rationale')">
+        Evaluation Rationale <span class="chevron">▼</span>
+      </button>
+      <div class="accordion-body" id="${uniqueId}-rationale">
+        <p class="section-title">Usage Value</p>
+        <p class="rationale">${ev.usage_value?.rationale||''}</p>
+        <p class="section-title" style="margin-top:10px">Executability</p>
+        <p class="rationale">${ev.executability?.rationale||''}</p>
+        <p class="section-title" style="margin-top:10px">Security</p>
+        <p class="rationale">${ev.security_risk?.rationale||''}</p>
+        ${findingsHtml}
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this, '${uniqueId}-exec')">
+        Executability Details <span class="chevron">▼</span>
+      </button>
+      <div class="accordion-body" id="${uniqueId}-exec">
+        ${subScoreHtml || '<p style="color:var(--text-dim);font-size:0.78rem">No executability data available.</p>'}
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this, '${uniqueId}-deps')">
+        External Requirements <span class="chevron">▼</span>
+      </button>
+      <div class="accordion-body" id="${uniqueId}-deps">
+        ${extHtml}
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this, '${uniqueId}-meta')">
+        Structure &amp; Metadata <span class="chevron">▼</span>
+      </button>
+      <div class="accordion-body" id="${uniqueId}-meta">
+        <div class="detail-grid">
+          <span class="detail-key">Path</span><span class="detail-val">${skill.path}</span>
+          <span class="detail-key">Tokens</span><span class="detail-val">${st.estimated_tokens}</span>
+          <span class="detail-key">Files</span><span class="detail-val">${st.file_count}</span>
+          <span class="detail-key">Scripts</span><span class="detail-val">${st.has_scripts ? (ev.script_languages?.filter(l=>l!=='none').join(', ')||'yes') : 'none'}</span>
+          <span class="detail-key">References</span><span class="detail-val">${st.has_references ? 'yes' : 'no'}</span>
+          <span class="detail-key">Sub-Agents</span><span class="detail-val">${st.has_agents ? 'yes' : 'no'}</span>
+          <span class="detail-key">License</span><span class="detail-val">${ev.license||'unspecified'}</span>
+          <span class="detail-key">Source</span><span class="detail-val"><a href="${skill.url}" style="color:var(--accent);text-decoration:none" target="_blank">view on GitHub ↗</a></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>`;
+}
+
+function buildTableRow(skill) {
+  const ev = skill.evaluation;
+  const taxonomy = getSkillTaxonomy(skill);
+  const domain = taxonomy.domain;
+  const category = taxonomy.category;
+  const style = CATEGORY_STYLES[domain] || CATEGORY_STYLES['Other'];
+  const st = skill.structure;
+  const nameHtml = skill.url
+    ? `<a href="${skill.url}" class="card-name-link" target="_blank" rel="noopener noreferrer">${skill.name}</a>`
+    : skill.name;
+
+  return `
+<tr class="table-row" data-name="${skill.name.toLowerCase()}" data-domain="${domain}" data-category="${category}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}">
+  <td><div class="tbl-name-cell"><span class="tbl-icon" style="background:${style.bg};color:${style.color}">${style.icon}</span><span class="tbl-skill-name">${nameHtml}</span></div></td>
+  <td>${formatTaxonomyLabel(domain)}</td>
+  <td>${formatTaxonomyLabel(category)}</td>
+  <td class="col-desc">${ev.core_capabilities||''}</td>
+  <td class="col-score">${stars(ev.usage_value?.score||0)}<div class="score-num">${ev.usage_value?.score||0} / 5</div></td>
+  <td class="col-score">${stars(ev.executability?.score||0)}<div class="score-num">${ev.executability?.score||0} / 5</div></td>
+  <td>${riskBadge(ev.security_risk?.rating||'low')}</td>
+</tr>`;
+}
+
+function renderTable() {
+  document.getElementById('skillsTableBody').innerHTML = CATALOG.skills.map(buildTableRow).join('');
+}
+
+function setView(view) {
+  currentView = view;
+  const isGrid = view === 'grid';
+  document.getElementById('skillsGrid').style.display = isGrid ? '' : 'none';
+  document.getElementById('skillsTableWrap').classList.toggle('visible', !isGrid);
+  document.getElementById('viewGridBtn').classList.toggle('active', isGrid);
+  document.getElementById('viewListBtn').classList.toggle('active', !isGrid);
+  localStorage.setItem('catalog-view', view);
+}
+
+function toggleAccordion(btn, id) {
+  const body = document.getElementById(id);
+  const isOpen = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  body.classList.toggle('open', !isOpen);
+}
+
+// ── DASHBOARD ──
+function buildDashboard() {
+  const s = CATALOG.summary;
+  const riskDist = s.security_risk_distribution;
+  const total = s.total_skills;
+  const lowPct = (riskDist.low / total * 100).toFixed(0);
+  const medPct = (riskDist.medium / total * 100).toFixed(0);
+  const highPct = (riskDist.high / total * 100).toFixed(0);
+
+  const topExec = [...CATALOG.skills].sort((a,b) => (b.evaluation.executability?.score||0)-(a.evaluation.executability?.score||0)).slice(0,5);
+
+  document.getElementById('dashboard').innerHTML = `
+    <div class="stat-card accent">
+      <div class="stat-label">Total Skills</div>
+      <div class="stat-value">${s.total_skills}</div>
+      <div class="stat-sub">Fully evaluated</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Avg Usage Value</div>
+      <div class="stat-value">${s.avg_usage_value}</div>
+      <div class="stat-sub">out of 5</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Avg Executability</div>
+      <div class="stat-value">${s.avg_executability}</div>
+      <div class="stat-sub">out of 5</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Zero High Risk</div>
+      <div class="stat-value" style="color:var(--green)">${riskDist.high}</div>
+      <div class="stat-sub">high-risk skills</div>
+    </div>
+    <div class="stat-card risk-bar-wrap">
+      <div class="stat-label">Security Risk Distribution</div>
+      <div class="risk-bar-track">
+        <div class="risk-bar-seg" style="width:${lowPct}%;background:var(--green)"></div>
+        <div class="risk-bar-seg" style="width:${medPct}%;background:var(--yellow)"></div>
+        <div class="risk-bar-seg" style="width:${highPct}%;background:var(--red)"></div>
+      </div>
+      <div class="risk-bar-labels">
+        <span class="risk-bar-label low">Low (${riskDist.low})</span>
+        <span class="risk-bar-label med">Medium (${riskDist.medium})</span>
+        <span class="risk-bar-label high">High (${riskDist.high})</span>
+      </div>
+    </div>
+  `;
+}
+
+function buildOptions(selectId, values, defaultLabel) {
+  const sel = document.getElementById(selectId);
+  sel.innerHTML = `<option value="">${defaultLabel}</option>`;
+  values.forEach(value => {
+    const opt = document.createElement('option');
+    opt.value = value;
+    opt.textContent = formatTaxonomyLabel(value);
+    sel.appendChild(opt);
+  });
+}
+
+function getAvailableDomains() {
+  return [...new Set(CATALOG.skills.map(skill => getSkillTaxonomy(skill).domain))].sort();
+}
+
+function getAvailableCategories(domain='') {
+  return [...new Set(
+    CATALOG.skills
+      .map(skill => getSkillTaxonomy(skill))
+      .filter(taxonomy => !domain || taxonomy.domain === domain)
+      .map(taxonomy => taxonomy.category)
+  )].sort();
+}
+
+function buildDomainFilter() {
+  buildOptions('domainFilter', getAvailableDomains(), 'All Domains');
+}
+
+function buildCategoryFilter(domain='') {
+  buildOptions('categoryFilter', getAvailableCategories(domain), 'All Categories');
+}
+
+function syncCategoryFilter() {
+  const domain = document.getElementById('domainFilter').value;
+  const categoryFilter = document.getElementById('categoryFilter');
+  const currentCategory = categoryFilter.value;
+  const categories = getAvailableCategories(domain);
+
+  buildCategoryFilter(domain);
+
+  if (currentCategory && categories.includes(currentCategory)) {
+    categoryFilter.value = currentCategory;
+  }
+}
+
+// ── RENDER CARDS ──
+function renderCards() {
+  const grid = document.getElementById('skillsGrid');
+  grid.innerHTML = CATALOG.skills.map(buildCard).join('');
+  updateCount();
+}
+
+// ── FILTER + SORT ──
+function applyFilters() {
+  const search = document.getElementById('searchBox').value.toLowerCase();
+  const risk = document.getElementById('riskFilter').value;
+  const domain = document.getElementById('domainFilter').value;
+  const category = document.getElementById('categoryFilter').value;
+  const sortBy = document.getElementById('sortBy').value;
+
+  const compare = (a, b) => {
+    if (sortBy === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+    if (sortBy === 'usage') return +b.dataset.usage - +a.dataset.usage;
+    if (sortBy === 'exec') return +b.dataset.exec - +a.dataset.exec;
+    if (sortBy === 'tokens') return +b.dataset.tokens - +a.dataset.tokens;
+    return 0;
+  };
+
+  // Sort + filter cards
+  const cards = [...document.querySelectorAll('.skill-card')];
+  cards.sort(compare).forEach(c => document.getElementById('skillsGrid').appendChild(c));
+
+  let visible = 0;
+  cards.forEach(card => {
+    const capText = card.querySelector('.capabilities')?.textContent.toLowerCase() || '';
+    const nameMatch = !search || card.dataset.name.includes(search) || capText.includes(search) ||
+      formatTaxonomyLabel(card.dataset.domain).toLowerCase().includes(search) ||
+      formatTaxonomyLabel(card.dataset.category).toLowerCase().includes(search);
+    const show = nameMatch && (!risk || card.dataset.risk === risk) &&
+      (!domain || card.dataset.domain === domain) &&
+      (!category || card.dataset.category === category);
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+
+  // Sort + filter table rows
+  const rows = [...document.querySelectorAll('.table-row')];
+  rows.sort(compare).forEach(r => document.getElementById('skillsTableBody').appendChild(r));
+
+  rows.forEach(row => {
+    const descText = row.querySelector('.col-desc')?.textContent.toLowerCase() || '';
+    const nameMatch = !search || row.dataset.name.includes(search) || descText.includes(search) ||
+      formatTaxonomyLabel(row.dataset.domain).toLowerCase().includes(search) ||
+      formatTaxonomyLabel(row.dataset.category).toLowerCase().includes(search);
+    const show = nameMatch && (!risk || row.dataset.risk === risk) &&
+      (!domain || row.dataset.domain === domain) &&
+      (!category || row.dataset.category === category);
+    row.classList.toggle('hidden', !show);
+  });
+
+  document.getElementById('noResults').classList.toggle('visible', visible === 0);
+  updateCount(visible);
+}
+
+function updateCount(n) {
+  const total = CATALOG.skills.length;
+  const shown = n !== undefined ? n : total;
+  document.getElementById('resultsCount').textContent = shown === total ? `${total} skills` : `${shown} of ${total} skills`;
+}
+
+// ── THEME ──
+function toggleTheme() {
+  const isLight = document.documentElement.classList.toggle('light');
+  document.getElementById('themeIcon').textContent = isLight ? '☀️' : '🌙';
+  document.getElementById('themeLabel').textContent = isLight ? 'Dark mode' : 'Light mode';
+  localStorage.setItem('catalog-theme', isLight ? 'light' : 'dark');
+}
+(function() {
+  const saved = localStorage.getItem('catalog-theme');
+  if (saved === 'light') {
+    document.documentElement.classList.add('light');
+    // Icon/label set after DOM ready — will be corrected in DOMContentLoaded
+  }
+})();
+document.addEventListener('DOMContentLoaded', function() {
+  const isLight = document.documentElement.classList.contains('light');
+  document.getElementById('themeIcon').textContent = isLight ? '☀️' : '🌙';
+  document.getElementById('themeLabel').textContent = isLight ? 'Dark mode' : 'Light mode';
+});
+
+function bindControls() {
+  if (controlsBound) return;
+  document.getElementById('searchBox').addEventListener('input', applyFilters);
+  document.getElementById('riskFilter').addEventListener('change', applyFilters);
+  document.getElementById('domainFilter').addEventListener('change', () => {
+    syncCategoryFilter();
+    applyFilters();
+  });
+  document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+  document.getElementById('sortBy').addEventListener('change', applyFilters);
+  controlsBound = true;
+}
+
+function resetFilters() {
+  document.getElementById('searchBox').value = '';
+  document.getElementById('riskFilter').value = '';
+  document.getElementById('domainFilter').value = '';
+  document.getElementById('categoryFilter').value = '';
+  document.getElementById('sortBy').value = 'name';
+}
+
+async function handleCatalogFileSelection(file) {
+  if (!file) return;
+
+  try {
+    const data = await readCatalogFromFile(file);
+    cacheCatalog(data);
+    initializeCatalog(data, file.name);
+  } catch (err) {
+    showLoadFailure('The selected file is not valid skill catalog JSON.', {
+      allowFilePicker: true,
+      detail: err.message
+    });
+  }
+}
+
+function bindCatalogPicker() {
+  const openButton = document.getElementById('openCatalogButton');
+  const picker = document.getElementById('catalogPicker');
+  if (!openButton || !picker || openButton.dataset.bound === 'true') return;
+
+  openButton.addEventListener('click', () => picker.click());
+  picker.addEventListener('change', async () => {
+    const [file] = picker.files || [];
+    await handleCatalogFileSelection(file);
+    picker.value = '';
+  });
+  openButton.dataset.bound = 'true';
+}
+
+function cacheCatalog(data) {
+  try {
+    localStorage.setItem('skill-catalog-cache', JSON.stringify(data));
+  } catch (err) {
+    console.warn('Unable to cache skill catalog:', err);
+  }
+}
+
+function getCachedCatalog() {
+  try {
+    const cached = localStorage.getItem('skill-catalog-cache');
+    return cached ? JSON.parse(cached) : null;
+  } catch (err) {
+    console.warn('Unable to read cached skill catalog:', err);
+    return null;
+  }
+}
+
+function initializeCatalog(data, sourceLabel='local file') {
+  CATALOG = data;
+
+  document.getElementById('headerMeta').textContent = `Generated ${new Date(CATALOG.generated_at).toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'})} · v${CATALOG.catalog_version}`;
+  document.getElementById('pageFooter').textContent = `Forge Agents Skill Catalog · ${CATALOG.summary.total_skills} skills · Generated ${CATALOG.generated_at} · Loaded from ${sourceLabel}`;
+  document.getElementById('catalogSource').textContent = `Source: ${sourceLabel}`;
+
+  resetFilters();
+  buildDashboard();
+  buildDomainFilter();
+  buildCategoryFilter();
+  renderCards();
+  renderTable();
+  const savedView = localStorage.getItem('catalog-view') || 'grid';
+  setView(savedView);
+  bindControls();
+  bindCatalogPicker();
+}
+
+function readCatalogFromFile(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        resolve(JSON.parse(reader.result));
+      } catch (err) {
+        reject(err);
+      }
+    };
+    reader.onerror = () => reject(reader.error || new Error('Unable to read file'));
+    reader.readAsText(file);
+  });
+}
+
+function showLoadFailure(message, options={}) {
+  const cached = getCachedCatalog();
+  const grid = document.getElementById('skillsGrid');
+  const actions = options.allowFilePicker ?
+    `<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
+      <button id="pickCatalogFile" style="background:var(--accent);color:white;border:none;border-radius:8px;padding:10px 14px;cursor:pointer">Choose skill-catalog.json</button>
+      <button id="loadCachedCatalog" style="background:var(--surface2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;cursor:${cached ? 'pointer' : 'not-allowed'};opacity:${cached ? '1' : '0.5'}" ${cached ? '' : 'disabled'}>Use cached catalog</button>
+    </div>
+    <input id="catalogFileInput" type="file" accept=".json,application/json" style="display:none">` : '';
+
+  grid.innerHTML =
+    `<div style="grid-column:1 / -1;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px">
+      <p style="color:var(--red);font-weight:600">${message}</p>
+      ${options.detail ? `<p style="color:var(--text-muted);margin-top:8px">${options.detail}</p>` : ''}
+      ${actions}
+    </div>`;
+
+  if (!options.allowFilePicker) return;
+
+  const input = document.getElementById('catalogFileInput');
+  const pickButton = document.getElementById('pickCatalogFile');
+  const cachedButton = document.getElementById('loadCachedCatalog');
+
+  pickButton.addEventListener('click', () => input.click());
+  input.addEventListener('change', async () => {
+    const [file] = input.files || [];
+    await handleCatalogFileSelection(file);
+  });
+
+  if (cachedButton && cached) {
+    cachedButton.addEventListener('click', () => initializeCatalog(cached, 'cached catalog'));
+  }
+}
+
+function loadCatalog() {
+  fetch('skill-catalog.json')
+    .then(r => {
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      return r.json();
+    })
+    .then(data => {
+      cacheCatalog(data);
+      initializeCatalog(data, 'skill-catalog.json');
+    })
+    .catch(err => {
+      if (window.location.protocol === 'file:') {
+        const cached = getCachedCatalog();
+        if (cached) {
+          initializeCatalog(cached, 'cached catalog');
+          return;
+        }
+
+        showLoadFailure('Failed to load skill-catalog.json from a file:// page.', {
+          allowFilePicker: true,
+          detail: 'Browsers block automatic reads of neighboring files when this page is opened directly from disk. Choose skill-catalog.json once, or serve the folder over HTTP.'
+        });
+        console.error('Failed to load skill-catalog.json:', err);
+        return;
+      }
+
+      showLoadFailure('Failed to load skill-catalog.json.', {
+        detail: 'Check that the JSON file exists next to this HTML file and that your local server is serving both files.'
+      });
+      console.error('Failed to load skill-catalog.json:', err);
+    });
+}
+
+bindCatalogPicker();
+loadCatalog();
+</script>
+</body>
+</html>

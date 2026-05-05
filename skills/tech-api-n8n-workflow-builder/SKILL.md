@@ -1,6 +1,6 @@
 ---
 name: tech-api-n8n-workflow-builder
-description: 'Expert n8n workflow designer. Turns a user prompt into a production-ready, importable n8n workflow JSON file with triggers, nodes, connections, AI agents, error handling, retries, and a getting-started guide. Use when the user asks to "build an n8n workflow", "create an n8n automation", "design an n8n flow", "automate [task] with n8n", "convert this process to n8n", "n8n workflow from prompt", or mentions n8n alongside automation, integration, webhook, AI agent, Zapier-alternative, or no-code workflow orchestration. Interviews the user for objectives, inputs, outputs, services, and reliability needs before generating the JSON.'
+description: Expert n8n workflow designer. Turns a user prompt into a production-ready, importable n8n workflow JSON file with triggers, nodes, connections, AI agents, error handling, retries, and a getting-started guide. Use when the user asks to "build an n8n workflow", "create an n8n automation", "design an n8n flow", "automate [task] with n8n", "convert this process to n8n", "n8n workflow from prompt", or mentions n8n alongside automation, integration, webhook, AI agent, Zapier-alternative, or no-code workflow orchestration. Interviews the user for objectives, inputs, outputs, services, and reliability needs before generating the JSON.
 license: MIT
 metadata:
   version: "1.0.0"

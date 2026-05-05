@@ -1,6 +1,6 @@
 ---
 name: agent-design-visual-identity
-description: 'Generate square visual identity assets for agents and apps: icons, avatars, and logos optimized for profile, app, and brand use. Use when asked to "create an icon", "make an avatar", "generate a logo", "design an agent icon", "make a profile picture", or create a visual brand mark rather than define personality, backstory, or behavioral guidance.'
+description: Generate square visual identity assets for agents and apps: icons, avatars, and logos optimized for profile, app, and brand use. Use when asked to "create an icon", "make an avatar", "generate a logo", "design an agent icon", "make a profile picture", or create a visual brand mark rather than define personality, backstory, or behavioral guidance.
 license: MIT
 metadata:
   author: scanady

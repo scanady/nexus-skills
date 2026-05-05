@@ -1,6 +1,6 @@
 ---
 name: content-copy-clear-writing
-description: 'Apply Strunk writing rules to produce clear, concise prose for humans. Use when writing or editing documentation, README files, commit messages, UI copy, error messages, or any human-facing text.'
+description: Apply Strunk writing rules to produce clear, concise prose for humans. Use when writing or editing documentation, README files, commit messages, UI copy, error messages, or any human-facing text.
 license: MIT
 metadata:
   version: "1.0.0"
