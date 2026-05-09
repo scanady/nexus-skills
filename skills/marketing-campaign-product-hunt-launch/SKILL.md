@@ -1,6 +1,6 @@
 ---
 name: marketing-campaign-product-hunt-launch
-description: Creates a comprehensive, personalized Product Hunt launch plan to rank #1. Use when user needs a step-by-step Product Hunt launch strategy, launch checklist, or wants to maximize their Product Hunt success.
+description: Creates a comprehensive, personalized Product Hunt launch plan to rank \#1. Use when user needs a step-by-step Product Hunt launch strategy, launch checklist, or wants to maximize their Product Hunt success.
 ---
 
 # Product Hunt Launch Plan
