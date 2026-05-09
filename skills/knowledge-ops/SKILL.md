@@ -1,7 +1,14 @@
 ---
 name: knowledge-ops
-description: Knowledge base management, ingestion, sync, and retrieval across multiple storage layers (local files, MCP memory, vector stores, Git repos). Use when the user wants to save, organize, sync, deduplicate, or search across their knowledge systems.
-origin: ECC
+description: Knowledge base management, ingestion, sync, and retrieval across multiple storage layers (local files, MCP memory, vector stores, Git repos). Use when the user wants to save, organize, sync, deduplicate, or search across their knowledge systems. Trigger on "save this to KB", "sync knowledge", "ingest this", "update the knowledge base", "what do I know about X", "deduplicate my notes", "commit to knowledge base".
+metadata:
+  version: "1.0.0"
+  domain: knowledge
+  triggers: save to KB, sync knowledge, ingest this, update knowledge base, deduplicate notes, commit to knowledge base, what do I know about, organize knowledge, search knowledge base, knowledge sync
+  anti-triggers: general question answering, web search, summarize this article, recall a fact, explain a concept, look this up, what is X, answer a question
+  role: specialist
+  scope: operational
+  output-format: commands, structured notes, confirmation
 ---
 
 # Knowledge Operations
@@ -20,8 +27,8 @@ Prefer the live workspace model:
 - Ingesting documents, conversations, or data into structured storage
 - Syncing knowledge across systems (local files, MCP memory, Supabase, Git repos)
 - Deduplicating or organizing existing knowledge
-- User says "save this to KB", "sync knowledge", "what do I know about X", "ingest this", "update the knowledge base"
-- Any knowledge management task beyond simple memory recall
+- User says "save this to KB", "sync knowledge", "what do I know about X", "ingest this", "update the knowledge base", "deduplicate my notes"
+- Do NOT activate for general questions, web lookups, or requests to recall or explain a fact
 
 ## Knowledge Architecture
 
