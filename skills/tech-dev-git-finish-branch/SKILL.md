@@ -1,6 +1,15 @@
 ---
-name: tech-dev-finishing-branch
+name: tech-dev-git-finish-branch
 description: Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup
+metadata:
+  version: "1.0.0"
+  domain: tech
+  triggers: finish branch, merge branch, open PR, create pull request, complete work, done with feature, ship this, integrate branch
+  anti-triggers: start a branch, create branch, commit changes, push work, branching strategy
+  role: developer
+  scope: workflow
+  output-format: commands
+  related-skills: tech-dev-git-start-branch, tech-dev-git-commit, tech-dev-git-workflow-design
 ---
 
 # Finishing a Development Branch
@@ -11,7 +20,7 @@ Guide completion of development work by presenting clear options and handling ch
 
 **Core principle:** Verify tests → Present options → Execute choice → Clean up.
 
-**Announce at start:** "I'm using the tech-dev-finishing-branch skill to complete this work."
+**Announce at start:** "I'm using the tech-dev-git-finish-branch skill to complete this work."
 
 ## The Process
 
