@@ -22,8 +22,8 @@ const AGENTS = {
     'github-copilot': {
         name: 'GitHub Copilot',
         aliases: ['copilot'],
-        projectDir: '.agents/skills',
-        globalDir: path.join(os.homedir(), '.copilot', 'skills')
+        projectDir: '.github/skills',
+        globalDir: path.join(os.homedir(), '.github', 'skills')
     },
     'codex': {
         name: 'OpenAI Codex',
