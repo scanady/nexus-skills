@@ -28,12 +28,12 @@ Template — copy and fill in for each cluster:
 - **Last reviewed:** YYYY-MM-DD
 -->
 
-### tech-git-workflow ↔ tech-dev-commit-push
-- **Skills:** `tech-git-workflow`, `tech-dev-commit-push`
+### tech-dev-git-workflow-design ↔ tech-dev-git-commit
+- **Skills:** `tech-dev-git-workflow-design`, `tech-dev-git-commit`
 - **Overlap type:** routing-collision (suspected)
 - **Status:** keep-with-routing
 - **Decision:** keep-with-routing
-- **Rationale:** `tech-dev-commit-push` now owns commit/stage/push execution in the current repo, while `tech-git-workflow` owns branching, PR, release, and collaboration policy.
+- **Rationale:** `tech-dev-git-commit` now owns commit/stage/push execution in the current repo, while `tech-dev-git-workflow-design` owns branching, PR, release, and collaboration policy.
 - **Action taken:** Tightened descriptions, narrowed triggers, added `anti-triggers`, cross-linked the pair, and renamed the execution skill to match its concrete output.
 - **Last reviewed:** 2026-04-29
 

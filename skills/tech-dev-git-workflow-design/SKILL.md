@@ -1,5 +1,5 @@
 ---
-name: tech-git-workflow
+name: tech-dev-git-workflow-design
 description: Advise on team Git workflow design: branching strategy, merge vs rebase, commit conventions, PR process, release flow, and conflict handling. Use when asked to 'set up a branching strategy', 'choose between rebase and merge', 'resolve merge conflicts', 'write a PR description', or define version-control conventions rather than commit or push the current repo state.
 license: MIT
 metadata:
@@ -11,7 +11,7 @@ metadata:
   scope: advisory
   output-format: instructions, commands, templates
   priority: specific
-  related-skills: tech-dev-commit-push, tech-dev-finishing-branch, tech-quality-tdd, tech-quality-requesting-review
+  related-skills: tech-dev-git-commit, tech-dev-git-finish-branch, tech-quality-tdd, tech-quality-requesting-review
 ---
 
 # Git Workflow
