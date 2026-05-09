@@ -179,12 +179,12 @@
       }
     },
     {
-      "name": "tech-git-workflow",
+      "name": "tech-dev-git-workflow-design",
       "source_id": "source-1",
-      "path": "skills/tech-git-workflow/SKILL.md",
+      "path": "skills/tech-dev-git-workflow-design/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-git-workflow",
+        "name": "tech-dev-git-workflow-design",
         "description": "Advise on team Git workflow design: branching strategy, merge vs rebase, commit conventions, PR process, release flow, and conflict handling. Use when asked to 'set up a branching strategy', 'choose between rebase and merge', 'resolve merge conflicts', 'write a PR description', or define version-control conventions rather than commit or push the current repo state.",
         "license": "MIT",
         "metadata": {
@@ -196,7 +196,7 @@
           "scope": "advisory",
           "output-format": "instructions, commands, templates",
           "priority": "specific",
-          "related-skills": "tech-dev-commit-push, tech-dev-finishing-branch, tech-quality-tdd, tech-quality-requesting-review"
+          "related-skills": "tech-dev-git-commit, tech-dev-git-finish-branch, tech-quality-tdd, tech-quality-requesting-review"
         }
       },
       "structure": {
@@ -211,7 +211,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-git-workflow",
+        "name": "tech-dev-git-workflow-design",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -4694,12 +4694,12 @@
       }
     },
     {
-      "name": "tech-dev-commit-push",
+      "name": "tech-dev-git-commit",
       "source_id": "source-1",
-      "path": "skills/tech-dev-commit-push/SKILL.md",
+      "path": "skills/tech-dev-git-commit/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-dev-commit-push",
+        "name": "tech-dev-git-commit",
         "description": "Execute the current repo's commit-and-push cycle: inspect the diff, draft a tight commit message, stage the right files, commit, and push. Use when asked to 'commit changes', 'push work', 'stage changes', 'write this commit message', or 'commit and push' rather than design a branching strategy or explain Git policy.",
         "license": "MIT",
         "metadata": {
@@ -4711,7 +4711,7 @@
           "scope": "workflow",
           "output-format": "command",
           "priority": "specific",
-          "related-skills": "tech-git-workflow, content-copy-caveman"
+          "related-skills": "tech-dev-git-workflow-design, content-copy-caveman"
         }
       },
       "structure": {
@@ -4726,7 +4726,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-dev-commit-push",
+        "name": "tech-dev-git-commit",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -4788,7 +4788,7 @@
           "role": "architect",
           "scope": "design",
           "output-format": "document",
-          "related-skills": "tech-dev-commit-push"
+          "related-skills": "tech-dev-git-commit"
         }
       },
       "structure": {
@@ -5957,12 +5957,12 @@
       }
     },
     {
-      "name": "tech-dev-finishing-branch",
+      "name": "tech-dev-git-finish-branch",
       "source_id": "source-1",
-      "path": "skills/tech-dev-finishing-branch/SKILL.md",
+      "path": "skills/tech-dev-git-finish-branch/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-dev-finishing-branch",
+        "name": "tech-dev-git-finish-branch",
         "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup"
       },
       "structure": {
@@ -5977,7 +5977,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-dev-finishing-branch",
+        "name": "tech-dev-git-finish-branch",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."

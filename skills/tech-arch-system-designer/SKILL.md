@@ -10,7 +10,7 @@ metadata:
   role: architect
   scope: design
   output-format: document
-  related-skills: tech-dev-commit-push
+  related-skills: tech-dev-git-commit
 ---
 
 # System Designer
