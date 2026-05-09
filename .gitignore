@@ -1,6 +1,7 @@
 # Testing
 skills-sandbox/
 prompts-sandbox/
+.github/skills/
 
 # Modules
 node_modules/
