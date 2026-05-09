@@ -21,7 +21,7 @@
 
 - [tech-api-mcp-builder](#technology)
 - [tech-quality-code-simplifier](#technology)
-- [tech-dev-finishing-branch](#technology)
+- [tech-dev-git-finish-branch](#technology)
 - [product-spec-prd-generator](#technology)
 - [tech-quality-receiving-review](#technology)
 - [tech-quality-requesting-review](#technology)
@@ -85,7 +85,7 @@
 | --- | --- | --- |
 | tech-api-mcp-builder | Guides creation of high-quality MCP servers that enable LLMs to interact with external services. | active |
 | tech-quality-code-simplifier | Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. | active |
-| tech-dev-finishing-branch | Guides completion of development work by presenting structured options for merge, PR, or cleanup. | active |
+| tech-dev-git-finish-branch | Guides completion of development work by presenting structured options for merge, PR, or cleanup. | active |
 | product-spec-prd-generator | Generates professional PRD files optimized for AI coding tools from rough product ideas. | active |
 | tech-quality-receiving-review | Guides rigorous, technical evaluation of incoming code review feedback before implementation. | active |
 | tech-quality-requesting-review | Dispatches a code review subagent to verify work meets requirements before merging. | active |
