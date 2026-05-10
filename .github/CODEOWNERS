@@ -1,0 +1,4 @@
+# CODEOWNERS - external / standard
+# Single owner. All files require their approval on PRs.
+
+* @scanady
