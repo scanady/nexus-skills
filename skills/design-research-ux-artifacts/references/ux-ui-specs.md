@@ -27,9 +27,11 @@
 
 ### Components
 
-| Component | Behavior | States |
-|-----------|----------|--------|
-|  |  | Default, Hover, Active, Disabled, Loading, Error |
+When a design token file exists for the project, reference tokens using `{path.to.token}` notation in the Token Reference column (e.g., `backgroundColor: "{colors.primary}"`, `typography: "{typography.label-lg}"`).
+
+| Component | Behavior | States | Token Reference |
+|-----------|----------|--------|-----------------|
+|  |  | Default, Hover, Active, Disabled, Loading, Error |  |
 
 ### Field Rules
 
@@ -72,9 +74,11 @@
 
 ### Components
 
-| Component | Behavior | States |
-|-----------|----------|--------|
-|  |  |  |
+When a design token file exists for the project, reference tokens using `{path.to.token}` notation in the Token Reference column (e.g., `backgroundColor: "{colors.primary}"`, `typography: "{typography.label-lg}"`).
+
+| Component | Behavior | States | Token Reference |
+|-----------|----------|--------|-----------------|
+|  |  |  |  |
 
 ### Field Rules
 

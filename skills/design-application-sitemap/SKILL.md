@@ -219,3 +219,7 @@ The final sitemap deliverable should include these sections in order:
 ## Knowledge Reference
 
 Information architecture, navigation design, card sorting, tree testing, cognitive psychology, Miller's Law, Hick's Law, Fitts's Law, Jakob's Law, Peak-End Rule, Jakob Nielsen's 10 Usability Heuristics, WCAG 2.1, progressive disclosure, breadcrumb navigation, responsive navigation patterns, route architecture, permission-based navigation, command palette design, application shells, page archetypes, user flow mapping, task analysis, mental models, affordance theory
+
+## Related Artifacts
+
+A sitemap defines application *structure* — what screens exist and how they connect. The companion artifact for visual identity is a structured design token file: a plain-text file with a YAML front matter block of design tokens (colors, typography, rounded, spacing, components) followed by a markdown prose body. Produce the token file when transitioning from structure to visual design. See `design-application-ux/references/design-system-guide.md` Section 0 for the token file format and schema.
