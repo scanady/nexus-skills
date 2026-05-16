@@ -146,6 +146,8 @@ Deliverable structure:
 
 Presentation rule: lead with implications for the team, not the research process. Stakeholders need "therefore do X", not "we ran N sessions".
 
+When transitioning from research to design execution, the next artifact to produce is a structured design token file: a plain-text file with a YAML front matter block of design tokens (colors, typography, rounded, spacing, components) followed by a markdown prose body in canonical section order (Overview → Colors → Typography → Layout → Elevation & Depth → Shapes → Components → Do's and Don'ts). The token file codifies visual identity decisions derived from research and becomes the source of truth for all subsequent design and implementation work.
+
 ## Reference Guide
 
 | Topic | Reference | Load When |
@@ -153,6 +155,7 @@ Presentation rule: lead with implications for the team, not the research process
 | Persona generation from data | `scripts/persona_generator.py` | Structured behavioral/survey data available |
 | UX artifact templates | `design-research-ux-artifacts` skill | Deliverable creation phase |
 | Application UX design | `design-application-ux` skill | Research transitions to design execution |
+| Design token file format | `design-application-ux/references/design-system-guide.md` Section 0 | Producing the visual identity token file after research |
 
 ## Constraints
 

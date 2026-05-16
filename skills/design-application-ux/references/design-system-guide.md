@@ -10,7 +10,8 @@ See also:
 
 ## Table of Contents
 
-1. Design Token Architecture
+0. Design Token File Format
+1. Design Token Architecture (CSS Implementation)
 2. Color System
 3. Typography Scale
 4. Spacing and Layout
@@ -24,8 +25,211 @@ See also:
 12. Dark Mode Implementation
 13. Brand Customization Layer
 14. Platform-Specific Patterns
+15. Design System Prose Structure
 
-## 1. Design Token Architecture
+## 0. Design Token File Format
+
+The canonical representation of a design system is a plain-text file with two layers:
+
+1. **YAML front matter** — machine-readable design tokens delimited by `---` fences. These are the normative values that agents, build tools, and implementation code act on.
+2. **Markdown body** — human-readable design rationale organized into `##` sections. Prose explains *why* the tokens exist and *how* they should be applied.
+
+The tokens are the source of truth. The prose provides context that makes the tokens legible to humans and agents alike.
+
+### Token Schema
+
+```yaml
+---
+version: alpha          # optional
+name: <string>          # project or design system name
+description: <string>   # optional one-line summary
+colors:
+  <token-name>: <Color>
+typography:
+  <token-name>: <Typography>
+rounded:
+  <scale-level>: <Dimension>
+spacing:
+  <scale-level>: <Dimension | number>
+components:
+  <component-name>:
+    <property>: <value | token reference>
+---
+```
+
+### Token Types
+
+| Type | Format | Example |
+|------|--------|--------|
+| Color | `#` + 6-digit hex (sRGB) | `"#1e40af"` |
+| Dimension | number + unit (`px`, `em`, `rem`) | `48px`, `-0.02em` |
+| Token Reference | `{path.to.token}` | `{colors.primary}`, `{typography.body-md}` |
+| Typography | object with `fontFamily`, `fontSize`, `fontWeight`, `lineHeight`, `letterSpacing` | See example below |
+
+### Recommended Token Names
+
+**Colors:** Required: `primary`. Strongly recommended: `on-primary`, `secondary`, `on-secondary`, `tertiary`, `on-tertiary`, `neutral`, `surface`, `on-surface`, `error`, `on-error`. Common extensions: `surface-container-low`, `surface-container-high`, `surface-container-lowest`, `surface-container-highest`, `outline`, `outline-variant`.
+
+**Typography:** `headline-display`, `headline-lg`, `headline-md`, `body-lg`, `body-md`, `body-sm`, `label-lg`, `label-md`, `label-sm`. Additional levels may use any consistent semantic naming.
+
+**Rounded:** `none`, `sm`, `DEFAULT`, `md`, `lg`, `xl`, `full`. `DEFAULT` is the value applied when no scale modifier is used (the "base" radius).
+
+**Spacing:** `base`, `xs`, `sm`, `md`, `lg`, `xl`, `gutter`, `margin`. The `base` key sets the grid unit.
+
+### Complete Token File Example
+
+```yaml
+---
+version: alpha
+name: Meridian
+description: Enterprise analytics design system — precise, trustworthy, data-dense.
+colors:
+  primary: "#1e40af"
+  on-primary: "#ffffff"
+  secondary: "#0f766e"
+  on-secondary: "#ffffff"
+  tertiary: "#7c3aed"
+  on-tertiary: "#ffffff"
+  neutral: "#f8fafc"
+  surface: "#ffffff"
+  on-surface: "#0f172a"
+  surface-container-low: "#f1f5f9"
+  surface-container-high: "#e2e8f0"
+  error: "#dc2626"
+  on-error: "#ffffff"
+typography:
+  headline-display:
+    fontFamily: Inter
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: -0.02em
+  headline-lg:
+    fontFamily: Inter
+    fontSize: 32px
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: -0.01em
+  headline-md:
+    fontFamily: Inter
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.3
+  body-lg:
+    fontFamily: Inter
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.6
+  body-md:
+    fontFamily: Inter
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.6
+  body-sm:
+    fontFamily: Inter
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+  label-lg:
+    fontFamily: Inter
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.4
+    letterSpacing: 0.01em
+  label-md:
+    fontFamily: Inter
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1.4
+  label-sm:
+    fontFamily: Inter
+    fontSize: 11px
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: 0.03em
+rounded:
+  none: 0px
+  sm: 4px
+  DEFAULT: 6px
+  md: 8px
+  lg: 12px
+  xl: 16px
+  full: 9999px
+spacing:
+  base: 4px
+  xs: 4px
+  sm: 8px
+  md: 16px
+  lg: 32px
+  xl: 64px
+  gutter: 24px
+  margin: 32px
+components:
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.on-primary}"
+    typography: "{typography.label-lg}"
+    rounded: "{rounded.md}"
+    padding: 8px 16px
+    height: 36px
+  button-primary-hover:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.on-primary}"
+  button-secondary:
+    backgroundColor: "{colors.surface-container-low}"
+    textColor: "{colors.on-surface}"
+    typography: "{typography.label-lg}"
+    rounded: "{rounded.md}"
+    padding: 8px 16px
+    height: 36px
+  input-field:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.on-surface}"
+    typography: "{typography.body-md}"
+    rounded: "{rounded.md}"
+    height: 36px
+  card:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.lg}"
+  list-item-hover:
+    backgroundColor: "{colors.surface-container-low}"
+    rounded: "{rounded.sm}"
+---
+```
+
+### Component Token Properties
+
+Each component entry maps a name to styled properties. Valid properties:
+- `backgroundColor`: Color value or token reference
+- `textColor`: Color value or token reference
+- `typography`: Typography token reference (`{typography.label-md}`)
+- `rounded`: Dimension or rounded token reference
+- `padding`: Dimension or shorthand dimension string
+- `size`: Dimension (for square/icon components)
+- `height`: Dimension
+- `width`: Dimension
+
+**Variant naming:** Express hover, active, pressed, and disabled states as separate entries with a suffix: `button-primary`, `button-primary-hover`, `button-primary-active`, `button-primary-disabled`.
+
+### WCAG AA Enforcement
+
+Every component with both `backgroundColor` and `textColor` must meet a minimum contrast ratio of **4.5:1** (WCAG AA for normal text). Large text (≥18px or ≥14px bold) requires 3:1. Validate all component color pairs before finalizing the token file. A contrast failure is a blocking issue — no component ships with a failing pair.
+
+### Implementation Mapping
+
+The YAML token layer is the design-intent source of truth. CSS custom properties are the implementation layer derived from it:
+
+| Token path | CSS custom property |
+|------------|--------------------|
+| `colors.primary` | `--color-primary` |
+| `colors.on-surface` | `--color-text-primary` |
+| `typography.body-md.fontSize` | `--text-base` |
+| `rounded.md` | `--radius-md` |
+| `spacing.sm` | `--space-2` |
+
+---
+
+## 1. Design Token Architecture (CSS Implementation)
 
 Use CSS custom properties organized in three layers:
 
@@ -100,37 +304,77 @@ Use CSS custom properties organized in three layers:
 
 ## 2. Color System
 
-Build palettes with 10 steps (50-950) for each hue. At minimum, define these hue families:
+### Semantic Palette (Design Token Layer)
 
-- **Primary**: Brand color, used for primary actions and key UI accents
-- **Neutral/Gray**: Used for text, borders, surfaces, and backgrounds (the workhorse)
-- **Red**: Destructive actions, errors, critical alerts
-- **Amber/Yellow**: Warnings, caution states
-- **Green**: Success, positive states, confirmations
-- **Blue**: Info states, links (can overlap with primary if brand is blue)
+Define colors as named semantic tokens, not raw palette steps. The semantic names carry meaning that survives brand changes:
+
+| Token | Role | Notes |
+|-------|------|-------|
+| `colors.primary` | Brand accent, primary actions | Required |
+| `colors.on-primary` | Text/icons on primary | Must meet 4.5:1 vs `primary` |
+| `colors.secondary` | Secondary actions, supporting accents | |
+| `colors.on-secondary` | Text/icons on secondary | Must meet 4.5:1 vs `secondary` |
+| `colors.tertiary` | Accent highlights, tags, callouts | |
+| `colors.on-tertiary` | Text/icons on tertiary | Must meet 4.5:1 vs `tertiary` |
+| `colors.neutral` | Background base, page fill | |
+| `colors.surface` | Component surfaces (cards, panels) | |
+| `colors.on-surface` | Primary text on surface | Must meet 4.5:1 vs `surface` |
+| `colors.surface-container-low` | Subtle background variant | |
+| `colors.surface-container-high` | Emphasized container | |
+| `colors.outline` | Borders, input strokes | |
+| `colors.error` | Error states, destructive actions | |
+| `colors.on-error` | Text/icons on error | Must meet 4.5:1 vs `error` |
+
+### Primitive Palette (Implementation Layer)
+
+Build raw hue scales (10 steps: 50–950) to back the semantic tokens above. Hue families to define at minimum:
+
+- **Primary hue**: Brand color backing `colors.primary` variants
+- **Neutral/Gray**: Backs surfaces, borders, and text tokens
+- **Red**: Backs `colors.error` variants
+- **Amber/Yellow**: Warning states (augments, not a required token)
+- **Green**: Success states (augments, not a required token)
+- **Blue**: Info states, or merge with primary if brand is blue
 
 **Color usage rules:**
-- Backgrounds: gray-0 through gray-100 for light theme
-- Primary text: gray-900 (not pure black, which is too harsh)
-- Secondary text: gray-500 (ensure 4.5:1 contrast ratio against background)
-- Borders: gray-200 for default, gray-300 for hover/emphasis
-- Interactive elements: primary-600 for default, primary-700 for hover
-- Status colors: always pair with an icon, never rely on color alone
+- Use semantic tokens (`colors.surface`, `colors.on-surface`) in all component specs — never raw hue steps
+- Status colors: always pair with an icon; never rely on color alone for meaning
+- All `backgroundColor` / `textColor` component pairs must meet **4.5:1** contrast (WCAG AA)
+- Surface hierarchy: `surface-container-lowest` → `surface-container-low` → `surface` → `surface-container-high` for increasing emphasis
 
 ## 3. Typography Scale
 
-**Recommended application type scale (base 16px):**
+### Semantic Scale (Design Token Layer)
 
-| Token | Size | Line Height | Weight | Use |
-|-------|------|-------------|--------|-----|
-| --text-xs | 12px | 16px | 400 | Captions, badges, helper text |
-| --text-sm | 13px | 18px | 400 | Secondary content, metadata |
-| --text-base | 14px | 20px | 400 | Body text, form inputs, table cells |
-| --text-md | 16px | 24px | 400/500 | Emphasized body, card titles |
-| --text-lg | 18px | 26px | 500/600 | Section headings |
-| --text-xl | 20px | 28px | 600 | Page section titles |
-| --text-2xl | 24px | 32px | 600 | Page titles |
-| --text-3xl | 30px | 36px | 700 | Dashboard hero metrics |
+Define typography as named semantic roles. Each role is a typography object with `fontFamily`, `fontSize`, `fontWeight`, `lineHeight`, and optionally `letterSpacing`:
+
+| Token | Typical Size | Weight | Use |
+|-------|-------------|--------|-----|
+| `typography.headline-display` | 40–48px | 700 | Hero text, landing page hero |
+| `typography.headline-lg` | 28–32px | 600–700 | Page titles, major section headings |
+| `typography.headline-md` | 22–26px | 600 | Card headings, dialog titles |
+| `typography.body-lg` | 18px | 400 | Lead paragraphs, emphasized content |
+| `typography.body-md` | 16px | 400 | Default body text, form inputs |
+| `typography.body-sm` | 14px | 400 | Secondary content, table cells, dense apps |
+| `typography.label-lg` | 14px | 500 | Button labels, nav items, strong labels |
+| `typography.label-md` | 12px | 500 | Field labels, table headers, badges |
+| `typography.label-sm` | 11px | 600 | Fine print, timestamps, overlines |
+
+### Implementation Scale (CSS Layer)
+
+CSS custom property equivalents for the above roles:
+
+| Semantic token | CSS custom property |
+|----------------|--------------------|
+| `typography.headline-display` | `--text-3xl` / `--text-4xl` |
+| `typography.headline-lg` | `--text-2xl` |
+| `typography.headline-md` | `--text-xl` |
+| `typography.body-lg` | `--text-lg` |
+| `typography.body-md` | `--text-base` / `--text-md` |
+| `typography.body-sm` | `--text-sm` / `--text-base` |
+| `typography.label-lg` | `--text-base` (medium weight) |
+| `typography.label-md` | `--text-xs` |
+| `typography.label-sm` | `--text-xs` (semibold) |
 
 **Font weight tokens:**
 ```css
@@ -142,9 +386,37 @@ Build palettes with 10 steps (50-950) for each hue. At minimum, define these hue
 }
 ```
 
-For enterprise/data-heavy apps, use 14px as the base body size. For consumer apps, use 16px. Never go below 12px for any readable text.
+For enterprise/data-heavy apps, `typography.body-sm` (14px) is the default body size. For consumer apps, use `typography.body-md` (16px). Never go below 11px for any readable text.
 
 ## 4. Spacing and Layout
+
+### Semantic Spacing (Design Token Layer)
+
+Define spacing as named semantic scale levels. The `base` key sets the grid unit (commonly 4px or 8px); all other values should be multiples of the base:
+
+| Token | Typical Value | Use |
+|-------|--------------|-----|
+| `spacing.base` | 4px or 8px | Grid unit, minimum step |
+| `spacing.xs` | 4px | Icon gaps, tight inline spacing |
+| `spacing.sm` | 8px | Stack gaps within a component |
+| `spacing.md` | 16px | Component internal padding, list gaps |
+| `spacing.lg` | 32px | Section spacing, card padding |
+| `spacing.xl` | 64px | Major layout gaps, page section gaps |
+| `spacing.gutter` | 16–24px | Column gutters, grid gaps |
+| `spacing.margin` | 24–40px | Page edge margins |
+
+### Semantic Rounded (Design Token Layer)
+
+| Token | Typical Value | Use |
+|-------|--------------|-----|
+| `rounded.none` | 0px | Sharp, utility elements |
+| `rounded.sm` | 4px | Badges, tags, small elements |
+| `rounded.md` | 6px | Buttons, inputs, chips |
+| `rounded.lg` | 8–12px | Cards, panels, dialogs |
+| `rounded.xl` | 12–16px | Feature cards, sheet handles |
+| `rounded.full` | 9999px | Avatars, circular buttons, pills |
+
+### Implementation Scale (CSS Layer)
 
 **4px base grid with exponential scale:**
 
@@ -153,17 +425,17 @@ For enterprise/data-heavy apps, use 14px as the base body size. For consumer app
   --space-0: 0px;
   --space-px: 1px;
   --space-0-5: 2px;
-  --space-1: 4px;
+  --space-1: 4px;   /* spacing.xs */
   --space-1-5: 6px;
-  --space-2: 8px;
+  --space-2: 8px;   /* spacing.sm */
   --space-3: 12px;
-  --space-4: 16px;
+  --space-4: 16px;  /* spacing.md */
   --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
+  --space-6: 24px;  /* spacing.gutter */
+  --space-8: 32px;  /* spacing.lg */
   --space-10: 40px;
   --space-12: 48px;
-  --space-16: 64px;
+  --space-16: 64px; /* spacing.xl */
   --space-20: 80px;
 }
 ```
@@ -377,9 +649,60 @@ Use `--radius-md` for most interactive components (buttons, inputs, cards). Use 
 
 ## 9. Component API Patterns
 
+### Component Token Format (Design Token Layer)
+
+Before implementing any component, define its visual contract in the token file. Each component entry specifies what tokens back its appearance, making the component independently auditable for accessibility and brand consistency.
+
+**Valid component properties:**
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `backgroundColor` | Color or token reference | Fill color |
+| `textColor` | Color or token reference | Foreground text/icon color |
+| `typography` | Token reference | Type style applied to label/content |
+| `rounded` | Dimension or token reference | Border radius |
+| `padding` | Dimension string | Internal spacing (shorthand OK) |
+| `height` | Dimension | Fixed or minimum height |
+| `width` | Dimension | Fixed or minimum width |
+| `size` | Dimension | Shorthand for square components |
+
+All `backgroundColor` + `textColor` pairs must meet **4.5:1 contrast** (WCAG AA). Validate before finalizing.
+
+**Example: Button token entries**
+```yaml
+components:
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.on-primary}"
+    typography: "{typography.label-lg}"
+    rounded: "{rounded.md}"
+    padding: 8px 16px
+    height: 36px
+  button-primary-hover:
+    backgroundColor: "{colors.primary}"  # darken 10% at CSS layer
+    textColor: "{colors.on-primary}"
+  button-primary-active:
+    backgroundColor: "{colors.primary}"  # darken 15%
+    textColor: "{colors.on-primary}"
+  button-primary-disabled:
+    backgroundColor: "{colors.surface-container-high}"
+    textColor: "{colors.on-surface}"    # check contrast at ~38% opacity
+  button-secondary:
+    backgroundColor: "{colors.surface-container-low}"
+    textColor: "{colors.on-surface}"
+    typography: "{typography.label-lg}"
+    rounded: "{rounded.md}"
+    padding: 8px 16px
+    height: 36px
+```
+
+**Variant naming convention:** Append `-hover`, `-active`, `-pressed`, `-disabled`, `-focused`, `-selected`, `-error` to the base component name.
+
+### Component Behavior Patterns
+
 Design components with consistent prop/variant structures:
 
-**Button variants:**
+**Button variants:****
 - `primary`: Solid background, high contrast text. For the primary action on any screen.
 - `secondary`: Subtle background, standard text. For secondary actions.
 - `ghost`: Transparent background, visible on hover. For tertiary/inline actions.
@@ -561,3 +884,40 @@ When building a design system that serves a specific brand, override primitive t
 - Right-click context menus for power users
 - Multi-select with Shift+Click and Ctrl/Cmd+Click
 - Status bar or footer bar for persistent contextual info
+
+---
+
+## 15. Design System Prose Structure
+
+The human-readable body of a design token file follows a canonical section order. When sections are present, they must appear in this sequence. Sections may be omitted but must not be reordered.
+
+### Canonical Section Order
+
+| # | Section Title (aliases) | Documents |
+|---|------------------------|-----------|
+| 1 | **Overview** (Brand & Style) | Design personality, product purpose, visual direction brief. The "why" that explains all token choices. |
+| 2 | **Colors** | Palette rationale, color roles, emotional intent, usage rules, dark/light variants. |
+| 3 | **Typography** | Typeface selection rationale, scale logic, voice and readability principles. |
+| 4 | **Layout** (Layout & Spacing) | Grid system, spacing principles, density strategy, breakpoints. |
+| 5 | **Elevation & Depth** (Elevation) | Hierarchy method, shadow philosophy, layering strategy. |
+| 6 | **Shapes** | Radius language, corner logic, how shape expresses personality. |
+| 7 | **Components** | Atom-level component guidance, interaction principles, state rules. |
+| 8 | **Do's and Don'ts** | Guardrails, anti-patterns, common misapplications. |
+
+### Section Content Guidelines
+
+**Overview:** Write 2–4 paragraphs. Cover: (1) product context and intended user, (2) emotional register and brand personality, (3) one-sentence design direction ("This system is ____. It is not ____."). Reference the font and primary color as anchors for the direction.
+
+**Colors:** Name every palette entry and explain its role. Cover: primary story, neutral strategy (warm/cool/pure), accent use, status color philosophy. Do not just list hex values — explain the emotional logic.
+
+**Typography:** Name the typefaces chosen and explain *why* — not just what they look like, but what they say about the product. Cover: scale reasoning, weight strategy, editorial vs. functional use cases.
+
+**Layout:** Cover: base grid unit and why, spacing philosophy (generous vs. dense), responsive behavior intention.
+
+**Elevation & Depth:** Declare the elevation model (flat / layered / blended) and explain which surfaces are elevated and why.
+
+**Shapes:** Describe the radius personality: sharp = technical/precise, rounded = friendly/approachable, circular = energetic/bold. State the default radius and when to deviate.
+
+**Components:** Describe design principles for atomic components. When a full component token set is present in the YAML front matter, this section contextualizes the choices.
+
+**Do's and Don'ts:** Use short, concrete entries. Format as: ✓ Do [specific thing] / ✗ Don't [specific thing]. Cover color misuse, typography abuse, layout violations, accessibility anti-patterns.

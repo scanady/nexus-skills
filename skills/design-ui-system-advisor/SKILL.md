@@ -52,7 +52,12 @@ Extract from user input:
 
 ### Phase 2: Generate Design System (Always First)
 
-Run design system command. **Must run before any code output.**
+**Step 1 — Detect existing design specification:** Before running any command, check for `DESIGN.md` at the project root (or user-specified path).
+
+- **If found:** Read the file fully. Use its token values as the design system context for this session. Run `search.py --design-system` for style patterns and domain guidance, but treat results as recommendations *against the existing tokens* — not as replacements. Do not regenerate `DESIGN.md` unless the user explicitly requests an update. Surface any gaps or inconsistencies as observations.
+- **If not found:** Run `search.py --design-system` → produce a `DESIGN.md` file conforming to the format below → write to the project root.
+
+**Step 2 — Run design system command** (required when no token file exists, or when user requests a refresh):
 
 ```bash
 python3 <skill-path>/scripts/search.py "<product_type> <industry> <keywords>" --design-system [-p "Project Name"]
@@ -65,9 +70,28 @@ Example:
 python3 <skill-path>/scripts/search.py "healthcare analytics dashboard" --design-system -p "MedTrack"
 ```
 
+**`DESIGN.md` output format** (when generating or updating the design specification):
+
+The file must have exactly two layers:
+
+1. **YAML front matter** — opened and closed with `---`, containing machine-readable tokens with these exact top-level keys:
+   - `colors`: semantic palette — `primary`, `on-primary`, `secondary`, `on-secondary`, `tertiary`, `neutral`, `surface`, `on-surface`, `surface-container-low`, `surface-container-high`, `error`, `on-error`
+   - `typography`: semantic scale objects — `headline-display`, `headline-lg`, `headline-md`, `body-lg`, `body-md`, `body-sm`, `label-lg`, `label-md`, `label-sm`; each with `fontFamily`, `fontSize`, `fontWeight`, `lineHeight`, optionally `letterSpacing`
+   - `rounded`: `none`, `sm`, `DEFAULT`, `md`, `lg`, `xl`, `full`
+   - `spacing`: `base`, `xs`, `sm`, `md`, `lg`, `xl`, `gutter`, `margin`
+   - `components`: map of component names to style properties; values use `{path.to.token}` references
+
+2. **Markdown prose body** — `##` sections in this exact order (omit any section that isn't relevant, but never reorder):
+   `## Overview` → `## Colors` → `## Typography` → `## Layout` → `## Elevation & Depth` → `## Shapes` → `## Components` → `## Do's and Don'ts`
+
+All component `backgroundColor` / `textColor` pairs must meet **4.5:1 contrast** (WCAG AA). Failing pairs must be corrected before output.
+
 ### Phase 3: Supplement with Domain Searches
 
-After design system, fetch detail as needed:
+After design system, fetch detail as needed. When querying colors and typography, use semantic token names in your recommendations:
+- Color recommendations reference `colors.primary`, `colors.secondary`, `colors.surface`, etc.
+- Typography recommendations reference `typography.body-md`, `typography.label-lg`, etc.
+- Component style guidance uses `{path.to.token}` syntax for token references
 
 ```bash
 python3 <skill-path>/scripts/search.py "<keyword>" --domain <domain> [-n <count>]
@@ -112,7 +136,8 @@ Install if missing:
 ## Constraints
 
 ### MUST DO
-- Run `--design-system` before any UI code or design guidance
+- Check for `DESIGN.md` at the project root before running design system generation; if found, use its token values as the design context and do not regenerate `DESIGN.md` unless the user explicitly requests an update
+- Run `--design-system` before any UI code or design guidance (when no token file exists, or when a refresh is requested)
 - Apply accessibility rules: WCAG 4.5:1 contrast, keyboard nav, focus states, ARIA labels
 - Use SVG icons (Heroicons/Lucide) — never emojis as icons
 - Add `cursor-pointer` to all interactive elements
