@@ -94,10 +94,21 @@ Choose a design direction that serves the application's purpose. Application des
 - **Operator / Monitoring**: Real-time, alert-driven, high-contrast. Prioritize status indicators, anomaly detection, and quick triage. Often dark-themed for extended viewing. Think Datadog or Grafana.
 
 **Visual identity decisions:**
-- **Color system**: Build a semantic color palette, not just a pretty one. Define colors for: primary action, secondary action, destructive action, success, warning, error, info, neutral scale (8-10 steps), and surface layers.
-- **Typography**: Choose a font system optimized for the use case. Data-heavy apps need fonts with tabular numerals and clear distinction at small sizes. Consumer apps can use more expressive type. Always define a type scale (at least 6 sizes) with consistent line-height ratios.
-- **Density**: Define a spacing scale (4px base recommended) and commit to a density level. Enterprise apps trend denser (compact tables, smaller touch targets). Consumer apps trend more spacious.
+- **Color system**: Build a semantic color palette, not just a pretty one. Define colors using semantic token names: `primary`, `on-primary`, `secondary`, `on-secondary`, `tertiary`, `neutral`, `surface`, `on-surface`, `surface-container-low`, `surface-container-high`, `error`, `on-error`, and any project-specific additions.
+- **Typography**: Choose a font system optimized for the use case. Data-heavy apps need fonts with tabular numerals and clear distinction at small sizes. Consumer apps can use more expressive type. Define a semantic type scale using roles: `headline-display`, `headline-lg`, `headline-md`, `body-lg`, `body-md`, `body-sm`, `label-lg`, `label-md`, `label-sm`.
+- **Density**: Define a spacing scale using semantic names (`xs`, `sm`, `md`, `lg`, `xl`, `gutter`, `margin`) and commit to a density level. Enterprise apps trend denser. Consumer apps trend more spacious.
 - **Elevation and layering**: Define how surfaces stack. Modals, dropdowns, popovers, toasts, and drawers each need a clear z-index and shadow treatment.
+- **Rounded scale**: Define border radius levels as `none`, `sm`, `md`, `lg`, `xl`, `full`.
+
+**Token file as Phase 2 deliverable:**
+
+*Step 1 — Detect:* Check for an existing `DESIGN.md` at the project root before generating anything. If found, read it fully and use its token values as the Phase 2 foundation. Do not regenerate tokens that are already defined; only add missing roles or update tokens the user has explicitly asked to change.
+
+*Step 2 — Generate or extend:* If no `DESIGN.md` exists, generate a complete one from scratch using the design direction work above. If one exists, produce an updated version that preserves all existing values and notes any additions in the prose body.
+
+*Step 3 — Output:* Write the result to `DESIGN.md` at the project root. The output must conform exactly to the schema in `references/design-system-guide.md` Section 0 — YAML front matter (colors, typography, rounded, spacing, components) followed by a markdown prose body with `##` sections in canonical order: Overview → Colors → Typography → Layout → Elevation & Depth → Shapes → Components → Do's and Don'ts. Use the Section 0 complete example as the template for structure, token naming, and value formats.
+
+This file is the project design specification. All Phase 3 component work references it using `{path.to.token}` syntax.
 
 ## Phase 3: Component Design
 
@@ -115,9 +126,12 @@ Applications are built from components, not pages. Design the component system, 
 
 **Component design principles:**
 - Every interactive element needs visible focus states for keyboard navigation.
+- All component `backgroundColor` and `textColor` pairings must meet **WCAG AA 4.5:1 contrast** (3:1 for large text ≥18px or ≥14px bold). Validate every pair before finalizing components. Failing pairs are blocking issues.
 - Loading states should use skeleton screens that match the component's shape, not generic spinners.
 - Error states should be specific and actionable, not just "something went wrong."
 - Components should work at multiple density levels if the app supports user preferences.
+- All component specifications reference tokens using `{path.to.token}` syntax (e.g., `backgroundColor: "{colors.primary}"`, `typography: "{typography.label-lg}"`). Never hard-code color or size values in a component spec when a token exists.
+- Variant states are named with a consistent suffix: `button-primary`, `button-primary-hover`, `button-primary-active`, `button-primary-disabled`.
 
 ## Phase 4: Screen Design and Implementation
 
@@ -162,7 +176,9 @@ When auditing, produce a concrete assessment document with specific findings, no
 - Choose the output mode before any detailed design or implementation work begins.
 - Load the appropriate reference file from the Reference Guide before implementation — do not guess at token values or component patterns.
 - Design for the user's highest-frequency tasks before edge workflows.
-- Define the complete token set (color, type, spacing, surfaces, elevation) before building any reusable components.
+- At the start of Phase 2, check for an existing `DESIGN.md` at the project root; if found, read it and use it as the base — do not regenerate tokens that are already defined. Generate or extend the file and write it back to `DESIGN.md`. The file must conform to the schema in `references/design-system-guide.md` Section 0 and is the source of truth for all visual values.
+- Validate **WCAG AA 4.5:1 contrast** for every component `backgroundColor` / `textColor` pair before finalizing the token file. Contrast failures are blocking — no component ships with a failing pair.
+- Define the complete token set (colors, typography, rounded, spacing, components) before building any reusable components. Use semantic token names throughout (`colors.primary`, `typography.body-md`, `rounded.md`, `spacing.sm`).
 - Implement all four base screen states (empty, loading, populated, error) for every primary view.
 - Match component density, interaction model, and information hierarchy to the application's user type and operating context.
 - Choose form controls based on data type, cardinality (single vs multi-value), and number of options — not visual variety. Consult `references/form-controls-guide.md` whenever designing or reviewing a form field.

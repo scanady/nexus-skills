@@ -40,6 +40,14 @@
 ```
 
 ### Annotations
+
+Annotations describe the layout, structure, and interaction intent of elements in the wireframe. When a design token file exists for the project, visual properties (color, typography, spacing, radius) should cite token paths using `{path.to.token}` notation.
+
+Examples:
+- "Primary button: `backgroundColor: {colors.primary}`, `textColor: {colors.on-primary}`, `rounded: {rounded.md}`"
+- "Card background: `{colors.surface}`, padding `{spacing.md}` all sides"
+- "Section heading: `{typography.headline-md}`, color `{colors.on-surface}`"
+
 1.
 2.
 3.
