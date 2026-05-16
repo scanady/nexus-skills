@@ -308,4 +308,35 @@ If you remove the logo and brand colors from the application, could users still 
 
 ---
 
+## 10. Documenting Design Direction as Structured Prose
+
+Aesthetic decisions made in this framework need to be captured in a durable, reusable form. The output of brand-to-visual translation (Section 1) and domain profiling (Section 2) is a structured design document: a plain-text file with a YAML front matter block of design tokens followed by a markdown prose body.
+
+### Mapping Brand Translation to Prose Sections
+
+The canonical section order for the prose body maps directly to the steps in Section 1:
+
+| Prose Section | Maps From | Documents |
+|--------------|-----------|-----------|
+| **Overview** | Design Direction Brief (Step 3) | Product context, emotional register, one-line design direction ("This system is ____. It is not ____.") |
+| **Colors** | Color strategy (Step 1–2) | Palette rationale, emotional logic of the primary/neutral/accent choices |
+| **Typography** | Typography selection (Steps 1–2) | Typeface reasoning, scale strategy, editorial vs. functional use |
+| **Layout** | Density posture (Step 2) | Grid unit, spacing philosophy, density setting rationale |
+| **Elevation & Depth** | Elevation model (Section 6) | Hierarchy method, shadow philosophy (flat/layered/blended) |
+| **Shapes** | Radius strategy (Step 2) | Corner logic, personality expression through shape |
+| **Components** | Component principles (Phase 3) | Atom-level guidance, interaction principles, state rules |
+| **Do's and Don'ts** | Anti-patterns (Section 9) | Guardrails specific to this brand and domain |
+
+### Writing the Overview Section
+
+The Overview is the most important prose section. It sets the interpretive frame for all token values that follow. Write it as a 2–4 paragraph narrative covering:
+1. **Context**: What the product does and who uses it in what setting
+2. **Personality**: The brand dimensions from Section 1 translated into specific adjectives (e.g., "precise and unhurried, not cold or rushed")
+3. **Visual direction**: The one-sentence direction brief that a team member could use to resolve a design decision ("When in doubt, ask: does this feel [adjective] without feeling [anti-adjective]?")
+4. **Anchors**: The primary font and color as tangible anchors — "The Inter typeface and `#1e40af` primary blue together establish a confident, professional register"
+
+### Ensuring Prose and Tokens Agree
+
+When prose and token values conflict, the tokens win — they are the normative layer. Prose should explain *why* the token values were chosen, not assert values of their own. If you find prose says "we use a generous rounded radius" but `rounded.md` is 4px, update the prose to match the token.
+
 Every application should feel designed for the domain, the users, and the operating context. The goal is not to follow trends or produce what "looks modern." The goal is to create an environment where users complete their work efficiently, feel confident in the tool, and associate the interface with the brand behind it.
