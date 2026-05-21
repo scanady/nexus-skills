@@ -16,40 +16,50 @@
 - One skill per folder — do not bundle unrelated capabilities into one skill
 - Skill names follow the pattern `domain-category-descriptor` (e.g., `tech-quality-tdd`)
 
-## CLI — `npx nexus-agents`
+## Skill Source of Truth
+
+`skills/` is the canonical source for every skill in this repo. Folders under `.github/skills/`, `.agents/skills/`, `.claude/skills/`, `.codex/skills/`, or any other agent-specific path are **installed copies** produced by the CLI (`node bin/cli.js install`).
+
+When updating a skill:
+1. Always edit the source in `skills/<skill-name>/` first.
+2. Never edit an installed copy as the primary change — copies will be overwritten on the next install.
+3. If you've already edited a copy (e.g., `.github/skills/<skill-name>/SKILL.md`), mirror the change back into `skills/<skill-name>/` in the same commit.
+4. After updating the source, refresh installed copies by running `node bin/cli.js install --upgrade` from the repo root (use `npx nexus-agents install --upgrade` only when consuming this repo externally).
+
+## CLI — `node bin/cli.js` (in-repo) / `npx nexus-agents` (external)
 
 Use the CLI to install skills into an AI agent's skills directory. It supports the Agent Skills standard path plus GitHub Copilot, Claude Code, and Codex.
 
-When consuming this repo externally, use `npx nexus-agents`. When working inside this repo directly, use `node bin/cli.js` instead.
+**Inside this repo, use `node bin/cli.js`. When consuming this repo externally, use `npx nexus-agents`.** The two are equivalent — the examples below use the in-repo form.
 
 **Common commands:**
 
 ```bash
 # List all available skills
-npx nexus-agents list
+node bin/cli.js list
 
 # Install all skills into the current project (Agent Skills standard, default)
-npx nexus-agents install
+node bin/cli.js install
 
 # Install a specific skill
-npx nexus-agents install --skill marketing-content-linkedin-writer
+node bin/cli.js install --skill marketing-content-linkedin-writer
 
 # Install globally (user-level, not project-level)
-npx nexus-agents install --global
+node bin/cli.js install --global
 
 # Install for a specific agent
-npx nexus-agents install --agent claude-code
+node bin/cli.js install --agent claude-code
 
 # Install to multiple agents at once
-npx nexus-agents install -a github-copilot -a claude-code -a codex
+node bin/cli.js install -a github-copilot -a claude-code -a codex
 
 # Upgrade (replace) already-installed skills
-npx nexus-agents install --upgrade
+node bin/cli.js install --upgrade
 ```
 
 **Install targets by agent:**
 - `agent-skills` → `.agents/skills/` (project) or `~/.agents/skills/` (global)
-- `github-copilot` → `.agents/skills/` (project) or `~/.copilot/skills/` (global)
+- `github-copilot` → `.github/skills/` (project) or `~/.github/skills/` (global)
 - `claude-code` → `.claude/skills/` (project) or `~/.claude/skills/` (global)
 - `codex` → `.agents/skills/` (project) or `~/.codex/skills/` (global)
 
@@ -89,4 +99,15 @@ Use the export scripts when:
 
 - Don't add files to `output/` unless they are generated artifacts
 - Keep `skills/` and `prompts/` clean — sandbox work belongs in `*-sandbox/` folders
-- The `ai-personal-kb/` folder contains personal context data, not agent prompts — don't treat it as a skill source
+
+## Pull Request Descriptions
+
+When creating a pull request, always:
+1. Locate the PR template, checking in this order:
+   - `.github/pull_request_template.md`
+   - `pull_request_template.md` (repo root) or `docs/pull_request_template.md`
+   - `.github/PULL_REQUEST_TEMPLATE/` directory — if multiple templates exist, pick the one matching the change type (e.g. `bug_fix.md`, `feature.md`); ask the user if it is ambiguous.
+2. Review the branch diff (`git log <base>..HEAD --oneline` and `git diff --stat`) to understand what changed.
+3. Fill out every section of the template with real content — replace all placeholders, check applicable boxes, delete sections that don't apply.
+4. Never pass the raw template as the PR body; it must be populated before submission.
+5. If no template is found, write a clear description covering what changed, why, and how to verify.
