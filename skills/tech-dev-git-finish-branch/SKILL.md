@@ -100,17 +100,40 @@ Then: Cleanup worktree (Step 5)
 ```bash
 # Push branch
 git push -u origin <feature-branch>
-
-# Create PR
-gh pr create --title "<title>" --body "$(cat <<'EOF'
-## Summary
-<2-3 bullets of what changed>
-
-## Test Plan
-- [ ] <verification steps>
-EOF
-)"
 ```
+
+**Before creating the PR, fill out the description:**
+
+1. Check for a PR template, in this order:
+   ```bash
+   # Single-file template (most common)
+   cat .github/pull_request_template.md 2>/dev/null
+
+   # Or root-level / docs variants
+   cat pull_request_template.md 2>/dev/null
+   cat docs/pull_request_template.md 2>/dev/null
+
+   # Or a directory of templates (pick the one matching the change type)
+   ls .github/PULL_REQUEST_TEMPLATE/ 2>/dev/null
+   ```
+
+   If `.github/PULL_REQUEST_TEMPLATE/` exists, choose the template whose filename best matches the change type (e.g. `bug_fix.md`, `feature.md`, `docs.md`). If unsure, ask the user which template to use.
+
+2. Review the changes to inform the description:
+   ```bash
+   git log <base-branch>..HEAD --oneline
+   git diff <base-branch>..HEAD --stat
+   ```
+
+3. If a template exists, **fill it out completely** — replace every placeholder, check applicable boxes, and delete irrelevant sections. Do not pass the raw template as-is.
+
+4. If no template exists, write a clear description covering: what changed, why, and how to verify.
+
+5. Create the PR with the fully-populated body:
+   ```bash
+   gh pr create --title "<title>" --body-file /tmp/pr-body.md
+   ```
+   Write the filled-out body to `/tmp/pr-body.md` first, then pass it via `--body-file` to avoid shell escaping issues.
 
 Then: Cleanup worktree (Step 5)
 
