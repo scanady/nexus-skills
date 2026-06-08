@@ -1,0 +1,180 @@
+/*
+ * Hover-to-open primary navigation.
+ *
+ * Depends on the following CSS custom properties (define in :root, ideally from tokens.css):
+ *   --ink, --surface, --surface-sunken, --surface-raised, --border-subtle,
+ *   --radius-sm, --radius-md, --radius-lg,
+ *   --ease, --shadow-popover, --font-strong, --weight-strong
+ *
+ * Pair with assets/hover-nav.tsx.
+ */
+
+.primary-nav {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  gap: 6px;
+}
+
+.primary-nav a,
+.nav-menu > .nav-summary {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  font-family: var(--font-strong);
+  font-size: 14px;
+  font-weight: var(--weight-strong);
+  pointer-events: auto;
+  transition:
+    background-color 150ms var(--ease),
+    color 150ms var(--ease),
+    transform 120ms var(--ease);
+}
+
+.primary-nav a:hover,
+.primary-nav a:focus-visible,
+.primary-nav a.is-active,
+.nav-menu > .nav-summary:hover,
+.nav-menu > .nav-summary:focus-visible,
+.nav-menu[data-open="true"] > .nav-summary {
+  background: var(--surface-sunken);
+}
+
+.nav-menu {
+  position: relative;
+}
+
+.nav-menu > .nav-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-family: var(--font-strong);
+  font-size: 14px;
+  font-weight: var(--weight-strong);
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+/* Chevron — rotates 45deg → 225deg on open */
+.nav-menu > .nav-summary::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform 160ms var(--ease);
+}
+.nav-menu[data-open="true"] > .nav-summary::after {
+  transform: rotate(225deg) translateY(1px);
+}
+
+.nav-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  z-index: 80;
+  width: 320px;
+  padding: 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-popover);
+  display: none;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 160ms var(--ease),
+    transform 160ms var(--ease);
+}
+
+/* Invisible 16px hover bridge — without this the cursor falls into the gap and the menu closes */
+.nav-panel::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+}
+
+.nav-menu[data-open="true"] > .nav-panel {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-panel a {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-panel a > span {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted, #525866);
+}
+.nav-panel a:hover,
+.nav-panel a:focus-visible,
+.nav-panel a.is-active {
+  background: var(--surface-sunken);
+}
+
+/* ---------- Mobile drawer ---------- */
+@media (max-width: 768px) {
+  .primary-nav {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    width: 100%;
+  }
+  .primary-nav.is-open {
+    display: flex;
+  }
+  .nav-menu > .nav-summary {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .nav-panel {
+    position: static;
+    width: 100%;
+    margin: 6px 0 10px;
+    box-shadow: none;
+    display: block;
+    opacity: 1;
+    transform: none;
+  }
+  .nav-menu:not([data-open="true"]) > .nav-panel {
+    display: none;
+  }
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .nav-menu > .nav-summary::after,
+  .nav-panel,
+  .primary-nav a,
+  .nav-menu > .nav-summary {
+    transition: none;
+  }
+}
