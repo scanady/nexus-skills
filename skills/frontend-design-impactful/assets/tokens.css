@@ -1,0 +1,113 @@
+/*
+ * Baseline token contract.
+ *
+ * This is a STRUCTURE to fill with real brand values, not a palette to ship as-is.
+ * The values below are deliberately better than the generic default (off-whites and an
+ * ink scale rather than pure #fff on #000), but they are still placeholders. Replace them.
+ *
+ * CRITICAL ON TYPE: --font-display and --font-body are intentionally "your-display-font"
+ * and "your-body-font". Choosing a typeface is a design decision derived from the concept
+ * (see references/concept-and-art-direction.md). Do not default to Inter, Satoshi, DM Sans,
+ * Geist, or Plus Jakarta Sans without justifying the choice against the concept.
+ *
+ * Required by assets/hover-nav.css and the rest of the patterns.
+ */
+
+:root {
+  /* COLOR: ink scale + layered surfaces. Never pure black on pure white. */
+
+  /* Ink: three text levels, carrying a hint of brand temperature. Replace hues. */
+  --ink:        #15110d;  /* headlines (warm near-black; cool option: #0e1115) */
+  --ink-2:      #3a342d;  /* body copy */
+  --muted:      #6c655b;  /* captions, labels, secondary text */
+
+  /* Signature + action. Replace. The signature is rationed; the neutrals carry the polish. */
+  --signature:  #e8602c;  /* prefooter band, hero accent, nav active state */
+  --action:     #e8602c;  /* primary CTA (may equal signature, or contrast with it) */
+
+  /* Surfaces: off-whites and a deep inverse, layered for page rhythm. Replace. */
+  --surface:         #faf7f1;  /* base (warm ivory; cool option: #f7f8fa) */
+  --surface-sunken:  #f1ece3;  /* alternating sections, hover, inactive */
+  --surface-raised:  #ffffff;  /* popovers, cards that must lift off the base */
+  --surface-inverse: #15110d;  /* footer, dramatic dark bands */
+  --surface-accent:  var(--signature);
+
+  /* On-inverse text for dark sections */
+  --on-inverse:      #f3ede3;
+  --on-accent:       #15110d;  /* text on the signature band; verify contrast in the render */
+
+  /* Borders */
+  --border-subtle: rgba(21, 17, 13, 0.08);
+  --border-strong: rgba(21, 17, 13, 0.20);
+
+  /* TYPE: MUST be replaced. See concept-and-art-direction.md (type section). */
+  --font-display: "your-display-font", Georgia, serif;
+  --font-body:    "your-body-font", system-ui, sans-serif;
+  --font-strong:  var(--font-display);
+  /* --font-mono is a substitution for --font-body under a brutalist/technical posture,
+   * NOT a third family. If used, it replaces the body face; it does not add to the system. */
+  --font-mono:    "your-mono-font", ui-monospace, monospace;
+
+  --weight-body:    400;
+  --weight-strong:  600;
+  --weight-display: 800;
+
+  /* Variable font axes (uncomment and adjust when the chosen face is variable) */
+  /* --font-opsz-display: 72; */
+  /* --font-opsz-body: 16; */
+
+  /* LINE HEIGHT by role: tight display, open body */
+  --leading-display: 1.05;
+  --leading-heading: 1.15;
+  --leading-body:    1.6;
+
+  /* GRID + LAYOUT */
+  --content-width: 1280px;
+  --grid-columns: 12;
+  --grid-gutter: clamp(16px, 2vw, 32px);
+
+  /* SPACING: one modular scale (4px base). Use these, not arbitrary values. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --section-pad-y: clamp(80px, 10vw, 160px);
+  --section-pad-x: clamp(20px, 4vw, 48px);
+
+  /* RADII: vary by element scale, never one uniform value */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* MOTION: one easing curve across the whole site */
+  --ease: cubic-bezier(0.2, 0, 0, 1);  /* decelerating, never bouncy or overshoot */
+  --duration-micro:  120ms;
+  --duration-small:  160ms;
+  --duration-medium: 280ms;
+  --duration-large:  480ms;
+  --duration-entry:  900ms;
+  --reveal-distance: 12px;
+
+  /* SHADOWS */
+  --shadow-popover:
+    0 12px 32px -8px rgba(15, 15, 15, 0.18),
+    0 2px  6px      rgba(15, 15, 15, 0.06);
+  --shadow-card:
+    0 2px  8px -2px rgba(15, 15, 15, 0.10),
+    0 1px  2px      rgba(15, 15, 15, 0.05);
+
+  /* VISUAL RICHNESS */
+  --grain-opacity: 0.03;  /* 0.03 subtle, 0.06 visible; apply on hero/prefooter, not body */
+  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% 0%, var(--signature), transparent);
+
+  /* DARK MODE: swap ink and surface values here when supporting it.
+   * Keep --signature and --action constant unless brand tokens specify dark variants. */
+  /* @media (prefers-color-scheme: dark) { :root { ... } } */
+}
