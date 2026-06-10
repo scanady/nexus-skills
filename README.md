@@ -95,7 +95,7 @@ After installation, use skills by typing:
 ```
 
 ```
-/tech-api-mcp-builder build an MCP server for the GitHub API with issues and PR tools
+/engineering-api-mcp-builder build an MCP server for the GitHub API with issues and PR tools
 ```
 
 ## Contributing

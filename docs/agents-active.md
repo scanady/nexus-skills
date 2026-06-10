@@ -5,7 +5,7 @@
 ### [marketing](#marketing)
 
 - [marketing-content-brand-copywriter](#marketing)
-- [strategy-market-competitor-intel](#strategy)
+- [research-market-competitor-intel](#strategy)
 - [marketing-seo-cro](#marketing)
 - [marketing-campaign-go-to-market](#marketing)
 - [marketing-campaign-ideas](#marketing)
@@ -19,14 +19,14 @@
 
 ### [technology](#technology)
 
-- [tech-api-mcp-builder](#technology)
-- [tech-quality-code-simplifier](#technology)
-- [tech-dev-git-finish-branch](#technology)
+- [engineering-api-mcp-builder](#technology)
+- [engineering-quality-code-simplifier](#technology)
+- [engineering-dev-git-finish-branch](#technology)
 - [product-spec-prd-generator](#technology)
-- [tech-quality-receiving-review](#technology)
-- [tech-quality-requesting-review](#technology)
-- [tech-quality-tdd](#technology)
-- [tech-dev-writing-plans](#technology)
+- [engineering-quality-receiving-review](#technology)
+- [engineering-quality-requesting-review](#technology)
+- [engineering-quality-tdd](#technology)
+- [engineering-dev-writing-plans](#technology)
 
 ### [design](#design)
 
@@ -38,7 +38,7 @@
 
 - [content-technical-doc-coauthoring](#content)
 - [content-copy-humanizer](#content)
-- [comms-announce-organizational](#content)
+- [people-comms-announce-organizational](#content)
 
 ### [strategy](#strategy)
 
@@ -56,8 +56,8 @@
 
 ### [tooling](#tooling)
 
-- [agent-skill-copilot-instructions](#tooling)
-- [agent-skill-plugin-builder](#tooling)
+- [agents-copilot-instructions](#tooling)
+- [agents-skill-plugin-builder](#tooling)
 - [product-spec-reverse-engineer](#tooling)
 - [agent-skill-writer](#tooling)
 - [ops-process-sop-creator](#tooling)
@@ -67,7 +67,7 @@
 | name | description | status |
 | --- | --- | --- |
 | marketing-content-brand-copywriter | Writes marketing copy using proven copywriting frameworks for ads, landing pages, emails, and social content. | active |
-| strategy-market-competitor-intel | Analyzes competitors using web research to provide verified business metrics and actionable leverage strategies. | active |
+| research-market-competitor-intel | Analyzes competitors using web research to provide verified business metrics and actionable leverage strategies. | active |
 | marketing-seo-cro | Audits landing pages against proven CRO principles and delivers actionable recommendations to maximize conversions. | active |
 | marketing-campaign-go-to-market | Delivers the 3 best go-to-market strategies tailored to the founder's current stage, product, and market. | active |
 | marketing-campaign-ideas | Produces the best marketing ideas by matching business context against a database of 170+ proven strategies. | active |
@@ -83,14 +83,14 @@
 
 | name | description | status |
 | --- | --- | --- |
-| tech-api-mcp-builder | Guides creation of high-quality MCP servers that enable LLMs to interact with external services. | active |
-| tech-quality-code-simplifier | Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. | active |
-| tech-dev-git-finish-branch | Guides completion of development work by presenting structured options for merge, PR, or cleanup. | active |
+| engineering-api-mcp-builder | Guides creation of high-quality MCP servers that enable LLMs to interact with external services. | active |
+| engineering-quality-code-simplifier | Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. | active |
+| engineering-dev-git-finish-branch | Guides completion of development work by presenting structured options for merge, PR, or cleanup. | active |
 | product-spec-prd-generator | Generates professional PRD files optimized for AI coding tools from rough product ideas. | active |
-| tech-quality-receiving-review | Guides rigorous, technical evaluation of incoming code review feedback before implementation. | active |
-| tech-quality-requesting-review | Dispatches a code review subagent to verify work meets requirements before merging. | active |
-| tech-quality-tdd | Enforces test-first development by writing tests before implementation code on any feature or bugfix. | active |
-| tech-dev-writing-plans | Creates structured implementation plans from specs or requirements before touching code. | active |
+| engineering-quality-receiving-review | Guides rigorous, technical evaluation of incoming code review feedback before implementation. | active |
+| engineering-quality-requesting-review | Dispatches a code review subagent to verify work meets requirements before merging. | active |
+| engineering-quality-tdd | Enforces test-first development by writing tests before implementation code on any feature or bugfix. | active |
+| engineering-dev-writing-plans | Creates structured implementation plans from specs or requirements before touching code. | active |
 
 ## design
 
@@ -106,7 +106,7 @@
 | --- | --- | --- |
 | content-technical-doc-coauthoring | Guides users through a structured workflow for co-authoring documentation, proposals, and technical specs. | active |
 | content-copy-humanizer | Removes signs of AI-generated writing by detecting and fixing 26 AI writing patterns. | active |
-| comms-announce-organizational | Drafts professional internal announcements for promotions, new hires, restructures, and leadership transitions. | active |
+| people-comms-announce-organizational | Drafts professional internal announcements for promotions, new hires, restructures, and leadership transitions. | active |
 
 ## strategy
 
@@ -130,8 +130,8 @@
 
 | name | description | status |
 | --- | --- | --- |
-| agent-skill-copilot-instructions | Creates expertly crafted GitHub Copilot custom instructions files tailored to specific domains and repositories. | active |
-| agent-skill-plugin-builder | Creates knowledge-work plugins through a guided design process, bundling skills, commands, and connectors. | active |
+| agents-copilot-instructions | Creates expertly crafted GitHub Copilot custom instructions files tailored to specific domains and repositories. | active |
+| agents-skill-plugin-builder | Creates knowledge-work plugins through a guided design process, bundling skills, commands, and connectors. | active |
 | product-spec-reverse-engineer | Performs a thorough project review and produces product overview, functional specification, and technical design documents for greenfield rebuilding. | active |
 | agent-skill-writer | Guides creating, editing, verifying, and testing skills before deployment. | active |
 | ops-process-sop-creator | Creates detailed Standard Operating Procedures for repeatable business processes. | active |

@@ -8,7 +8,7 @@ metadata:
   role: specialist
   scope: writing
   output-format: document
-  related-skills: content-technical-doc-coauthoring, ops-process-sop-creator, comms-announce-organizational
+  related-skills: content-technical-doc-coauthoring, ops-process-sop-creator, people-comms-announce-organizational
 ---
 
 # Meeting Notes
