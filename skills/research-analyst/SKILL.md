@@ -11,7 +11,7 @@ metadata:
   scope: research
   output-format: report
   priority: broad
-  related-skills: research-ai-landscape-brief, research-dtc-insurance-market-intelligence, research-weekly-ai-news, strategy-research-analyst, strategy-market-competitor-intel
+  related-skills: research-ai-landscape-brief, research-dtc-insurance-market-intelligence, research-weekly-ai-news, research-market-analyst, research-market-competitor-intel
 ---
 
 # Research Analyst

@@ -12,7 +12,7 @@ metadata:
   scope: analysis
   output-format: report
   priority: specific
-  related-skills: strategy-research-opportunity, strategy-market-researcher, strategy-planning-startup, product-strategy-validator, data-analysis-business-performance
+  related-skills: research-market-opportunity, research-market-researcher, strategy-planning-startup, product-strategy-validator, data-analysis-business-performance
 ---
 
 # Opportunity Assessment
@@ -161,7 +161,7 @@ Use this default structure. Keep it concise for small ideas; expand when the opp
 
 This skill evaluates one specific opportunity. It should stay separate from adjacent skills that perform different jobs:
 
-- **`strategy-research-opportunity`** — Generates new ideas, scans markets, maps unmet needs, and creates opportunity briefs before assessment.
+- **`research-market-opportunity`** — Generates new ideas, scans markets, maps unmet needs, and creates opportunity briefs before assessment.
 - **Portfolio prioritizer** — Compares many assessed opportunities and allocates time, capital, and sequencing across the user's active and backlog portfolio.
 - **Validation experiment designer** — Converts a `Validate` or `Launch` recommendation into a concrete experiment plan with scripts, landing pages, outreach, metrics, and pass/fail thresholds.
 - **Market research specialist** — Produces evidence-backed market sizing, competitor maps, and customer research when this assessment flags low-confidence market assumptions.

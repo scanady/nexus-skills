@@ -9,7 +9,7 @@ metadata:
   role: architect
   scope: analysis
   output-format: report
-  related-skills: product-spec-prd-generator, tech-dev-writing-plans, ops-process-sop-creator
+  related-skills: product-spec-prd-generator, engineering-dev-writing-plans, ops-process-sop-creator
 ---
 
 # Product Engineer

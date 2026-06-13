@@ -9,7 +9,7 @@ metadata:
   role: specialist
   scope: analysis
   output-format: structured report
-  related-skills: strategy-research-analyst, strategy-frameworks-mckinsey-brief
+  related-skills: research-market-analyst, strategy-frameworks-mckinsey-brief
 ---
 
 # Deep Reading Analyst

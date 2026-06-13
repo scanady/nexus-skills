@@ -11,7 +11,7 @@ metadata:
   scope: research
   output-format: report
   priority: specific
-  related-skills: research-weekly-ai-news, strategy-research-analyst, research-analyst
+  related-skills: research-weekly-ai-news, research-market-analyst, research-analyst
 ---
 
 # AI Landscape Intelligence Brief
