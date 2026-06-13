@@ -8,7 +8,7 @@ metadata:
   role: strategist
   scope: design
   output-format: document
-  related-skills: strategy-frameworks-mckinsey-brief, comms-announce-organizational, content-technical-doc-coauthoring
+  related-skills: strategy-frameworks-mckinsey-brief, people-comms-announce-organizational, content-technical-doc-coauthoring
 ---
 
 # Executive Presentation Designer

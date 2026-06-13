@@ -9,7 +9,7 @@ metadata:
   role: specialist
   scope: design
   output-format: document
-  related-skills: strategy-decision-interrogator, strategy-critical-reasoning, tech-arch-architecture-decision-records, product-spec-brainstorming
+  related-skills: strategy-decision-interrogator, strategy-critical-reasoning, engineering-arch-architecture-decision-records, product-spec-brainstorming
   anti-triggers: grill me without docs, run red team report, convene council, write full PRD
   priority: specific
 ---
@@ -33,7 +33,7 @@ Good fits:
 Use neighbor instead:
 - `strategy-decision-interrogator` for same grilling flow without doc edits
 - `strategy-critical-reasoning` for report-style red team, pre-mortem, or evidence audit
-- `tech-arch-architecture-decision-records` for ADR-only writing after decision already exists
+- `engineering-arch-architecture-decision-records` for ADR-only writing after decision already exists
 - `product-spec-brainstorming` for full product/design exploration before implementation
 
 ## Workflow

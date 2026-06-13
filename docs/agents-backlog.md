@@ -61,7 +61,7 @@
 
 - [strategy-campaign-planner](#strategy)
 - [strategy-competitor-analyst](#strategy)
-- [strategy-market-researcher](#strategy)
+- [research-market-researcher](#strategy)
 - [strategy-positioning-strategist](#strategy)
 - [strategy-trend-scout](#strategy)
 
@@ -72,12 +72,12 @@
 - [tech-cloud-architect](#technology-architecture)
 - [tech-fullstack-guardian](#technology-architecture)
 - [tech-java-architect](#technology-architecture)
-- [tech-legacy-modernizer](#technology-architecture)
+- [engineering-legacy-modernizer](#technology-architecture)
 - [tech-microservices-architect](#technology-architecture)
 
 ### [technology-backend-data](#technology-backend-data)
 
-- [tech-database-optimizer](#technology-backend-data)
+- [engineering-database-optimizer](#technology-backend-data)
 - [tech-fastapi-expert](#technology-backend-data)
 - [tech-postgres-pro](#technology-backend-data)
 - [tech-spring-boot-engineer](#technology-backend-data)
@@ -95,7 +95,7 @@
 
 - [data-ai-post-training-expert](#technology-ai-ml)
 - [data-ai-ml-pipeline](#technology-ai-ml)
-- [tech-prompt-engineer](#technology-ai-ml)
+- [ai-prompt-engineer](#technology-ai-ml)
 - [tech-rag-architect](#technology-ai-ml)
 - [tech-spec-miner](#technology-ai-ml)
 
@@ -104,7 +104,7 @@
 - [tech-atlassian-mcp](#technology-platform-devops)
 - [tech-chaos-engineer](#technology-platform-devops)
 - [tech-cli-developer](#technology-platform-devops)
-- [tech-devops-engineer](#technology-platform-devops)
+- [devops-infra-engineer](#technology-platform-devops)
 - [tech-mcp-developer](#technology-platform-devops)
 - [tech-monitoring-expert](#technology-platform-devops)
 - [tech-sre-engineer](#technology-platform-devops)
@@ -116,7 +116,7 @@
 - [tech-code-reviewer](#technology-quality-security)
 - [tech-playwright-expert](#technology-quality-security)
 - [tech-secure-code-guardian](#technology-quality-security)
-- [tech-security-audit-lead](#technology-quality-security)
+- [devops-security-audit-lead](#technology-quality-security)
 - [tech-test-master](#technology-quality-security)
 
 ### [technology-language-specialists](#technology-language-specialists)
@@ -134,7 +134,7 @@
 
 ### [technology-requirements](#technology-requirements)
 
-- [tech-feature-forge](#technology-requirements)
+- [engineering-feature-forge](#technology-requirements)
 
 ### [misc](#misc)
 
@@ -216,7 +216,7 @@
 | --- | --- | --- |
 | strategy-campaign-planner | Develops integrated campaign strategies with objectives, audiences, channels, and success metrics. | backlog |
 | strategy-competitor-analyst | Researches competitor positioning, messaging, products, and go-to-market moves. | backlog |
-| strategy-market-researcher | Synthesizes market data, customer insights, and industry trends to inform strategic decisions. | backlog |
+| research-market-researcher | Synthesizes market data, customer insights, and industry trends to inform strategic decisions. | backlog |
 | strategy-positioning-strategist | Defines brand and product positioning, differentiation, and value proposition frameworks. | backlog |
 | strategy-trend-scout | Identifies emerging industry trends, signals, and opportunities before they become mainstream. | backlog |
 
@@ -229,14 +229,14 @@
 | tech-cloud-architect | Use when designing cloud architectures, planning migrations, or optimizing multi-cloud deployments. Invoke for Well-Architected Framework, cost optimization, disaster recovery, landing zones, security architecture, serverless design. | backlog |
 | tech-fullstack-guardian | Use when implementing features across frontend and backend, building APIs with UI, or creating end-to-end data flows. Invoke for feature implementation, API development, UI building, cross-stack work. | backlog |
 | tech-java-architect | Use when building enterprise Java applications with Spring Boot 3.x, microservices, or reactive programming. Invoke for WebFlux, JPA optimization, Spring Security, cloud-native patterns. | backlog |
-| tech-legacy-modernizer | Use when modernizing legacy systems, implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades. | backlog |
+| engineering-legacy-modernizer | Use when modernizing legacy systems, implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades. | backlog |
 | tech-microservices-architect | Use when designing distributed systems, decomposing monoliths, or implementing microservices patterns. Invoke for service boundaries, DDD, saga patterns, event sourcing, service mesh, distributed tracing. | backlog |
 
 ## technology-backend-data
 
 | name | description | status |
 | --- | --- | --- |
-| tech-database-optimizer | Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites, configuration tuning, partitioning strategies, lock contention resolution. | backlog |
+| engineering-database-optimizer | Use when investigating slow queries, analyzing execution plans, or optimizing database performance. Invoke for index design, query rewrites, configuration tuning, partitioning strategies, lock contention resolution. | backlog |
 | tech-fastapi-expert | Use when building high-performance async Python APIs with FastAPI and Pydantic V2. Invoke for async SQLAlchemy, JWT authentication, WebSockets, OpenAPI documentation. | backlog |
 | tech-postgres-pro | Use when optimizing PostgreSQL queries, configuring replication, or implementing advanced database features. Invoke for EXPLAIN analysis, JSONB operations, extension usage, VACUUM tuning, performance monitoring. | backlog |
 | tech-spring-boot-engineer | Use when building Spring Boot 3.x applications, microservices, or reactive Java applications. Invoke for Spring Data JPA, Spring Security 6, WebFlux, Spring Cloud integration. | backlog |
@@ -258,7 +258,7 @@
 | --- | --- | --- |
 | data-ai-post-training-expert | Use when designing or implementing LLM post-training workflows, including supervised fine-tuning, parameter-efficient adaptation, preference optimization, reward modeling, RLHF, distillation, or deployment packaging. Invoke for SFT, LoRA/QLoRA/PEFT, DPO/ORPO/PPO/GRPO, preference dataset preparation, adapter merging, model compression, and serving tradeoffs. | backlog |
 | data-ai-ml-pipeline | Use when designing or implementing end-to-end ML pipeline systems, or when a request spans multiple lifecycle stages such as feature engineering, training orchestration, experiment tracking, validation, and deployment automation. Invoke for reproducible ML platforms, feature stores, training workflows, model registries, and MLOps systems that must fit into a production pipeline rather than a one-off script. | backlog |
-| tech-prompt-engineer | Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs. | backlog |
+| ai-prompt-engineer | Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs. | backlog |
 | tech-rag-architect | Use when building RAG systems, vector databases, or knowledge-grounded AI applications requiring semantic search, document retrieval, or context augmentation. | backlog |
 | tech-spec-miner | Use when understanding legacy or undocumented systems, creating documentation for existing code, or extracting specifications from implementations. Invoke for legacy analysis, code archaeology, undocumented features. | backlog |
 
@@ -269,7 +269,7 @@
 | tech-atlassian-mcp | Use when querying Jira issues, searching Confluence pages, creating tickets, updating documentation, or integrating Atlassian tools via MCP protocol. | backlog |
 | tech-chaos-engineer | Use when designing chaos experiments, implementing failure injection frameworks, or conducting game day exercises. Invoke for chaos experiments, resilience testing, blast radius control, game days, antifragile systems. | backlog |
 | tech-cli-developer | Use when building CLI tools, implementing argument parsing, or adding interactive prompts. Invoke for CLI design, argument parsing, interactive prompts, progress indicators, shell completions. | backlog |
-| tech-devops-engineer | Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps. | backlog |
+| devops-infra-engineer | Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps. | backlog |
 | tech-mcp-developer | Use when building MCP servers or clients that connect AI systems with external tools and data sources. Invoke for MCP protocol compliance, TypeScript/Python SDKs, resource providers, tool functions. | backlog |
 | tech-monitoring-expert | Use when setting up monitoring systems, logging, metrics, tracing, or alerting. Invoke for dashboards, Prometheus/Grafana, load testing, profiling, capacity planning. | backlog |
 | tech-sre-engineer | Use when defining SLIs/SLOs, managing error budgets, or building reliable systems at scale. Invoke for incident management, chaos engineering, toil reduction, capacity planning. | backlog |
@@ -283,7 +283,7 @@
 | tech-code-reviewer | Use when reviewing pull requests, conducting code quality audits, or identifying security vulnerabilities. Invoke for PR reviews, code quality checks, refactoring suggestions. | backlog |
 | tech-playwright-expert | Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke for browser automation, E2E tests, Page Object Model, test flakiness, visual testing. | backlog |
 | tech-secure-code-guardian | Use when implementing authentication/authorization, securing user input, or preventing OWASP Top 10 vulnerabilities. Invoke for authentication, authorization, input validation, encryption, OWASP Top 10 prevention. | backlog |
-| tech-security-audit-lead | Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews. | backlog |
+| devops-security-audit-lead | Use when conducting security audits, reviewing code for vulnerabilities, or analyzing infrastructure security. Invoke for SAST scans, penetration testing, DevSecOps practices, cloud security reviews. | backlog |
 | tech-test-master | Use when writing tests, creating test strategies, or building automation frameworks. Invoke for unit tests, integration tests, E2E, coverage analysis, performance testing, security testing. | backlog |
 
 ## technology-language-specialists
@@ -307,7 +307,7 @@
 
 | name | description | status |
 | --- | --- | --- |
-| tech-feature-forge | Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements gathering, user stories, EARS format specs. | backlog |
+| engineering-feature-forge | Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements gathering, user stories, EARS format specs. | backlog |
 
 ## misc
 

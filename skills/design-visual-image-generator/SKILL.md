@@ -11,7 +11,7 @@ metadata:
   scope: creation
   output-format: image-set
   priority: broad
-  related-skills: forge-brand-logo-concepts, agent-design-visual-identity, design-product-overview-builder
+  related-skills: forge-brand-logo-concepts, agents-design-visual-identity, design-product-overview-builder
 ---
 
 # Image Generator

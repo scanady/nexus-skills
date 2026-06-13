@@ -1,10 +1,25 @@
-# nexus-agents skill & agent taxonomy
+# nexus-agents skill & agent taxonomy — v3
 # Tier 1: Domain  |  Tier 2: Category
 #
 # prefix:      naming prefix for any skill/agent/prompt in that category
 #              e.g. Marketing > Market Intelligence → "marketing-intel-{name}"
 # description: user-facing "I want to..." statement to aid discovery
 #
+# Revision notes (v3):
+#   - tech renamed to engineering throughout (aligns with Anthropic Cowork plugin naming)
+#   - devops split out from engineering as standalone top-level domain
+#   - strategy split: market/research intelligence moved to research domain
+#   - comms collapsed into people domain
+#   - knowledge formalized as standalone domain
+#   - ai: practitioner layer (prompts, ML, RAG, AI product work)
+#   - agents: new top-level domain for meta-layer (skills, personas, plugins, specs)
+#   - agent-* and prompt-* stray prefixes absorbed into agents/ai respectively
+#   - legal restored as standalone top-level domain
+#   - finance split into finance (operational) and financial-analysis (analytical)
+#   - ops cleaned to core process/operations scope
+#   - personal-* absorbed into productivity
+#   - frontend-design-impactful reclassified to design-web-impactful
+
 domains:
 
   - name: Marketing
@@ -25,7 +40,7 @@ domains:
         description: Improve search visibility and measure marketing performance
       - name: Market Intelligence
         prefix: marketing-intel
-        description: Research competitors, audiences, and market opportunities
+        description: Research audiences, segments, and market opportunities
 
   - name: Sales
     prefix: sales
@@ -47,23 +62,6 @@ domains:
         prefix: sales-cs
         description: Onboard, retain, and expand existing customer relationships
 
-  - name: Customer Support
-    prefix: support
-    description: Help customers resolve issues and get value from your product
-    categories:
-      - name: Ticket Management
-        prefix: support-tickets
-        description: Triage, prioritize, and route incoming support requests
-      - name: Response & Communication
-        prefix: support-response
-        description: Draft replies, escalations, and customer-facing messages
-      - name: Knowledge Management
-        prefix: support-kb
-        description: Create and maintain help articles and internal knowledge bases
-      - name: Customer Research
-        prefix: support-research
-        description: Understand customer context, history, and sentiment
-
   - name: Content & Writing
     prefix: content
     description: Create, edit, or refine written content for any audience or format
@@ -83,6 +81,9 @@ domains:
       - name: Behavioral & Persuasion
         prefix: content-behavioral
         description: Apply behavioral science and persuasion frameworks to content
+      - name: Style & Voice
+        prefix: content-style
+        description: Extract, define, or apply a consistent writing style or voice
 
   - name: Design
     prefix: design
@@ -100,29 +101,52 @@ domains:
       - name: UX Writing
         prefix: design-copy
         description: Write interface copy, microcopy, and onboarding flows
+      - name: Application & Product Design
+        prefix: design-app
+        description: Design application flows, sitemaps, and product UI patterns
+      - name: Frontend & Web Design
+        prefix: design-web
+        description: Build and style high-impact web pages and marketing surfaces
 
-  - name: Technology
-    prefix: tech
+  - name: Engineering
+    prefix: engineering
     description: Build, ship, and maintain software systems
     categories:
       - name: Architecture & System Design
-        prefix: tech-arch
+        prefix: engineering-arch
         description: Design system architecture, APIs, and infrastructure topology
-      - name: DevOps & Infrastructure
-        prefix: tech-devops
-        description: Manage deployments, pipelines, cloud infrastructure, and reliability
+      - name: Software Development
+        prefix: engineering-dev
+        description: Write, review, and refactor code in any language or framework
       - name: Code Quality & Testing
-        prefix: tech-quality
+        prefix: engineering-quality
         description: Review code, write tests, and reduce technical debt
       - name: APIs & Integrations
-        prefix: tech-api
+        prefix: engineering-api
         description: Design and build APIs, integrations, and MCP connections
+      - name: Documentation
+        prefix: engineering-doc
+        description: Write technical documentation, runbooks, and reference guides
+      - name: Repositories & Workflow
+        prefix: engineering-github
+        description: Manage repositories, branching strategy, and GitHub operations
+
+  - name: DevOps
+    prefix: devops
+    description: Ship, run, and secure production systems
+    categories:
+      - name: Infrastructure & Platforms
+        prefix: devops-infra
+        description: Manage cloud infrastructure, pipelines, and platform reliability
       - name: Security
-        prefix: tech-security
-        description: Review code and systems for vulnerabilities and compliance
-      - name: Software Development
-        prefix: tech-dev
-        description: Write, review, and refactor code in any language or framework
+        prefix: devops-security
+        description: Review systems and code for vulnerabilities and compliance
+      - name: Incident Response
+        prefix: devops-incident
+        description: Triage, resolve, and document production incidents
+      - name: Deployment & Release
+        prefix: devops-deploy
+        description: Manage deployment workflows, releases, and rollbacks
 
   - name: Data & Analytics
     prefix: data
@@ -141,6 +165,43 @@ domains:
         prefix: data-ai
         description: Design and build machine learning models and AI pipelines
 
+  - name: AI
+    prefix: ai
+    description: Work with AI systems — prompts, models, RAG, and AI product development
+    categories:
+      - name: Prompt Engineering
+        prefix: ai-prompt
+        description: Write, optimize, and evaluate prompts for any model or use case
+      - name: AI Product
+        prefix: ai-product
+        description: Design and build AI-powered products and features
+      - name: RAG & Retrieval
+        prefix: ai-rag
+        description: Design and implement retrieval-augmented generation systems
+      - name: Model Development
+        prefix: ai-model
+        description: Train, fine-tune, and evaluate machine learning models
+      - name: AI Research
+        prefix: ai-research
+        description: Track frontier AI developments and synthesize research
+
+  - name: Agents
+    prefix: agents
+    description: Build, design, and manage AI agents and skills
+    categories:
+      - name: Skill Building
+        prefix: agents-skill
+        description: Create, spec, and maintain agent skills
+      - name: Agent Design
+        prefix: agents-design
+        description: Design agent personas, capabilities, and interaction patterns
+      - name: Copilot & Plugins
+        prefix: agents-copilot
+        description: Build copilot instructions, plugins, and tool integrations
+      - name: Catalog & Governance
+        prefix: agents-catalog
+        description: Organize, classify, and govern an agent and skill catalog
+
   - name: Product
     prefix: product
     description: Define, plan, and improve a product
@@ -148,15 +209,75 @@ domains:
       - name: Product Definition
         prefix: product-spec
         description: Write specs, PRDs, and feature requirements
+      - name: Strategy & Vision
+        prefix: product-strategy
+        description: Define product vision, OKRs, and long-term direction
+      - name: Discovery
+        prefix: product-discovery
+        description: Validate ideas, run discovery, and frame product opportunities
       - name: Roadmap & Planning
         prefix: product-roadmap
         description: Build roadmaps, prioritize features, and plan sprints
       - name: Stakeholder Management
         prefix: product-stakeholder
         description: Communicate product decisions and updates to stakeholders
-      - name: Product Intelligence
-        prefix: product-intel
-        description: Analyze competitors, user feedback, and market signals
+
+  - name: Strategy & Business
+    prefix: strategy
+    description: Make better decisions and plan for business growth
+    categories:
+      - name: Decision Making
+        prefix: strategy-decision
+        description: Structure, interrogate, and document complex decisions
+      - name: Business Planning
+        prefix: strategy-planning
+        description: Build business plans, models, and investment narratives
+      - name: Frameworks & Reasoning
+        prefix: strategy-frameworks
+        description: Structure and solve complex problems using strategic frameworks
+      - name: Change Management
+        prefix: strategy-change
+        description: Plan and execute organizational change and adoption initiatives
+      - name: Thought Leadership
+        prefix: strategy-thought
+        description: Craft expert perspectives, executive insights, and industry viewpoints
+      - name: Innovation
+        prefix: strategy-innovation
+        description: Generate and stress-test new ideas, opportunities, and ventures
+      - name: Technology Strategy
+        prefix: strategy-tech
+        description: Evaluate technology trends, plan AI adoption, and define technology roadmaps
+
+  - name: Research & Intelligence
+    prefix: research
+    description: Find, synthesize, and act on information about markets, industries, and competitors
+    categories:
+      - name: Market & Competitive Research
+        prefix: research-market
+        description: Research competitors, markets, and strategic opportunities
+      - name: Industry Intelligence
+        prefix: research-intel
+        description: Track developments, trends, and signals across industries
+      - name: Document & Deep Reading
+        prefix: research-docs
+        description: Extract insights from documents, reports, and long-form content
+      - name: General Research
+        prefix: research-general
+        description: Research any topic using external sources and synthesis
+
+  - name: Knowledge
+    prefix: knowledge
+    description: Capture, organize, and retrieve information across tools and projects
+    categories:
+      - name: Knowledge Operations
+        prefix: knowledge-ops
+        description: Build and maintain knowledge bases, wikis, and information systems
+      - name: Context & Memory
+        prefix: knowledge-context
+        description: Capture and curate context, memory, and working knowledge for AI systems
+      - name: Document Intelligence
+        prefix: knowledge-docs
+        description: Extract, structure, and make documents searchable and useful
 
   - name: Project Management
     prefix: project
@@ -175,86 +296,9 @@ domains:
         prefix: project-reporting
         description: Write status updates and escalate risks or issues
 
-  - name: Strategy & Business
-    prefix: strategy
-    description: Make better strategic decisions and plan for business growth
-    categories:
-      - name: Business Planning
-        prefix: strategy-planning
-        description: Build business plans, models, and investment narratives
-      - name: Research & Analysis
-        prefix: strategy-research
-        description: Research markets, industries, and strategic opportunities
-      - name: Problem Solving & Frameworks
-        prefix: strategy-frameworks
-        description: Structure and solve complex problems using strategic frameworks
-      - name: Change Management
-        prefix: strategy-change
-        description: Plan and execute organizational change, transformation, and adoption initiatives
-      - name: Thought Leadership
-        prefix: strategy-thought
-        description: Craft expert perspectives, executive insights, and industry viewpoints
-      - name: Technology Strategy
-        prefix: strategy-tech
-        description: Evaluate technology trends, plan AI adoption, and define technology roadmaps
-
-  - name: Operations
-    prefix: ops
-    description: Improve, document, and scale business processes
-    categories:
-      - name: Process & Documentation
-        prefix: ops-process
-        description: Document SOPs, workflows, and operating procedures
-      - name: Capacity & Planning
-        prefix: ops-capacity
-        description: Plan headcount, resources, and operational capacity
-      - name: Risk & Compliance
-        prefix: ops-risk
-        description: Identify, assess, and mitigate operational risks
-      - name: Vendor Management
-        prefix: ops-vendor
-        description: Evaluate, onboard, and manage vendor relationships
-
-  - name: Finance
-    prefix: finance
-    description: Manage financial data, reporting, and planning
-    categories:
-      - name: Accounting & Reporting
-        prefix: finance-accounting
-        description: Prepare journal entries, statements, and financial reports
-      - name: Financial Analysis
-        prefix: finance-analysis
-        description: Analyze performance, variances, and financial trends
-      - name: Audit & Compliance
-        prefix: finance-audit
-        description: Support audits and regulatory compliance activities
-      - name: Close Management
-        prefix: finance-close
-        description: Manage month-end and quarter-end close processes
-
-  - name: Legal
-    prefix: legal
-    description: Handle contracts, compliance, and legal risk
-    categories:
-      - name: Contract Management
-        prefix: legal-contracts
-        description: Draft, review, and negotiate contracts and NDAs
-      - name: Compliance
-        prefix: legal-compliance
-        description: Check regulatory and policy compliance requirements
-      - name: Risk Assessment
-        prefix: legal-risk
-        description: Identify and assess legal risk in business decisions
-      - name: Legal Communications
-        prefix: legal-comms
-        description: Draft legal responses, briefs, and correspondence
-      - name: Personal Planning
-        prefix: legal-personal
-        description: Plan wills, trusts, estate documents, and other personal legal matters
-
   - name: People & Talent
     prefix: people
-    description: Hire, develop, and manage people and teams
+    description: Hire, develop, communicate with, and manage people and teams
     categories:
       - name: Recruiting & Hiring
         prefix: people-recruiting
@@ -268,6 +312,9 @@ domains:
       - name: Org Planning
         prefix: people-org
         description: Plan org structure, headcount, and reporting lines
+      - name: Internal Communications
+        prefix: people-comms
+        description: Write announcements, executive memos, all-hands content, and leadership messaging
       - name: Policy & Culture
         prefix: people-culture
         description: Write policies, handbooks, and culture-building programs
@@ -275,84 +322,93 @@ domains:
         prefix: people-learning
         description: Design training programs, curricula, and skill development plans
 
-  - name: Internal Communications
-    prefix: comms
-    description: Communicate decisions, changes, and news to people inside your organization
+  - name: Operations
+    prefix: ops
+    description: Improve, document, and scale business processes
     categories:
-      - name: Organizational Announcements
-        prefix: comms-announce
-        description: Write announcements for hiring, promotions, org changes, and milestones
-      - name: Executive Communications
-        prefix: comms-exec
-        description: Draft executive memos, all-hands content, and leadership messaging
-      - name: Change Management Comms
-        prefix: comms-change
-        description: Communicate organizational changes and transitions effectively
-      - name: Employee Engagement
-        prefix: comms-engage
-        description: Write newsletters, culture updates, and engagement initiatives
+      - name: Process & Documentation
+        prefix: ops-process
+        description: Document SOPs, workflows, and operating procedures
+      - name: Capacity & Planning
+        prefix: ops-capacity
+        description: Plan headcount, resources, and operational capacity
+      - name: Risk & Compliance
+        prefix: ops-risk
+        description: Identify, assess, and mitigate operational and regulatory risks
+      - name: Vendor Management
+        prefix: ops-vendor
+        description: Evaluate, onboard, and manage vendor relationships
 
-  - name: Public Relations & External Comms
-    prefix: pr
-    description: Shape how your organization is perceived by the outside world
+  - name: Legal
+    prefix: legal
+    description: Handle contracts, compliance, and legal risk
     categories:
-      - name: Press & Media
-        prefix: pr-press
-        description: Write press releases, pitch journalists, and manage media relations
-      - name: Crisis Communications
-        prefix: pr-crisis
-        description: Respond to negative events, incidents, or reputational threats
-      - name: Brand Communications
-        prefix: pr-brand
-        description: Ensure all external messaging aligns with brand positioning
+      - name: Contract Management
+        prefix: legal-contracts
+        description: Draft, review, and negotiate contracts and NDAs
+      - name: Compliance & Regulatory
+        prefix: legal-compliance
+        description: Monitor and assess regulatory and policy compliance requirements
+      - name: Risk Assessment
+        prefix: legal-risk
+        description: Identify and assess legal risk in business decisions
+      - name: Legal Communications
+        prefix: legal-comms
+        description: Draft legal responses, briefs, and correspondence
 
-  - name: Knowledge & Research
-    prefix: research
-    description: Find, synthesize, and organize information to support better decisions
+  - name: Finance
+    prefix: finance
+    description: Manage financial operations, reporting, and accounting
     categories:
-      - name: Document Analysis
-        prefix: research-docs
-        description: Extract insights from documents, reports, and unstructured content
-      - name: Secondary Research
-        prefix: research-secondary
-        description: Research topics using external sources and web information
-      - name: Knowledge Synthesis
-        prefix: research-synthesis
-        description: Summarize, connect, and structure knowledge across sources
-      - name: Enterprise Search
-        prefix: research-search
-        description: Find information across internal tools, docs, and systems
+      - name: Reporting & Accounting
+        prefix: finance-reporting
+        description: Prepare financial reports, statements, and journal entries
+      - name: Close Management
+        prefix: finance-close
+        description: Manage month-end and quarter-end close processes
+      - name: Audit & Compliance
+        prefix: finance-audit
+        description: Support audits and regulatory compliance activities
+      - name: Budgeting
+        prefix: finance-budget
+        description: Build and manage budgets, allocations, and spend tracking
+
+  - name: Financial Analysis
+    prefix: financial-analysis
+    description: Analyze financial data, build models, and generate investment-grade insights
+    categories:
+      - name: Financial Modeling
+        prefix: financial-analysis-modeling
+        description: Build financial models, forecasts, and scenario plans
+      - name: Performance Analysis
+        prefix: financial-analysis-performance
+        description: Analyze variances, trends, and business unit performance
+      - name: Market & Investment Research
+        prefix: financial-analysis-market
+        description: Research markets, sectors, and investment opportunities
+      - name: Presentations & Narratives
+        prefix: financial-analysis-narrative
+        description: Build investor-ready presentations, memos, and financial narratives
 
   - name: Productivity
     prefix: productivity
-    description: Manage tasks, time, and daily workflows more effectively
+    description: Manage tasks, communication style, time, and daily workflows more effectively
     categories:
       - name: Task & Work Management
         prefix: productivity-tasks
         description: Organize, prioritize, and track personal or team tasks
       - name: Meetings & Collaboration
         prefix: productivity-meetings
-        description: Capture meeting notes, summarize discussions, and track decisions and action items
-      - name: Creativity & Ideation
-        prefix: productivity-ideas
-        description: Brainstorm options, generate concepts, and explore possible directions before deciding
+        description: Capture notes, summarize discussions, and track decisions and action items
+      - name: Personal Effectiveness
+        prefix: productivity-personal
+        description: Develop communication style, habits, and personal working patterns
       - name: Daily Operations
         prefix: productivity-daily
         description: Prepare daily briefings, manage schedules, and run standups
+      - name: Creativity & Ideation
+        prefix: productivity-ideas
+        description: Brainstorm options, generate concepts, and explore directions before deciding
       - name: Memory & Context
         prefix: productivity-memory
         description: Capture, store, and retrieve personal and project context
-
-  - name: Agent & AI Development
-    prefix: agent
-    description: Build, evaluate, and manage AI agents, skills, and prompts
-    categories:
-      - name: Skill Lifecycle
-        prefix: agent-skill
-        description: Create, review, evaluate, and maintain agent skills
-      - name: Agent Design
-        prefix: agent-design
-        description: Design agent personas, capabilities, and interaction patterns
-      - name: Catalog & Governance
-        prefix: agent-catalog
-        description: Organize, classify, and govern an agent and skill catalog
