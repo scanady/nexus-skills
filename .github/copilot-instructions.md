@@ -14,7 +14,7 @@
 - Every skill must have a `SKILL.md` at the root of its folder
 - Supporting files go in subfolders: `knowledge/` for reference docs, `scripts/` for runnable code, `references/` for external content
 - One skill per folder — do not bundle unrelated capabilities into one skill
-- Skill names follow the pattern `domain-category-descriptor` (e.g., `tech-quality-tdd`)
+- Skill names follow the pattern `domain-category-descriptor` (e.g., `engineering-quality-tdd`)
 
 ## Skill Source of Truth
 
@@ -70,7 +70,7 @@ The default scope is `--project`. Use `--global` for personal skills you want av
 Once installed, skills are invoked by name in the agent's chat interface:
 
 ```
-/tech-quality-tdd implement a user login endpoint
+/engineering-quality-tdd implement a user login endpoint
 /marketing-content-linkedin-writer write a post about our new product launch
 ```
 

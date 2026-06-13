@@ -102,12 +102,12 @@
       }
     },
     {
-      "name": "tech-feature-forge",
+      "name": "engineering-feature-forge",
       "source_id": "source-1",
-      "path": "skills/tech-feature-forge/SKILL.md",
+      "path": "skills/engineering-feature-forge/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-feature-forge",
+        "name": "engineering-feature-forge",
         "description": "Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements workshops, user stories, EARS requirements, acceptance criteria, and implementation-ready specs.",
         "license": "MIT",
         "metadata": {
@@ -133,7 +133,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-feature-forge",
+        "name": "engineering-feature-forge",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -179,12 +179,12 @@
       }
     },
     {
-      "name": "tech-dev-git-workflow-design",
+      "name": "engineering-dev-git-workflow-design",
       "source_id": "source-1",
-      "path": "skills/tech-dev-git-workflow-design/SKILL.md",
+      "path": "skills/engineering-dev-git-workflow-design/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-dev-git-workflow-design",
+        "name": "engineering-dev-git-workflow-design",
         "description": "Advise on team Git workflow design: branching strategy, merge vs rebase, commit conventions, PR process, release flow, and conflict handling. Use when asked to 'set up a branching strategy', 'choose between rebase and merge', 'resolve merge conflicts', 'write a PR description', or define version-control conventions rather than commit or push the current repo state.",
         "license": "MIT",
         "metadata": {
@@ -196,7 +196,7 @@
           "scope": "advisory",
           "output-format": "instructions, commands, templates",
           "priority": "specific",
-          "related-skills": "tech-dev-git-commit, tech-dev-git-finish-branch, tech-quality-tdd, tech-quality-requesting-review"
+          "related-skills": "engineering-dev-git-commit, engineering-dev-git-finish-branch, engineering-quality-tdd, engineering-quality-requesting-review"
         }
       },
       "structure": {
@@ -211,7 +211,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-dev-git-workflow-design",
+        "name": "engineering-dev-git-workflow-design",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -257,12 +257,12 @@
       }
     },
     {
-      "name": "tech-quality-requesting-review",
+      "name": "engineering-quality-requesting-review",
       "source_id": "source-1",
-      "path": "skills/tech-quality-requesting-review/SKILL.md",
+      "path": "skills/engineering-quality-requesting-review/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-quality-requesting-review",
+        "name": "engineering-quality-requesting-review",
         "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements"
       },
       "structure": {
@@ -277,7 +277,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-quality-requesting-review",
+        "name": "engineering-quality-requesting-review",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -339,7 +339,7 @@
           "role": "expert",
           "scope": "design",
           "output-format": "specification",
-          "related-skills": "product-spec-brainstorming, tech-quality-tdd"
+          "related-skills": "product-spec-brainstorming, engineering-quality-tdd"
         }
       },
       "structure": {
@@ -400,12 +400,12 @@
       }
     },
     {
-      "name": "tech-quality-code-simplifier",
+      "name": "engineering-quality-code-simplifier",
       "source_id": "source-1",
-      "path": "skills/tech-quality-code-simplifier/SKILL.md",
+      "path": "skills/engineering-quality-code-simplifier/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-quality-code-simplifier",
+        "name": "engineering-quality-code-simplifier",
         "description": "Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Use when asked to simplify code, clean up code, refactor for readability, reduce complexity, apply coding standards, or improve code elegance. Focuses on recently modified code unless instructed otherwise."
       },
       "structure": {
@@ -420,7 +420,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-quality-code-simplifier",
+        "name": "engineering-quality-code-simplifier",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -483,7 +483,7 @@
           "scope": "research",
           "output-format": "report",
           "priority": "specific",
-          "related-skills": "research-weekly-ai-news, strategy-research-analyst, research-analyst"
+          "related-skills": "research-weekly-ai-news, research-market-analyst, research-analyst"
         }
       },
       "structure": {
@@ -713,7 +713,7 @@
           "role": "expert",
           "scope": "implementation",
           "output-format": "code",
-          "related-skills": "tech-devops-engineer, data-ai-ml-pipeline, data-ai-autoresearch"
+          "related-skills": "devops-infra-engineer, data-ai-ml-pipeline, data-ai-autoresearch"
         }
       },
       "structure": {
@@ -853,12 +853,12 @@
       }
     },
     {
-      "name": "tech-security-vulnerability-analyst",
+      "name": "devops-security-vulnerability-analyst",
       "source_id": "source-1",
-      "path": "skills/tech-security-vulnerability-analyst/SKILL.md",
+      "path": "skills/devops-security-vulnerability-analyst/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-security-vulnerability-analyst",
+        "name": "devops-security-vulnerability-analyst",
         "description": "Analyze a codebase like an attacker: map attack surface, apply OWASP 2025, test exploitability, and prioritize auth, injection, supply-chain, and design flaws. Use when asked to \"review code for exploits\", \"analyze attack surface\", \"check OWASP compliance\", \"find auth or injection risks\", or perform exploitability-driven AppSec analysis rather than a broad infrastructure or DevSecOps audit.",
         "license": "MIT",
         "metadata": {
@@ -870,7 +870,7 @@
           "scope": "analysis",
           "output-format": "report",
           "priority": "specific",
-          "related-skills": "tech-security-audit-lead, tech-quality-tdd, data-eng-pipeline-architect"
+          "related-skills": "devops-security-audit-lead, engineering-quality-tdd, data-eng-pipeline-architect"
         }
       },
       "structure": {
@@ -885,7 +885,7 @@
         "skill_pattern": "B"
       },
       "evaluation": {
-        "name": "tech-security-vulnerability-analyst",
+        "name": "devops-security-vulnerability-analyst",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -1231,12 +1231,12 @@
       }
     },
     {
-      "name": "tech-quality-receiving-review",
+      "name": "engineering-quality-receiving-review",
       "source_id": "source-1",
-      "path": "skills/tech-quality-receiving-review/SKILL.md",
+      "path": "skills/engineering-quality-receiving-review/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-quality-receiving-review",
+        "name": "engineering-quality-receiving-review",
         "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation"
       },
       "structure": {
@@ -1251,7 +1251,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-quality-receiving-review",
+        "name": "engineering-quality-receiving-review",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -1453,12 +1453,12 @@
       }
     },
     {
-      "name": "comms-engage-internal-community",
+      "name": "people-comms-engage-internal-community",
       "source_id": "source-1",
-      "path": "skills/comms-engage-internal-community/SKILL.md",
+      "path": "skills/people-comms-engage-internal-community/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "comms-engage-internal-community",
+        "name": "people-comms-engage-internal-community",
         "description": "Draft internal community communications such as 3P updates, newsletters, FAQ responses, and team status reports. Use when you need clear, professional, and audience-aware internal messaging.",
         "license": "MIT",
         "metadata": {
@@ -1468,7 +1468,7 @@
           "role": "specialist",
           "scope": "creation",
           "output-format": "document",
-          "related-skills": "comms-announce-organizational"
+          "related-skills": "people-comms-announce-organizational"
         }
       },
       "structure": {
@@ -1483,7 +1483,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "comms-engage-internal-community",
+        "name": "people-comms-engage-internal-community",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -1692,7 +1692,7 @@
           "role": "architect",
           "scope": "analysis",
           "output-format": "report",
-          "related-skills": "product-spec-prd-generator, tech-dev-writing-plans, ops-process-sop-creator"
+          "related-skills": "product-spec-prd-generator, engineering-dev-writing-plans, ops-process-sop-creator"
         }
       },
       "structure": {
@@ -1899,12 +1899,12 @@
       }
     },
     {
-      "name": "tech-database-optimizer",
+      "name": "engineering-database-optimizer",
       "source_id": "source-1",
-      "path": "skills/tech-database-optimizer/SKILL.md",
+      "path": "skills/engineering-database-optimizer/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-database-optimizer",
+        "name": "engineering-database-optimizer",
         "description": "Use when a database is slow, queries are taking too long, or you need to analyze an execution plan. Invoke for index design, query rewrites, configuration tuning, partitioning, lock contention, or improving cache hit rates. Also use when asked to \"optimize this query\", \"why is my database slow\", \"EXPLAIN ANALYZE\", \"add an index\", \"tune PostgreSQL config\", or \"MySQL performance\".",
         "license": "MIT",
         "metadata": {
@@ -1930,7 +1930,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-database-optimizer",
+        "name": "engineering-database-optimizer",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -2042,12 +2042,12 @@
       }
     },
     {
-      "name": "strategy-market-competitor-intel",
+      "name": "research-market-competitor-intel",
       "source_id": "source-1",
-      "path": "skills/strategy-market-competitor-intel/SKILL.md",
+      "path": "skills/research-market-competitor-intel/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "strategy-market-competitor-intel",
+        "name": "research-market-competitor-intel",
         "description": "Analyzes competitors using web research to provide verified business metrics, actionable leverage strategies, and predicted next moves. Use when user needs competitive intelligence, competitor analysis, market positioning insights, or strategic leverage opportunities."
       },
       "structure": {
@@ -2062,7 +2062,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "strategy-market-competitor-intel",
+        "name": "research-market-competitor-intel",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -2108,12 +2108,12 @@
       }
     },
     {
-      "name": "prompt-optimizer",
+      "name": "ai-prompt-optimizer",
       "source_id": "source-1",
-      "path": "skills/prompt-optimizer/SKILL.md",
+      "path": "skills/ai-prompt-optimizer/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "prompt-optimizer",
+        "name": "ai-prompt-optimizer",
         "description": "Analyze raw prompts, identify intent and gaps, match ECC components (skills/commands/agents/hooks), and output a ready-to-paste optimized prompt. Advisory role only \u2014 never executes the task itself. TRIGGER when: user says \"optimize prompt\", \"improve my prompt\", \"how to write a prompt for\", \"help me prompt\", \"rewrite this prompt\", or explicitly asks to enhance prompt quality. Also triggers on Chinese equivalents: \"\u4f18\u5316prompt\", \"\u6539\u8fdbprompt\", \"\u600e\u4e48\u5199prompt\", \"\u5e2e\u6211\u4f18\u5316\u8fd9\u4e2a\u6307\u4ee4\". DO NOT TRIGGER when: user wants the task executed directly, or says \"just do it\" / \"\u76f4\u63a5\u505a\". DO NOT TRIGGER when user says \"\u4f18\u5316\u4ee3\u7801\", \"\u4f18\u5316\u6027\u80fd\", \"optimize performance\", \"optimize this code\" \u2014 those are refactoring/performance tasks, not prompt optimization.",
         "metadata": {
           "author": "YannJY02",
@@ -2132,7 +2132,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "prompt-optimizer",
+        "name": "ai-prompt-optimizer",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -2336,7 +2336,7 @@
           "role": "strategist",
           "scope": "design",
           "output-format": "document",
-          "related-skills": "strategy-frameworks-mckinsey-brief, comms-announce-organizational, content-technical-doc-coauthoring"
+          "related-skills": "strategy-frameworks-mckinsey-brief, people-comms-announce-organizational, content-technical-doc-coauthoring"
         }
       },
       "structure": {
@@ -2413,7 +2413,7 @@
           "role": "specialist",
           "scope": "writing",
           "output-format": "document",
-          "related-skills": "content-technical-doc-coauthoring, ops-process-sop-creator, comms-announce-organizational"
+          "related-skills": "content-technical-doc-coauthoring, ops-process-sop-creator, people-comms-announce-organizational"
         }
       },
       "structure": {
@@ -2632,7 +2632,7 @@
           "role": "strategist",
           "scope": "design",
           "output-format": "document",
-          "related-skills": "marketing-intel-customer-segmentation, marketing-campaign-go-to-market, comms-announce-organizational"
+          "related-skills": "marketing-intel-customer-segmentation, marketing-campaign-go-to-market, people-comms-announce-organizational"
         }
       },
       "structure": {
@@ -2710,7 +2710,7 @@
           "scope": "research",
           "output-format": "structured-report",
           "priority": "specific",
-          "related-skills": "research-ai-landscape-brief, research-analyst, strategy-research-analyst"
+          "related-skills": "research-ai-landscape-brief, research-analyst, research-market-analyst"
         }
       },
       "structure": {
@@ -2787,7 +2787,7 @@
           "role": "analyst",
           "scope": "analysis",
           "output-format": "report",
-          "related-skills": "strategy-research-analyst, strategy-frameworks-mckinsey-brief, marketing-intel-customer-segmentation, strategy-planning-pricing"
+          "related-skills": "research-market-analyst, strategy-frameworks-mckinsey-brief, marketing-intel-customer-segmentation, strategy-planning-pricing"
         }
       },
       "structure": {
@@ -2866,7 +2866,7 @@
           "output-format": "report",
           "cadence": "weekly | monthly | quarterly",
           "priority": "specific",
-          "related-skills": "research-ai-landscape-brief, strategy-research-analyst, research-analyst"
+          "related-skills": "research-ai-landscape-brief, research-market-analyst, research-analyst"
         }
       },
       "structure": {
@@ -2927,12 +2927,12 @@
       }
     },
     {
-      "name": "strategy-market-researcher",
+      "name": "research-market-researcher",
       "source_id": "source-1",
-      "path": "skills/strategy-market-researcher/SKILL.md",
+      "path": "skills/research-market-researcher/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "strategy-market-researcher",
+        "name": "research-market-researcher",
         "description": "Produce decision-ready market research with explicit assumptions, sizing logic, diligence, and recommendation-oriented synthesis. Use when asked to \"size a market\", \"compare competitors\", \"evaluate an investor\", \"research a vendor\", \"assess industry trends\", or pressure-test a business thesis rather than summarize headlines or score strategic signals.",
         "license": "MIT"
       },
@@ -2948,7 +2948,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "strategy-market-researcher",
+        "name": "research-market-researcher",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -3214,12 +3214,12 @@
       }
     },
     {
-      "name": "tech-dev-writing-plans",
+      "name": "engineering-dev-writing-plans",
       "source_id": "source-1",
-      "path": "skills/tech-dev-writing-plans/SKILL.md",
+      "path": "skills/engineering-dev-writing-plans/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-dev-writing-plans",
+        "name": "engineering-dev-writing-plans",
         "description": "Use when you have a spec or requirements for a multi-step task, before touching code"
       },
       "structure": {
@@ -3234,7 +3234,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-dev-writing-plans",
+        "name": "engineering-dev-writing-plans",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -3280,12 +3280,12 @@
       }
     },
     {
-      "name": "tech-legacy-modernizer",
+      "name": "engineering-legacy-modernizer",
       "source_id": "source-1",
-      "path": "skills/tech-legacy-modernizer/SKILL.md",
+      "path": "skills/engineering-legacy-modernizer/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-legacy-modernizer",
+        "name": "engineering-legacy-modernizer",
         "description": "Use when modernizing legacy systems, planning or implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades, and legacy refactoring safety nets.",
         "license": "MIT",
         "metadata": {
@@ -3296,7 +3296,7 @@
           "role": "specialist",
           "scope": "design-and-implementation",
           "output-format": "plan+code",
-          "related-skills": "tech-spec-miner, tech-quality-tdd, tech-devops-engineer"
+          "related-skills": "tech-spec-miner, engineering-quality-tdd, devops-infra-engineer"
         }
       },
       "structure": {
@@ -3311,7 +3311,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-legacy-modernizer",
+        "name": "engineering-legacy-modernizer",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -3512,12 +3512,12 @@
       }
     },
     {
-      "name": "tech-api-n8n-workflow-builder",
+      "name": "engineering-api-n8n-workflow-builder",
       "source_id": "source-1",
-      "path": "skills/tech-api-n8n-workflow-builder/SKILL.md",
+      "path": "skills/engineering-api-n8n-workflow-builder/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-api-n8n-workflow-builder",
+        "name": "engineering-api-n8n-workflow-builder",
         "description": "Expert n8n workflow designer. Turns a user prompt into a production-ready, importable n8n workflow JSON file with triggers, nodes, connections, AI agents, error handling, retries, and a getting-started guide. Use when the user asks to \"build an n8n workflow\", \"create an n8n automation\", \"design an n8n flow\", \"automate [task] with n8n\", \"convert this process to n8n\", \"n8n workflow from prompt\", or mentions n8n alongside automation, integration, webhook, AI agent, Zapier-alternative, or no-code workflow orchestration. Interviews the user for objectives, inputs, outputs, services, and reliability needs before generating the JSON.",
         "license": "MIT",
         "metadata": {
@@ -3527,7 +3527,7 @@
           "role": "n8n-workflow-architect",
           "scope": "design",
           "output-format": "specification",
-          "related-skills": "data-eng-pipeline-architect, tech-api, agent-skill-plugin-builder"
+          "related-skills": "data-eng-pipeline-architect, tech-api, agents-skill-plugin-builder"
         }
       },
       "structure": {
@@ -3542,7 +3542,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-api-n8n-workflow-builder",
+        "name": "engineering-api-n8n-workflow-builder",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -3722,12 +3722,12 @@
       }
     },
     {
-      "name": "strategy-research-analyst",
+      "name": "research-market-analyst",
       "source_id": "source-1",
-      "path": "skills/strategy-research-analyst/SKILL.md",
+      "path": "skills/research-market-analyst/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "strategy-research-analyst",
+        "name": "research-market-analyst",
         "description": "Score competitive, technology, and market signals to produce strategic intelligence with confidence, impact, threats, and opportunities. Use when asked for \"competitive analysis\", \"threat assessment\", \"opportunity scoring\", \"signal classification\", \"strategic intelligence\", or a decision-oriented competitor brief rather than a simple news roundup or TAM/SAM/SOM study.",
         "metadata": {
           "version": "1.0.0",
@@ -3738,7 +3738,7 @@
           "scope": "analysis",
           "output-format": "report",
           "priority": "specific",
-          "related-skills": "strategy-market-researcher, research-analyst, research-ai-landscape-brief, marketing-intel-customer-segmentation, strategy-market-competitor-intel"
+          "related-skills": "research-market-researcher, research-analyst, research-ai-landscape-brief, marketing-intel-customer-segmentation, research-market-competitor-intel"
         }
       },
       "structure": {
@@ -3753,7 +3753,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "strategy-research-analyst",
+        "name": "research-market-analyst",
         "usage_value": {
           "score": 4,
           "rationale": "Domain-specific skill with clear purpose."
@@ -3799,12 +3799,12 @@
       }
     },
     {
-      "name": "agent-design-visual-identity",
+      "name": "agents-design-visual-identity",
       "source_id": "source-1",
-      "path": "skills/agent-design-visual-identity/SKILL.md",
+      "path": "skills/agents-design-visual-identity/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "agent-design-visual-identity",
+        "name": "agents-design-visual-identity",
         "description": "Generate square visual identity assets for agents and apps: icons, avatars, and logos optimized for profile, app, and brand use. Use when asked to \"create an icon\", \"make an avatar\", \"generate a logo\", \"design an agent icon\", \"make a profile picture\", or create a visual brand mark rather than define personality, backstory, or behavioral guidance.",
         "license": "MIT",
         "metadata": {
@@ -3817,7 +3817,7 @@
           "scope": "creation",
           "output-format": "content",
           "priority": "specific",
-          "related-skills": "agent-design-persona-creator, marketing-brand-strategist"
+          "related-skills": "agents-design-persona-creator, marketing-brand-strategist"
         }
       },
       "structure": {
@@ -3832,7 +3832,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "agent-design-visual-identity",
+        "name": "agents-design-visual-identity",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -4037,12 +4037,12 @@
       }
     },
     {
-      "name": "personal-communication-style",
+      "name": "productivity-personal-communication-style",
       "source_id": "source-1",
-      "path": "skills/personal-communication-style/SKILL.md",
+      "path": "skills/productivity-personal-communication-style/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "personal-communication-style",
+        "name": "productivity-personal-communication-style",
         "description": "Review and rewrite content to match Sean Canady''s personal writing and communication style. Use when writing emails, memos, documents, executive communications, strategy briefs, or any written output that should sound like Sean. Also use when reviewing or editing drafts for voice and tone consistency. Covers directness, structure, formatting conventions, register adaptation, and anti-pattern removal.",
         "license": "MIT",
         "metadata": {
@@ -4066,7 +4066,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "personal-communication-style",
+        "name": "productivity-personal-communication-style",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -4112,12 +4112,12 @@
       }
     },
     {
-      "name": "tech-api-mcp-builder",
+      "name": "engineering-api-mcp-builder",
       "source_id": "source-1",
-      "path": "skills/tech-api-mcp-builder/SKILL.md",
+      "path": "skills/engineering-api-mcp-builder/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-api-mcp-builder",
+        "name": "engineering-api-mcp-builder",
         "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when asked to build an MCP server, create MCP tools, integrate an API with MCP, set up a protocol server, or develop an MCP integration. Supports Python (FastMCP) and Node/TypeScript (MCP SDK).",
         "license": "Apache 2.0"
       },
@@ -4133,7 +4133,7 @@
         "skill_pattern": "B"
       },
       "evaluation": {
-        "name": "tech-api-mcp-builder",
+        "name": "engineering-api-mcp-builder",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -4182,12 +4182,12 @@
       }
     },
     {
-      "name": "comms-announce-organizational",
+      "name": "people-comms-announce-organizational",
       "source_id": "source-1",
-      "path": "skills/comms-announce-organizational/SKILL.md",
+      "path": "skills/people-comms-announce-organizational/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "comms-announce-organizational",
+        "name": "people-comms-announce-organizational",
         "description": "Draft professional internal announcements for organizational and role changes, including promotions, new hires, restructures, and leadership transitions."
       },
       "structure": {
@@ -4202,7 +4202,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "comms-announce-organizational",
+        "name": "people-comms-announce-organizational",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -4458,12 +4458,12 @@
       }
     },
     {
-      "name": "tech-arch-principle-engineer",
+      "name": "engineering-arch-principle-engineer",
       "source_id": "source-1",
-      "path": "skills/tech-arch-principle-engineer/SKILL.md",
+      "path": "skills/engineering-arch-principle-engineer/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-arch-principle-engineer",
+        "name": "engineering-arch-principle-engineer",
         "description": "Principled engineering review that critiques an existing codebase or architecture for simplicity, leverage, and smallest viable change. Use when asked to \"review my code\", \"is this over-engineered\", \"what should I cut\", or \"spot premature abstraction\". Not for greenfield system design or security audits.",
         "license": "MIT",
         "metadata": {
@@ -4473,7 +4473,7 @@
           "role": "principal-engineer",
           "scope": "analysis",
           "output-format": "report",
-          "related-skills": "tech-arch-system-designer, tech-quality-code-simplifier, tech-security-vulnerability-analyst"
+          "related-skills": "engineering-arch-system-designer, engineering-quality-code-simplifier, devops-security-vulnerability-analyst"
         }
       },
       "structure": {
@@ -4488,7 +4488,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-arch-principle-engineer",
+        "name": "engineering-arch-principle-engineer",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -4551,7 +4551,7 @@
           "scope": "research",
           "output-format": "report",
           "priority": "broad",
-          "related-skills": "research-ai-landscape-brief, research-dtc-insurance-market-intelligence, research-weekly-ai-news, strategy-research-analyst, strategy-market-competitor-intel"
+          "related-skills": "research-ai-landscape-brief, research-dtc-insurance-market-intelligence, research-weekly-ai-news, research-market-analyst, research-market-competitor-intel"
         }
       },
       "structure": {
@@ -4694,12 +4694,12 @@
       }
     },
     {
-      "name": "tech-dev-git-commit",
+      "name": "engineering-dev-git-commit",
       "source_id": "source-1",
-      "path": "skills/tech-dev-git-commit/SKILL.md",
+      "path": "skills/engineering-dev-git-commit/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-dev-git-commit",
+        "name": "engineering-dev-git-commit",
         "description": "Execute the current repo's commit-and-push cycle: inspect the diff, draft a tight commit message, stage the right files, commit, and push. Use when asked to 'commit changes', 'push work', 'stage changes', 'write this commit message', or 'commit and push' rather than design a branching strategy or explain Git policy.",
         "license": "MIT",
         "metadata": {
@@ -4711,7 +4711,7 @@
           "scope": "workflow",
           "output-format": "command",
           "priority": "specific",
-          "related-skills": "tech-dev-git-workflow-design, content-copy-caveman"
+          "related-skills": "engineering-dev-git-workflow-design, content-copy-caveman"
         }
       },
       "structure": {
@@ -4726,7 +4726,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-dev-git-commit",
+        "name": "engineering-dev-git-commit",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -4772,12 +4772,12 @@
       }
     },
     {
-      "name": "tech-arch-system-designer",
+      "name": "engineering-arch-system-designer",
       "source_id": "source-1",
-      "path": "skills/tech-arch-system-designer/SKILL.md",
+      "path": "skills/engineering-arch-system-designer/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-arch-system-designer",
+        "name": "engineering-arch-system-designer",
         "description": "Senior architect for system design, architecture decisions, pattern selection, ADRs, scalability planning, and technology evaluation. Use when designing new systems, choosing architecture patterns, writing ADRs, selecting databases, planning for scale or failure, or reviewing existing architecture.",
         "license": "MIT",
         "metadata": {
@@ -4788,7 +4788,7 @@
           "role": "architect",
           "scope": "design",
           "output-format": "document",
-          "related-skills": "tech-dev-git-commit"
+          "related-skills": "engineering-dev-git-commit"
         }
       },
       "structure": {
@@ -4803,7 +4803,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-arch-system-designer",
+        "name": "engineering-arch-system-designer",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -4925,12 +4925,12 @@
       }
     },
     {
-      "name": "tech-quality-tdd",
+      "name": "engineering-quality-tdd",
       "source_id": "source-1",
-      "path": "skills/tech-quality-tdd/SKILL.md",
+      "path": "skills/engineering-quality-tdd/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-quality-tdd",
+        "name": "engineering-quality-tdd",
         "description": "Use when implementing any feature or bugfix, before writing implementation code"
       },
       "structure": {
@@ -4945,7 +4945,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-quality-tdd",
+        "name": "engineering-quality-tdd",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -5057,12 +5057,12 @@
       }
     },
     {
-      "name": "agent-skill-spec-builder",
+      "name": "agents-skill-spec-builder",
       "source_id": "source-1",
-      "path": "skills/agent-skill-spec-builder/SKILL.md",
+      "path": "skills/agents-skill-spec-builder/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "agent-skill-spec-builder",
+        "name": "agents-skill-spec-builder",
         "description": "Create complex, multi-phase workflow skills using specification-driven decomposition with typed steps, explicit state, and verification. Use when the user needs a skill with structured control flow, branching, iteration, parallel execution, or subagent composition \u2014 not a simple single-prompt skill. Use when asked for a \"workflow skill\", \"multi-step skill\", \"skill with branching\", \"skill with parallel steps\", \"complex skill\", or when a skill request implies long-horizon orchestration that benefits from explicit state management and typed operations.",
         "license": "MIT",
         "metadata": {
@@ -5088,7 +5088,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "agent-skill-spec-builder",
+        "name": "agents-skill-spec-builder",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -5434,12 +5434,12 @@
       }
     },
     {
-      "name": "tech-security-audit-lead",
+      "name": "devops-security-audit-lead",
       "source_id": "source-1",
-      "path": "skills/tech-security-audit-lead/SKILL.md",
+      "path": "skills/devops-security-audit-lead/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-security-audit-lead",
+        "name": "devops-security-audit-lead",
         "description": "Run broad security audit engagements across code, dependencies, secrets, infrastructure, and DevSecOps controls, then deliver a prioritized vulnerability report with remediation guidance. Use when asked for a 'security audit', 'SAST scan', 'secret scan', 'penetration test', or 'cloud security review' rather than a code-focused OWASP exploitability analysis.",
         "license": "MIT",
         "allowed_tools": "Read, Grep, Glob, Bash, Write",
@@ -5452,7 +5452,7 @@
           "scope": "review",
           "output-format": "report",
           "priority": "specific",
-          "related-skills": "tech-security-vulnerability-analyst, secure-code-guardian, code-reviewer, tech-devops-engineer, cloud-architect, kubernetes-specialist"
+          "related-skills": "devops-security-vulnerability-analyst, secure-code-guardian, code-reviewer, devops-infra-engineer, cloud-architect, kubernetes-specialist"
         }
       },
       "structure": {
@@ -5467,7 +5467,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-security-audit-lead",
+        "name": "devops-security-audit-lead",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -5657,12 +5657,12 @@
       }
     },
     {
-      "name": "agent-skill-copilot-instructions",
+      "name": "agents-copilot-instructions",
       "source_id": "source-1",
-      "path": "skills/agent-skill-copilot-instructions/SKILL.md",
+      "path": "skills/agents-copilot-instructions/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "agent-skill-copilot-instructions",
+        "name": "agents-copilot-instructions",
         "description": "Create GitHub Copilot custom instructions files (.instructions.md and copilot-instructions.md) tailored to a repository, language, framework, platform, or concern. Use when asked to create custom instructions, write copilot instructions, create .instructions.md files, set up copilot-instructions.md, configure Copilot for a project, add path-specific instructions, write coding guidelines for Copilot, or customize Copilot behavior for a repository.",
         "license": "MIT"
       },
@@ -5678,7 +5678,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "agent-skill-copilot-instructions",
+        "name": "agents-copilot-instructions",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -5804,12 +5804,12 @@
       }
     },
     {
-      "name": "tech-doc-markdown-to-pdf",
+      "name": "engineering-doc-markdown-to-pdf",
       "source_id": "source-1",
-      "path": "skills/tech-doc-markdown-to-pdf/SKILL.md",
+      "path": "skills/engineering-doc-markdown-to-pdf/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-doc-markdown-to-pdf",
+        "name": "engineering-doc-markdown-to-pdf",
         "description": "Convert a markdown document to a PDF file. Use when asked to \"convert markdown to PDF\", \"export markdown as PDF\", \"generate a PDF from markdown\", \"make a PDF from .md\", or when a user needs a polished PDF output from any .md file. Handles both CLI-based conversion (pandoc, wkhtmltopdf, md-to-pdf) and Node.js scripted conversion (puppeteer, markdown-pdf). Selects the best available tool automatically and applies sensible default styling.",
         "metadata": {
           "domain": "technical",
@@ -5832,7 +5832,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-doc-markdown-to-pdf",
+        "name": "engineering-doc-markdown-to-pdf",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -5881,12 +5881,12 @@
       }
     },
     {
-      "name": "strategy-persona-builder",
+      "name": "research-market-persona-builder",
       "source_id": "source-1",
-      "path": "skills/strategy-persona-builder/SKILL.md",
+      "path": "skills/research-market-persona-builder/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "strategy-persona-builder",
+        "name": "research-market-persona-builder",
         "description": "Creates research-grounded digital twin personas of real people that function as AI-powered strategic advisors, mentors, and reviewers. Use when asked to \"create a digital twin\", \"build an advisor persona\", \"simulate how [person] would advise\", \"make an AI mentor\", \"create an AI version of [person]\", \"build a review persona based on [person]\", \"set up a decision advisor\", \"replicate how [person] thinks\", or when the user wants to consult a specific expert, mentor, or historical figure as an AI-powered persona. Also triggers for \"think like [person]\", \"advise like [person]\", \"what would [person] say about this\", \"review this like [person] would\", \"channel [person]\", or \"act as my [person] advisor\".",
         "license": "MIT",
         "metadata": {
@@ -5896,7 +5896,7 @@
           "role": "persona-architect",
           "scope": "design",
           "output-format": "document",
-          "related-skills": "agent-design-persona-creator, strategy-research-analyst, personal-communication-style"
+          "related-skills": "agents-design-persona-creator, research-market-analyst, productivity-personal-communication-style"
         }
       },
       "structure": {
@@ -5911,7 +5911,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "strategy-persona-builder",
+        "name": "research-market-persona-builder",
         "usage_value": {
           "score": 4,
           "rationale": "Domain-specific skill with clear purpose."
@@ -5957,12 +5957,12 @@
       }
     },
     {
-      "name": "tech-dev-git-finish-branch",
+      "name": "engineering-dev-git-finish-branch",
       "source_id": "source-1",
-      "path": "skills/tech-dev-git-finish-branch/SKILL.md",
+      "path": "skills/engineering-dev-git-finish-branch/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-dev-git-finish-branch",
+        "name": "engineering-dev-git-finish-branch",
         "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup"
       },
       "structure": {
@@ -5977,7 +5977,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-dev-git-finish-branch",
+        "name": "engineering-dev-git-finish-branch",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -6155,12 +6155,12 @@
       }
     },
     {
-      "name": "agent-design-persona-creator",
+      "name": "agents-design-persona-creator",
       "source_id": "source-1",
-      "path": "skills/agent-design-persona-creator/SKILL.md",
+      "path": "skills/agents-design-persona-creator/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "agent-design-persona-creator",
+        "name": "agents-design-persona-creator",
         "description": "Create agent persona bundles with persistent identity, backstory, behavior, and four-layer configuration (Soul / Body / Faculty / Skill). Use when asked to create a persona, build a character, design an AI personality, make an agent persona, define a persona bundle, or give an agent a behavioral guide rather than generate logos, icons, or avatars.",
         "license": "MIT",
         "metadata": {
@@ -6173,7 +6173,7 @@
           "scope": "design",
           "output-format": "document",
           "priority": "specific",
-          "related-skills": "product-spec-brainstorming, agent-design-visual-identity"
+          "related-skills": "product-spec-brainstorming, agents-design-visual-identity"
         }
       },
       "structure": {
@@ -6188,7 +6188,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "agent-design-persona-creator",
+        "name": "agents-design-persona-creator",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -6391,12 +6391,12 @@
       }
     },
     {
-      "name": "tech-arch-architecture-decision-records",
+      "name": "engineering-arch-architecture-decision-records",
       "source_id": "source-1",
-      "path": "skills/tech-arch-architecture-decision-records/SKILL.md",
+      "path": "skills/engineering-arch-architecture-decision-records/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-arch-architecture-decision-records",
+        "name": "engineering-arch-architecture-decision-records",
         "description": "Create, manage, and maintain Architecture Decision Records (ADRs). Use when making significant architectural decisions, documenting technology choices, recording design trade-offs, onboarding engineers to historical decisions, or establishing ADR processes. Invoke for: ADR writing, ADR templates, MADR format, decision documentation, architecture decision record, technical decision log, ADR lifecycle, supersede decision, deprecation ADR, RFC-style decision.",
         "license": "MIT",
         "metadata": {
@@ -6406,7 +6406,7 @@
           "role": "architect",
           "scope": "design",
           "output-format": "document",
-          "related-skills": "tech-arch-system-design, tech-quality-tdd"
+          "related-skills": "tech-arch-system-design, engineering-quality-tdd"
         }
       },
       "structure": {
@@ -6421,7 +6421,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-arch-architecture-decision-records",
+        "name": "engineering-arch-architecture-decision-records",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -6469,12 +6469,12 @@
       }
     },
     {
-      "name": "agent-skill-plugin-builder",
+      "name": "agents-skill-plugin-builder",
       "source_id": "source-1",
-      "path": "skills/agent-skill-plugin-builder/SKILL.md",
+      "path": "skills/agents-skill-plugin-builder/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "agent-skill-plugin-builder",
+        "name": "agents-skill-plugin-builder",
         "description": "Create Cowork/Claude Code knowledge-work plugins from user requirements through a guided design process. Use when asked to \"create a plugin\", \"build a plugin\", \"make a plugin\", \"scaffold a plugin\", \"new plugin\", \"plugin template\", or when packaging skills, commands, and connectors into a distributable plugin for a specific role or workflow. Walks users through requirements gathering, component design, and generates the complete plugin directory structure."
       },
       "structure": {
@@ -6489,7 +6489,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "agent-skill-plugin-builder",
+        "name": "agents-skill-plugin-builder",
         "usage_value": {
           "score": 2,
           "rationale": "Domain-specific skill with clear purpose."
@@ -6550,7 +6550,7 @@
           "role": "specialist",
           "scope": "analysis",
           "output-format": "structured report",
-          "related-skills": "strategy-research-analyst, strategy-frameworks-mckinsey-brief"
+          "related-skills": "research-market-analyst, strategy-frameworks-mckinsey-brief"
         }
       },
       "structure": {
@@ -6611,12 +6611,12 @@
       }
     },
     {
-      "name": "tech-devops-engineer",
+      "name": "devops-infra-engineer",
       "source_id": "source-1",
-      "path": "skills/tech-devops-engineer/SKILL.md",
+      "path": "skills/devops-infra-engineer/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-devops-engineer",
+        "name": "devops-infra-engineer",
         "description": "Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.",
         "license": "MIT",
         "metadata": {
@@ -6641,7 +6641,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-devops-engineer",
+        "name": "devops-infra-engineer",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -6770,12 +6770,12 @@
       }
     },
     {
-      "name": "tech-github-ops",
+      "name": "engineering-github-ops",
       "source_id": "source-1",
-      "path": "skills/tech-github-ops/SKILL.md",
+      "path": "skills/engineering-github-ops/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-github-ops",
+        "name": "engineering-github-ops",
         "description": "GitHub repository operations, automation, and management. Issue triage, PR management, CI/CD operations, release management, and security monitoring using the gh CLI. Use when the user wants to manage GitHub issues, PRs, CI status, releases, contributors, stale items, or any GitHub operational task beyond simple git commands. Trigger on: \"check GitHub\", \"triage issues\", \"review open PRs\", \"close stale issues\", \"CI is broken\", \"prepare a release\", \"check dependabot\", \"merge PRs\", \"debug workflow\".",
         "license": "MIT",
         "compatibility": "Requires gh CLI installed and authenticated via `gh auth login`. All GitHub API operations use gh \u2014 no browser or REST calls.",
@@ -6786,7 +6786,7 @@
           "role": "specialist",
           "scope": "operational",
           "output-format": "shell commands with explanations",
-          "related-skills": "git-workflow, tech-quality-requesting-review"
+          "related-skills": "git-workflow, engineering-quality-requesting-review"
         }
       },
       "structure": {
@@ -6801,7 +6801,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-github-ops",
+        "name": "engineering-github-ops",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -6849,12 +6849,12 @@
       }
     },
     {
-      "name": "tech-data-scraper",
+      "name": "engineering-data-scraper",
       "source_id": "source-1",
-      "path": "skills/tech-data-scraper/SKILL.md",
+      "path": "skills/engineering-data-scraper/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-data-scraper",
+        "name": "engineering-data-scraper",
         "description": "Build a fully automated AI-powered data collection agent for any public source \u2014 job boards, prices, news, GitHub, sports, anything. Scrapes on a schedule, enriches data with a free LLM (Gemini Flash), stores results in Notion/Sheets/Supabase, and learns from user feedback. Runs 100% free on GitHub Actions. Use when the user wants to monitor, collect, or track any public data automatically, or when they say \"build a bot that checks\", \"monitor X for me\", \"collect data from\", \"automate data collection\", \"track prices\", \"track jobs\", \"web scraper\", or \"data scraper\".",
         "license": "MIT",
         "metadata": {
@@ -6864,7 +6864,7 @@
           "role": "specialist",
           "scope": "execution",
           "output-format": "code",
-          "related-skills": "tech-api-mcp-builder, tech-dev-writing-plans"
+          "related-skills": "engineering-api-mcp-builder, engineering-dev-writing-plans"
         }
       },
       "structure": {
@@ -6879,7 +6879,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-data-scraper",
+        "name": "engineering-data-scraper",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -7072,12 +7072,12 @@
       }
     },
     {
-      "name": "prompt-engineer",
+      "name": "ai-prompt-engineer",
       "source_id": "source-1",
-      "path": "skills/prompt-engineer/SKILL.md",
+      "path": "skills/ai-prompt-engineer/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "prompt-engineer",
+        "name": "ai-prompt-engineer",
         "description": "Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs.",
         "license": "MIT",
         "metadata": {
@@ -7103,7 +7103,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "prompt-engineer",
+        "name": "ai-prompt-engineer",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -7229,12 +7229,12 @@
       }
     },
     {
-      "name": "tech-devops-incident-responder",
+      "name": "devops-incident-responder",
       "source_id": "source-1",
-      "path": "skills/tech-devops-incident-responder/SKILL.md",
+      "path": "skills/devops-incident-responder/SKILL.md",
       "url": null,
       "frontmatter": {
-        "name": "tech-devops-incident-responder",
+        "name": "devops-incident-responder",
         "description": "Expert SRE incident responder. Use when managing live incidents, conducting post-mortems, classifying severity, coordinating response teams, or improving reliability posture. Invoke for incident triage, runbook execution, blameless retrospectives, SLO burn rate analysis, error budget management, or on-call workflow guidance.",
         "license": "MIT",
         "metadata": {
@@ -7259,7 +7259,7 @@
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "tech-devops-incident-responder",
+        "name": "devops-incident-responder",
         "usage_value": {
           "score": 3,
           "rationale": "Domain-specific skill with clear purpose."
@@ -7815,7 +7815,7 @@
           "role": "expert",
           "scope": "implementation",
           "output-format": "code",
-          "related-skills": "tech-devops-engineer, data-ai-post-training-expert, data-ai-autoresearch"
+          "related-skills": "devops-infra-engineer, data-ai-post-training-expert, data-ai-autoresearch"
         }
       },
       "structure": {

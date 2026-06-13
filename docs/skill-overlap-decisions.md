@@ -28,17 +28,17 @@ Template — copy and fill in for each cluster:
 - **Last reviewed:** YYYY-MM-DD
 -->
 
-### tech-dev-git-workflow-design ↔ tech-dev-git-commit
-- **Skills:** `tech-dev-git-workflow-design`, `tech-dev-git-commit`
+### engineering-dev-git-workflow-design ↔ engineering-dev-git-commit
+- **Skills:** `engineering-dev-git-workflow-design`, `engineering-dev-git-commit`
 - **Overlap type:** routing-collision (suspected)
 - **Status:** keep-with-routing
 - **Decision:** keep-with-routing
-- **Rationale:** `tech-dev-git-commit` now owns commit/stage/push execution in the current repo, while `tech-dev-git-workflow-design` owns branching, PR, release, and collaboration policy.
+- **Rationale:** `engineering-dev-git-commit` now owns commit/stage/push execution in the current repo, while `engineering-dev-git-workflow-design` owns branching, PR, release, and collaboration policy.
 - **Action taken:** Tightened descriptions, narrowed triggers, added `anti-triggers`, cross-linked the pair, and renamed the execution skill to match its concrete output.
 - **Last reviewed:** 2026-04-29
 
-### tech-security-audit-lead ↔ tech-security-vulnerability-analyst
-- **Skills:** `tech-security-audit-lead`, `tech-security-vulnerability-analyst`
+### devops-security-audit-lead ↔ devops-security-vulnerability-analyst
+- **Skills:** `devops-security-audit-lead`, `devops-security-vulnerability-analyst`
 - **Overlap type:** routing-collision (suspected)
 - **Status:** keep-with-routing
 - **Decision:** keep-with-routing
@@ -47,7 +47,7 @@ Template — copy and fill in for each cluster:
 - **Last reviewed:** 2026-04-29
 
 ### research cluster
-- **Skills:** `research-ai-landscape-brief`, `research-dtc-insurance-market-intelligence`, `research-analyst`, `research-weekly-ai-news`, `strategy-research-analyst`, `strategy-market-researcher`
+- **Skills:** `research-ai-landscape-brief`, `research-dtc-insurance-market-intelligence`, `research-analyst`, `research-weekly-ai-news`, `research-market-analyst`, `research-market-researcher`
 - **Overlap type:** duplicate + routing-collision
 - **Status:** keep-with-routing
 - **Decision:** keep-with-routing
@@ -55,8 +55,8 @@ Template — copy and fill in for each cluster:
 - **Action taken:** Tightened descriptions and triggers, added `anti-triggers`, added routing priority, expanded related-skill links across the research cluster, and renamed the insurance skill to avoid duplicate naming with the AI landscape brief.
 - **Last reviewed:** 2026-04-29
 
-### strategy-market-researcher ↔ strategy-research-analyst
-- **Skills:** `strategy-market-researcher`, `strategy-research-analyst`
+### research-market-researcher ↔ research-market-analyst
+- **Skills:** `research-market-researcher`, `research-market-analyst`
 - **Overlap type:** routing-collision
 - **Score:** 0.33
 - **Status:** keep-with-routing
@@ -90,8 +90,8 @@ Template — copy and fill in for each cluster:
 - **Action taken:** Tightened descriptions, narrowed triggers, and added explicit `anti-triggers` separating review from research.
 - **Last reviewed:** 2026-04-29
 
-### agent-design-visual-identity ↔ agent-design-persona-creator
-- **Skills:** `agent-design-visual-identity`, `agent-design-persona-creator`
+### agents-design-visual-identity ↔ agents-design-persona-creator
+- **Skills:** `agents-design-visual-identity`, `agents-design-persona-creator`
 - **Overlap type:** merge-candidate
 - **Status:** keep-with-routing
 - **Decision:** keep-with-routing
@@ -106,8 +106,8 @@ Template — copy and fill in for each cluster:
 - **Notes:** Researcher appears to cover process (interviews, synthesis, study planning); artifacts covers deliverables (personas, journey maps, IA, specs). Likely a valid split — confirm and add related-skills cross-links.
 - **Last reviewed:** —
 
-### data-eng-database-architect ↔ tech-database-optimizer
-- **Skills:** `data-eng-database-architect`, `tech-database-optimizer`
+### data-eng-database-architect ↔ engineering-database-optimizer
+- **Skills:** `data-eng-database-architect`, `engineering-database-optimizer`
 - **Overlap type:** adjacent-distinct (expected)
 - **Status:** pending
 - **Notes:** Architect = greenfield schema/tech selection/HA design; optimizer = slow query diagnosis/index tuning/EXPLAIN ANALYZE. Different job. Expected to keep both — confirm trigger phrases don't compete.

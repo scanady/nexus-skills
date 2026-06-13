@@ -8,7 +8,7 @@ metadata:
   role: strategist
   scope: design
   output-format: document
-  related-skills: marketing-intel-customer-segmentation, marketing-campaign-go-to-market, comms-announce-organizational
+  related-skills: marketing-intel-customer-segmentation, marketing-campaign-go-to-market, people-comms-announce-organizational
 ---
 
 # Change Management

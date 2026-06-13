@@ -10,7 +10,7 @@ metadata:
   role: expert
   scope: implementation
   output-format: code
-  related-skills: tech-devops-engineer, data-ai-post-training-expert, data-ai-autoresearch
+  related-skills: devops-infra-engineer, data-ai-post-training-expert, data-ai-autoresearch
 ---
 
 # ML Pipeline Expert
