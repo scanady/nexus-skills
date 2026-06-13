@@ -46,9 +46,9 @@ Examples:
 | Instead of council | Use |
 | --- | --- |
 | Verifying whether output is correct | `strategy-critical-reasoning` |
-| Breaking a feature into implementation steps | `tech-dev-writing-plans` |
+| Breaking a feature into implementation steps | `engineering-dev-writing-plans` |
 | Designing system architecture | just execute directly |
-| Reviewing code for bugs or security | `tech-quality-requesting-review` |
+| Reviewing code for bugs or security | `engineering-quality-requesting-review` |
 | Straight factual questions | just answer directly |
 | Obvious execution tasks | just do the task |
 

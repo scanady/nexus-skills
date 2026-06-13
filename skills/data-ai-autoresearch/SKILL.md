@@ -10,7 +10,7 @@ metadata:
   role: expert
   scope: design
   output-format: specification
-  related-skills: product-spec-brainstorming, tech-quality-tdd
+  related-skills: product-spec-brainstorming, engineering-quality-tdd
 ---
 
 # Autoresearch System Designer

@@ -8,7 +8,7 @@ metadata:
   role: communicator
   scope: rewrite
   output-format: document
-  related-skills: strategy-change-management, comms-engage-internal-community, comms-announce-organizational, strategy-exec-presentation-designer
+  related-skills: strategy-change-management, people-comms-engage-internal-community, people-comms-announce-organizational, strategy-exec-presentation-designer
 ---
 
 # Executive Communication Rewriter
@@ -228,7 +228,7 @@ This skill does not handle external-facing communication (press releases, market
 
 This skill rewrites existing executive content into deck form when a deck is the target container. For designing a deck outline from scratch (slide flow, meeting objective, presentation structure), use `strategy-exec-presentation-designer`.
 
-This skill handles change announcements written by a technical leader to executive or senior stakeholders. For organization-wide HR or role-change announcements (promotions, new hires, restructures, leadership transitions), use `comms-announce-organizational`.
+This skill handles change announcements written by a technical leader to executive or senior stakeholders. For organization-wide HR or role-change announcements (promotions, new hires, restructures, leadership transitions), use `people-comms-announce-organizational`.
 
 ## Reference Files
 

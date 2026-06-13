@@ -12,7 +12,7 @@ metadata:
   output-format: report
   cadence: weekly | monthly | quarterly
   priority: specific
-  related-skills: research-ai-landscape-brief, strategy-research-analyst, research-analyst
+  related-skills: research-ai-landscape-brief, research-market-analyst, research-analyst
 ---
 
 # DTC Life Insurance Landscape Brief

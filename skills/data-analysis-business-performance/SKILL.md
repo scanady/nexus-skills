@@ -10,7 +10,7 @@ metadata:
   role: analyst
   scope: analysis
   output-format: report
-  related-skills: strategy-research-analyst, strategy-frameworks-mckinsey-brief, marketing-intel-customer-segmentation, strategy-planning-pricing
+  related-skills: research-market-analyst, strategy-frameworks-mckinsey-brief, marketing-intel-customer-segmentation, strategy-planning-pricing
 ---
 
 # Business Performance Analyst
