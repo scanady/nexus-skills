@@ -51,7 +51,15 @@ Delegate to `agents/archetype-classifier.md` for structured analysis, or load `r
 
 ### B2: Build the Frontmatter
 
-Naming: `domain-category-descriptor` — three hyphen-joined segments. First two = valid taxonomy prefix; third = unique skill id.
+Load `references/agent-taxonomy.md` before choosing a reusable skill name, unless the user provides a project-specific taxonomy. Select the domain/category whose description best matches the user's task, then use that category's `prefix` as the first two name segments.
+
+Naming: `<category-prefix>-<descriptor>` — taxonomy category prefix plus a unique descriptor. Example: `agents-skill-plugin-builder`, where `agents-skill` is a valid bundled taxonomy prefix.
+
+Taxonomy rules:
+- `name` and folder name must match exactly.
+- `metadata.domain` must equal the selected top-level domain prefix, such as `agents`, `engineering`, or `research`.
+- Do not invent stray prefixes such as `agent-*`, `prompt-*`, `tech-*`, or `comms-*`; map them to the current taxonomy.
+- Hero-skill exceptions are allowed only when explicitly requested and documented in the skill body.
 
 ```yaml
 ---
@@ -147,7 +155,7 @@ Load SKILL.md. Scan for bundled resources (scripts/, references/, assets/, agent
 | Check | Requirement |
 |-------|-------------|
 | `name` present | 1-64 chars, lowercase alphanumeric + hyphens |
-| `name` pattern | `domain-category-descriptor` format |
+| `name` pattern | `<category-prefix>-<descriptor>` format using a category prefix from the governing taxonomy |
 | `name` matches folder | Directory name must exactly match |
 | `description` present | 1-1024 chars, includes WHAT + WHEN + keywords |
 | `license` (if present) | Short license name or bundled LICENSE.txt |
@@ -168,7 +176,7 @@ Load SKILL.md. Scan for bundled resources (scripts/, references/, assets/, agent
 | Check | Standard |
 |-------|----------|
 | Rich `metadata` block | `domain`, `triggers`, `role`, `scope`, `output-format`, `related-skills` |
-| `domain` aligns with name prefix | Mismatch = routing gap `[W]` |
+| `domain` aligns with taxonomy | Must match the selected top-level domain prefix from the governing taxonomy; mismatch = routing gap `[W]` |
 | `triggers` field | Comma-separated terms users will actually say |
 | Conditional reference loading | "Load When" routing table, not upfront reads |
 | Role Definition present | Seniority + specialization + key differentiator |
@@ -203,6 +211,7 @@ Load `references/platform-agnostic.md` for cross-platform portability checks. Lo
 | No hard-coded credentials | Secrets loaded from env vars or `.env`; `.env` never committed |
 | Setup docs present | Skills requiring config include `readme.md` or `getting-started.md` |
 | Loose skill coupling | Cross-skill references advisory only; skill operates standalone if referenced skill absent |
+| Taxonomy compliance | Reusable skills use a valid category prefix from the governing taxonomy; exceptions are explicit and documented |
 
 ### R4: Classify Findings
 
@@ -252,7 +261,7 @@ Add or refine standard fields when supportable: `version`, `domain`, `triggers`,
 
 Add extended routing fields only when justified by content: `aliases`, `anti-triggers`, `examples`, `priority`.
 
-Verify `domain` aligns with skill name's first segment — mismatches cause routing failures.
+Verify `domain` aligns with the selected taxonomy domain prefix and that the skill name starts with a valid category prefix from the governing taxonomy — mismatches cause routing failures.
 
 ### M3: Apply and Verify
 
@@ -287,6 +296,7 @@ Update only `metadata` fields. Confirm YAML valid and spec-compliant. Every adde
 | Metadata fields | `references/metadata-fields.md` | Choosing values for `domain`, `triggers`, `role`, `scope`, or extended routing fields |
 | Description & trigger optimization | `references/description-and-triggers.md` | Writing or reviewing `description` and `metadata.triggers` — collision detection, narrowness tradeoffs, trigger count, overlap resolution |
 | Project conventions | `references/best-practices.md` | Building or reviewing any skill in this repo — covers output paths, input sources, self-containment, credentials, setup docs, and skill coupling |
+| Portable taxonomy | `references/agent-taxonomy.md` | Naming, classifying, reviewing metadata domain, or validating related-skill references when the user does not provide a project taxonomy |
 
 ## Bundled Resources
 
@@ -312,8 +322,8 @@ Update only `metadata` fields. Confirm YAML valid and spec-compliant. Every adde
 ### MUST DO
 - Detect intent → route to correct phase before starting
 - In **Review**: complete full checklist before proposing or applying fixes; classify every finding as `[E#]`, `[W#]`, or `[S#]`; run `scripts/validate.py` first
-- In **Metadata**: preserve `description`, `name`, `license`, `compatibility`, `allowed-tools` exactly unless user asks otherwise; ground every added field in skill content; verify `domain` aligns with name prefix
-- In **Build**: classify archetype before designing; use `domain-category-descriptor` naming; load `references/description-and-triggers.md` before writing the description or `triggers`; delegate to `agents/description-optimizer.md` for descriptions; apply project conventions from `references/best-practices.md` (no hard-coded paths, no hard-coded credentials, self-contained structure, setup docs if config required)
+- In **Metadata**: preserve `description`, `name`, `license`, `compatibility`, `allowed-tools` exactly unless user asks otherwise; ground every added field in skill content; verify `domain` aligns with the selected taxonomy prefix
+- In **Build**: classify archetype before designing; use taxonomy-valid `<category-prefix>-<descriptor>` naming; load `references/description-and-triggers.md` before writing the description or `triggers`; delegate to `agents/description-optimizer.md` for descriptions; apply project conventions from `references/best-practices.md` (no hard-coded paths, no hard-coded credentials, self-contained structure, setup docs if config required)
 - Run a collision scan against the 2–3 nearest neighbor skills before finalizing any description or trigger list — compare opening sentences and top trigger phrases
 - Keep `triggers` to 6–10 verb-object user phrases; cut morphological duplicates, skill-name echoes, and category-only terms
 - Run `agents/comparator.md` after applying review fixes

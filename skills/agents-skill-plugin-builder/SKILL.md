@@ -44,6 +44,12 @@ Ask the user to describe what the plugin should do. Gather answers to these ques
 4. **External tools**: "What tools does this role depend on? (e.g., Slack, Jira, Salesforce, Snowflake)"
 5. **Example scenarios**: "Give 2-3 examples of how someone would use this plugin day-to-day."
 
+Map the plugin to the governing taxonomy while the purpose is still fluid. Use a user-supplied taxonomy when available; otherwise load `references/agent-taxonomy.md`.
+- Select the closest domain/category for the plugin's primary role or workflow.
+- Use that placement to guide plugin naming, skill grouping, README language, and marketplace categorization.
+- If the plugin creates reusable skills intended for this repository's `skills/` catalog, those skills must use the selected taxonomy category prefix or another valid prefix from the taxonomy.
+- If the plugin creates private plugin-local skills, short names are allowed, but still record the taxonomy home in the design summary so related agents stay organized consistently.
+
 Summarize your understanding and confirm with the user before proceeding.
 
 ### Phase 2: Component Inventory — Determine What Goes in the Plugin
@@ -62,6 +68,7 @@ Ask:
 For each skill, capture:
 - **Name** (kebab-case, 1-64 chars)
 - **Description** (what it covers and when Claude should use it)
+- **Taxonomy home** (domain/category from the governing taxonomy; reusable catalog skills must use the category prefix)
 - **Key content areas** (the domain knowledge, workflows, templates)
 - **Customization points** — identify tool-specific references that should use `~~category` placeholders for portability
 
@@ -143,11 +150,12 @@ Connector categories commonly used across plugins:
 Present a complete design summary showing:
 
 1. **Plugin metadata**: name, description, version, target role
-2. **Skills table**: each skill with name and what it covers
-3. **Commands table**: each command with name and what it does
-4. **Connectors table**: each category with placeholder, included servers, and alternatives
-5. **Example workflows**: 2-3 realistic usage scenarios showing skills and commands in action
-6. **Directory tree**: the planned file structure
+2. **Taxonomy mapping**: plugin domain/category, plus each reusable skill's taxonomy prefix or private-skill exception
+3. **Skills table**: each skill with name and what it covers
+4. **Commands table**: each command with name and what it does
+5. **Connectors table**: each category with placeholder, included servers, and alternatives
+6. **Example workflows**: 2-3 realistic usage scenarios showing skills and commands in action
+7. **Directory tree**: the planned file structure
 
 Ask the user:
 - "Does this look right? Anything to add, remove, or change?"
@@ -184,6 +192,7 @@ plugin-name/
 - Only `plugin.json` goes inside `.claude-plugin/`
 - Commands and skills go at the plugin root, NOT inside `.claude-plugin/`
 - Use `~~category` placeholders for tool references, not specific tool names
+- Use the governing taxonomy to classify the plugin and any reusable skills; enforce taxonomy prefixes for skills meant to live in a reusable catalog
 - Every component is markdown or JSON — no code required
 - Keep SKILL.md files under 500 lines; split large content into `references/`
 
@@ -219,6 +228,11 @@ Skills should:
 - Use `~~category` for tool references (e.g., "Check ~~project tracker for...")
 - Include actionable workflows, not just descriptions
 - Provide templates and examples where helpful
+
+Skill naming rules:
+- **Plugin-local skills**: use concise kebab-case names like `account-research` because the plugin namespace provides context.
+- **Reusable catalog skills**: use `<taxonomy-category-prefix>-<descriptor>` from the governing taxonomy, with folder name and frontmatter `name` matching exactly.
+- Do not introduce stray prefixes such as `agent-*`, `prompt-*`, or `tech-*`; map them to `agents-*`, `ai-prompt-*`, `engineering-*`, or another valid taxonomy prefix.
 
 #### Generate Commands
 
@@ -350,6 +364,7 @@ Run through this checklist:
 - [ ] `name` is kebab-case with no spaces
 - [ ] No component directories inside `.claude-plugin/` (only `plugin.json`)
 - [ ] Each skill folder contains a `SKILL.md` with `name` and `description` in frontmatter
+- [ ] Taxonomy mapping is documented; reusable catalog skills use a valid prefix from the governing taxonomy
 - [ ] Each command has a `description` in frontmatter
 - [ ] All tool references use `~~category` placeholders, not hardcoded tool names
 - [ ] `CONNECTORS.md` documents every `~~category` used in the plugin
@@ -400,5 +415,6 @@ Install from [claude.com/plugins](https://claude.com/plugins/).
 For complete technical details, load these resources:
 - **Plugin structure & conventions**: See [references/plugin-reference.md](references/plugin-reference.md)
 - **Real-world examples**: See [references/plugin-examples.md](references/plugin-examples.md)
+- **Portable taxonomy**: See `references/agent-taxonomy.md` before naming reusable skills or classifying plugin capabilities when the user does not provide a project taxonomy
 - **Existing plugins**: Browse https://github.com/anthropics/knowledge-work-plugins
 
