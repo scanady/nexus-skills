@@ -5,7 +5,7 @@ license: MIT
 metadata:
   author: scanady
   version: "1.0.0"
-  domain: agent
+  domain: agents
   triggers: workflow skill, multi-step skill, multi-phase skill, complex skill, structured skill, skill with branching, skill with iteration, skill with parallel steps, skill with control flow, skill with typed steps, skill with verification, skill with state management, composable skill, orchestration skill, long-horizon skill, spec-driven skill, skill with subagents
   role: architect
   scope: design
@@ -43,11 +43,23 @@ Gather from the user:
 - **What does it produce?** — Deliverables, outputs, artifacts
 - **When should it activate?** — Trigger scenarios, activation keywords
 - **How complex is the work?** — Does it involve decisions, repetition, parallel tracks, or delegation?
+- **Where does it belong?** — Load `references/agent-taxonomy.md` or a user-supplied taxonomy, select the domain/category whose description best matches the user intent, and derive the required taxonomy prefix.
 
 Produce a **goal statement** — a single sentence capturing the skill's purpose, following the pattern:
 > "Given {{input_parameters}}, produce {{deliverables}} by executing {{high_level_approach}}."
 
 Confirm with the user before proceeding. The user owns the *what*; the specification-driven approach handles the *how*.
+
+Also confirm a **taxonomy placement** before workflow design:
+
+| Field | Requirement |
+|---|---|
+| Domain | Must be one top-level domain prefix from the governing taxonomy |
+| Category | Must be one category under the selected domain |
+| Skill prefix | Must equal the selected category `prefix` |
+| Skill name | Must follow `<category-prefix>-<descriptor>` unless the user explicitly approves a documented hero-skill exception |
+
+If the user's proposed name conflicts with the taxonomy, propose the closest valid name and explain the domain/category fit in one sentence.
 
 ### 2. Decompose the Goal into a Workflow Specification
 
@@ -153,7 +165,8 @@ Express as a verification table:
 Translate the validated specification into the skill's file structure.
 
 **4a. Build SKILL.md** using the skill-architect methodology:
-- Frontmatter: `domain-category-descriptor` naming, rich metadata, trigger keywords
+- Frontmatter: taxonomy-valid `<category-prefix>-<descriptor>` naming, rich metadata, trigger keywords
+- Taxonomy metadata: `metadata.domain` must match the selected top-level domain prefix, and the name's first two segments must match a category prefix from the governing taxonomy
 - Role definition: seniority + specialization + differentiator
 - Workflow section: translate each spec operation into a numbered workflow step with clear instructions
 - For `task` operations → write as isolated phases with explicit inputs/outputs
@@ -194,6 +207,7 @@ Walk the specification step by step and verify the built skill:
 4. **Verification conditions** — pre/post conditions are encoded as constraints or checkpoints
 5. **Composition integrity** — every `call` has a corresponding agent file; parameters match
 6. **Context management** — `task` vs `step` distinction is respected (fresh vs persistent context)
+7. **Taxonomy fit** — the skill name, folder name, category prefix, and `metadata.domain` align with the governing taxonomy
 
 If any check fails, revise the skill to match the specification before delivering.
 
@@ -230,6 +244,7 @@ Load `references/specification-patterns.md` for ready-to-use templates covering 
 | Typed workflow constructs | `references/workflow-constructs.md` | Always — designing any workflow specification |
 | Common specification patterns | `references/specification-patterns.md` | Selecting a workflow structure for the skill |
 | Pre/post condition verification | `references/verification-guide.md` | Defining verification conditions (Step 3) |
+| Portable taxonomy | `references/agent-taxonomy.md` | Selecting the skill domain/category, deriving the category prefix, and validating the final name when the user does not provide a project taxonomy |
 
 ## Constraints
 
@@ -244,6 +259,8 @@ Load `references/specification-patterns.md` for ready-to-use templates covering 
 - Present the specification to the user and confirm before building files
 - Verify the built skill accomplishes what the user asked for
 - Use skill-architect conventions for SKILL.md structure (frontmatter, role, workflow, constraints)
+- Use the user-supplied taxonomy when provided; otherwise use `references/agent-taxonomy.md` as the bundled default for reusable skill domain/category placement and naming prefixes
+- Ensure the final skill folder, `name`, category prefix, and `metadata.domain` are taxonomy-aligned
 
 ### MUST NOT DO
 - Ask the user to provide a specification — extract their goal and design the spec yourself
@@ -256,6 +273,8 @@ Load `references/specification-patterns.md` for ready-to-use templates covering 
 - Merge parallel branch results into a single variable without an explicit gather step
 - Copy the specification YAML verbatim into SKILL.md — translate it into natural-language workflow instructions
 - Reference variables in instructions that no prior step produces
+- Invent new top-level domains, category prefixes, or stray `agent-*` / `prompt-*` names when the taxonomy already has a valid home
+- Use a non-taxonomy skill name unless the user explicitly approves and documents a hero-skill exception
 
 ## Output Structure
 
@@ -265,6 +284,7 @@ Every skill build produces:
 2. **Workflow Specification** — the declarative design document used to construct the skill (retained for future modification)
 3. **Verification Table** — pre/post conditions confirming the skill accomplishes the user's goal
 4. **Variable Dependency Graph** — producer → consumer map for all named state
+5. **Taxonomy Placement** — selected domain, category, prefix, final name, and any documented exception
 
 ## Knowledge Reference
 

@@ -35,7 +35,8 @@ Required preflight checks:
 - Source folder path is outside `skills/`
 - Target folder path is inside `skills/`
 - Target folder does not equal source folder
-- New skill name follows `domain-category-descriptor`
+- New skill name uses a valid category prefix from the governing taxonomy
+- New skill `metadata.domain` will match the selected top-level taxonomy domain prefix
 - Replacement mode confirmed: create new skill in `skills/`, then delete source folder
 
 If any check fails:
@@ -49,7 +50,8 @@ Collect the source skill path and verify the target location is under `skills/`.
 
 Required inputs:
 - Source skill folder path
-- New skill folder name (must follow `domain-category-descriptor`)
+- New skill folder name (must use a valid category prefix from the governing taxonomy)
+- Target taxonomy domain/category, or enough task context to select one from `references/agent-taxonomy.md` or a user-supplied taxonomy
 - Confirmation that source skill should be deleted after successful replacement
 
 If any input is missing, request only the missing fields.
@@ -96,6 +98,7 @@ Mandatory analysis artifact:
 
 Use `skill-architect` as the design framework:
 - Classify archetype
+- Load `references/agent-taxonomy.md` or a user-supplied taxonomy, select the target domain/category, and derive the required category prefix
 - Rebuild frontmatter and trigger language for discoverability
 - Rewrite role and workflow with clear expert lifecycle steps
 - Add explicit constraints and output checklist
@@ -111,6 +114,12 @@ Use `skill-architect` as the design framework:
 - No PUSH sentence on a narrow, purpose-specific skill
 
 Do not carry over the source skill's description or triggers unchanged — they are the most common source of original quality problems and are explicitly in scope for the rebuild.
+
+**Taxonomy rebuild (mandatory):** the replacement skill must live under the current taxonomy unless the user explicitly requests a documented hero-skill exception.
+- Folder name and frontmatter `name` must match exactly.
+- Name must start with the selected category prefix from the governing taxonomy.
+- `metadata.domain` must match the selected top-level domain prefix.
+- Stray legacy prefixes such as `agent-*`, `prompt-*`, `tech-*`, and `comms-*` must be remapped to current taxonomy homes.
 
 Reinterpretation applies to EVERY file in the skill, not just SKILL.md:
 
@@ -152,7 +161,7 @@ Validation criteria before deletion:
 - Every support file from source has a reinterpreted counterpart
 - No file in replacement is a verbatim copy of its source counterpart
 - Content is materially rewritten and structurally improved across all files
-- Naming and folder conventions are valid for this repository
+- Naming, folder conventions, category prefix, and `metadata.domain` are valid for this repository taxonomy
 
 Deletion authorization gate (all required):
 - Replacement file exists at `skills/<new-skill-name>/SKILL.md`
@@ -199,6 +208,7 @@ If status is failure:
 | Description & trigger optimization | `../../.agents/skills/skill-architect/references/description-and-triggers.md` | Always before rewriting the replacement's `description` or `triggers` |
 | Compressed caveman communication mode | `../../.agents/skills/content-copy-caveman/SKILL.md` | Always before writing replacement skill content |
 | Repo conventions for skill naming and structure | `../../.github/copilot-instructions.md` | Always before file creation/deletion |
+| Portable taxonomy | `references/agent-taxonomy.md` | Before selecting the replacement name, category prefix, or `metadata.domain` when the user does not provide a project taxonomy |
 
 ## Constraints
 
@@ -207,6 +217,8 @@ If status is failure:
 - Use `skill-architect` principles to improve structure and quality
 - Apply `content-copy-caveman` at full intensity while drafting replacement skill prose
 - Rebuild the `description` and `triggers` from scratch per `description-and-triggers.md` rules — run a collision scan against nearest neighbor skills, keep triggers to 6–10 verb-object user phrases, avoid duplication between description and triggers
+- Use the governing taxonomy to select the replacement domain/category and enforce the category prefix in the new folder and frontmatter `name`
+- Set `metadata.domain` to the selected top-level taxonomy domain prefix
 - Create a new skill folder under `skills/` (do not overwrite source folder in place)
 - Keep the source skill unchanged until replacement validation is complete
 - Ensure the replacement is a genuine reinterpretation, not near-copy content
@@ -224,6 +236,8 @@ If status is failure:
 - Do not delete the source skill before replacement validation passes
 - Do not copy any source file verbatim into the replacement — not SKILL.md, not scripts, not references, not assets
 - Do not carry over the source `description` or `triggers` unchanged — rebuild them through `description-and-triggers.md`
+- Do not carry over legacy or stray prefixes when the current taxonomy provides a valid home
+- Do not invent a new taxonomy domain or category prefix without updating the governing taxonomy source
 - Do not ship a replacement whose opening sentence is interchangeable with a neighbor skill's — that is a collision
 - Do not stuff `triggers` past ~12 entries; do not include morphological variants, skill-name echoes, or category-only terms
 - Do not skip reinterpretation of any file found in the source skill directory
