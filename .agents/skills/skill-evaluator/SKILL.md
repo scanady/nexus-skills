@@ -91,6 +91,14 @@ Score these dimensions using the rubrics in `skills/skill-evaluator-catalog-buil
   "over_specification_risk": {
     "flagged": false,
     "notes": ""
+  },
+  "taxonomy_fit": {
+    "domain": "agents",
+    "category_prefix": "agents-skill",
+    "name_matches_prefix": true,
+    "metadata_domain_matches": true,
+    "exception_documented": false,
+    "notes": "Name uses a valid category prefix from the governing taxonomy."
   }
 }
 ```
@@ -101,6 +109,14 @@ Routing-layer fields to capture under `invocability`:
 - `nearest_neighbors` — 2–3 skills in the same domain or with overlapping vocabulary
 - `collision_risk` — low/medium/high based on shared phrases with neighbors' descriptions and triggers
 - `collision_notes` — specific overlapping phrases or interchangeable opening sentences
+
+Taxonomy fields to capture under `taxonomy_fit`:
+- `domain` — top-level domain prefix from the governing taxonomy
+- `category_prefix` — category prefix that should begin the skill name
+- `name_matches_prefix` — whether folder name and frontmatter `name` start with the selected category prefix
+- `metadata_domain_matches` — whether `metadata.domain` matches the top-level domain prefix
+- `exception_documented` — true only for explicit hero-skill exceptions documented in the skill body
+- `notes` — concise explanation of mismatch, exception, or recommended rename
 
 Use findings to shape the test suite:
 - **Low completeness or determinism** → add edge-case and ambiguous-input test cases; assert the workflow steps are followed in order
@@ -131,7 +147,7 @@ Then create `evals/evals.json` with 2–5 test cases. Each test case has a promp
 - Include at least one edge case (malformed input, ambiguous request, boundary condition)
 - Use realistic context (file paths, column names, domain-specific terms)
 - Start with 2–3 cases; expand after the first iteration
-- When the output artifact is a skill (e.g., evaluating skill-builder), include assertions for structural conventions such as the `domain-category-descriptor` name pattern (e.g., `"The generated skill name follows the domain-category-descriptor pattern with a valid taxonomy prefix"`) alongside output-quality assertions
+- When the output artifact is a skill (e.g., evaluating skill-builder), include assertions for taxonomy placement (e.g., `"The generated skill name starts with a valid category prefix from the governing taxonomy and metadata.domain matches the selected top-level domain"`) alongside output-quality assertions
 - Include exactly **two invocability test cases**: one should-trigger (indirect phrasing the skill should still catch) and one should-not-trigger (an adjacent task the skill should NOT activate for). See [references/eval-design.md](references/eval-design.md) for prompt examples
 - When `static-analysis.json` records medium or high `collision_risk`, include a **collision test case**: a prompt squarely in a neighbor skill's territory. Assertion: this skill does NOT activate. See [references/eval-design.md](references/eval-design.md)
 - For **Pattern B/C skills**: include one security test case targeting the highest-risk sub-dimension identified in `static-analysis.json` (e.g., adversarial filename input, prompt injection in user-supplied content)
@@ -325,6 +341,7 @@ Load detailed guidance based on context:
 | Pattern analysis and iteration | `references/pattern-analysis.md` | Interpreting benchmark results, investigating patterns, planning next iteration |
 | Static pre-eval scoring rubrics | `skills/skill-evaluator-catalog-builder/references/evaluation-criteria.md` | Scoring executability, invocability, and over-specification risk in Step 2 |
 | Description & trigger optimization | `../skill-architect/references/description-and-triggers.md` | Scoring `invocability` and `collision_risk` in `static-analysis.json`; interpreting routing-layer failures in iteration |
+| Portable taxonomy | `references/agent-taxonomy.md` | Scoring `taxonomy_fit`; checking generated skill names, category prefixes, and `metadata.domain` alignment when the user does not provide a project taxonomy |
 
 ## Constraints
 
@@ -332,9 +349,10 @@ Load detailed guidance based on context:
 - Run each test case in a clean context with no leftover state from previous runs
 - Run both with_skill and without_skill (or old_skill) for every test case to establish a comparison baseline
 - Score `invocability` and `collision_risk` in `static-analysis.json` — check description length, trigger count, and overlap with 2–3 nearest neighbor skills
+- Score `taxonomy_fit` in `static-analysis.json` — check folder/name prefix, selected category prefix, `metadata.domain`, and documented hero-skill exceptions against the governing taxonomy
 - Include both invocability test cases (should-trigger and should-not-trigger) in every eval suite
 - Include a collision test case whenever `collision_risk` is medium or high
-- When the skill under evaluation produces skill artifacts (SKILL.md files), include an assertion that the generated skill name follows the `domain-category-descriptor` naming pattern
+- When the skill under evaluation produces skill artifacts (SKILL.md files), include an assertion that generated names use valid taxonomy category prefixes and matching `metadata.domain` values
 - Record timing data (tokens, duration) for every run
 - Write assertions only after seeing the first round of outputs, not before
 - Require concrete evidence for every PASS verdict — quote or reference the actual output
