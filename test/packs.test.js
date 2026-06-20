@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 
-const { resolvePackSkills } = require('../bin/packs');
+const { resolvePackSkills } = require('../src/core/packs');
 
 test('resolvePackSkills expands exact skills and prefix patterns', () => {
   const result = resolvePackSkills(

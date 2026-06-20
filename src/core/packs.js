@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { PROJECT_ROOT } = require('./skills-core');
+const { PROJECT_ROOT } = require('./skills');
 
 function resolvePackSkills(packNames, availableSkills) {
   const packsDir = path.join(PROJECT_ROOT, 'packs');

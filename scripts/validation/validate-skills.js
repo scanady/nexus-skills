@@ -7,14 +7,14 @@
  * Exits non-zero if any errors are found. Warnings do not fail the build.
  *
  * Usage:
- *   node bin/validate-skills.js                  ← validate all skills
- *   node bin/validate-skills.js <skill-name>...  ← validate specific skills
- *   node bin/validate-skills.js --strict         ← treat warnings as errors
+ *   node scripts/validation/validate-skills.js                  ← validate all skills
+ *   node scripts/validation/validate-skills.js <skill-name>...  ← validate specific skills
+ *   node scripts/validation/validate-skills.js --strict         ← treat warnings as errors
  */
 
 const fs = require('fs');
 const path = require('path');
-const { SKILLS_DIR, getAvailableSkills, validateSkillStructure } = require('./skills-core');
+const { SKILLS_DIR, getAvailableSkills, validateSkillStructure } = require('../../src/core/skills');
 
 function parseArgs(argv) {
   const args = { strict: false, skills: [] };

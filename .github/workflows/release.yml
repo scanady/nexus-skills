@@ -49,12 +49,7 @@ jobs:
           python-version: '3.11'
 
       - name: Build everything
-        run: |
-          node bin/validate-skills.js
-          python bin/scan-skills.py skills -o skill-catalog-scan.json
-          python bin/rebuild-catalog.py
-          node bin/build-plugins.js
-          node bin/build-site.js
+        run: npm run build
 
       - name: Attach pack zips to release
         env:

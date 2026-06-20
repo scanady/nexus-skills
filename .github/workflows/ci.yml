@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-build:
+    name: Validate skills, rebuild catalog, build plugins + site
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build catalog, plugins, and site
+        run: npm run build
+
+      - name: Detect generated artifact drift
+        if: github.event_name == 'pull_request'
+        run: |
+          if ! git diff --quiet -- skill-catalog.json .claude-plugin/marketplace.json .claude-plugin/plugin.json; then
+            echo "::error::Generated artifacts differ from the committed copies. Run 'npm run build' locally and commit the regenerated files."
+            git diff --stat -- skill-catalog.json .claude-plugin/marketplace.json .claude-plugin/plugin.json
+            exit 1
+          fi
+
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-${{ github.sha }}
+          path: dist/site/
+          retention-days: 14
+
+      - name: Upload plugin bundles
+        uses: actions/upload-artifact@v4
+        with:
+          name: plugins-${{ github.sha }}
+          path: dist/plugins/
+          retention-days: 14
