@@ -12,17 +12,17 @@
  *   - plugins/<pack>.zip                    ← per-pack downloadable bundles
  *   - plugins/manifest.json                 ← pack manifest (machine readable)
  *
- * Prerequisite: run `node bin/build-plugins.js` first so dist/plugins/ exists.
+ * Prerequisite: run `node scripts/build/build-plugins.js` first so dist/plugins/ exists.
  *
  * Usage:
- *   node bin/build-site.js
+ *   node scripts/build/build-site.js
  */
 
 const childProcess = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.join(__dirname, '..');
+const ROOT = path.join(__dirname, '..', '..');
 const DIST_PLUGINS = path.join(ROOT, 'dist', 'plugins');
 const SITE_DIR = path.join(ROOT, 'dist', 'site');
 const SITE_PLUGINS_DIR = path.join(SITE_DIR, 'plugins');
@@ -155,7 +155,7 @@ nexus-agents install --pack tech --pack data</pre>
 
 function main() {
   if (!fs.existsSync(DIST_PLUGINS)) {
-    console.error('❌ dist/plugins/ not found. Run `node bin/build-plugins.js` first.');
+    console.error('❌ dist/plugins/ not found. Run `node scripts/build/build-plugins.js` first.');
     process.exit(1);
   }
 

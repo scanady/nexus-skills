@@ -1,4 +1,4 @@
-const { withSkillSource } = require('../skill-service');
+const { withSkillSource } = require('../../sources/skill-source');
 
 async function listSkills(options = {}) {
   await withSkillSource(options, async source => {

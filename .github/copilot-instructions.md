@@ -2,7 +2,9 @@
 
 - `skills/` — Skills available for install and export. Each skill is a self-contained folder.
 - `prompts/` — Standalone prompt files for specific agents or use cases.
-- `bin/` — CLI and export scripts (see below).
+- `bin/` — Published CLI executable wrappers.
+- `src/` — CLI implementation, core utilities, source adapters, and audit logic.
+- `scripts/` — Repository maintenance scripts for build, catalog, export, and validation tasks.
 - `docs/` — Reference docs, taxonomy files, agent planning notes.
 - `output/` — Generated files (zips, catalog JSON/HTML). Not checked in by default.
 - `prompts-sandbox/` — Experimental or in-progress prompts, not production-ready.
@@ -18,43 +20,43 @@
 
 ## Skill Source of Truth
 
-`skills/` is the canonical source for every skill in this repo. Folders under `.github/skills/`, `.agents/skills/`, `.claude/skills/`, `.codex/skills/`, or any other agent-specific path are **installed copies** produced by the CLI (`node bin/cli.js install`).
+`skills/` is the canonical source for every skill in this repo. Folders under `.github/skills/`, `.agents/skills/`, `.claude/skills/`, `.codex/skills/`, or any other agent-specific path are **installed copies** produced by the CLI (`node bin/nexus-agents.js install`).
 
 When updating a skill:
 1. Always edit the source in `skills/<skill-name>/` first.
 2. Never edit an installed copy as the primary change — copies will be overwritten on the next install.
 3. If you've already edited a copy (e.g., `.github/skills/<skill-name>/SKILL.md`), mirror the change back into `skills/<skill-name>/` in the same commit.
-4. After updating the source, refresh installed copies by running `node bin/cli.js install --upgrade` from the repo root (use `npx nexus-agents install --upgrade` only when consuming this repo externally).
+4. After updating the source, refresh installed copies by running `node bin/nexus-agents.js install --upgrade` from the repo root (use `npx nexus-agents install --upgrade` only when consuming this repo externally).
 
-## CLI — `node bin/cli.js` (in-repo) / `npx nexus-agents` (external)
+## CLI — `node bin/nexus-agents.js` (in-repo) / `npx nexus-agents` (external)
 
 Use the CLI to install skills into an AI agent's skills directory. It supports the Agent Skills standard path plus GitHub Copilot, Claude Code, and Codex.
 
-**Inside this repo, use `node bin/cli.js`. When consuming this repo externally, use `npx nexus-agents`.** The two are equivalent — the examples below use the in-repo form.
+**Inside this repo, use `node bin/nexus-agents.js`. When consuming this repo externally, use `npx nexus-agents`.** The two are equivalent — the examples below use the in-repo form.
 
 **Common commands:**
 
 ```bash
 # List all available skills
-node bin/cli.js list
+node bin/nexus-agents.js list
 
 # Install all skills into the current project (Agent Skills standard, default)
-node bin/cli.js install
+node bin/nexus-agents.js install
 
 # Install a specific skill
-node bin/cli.js install --skill marketing-content-linkedin-writer
+node bin/nexus-agents.js install --skill marketing-content-linkedin-writer
 
 # Install globally (user-level, not project-level)
-node bin/cli.js install --global
+node bin/nexus-agents.js install --global
 
 # Install for a specific agent
-node bin/cli.js install --agent claude-code
+node bin/nexus-agents.js install --agent claude-code
 
 # Install to multiple agents at once
-node bin/cli.js install -a github-copilot -a claude-code -a codex
+node bin/nexus-agents.js install -a github-copilot -a claude-code -a codex
 
 # Upgrade (replace) already-installed skills
-node bin/cli.js install --upgrade
+node bin/nexus-agents.js install --upgrade
 ```
 
 **Install targets by agent:**
@@ -76,16 +78,16 @@ Once installed, skills are invoked by name in the agent's chat interface:
 
 The skill name maps directly to the folder name in `skills/`.
 
-## Export Scripts — `bin/export-skill.sh` / `bin/export-skill.ps1`
+## Export Scripts — `scripts/export/export-skill.sh` / `scripts/export/export-skill.ps1`
 
 Use these to package a skill as a `.zip` file for manual import into Claude or other platforms that accept zip-based skill uploads.
 
 ```bash
 # Linux/macOS
-./bin/export-skill.sh research-deep-reading-analyst
+./scripts/export/export-skill.sh research-deep-reading-analyst
 
 # Windows (PowerShell)
-.\bin\export-skill.ps1 research-deep-reading-analyst
+.\scripts\export\export-skill.ps1 research-deep-reading-analyst
 ```
 
 Output is written to `output/<skill-name>.zip`. The zip preserves the folder structure required by Claude (`<skill-name>/SKILL.md`, ...).

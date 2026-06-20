@@ -34,8 +34,8 @@ Install any skill once and invoke it in your AI agent by name. Skills work with 
 
 ## Architecture Overview
 
-**Distribution layer** (`skills/`, `bin/`)
-The `skills/` folder is the source-of-truth skill registry. Each skill is a self-contained folder with a `SKILL.md` file and optional `references/` materials. The CLI (`bin/cli.js`) copies skills from this registry into AI agent config directories on the local machine.
+**Distribution layer** (`skills/`, `bin/`, `src/`)
+The `skills/` folder is the source-of-truth skill registry. Each skill is a self-contained folder with a `SKILL.md` file and optional `references/` materials. The CLI (`bin/nexus-agents.js`) copies skills from this registry into AI agent config directories on the local machine, with implementation code in `src/`.
 
 **VS Code Copilot customization layer** (`.github/`)
 The `.github/` folder contains VS Code Copilot customizations: agent definitions (`.github/agents/`), path-scoped instruction files (`.github/instructions/`), reusable prompts (`.github/prompts/`), and global Copilot instructions (`.github/copilot-instructions.md`). These files are picked up automatically by VS Code Copilot and are not installed via the CLI.
@@ -65,13 +65,17 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 ```
 {root}/
 ├── bin/
-│   ├── cli.js                  # CLI installer entry point
-│   ├── skills-core.js          # Core skill discovery and validation utilities
-│   ├── github-fetch.js         # Remote skill fetch from GitHub
-│   ├── skill-overlap-report.js # Skill overlap analysis and reporting
-│   ├── export-skill.ps1        # Package a skill into a zip (PowerShell)
-│   ├── export-skill.sh         # Package a skill into a zip (Bash)
-│   └── rebuild-catalog.py      # Rebuild skill catalog output files
+│   └── nexus-agents.js         # Published CLI executable
+├── src/
+│   ├── cli/                    # CLI parsing, help, and command handlers
+│   ├── core/                   # Skill discovery, validation, packs, and file utilities
+│   ├── sources/                # Local, git, and GitHub skill sources
+│   └── audit/                  # Skill overlap analysis engine
+├── scripts/
+│   ├── build/                  # Plugin and GitHub Pages builders
+│   ├── catalog/                # Skill catalog scan/rebuild scripts
+│   ├── export/                 # Manual skill zip export scripts
+│   └── validation/             # Repository validation scripts
 ├── skills/                     # Source skill registry
 │   ├── agents-copilot-instructions/
 │   ├── content-copy-humanizer/
@@ -104,25 +108,25 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 From the project root, install all skills to the current project (default agent: GitHub Copilot):
 
 ```bash
-node bin/cli.js install
+node bin/nexus-agents.js install
 ```
 
 Install a specific skill to a specific agent:
 
 ```bash
-node bin/cli.js install --skill content-copy-humanizer -a github-copilot
+node bin/nexus-agents.js install --skill content-copy-humanizer -a github-copilot
 ```
 
 Install to multiple agents at once:
 
 ```bash
-node bin/cli.js install -a github-copilot
+node bin/nexus-agents.js install -a github-copilot
 ```
 
 Install globally instead of project-scoped:
 
 ```bash
-node bin/cli.js install --skill product-spec-prd-generator --global
+node bin/nexus-agents.js install --skill product-spec-prd-generator --global
 ```
 
 ### CLI Reference
@@ -188,7 +192,7 @@ For repeatable team installs, pin a branch, tag, or commit in the git package sp
 /engineering-quality-tdd implement a user authentication service
 ```
 
-Skill names map directly to the folder names in `skills/`. Use `node bin/cli.js list --full` to see all available skills with their descriptions.
+Skill names map directly to the folder names in `skills/`. Use `node bin/nexus-agents.js list --full` to see all available skills with their descriptions.
 
 ## Skills Reference
 
