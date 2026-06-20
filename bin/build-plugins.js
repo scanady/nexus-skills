@@ -29,7 +29,7 @@ const CLAUDE_PLUGIN_DIR = path.join(ROOT, '.claude-plugin');
 const DIST_DIR = path.join(ROOT, 'dist', 'plugins');
 
 const PLUGIN_PREFIX = 'nexus';
-const MARKETPLACE_NAME = 'nexus-skills';
+const MARKETPLACE_NAME = 'nexus-agents';
 const MARKETPLACE_DESCRIPTION = 'Agentic skills, prompts, agents, and instructions for AI development platforms.';
 const KEYWORDS = ['skills', 'prompts', 'agents', 'instructions', 'ai'];
 

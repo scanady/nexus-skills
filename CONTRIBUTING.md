@@ -53,8 +53,8 @@ Format: `type(scope): short description` ([Conventional Commits](https://www.con
 ## Development Setup
 
 ```bash
-git clone https://github.com/scanady/nexus-agents.git
-cd nexus-agents
+git clone https://github.com/scanady/nexus-skills.git
+cd nexus-skills
 npm install
 ```
 

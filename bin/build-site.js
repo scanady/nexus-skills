@@ -80,7 +80,7 @@ function buildIndexHtml(manifest, version) {
           <td><code>${p.pluginName}</code></td>
           <td>${p.skills.length}</td>
           <td><a href="plugins/${p.name}.zip" download>${p.name}.zip</a></td>
-          <td><code>nexus-skills install --pack ${p.name}</code></td>
+          <td><code>nexus-agents install --pack ${p.name}</code></td>
         </tr>`).join('');
 
   return `<!DOCTYPE html>
@@ -117,7 +117,7 @@ function buildIndexHtml(manifest, version) {
 </head>
 <body>
 <div class="wrap">
-  <h1>exco-<span>nexus</span>-skills</h1>
+  <h1><span>nexus</span>-skills</h1>
   <p class="tag">Agentic skills, prompts, agents, and instructions for AI development platforms — v${version}</p>
 
   <div class="links">
@@ -128,11 +128,11 @@ function buildIndexHtml(manifest, version) {
   </div>
 
   <h2>Install via CLI</h2>
-  <pre>npm exec --yes --package=git+https://github.com/scanady/nexus-skills.git#main -- nexus-skills install</pre>
+  <pre>npm exec --yes --package=git+https://github.com/scanady/nexus-skills.git#main -- nexus-agents install</pre>
 
   <h2>Install a specific pack</h2>
-  <pre>nexus-skills install --pack marketing
-nexus-skills install --pack tech --pack data</pre>
+  <pre>nexus-agents install --pack marketing
+nexus-agents install --pack tech --pack data</pre>
 
   <h2>Install as a Claude plugin</h2>
   <p>Add this repo as a Claude Code marketplace, then install any pack plugin:</p>
