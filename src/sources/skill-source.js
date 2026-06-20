@@ -8,13 +8,13 @@ const {
   getAvailableSkills,
   isLocalMode,
   parseFrontmatter
-} = require('./skills-core');
+} = require('../core/skills');
 const {
   downloadRemoteSkill,
   fetchRemoteSkillFrontmatter,
   fetchRemoteSkillList
-} = require('./github-fetch');
-const { copyDir } = require('./file-system');
+} = require('./github-skill-source');
+const { copyDir } = require('../core/file-system');
 
 function getEnvValue(...names) {
   for (const name of names) {

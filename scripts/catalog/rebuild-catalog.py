@@ -6,14 +6,14 @@ Rebuild skill-catalog.json by merging:
  - Manually authored evaluations for new skills (embedded below)
 
 Usage:
-    python bin/rebuild-catalog.py
+    python scripts/catalog/rebuild-catalog.py
 """
 
 import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 SCAN_FILE = ROOT / "skill-catalog-scan.json"
 OLD_CATALOG = ROOT / "skill-catalog.json"
 OUT_FILE = ROOT / "skill-catalog.json"
@@ -374,6 +374,12 @@ def compute_avg(skills, key_path):
     return round(sum(values) / len(values), 2) if values else 0.0
 
 
+def without_generated_at(catalog: dict) -> dict:
+    comparable = dict(catalog)
+    comparable.pop("generated_at", None)
+    return comparable
+
+
 def main():
     # Load inputs
     scan_data = json.loads(SCAN_FILE.read_text(encoding="utf-8"))
@@ -545,12 +551,12 @@ def main():
 
     catalog = {
         "catalog_version": "1.0.0",
-        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "generated_at": old_catalog.get("generated_at"),
         "sources": [
             {
                 "id": "source-1",
                 "type": "local",
-                "path": str(ROOT / "skills"),
+                "path": "skills",
                 "url": None,
                 "commit": None,
             }
@@ -570,6 +576,9 @@ def main():
         },
         "skills": skills_out,
     }
+
+    if not catalog["generated_at"] or without_generated_at(old_catalog) != without_generated_at(catalog):
+        catalog["generated_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     OUT_FILE.write_text(
         json.dumps(catalog, indent=2, ensure_ascii=False),

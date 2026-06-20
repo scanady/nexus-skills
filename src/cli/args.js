@@ -1,4 +1,4 @@
-const { DEFAULT_AGENT } = require('./skills-core');
+const { DEFAULT_AGENT } = require('../core/skills');
 
 function parseArgs(args) {
   const result = {
