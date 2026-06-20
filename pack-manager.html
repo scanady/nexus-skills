@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus Agents — Pack Manager</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #242736;
+    --surface3: #2e3245;
+    --border: #343848;
+    --text: #e2e4f0;
+    --text-muted: #8b90a8;
+    --text-dim: #5a5f78;
+    --accent: #6c72f7;
+    --accent-glow: rgba(108,114,247,0.15);
+    --green: #22c55e;
+    --red: #ef4444;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 13px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+  .header-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; }
+  .header-logo span { color: var(--accent); }
+  .header-actions { display: flex; gap: 8px; margin-left: auto; align-items: center; }
+  .dirty-badge { font-size: 0.75rem; color: #fbbf24; display: none; }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 13px; border-radius: var(--radius-sm);
+    border: 1px solid var(--border); background: var(--surface2);
+    color: var(--text); font-size: 0.82rem; cursor: pointer;
+    transition: all 0.15s; white-space: nowrap; font-family: inherit;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { background: #7b80f9; border-color: #7b80f9; color: #fff; }
+  .btn.danger:hover { border-color: var(--red); color: var(--red); background: rgba(239,68,68,0.08); }
+  .btn.sm { padding: 5px 9px; font-size: 0.75rem; }
+  .btn.icon { padding: 5px 7px; }
+
+  /* ── LAYOUT ── */
+  .layout { display: flex; flex: 1; overflow: hidden; }
+
+  /* ── SKILL LIBRARY ── */
+  .skill-library {
+    width: 290px; flex-shrink: 0;
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column;
+    background: var(--surface);
+  }
+  .library-header {
+    padding: 12px 14px 10px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .library-top {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-bottom: 8px;
+  }
+  .library-label {
+    font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-muted);
+  }
+  .skill-count-badge {
+    background: var(--accent-glow); color: var(--accent);
+    border: 1px solid rgba(108,114,247,0.3);
+    border-radius: 20px; padding: 1px 8px;
+    font-size: 0.7rem; font-weight: 600;
+  }
+  .library-search {
+    width: 100%; background: var(--surface2);
+    border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 7px 10px; color: var(--text); font-size: 0.82rem; outline: none;
+  }
+  .library-search:focus { border-color: var(--accent); }
+  .library-search::placeholder { color: var(--text-dim); }
+
+  .remove-zone {
+    margin: 0 8px;
+    padding: 0 10px;
+    border: 1px dashed transparent;
+    border-radius: var(--radius-sm);
+    font-size: 0.72rem;
+    color: transparent;
+    text-align: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+  .remove-zone.active {
+    border-color: var(--red);
+    color: var(--red);
+    background: rgba(239,68,68,0.06);
+    padding: 6px 10px;
+    margin: 6px 8px 0;
+    max-height: 30px;
+  }
+
+  .skill-list {
+    flex: 1; overflow-y: auto;
+    padding: 6px 8px 8px;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+
+  /* ── SKILL CHIP (sidebar) ── */
+  .skill-chip {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 9px; border-radius: var(--radius-sm);
+    border: 1px solid transparent; cursor: grab;
+    user-select: none; transition: all 0.1s; font-size: 0.79rem;
+  }
+  .skill-chip:hover { background: var(--surface2); border-color: var(--border); }
+  .skill-chip.dragging { opacity: 0.35; }
+  .library-hint { font-size: 0.68rem; color: var(--text-dim); padding: 5px 0 0; line-height: 1.4; }
+  .skill-chip-icon { font-size: 0.85rem; flex-shrink: 0; width: 16px; text-align: center; }
+  .skill-chip-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
+  .skill-chip-dots { display: flex; gap: 3px; flex-shrink: 0; align-items: center; }
+  .pack-count-badge-sm {
+    font-size: 0.65rem; font-weight: 600;
+    background: var(--surface3); border: 1px solid var(--border);
+    color: var(--text-muted); border-radius: 20px;
+    padding: 0px 6px; flex-shrink: 0; white-space: nowrap;
+  }
+
+  /* ── PACK EDITOR ── */
+  .pack-editor { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+  .editor-header {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+  }
+  .editor-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+  .pack-count-badge {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 20px; padding: 1px 8px;
+    font-size: 0.7rem; color: var(--text-muted);
+  }
+
+  .packs-grid {
+    flex: 1; overflow-y: auto;
+    padding: 16px 18px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+    align-content: start; align-items: start;
+  }
+
+  /* ── PACK CARD ── */
+  .pack-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); display: flex; flex-direction: column;
+    transition: border-color 0.15s;
+  }
+  .pack-card.drop-active { border-color: var(--accent); background: var(--accent-glow); }
+
+  .pack-card-header {
+    padding: 12px 14px 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .pack-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .pack-meta { flex: 1; min-width: 0; }
+  .pack-name-display {
+    font-size: 0.88rem; font-weight: 600; color: var(--text);
+    cursor: pointer; display: block;
+    border: 1px solid transparent; border-radius: 4px;
+    padding: 1px 4px; margin: -1px -4px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .pack-name-display:hover { border-color: var(--border); background: var(--surface2); }
+  .pack-name-input {
+    font-size: 0.88rem; font-weight: 600;
+    background: var(--surface2); border: 1px solid var(--accent);
+    border-radius: 4px; padding: 1px 4px; color: var(--text);
+    outline: none; width: 100%; font-family: inherit;
+  }
+  .pack-skill-count { font-size: 0.7rem; color: var(--text-dim); margin-top: 2px; }
+  .pack-card-actions { display: flex; gap: 3px; flex-shrink: 0; }
+
+  .pack-desc-display {
+    padding: 8px 14px; font-size: 0.77rem; color: var(--text-muted);
+    border-bottom: 1px solid var(--border); line-height: 1.45;
+    min-height: 34px; cursor: pointer;
+    transition: color 0.15s;
+  }
+  .pack-desc-display.empty { color: var(--text-dim); font-style: italic; }
+  .pack-desc-display:hover { color: var(--text); }
+  .pack-desc-input {
+    width: 100%; background: var(--surface2);
+    border: 1px solid var(--accent); border-radius: 4px;
+    padding: 6px 8px; color: var(--text);
+    font-size: 0.77rem; outline: none; resize: none;
+    font-family: inherit; line-height: 1.45;
+  }
+
+  .pack-skills-area {
+    padding: 10px 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    align-content: flex-start; min-height: 80px;
+  }
+  .pack-drop-hint {
+    grid-column: 1 / -1;
+    width: 100%; text-align: center; padding: 28px 0;
+    color: var(--text-dim); font-size: 0.75rem;
+    border: 1.5px dashed var(--border); border-radius: var(--radius-sm);
+  }
+
+  /* ── PACK SKILL CHIP ── */
+  .pack-skill-chip {
+    display: flex; align-items: center; gap: 5px;
+    padding: 3px 6px 3px 9px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 20px; font-size: 0.72rem; color: var(--text-muted);
+    cursor: grab; user-select: none; transition: all 0.1s;
+    min-width: 0; overflow: hidden;
+  }
+  .pack-skill-chip:hover { border-color: #4a4f6a; color: var(--text); }
+  .pack-skill-chip.dragging { opacity: 0.35; }
+  .chip-label {
+    min-width: 0; flex: 1;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .chip-remove {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--surface3); border: none; color: var(--text-dim);
+    cursor: pointer; display: flex; align-items: center;
+    justify-content: center; font-size: 0.6rem; line-height: 1;
+    flex-shrink: 0; transition: all 0.1s; font-family: inherit;
+  }
+  .chip-remove:hover { background: var(--red); color: #fff; }
+
+  /* ── NEW PACK CARD ── */
+  .new-pack-card {
+    background: var(--surface); border: 1px dashed var(--border);
+    border-radius: var(--radius); min-height: 190px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 8px;
+    cursor: pointer; color: var(--text-dim);
+    transition: all 0.2s;
+  }
+  .new-pack-card:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+  .new-pack-card-icon { font-size: 2rem; }
+  .new-pack-card-label { font-size: 0.82rem; }
+
+  /* ── EMPTY / LOAD STATE ── */
+  .empty-state {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 14px; padding: 40px;
+    color: var(--text-muted); text-align: center;
+  }
+  .empty-state-icon { font-size: 2.5rem; }
+  .empty-state-title { font-size: 1rem; font-weight: 600; color: var(--text); }
+  .empty-state-sub { font-size: 0.82rem; line-height: 1.5; }
+
+  /* ── MODAL ── */
+  .modal-backdrop {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.65);
+    display: none; align-items: center; justify-content: center; z-index: 200;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 22px 24px;
+    width: 420px; display: flex; flex-direction: column; gap: 16px;
+  }
+  .modal-title { font-size: 1rem; font-weight: 600; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field-label {
+    font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 0.07em; color: var(--text-muted);
+  }
+  .field-input {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 8px 11px;
+    color: var(--text); font-size: 0.88rem; outline: none;
+    width: 100%; font-family: inherit;
+  }
+  .field-input:focus { border-color: var(--accent); }
+  .field-textarea {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 8px 11px;
+    color: var(--text); font-size: 0.82rem; outline: none;
+    width: 100%; resize: vertical; min-height: 72px;
+    font-family: inherit; line-height: 1.5;
+  }
+  .field-textarea:focus { border-color: var(--accent); }
+  .field-error { font-size: 0.75rem; color: #f87171; min-height: 16px; }
+  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed; bottom: 22px; right: 22px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 9px 15px;
+    font-size: 0.8rem; color: var(--text); z-index: 500;
+    opacity: 0; transform: translateY(6px);
+    transition: opacity 0.2s, transform 0.2s; pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+  .toast.ok { border-color: #22c55e; color: #4ade80; }
+  .toast.err { border-color: var(--red); color: #f87171; }
+
+  /* ── LIGHT MODE ── */
+  .light {
+    --bg: #f4f5f9;
+    --surface: #ffffff;
+    --surface2: #edf0f7;
+    --surface3: #dde1ed;
+    --border: #d0d5e8;
+    --text: #1a1d2e;
+    --text-muted: #5a6080;
+    --text-dim: #9299b8;
+    --accent: #4f56e8;
+    --accent-glow: rgba(79,86,232,0.1);
+    --green: #16a34a;
+    --red: #dc2626;
+  }
+
+  /* ── THEME TOGGLE ── */
+  .theme-toggle {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 20px; padding: 5px 12px;
+    cursor: pointer; color: var(--text-muted);
+    font-size: 0.8rem; display: flex; align-items: center; gap: 6px;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+    white-space: nowrap; font-family: inherit;
+  }
+  .theme-toggle:hover { color: var(--text); border-color: var(--accent); }
+  .theme-toggle .theme-icon { font-size: 0.95rem; }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--border); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-logo">nexus<span>agents</span> / pack-manager</div>
+  <div class="header-actions">
+    <span class="dirty-badge" id="dirtyBadge">● unsaved changes</span>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark mode">
+      <span class="theme-icon" id="themeIcon">🌙</span>
+      <span id="themeLabel">Light mode</span>
+    </button>
+    <button class="btn" onclick="openPicker()">📂 Load Catalog</button>
+    <button class="btn primary" id="btnDownloadAll" onclick="downloadAll()" disabled>⬇ Download All</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ── SKILL LIBRARY ── -->
+  <aside class="skill-library">
+    <div class="library-header">
+      <div class="library-top">
+        <span class="library-label">All Skills</span>
+        <span class="skill-count-badge" id="skillCountBadge">0</span>
+      </div>
+      <input class="library-search" type="search" id="librarySearch"
+        placeholder="Filter skills…" oninput="renderSkillList()" />
+      <div class="library-hint">Drag a skill onto a pack card to add it</div>
+    </div>
+    <div class="remove-zone" id="removeZone"
+      ondragover="onRemoveZoneDragOver(event)"
+      ondragleave="onRemoveZoneDragLeave(event)"
+      ondrop="onRemoveZoneDrop(event)">
+      ✕ Drop here to remove from pack
+    </div>
+    <div class="skill-list" id="skillList">
+      <div class="empty-state">
+        <div class="empty-state-icon">📦</div>
+        <div class="empty-state-title">No catalog loaded</div>
+        <div class="empty-state-sub">Click "Load Catalog" to open<br>skill-catalog.json</div>
+        <button class="btn primary" onclick="openPicker()">Load Catalog</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── PACK EDITOR ── -->
+  <main class="pack-editor">
+    <div class="editor-header">
+      <span class="editor-label">Packs</span>
+      <span class="pack-count-badge" id="packCountBadge">0</span>
+      <div style="margin-left:auto;display:flex;gap:8px">
+        <button class="btn" id="btnNewPack" onclick="showNewPackModal()" disabled>+ New Pack</button>
+      </div>
+    </div>
+    <div class="packs-grid" id="packsGrid">
+      <div class="empty-state" style="grid-column:1/-1">
+        <div class="empty-state-icon">🗂️</div>
+        <div class="empty-state-title">No packs yet</div>
+        <div class="empty-state-sub">Load skill-catalog.json to see existing packs,<br>or create a new pack to get started.</div>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<!-- file picker -->
+<input type="file" id="filePicker" accept=".json" style="display:none" onchange="onFileChosen()" />
+
+<!-- ── NEW PACK MODAL ── -->
+<div class="modal-backdrop" id="newPackModal">
+  <div class="modal">
+    <div class="modal-title">New Pack</div>
+    <div class="field">
+      <div class="field-label">Pack Name <span style="color:var(--text-dim);text-transform:none;letter-spacing:0">(lowercase slug, e.g. my-tools)</span></div>
+      <input class="field-input" id="newPackNameInput" placeholder="my-tools" oninput="validateNewPackName()" />
+      <div class="field-error" id="newPackNameError"></div>
+    </div>
+    <div class="field">
+      <div class="field-label">Description</div>
+      <textarea class="field-textarea" id="newPackDescInput" placeholder="What skills does this pack contain and who is it for?"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeNewPackModal()">Cancel</button>
+      <button class="btn primary" id="btnCreatePack" onclick="createPack()" disabled>Create Pack</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ────────────────────────────────────────────
+// STATE
+// ────────────────────────────────────────────
+const state = {
+  skills: {},   // name → { name, domain }
+  packs: {},    // name → { name, description, version, skills: string[] }
+  loaded: false,
+  dirty: false
+};
+
+// ── DRAG CONTEXT ──
+let drag = { skill: null, sourcePack: null };
+
+// ── PACK STYLE PALETTE ──
+const PACK_STYLES = {
+  'marketing':   { bg: '#1e1230', fg: '#c084fc', icon: '📣' },
+  'tech':        { bg: '#0f1f30', fg: '#38bdf8', icon: '⚙️' },
+  'agent-tools': { bg: '#10201a', fg: '#34d399', icon: '🤖' },
+  'product':     { bg: '#121a1a', fg: '#2dd4bf', icon: '🎯' },
+  'strategy':    { bg: '#101520', fg: '#818cf8', icon: '🧠' },
+  'design':      { bg: '#1a1020', fg: '#e879f9', icon: '🎨' },
+  'content':     { bg: '#151324', fg: '#f9a8d4', icon: '✍️' },
+  'data':        { bg: '#1a1410', fg: '#fb923c', icon: '📊' },
+  'comms':       { bg: '#102019', fg: '#5eead4', icon: '📢' },
+  'ops':         { bg: '#1a1410', fg: '#fdba74', icon: '📋' },
+};
+const STYLE_POOL = [
+  { bg: '#1a1520', fg: '#a78bfa', icon: '📦' },
+  { bg: '#101a20', fg: '#67e8f9', icon: '🗂️' },
+  { bg: '#1a1a10', fg: '#fde047', icon: '⭐' },
+  { bg: '#201010', fg: '#fca5a5', icon: '🔖' },
+  { bg: '#10201a', fg: '#6ee7b7', icon: '🌿' },
+  { bg: '#1a1020', fg: '#d8b4fe', icon: '🔮' },
+];
+const packStyleCache = {};
+
+function packStyle(name) {
+  if (!packStyleCache[name]) {
+    packStyleCache[name] = PACK_STYLES[name] ||
+      STYLE_POOL[Object.keys(packStyleCache).length % STYLE_POOL.length];
+  }
+  return packStyleCache[name];
+}
+
+const DOMAIN_ICONS = {
+  marketing: '📣', tech: '⚙️', agent: '🤖', product: '🎯',
+  productivity: '⚡', strategy: '🧠', design: '🎨', sales: '🤝',
+  content: '✍️', data: '📊', comms: '📢', ops: '📋',
+  knowledge: '🗃️', research: '🔍', thinking: '💭'
+};
+const domainIcon = name => DOMAIN_ICONS[name.split('-')[0]] || '◦';
+
+// ────────────────────────────────────────────
+// LOAD
+// ────────────────────────────────────────────
+function openPicker() { document.getElementById('filePicker').click(); }
+
+function onFileChosen() {
+  const file = document.getElementById('filePicker').files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try { ingestCatalog(JSON.parse(reader.result), file.name); }
+    catch { toast('Could not parse JSON', 'err'); }
+  };
+  reader.readAsText(file);
+  document.getElementById('filePicker').value = '';
+}
+
+function ingestCatalog(catalog, label = 'skill-catalog.json') {
+  state.skills = {};
+  (catalog.skills || []).forEach(s => {
+    state.skills[s.name] = { name: s.name, domain: s.name.split('-')[0] };
+  });
+
+  state.packs = {};
+  const sp = catalog.summary?.packs || {};
+  Object.entries(sp).forEach(([k, v]) => {
+    // ensure style is cached deterministically before anything else renders
+    packStyle(k);
+    state.packs[k] = {
+      name: k,
+      description: v.description || '',
+      version: v.version || '1.0.0',
+      skills: (v.skills || []).filter(n => state.skills[n])
+    };
+  });
+
+  state.loaded = true;
+  state.dirty = false;
+
+  document.getElementById('btnDownloadAll').disabled = false;
+  document.getElementById('btnNewPack').disabled = false;
+  document.getElementById('dirtyBadge').style.display = 'none';
+
+  render();
+  toast(`Loaded ${Object.keys(state.skills).length} skills · ${Object.keys(state.packs).length} packs from ${label}`, 'ok');
+}
+
+// ────────────────────────────────────────────
+// RENDER
+// ────────────────────────────────────────────
+function render() {
+  renderSkillList();
+  renderPacks();
+  document.getElementById('skillCountBadge').textContent = Object.keys(state.skills).length;
+  document.getElementById('packCountBadge').textContent = Object.keys(state.packs).length;
+}
+
+function skillMemberships(skillName) {
+  return Object.keys(state.packs).filter(p => state.packs[p].skills.includes(skillName));
+}
+
+function renderSkillList() {
+  const q = document.getElementById('librarySearch').value.toLowerCase();
+  const list = document.getElementById('skillList');
+
+  if (!state.loaded) return;
+
+  const skills = Object.values(state.skills)
+    .filter(s => !q || s.name.includes(q))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  if (!skills.length) {
+    list.innerHTML = '<div style="text-align:center;padding:20px;color:var(--text-dim);font-size:0.79rem">No skills match</div>';
+    return;
+  }
+
+  list.innerHTML = skills.map(s => {
+    const members = skillMemberships(s.name);
+    const countBadge = members.length
+      ? `<span class="pack-count-badge-sm" title="In ${members.length} pack${members.length > 1 ? 's' : ''}: ${members.join(', ')}">${members.length}</span>`
+      : '';
+    return `<div class="skill-chip" draggable="true"
+        data-skill="${s.name}"
+        ondragstart="onChipDragStart(event,'${s.name}',null)"
+        ondragend="onDragEnd(event)"
+        title="${s.name}${members.length ? ' · ' + members.join(', ') : ''}">
+      <span class="skill-chip-icon">${domainIcon(s.name)}</span>
+      <span class="skill-chip-name">${s.name}</span>
+      <span class="skill-chip-dots">${countBadge}</span>
+    </div>`;
+  }).join('');
+}
+
+function renderPacks() {
+  const grid = document.getElementById('packsGrid');
+  const sortedPacks = Object.values(state.packs).sort((a, b) => a.name.localeCompare(b.name));
+
+  if (!state.loaded && !sortedPacks.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1">
+      <div class="empty-state-icon">🗂️</div>
+      <div class="empty-state-title">No packs yet</div>
+      <div class="empty-state-sub">Load skill-catalog.json to see existing packs,<br>or create a new pack to get started.</div>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = sortedPacks.map(buildPackCard).join('') + `
+    <div class="new-pack-card" onclick="showNewPackModal()">
+      <div class="new-pack-card-icon">＋</div>
+      <div class="new-pack-card-label">New Pack</div>
+    </div>`;
+}
+
+function safeId(name) { return name.replace(/[^a-z0-9]/g, '-'); }
+
+function buildPackCard(pack) {
+  const st = packStyle(pack.name);
+  const sid = safeId(pack.name);
+  const chips = [...pack.skills].sort().map(sk => `
+    <span class="pack-skill-chip" draggable="true"
+      data-skill="${sk}" data-pack="${pack.name}"
+      ondragstart="onChipDragStart(event,'${sk}','${pack.name}')"
+      ondragend="onDragEnd(event)"
+      title="${sk}">
+      <span class="chip-label">${sk}</span>
+      <button class="chip-remove" onclick="removeSkill('${pack.name}','${sk}')" title="Remove">✕</button>
+    </span>`).join('');
+
+  const body = pack.skills.length
+    ? chips
+    : '<div class="pack-drop-hint">Drop skills here</div>';
+
+  const desc = pack.description
+    ? `<div class="pack-desc-display" id="desc-${sid}" onclick="editDesc('${pack.name}')">${pack.description}</div>`
+    : `<div class="pack-desc-display empty" id="desc-${sid}" onclick="editDesc('${pack.name}')">Click to add a description…</div>`;
+
+  return `
+<div class="pack-card" id="card-${sid}"
+  data-pack="${pack.name}"
+  ondragover="onPackDragOver(event,'${pack.name}')"
+  ondragleave="onPackDragLeave(event)"
+  ondrop="onPackDrop(event,'${pack.name}')">
+  <div class="pack-card-header">
+    <div class="pack-icon" style="background:${st.bg};color:${st.fg}">${st.icon}</div>
+    <div class="pack-meta">
+      <span class="pack-name-display" id="name-${sid}" onclick="editName('${pack.name}')" title="Click to rename">${pack.name}</span>
+      <div class="pack-skill-count">${pack.skills.length} skill${pack.skills.length !== 1 ? 's' : ''}</div>
+    </div>
+    <div class="pack-card-actions">
+      <button class="btn sm icon" onclick="downloadPack('${pack.name}')" title="Download ${pack.name}.json">⬇</button>
+      <button class="btn sm icon danger" onclick="deletePack('${pack.name}')" title="Delete pack">🗑</button>
+    </div>
+  </div>
+  ${desc}
+  <div class="pack-skills-area" id="skills-${sid}">${body}</div>
+</div>`;
+}
+
+// ────────────────────────────────────────────
+// DRAG AND DROP
+// ────────────────────────────────────────────
+function onChipDragStart(event, skillName, sourcePack) {
+  drag.skill = skillName;
+  drag.sourcePack = sourcePack;
+  event.dataTransfer.effectAllowed = 'all';
+  event.dataTransfer.setData('text/plain', skillName);
+  setTimeout(() => event.target.classList.add('dragging'), 0);
+  // Highlight remove zone only when dragging from a pack
+  if (sourcePack) {
+    document.getElementById('removeZone').classList.add('active');
+  }
+}
+
+function onDragEnd(event) {
+  event.target.classList.remove('dragging');
+  drag.skill = null;
+  drag.sourcePack = null;
+  document.querySelectorAll('.pack-card').forEach(c => c.classList.remove('drop-active'));
+  document.getElementById('removeZone').classList.remove('active');
+}
+
+function onPackDragOver(event, packName) {
+  if (!drag.skill) return;
+  event.preventDefault();
+  event.dataTransfer.dropEffect = 'copy';
+  document.getElementById('card-' + safeId(packName))?.classList.add('drop-active');
+}
+
+function onPackDragLeave(event) {
+  if (event.currentTarget.contains(event.relatedTarget)) return;
+  event.currentTarget.classList.remove('drop-active');
+}
+
+function onPackDrop(event, packName) {
+  event.preventDefault();
+  event.currentTarget.classList.remove('drop-active');
+  if (!drag.skill) return;
+  const pack = state.packs[packName];
+  if (!pack) return;
+  if (pack.skills.includes(drag.skill)) {
+    toast(`"${drag.skill}" is already in ${packName}`, 'err');
+    return;
+  }
+  pack.skills.push(drag.skill);
+  markDirty();
+  render();
+  toast(`Added "${drag.skill}" → ${packName}`, 'ok');
+}
+
+function onRemoveZoneDragOver(event) {
+  if (!drag.skill || !drag.sourcePack) return;
+  event.preventDefault();
+  event.dataTransfer.dropEffect = 'move';
+}
+
+function onRemoveZoneDragLeave() {
+  // keep active styling until dragend
+}
+
+function onRemoveZoneDrop(event) {
+  event.preventDefault();
+  if (!drag.skill || !drag.sourcePack) return;
+  removeSkill(drag.sourcePack, drag.skill);
+}
+
+// ────────────────────────────────────────────
+// SKILL / PACK OPS
+// ────────────────────────────────────────────
+function removeSkill(packName, skillName) {
+  const pack = state.packs[packName];
+  if (!pack) return;
+  pack.skills = pack.skills.filter(s => s !== skillName);
+  markDirty();
+  render();
+  toast(`Removed "${skillName}" from ${packName}`, 'ok');
+}
+
+function deletePack(packName) {
+  if (!confirm(`Delete pack "${packName}"?\nThis cannot be undone.`)) return;
+  delete state.packs[packName];
+  markDirty();
+  render();
+  toast(`Deleted pack "${packName}"`, 'ok');
+}
+
+// ── INLINE EDIT: PACK NAME ──
+function editName(packName) {
+  const sid = safeId(packName);
+  const el = document.getElementById('name-' + sid);
+  if (!el || el.tagName === 'INPUT') return;
+  const input = document.createElement('input');
+  input.className = 'pack-name-input';
+  input.value = packName;
+  el.replaceWith(input);
+  input.focus(); input.select();
+
+  const commit = () => {
+    const raw = input.value.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    if (!raw || raw === packName) { render(); return; }
+    if (state.packs[raw]) { toast(`Pack "${raw}" already exists`, 'err'); render(); return; }
+    const pack = state.packs[packName];
+    pack.name = raw;
+    state.packs[raw] = pack;
+    delete state.packs[packName];
+    packStyleCache[raw] = packStyleCache[raw] || packStyle(packName);
+    markDirty();
+    render();
+  };
+  input.addEventListener('blur', commit);
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); commit(); }
+    if (e.key === 'Escape') render();
+  });
+}
+
+// ── INLINE EDIT: DESCRIPTION ──
+function editDesc(packName) {
+  const sid = safeId(packName);
+  const el = document.getElementById('desc-' + sid);
+  if (!el || el.tagName === 'TEXTAREA') return;
+  const pack = state.packs[packName];
+  const ta = document.createElement('textarea');
+  ta.className = 'pack-desc-input';
+  ta.value = pack.description;
+  ta.placeholder = 'Add a description…';
+  ta.rows = 2;
+  el.replaceWith(ta);
+  ta.focus();
+  ta.setSelectionRange(ta.value.length, ta.value.length);
+
+  const commit = () => {
+    pack.description = ta.value.trim();
+    markDirty();
+    render();
+  };
+  ta.addEventListener('blur', commit);
+  ta.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); commit(); }
+    if (e.key === 'Escape') render();
+  });
+}
+
+// ────────────────────────────────────────────
+// NEW PACK MODAL
+// ────────────────────────────────────────────
+function showNewPackModal() {
+  document.getElementById('newPackNameInput').value = '';
+  document.getElementById('newPackDescInput').value = '';
+  document.getElementById('newPackNameError').textContent = '';
+  document.getElementById('btnCreatePack').disabled = true;
+  document.getElementById('newPackModal').classList.add('open');
+  setTimeout(() => document.getElementById('newPackNameInput').focus(), 60);
+}
+
+function closeNewPackModal() {
+  document.getElementById('newPackModal').classList.remove('open');
+}
+
+function validateNewPackName() {
+  const val = document.getElementById('newPackNameInput').value.trim();
+  const err = document.getElementById('newPackNameError');
+  const btn = document.getElementById('btnCreatePack');
+  if (!val) { err.textContent = ''; btn.disabled = true; return false; }
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(val)) {
+    err.textContent = 'Lowercase letters, numbers, and hyphens only.';
+    btn.disabled = true; return false;
+  }
+  if (state.packs[val]) {
+    err.textContent = `"${val}" already exists.`;
+    btn.disabled = true; return false;
+  }
+  err.textContent = '';
+  btn.disabled = false;
+  return true;
+}
+
+function createPack() {
+  if (!validateNewPackName()) return;
+  const name = document.getElementById('newPackNameInput').value.trim();
+  const desc = document.getElementById('newPackDescInput').value.trim();
+  // Assign a color before adding so renderPacks uses it deterministically
+  if (!packStyleCache[name]) {
+    const existingCount = Object.keys(packStyleCache).length;
+    packStyleCache[name] = STYLE_POOL[existingCount % STYLE_POOL.length];
+  }
+  state.packs[name] = { name, description: desc, version: '1.0.0', skills: [] };
+  markDirty();
+  closeNewPackModal();
+  render();
+  toast(`Created pack "${name}"`, 'ok');
+}
+
+document.getElementById('newPackModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('newPackModal')) closeNewPackModal();
+});
+document.getElementById('newPackNameInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') createPack();
+  if (e.key === 'Escape') closeNewPackModal();
+});
+document.getElementById('newPackDescInput').addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeNewPackModal();
+});
+
+// ────────────────────────────────────────────
+// EXPORT
+// ────────────────────────────────────────────
+function packJSON(packName) {
+  const p = state.packs[packName];
+  return JSON.stringify({ name: p.name, version: p.version || '1.0.0', description: p.description, skills: [...p.skills].sort() }, null, 2);
+}
+
+function downloadPack(packName) {
+  triggerDownload(`${packName}.json`, packJSON(packName));
+  toast(`Downloaded ${packName}.json`, 'ok');
+}
+
+function downloadAll() {
+  const names = Object.keys(state.packs).sort();
+  if (!names.length) return;
+  names.forEach((n, i) => setTimeout(() => downloadPack(n), i * 120));
+}
+
+function triggerDownload(filename, content) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], { type: 'application/json' }));
+  a.download = filename;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+// ────────────────────────────────────────────
+// DIRTY STATE
+// ────────────────────────────────────────────
+function markDirty() {
+  state.dirty = true;
+  document.getElementById('dirtyBadge').style.display = 'inline';
+}
+
+// ────────────────────────────────────────────
+// TOAST
+// ────────────────────────────────────────────
+let toastTimer;
+function toast(msg, type = 'ok') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = `toast show ${type}`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+// ── THEME ──
+function toggleTheme() {
+  const isLight = document.documentElement.classList.toggle('light');
+  document.getElementById('themeIcon').textContent = isLight ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  document.getElementById('themeLabel').textContent = isLight ? 'Dark mode' : 'Light mode';
+  localStorage.setItem('pack-manager-theme', isLight ? 'light' : 'dark');
+}
+(function() {
+  if (localStorage.getItem('pack-manager-theme') === 'light') {
+    document.documentElement.classList.add('light');
+  }
+})();
+document.addEventListener('DOMContentLoaded', function() {
+  const isLight = document.documentElement.classList.contains('light');
+  document.getElementById('themeIcon').textContent = isLight ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  document.getElementById('themeLabel').textContent = isLight ? 'Dark mode' : 'Light mode';
+});
+
+// ── AUTO-LOAD (works when served over HTTP)
+// ────────────────────────────────────────────
+(async () => {
+  try {
+    const r = await fetch('skill-catalog.json');
+    if (r.ok) ingestCatalog(await r.json());
+  } catch { /* file:// protocol — user must load manually */ }
+})();
+</script>
+</body>
+</html>

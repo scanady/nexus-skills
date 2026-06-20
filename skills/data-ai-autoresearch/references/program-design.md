@@ -274,5 +274,5 @@ If you run out of ideas:
 - **Vague scope**: "Improve the model" is not enough. Specify the single file, the metric, and the decision protocol.
 - **No baseline**: Without a baseline, the agent cannot assess relative improvement.
 - **Optimistic time budget**: If training takes 4:58 with the baseline, the agent has no room for larger models. Leave headroom.
-- **Forgetting the log format**: Without a structured results log, the agent's experiment history is lost.
+- **Nexustting the log format**: Without a structured results log, the agent's experiment history is lost.
 - **Side probes**: Inline Python or shell metric checks outside the blessed runner create unlogged decision paths and eventually break trust in the experiment history.

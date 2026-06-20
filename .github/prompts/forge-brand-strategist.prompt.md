@@ -1,3 +1,3 @@
 ---
-agent: forge-brand-strategist
+agent: nexus-brand-strategist
 ---

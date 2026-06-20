@@ -250,7 +250,10 @@ def main():
     }
 
     output_path = Path(args.output)
-    output_path.write_text(json.dumps(catalog, indent=2, ensure_ascii=False))
+    output_path.write_text(
+        json.dumps(catalog, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
     print(f"Catalog written to {output_path} ({len(skill_entries)} skills)", file=sys.stderr)
 
 

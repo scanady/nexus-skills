@@ -20,7 +20,7 @@ From the skill description, identify:
 1. **Primary action verb**: What does the skill DO? (build, design, specify, interview, write, analyze)
 2. **Output artifact**: What does the skill PRODUCE? (code, architecture, spec, document, content, report)
 3. **Domain**: What field does this operate in? (backend, infrastructure, API design, workflow, marketing, data science)
-4. **Interaction model**: Does the skill need user input during execution, or is it fire-and-forget?
+4. **Interaction model**: Does the skill need user input during execution, or is it fire-and-nexust?
 5. **Judgment level**: Is the output objectively verifiable (code compiles, tests pass) or subjectively assessed (writing quality, design elegance)?
 
 ### Step 2: Match to Archetype
@@ -81,7 +81,7 @@ metadata:
 - Primary action: [verb]
 - Output artifact: [what it produces]
 - Domain: [field]
-- Interaction model: [fire-and-forget | interactive | iterative]
+- Interaction model: [fire-and-nexust | interactive | iterative]
 - Judgment level: [objective | subjective | mixed]
 
 **Recommended frontmatter:**

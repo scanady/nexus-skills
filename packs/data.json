@@ -1,0 +1,8 @@
+{
+  "name": "data",
+  "version": "1.0.0",
+  "description": "Skills for data engineering, AI/ML pipelines, RAG architecture, business performance analysis, and database design.",
+  "skills": [
+    "data-*"
+  ]
+}

@@ -50,7 +50,7 @@ function stripWrappingQuotes(value) {
 }
 
 function parseFrontmatter(content) {
-    const lines = content.split(/\r?\n/);
+    const lines = content.split('\n').map(line => line.replace(/\r$/, ''));
     const metadata = {};
     let inFrontmatter = false;
 

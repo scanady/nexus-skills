@@ -105,11 +105,11 @@ body.menu-open { overflow: hidden; }
 ## Common Mistakes
 
 1. **Closing on pointerleave without delay**: menu disappears when cursor enters the gap. Always use the ~140ms timer.
-2. **Forgetting the ::before bridge**: cursor "falls off" between trigger and panel.
+2. **Nexustting the ::before bridge**: cursor "falls off" between trigger and panel.
 3. **Using :hover only in CSS**: breaks keyboard and touch. State must be in React.
 4. **Missing aria-expanded, aria-haspopup, role="menu", tabIndex management**: screen-reader users get nothing.
 5. **Not skipping pointer events on pointerType === "touch"**: tapping a trigger opens and fires the click toggle, immediately closing again.
-6. **Forgetting outside-click and Escape close**: menus stick open.
+6. **Nexustting outside-click and Escape close**: menus stick open.
 7. **Animating display directly**: toggle display and animate opacity plus transform instead.
 
 ## Verifying in a Real Browser
