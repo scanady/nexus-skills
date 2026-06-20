@@ -137,7 +137,7 @@ Before interview, gather facts in parallel where possible:
 Collect findings -> Use them to inform interview questions
 ```
 
-This ensures the Feature Forge interview starts with concrete technical context rather than assumptions.
+This ensures the Feature Nexus interview starts with concrete technical context rather than assumptions.
 
 ---
 

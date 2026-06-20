@@ -57,7 +57,6 @@ python scripts/scan_skills.py <skills-directory> --output /tmp/skill-scan-result
 
 The scanner extracts per-skill:
 - Frontmatter fields (name, description, license, metadata, compatibility, allowed-tools)
-- Taxonomy alignment signals when a governing taxonomy is available: top-level domain, category prefix, metadata domain, and stale prefix usage
 - Directory structure (scripts/, references/, agents/, assets/)
 - Script languages detected (file extensions + shebang lines)
 - External service indicators (URLs, API references, fetch calls in scripts and SKILL.md)
@@ -79,7 +78,6 @@ Process skills in batches of 5–10. For each skill in the batch:
    - Score **Security Risk**: assign six sub-scores (1–5 each), derive composite rating (low/medium/high); load `references/security-patterns.md` for pattern examples
    - Score **Executability**: assign four sub-scores (completeness, determinism, consistency, usability), compute average for `score`
    - Score **Invocability** (1–5) — check both trigger reliability and false-positive risk
-  - Score **Taxonomy Alignment** (pass/warn/fail) — compare skill name, folder, metadata domain, and related-skill references against the governing taxonomy
    - Classify **Token Efficiency**: use `estimated_tokens` from scan data to assign `complexity_class` (compact/detailed/comprehensive)
    - Flag **Over-Specification Risk** (true/false)
    - Classify **Skill Pattern** (A/B/C) based on presence of `scripts/` directory and MCP/subagent references
@@ -93,7 +91,6 @@ Process skills in batches of 5–10. For each skill in the batch:
 | **Security Risk** | Qualitative (low/medium/high) + 6 sub-scores (1–5 each) | Are there security concerns, external calls, or credential handling? |
 | **Executability** | Qualitative (1–5) + 4 sub-scores (completeness, determinism, consistency, usability) | How completely and precisely can an agent follow this skill's workflow? |
 | **Invocability** | Qualitative (1–5) | Will the skill trigger reliably and only when appropriate? |
-| **Taxonomy Alignment** | Pass / warn / fail | Does the skill use a valid taxonomy category prefix, matching folder/name fields, current related-skill names, and aligned metadata domain? |
 | **Token Efficiency** | Class (compact / detailed / comprehensive) | What is the skill's token footprint? |
 | **Over-Specification Risk** | Binary flag | Does the skill hardcode instance-specific values that reduce reusability? |
 | **Skill Pattern** | Class (A / B / C) | Is the skill instructions-only, script-backed, or MCP-orchestrated? |
@@ -127,7 +124,6 @@ After the catalog JSON and HTML are written, produce a brief markdown summary fo
 
 - Total skills scanned
 - Score distribution (usage value, executability, invocability)
-- Taxonomy alignment summary: invalid prefixes, stale prefixes, metadata mismatches, and hero-name exceptions
 - High-risk skills (security risk = high)
 - Skills with external dependencies
 - Top-rated skills by usage value
@@ -150,7 +146,6 @@ After the catalog JSON and HTML are written, produce a brief markdown summary fo
 ### MUST DO
 - Run the scanner script as the first step for any collection of 10+ skills
 - Score every dimension for every skill — no partial evaluations
-- Load a user-supplied taxonomy when present; otherwise use `references/agent-taxonomy.md` and record taxonomy alignment for every cataloged skill
 - Include a direct link or relative path to each skill's SKILL.md in the catalog
 - Use the JSON schema from `references/json-schema.md` for the output file
 - Detect script languages by examining file extensions AND shebang lines in scripts/
@@ -164,7 +159,6 @@ After the catalog JSON and HTML are written, produce a brief markdown summary fo
 - Skip license detection — check frontmatter `license` field, then LICENSE.txt/LICENSE.md in the skill directory
 - Fabricate evaluation scores without reading at least the frontmatter and skill description
 - Produce output in any format other than the defined JSON schema
-- Treat a three-part name as taxonomy-compliant without checking the first two segments against the taxonomy
 - Modify any skill files during evaluation — this is a read-only operation
 
 ## Output Template

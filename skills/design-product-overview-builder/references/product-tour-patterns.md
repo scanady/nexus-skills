@@ -17,7 +17,7 @@ Interactive patterns for showcasing platform capabilities — tabbed explorers, 
 
 ## Tabbed Platform Tour
 
-The most effective pattern for feature-rich products (5+ capabilities). Used by SpikeForge's "Everything you need" section, Stripe's product pages, and Notion's feature explorer.
+The most effective pattern for feature-rich products (5+ capabilities). Used by SpikeNexus's "Everything you need" section, Stripe's product pages, and Notion's feature explorer.
 
 ### When to Use
 - Product has 5–10 distinct features/capabilities

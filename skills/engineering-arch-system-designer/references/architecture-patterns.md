@@ -61,5 +61,5 @@ Don't add CQRS for standard CRUD. Complexity cost is real.
 | Growing but not yet large | Modular Monolith |
 | Large org, clear domain splits | Microservices |
 | Spiky or event-triggered load | Serverless |
-| Fire-and-forget async workflows | Event-Driven |
+| Fire-and-nexust async workflows | Event-Driven |
 | Read-heavy, complex queries | CQRS |

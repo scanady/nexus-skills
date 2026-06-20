@@ -1,0 +1,68 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    name: release-please
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+      version: ${{ steps.release.outputs.version }}
+    steps:
+      - name: Run release-please
+        id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  build-and-attach:
+    name: Build artifacts and attach to release
+    needs: release-please
+    if: needs.release-please.outputs.release_created == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.release-please.outputs.tag_name }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Build everything
+        run: |
+          node bin/validate-skills.js
+          python bin/scan-skills.py skills -o skill-catalog-scan.json
+          python bin/rebuild-catalog.py
+          node bin/build-plugins.js
+          node bin/build-site.js
+
+      - name: Attach pack zips to release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          shopt -s nullglob
+          for zip in dist/site/plugins/*.zip; do
+            gh release upload "${{ needs.release-please.outputs.tag_name }}" "$zip" --clobber
+          done
+          gh release upload "${{ needs.release-please.outputs.tag_name }}" skill-catalog.json --clobber
+          gh release upload "${{ needs.release-please.outputs.tag_name }}" .claude-plugin/marketplace.json --clobber

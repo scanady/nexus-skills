@@ -1,3 +1,3 @@
 ---
-agent: forge-brand-element-designer
+agent: nexus-brand-element-designer
 ---

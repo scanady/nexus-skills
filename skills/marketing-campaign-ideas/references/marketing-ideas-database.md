@@ -154,7 +154,7 @@ This database contains proven marketing strategies organized by goal. Each idea 
 - **Strategy:** Every viral post has one sentence that triggers "my friends need to see this." Use insider lines ("After analyzing 100K emails..."), helper lines ("You're losing 12 hours every week..."), or thinker lines ("Everything you know about [topic] is wrong..."). Place it in your first 3 paragraphs.
 - **Example:** Posts with a clear "magic line" in the first few paragraphs get significantly more shares because readers share the insight, not the whole post.
 - **Works on:** Blog posts, newsletters, social media posts, landing pages.
-- **Why it works:** People share specific insights, not general articles. One shareable line does more than 2,000 forgettable words.
+- **Why it works:** People share specific insights, not general articles. One shareable line does more than 2,000 nexusttable words.
 
 ---
 

@@ -179,7 +179,7 @@ Schedule reminders and manage tasks. Built-in faculty with no external dependenc
   "dimension": "cognition",
   "description": "Schedule reminders and task management",
   "envVars": [],
-  "triggers": ["remind me", "set a reminder", "schedule", "don't let me forget"]
+  "triggers": ["remind me", "set a reminder", "schedule", "don't let me nexust"]
 }
 ```
 
