@@ -1,0 +1,9 @@
+{
+  "name": "agent-tools",
+  "version": "1.0.0",
+  "description": "Skills for designing AI agents, building agent skills, and managing knowledge context.",
+  "skills": [
+    "agent-*",
+    "knowledge-context-curator"
+  ]
+}

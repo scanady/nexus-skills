@@ -1,0 +1,10 @@
+{
+  "name": "strategy",
+  "version": "1.0.0",
+  "description": "Skills for strategic decision-making, market research, competitive intelligence, executive presentations, and critical reasoning.",
+  "skills": [
+    "strategy-*",
+    "research-analyst",
+    "thinking-get-unstuck"
+  ]
+}

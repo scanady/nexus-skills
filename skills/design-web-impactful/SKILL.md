@@ -10,7 +10,7 @@ metadata:
   role: principal-marketing-frontend-designer
   scope: implementation
   output-format: code
-  related-skills: frontend-design, forge-brand-design-system, vercel-react-best-practices, forge-brand-strategist-conversion
+  related-skills: frontend-design, nexus-brand-design-system, vercel-react-best-practices, nexus-brand-strategist-conversion
   examples: |
     - "the homepage feels flat, redesign it"
     - "this site looks AI-generated, fix it"
@@ -43,8 +43,8 @@ Choose before any visual decision. Mode changes the ambition ceiling, not the un
 |-----------|-----|
 | Marketing, landing, or brand surface where design drives conversion or impression | **this skill** |
 | General UI, components, dashboards, internal tools | `frontend-design` |
-| Brand tokens needed before building | `forge-brand-design-system` first |
-| Conversion strategy and CTA hierarchy | `forge-brand-strategist-conversion` first |
+| Brand tokens needed before building | `nexus-brand-design-system` first |
+| Conversion strategy and CTA hierarchy | `nexus-brand-strategist-conversion` first |
 | React/Next.js performance review of resulting code | `vercel-react-best-practices` after |
 
 Do not use this skill for dashboards, data-dense consoles, documentation sites, or component libraries. Quiet design serves those better.

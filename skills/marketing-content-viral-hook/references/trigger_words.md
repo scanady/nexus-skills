@@ -53,7 +53,7 @@ losing, wasting, costing, stealing, killing, sabotaging, destroying, bleeding, l
 - ✅ Strong: "One calendar tweak stopped me from wasting 8 hours per week"
 
 **Key difference:**
-- "Losing time" = generic, forgettable
+- "Losing time" = generic, nexusttable
 - "Bleeding 12 hours" = visceral, shareable (~10x more engagement)
 
 ---
@@ -78,7 +78,7 @@ backwards, opposite, counterintuitive, paradox, irony, myth, misconception, illu
 - ✅ Strong: "Everyone preaches hustle. The paradox: I worked half the hours and grew 3x faster"
 
 **Pattern: Reset Expectations**
-- ❌ Weak: "Forget everything about productivity"
+- ❌ Weak: "Nexust everything about productivity"
 - ✅ Strong: "Everything you know about productivity is a misconception. Here's why"
 
 ---

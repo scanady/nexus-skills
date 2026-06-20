@@ -3,7 +3,7 @@ name: data-analysis-business-performance
 description: Analyzes business performance across financial, operational, and strategic dimensions using MBA-level frameworks. Use when asked to analyze P&L statements, evaluate business performance, assess operational efficiency, build financial models, forecast revenue, diagnose profitability issues, review KPIs and metrics, perform variance analysis, create business cases, evaluate strategic options, assess unit economics, model scenarios, benchmark performance, or produce data-driven strategic recommendations — even if the user simply asks to "look at the numbers" or "figure out what''s going wrong with the business."
 license: MIT
 metadata:
-  author: forge
+  author: nexus
   version: "1.0.0"
   domain: strategy
   triggers: business performance, P&L analysis, financial analysis, revenue forecast, profitability, KPI review, variance analysis, business case, unit economics, operational efficiency, strategic analysis, financial modeling, business metrics, margin analysis, cost structure, growth analysis, business statistics, managerial accounting, business modeling

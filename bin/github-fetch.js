@@ -2,16 +2,27 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path');
 
+function getEnvValue(...names) {
+  for (const name of names) {
+    const value = process.env[name];
+    if (value && value.trim()) {
+      return value.trim();
+    }
+  }
+
+  return '';
+}
+
 const REPO_OWNER = process.env.NEXUS_AGENTS_REPO_OWNER || 'scanady';
-const REPO_NAME = process.env.NEXUS_AGENTS_REPO_NAME || 'nexus-agents';
-const REPO_REF = process.env.NEXUS_AGENTS_REPO_REF || 'main';
+const REPO_NAME = process.env.NEXUS_AGENTS_REPO_NAME || 'nexus-nexus-skills';
+const REPO_REF = getEnvValue('NYLD_NEXUS_SKILLS_GITHUB_REF', 'NEXUS_AGENTS_REPO_REF') || 'main';
 const SKILLS_PATH = 'skills';
 
 function httpsGet(url) {
   return new Promise((resolve, reject) => {
     https.get(url, {
       headers: {
-        'User-Agent': 'nexus-agents-cli',
+        'User-Agent': 'nyld-nexus-skills-cli',
         'Accept': 'application/vnd.github+json'
       }
     }, (response) => {

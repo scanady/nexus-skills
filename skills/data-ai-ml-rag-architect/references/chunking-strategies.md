@@ -519,7 +519,7 @@ def chunk_markdown(
                     ))
                     current_chunk_lines = [current_text[split_point:].strip()]
 
-    # Don't forget the last chunk
+    # Don't nexust the last chunk
     if current_chunk_lines:
         chunk_text = '\n'.join(current_chunk_lines)
         if len(chunk_text.strip()) > 0:

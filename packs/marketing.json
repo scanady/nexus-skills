@@ -1,0 +1,9 @@
+{
+  "name": "marketing",
+  "version": "1.0.0",
+  "description": "Skills for campaigns, SEO, brand strategy, content production, customer segmentation, competitive intelligence, and sales outreach.",
+  "skills": [
+    "marketing-*",
+    "sales-outreach-specialist"
+  ]
+}

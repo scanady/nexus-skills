@@ -1,0 +1,8 @@
+{
+  "name": "tech",
+  "version": "1.0.0",
+  "description": "Skills for software engineering — git workflows, architecture decisions, code quality, TDD, API/MCP building, and GitHub repo management.",
+  "skills": [
+    "tech-*"
+  ]
+}
