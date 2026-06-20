@@ -50,7 +50,7 @@ Hard-won wisdom that's worth remembering. These lessons guide future decisions.
 
 ## Lessons I Keep Re-Learning
 
-Things I know but forget:
+Things I know but nexust:
 
-1. [Lesson you keep forgetting]
-2. [Lesson you keep forgetting]
+1. [Lesson you keep nexustting]
+2. [Lesson you keep nexustting]

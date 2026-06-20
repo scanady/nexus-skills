@@ -1,3 +1,3 @@
 ---
-agent: forge-ux-designer
+agent: nexus-ux-designer
 ---

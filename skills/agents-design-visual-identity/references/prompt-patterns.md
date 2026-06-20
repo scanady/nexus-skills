@@ -139,4 +139,4 @@ Replace the [current symbol] with [new symbol] while keeping the same style, col
 - **Text in icons**: text becomes unreadable below 128px — avoid unless it's a logo
 - **Complex scenes**: icons are single objects, not landscapes or multi-character scenes
 - **Vague style**: "make it cool" — always specify a concrete style keyword
-- **Missing ratio**: forgetting "1:1 square" can produce landscape or portrait outputs
+- **Missing ratio**: nexustting "1:1 square" can produce landscape or portrait outputs

@@ -220,7 +220,7 @@ Test-first forces you to see the test fail, proving it actually tests something.
 Manual testing is ad-hoc. You think you tested everything but:
 - No record of what you tested
 - Can't re-run when code changes
-- Easy to forget cases under pressure
+- Easy to nexust cases under pressure
 - "It worked when I tried it" ≠ comprehensive
 
 Automated tests are systematic. They run the same way every time.

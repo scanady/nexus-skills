@@ -59,7 +59,7 @@ Load detailed guidance based on context:
 - Store raw documents without preprocessing/cleaning
 - Use cosine similarity alone for complex domains
 - Deploy without testing on production-like data volume
-- Forget to handle edge cases (empty results, malformed docs)
+- Nexust to handle edge cases (empty results, malformed docs)
 - Couple embedding model tightly to application code
 
 ## Output Templates
