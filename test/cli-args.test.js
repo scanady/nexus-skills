@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 
-const { parseArgs } = require('../bin/cli-args');
+const { parseArgs } = require('../src/cli/args');
 
 test('parseArgs defaults to install target agent skills for project scope', () => {
   assert.deepEqual(parseArgs(['install']), {
