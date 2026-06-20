@@ -235,8 +235,7 @@
       "skills": [
         "./skills/tech-leader-exec-briefing",
         "./skills/tech-leader-roadmap-narrator",
-        "./skills/tech-leader-vision-builder",
-        "./skills/tech-skill-to-gpt-converter"
+        "./skills/tech-leader-vision-builder"
       ]
     },
     {
@@ -375,8 +374,7 @@
         "./skills/strategy-planning-startup",
         "./skills/tech-leader-exec-briefing",
         "./skills/tech-leader-roadmap-narrator",
-        "./skills/tech-leader-vision-builder",
-        "./skills/tech-skill-to-gpt-converter"
+        "./skills/tech-leader-vision-builder"
       ]
     }
   ]
