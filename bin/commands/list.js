@@ -35,8 +35,8 @@ async function listSkills(options = {}) {
       console.log(`    ${description}\n`);
     }
 
-    console.log('Install all:     npx nyld-nexus-skills install');
-    console.log('Install one:     npx nyld-nexus-skills install --skill ops-process-sop-creator\n');
+    console.log('Install all:     npx nexus-agents install');
+    console.log('Install one:     npx nexus-agents install --skill ops-process-sop-creator\n');
   });
 }
 

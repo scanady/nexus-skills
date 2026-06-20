@@ -9,10 +9,10 @@ function showHelp() {
     .join('\n');
 
   console.log(`
-nyld-nexus-skills - Agentic skills for development teams
+nexus-agents - Agentic skills for development teams
 
 Usage:
-  npx nyld-nexus-skills <command> [options]
+  npx nexus-agents <command> [options]
 
 Commands:
   install              Install skills
@@ -44,18 +44,18 @@ Audit options (audit-overlap):
   --output, -o <dir>   Output directory (default: output/)
 
 Examples:
-  npx nyld-nexus-skills install
-  npx nyld-nexus-skills install --skill ops-process-sop-creator
-  npx nyld-nexus-skills install -a agent-skills -a claude-code -a github-copilot -a codex
-  npx nyld-nexus-skills install -a github-copilot --skill content-copy-humanizer -p
-  npx nyld-nexus-skills install --upgrade
-  npx nyld-nexus-skills install --upgrade --overwrite
-  npx nyld-nexus-skills install --pack marketing
-  npx nyld-nexus-skills install --pack tech --pack data
-  npx nyld-nexus-skills install --source-url https://github.com/scanady/nexus-skills.git --source-ref main
-  npx nyld-nexus-skills list
-  npx nyld-nexus-skills list --names
-  npx nyld-nexus-skills list --count
+  npx nexus-agents install
+  npx nexus-agents install --skill ops-process-sop-creator
+  npx nexus-agents install -a agent-skills -a claude-code -a github-copilot -a codex
+  npx nexus-agents install -a github-copilot --skill content-copy-humanizer -p
+  npx nexus-agents install --upgrade
+  npx nexus-agents install --upgrade --overwrite
+  npx nexus-agents install --pack marketing
+  npx nexus-agents install --pack tech --pack data
+  npx nexus-agents install --source-url https://github.com/scanady/nexus-skills.git --source-ref main
+  npx nexus-agents list
+  npx nexus-agents list --names
+  npx nexus-agents list --count
   node bin/cli.js audit-overlap
   node bin/cli.js audit-overlap --threshold 0.30 --top 25
 `);

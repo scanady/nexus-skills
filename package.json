@@ -1,9 +1,8 @@
 {
-  "name": "nyld-nexus-skills",
+  "name": "nexus-agents",
   "version": "1.0.1",
   "description": "Agentic skills, prompts, agents, and instructions for AI platforms.",
   "bin": {
-    "nyld-nexus-skills": "bin/cli.js",
     "nexus-agents": "bin/cli.js"
   },
   "scripts": {

@@ -1,7 +1,7 @@
 {
-  "name": "nyld-nexus-skills",
+  "name": "nexus-agents",
   "owner": {
-    "name": "nyld-nexus-skills"
+    "name": "nexus-agents"
   },
   "metadata": {
     "description": "Agentic skills, prompts, agents, and instructions for AI development platforms.",
@@ -241,7 +241,7 @@
     },
     {
       "name": "nexus-all",
-      "description": "All nyld-nexus skills (umbrella plugin).",
+      "description": "All nexus skills (umbrella plugin).",
       "source": "./",
       "strict": false,
       "version": "1.0.1",

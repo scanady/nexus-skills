@@ -87,8 +87,8 @@ async function withClonedRepo(sourceConfig, work) {
 
 function resolveSourceConfig(options = {}) {
   return {
-    repoUrl: options.sourceUrl || getEnvValue('NYLD_NEXUS_SKILLS_SOURCE_URL', 'NEXUS_AGENTS_REPO_URL'),
-    sourceRef: options.sourceRef || getEnvValue('NYLD_NEXUS_SKILLS_SOURCE_REF', 'NEXUS_AGENTS_REPO_REF')
+    repoUrl: options.sourceUrl || getEnvValue('NEXUS_AGENTS_REPO_URL'),
+    sourceRef: options.sourceRef || getEnvValue('NEXUS_AGENTS_REPO_REF')
   };
 }
 

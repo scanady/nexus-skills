@@ -4,11 +4,11 @@ const assert = require('node:assert/strict');
 const { resolveSourceConfig } = require('../bin/skill-service');
 
 test('resolveSourceConfig prefers explicit source options over environment variables', () => {
-  const previousUrl = process.env.NYLD_NEXUS_SKILLS_SOURCE_URL;
-  const previousRef = process.env.NYLD_NEXUS_SKILLS_SOURCE_REF;
+  const previousUrl = process.env.NEXUS_AGENTS_REPO_URL;
+  const previousRef = process.env.NEXUS_AGENTS_REPO_REF;
 
-  process.env.NYLD_NEXUS_SKILLS_SOURCE_URL = 'https://example.com/env.git';
-  process.env.NYLD_NEXUS_SKILLS_SOURCE_REF = 'env-ref';
+  process.env.NEXUS_AGENTS_REPO_URL = 'https://example.com/env.git';
+  process.env.NEXUS_AGENTS_REPO_REF = 'env-ref';
 
   try {
     assert.deepEqual(resolveSourceConfig({
@@ -20,15 +20,15 @@ test('resolveSourceConfig prefers explicit source options over environment varia
     });
   } finally {
     if (previousUrl === undefined) {
-      delete process.env.NYLD_NEXUS_SKILLS_SOURCE_URL;
+      delete process.env.NEXUS_AGENTS_REPO_URL;
     } else {
-      process.env.NYLD_NEXUS_SKILLS_SOURCE_URL = previousUrl;
+      process.env.NEXUS_AGENTS_REPO_URL = previousUrl;
     }
 
     if (previousRef === undefined) {
-      delete process.env.NYLD_NEXUS_SKILLS_SOURCE_REF;
+      delete process.env.NEXUS_AGENTS_REPO_REF;
     } else {
-      process.env.NYLD_NEXUS_SKILLS_SOURCE_REF = previousRef;
+      process.env.NEXUS_AGENTS_REPO_REF = previousRef;
     }
   }
 });

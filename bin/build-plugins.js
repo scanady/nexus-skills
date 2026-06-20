@@ -29,7 +29,7 @@ const CLAUDE_PLUGIN_DIR = path.join(ROOT, '.claude-plugin');
 const DIST_DIR = path.join(ROOT, 'dist', 'plugins');
 
 const PLUGIN_PREFIX = 'nexus';
-const MARKETPLACE_NAME = 'nyld-nexus-skills';
+const MARKETPLACE_NAME = 'nexus-agents';
 const MARKETPLACE_DESCRIPTION = 'Agentic skills, prompts, agents, and instructions for AI development platforms.';
 const KEYWORDS = ['skills', 'prompts', 'agents', 'instructions', 'ai'];
 
@@ -117,7 +117,7 @@ function buildInRepoMarketplace(packs, availableSkills, version) {
   // Umbrella plugin with every skill
   plugins.push({
     name: `${PLUGIN_PREFIX}-all`,
-    description: 'All nyld-nexus skills (umbrella plugin).',
+    description: 'All nexus skills (umbrella plugin).',
     source: './',
     strict: false,
     version,
@@ -147,7 +147,7 @@ function buildUmbrellaPluginJson(availableSkills, version) {
     plugins: [
       {
         name: `${PLUGIN_PREFIX}-all`,
-        description: 'All nyld-nexus skills (umbrella plugin).',
+        description: 'All nexus skills (umbrella plugin).',
         source: './',
         strict: false,
         version,
