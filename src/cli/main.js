@@ -1,8 +1,7 @@
-#!/usr/bin/env node
-
-const { parseArgs } = require('./cli-args');
+const { parseArgs } = require('./args');
 const { installSkills } = require('./commands/install');
 const { listSkills } = require('./commands/list');
+const { runAuditOverlap } = require('./commands/audit-overlap');
 const { showHelp } = require('./help');
 
 async function main(argv = process.argv.slice(2)) {
@@ -16,7 +15,7 @@ async function main(argv = process.argv.slice(2)) {
       await listSkills(options);
       break;
     case 'audit-overlap':
-      require('./skill-overlap-report').run(argv.slice(1));
+      runAuditOverlap(argv.slice(1));
       break;
     case 'help':
     case '--help':
@@ -31,13 +30,6 @@ async function main(argv = process.argv.slice(2)) {
         showHelp();
       }
   }
-}
-
-if (require.main === module) {
-  main().catch(error => {
-    console.error(`\n❌ ${error.message}\n`);
-    process.exit(1);
-  });
 }
 
 module.exports = { main };

@@ -2,7 +2,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const PROJECT_ROOT = path.join(__dirname, '..');
+const PROJECT_ROOT = path.join(__dirname, '..', '..');
 const SKILLS_DIR = path.join(PROJECT_ROOT, 'skills');
 const OUTPUT_DIR = path.join(PROJECT_ROOT, 'output');
 

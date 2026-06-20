@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 
-const { resolveSourceConfig } = require('../bin/skill-service');
+const { resolveSourceConfig } = require('../src/sources/skill-source');
 
 test('resolveSourceConfig prefers explicit source options over environment variables', () => {
   const previousUrl = process.env.NEXUS_AGENTS_REPO_URL;

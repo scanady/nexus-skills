@@ -1,4 +1,4 @@
-const { AGENTS, getSupportedAgents } = require('./skills-core');
+const { AGENTS, getSupportedAgents } = require('../core/skills');
 
 function showHelp() {
   const supportedAgents = getSupportedAgents()
@@ -56,8 +56,8 @@ Examples:
   npx nexus-agents list
   npx nexus-agents list --names
   npx nexus-agents list --count
-  node bin/cli.js audit-overlap
-  node bin/cli.js audit-overlap --threshold 0.30 --top 25
+  node bin/nexus-agents.js audit-overlap
+  node bin/nexus-agents.js audit-overlap --threshold 0.30 --top 25
 `);
 }
 

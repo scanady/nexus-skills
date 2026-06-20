@@ -3,19 +3,21 @@
   "version": "1.0.1",
   "description": "Agentic skills, prompts, agents, and instructions for AI platforms.",
   "bin": {
-    "nexus-agents": "bin/cli.js"
+    "nexus-agents": "bin/nexus-agents.js"
   },
   "scripts": {
     "test": "node --test",
-    "validate": "node bin/validate-skills.js",
-    "scan": "python bin/scan-skills.py skills --output skill-catalog-scan.json",
-    "catalog": "python bin/rebuild-catalog.py",
-    "build:plugins": "node bin/build-plugins.js",
-    "build:site": "node bin/build-site.js",
+    "validate": "node scripts/validation/validate-skills.js",
+    "scan": "python scripts/catalog/scan-skills.py skills --output skill-catalog-scan.json",
+    "catalog": "python scripts/catalog/rebuild-catalog.py",
+    "build:plugins": "node scripts/build/build-plugins.js",
+    "build:site": "node scripts/build/build-site.js",
     "build": "npm run validate && npm run scan && npm run catalog && npm run build:plugins && npm run build:site"
   },
   "files": [
     "bin/",
+    "scripts/",
+    "src/",
     "README.md",
     "LICENSE.md"
   ],

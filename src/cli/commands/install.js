@@ -3,9 +3,9 @@ const path = require('path');
 const {
   getSupportedAgents,
   getTargetGroups
-} = require('../skills-core');
-const { withSkillSource } = require('../skill-service');
-const { resolvePackSkills } = require('../packs');
+} = require('../../core/skills');
+const { withSkillSource } = require('../../sources/skill-source');
+const { resolvePackSkills } = require('../../core/packs');
 const { listSkills } = require('./list');
 
 function confirm(question) {

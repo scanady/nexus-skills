@@ -4,7 +4,7 @@ const assert = require('node:assert/strict');
 const {
   collectExistingSkills,
   resolveSkillsToInstall
-} = require('../bin/commands/install');
+} = require('../src/cli/commands/install');
 
 test('resolveSkillsToInstall installs every available skill when none are selected', () => {
   const result = resolveSkillsToInstall([], ['alpha', 'beta']);

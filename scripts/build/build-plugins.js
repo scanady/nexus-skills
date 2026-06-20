@@ -16,13 +16,13 @@
  * source for the per-pack zips published to GitHub Pages.
  *
  * Usage:
- *   node bin/build-plugins.js
+ *   node scripts/build/build-plugins.js
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.join(__dirname, '..');
+const ROOT = path.join(__dirname, '..', '..');
 const SKILLS_DIR = path.join(ROOT, 'skills');
 const PACKS_DIR = path.join(ROOT, 'packs');
 const CLAUDE_PLUGIN_DIR = path.join(ROOT, '.claude-plugin');
