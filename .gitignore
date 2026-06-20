@@ -1,7 +1,8 @@
 # Other
 /.github/skills/
-/scratchpad/
 /skills-sandbox/
+/skills-other/
+/scratchpad/
 /output/
 /dist/
 skill-catalog-scan.json
