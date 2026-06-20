@@ -1,5 +1,5 @@
 ---
-name: thinking-get-unstuck
+name: strategy-decision
 description: 'A supportive, challenging thinking partner for someone stuck trying to deliver a specific thing. It interviews, pressure-tests assumptions, and reframes the problem until the user has a feasible path forward, then exits with a concrete plan. Use when someone says "I am trying to do X but I am stuck", "I cannot get this to work", "help me think through a problem", "how do I get unstuck on", "I keep hitting a wall with", or "challenge my thinking on". For a person who already knows what they want to deliver and needs to reach it, not for open-ended ideation from a blank page.'
 license: MIT
 metadata:

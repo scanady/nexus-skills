@@ -80,7 +80,7 @@ function buildIndexHtml(manifest, version) {
           <td><code>${p.pluginName}</code></td>
           <td>${p.skills.length}</td>
           <td><a href="plugins/${p.name}.zip" download>${p.name}.zip</a></td>
-          <td><code>nyld-nexus-skills install --pack ${p.name}</code></td>
+          <td><code>nexus-agents install --pack ${p.name}</code></td>
         </tr>`).join('');
 
   return `<!DOCTYPE html>
@@ -88,7 +88,7 @@ function buildIndexHtml(manifest, version) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>nyld-nexus-skills</title>
+<title>nexus-skills</title>
 <style>
   :root { --bg:#0f1117; --surface:#1a1d27; --surface2:#242736; --border:#343848;
           --text:#e2e4f0; --muted:#8b90a8; --accent:#6c72f7; }
@@ -117,7 +117,7 @@ function buildIndexHtml(manifest, version) {
 </head>
 <body>
 <div class="wrap">
-  <h1>nyld-<span>nexus</span>-skills</h1>
+  <h1><span>nexus</span>-skills</h1>
   <p class="tag">Agentic skills, prompts, agents, and instructions for AI development platforms — v${version}</p>
 
   <div class="links">
@@ -128,15 +128,15 @@ function buildIndexHtml(manifest, version) {
   </div>
 
   <h2>Install via CLI</h2>
-  <pre>npm exec --yes --package=git+https://git.nylcloud.com/Direct/nyld-nexus-skills.git#main -- nyld-nexus-skills install</pre>
+  <pre>npm exec --yes --package=git+https://github.com/scanady/nexus-skills.git#main -- nexus-agents install</pre>
 
   <h2>Install a specific pack</h2>
-  <pre>nyld-nexus-skills install --pack marketing
-nyld-nexus-skills install --pack tech --pack data</pre>
+  <pre>nexus-agents install --pack marketing
+nexus-agents install --pack tech --pack data</pre>
 
   <h2>Install as a Claude plugin</h2>
   <p>Add this repo as a Claude Code marketplace, then install any pack plugin:</p>
-  <pre>/plugin marketplace add https://git.nylcloud.com/Direct/nyld-nexus-skills.git
+  <pre>/plugin marketplace add https://github.com/scanady/nexus-skills.git
 /plugin install nexus-marketing</pre>
 
   <h2>Download a pack bundle</h2>
