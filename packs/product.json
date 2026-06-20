@@ -1,0 +1,8 @@
+{
+  "name": "product",
+  "version": "1.0.0",
+  "description": "Skills for product specification, PRD generation, brainstorming, reverse engineering, and OKR strategy.",
+  "skills": [
+    "product-*"
+  ]
+}

@@ -213,13 +213,13 @@ This document contains 19 proven hook patterns with templates and examples. Use 
 **Psychology:** "Clean slate" thinking. Permission to start fresh.
 
 **Template:**
-- "Forget everything you know about [topic]"
-- "Forget everything you know on [topic]. I'll teach you how to [outcome] in [number] steps"
+- "Nexust everything you know about [topic]"
+- "Nexust everything you know on [topic]. I'll teach you how to [outcome] in [number] steps"
 - "Ignore all the advice about [topic]. Do this instead"
 
 **Examples:**
-- "Forget everything you know on SaaS. I'll teach you how to become profitable in 10 steps."
-- "Forget everything you know about cold outreach."
+- "Nexust everything you know on SaaS. I'll teach you how to become profitable in 10 steps."
+- "Nexust everything you know about cold outreach."
 - "Ignore all the advice about work-life balance. Do this instead."
 
 **Best for:** Disruptive content, new frameworks, paradigm shifts, bold statements

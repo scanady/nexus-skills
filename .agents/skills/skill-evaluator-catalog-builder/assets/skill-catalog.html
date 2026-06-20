@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forge Agents — Skill Catalog</title>
+<title>Nexus Agents — Skill Catalog</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -275,6 +275,7 @@
   .tag.lang-javascript { background: rgba(234,179,8,0.08); color: #fbbf24; border-color: rgba(234,179,8,0.2); }
   .tag.ext { background: rgba(249,115,22,0.08); color: #fb923c; border-color: rgba(249,115,22,0.2); }
   .tag.lic { background: rgba(34,197,94,0.08); color: #4ade80; border-color: rgba(34,197,94,0.2); }
+  .tag.pack { background: rgba(6,182,212,0.08); color: #22d3ee; border-color: rgba(6,182,212,0.2); }
 
   /* ── CAPABILITIES ── */
   .capabilities {
@@ -458,7 +459,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <div class="header-logo">forge<span>agents</span> / skills</div>
+    <div class="header-logo">nexus<span>agents</span> / skills</div>
     <div class="header-meta" id="headerMeta"></div>
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark mode">
       <span class="theme-icon" id="themeIcon">🌙</span>
@@ -472,14 +473,8 @@
 
   <div class="controls">
     <input class="search-box" type="search" id="searchBox" placeholder="Search skills by name, capability, or keyword…" />
-    <select class="filter-select" id="riskFilter">
-      <option value="">All Risk Levels</option>
-      <option value="low">Low Risk</option>
-      <option value="medium">Medium Risk</option>
-      <option value="high">High Risk</option>
-    </select>
-    <select class="filter-select" id="domainFilter">
-      <option value="">All Domains</option>
+    <select class="filter-select" id="packFilter">
+      <option value="">All Packs</option>
     </select>
     <select class="filter-select" id="categoryFilter">
       <option value="">All Categories</option>
@@ -488,7 +483,6 @@
       <option value="name">Sort: Name</option>
       <option value="usage">Sort: Usage Value</option>
       <option value="exec">Sort: Executability</option>
-      <option value="tokens">Sort: Token Size</option>
     </select>
     <div class="view-toggle">
       <button class="view-btn active" id="viewGridBtn" onclick="setView('grid')" title="Grid view">⊞</button>
@@ -653,6 +647,9 @@ function buildCard(skill) {
   if (ev.external_requirements_indicator !== 'self-contained') tags.push('<span class="tag ext">external deps</span>');
   if (ev.license && ev.license !== 'unspecified') tags.push(`<span class="tag lic">${ev.license}</span>`);
   if (st.estimated_tokens) tags.push(`<span class="tag">${st.estimated_tokens} tokens</span>`);
+  if (skill.packs && skill.packs.length > 0) {
+    skill.packs.forEach(p => tags.push(`<span class="tag pack">${p}</span>`));
+  }
 
   // Security findings
   let findingsHtml = '';
@@ -674,7 +671,7 @@ function buildCard(skill) {
   const uniqueId = skill.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
 
   return `
-<div class="skill-card" data-name="${skill.name.toLowerCase()}" data-domain="${domain}" data-category="${category}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}">
+<div class="skill-card" data-name="${skill.name.toLowerCase()}" data-domain="${domain}" data-category="${category}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}" data-pack="${(skill.packs||[]).join(',')}">  
   <div class="card-header">
     <div class="card-icon" style="background:${style.bg};color:${style.color}">${style.icon}</div>
     <div class="card-title-group">
@@ -754,6 +751,7 @@ function buildCard(skill) {
           <span class="detail-key">References</span><span class="detail-val">${st.has_references ? 'yes' : 'no'}</span>
           <span class="detail-key">Sub-Agents</span><span class="detail-val">${st.has_agents ? 'yes' : 'no'}</span>
           <span class="detail-key">License</span><span class="detail-val">${ev.license||'unspecified'}</span>
+          <span class="detail-key">Packs</span><span class="detail-val">${(skill.packs||[]).join(', ')||'none'}</span>
           <span class="detail-key">Source</span><span class="detail-val"><a href="${skill.url}" style="color:var(--accent);text-decoration:none" target="_blank">view on GitHub ↗</a></span>
         </div>
       </div>
@@ -775,7 +773,7 @@ function buildTableRow(skill) {
     : skill.name;
 
   return `
-<tr class="table-row" data-name="${skill.name.toLowerCase()}" data-domain="${domain}" data-category="${category}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}">
+<tr class="table-row" data-name="${skill.name.toLowerCase()}" data-domain="${domain}" data-category="${category}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}" data-pack="${(skill.packs||[]).join(',')}">  
   <td><div class="tbl-name-cell"><span class="tbl-icon" style="background:${style.bg};color:${style.color}">${style.icon}</span><span class="tbl-skill-name">${nameHtml}</span></div></td>
   <td>${formatTaxonomyLabel(domain)}</td>
   <td>${formatTaxonomyLabel(category)}</td>
@@ -810,11 +808,7 @@ function toggleAccordion(btn, id) {
 // ── DASHBOARD ──
 function buildDashboard() {
   const s = CATALOG.summary;
-  const riskDist = s.security_risk_distribution;
   const total = s.total_skills;
-  const lowPct = (riskDist.low / total * 100).toFixed(0);
-  const medPct = (riskDist.medium / total * 100).toFixed(0);
-  const highPct = (riskDist.high / total * 100).toFixed(0);
 
   const topExec = [...CATALOG.skills].sort((a,b) => (b.evaluation.executability?.score||0)-(a.evaluation.executability?.score||0)).slice(0,5);
 
@@ -833,24 +827,6 @@ function buildDashboard() {
       <div class="stat-label">Avg Executability</div>
       <div class="stat-value">${s.avg_executability}</div>
       <div class="stat-sub">out of 5</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Zero High Risk</div>
-      <div class="stat-value" style="color:var(--green)">${riskDist.high}</div>
-      <div class="stat-sub">high-risk skills</div>
-    </div>
-    <div class="stat-card risk-bar-wrap">
-      <div class="stat-label">Security Risk Distribution</div>
-      <div class="risk-bar-track">
-        <div class="risk-bar-seg" style="width:${lowPct}%;background:var(--green)"></div>
-        <div class="risk-bar-seg" style="width:${medPct}%;background:var(--yellow)"></div>
-        <div class="risk-bar-seg" style="width:${highPct}%;background:var(--red)"></div>
-      </div>
-      <div class="risk-bar-labels">
-        <span class="risk-bar-label low">Low (${riskDist.low})</span>
-        <span class="risk-bar-label med">Medium (${riskDist.medium})</span>
-        <span class="risk-bar-label high">High (${riskDist.high})</span>
-      </div>
     </div>
   `;
 }
@@ -887,6 +863,13 @@ function buildCategoryFilter(domain='') {
   buildOptions('categoryFilter', getAvailableCategories(domain), 'All Categories');
 }
 
+function buildPackFilter() {
+  const packNames = CATALOG.summary?.packs
+    ? Object.keys(CATALOG.summary.packs).sort()
+    : [...new Set(CATALOG.skills.flatMap(s => s.packs || []))].sort();
+  buildOptions('packFilter', packNames, 'All Packs');
+}
+
 function syncCategoryFilter() {
   const domain = document.getElementById('domainFilter').value;
   const categoryFilter = document.getElementById('categoryFilter');
@@ -910,9 +893,8 @@ function renderCards() {
 // ── FILTER + SORT ──
 function applyFilters() {
   const search = document.getElementById('searchBox').value.toLowerCase();
-  const risk = document.getElementById('riskFilter').value;
-  const domain = document.getElementById('domainFilter').value;
   const category = document.getElementById('categoryFilter').value;
+  const pack = document.getElementById('packFilter').value;
   const sortBy = document.getElementById('sortBy').value;
 
   const compare = (a, b) => {
@@ -933,9 +915,9 @@ function applyFilters() {
     const nameMatch = !search || card.dataset.name.includes(search) || capText.includes(search) ||
       formatTaxonomyLabel(card.dataset.domain).toLowerCase().includes(search) ||
       formatTaxonomyLabel(card.dataset.category).toLowerCase().includes(search);
-    const show = nameMatch && (!risk || card.dataset.risk === risk) &&
-      (!domain || card.dataset.domain === domain) &&
-      (!category || card.dataset.category === category);
+    const show = nameMatch &&
+      (!category || card.dataset.category === category) &&
+      (!pack || (card.dataset.pack||'').split(',').includes(pack));
     card.classList.toggle('hidden', !show);
     if (show) visible++;
   });
@@ -949,9 +931,9 @@ function applyFilters() {
     const nameMatch = !search || row.dataset.name.includes(search) || descText.includes(search) ||
       formatTaxonomyLabel(row.dataset.domain).toLowerCase().includes(search) ||
       formatTaxonomyLabel(row.dataset.category).toLowerCase().includes(search);
-    const show = nameMatch && (!risk || row.dataset.risk === risk) &&
-      (!domain || row.dataset.domain === domain) &&
-      (!category || row.dataset.category === category);
+    const show = nameMatch &&
+      (!category || row.dataset.category === category) &&
+      (!pack || (row.dataset.pack||'').split(',').includes(pack));
     row.classList.toggle('hidden', !show);
   });
 
@@ -988,21 +970,16 @@ document.addEventListener('DOMContentLoaded', function() {
 function bindControls() {
   if (controlsBound) return;
   document.getElementById('searchBox').addEventListener('input', applyFilters);
-  document.getElementById('riskFilter').addEventListener('change', applyFilters);
-  document.getElementById('domainFilter').addEventListener('change', () => {
-    syncCategoryFilter();
-    applyFilters();
-  });
   document.getElementById('categoryFilter').addEventListener('change', applyFilters);
   document.getElementById('sortBy').addEventListener('change', applyFilters);
+  document.getElementById('packFilter').addEventListener('change', applyFilters);
   controlsBound = true;
 }
 
 function resetFilters() {
   document.getElementById('searchBox').value = '';
-  document.getElementById('riskFilter').value = '';
-  document.getElementById('domainFilter').value = '';
   document.getElementById('categoryFilter').value = '';
+  document.getElementById('packFilter').value = '';
   document.getElementById('sortBy').value = 'name';
 }
 
@@ -1057,13 +1034,13 @@ function initializeCatalog(data, sourceLabel='local file') {
   CATALOG = data;
 
   document.getElementById('headerMeta').textContent = `Generated ${new Date(CATALOG.generated_at).toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'})} · v${CATALOG.catalog_version}`;
-  document.getElementById('pageFooter').textContent = `Forge Agents Skill Catalog · ${CATALOG.summary.total_skills} skills · Generated ${CATALOG.generated_at} · Loaded from ${sourceLabel}`;
+  document.getElementById('pageFooter').textContent = `Nexus Agents Skill Catalog · ${CATALOG.summary.total_skills} skills · Generated ${CATALOG.generated_at} · Loaded from ${sourceLabel}`;
   document.getElementById('catalogSource').textContent = `Source: ${sourceLabel}`;
 
   resetFilters();
   buildDashboard();
-  buildDomainFilter();
   buildCategoryFilter();
+  buildPackFilter();
   renderCards();
   renderTable();
   const savedView = localStorage.getItem('catalog-view') || 'grid';

@@ -47,7 +47,7 @@ This document summarizes the key details, interests, and preferences recorded fr
 
 * **Regional Interests:** Familiarity with the **St. Petersburg, FL** area, specifically regarding breweries and restaurants near Jannus Live (e.g., Green Bench Brewing).
 * **Past & Planned Trips:**
-* **Pigeon Forge:** Vacationed from late December 2024 through early January 2025.
+* **Pigeon Nexus:** Vacationed from late December 2024 through early January 2025.
 * **Spain/France:** Conducted a family trip to Barcelona and a Mediterranean cruise to Nice in the summer of 2025.
 * **Vermont:** Attended a wedding in Stowe in September 2025.
 

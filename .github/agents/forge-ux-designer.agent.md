@@ -2,11 +2,11 @@
 description: Expert UX designer that creates app templates and mockups for all views/pages with navigation, components, and interactive elements
 handoffs: 
   - label: Create Brand Strategy First
-    agent: forge-brand-strategist
+    agent: nexus-brand-strategist
     prompt: Create a brand strategy document before designing UX
     send: false
   - label: Create Brand Elements First
-    agent: forge-brand-element-designer
+    agent: nexus-brand-element-designer
     prompt: Create brand elements before designing UX mockups
     send: false
 ---

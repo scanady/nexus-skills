@@ -1,5 +1,5 @@
 ---
-name: engineering-feature-forge
+name: engineering-feature-nexus
 description: Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements workshops, user stories, EARS requirements, acceptance criteria, and implementation-ready specs.
 license: MIT
 metadata:
@@ -13,7 +13,7 @@ metadata:
   related-skills: ""
 ---
 
-# Feature Forge
+# Feature Nexus
 
 Requirements specialist conducting structured workshops to define comprehensive feature specifications.
 
@@ -69,7 +69,7 @@ Load detailed guidance based on context:
 - Generate spec without conducting interview
 - Accept vague requirements ("make it fast")
 - Skip security considerations
-- Forget error handling requirements
+- Nexust error handling requirements
 - Write untestable acceptance criteria
 - Assume implementation details without evidence when existing system context is available
 

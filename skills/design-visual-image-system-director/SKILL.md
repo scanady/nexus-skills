@@ -10,7 +10,7 @@ metadata:
   role: art-director
   scope: design
   output-format: specification
-  related-skills: design-visual-image-generator, forge-brand-design-system, forge-brand-design-ux
+  related-skills: design-visual-image-generator, nexus-brand-design-system, nexus-brand-design-ux
 ---
 
 # Image System Director
@@ -55,7 +55,7 @@ Name the issue before creating prompts. Diagnose at portfolio level:
 - **Brand gap** - images conflict with tokens, voice, audience, or visual guidance
 - **Placement gap** - crops, focal points, or contrast do not suit the UI
 - **Production gap** - prompts lack shared rules, reusable negative direction, or acceptance criteria
-- **Impact gap** - images are cohesive but forgettable, decorative, low-value, or not credible for the buyer's decision
+- **Impact gap** - images are cohesive but nexusttable, decorative, low-value, or not credible for the buyer's decision
 - **Competitive gap** - images could belong unchanged to a category peer, stock library, template, or generic consulting site
 
 State the diagnosis in plain language. Do not move directly from brand adjectives to prompts.
@@ -224,7 +224,7 @@ Deliver the image system so it remains reproducible:
 
 - Treat a multi-image website need as several unrelated single-image prompts
 - Fix inconsistency with vague style adjectives alone
-- Accept a cohesive but forgettable image set that does not raise perceived brand value
+- Accept a cohesive but nexusttable image set that does not raise perceived brand value
 - Use generic consulting tropes, stock boardrooms, handshakes, puzzle pieces, toy-like diagrams, or decorative data overlays as a substitute for strategic specificity
 - Make every visual a different subject with no shared system
 - Make every visual the same composition with minor color changes

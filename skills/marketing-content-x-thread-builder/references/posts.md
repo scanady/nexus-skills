@@ -679,7 +679,7 @@ How to burnout in your SaaS development 101:
 Ignore customer feedback
 Push new updates without testing
 Don't track who is interested in your product
-Forget about your personal life, your startup needs you 24/7
+Nexust about your personal life, your startup needs you 24/7
 Keep adding fancy features and avoiding the work on the core ones
 Skip writing documentation, who needs that anyway?
 Don't delegate, you know everything best right?

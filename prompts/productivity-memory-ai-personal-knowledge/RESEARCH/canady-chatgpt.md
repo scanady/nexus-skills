@@ -109,7 +109,7 @@
 
 ## Team and Initiative Naming
 
-* Proposed and considered names such as **NextTech Forge** for cross-functional innovation teams
+* Proposed and considered names such as **NextTech Nexus** for cross-functional innovation teams
 
 ## Meta Preferences
 

@@ -1,15 +1,16 @@
+# Other
+/scratchpad/
+/output/
+/.github/skills/
+/dist/
+
 # Testing
-skills-sandbox/
-prompts-sandbox/
-.github/skills/
+*-sandbox/
 
 # Modules
+.venv/
 node_modules/
 __pycache__/
-.venv/
-
-# Environment
-.env
 
 # Logs
 *.log
@@ -39,9 +40,3 @@ Thumbs.db
 
 # Playwright
 .playwright-mcp/
-
-# Other
-output/
-
-# Personal knowledge research files
-prompts/ai-personal-knowledge/RESEARCH/

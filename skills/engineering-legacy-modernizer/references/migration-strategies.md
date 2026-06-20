@@ -374,7 +374,7 @@ async def handle_payment_completed(event):
 
 # Monolith is now just orchestration
 async def process_order(order_data):
-    # Fire and forget - services are autonomous
+    # Fire and nexust - services are autonomous
     await event_bus.publish("order.created", order_data)
 ```
 

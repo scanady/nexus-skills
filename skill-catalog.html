@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forge Agents — Skill Catalog</title>
+<title>Nexus Agents — Skill Catalog</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -275,6 +275,7 @@
   .tag.lang-javascript { background: rgba(234,179,8,0.08); color: #fbbf24; border-color: rgba(234,179,8,0.2); }
   .tag.ext { background: rgba(249,115,22,0.08); color: #fb923c; border-color: rgba(249,115,22,0.2); }
   .tag.lic { background: rgba(34,197,94,0.08); color: #4ade80; border-color: rgba(34,197,94,0.2); }
+  .tag.pack { background: rgba(6,182,212,0.08); color: #22d3ee; border-color: rgba(6,182,212,0.2); }
 
   /* ── CAPABILITIES ── */
   .capabilities {
@@ -352,6 +353,123 @@
   /* ── NO RESULTS ── */
   .no-results { text-align: center; padding: 60px 20px; color: var(--text-muted); display: none; }
   .no-results.visible { display: block; }
+
+  /* ── GET STARTED HERO ── */
+  .get-started {
+    background: linear-gradient(135deg, rgba(108,114,247,0.08) 0%, rgba(108,114,247,0.02) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 22px;
+  }
+  .get-started-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .get-started-title {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .get-started-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    flex: 1 1 auto;
+  }
+  .get-started-agent-select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-size: 0.78rem;
+    padding: 5px 9px;
+    cursor: pointer;
+  }
+  .install-block {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    background: #0a0c12;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 0.85rem;
+  }
+  .light .install-block { background: #1a1d2e; }
+  .install-prompt {
+    color: var(--text-dim);
+    padding: 12px 6px 12px 14px;
+    user-select: none;
+    flex-shrink: 0;
+  }
+  .install-cmd-wrap {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .install-cmd {
+    display: block;
+    color: #d4d8f0;
+    padding: 12px 12px 12px 4px;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  /* Soft fade on the right edge so the truncation feels intentional */
+  .install-cmd-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 48px;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(10,12,18,0) 0%, #0a0c12 100%);
+  }
+  .light .install-cmd-wrap::after {
+    background: linear-gradient(to right, rgba(26,29,46,0) 0%, #1a1d2e 100%);
+  }
+  .install-cmd .tok-bin { color: #67e8f9; }
+  .install-cmd .tok-flag { color: #c084fc; }
+  .install-cmd .tok-val { color: #fbbf24; }
+  .install-copy {
+    background: var(--surface2);
+    border: none;
+    border-left: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0 16px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: color 0.15s, background 0.15s;
+    flex-shrink: 0;
+  }
+  .install-copy:hover { color: var(--text); background: var(--surface3); }
+  .install-copy.copied { color: var(--green); }
+  .get-started-hint {
+    margin-top: 10px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+  .get-started-hint a { color: var(--accent); text-decoration: none; }
+  .get-started-hint a:hover { text-decoration: underline; }
+
+  /* ── PER-CARD INSTALL BLOCK ── */
+  .install-block.compact { font-size: 0.78rem; }
+  .install-block.compact .install-prompt { padding: 9px 4px 9px 10px; }
+  .install-block.compact .install-cmd { padding: 9px 10px 9px 4px; }
+  .install-block.compact .install-copy { padding: 0 12px; font-size: 0.68rem; }
+  .install-block.compact .install-cmd-wrap::after { width: 32px; }
 
   /* ── FOOTER ── */
   .page-footer { text-align: center; padding: 32px 0 24px; color: var(--text-dim); font-size: 0.78rem; }
@@ -458,7 +576,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <div class="header-logo">forge<span>agents</span> / skills</div>
+    <div class="header-logo">nexus<span>agents</span> / skills</div>
     <div class="header-meta" id="headerMeta"></div>
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark mode">
       <span class="theme-icon" id="themeIcon">🌙</span>
@@ -468,18 +586,37 @@
 </header>
 
 <main class="page">
+  <section class="get-started" id="getStarted">
+    <div class="get-started-header">
+      <div>
+        <div class="get-started-title">Get Started</div>
+        <div class="get-started-sub">Install the CLI once, then add any skill from this catalog with <code>nyld-nexus-skills install --skill &lt;name&gt;</code>.</div>
+      </div>
+      <select class="get-started-agent-select" id="agentSelect" aria-label="Target agent">
+        <option value="github-copilot">GitHub Copilot</option>
+        <option value="claude-code">Claude Code</option>
+        <option value="codex">Codex</option>
+      </select>
+    </div>
+    <div class="install-block" data-copy-target="heroInstallCmd">
+      <span class="install-prompt">$</span>
+      <div class="install-cmd-wrap">
+        <code class="install-cmd" id="heroInstallCmd" title=""></code>
+      </div>
+      <button type="button" class="install-copy" data-copy-for="heroInstallCmd" aria-label="Copy install command">Copy</button>
+    </div>
+    <div class="get-started-hint">
+      One-time CLI install. Pick your target agent above, then copy the <strong>Installation</strong> command on any skill card below.
+      Need help? See the <a href="README.md" target="_blank" rel="noopener noreferrer">README</a>.
+    </div>
+  </section>
+
   <div class="dashboard" id="dashboard"></div>
 
   <div class="controls">
     <input class="search-box" type="search" id="searchBox" placeholder="Search skills by name, capability, or keyword…" />
-    <select class="filter-select" id="riskFilter">
-      <option value="">All Risk Levels</option>
-      <option value="low">Low Risk</option>
-      <option value="medium">Medium Risk</option>
-      <option value="high">High Risk</option>
-    </select>
-    <select class="filter-select" id="domainFilter">
-      <option value="">All Domains</option>
+    <select class="filter-select" id="packFilter">
+      <option value="">All Packs</option>
     </select>
     <select class="filter-select" id="categoryFilter">
       <option value="">All Categories</option>
@@ -488,7 +625,6 @@
       <option value="name">Sort: Name</option>
       <option value="usage">Sort: Usage Value</option>
       <option value="exec">Sort: Executability</option>
-      <option value="tokens">Sort: Token Size</option>
     </select>
     <div class="view-toggle">
       <button class="view-btn active" id="viewGridBtn" onclick="setView('grid')" title="Grid view">⊞</button>
@@ -526,6 +662,96 @@
 let CATALOG;
 let controlsBound = false;
 let currentView = 'grid';
+
+// ── INSTALL COMMAND ──
+const SKILL_REPO_URL = 'https://git.nylcloud.com/Direct/nyld-nexus-skills.git';
+const SKILL_REPO_REF = 'main';
+const SKILL_PLACEHOLDER = '<skill-name>';
+const AGENT_LABELS = {
+  'github-copilot': 'GitHub Copilot',
+  'claude-code': 'Claude Code',
+  'codex': 'Codex'
+};
+
+function getSelectedAgent() {
+  const sel = document.getElementById('agentSelect');
+  return (sel && sel.value) || localStorage.getItem('catalog-agent') || 'github-copilot';
+}
+
+// One-time CLI install (hero command). Use 'npm install -g' so the
+// 'nyld-nexus-skills' binary stays on PATH for adding/upgrading skills later.
+function buildCliInstallCommand() {
+  return `npm install -g git+${SKILL_REPO_URL}#${SKILL_REPO_REF}`;
+}
+
+// Per-skill install command — assumes the CLI is already installed.
+function buildInstallCommand(skillName, agent) {
+  const a = agent || getSelectedAgent();
+  const name = skillName || SKILL_PLACEHOLDER;
+  return `nyld-nexus-skills install --skill ${name} -a ${a}`;
+}
+
+function highlightInstallCommand(cmd) {
+  // Lightweight token highlight — safe because we control the inputs.
+  return cmd
+    .replace(/^(npm)\b/, '<span class="tok-bin">$1</span>')
+    .replace(/\bnyld-nexus-skills\b/, '<span class="tok-bin">nyld-nexus-skills</span>')
+    .replace(/(--[a-z-]+)/g, '<span class="tok-flag">$1</span>')
+    .replace(/(\s)(-[a-z])(\s)/g, '$1<span class="tok-flag">$2</span>$3');
+}
+
+function renderInstallCommands() {
+  const agent = getSelectedAgent();
+  // Hero block — the one-time CLI install (agent-independent).
+  const hero = document.getElementById('heroInstallCmd');
+  if (hero) {
+    const cmd = buildCliInstallCommand();
+    hero.dataset.copy = cmd;
+    hero.title = cmd;
+    hero.innerHTML = highlightInstallCommand(cmd);
+  }
+  // Per-card blocks — short-form CLI command, agent-aware.
+  document.querySelectorAll('.install-cmd[data-skill-cmd]').forEach(el => {
+    const cmd = buildInstallCommand(el.dataset.skillCmd, agent);
+    el.dataset.copy = cmd;
+    el.title = cmd;
+    el.innerHTML = highlightInstallCommand(cmd)
+      .replace(el.dataset.skillCmd, '<span class="tok-val">' + el.dataset.skillCmd + '</span>');
+  });
+}
+
+async function copyInstallCommand(button) {
+  const id = button.dataset.copyFor;
+  const target = document.getElementById(id);
+  if (!target) return;
+  const text = target.dataset.copy || target.textContent || '';
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (err) {
+    // Fallback for older browsers / non-HTTPS file:// contexts
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (_) { /* ignore */ }
+    document.body.removeChild(ta);
+  }
+  const original = button.textContent;
+  button.textContent = 'Copied';
+  button.classList.add('copied');
+  clearTimeout(button._copyTimer);
+  button._copyTimer = setTimeout(() => {
+    button.textContent = original;
+    button.classList.remove('copied');
+  }, 1400);
+}
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.install-copy');
+  if (btn) copyInstallCommand(btn);
+});
 
 const SEGMENT_LABELS = {
   ai: 'AI',
@@ -653,6 +879,9 @@ function buildCard(skill) {
   if (ev.external_requirements_indicator !== 'self-contained') tags.push('<span class="tag ext">external deps</span>');
   if (ev.license && ev.license !== 'unspecified') tags.push(`<span class="tag lic">${ev.license}</span>`);
   if (st.estimated_tokens) tags.push(`<span class="tag">${st.estimated_tokens} tokens</span>`);
+  if (skill.packs && skill.packs.length > 0) {
+    skill.packs.forEach(p => tags.push(`<span class="tag pack">${p}</span>`));
+  }
 
   // Security findings
   let findingsHtml = '';
@@ -674,7 +903,7 @@ function buildCard(skill) {
   const uniqueId = skill.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
 
   return `
-<div class="skill-card" data-name="${skill.name.toLowerCase()}" data-domain="${domain}" data-category="${category}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}">
+<div class="skill-card" data-name="${skill.name.toLowerCase()}" data-domain="${domain}" data-category="${category}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}" data-pack="${(skill.packs||[]).join(',')}">  
   <div class="card-header">
     <div class="card-icon" style="background:${style.bg};color:${style.color}">${style.icon}</div>
     <div class="card-title-group">
@@ -707,6 +936,25 @@ function buildCard(skill) {
   <div class="tags-row">${tags.join('')}</div>
 
   <div class="accordion">
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this, '${uniqueId}-install')">
+        Installation <span class="chevron">▼</span>
+      </button>
+      <div class="accordion-body" id="${uniqueId}-install">
+        <p class="section-title">Install into your AI agent</p>
+        <div class="install-block compact" data-copy-target="${uniqueId}-install-cmd">
+          <span class="install-prompt">$</span>
+          <div class="install-cmd-wrap">
+            <code class="install-cmd" id="${uniqueId}-install-cmd" data-skill-cmd="${skill.name}" title=""></code>
+          </div>
+          <button type="button" class="install-copy" data-copy-for="${uniqueId}-install-cmd" aria-label="Copy install command for ${skill.name}">Copy</button>
+        </div>
+        <p style="font-size:0.72rem;color:var(--text-dim);margin-top:6px">
+          Target agent follows the selector at the top of the page. Add <code>--global</code> for a user-wide install.
+        </p>
+      </div>
+    </div>
 
     <div class="accordion-item">
       <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this, '${uniqueId}-rationale')">
@@ -754,6 +1002,7 @@ function buildCard(skill) {
           <span class="detail-key">References</span><span class="detail-val">${st.has_references ? 'yes' : 'no'}</span>
           <span class="detail-key">Sub-Agents</span><span class="detail-val">${st.has_agents ? 'yes' : 'no'}</span>
           <span class="detail-key">License</span><span class="detail-val">${ev.license||'unspecified'}</span>
+          <span class="detail-key">Packs</span><span class="detail-val">${(skill.packs||[]).join(', ')||'none'}</span>
           <span class="detail-key">Source</span><span class="detail-val"><a href="${skill.url}" style="color:var(--accent);text-decoration:none" target="_blank">view on GitHub ↗</a></span>
         </div>
       </div>
@@ -775,7 +1024,7 @@ function buildTableRow(skill) {
     : skill.name;
 
   return `
-<tr class="table-row" data-name="${skill.name.toLowerCase()}" data-domain="${domain}" data-category="${category}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}">
+<tr class="table-row" data-name="${skill.name.toLowerCase()}" data-domain="${domain}" data-category="${category}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}" data-pack="${(skill.packs||[]).join(',')}">  
   <td><div class="tbl-name-cell"><span class="tbl-icon" style="background:${style.bg};color:${style.color}">${style.icon}</span><span class="tbl-skill-name">${nameHtml}</span></div></td>
   <td>${formatTaxonomyLabel(domain)}</td>
   <td>${formatTaxonomyLabel(category)}</td>
@@ -810,11 +1059,7 @@ function toggleAccordion(btn, id) {
 // ── DASHBOARD ──
 function buildDashboard() {
   const s = CATALOG.summary;
-  const riskDist = s.security_risk_distribution;
   const total = s.total_skills;
-  const lowPct = (riskDist.low / total * 100).toFixed(0);
-  const medPct = (riskDist.medium / total * 100).toFixed(0);
-  const highPct = (riskDist.high / total * 100).toFixed(0);
 
   const topExec = [...CATALOG.skills].sort((a,b) => (b.evaluation.executability?.score||0)-(a.evaluation.executability?.score||0)).slice(0,5);
 
@@ -833,24 +1078,6 @@ function buildDashboard() {
       <div class="stat-label">Avg Executability</div>
       <div class="stat-value">${s.avg_executability}</div>
       <div class="stat-sub">out of 5</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Zero High Risk</div>
-      <div class="stat-value" style="color:var(--green)">${riskDist.high}</div>
-      <div class="stat-sub">high-risk skills</div>
-    </div>
-    <div class="stat-card risk-bar-wrap">
-      <div class="stat-label">Security Risk Distribution</div>
-      <div class="risk-bar-track">
-        <div class="risk-bar-seg" style="width:${lowPct}%;background:var(--green)"></div>
-        <div class="risk-bar-seg" style="width:${medPct}%;background:var(--yellow)"></div>
-        <div class="risk-bar-seg" style="width:${highPct}%;background:var(--red)"></div>
-      </div>
-      <div class="risk-bar-labels">
-        <span class="risk-bar-label low">Low (${riskDist.low})</span>
-        <span class="risk-bar-label med">Medium (${riskDist.medium})</span>
-        <span class="risk-bar-label high">High (${riskDist.high})</span>
-      </div>
     </div>
   `;
 }
@@ -887,6 +1114,13 @@ function buildCategoryFilter(domain='') {
   buildOptions('categoryFilter', getAvailableCategories(domain), 'All Categories');
 }
 
+function buildPackFilter() {
+  const packNames = CATALOG.summary?.packs
+    ? Object.keys(CATALOG.summary.packs).sort()
+    : [...new Set(CATALOG.skills.flatMap(s => s.packs || []))].sort();
+  buildOptions('packFilter', packNames, 'All Packs');
+}
+
 function syncCategoryFilter() {
   const domain = document.getElementById('domainFilter').value;
   const categoryFilter = document.getElementById('categoryFilter');
@@ -904,15 +1138,15 @@ function syncCategoryFilter() {
 function renderCards() {
   const grid = document.getElementById('skillsGrid');
   grid.innerHTML = CATALOG.skills.map(buildCard).join('');
+  renderInstallCommands();
   updateCount();
 }
 
 // ── FILTER + SORT ──
 function applyFilters() {
   const search = document.getElementById('searchBox').value.toLowerCase();
-  const risk = document.getElementById('riskFilter').value;
-  const domain = document.getElementById('domainFilter').value;
   const category = document.getElementById('categoryFilter').value;
+  const pack = document.getElementById('packFilter').value;
   const sortBy = document.getElementById('sortBy').value;
 
   const compare = (a, b) => {
@@ -933,9 +1167,9 @@ function applyFilters() {
     const nameMatch = !search || card.dataset.name.includes(search) || capText.includes(search) ||
       formatTaxonomyLabel(card.dataset.domain).toLowerCase().includes(search) ||
       formatTaxonomyLabel(card.dataset.category).toLowerCase().includes(search);
-    const show = nameMatch && (!risk || card.dataset.risk === risk) &&
-      (!domain || card.dataset.domain === domain) &&
-      (!category || card.dataset.category === category);
+    const show = nameMatch &&
+      (!category || card.dataset.category === category) &&
+      (!pack || (card.dataset.pack||'').split(',').includes(pack));
     card.classList.toggle('hidden', !show);
     if (show) visible++;
   });
@@ -949,9 +1183,9 @@ function applyFilters() {
     const nameMatch = !search || row.dataset.name.includes(search) || descText.includes(search) ||
       formatTaxonomyLabel(row.dataset.domain).toLowerCase().includes(search) ||
       formatTaxonomyLabel(row.dataset.category).toLowerCase().includes(search);
-    const show = nameMatch && (!risk || row.dataset.risk === risk) &&
-      (!domain || row.dataset.domain === domain) &&
-      (!category || row.dataset.category === category);
+    const show = nameMatch &&
+      (!category || row.dataset.category === category) &&
+      (!pack || (row.dataset.pack||'').split(',').includes(pack));
     row.classList.toggle('hidden', !show);
   });
 
@@ -983,26 +1217,40 @@ document.addEventListener('DOMContentLoaded', function() {
   const isLight = document.documentElement.classList.contains('light');
   document.getElementById('themeIcon').textContent = isLight ? '☀️' : '🌙';
   document.getElementById('themeLabel').textContent = isLight ? 'Dark mode' : 'Light mode';
+
+  // Render the hero install command early so it appears even before the
+  // catalog finishes loading. Per-card install blocks are filled in by
+  // renderCards() once the catalog is ready.
+  const agentSel = document.getElementById('agentSelect');
+  if (agentSel) {
+    const saved = localStorage.getItem('catalog-agent');
+    if (saved && AGENT_LABELS[saved]) agentSel.value = saved;
+  }
+  renderInstallCommands();
 });
 
 function bindControls() {
   if (controlsBound) return;
   document.getElementById('searchBox').addEventListener('input', applyFilters);
-  document.getElementById('riskFilter').addEventListener('change', applyFilters);
-  document.getElementById('domainFilter').addEventListener('change', () => {
-    syncCategoryFilter();
-    applyFilters();
-  });
   document.getElementById('categoryFilter').addEventListener('change', applyFilters);
   document.getElementById('sortBy').addEventListener('change', applyFilters);
+  document.getElementById('packFilter').addEventListener('change', applyFilters);
+  const agentSel = document.getElementById('agentSelect');
+  if (agentSel) {
+    const saved = localStorage.getItem('catalog-agent');
+    if (saved && AGENT_LABELS[saved]) agentSel.value = saved;
+    agentSel.addEventListener('change', () => {
+      localStorage.setItem('catalog-agent', agentSel.value);
+      renderInstallCommands();
+    });
+  }
   controlsBound = true;
 }
 
 function resetFilters() {
   document.getElementById('searchBox').value = '';
-  document.getElementById('riskFilter').value = '';
-  document.getElementById('domainFilter').value = '';
   document.getElementById('categoryFilter').value = '';
+  document.getElementById('packFilter').value = '';
   document.getElementById('sortBy').value = 'name';
 }
 
@@ -1057,13 +1305,13 @@ function initializeCatalog(data, sourceLabel='local file') {
   CATALOG = data;
 
   document.getElementById('headerMeta').textContent = `Generated ${new Date(CATALOG.generated_at).toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'})} · v${CATALOG.catalog_version}`;
-  document.getElementById('pageFooter').textContent = `Forge Agents Skill Catalog · ${CATALOG.summary.total_skills} skills · Generated ${CATALOG.generated_at} · Loaded from ${sourceLabel}`;
+  document.getElementById('pageFooter').textContent = `Nexus Agents Skill Catalog · ${CATALOG.summary.total_skills} skills · Generated ${CATALOG.generated_at} · Loaded from ${sourceLabel}`;
   document.getElementById('catalogSource').textContent = `Source: ${sourceLabel}`;
 
   resetFilters();
   buildDashboard();
-  buildDomainFilter();
   buildCategoryFilter();
+  buildPackFilter();
   renderCards();
   renderTable();
   const savedView = localStorage.getItem('catalog-view') || 'grid';

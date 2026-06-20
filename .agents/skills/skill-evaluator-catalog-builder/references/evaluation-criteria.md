@@ -92,7 +92,7 @@ How reliably will an agent select and trigger this skill at the right time — a
 | **1 — Poor** | No effective trigger mechanism. Name conflicts with other skills or is too generic. Description is absent or provides no discriminating signal. Agent cannot reliably select this skill. |
 
 **Invocability checklist:**
-- [ ] `name` is unique, specific, and domain-namespaced (e.g., `engineering-quality-tdd`, not `testing`)
+- [ ] `name` is unique, specific, and domain-namespaced (e.g., `tech-quality-tdd`, not `testing`)
 - [ ] `description` starts with when-to-use phrasing ("Use when...", "Invoked when...")
 - [ ] `description` lists specific trigger phrases that match realistic user prompts
 - [ ] `description` does NOT describe competing or adjacent skills (reduces false positives)
@@ -179,7 +179,7 @@ A skill **has external dependencies** if ANY of these are true:
 
 **Does NOT count as an external dependency:**
 - External services, platforms, or SDKs mentioned as examples or context within the skill's guidance
-- Platforms the skill *helps users build for* (e.g., an agents-skill-plugin-builder skill mentioning Chrome Web Store, Firefox Add-ons, VS Code Extension API, or JetBrains Platform SDK as target platforms)
+- Platforms the skill *helps users build for* (e.g., an agent-skill-plugin-builder skill mentioning Chrome Web Store, Firefox Add-ons, VS Code Extension API, or JetBrains Platform SDK as target platforms)
 - Documentation URLs or links to external references
 - APIs or services mentioned as subject matter the skill teaches users about
 - Tool names cited in skill content that the human user would use — not the agent itself
@@ -200,7 +200,7 @@ List specific external dependencies — only things the **skill's agent workflow
 Record as an array of strings. Use `["none"]` (as a single-element array) if self-contained.
 
 **Anti-patterns to avoid:**
-- Do NOT list platforms or SDKs mentioned in the skill's content as subject matter (e.g., an "agents-skill-plugin-builder" skill that teaches plugin development should not have "Chrome Web Store" or "VS Code Extension API" as external requirements — those are content references, not runtime dependencies)
+- Do NOT list platforms or SDKs mentioned in the skill's content as subject matter (e.g., an "agent-skill-plugin-builder" skill that teaches plugin development should not have "Chrome Web Store" or "VS Code Extension API" as external requirements — those are content references, not runtime dependencies)
 - Do NOT infer requirements from the skill's name or topic area; only extract what is explicitly required for the skill's workflow to function
 
 ## Script Language Detection
