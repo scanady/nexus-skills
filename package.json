@@ -1,20 +1,28 @@
 {
-  "name": "nexus-agents",
+  "name": "nyld-nexus-skills",
   "version": "1.0.1",
   "description": "Agentic skills, prompts, agents, and instructions for AI platforms.",
   "bin": {
+    "nyld-nexus-skills": "bin/cli.js",
     "nexus-agents": "bin/cli.js"
   },
+  "scripts": {
+    "test": "node --test",
+    "validate": "node bin/validate-skills.js",
+    "scan": "python bin/scan-skills.py skills --output skill-catalog-scan.json",
+    "catalog": "python bin/rebuild-catalog.py",
+    "build:plugins": "node bin/build-plugins.js",
+    "build:site": "node bin/build-site.js",
+    "build": "npm run validate && npm run scan && npm run catalog && npm run build:plugins && npm run build:site"
+  },
   "files": [
-    "bin/cli.js",
-    "bin/github-fetch.js",
-    "bin/skills-core.js",
+    "bin/",
     "README.md",
     "LICENSE.md"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scanady/nexus-agents.git"
+    "url": "git+https://github.com/scanady/nexus-skills.git"
   },
   "keywords": [
     "skills",
@@ -26,7 +34,7 @@
   "author": "iFoundry",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/scanady/nexus-agents/issues"
+    "url": "https://github.com/scanady/nexus-skills/issues"
   },
-  "homepage": "https://github.com/scanady/nexus-agents#readme"
+  "homepage": "https://github.com/scanady/nexus-skills#readme"
 }

@@ -1,7 +1,7 @@
 
 > Agentic skills, prompts, and instructions for AI coding platforms — GitHub Copilot, Claude Code, and Codex.
 
-[![Skills](https://img.shields.io/badge/skills-40%2B-blue.svg)](skills/)
+[![Skills](https://img.shields.io/badge/skills-124-blue.svg)](skills/)
 
 ## Table of Contents
 
@@ -24,7 +24,7 @@ Install any skill once and invoke it in your AI agent by name. Skills work with 
 
 ## Features & Capabilities
 
-- **40+ production-ready skills** organized by domain: marketing, strategy, product, design, tech, and more
+- **124 production-ready skills** organized by domain: marketing, strategy, product, design, tech, and more
 - **Multi-platform support** — install to GitHub Copilot, Claude Code, or Codex
 - **Project or global scope** — install skills for a single project or system-wide
 - **CLI installer** — install, list, and upgrade skills from the command line
@@ -73,11 +73,11 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 │   ├── export-skill.sh         # Package a skill into a zip (Bash)
 │   └── rebuild-catalog.py      # Rebuild skill catalog output files
 ├── skills/                     # Source skill registry
-│   ├── agent-catalog-skill-evaluator/
-│   ├── agent-design-icon-creator/
-│   ├── agent-skill-writer/
-│   ├── tech-quality-tdd/
-│   └── ...                     # 40+ skills total
+│   ├── agents-copilot-instructions/
+│   ├── content-copy-humanizer/
+│   ├── engineering-quality-tdd/
+│   ├── product-spec-prd-generator/
+│   └── ...                     # 124 skills total
 ├── prompts/                    # Legacy prompt templates
 ├── docs/                       # Project documentation
 ├── .github/
@@ -133,6 +133,7 @@ node bin/cli.js install --skill product-spec-prd-generator --global
 | `list` | | List available skills |
 | `audit-overlap` | | Find duplicate and overlapping skills |
 | `--skill <name>` | `-s` | Install a specific skill (repeatable) |
+| `--pack <name>` | `-P` | Install all skills in a named pack (repeatable) |
 | `--agent <name>` | `-a` | Target agent (repeatable, default: `agent-skills`) |
 | `--global` | `-g` | Install globally (default: project) |
 | `--project` | `-p` | Install to project (explicit) |
@@ -172,11 +173,11 @@ For repeatable team installs, pin a branch, tag, or commit in the git package sp
 **Examples:**
 
 ```
-/agent-skill-writer create a new skill for drafting weekly status updates
+/skill-architect create a new skill for drafting weekly status updates
 ```
 
 ```
-/tech-api-mcp-builder build an MCP server for the GitHub API with issues and PR tools
+/engineering-api-mcp-builder build an MCP server for the GitHub API with issues and PR tools
 ```
 
 ```
@@ -184,7 +185,7 @@ For repeatable team installs, pin a branch, tag, or commit in the git package sp
 ```
 
 ```
-/tech-quality-tdd implement a user authentication service
+/engineering-quality-tdd implement a user authentication service
 ```
 
 Skill names map directly to the folder names in `skills/`. Use `node bin/cli.js list --full` to see all available skills with their descriptions.
@@ -223,7 +224,7 @@ description: Use when [trigger condition] — [what it does]
 - [Agent Skills specification](https://agentskills.io/specification)
 - [GitHub Copilot customization docs](https://docs.github.com/en/copilot/customizing-copilot)
 - [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code)
-- [Skill authoring guide](skills/agent-skill-writer/SKILL.md)
+- [Skill authoring guide](skills/skill-architect/SKILL.md)
 - [Project docs](docs/)
 - [Changelog](CHANGELOG.md)
 
@@ -249,7 +250,7 @@ Outputs:
 
 | Path | Source of truth | Committed? |
 |------|------|------|
-| `skill-catalog-scan.json` | `npm run scan` | yes |
+| `skill-catalog-scan.json` | `npm run scan` | no |
 | `skill-catalog.json` | `npm run catalog` (merges scan + `skill-catalog-evaluations.json`) | yes |
 | `.claude-plugin/marketplace.json` | `npm run build:plugins` (from `packs/*.json`) | yes |
 | `.claude-plugin/plugin.json` | `npm run build:plugins` (umbrella `nexus-all`) | yes |
@@ -289,8 +290,8 @@ Merging that PR cuts the release; nothing else needs to be tagged manually.
 
 1. Create `packs/<your-pack>.json` with `name`, `description`, and a `skills`
    array (literal names or `prefix-*` globs).
-2. Run `npm run build` locally and commit the regenerated catalog + plugin
-   manifests.
+2. Run `npm run build` locally and commit the regenerated catalog and plugin
+   manifests. Do not commit `skill-catalog-scan.json`.
 3. Open a PR. CI verifies everything compiles; on merge, release-please will
    pick the change up in the next release.
 

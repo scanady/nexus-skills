@@ -296,7 +296,7 @@ def estimate_tokens(skill_dir: Path) -> int:
 def scan_skill(skill_md_path: Path, base_dir: Path) -> dict:
     """Scan a single SKILL.md and its parent directory."""
     skill_dir = skill_md_path.parent
-    rel_path = str(skill_md_path.relative_to(base_dir))
+    rel_path = skill_md_path.relative_to(base_dir).as_posix()
 
     try:
         text = skill_md_path.read_text(encoding="utf-8", errors="ignore")
@@ -400,7 +400,7 @@ def main():
     print(f"Found {len(results)} skills", file=sys.stderr)
 
     output = {
-        "source_directory": str(base_dir),
+        "source_directory": base_dir.as_posix(),
         "total_skills": len(results),
         "skills": results,
     }
