@@ -590,7 +590,7 @@
     <div class="get-started-header">
       <div>
         <div class="get-started-title">Get Started</div>
-        <div class="get-started-sub">Install the CLI once, then add any skill from this catalog with <code>nyld-nexus-skills install --skill &lt;name&gt;</code>.</div>
+        <div class="get-started-sub">Install the CLI once, then add any skill from this catalog with <code>nexus-agents install --skill &lt;name&gt;</code>.</div>
       </div>
       <select class="get-started-agent-select" id="agentSelect" aria-label="Target agent">
         <option value="github-copilot">GitHub Copilot</option>
@@ -664,7 +664,7 @@ let controlsBound = false;
 let currentView = 'grid';
 
 // ── INSTALL COMMAND ──
-const SKILL_REPO_URL = 'https://git.nylcloud.com/Direct/nyld-nexus-skills.git';
+const SKILL_REPO_URL = 'https://github.com/scanady/nexus-skills.git';
 const SKILL_REPO_REF = 'main';
 const SKILL_PLACEHOLDER = '<skill-name>';
 const AGENT_LABELS = {
@@ -679,7 +679,7 @@ function getSelectedAgent() {
 }
 
 // One-time CLI install (hero command). Use 'npm install -g' so the
-// 'nyld-nexus-skills' binary stays on PATH for adding/upgrading skills later.
+// 'nexus-agents' binary stays on PATH for adding/upgrading skills later.
 function buildCliInstallCommand() {
   return `npm install -g git+${SKILL_REPO_URL}#${SKILL_REPO_REF}`;
 }
@@ -688,14 +688,14 @@ function buildCliInstallCommand() {
 function buildInstallCommand(skillName, agent) {
   const a = agent || getSelectedAgent();
   const name = skillName || SKILL_PLACEHOLDER;
-  return `nyld-nexus-skills install --skill ${name} -a ${a}`;
+  return `nexus-agents install --skill ${name} -a ${a}`;
 }
 
 function highlightInstallCommand(cmd) {
   // Lightweight token highlight — safe because we control the inputs.
   return cmd
     .replace(/^(npm)\b/, '<span class="tok-bin">$1</span>')
-    .replace(/\bnyld-nexus-skills\b/, '<span class="tok-bin">nyld-nexus-skills</span>')
+    .replace(/\bnexus-agents\b/, '<span class="tok-bin">nexus-agents</span>')
     .replace(/(--[a-z-]+)/g, '<span class="tok-flag">$1</span>')
     .replace(/(\s)(-[a-z])(\s)/g, '$1<span class="tok-flag">$2</span>$3');
 }

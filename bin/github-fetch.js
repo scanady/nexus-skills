@@ -14,15 +14,15 @@ function getEnvValue(...names) {
 }
 
 const REPO_OWNER = process.env.NEXUS_AGENTS_REPO_OWNER || 'scanady';
-const REPO_NAME = process.env.NEXUS_AGENTS_REPO_NAME || 'nexus-nexus-skills';
-const REPO_REF = getEnvValue('NYLD_NEXUS_SKILLS_GITHUB_REF', 'NEXUS_AGENTS_REPO_REF') || 'main';
+const REPO_NAME = process.env.NEXUS_AGENTS_REPO_NAME || 'nexus-skills';
+const REPO_REF = getEnvValue('NEXUS_AGENTS_REPO_REF') || 'main';
 const SKILLS_PATH = 'skills';
 
 function httpsGet(url) {
   return new Promise((resolve, reject) => {
     https.get(url, {
       headers: {
-        'User-Agent': 'nyld-nexus-skills-cli',
+        'User-Agent': 'nexus-agents-cli',
         'Accept': 'application/vnd.github+json'
       }
     }, (response) => {

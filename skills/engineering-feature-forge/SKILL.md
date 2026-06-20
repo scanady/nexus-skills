@@ -1,5 +1,5 @@
 ---
-name: engineering-feature-nexus
+name: engineering-feature-forge
 description: Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements workshops, user stories, EARS requirements, acceptance criteria, and implementation-ready specs.
 license: MIT
 metadata:
