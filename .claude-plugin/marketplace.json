@@ -229,6 +229,7 @@
         "skills"
       ],
       "skills": [
+        "./skills/content-copy-clear-writing",
         "./skills/skill-architect",
         "./skills/skill-evaluator",
         "./skills/skill-evaluator-catalog-builder",

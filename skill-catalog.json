@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-06-21T01:59:33Z",
+  "generated_at": "2026-06-22T01:26:31Z",
   "sources": [
     {
       "id": "source-1",
@@ -19,8 +19,8 @@
     "avg_invocability": 2.0,
     "security_risk_distribution": {
       "low": 95,
-      "medium": 28,
-      "high": 1
+      "medium": 27,
+      "high": 2
     },
     "complexity_distribution": {
       "compact": 59,
@@ -242,7 +242,7 @@
     {
       "name": "agents-copilot-instructions",
       "source_id": "source-1",
-      "path": "agents-copilot-instructions\\SKILL.md",
+      "path": "agents-copilot-instructions/SKILL.md",
       "url": null,
       "packs": [
         "agent-tools"
@@ -333,7 +333,7 @@
     {
       "name": "agents-design-persona-creator",
       "source_id": "source-1",
-      "path": "agents-design-persona-creator\\SKILL.md",
+      "path": "agents-design-persona-creator/SKILL.md",
       "url": null,
       "packs": [
         "agent-tools"
@@ -424,7 +424,7 @@
     {
       "name": "agents-design-visual-identity",
       "source_id": "source-1",
-      "path": "agents-design-visual-identity\\SKILL.md",
+      "path": "agents-design-visual-identity/SKILL.md",
       "url": null,
       "packs": [
         "agent-tools"
@@ -517,7 +517,7 @@
     {
       "name": "agents-skill-plugin-builder",
       "source_id": "source-1",
-      "path": "agents-skill-plugin-builder\\SKILL.md",
+      "path": "agents-skill-plugin-builder/SKILL.md",
       "url": null,
       "packs": [
         "agent-tools"
@@ -608,7 +608,7 @@
     {
       "name": "agents-skill-spec-builder",
       "source_id": "source-1",
-      "path": "agents-skill-spec-builder\\SKILL.md",
+      "path": "agents-skill-spec-builder/SKILL.md",
       "url": null,
       "packs": [
         "agent-tools"
@@ -699,7 +699,7 @@
     {
       "name": "ai-prompt-engineer",
       "source_id": "source-1",
-      "path": "ai-prompt-engineer\\SKILL.md",
+      "path": "ai-prompt-engineer/SKILL.md",
       "url": null,
       "packs": [
         "agent-tools"
@@ -790,7 +790,7 @@
     {
       "name": "content-behavioral-nudge-unit",
       "source_id": "source-1",
-      "path": "content-behavioral-nudge-unit\\SKILL.md",
+      "path": "content-behavioral-nudge-unit/SKILL.md",
       "url": null,
       "packs": [
         "content"
@@ -881,7 +881,7 @@
     {
       "name": "content-copy-caveman",
       "source_id": "source-1",
-      "path": "content-copy-caveman\\SKILL.md",
+      "path": "content-copy-caveman/SKILL.md",
       "url": null,
       "packs": [
         "content"
@@ -972,7 +972,7 @@
     {
       "name": "content-copy-clear-writing",
       "source_id": "source-1",
-      "path": "content-copy-clear-writing\\SKILL.md",
+      "path": "content-copy-clear-writing/SKILL.md",
       "url": null,
       "packs": [
         "content",
@@ -1064,7 +1064,7 @@
     {
       "name": "content-copy-critical-writing",
       "source_id": "source-1",
-      "path": "content-copy-critical-writing\\SKILL.md",
+      "path": "content-copy-critical-writing/SKILL.md",
       "url": null,
       "packs": [
         "content"
@@ -1142,7 +1142,7 @@
     {
       "name": "content-copy-email-sequences",
       "source_id": "source-1",
-      "path": "content-copy-email-sequences\\SKILL.md",
+      "path": "content-copy-email-sequences/SKILL.md",
       "url": null,
       "packs": [
         "content"
@@ -1233,7 +1233,7 @@
     {
       "name": "content-copy-email-template-builder",
       "source_id": "source-1",
-      "path": "content-copy-email-template-builder\\SKILL.md",
+      "path": "content-copy-email-template-builder/SKILL.md",
       "url": null,
       "packs": [
         "content"
@@ -1324,7 +1324,7 @@
     {
       "name": "content-copy-executive-writing",
       "source_id": "source-1",
-      "path": "content-copy-executive-writing\\SKILL.md",
+      "path": "content-copy-executive-writing/SKILL.md",
       "url": null,
       "packs": [
         "content"
@@ -1402,7 +1402,7 @@
     {
       "name": "content-copy-humanizer",
       "source_id": "source-1",
-      "path": "content-copy-humanizer\\SKILL.md",
+      "path": "content-copy-humanizer/SKILL.md",
       "url": null,
       "packs": [
         "content"
@@ -1493,7 +1493,7 @@
     {
       "name": "content-meta-design",
       "source_id": "source-1",
-      "path": "content-meta-design\\SKILL.md",
+      "path": "content-meta-design/SKILL.md",
       "url": null,
       "packs": [
         "content"
@@ -1563,7 +1563,7 @@
     {
       "name": "content-style-extractor",
       "source_id": "source-1",
-      "path": "content-style-extractor\\SKILL.md",
+      "path": "content-style-extractor/SKILL.md",
       "url": null,
       "packs": [
         "content"
@@ -1656,7 +1656,7 @@
     {
       "name": "content-technical-doc-coauthoring",
       "source_id": "source-1",
-      "path": "content-technical-doc-coauthoring\\SKILL.md",
+      "path": "content-technical-doc-coauthoring/SKILL.md",
       "url": null,
       "packs": [
         "content"
@@ -1749,7 +1749,7 @@
     {
       "name": "content-technical-onboarding-docs",
       "source_id": "source-1",
-      "path": "content-technical-onboarding-docs\\SKILL.md",
+      "path": "content-technical-onboarding-docs/SKILL.md",
       "url": null,
       "packs": [
         "content"
@@ -1842,7 +1842,7 @@
     {
       "name": "data-ai-autoresearch",
       "source_id": "source-1",
-      "path": "data-ai-autoresearch\\SKILL.md",
+      "path": "data-ai-autoresearch/SKILL.md",
       "url": null,
       "packs": [
         "data"
@@ -1933,7 +1933,7 @@
     {
       "name": "data-ai-ml-pipeline",
       "source_id": "source-1",
-      "path": "data-ai-ml-pipeline\\SKILL.md",
+      "path": "data-ai-ml-pipeline/SKILL.md",
       "url": null,
       "packs": [
         "data"
@@ -2026,7 +2026,7 @@
     {
       "name": "data-ai-ml-rag-architect",
       "source_id": "source-1",
-      "path": "data-ai-ml-rag-architect\\SKILL.md",
+      "path": "data-ai-ml-rag-architect/SKILL.md",
       "url": null,
       "packs": [
         "data"
@@ -2117,7 +2117,7 @@
     {
       "name": "data-ai-post-training-expert",
       "source_id": "source-1",
-      "path": "data-ai-post-training-expert\\SKILL.md",
+      "path": "data-ai-post-training-expert/SKILL.md",
       "url": null,
       "packs": [
         "data"
@@ -2208,7 +2208,7 @@
     {
       "name": "data-ai-product-specialist",
       "source_id": "source-1",
-      "path": "data-ai-product-specialist\\SKILL.md",
+      "path": "data-ai-product-specialist/SKILL.md",
       "url": null,
       "packs": [
         "data"
@@ -2299,7 +2299,7 @@
     {
       "name": "data-analysis-business-performance",
       "source_id": "source-1",
-      "path": "data-analysis-business-performance\\SKILL.md",
+      "path": "data-analysis-business-performance/SKILL.md",
       "url": null,
       "packs": [
         "data"
@@ -2390,7 +2390,7 @@
     {
       "name": "data-eng-database-architect",
       "source_id": "source-1",
-      "path": "data-eng-database-architect\\SKILL.md",
+      "path": "data-eng-database-architect/SKILL.md",
       "url": null,
       "packs": [
         "data"
@@ -2481,7 +2481,7 @@
     {
       "name": "data-eng-pandas-specialist",
       "source_id": "source-1",
-      "path": "data-eng-pandas-specialist\\SKILL.md",
+      "path": "data-eng-pandas-specialist/SKILL.md",
       "url": null,
       "packs": [
         "data"
@@ -2572,7 +2572,7 @@
     {
       "name": "data-eng-pipeline-architect",
       "source_id": "source-1",
-      "path": "data-eng-pipeline-architect\\SKILL.md",
+      "path": "data-eng-pipeline-architect/SKILL.md",
       "url": null,
       "packs": [
         "data"
@@ -2663,7 +2663,7 @@
     {
       "name": "design-application-sitemap",
       "source_id": "source-1",
-      "path": "design-application-sitemap\\SKILL.md",
+      "path": "design-application-sitemap/SKILL.md",
       "url": null,
       "packs": [
         "design"
@@ -2754,7 +2754,7 @@
     {
       "name": "design-application-ux",
       "source_id": "source-1",
-      "path": "design-application-ux\\SKILL.md",
+      "path": "design-application-ux/SKILL.md",
       "url": null,
       "packs": [
         "design"
@@ -2845,7 +2845,7 @@
     {
       "name": "design-product-overview-builder",
       "source_id": "source-1",
-      "path": "design-product-overview-builder\\SKILL.md",
+      "path": "design-product-overview-builder/SKILL.md",
       "url": null,
       "packs": [
         "design"
@@ -2940,7 +2940,7 @@
     {
       "name": "design-product-overview-recorder",
       "source_id": "source-1",
-      "path": "design-product-overview-recorder\\SKILL.md",
+      "path": "design-product-overview-recorder/SKILL.md",
       "url": null,
       "packs": [
         "design"
@@ -3033,7 +3033,7 @@
     {
       "name": "design-research-ux-artifacts",
       "source_id": "source-1",
-      "path": "design-research-ux-artifacts\\SKILL.md",
+      "path": "design-research-ux-artifacts/SKILL.md",
       "url": null,
       "packs": [
         "design"
@@ -3124,7 +3124,7 @@
     {
       "name": "design-research-ux-researcher",
       "source_id": "source-1",
-      "path": "design-research-ux-researcher\\SKILL.md",
+      "path": "design-research-ux-researcher/SKILL.md",
       "url": null,
       "packs": [
         "design"
@@ -3215,7 +3215,7 @@
     {
       "name": "design-scroll-storytelling",
       "source_id": "source-1",
-      "path": "design-scroll-storytelling\\SKILL.md",
+      "path": "design-scroll-storytelling/SKILL.md",
       "url": null,
       "packs": [
         "design"
@@ -3306,7 +3306,7 @@
     {
       "name": "design-system-architect",
       "source_id": "source-1",
-      "path": "design-system-architect\\SKILL.md",
+      "path": "design-system-architect/SKILL.md",
       "url": null,
       "packs": [
         "design"
@@ -3397,7 +3397,7 @@
     {
       "name": "design-ui-system-advisor",
       "source_id": "source-1",
-      "path": "design-ui-system-advisor\\SKILL.md",
+      "path": "design-ui-system-advisor/SKILL.md",
       "url": null,
       "packs": [
         "design"
@@ -3492,7 +3492,7 @@
     {
       "name": "design-visual-image-generator",
       "source_id": "source-1",
-      "path": "design-visual-image-generator\\SKILL.md",
+      "path": "design-visual-image-generator/SKILL.md",
       "url": null,
       "packs": [
         "design"
@@ -3573,7 +3573,7 @@
     {
       "name": "design-visual-image-system-director",
       "source_id": "source-1",
-      "path": "design-visual-image-system-director\\SKILL.md",
+      "path": "design-visual-image-system-director/SKILL.md",
       "url": null,
       "packs": [
         "design"
@@ -3651,7 +3651,7 @@
     {
       "name": "design-web-impactful",
       "source_id": "source-1",
-      "path": "design-web-impactful\\SKILL.md",
+      "path": "design-web-impactful/SKILL.md",
       "url": null,
       "packs": [
         "design"
@@ -3729,7 +3729,7 @@
     {
       "name": "devops-incident-responder",
       "source_id": "source-1",
-      "path": "devops-incident-responder\\SKILL.md",
+      "path": "devops-incident-responder/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -3820,7 +3820,7 @@
     {
       "name": "devops-infra-engineer",
       "source_id": "source-1",
-      "path": "devops-infra-engineer\\SKILL.md",
+      "path": "devops-infra-engineer/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -3913,7 +3913,7 @@
     {
       "name": "devops-security-audit-lead",
       "source_id": "source-1",
-      "path": "devops-security-audit-lead\\SKILL.md",
+      "path": "devops-security-audit-lead/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -4006,7 +4006,7 @@
     {
       "name": "devops-security-vulnerability-analyst",
       "source_id": "source-1",
-      "path": "devops-security-vulnerability-analyst\\SKILL.md",
+      "path": "devops-security-vulnerability-analyst/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -4101,7 +4101,7 @@
     {
       "name": "engineering-api-mcp-builder",
       "source_id": "source-1",
-      "path": "engineering-api-mcp-builder\\SKILL.md",
+      "path": "engineering-api-mcp-builder/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -4194,7 +4194,7 @@
     {
       "name": "engineering-api-n8n-workflow-builder",
       "source_id": "source-1",
-      "path": "engineering-api-n8n-workflow-builder\\SKILL.md",
+      "path": "engineering-api-n8n-workflow-builder/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -4287,7 +4287,7 @@
     {
       "name": "engineering-arch-architecture-decision-records",
       "source_id": "source-1",
-      "path": "engineering-arch-architecture-decision-records\\SKILL.md",
+      "path": "engineering-arch-architecture-decision-records/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -4380,7 +4380,7 @@
     {
       "name": "engineering-arch-principle-engineer",
       "source_id": "source-1",
-      "path": "engineering-arch-principle-engineer\\SKILL.md",
+      "path": "engineering-arch-principle-engineer/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -4471,7 +4471,7 @@
     {
       "name": "engineering-arch-system-designer",
       "source_id": "source-1",
-      "path": "engineering-arch-system-designer\\SKILL.md",
+      "path": "engineering-arch-system-designer/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -4562,7 +4562,7 @@
     {
       "name": "engineering-data-scraper",
       "source_id": "source-1",
-      "path": "engineering-data-scraper\\SKILL.md",
+      "path": "engineering-data-scraper/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -4656,7 +4656,7 @@
     {
       "name": "engineering-database-optimizer",
       "source_id": "source-1",
-      "path": "engineering-database-optimizer\\SKILL.md",
+      "path": "engineering-database-optimizer/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -4747,7 +4747,7 @@
     {
       "name": "engineering-dev-git-commit",
       "source_id": "source-1",
-      "path": "engineering-dev-git-commit\\SKILL.md",
+      "path": "engineering-dev-git-commit/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -4838,7 +4838,7 @@
     {
       "name": "engineering-dev-git-finish-branch",
       "source_id": "source-1",
-      "path": "engineering-dev-git-finish-branch\\SKILL.md",
+      "path": "engineering-dev-git-finish-branch/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -4929,7 +4929,7 @@
     {
       "name": "engineering-dev-git-start-branch",
       "source_id": "source-1",
-      "path": "engineering-dev-git-start-branch\\SKILL.md",
+      "path": "engineering-dev-git-start-branch/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -5007,7 +5007,7 @@
     {
       "name": "engineering-dev-git-workflow-design",
       "source_id": "source-1",
-      "path": "engineering-dev-git-workflow-design\\SKILL.md",
+      "path": "engineering-dev-git-workflow-design/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -5098,7 +5098,7 @@
     {
       "name": "engineering-dev-writing-plans",
       "source_id": "source-1",
-      "path": "engineering-dev-writing-plans\\SKILL.md",
+      "path": "engineering-dev-writing-plans/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -5189,7 +5189,7 @@
     {
       "name": "engineering-feature-forge",
       "source_id": "source-1",
-      "path": "engineering-feature-forge\\SKILL.md",
+      "path": "engineering-feature-forge/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -5267,7 +5267,7 @@
     {
       "name": "engineering-github-ops",
       "source_id": "source-1",
-      "path": "engineering-github-ops\\SKILL.md",
+      "path": "engineering-github-ops/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -5360,7 +5360,7 @@
     {
       "name": "engineering-github-repo-standards",
       "source_id": "source-1",
-      "path": "engineering-github-repo-standards\\SKILL.md",
+      "path": "engineering-github-repo-standards/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -5441,7 +5441,7 @@
     {
       "name": "engineering-legacy-modernizer",
       "source_id": "source-1",
-      "path": "engineering-legacy-modernizer\\SKILL.md",
+      "path": "engineering-legacy-modernizer/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -5532,7 +5532,7 @@
     {
       "name": "engineering-quality-code-simplifier",
       "source_id": "source-1",
-      "path": "engineering-quality-code-simplifier\\SKILL.md",
+      "path": "engineering-quality-code-simplifier/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -5623,7 +5623,7 @@
     {
       "name": "engineering-quality-receiving-review",
       "source_id": "source-1",
-      "path": "engineering-quality-receiving-review\\SKILL.md",
+      "path": "engineering-quality-receiving-review/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -5714,7 +5714,7 @@
     {
       "name": "engineering-quality-requesting-review",
       "source_id": "source-1",
-      "path": "engineering-quality-requesting-review\\SKILL.md",
+      "path": "engineering-quality-requesting-review/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -5805,7 +5805,7 @@
     {
       "name": "engineering-quality-tdd",
       "source_id": "source-1",
-      "path": "engineering-quality-tdd\\SKILL.md",
+      "path": "engineering-quality-tdd/SKILL.md",
       "url": null,
       "packs": [
         "tech"
@@ -5896,7 +5896,7 @@
     {
       "name": "knowledge-context-curator",
       "source_id": "source-1",
-      "path": "knowledge-context-curator\\SKILL.md",
+      "path": "knowledge-context-curator/SKILL.md",
       "url": null,
       "packs": [
         "agent-tools"
@@ -5964,7 +5964,7 @@
     {
       "name": "knowledge-ops",
       "source_id": "source-1",
-      "path": "knowledge-ops\\SKILL.md",
+      "path": "knowledge-ops/SKILL.md",
       "url": null,
       "packs": [
         "agent-tools"
@@ -6057,7 +6057,7 @@
     {
       "name": "legal-compliance-regulatory-monitor",
       "source_id": "source-1",
-      "path": "legal-compliance-regulatory-monitor\\SKILL.md",
+      "path": "legal-compliance-regulatory-monitor/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -6148,7 +6148,7 @@
     {
       "name": "marketing-brand-strategist",
       "source_id": "source-1",
-      "path": "marketing-brand-strategist\\SKILL.md",
+      "path": "marketing-brand-strategist/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -6239,7 +6239,7 @@
     {
       "name": "marketing-campaign-go-to-market",
       "source_id": "source-1",
-      "path": "marketing-campaign-go-to-market\\SKILL.md",
+      "path": "marketing-campaign-go-to-market/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -6330,7 +6330,7 @@
     {
       "name": "marketing-campaign-ideas",
       "source_id": "source-1",
-      "path": "marketing-campaign-ideas\\SKILL.md",
+      "path": "marketing-campaign-ideas/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -6421,7 +6421,7 @@
     {
       "name": "marketing-campaign-product-hunt-launch",
       "source_id": "source-1",
-      "path": "marketing-campaign-product-hunt-launch\\SKILL.md",
+      "path": "marketing-campaign-product-hunt-launch/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -6512,7 +6512,7 @@
     {
       "name": "marketing-campaign-psychology",
       "source_id": "source-1",
-      "path": "marketing-campaign-psychology\\SKILL.md",
+      "path": "marketing-campaign-psychology/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -6603,7 +6603,7 @@
     {
       "name": "marketing-content-brand-copywriter",
       "source_id": "source-1",
-      "path": "marketing-content-brand-copywriter\\SKILL.md",
+      "path": "marketing-content-brand-copywriter/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -6694,7 +6694,7 @@
     {
       "name": "marketing-content-engine",
       "source_id": "source-1",
-      "path": "marketing-content-engine\\SKILL.md",
+      "path": "marketing-content-engine/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -6785,7 +6785,7 @@
     {
       "name": "marketing-content-lead-magnet",
       "source_id": "source-1",
-      "path": "marketing-content-lead-magnet\\SKILL.md",
+      "path": "marketing-content-lead-magnet/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -6876,7 +6876,7 @@
     {
       "name": "marketing-content-linkedin-writer",
       "source_id": "source-1",
-      "path": "marketing-content-linkedin-writer\\SKILL.md",
+      "path": "marketing-content-linkedin-writer/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -6969,7 +6969,7 @@
     {
       "name": "marketing-content-viral-hook",
       "source_id": "source-1",
-      "path": "marketing-content-viral-hook\\SKILL.md",
+      "path": "marketing-content-viral-hook/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -7062,7 +7062,7 @@
     {
       "name": "marketing-content-x-thread-builder",
       "source_id": "source-1",
-      "path": "marketing-content-x-thread-builder\\SKILL.md",
+      "path": "marketing-content-x-thread-builder/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -7153,7 +7153,7 @@
     {
       "name": "marketing-customer-segmentation",
       "source_id": "source-1",
-      "path": "marketing-customer-segmentation\\SKILL.md",
+      "path": "marketing-customer-segmentation/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -7244,7 +7244,7 @@
     {
       "name": "marketing-seo-adsense-readiness",
       "source_id": "source-1",
-      "path": "marketing-seo-adsense-readiness\\SKILL.md",
+      "path": "marketing-seo-adsense-readiness/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -7337,7 +7337,7 @@
     {
       "name": "marketing-seo-adsense-review",
       "source_id": "source-1",
-      "path": "marketing-seo-adsense-review\\SKILL.md",
+      "path": "marketing-seo-adsense-review/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -7430,7 +7430,7 @@
     {
       "name": "marketing-seo-cro",
       "source_id": "source-1",
-      "path": "marketing-seo-cro\\SKILL.md",
+      "path": "marketing-seo-cro/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -7521,7 +7521,7 @@
     {
       "name": "ops-process-sop-creator",
       "source_id": "source-1",
-      "path": "ops-process-sop-creator\\SKILL.md",
+      "path": "ops-process-sop-creator/SKILL.md",
       "url": null,
       "packs": [
         "ops"
@@ -7612,7 +7612,7 @@
     {
       "name": "people-comms-announce-organizational",
       "source_id": "source-1",
-      "path": "people-comms-announce-organizational\\SKILL.md",
+      "path": "people-comms-announce-organizational/SKILL.md",
       "url": null,
       "packs": [
         "comms"
@@ -7703,7 +7703,7 @@
     {
       "name": "people-comms-engage-internal-community",
       "source_id": "source-1",
-      "path": "people-comms-engage-internal-community\\SKILL.md",
+      "path": "people-comms-engage-internal-community/SKILL.md",
       "url": null,
       "packs": [
         "comms"
@@ -7794,7 +7794,7 @@
     {
       "name": "product-discovery-spec-toolkit",
       "source_id": "source-1",
-      "path": "product-discovery-spec-toolkit\\SKILL.md",
+      "path": "product-discovery-spec-toolkit/SKILL.md",
       "url": null,
       "packs": [
         "product"
@@ -7885,7 +7885,7 @@
     {
       "name": "product-spec-brainstorming",
       "source_id": "source-1",
-      "path": "product-spec-brainstorming\\SKILL.md",
+      "path": "product-spec-brainstorming/SKILL.md",
       "url": null,
       "packs": [
         "product"
@@ -7976,7 +7976,7 @@
     {
       "name": "product-spec-game-changing-features",
       "source_id": "source-1",
-      "path": "product-spec-game-changing-features\\SKILL.md",
+      "path": "product-spec-game-changing-features/SKILL.md",
       "url": null,
       "packs": [
         "product"
@@ -8067,7 +8067,7 @@
     {
       "name": "product-spec-prd-generator",
       "source_id": "source-1",
-      "path": "product-spec-prd-generator\\SKILL.md",
+      "path": "product-spec-prd-generator/SKILL.md",
       "url": null,
       "packs": [
         "product"
@@ -8158,7 +8158,7 @@
     {
       "name": "product-spec-reverse-engineer",
       "source_id": "source-1",
-      "path": "product-spec-reverse-engineer\\SKILL.md",
+      "path": "product-spec-reverse-engineer/SKILL.md",
       "url": null,
       "packs": [
         "product"
@@ -8249,7 +8249,7 @@
     {
       "name": "product-strategy-okr-specialist",
       "source_id": "source-1",
-      "path": "product-strategy-okr-specialist\\SKILL.md",
+      "path": "product-strategy-okr-specialist/SKILL.md",
       "url": null,
       "packs": [
         "product"
@@ -8340,7 +8340,7 @@
     {
       "name": "product-strategy-validator",
       "source_id": "source-1",
-      "path": "product-strategy-validator\\SKILL.md",
+      "path": "product-strategy-validator/SKILL.md",
       "url": null,
       "packs": [
         "product"
@@ -8431,7 +8431,7 @@
     {
       "name": "product-vision-strategy",
       "source_id": "source-1",
-      "path": "product-vision-strategy\\SKILL.md",
+      "path": "product-vision-strategy/SKILL.md",
       "url": null,
       "packs": [
         "product"
@@ -8522,7 +8522,7 @@
     {
       "name": "productivity-daily-meeting-notes",
       "source_id": "source-1",
-      "path": "productivity-daily-meeting-notes\\SKILL.md",
+      "path": "productivity-daily-meeting-notes/SKILL.md",
       "url": null,
       "packs": [
         "ops"
@@ -8615,7 +8615,7 @@
     {
       "name": "research-ai-landscape-brief",
       "source_id": "source-1",
-      "path": "research-ai-landscape-brief\\SKILL.md",
+      "path": "research-ai-landscape-brief/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -8712,7 +8712,7 @@
     {
       "name": "research-analyst",
       "source_id": "source-1",
-      "path": "research-analyst\\SKILL.md",
+      "path": "research-analyst/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -8803,7 +8803,7 @@
     {
       "name": "research-deep-reading-analyst",
       "source_id": "source-1",
-      "path": "research-deep-reading-analyst\\SKILL.md",
+      "path": "research-deep-reading-analyst/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -8894,7 +8894,7 @@
     {
       "name": "research-dtc-insurance-market-intelligence",
       "source_id": "source-1",
-      "path": "research-dtc-insurance-market-intelligence\\SKILL.md",
+      "path": "research-dtc-insurance-market-intelligence/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -8985,7 +8985,7 @@
     {
       "name": "research-market-analyst",
       "source_id": "source-1",
-      "path": "research-market-analyst\\SKILL.md",
+      "path": "research-market-analyst/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -9076,7 +9076,7 @@
     {
       "name": "research-market-competitor-intel",
       "source_id": "source-1",
-      "path": "research-market-competitor-intel\\SKILL.md",
+      "path": "research-market-competitor-intel/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -9167,7 +9167,7 @@
     {
       "name": "research-market-opportunity",
       "source_id": "source-1",
-      "path": "research-market-opportunity\\SKILL.md",
+      "path": "research-market-opportunity/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -9245,7 +9245,7 @@
     {
       "name": "research-market-persona-builder",
       "source_id": "source-1",
-      "path": "research-market-persona-builder\\SKILL.md",
+      "path": "research-market-persona-builder/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -9336,7 +9336,7 @@
     {
       "name": "research-market-researcher",
       "source_id": "source-1",
-      "path": "research-market-researcher\\SKILL.md",
+      "path": "research-market-researcher/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -9427,7 +9427,7 @@
     {
       "name": "research-weekly-ai-news",
       "source_id": "source-1",
-      "path": "research-weekly-ai-news\\SKILL.md",
+      "path": "research-weekly-ai-news/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -9518,7 +9518,7 @@
     {
       "name": "sales-outreach-specialist",
       "source_id": "source-1",
-      "path": "sales-outreach-specialist\\SKILL.md",
+      "path": "sales-outreach-specialist/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -9609,7 +9609,7 @@
     {
       "name": "sales-pipeline-revops",
       "source_id": "source-1",
-      "path": "sales-pipeline-revops\\SKILL.md",
+      "path": "sales-pipeline-revops/SKILL.md",
       "url": null,
       "packs": [
         "marketing"
@@ -9700,7 +9700,7 @@
     {
       "name": "skill-architect",
       "source_id": "source-1",
-      "path": "skill-architect\\SKILL.md",
+      "path": "skill-architect/SKILL.md",
       "url": null,
       "packs": [
         "skills"
@@ -9770,7 +9770,7 @@
     {
       "name": "skill-evaluator",
       "source_id": "source-1",
-      "path": "skill-evaluator\\SKILL.md",
+      "path": "skill-evaluator/SKILL.md",
       "url": null,
       "packs": [
         "skills"
@@ -9838,7 +9838,7 @@
     {
       "name": "skill-evaluator-catalog-builder",
       "source_id": "source-1",
-      "path": "skill-evaluator-catalog-builder\\SKILL.md",
+      "path": "skill-evaluator-catalog-builder/SKILL.md",
       "url": null,
       "packs": [
         "skills"
@@ -9876,10 +9876,12 @@
           "rationale": "Not evaluated"
         },
         "security_risk": {
-          "rating": "medium",
+          "rating": "high",
           "rationale": "Evaluated from scanner signals.",
           "findings": [
-            "References credentials/secrets"
+            "References credentials/secrets",
+            "Makes outbound network calls",
+            "Uses execution patterns"
           ]
         },
         "executability": {
@@ -9908,7 +9910,7 @@
     {
       "name": "skill-reinterpreter",
       "source_id": "source-1",
-      "path": "skill-reinterpreter\\SKILL.md",
+      "path": "skill-reinterpreter/SKILL.md",
       "url": null,
       "packs": [
         "skills"
@@ -9976,7 +9978,7 @@
     {
       "name": "strategy-change-management",
       "source_id": "source-1",
-      "path": "strategy-change-management\\SKILL.md",
+      "path": "strategy-change-management/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -10067,7 +10069,7 @@
     {
       "name": "strategy-critical-reasoning",
       "source_id": "source-1",
-      "path": "strategy-critical-reasoning\\SKILL.md",
+      "path": "strategy-critical-reasoning/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -10158,7 +10160,7 @@
     {
       "name": "strategy-decision",
       "source_id": "source-1",
-      "path": "strategy-decision\\SKILL.md",
+      "path": "strategy-decision/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -10226,7 +10228,7 @@
     {
       "name": "strategy-decision-council",
       "source_id": "source-1",
-      "path": "strategy-decision-council\\SKILL.md",
+      "path": "strategy-decision-council/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -10317,7 +10319,7 @@
     {
       "name": "strategy-decision-documenter",
       "source_id": "source-1",
-      "path": "strategy-decision-documenter\\SKILL.md",
+      "path": "strategy-decision-documenter/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -10397,7 +10399,7 @@
     {
       "name": "strategy-decision-interrogator",
       "source_id": "source-1",
-      "path": "strategy-decision-interrogator\\SKILL.md",
+      "path": "strategy-decision-interrogator/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -10477,7 +10479,7 @@
     {
       "name": "strategy-exec-presentation-designer",
       "source_id": "source-1",
-      "path": "strategy-exec-presentation-designer\\SKILL.md",
+      "path": "strategy-exec-presentation-designer/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -10570,7 +10572,7 @@
     {
       "name": "strategy-frameworks-mckinsey-brief",
       "source_id": "source-1",
-      "path": "strategy-frameworks-mckinsey-brief\\SKILL.md",
+      "path": "strategy-frameworks-mckinsey-brief/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -10661,7 +10663,7 @@
     {
       "name": "strategy-innovation-catalyst",
       "source_id": "source-1",
-      "path": "strategy-innovation-catalyst\\SKILL.md",
+      "path": "strategy-innovation-catalyst/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -10739,7 +10741,7 @@
     {
       "name": "strategy-planning-opportunity",
       "source_id": "source-1",
-      "path": "strategy-planning-opportunity\\SKILL.md",
+      "path": "strategy-planning-opportunity/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -10817,7 +10819,7 @@
     {
       "name": "strategy-planning-pricing",
       "source_id": "source-1",
-      "path": "strategy-planning-pricing\\SKILL.md",
+      "path": "strategy-planning-pricing/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -10908,7 +10910,7 @@
     {
       "name": "strategy-planning-startup",
       "source_id": "source-1",
-      "path": "strategy-planning-startup\\SKILL.md",
+      "path": "strategy-planning-startup/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -10999,7 +11001,7 @@
     {
       "name": "tech-leader-exec-briefing",
       "source_id": "source-1",
-      "path": "tech-leader-exec-briefing\\SKILL.md",
+      "path": "tech-leader-exec-briefing/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -11067,7 +11069,7 @@
     {
       "name": "tech-leader-roadmap-narrator",
       "source_id": "source-1",
-      "path": "tech-leader-roadmap-narrator\\SKILL.md",
+      "path": "tech-leader-roadmap-narrator/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
@@ -11135,7 +11137,7 @@
     {
       "name": "tech-leader-vision-builder",
       "source_id": "source-1",
-      "path": "tech-leader-vision-builder\\SKILL.md",
+      "path": "tech-leader-vision-builder/SKILL.md",
       "url": null,
       "packs": [
         "strategy"
