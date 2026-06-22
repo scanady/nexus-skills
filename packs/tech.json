@@ -3,6 +3,29 @@
   "version": "1.0.0",
   "description": "Skills for software engineering — git workflows, architecture decisions, code quality, TDD, API/MCP building, and GitHub repo management.",
   "skills": [
-    "tech-*"
+    "devops-incident-responder",
+    "devops-infra-engineer",
+    "devops-security-audit-lead",
+    "devops-security-vulnerability-analyst",
+    "engineering-api-mcp-builder",
+    "engineering-api-n8n-workflow-builder",
+    "engineering-arch-architecture-decision-records",
+    "engineering-arch-principle-engineer",
+    "engineering-arch-system-designer",
+    "engineering-data-scraper",
+    "engineering-database-optimizer",
+    "engineering-dev-git-commit",
+    "engineering-dev-git-finish-branch",
+    "engineering-dev-git-start-branch",
+    "engineering-dev-git-workflow-design",
+    "engineering-dev-writing-plans",
+    "engineering-feature-forge",
+    "engineering-github-ops",
+    "engineering-github-repo-standards",
+    "engineering-legacy-modernizer",
+    "engineering-quality-code-simplifier",
+    "engineering-quality-receiving-review",
+    "engineering-quality-requesting-review",
+    "engineering-quality-tdd"
   ]
 }

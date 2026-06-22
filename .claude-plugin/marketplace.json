@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Agentic skills, prompts, agents, and instructions for AI development platforms.",
-    "version": "1.0.1"
+    "version": "1.1.0"
   },
   "plugins": [
     {
@@ -23,7 +23,33 @@
         "agent-tools"
       ],
       "skills": [
-        "./skills/knowledge-context-curator"
+        "./skills/agents-copilot-instructions",
+        "./skills/agents-design-persona-creator",
+        "./skills/agents-design-visual-identity",
+        "./skills/agents-skill-plugin-builder",
+        "./skills/agents-skill-spec-builder",
+        "./skills/ai-prompt-engineer",
+        "./skills/knowledge-context-curator",
+        "./skills/knowledge-ops"
+      ]
+    },
+    {
+      "name": "nexus-comms",
+      "description": "Skills for organizational announcements, internal community engagement, and customer email communication.",
+      "source": "./",
+      "strict": false,
+      "version": "1.0.0",
+      "keywords": [
+        "skills",
+        "prompts",
+        "agents",
+        "instructions",
+        "ai",
+        "comms"
+      ],
+      "skills": [
+        "./skills/people-comms-announce-organizational",
+        "./skills/people-comms-engage-internal-community"
       ]
     },
     {
@@ -140,7 +166,8 @@
         "./skills/marketing-seo-adsense-readiness",
         "./skills/marketing-seo-adsense-review",
         "./skills/marketing-seo-cro",
-        "./skills/sales-outreach-specialist"
+        "./skills/sales-outreach-specialist",
+        "./skills/sales-pipeline-revops"
       ]
     },
     {
@@ -159,8 +186,7 @@
       ],
       "skills": [
         "./skills/ops-process-sop-creator",
-        "./skills/productivity-daily-meeting-notes",
-        "./skills/productivity-personal-communication-style"
+        "./skills/productivity-daily-meeting-notes"
       ]
     },
     {
@@ -189,6 +215,27 @@
       ]
     },
     {
+      "name": "nexus-skills",
+      "description": "Skills for authoring, evaluating, cataloging, and reinterpreting other skills.",
+      "source": "./",
+      "strict": false,
+      "version": "1.0.0",
+      "keywords": [
+        "skills",
+        "prompts",
+        "agents",
+        "instructions",
+        "ai",
+        "skills"
+      ],
+      "skills": [
+        "./skills/skill-architect",
+        "./skills/skill-evaluator",
+        "./skills/skill-evaluator-catalog-builder",
+        "./skills/skill-reinterpreter"
+      ]
+    },
+    {
       "name": "nexus-strategy",
       "description": "Skills for strategic decision-making, market research, competitive intelligence, executive presentations, and critical reasoning.",
       "source": "./",
@@ -203,7 +250,17 @@
         "strategy"
       ],
       "skills": [
+        "./skills/legal-compliance-regulatory-monitor",
+        "./skills/research-ai-landscape-brief",
         "./skills/research-analyst",
+        "./skills/research-deep-reading-analyst",
+        "./skills/research-dtc-insurance-market-intelligence",
+        "./skills/research-market-analyst",
+        "./skills/research-market-competitor-intel",
+        "./skills/research-market-opportunity",
+        "./skills/research-market-persona-builder",
+        "./skills/research-market-researcher",
+        "./skills/research-weekly-ai-news",
         "./skills/strategy-change-management",
         "./skills/strategy-critical-reasoning",
         "./skills/strategy-decision",
@@ -215,7 +272,10 @@
         "./skills/strategy-innovation-catalyst",
         "./skills/strategy-planning-opportunity",
         "./skills/strategy-planning-pricing",
-        "./skills/strategy-planning-startup"
+        "./skills/strategy-planning-startup",
+        "./skills/tech-leader-exec-briefing",
+        "./skills/tech-leader-roadmap-narrator",
+        "./skills/tech-leader-vision-builder"
       ]
     },
     {
@@ -233,9 +293,30 @@
         "tech"
       ],
       "skills": [
-        "./skills/tech-leader-exec-briefing",
-        "./skills/tech-leader-roadmap-narrator",
-        "./skills/tech-leader-vision-builder"
+        "./skills/devops-incident-responder",
+        "./skills/devops-infra-engineer",
+        "./skills/devops-security-audit-lead",
+        "./skills/devops-security-vulnerability-analyst",
+        "./skills/engineering-api-mcp-builder",
+        "./skills/engineering-api-n8n-workflow-builder",
+        "./skills/engineering-arch-architecture-decision-records",
+        "./skills/engineering-arch-principle-engineer",
+        "./skills/engineering-arch-system-designer",
+        "./skills/engineering-data-scraper",
+        "./skills/engineering-database-optimizer",
+        "./skills/engineering-dev-git-commit",
+        "./skills/engineering-dev-git-finish-branch",
+        "./skills/engineering-dev-git-start-branch",
+        "./skills/engineering-dev-git-workflow-design",
+        "./skills/engineering-dev-writing-plans",
+        "./skills/engineering-feature-forge",
+        "./skills/engineering-github-ops",
+        "./skills/engineering-github-repo-standards",
+        "./skills/engineering-legacy-modernizer",
+        "./skills/engineering-quality-code-simplifier",
+        "./skills/engineering-quality-receiving-review",
+        "./skills/engineering-quality-requesting-review",
+        "./skills/engineering-quality-tdd"
       ]
     },
     {
@@ -243,7 +324,7 @@
       "description": "All nexus skills (umbrella plugin).",
       "source": "./",
       "strict": false,
-      "version": "1.0.1",
+      "version": "1.1.0",
       "keywords": [
         "skills",
         "prompts",
@@ -258,7 +339,6 @@
         "./skills/agents-skill-plugin-builder",
         "./skills/agents-skill-spec-builder",
         "./skills/ai-prompt-engineer",
-        "./skills/ai-prompt-optimizer",
         "./skills/content-behavioral-nudge-unit",
         "./skills/content-copy-caveman",
         "./skills/content-copy-clear-writing",
@@ -308,7 +388,6 @@
         "./skills/engineering-dev-git-start-branch",
         "./skills/engineering-dev-git-workflow-design",
         "./skills/engineering-dev-writing-plans",
-        "./skills/engineering-doc-markdown-to-pdf",
         "./skills/engineering-feature-forge",
         "./skills/engineering-github-ops",
         "./skills/engineering-github-repo-standards",
@@ -347,7 +426,6 @@
         "./skills/product-strategy-validator",
         "./skills/product-vision-strategy",
         "./skills/productivity-daily-meeting-notes",
-        "./skills/productivity-personal-communication-style",
         "./skills/research-ai-landscape-brief",
         "./skills/research-analyst",
         "./skills/research-deep-reading-analyst",
@@ -360,6 +438,10 @@
         "./skills/research-weekly-ai-news",
         "./skills/sales-outreach-specialist",
         "./skills/sales-pipeline-revops",
+        "./skills/skill-architect",
+        "./skills/skill-evaluator",
+        "./skills/skill-evaluator-catalog-builder",
+        "./skills/skill-reinterpreter",
         "./skills/strategy-change-management",
         "./skills/strategy-critical-reasoning",
         "./skills/strategy-decision",

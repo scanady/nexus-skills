@@ -1,0 +1,12 @@
+{
+  "name": "skills",
+  "version": "1.0.0",
+  "description": "Skills for authoring, evaluating, cataloging, and reinterpreting other skills.",
+  "skills": [
+    "skill-architect",
+    "skill-evaluator",
+    "skill-evaluator-catalog-builder",
+    "skill-reinterpreter",
+    "content-copy-clear-writing"
+  ]
+}

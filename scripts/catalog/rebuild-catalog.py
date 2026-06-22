@@ -380,6 +380,49 @@ def without_generated_at(catalog: dict) -> dict:
     return comparable
 
 
+def derive_security_risk(scan_entry: dict, existing_security: dict | None) -> dict:
+    """Derive a mechanical security-risk summary from scan indicators."""
+    indicators = scan_entry.get("external_indicators", {}) or {}
+    findings = []
+    if indicators.get("credential_refs"):
+        findings.append("References credentials/secrets")
+    if indicators.get("network_calls"):
+        findings.append("Makes outbound network calls")
+    if indicators.get("exec_patterns"):
+        findings.append("Uses execution patterns")
+    if indicators.get("install_commands"):
+        findings.append("Uses install commands")
+
+    rating = "low"
+    if findings:
+        rating = "medium" if len(findings) <= 2 else "high"
+
+    updated = dict(existing_security or {})
+    updated["rating"] = rating
+    updated["findings"] = findings
+    updated["rationale"] = (
+        "Evaluated from scanner signals."
+        if findings
+        else "No obvious credential handling or risky execution patterns detected."
+    )
+    return updated
+
+
+def derive_core_capabilities(frontmatter: dict | None, existing_value: str | None) -> str:
+    """Use the frontmatter description when evaluation text is missing or placeholder-like."""
+    description = (frontmatter or {}).get("description")
+    if not description:
+        return existing_value or ""
+
+    placeholder_values = {"", "Not evaluated", ">-.", ">.", "Auto-generated from scan-only fallback."}
+    normalized = (existing_value or "").strip()
+    if normalized in placeholder_values or not normalized:
+        return description
+    if set(normalized) <= {">", "-", ".", " ", "\t", "\n"}:
+        return description
+    return existing_value or description
+
+
 def main():
     # Load inputs
     scan_data = json.loads(SCAN_FILE.read_text(encoding="utf-8"))
@@ -459,9 +502,15 @@ def main():
             evaluation["license"] = scan_entry.get("license", "unspecified")
         elif name in old_evals:
             evaluation = old_evals[name].get("evaluation", {})
-            # Refresh mechanical fields
+            # Refresh mechanical fields and security risk from current scan results
             evaluation["script_languages"] = scan_entry.get("script_languages", ["none"])
             evaluation["license"] = scan_entry.get("license", "unspecified")
+            evaluation["security_risk"] = derive_security_risk(
+                scan_entry, evaluation.get("security_risk")
+            )
+            evaluation["core_capabilities"] = derive_core_capabilities(
+                fm, evaluation.get("core_capabilities")
+            )
         else:
             evaluation = {
                 "usage_value": {"score": 0, "rationale": "Not evaluated"},
