@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Agentic skills, prompts, agents, and instructions for AI development platforms.",
-    "version": "1.0.1"
+    "version": "1.1.0"
   },
   "plugins": [
     {
@@ -13,7 +13,7 @@
       "description": "All nexus skills (umbrella plugin).",
       "source": "./",
       "strict": false,
-      "version": "1.0.1",
+      "version": "1.1.0",
       "keywords": [
         "skills",
         "prompts",
@@ -28,7 +28,6 @@
         "./skills/agents-skill-plugin-builder",
         "./skills/agents-skill-spec-builder",
         "./skills/ai-prompt-engineer",
-        "./skills/ai-prompt-optimizer",
         "./skills/content-behavioral-nudge-unit",
         "./skills/content-copy-caveman",
         "./skills/content-copy-clear-writing",
@@ -78,7 +77,6 @@
         "./skills/engineering-dev-git-start-branch",
         "./skills/engineering-dev-git-workflow-design",
         "./skills/engineering-dev-writing-plans",
-        "./skills/engineering-doc-markdown-to-pdf",
         "./skills/engineering-feature-forge",
         "./skills/engineering-github-ops",
         "./skills/engineering-github-repo-standards",
@@ -117,7 +115,6 @@
         "./skills/product-strategy-validator",
         "./skills/product-vision-strategy",
         "./skills/productivity-daily-meeting-notes",
-        "./skills/productivity-personal-communication-style",
         "./skills/research-ai-landscape-brief",
         "./skills/research-analyst",
         "./skills/research-deep-reading-analyst",
@@ -130,6 +127,10 @@
         "./skills/research-weekly-ai-news",
         "./skills/sales-outreach-specialist",
         "./skills/sales-pipeline-revops",
+        "./skills/skill-architect",
+        "./skills/skill-evaluator",
+        "./skills/skill-evaluator-catalog-builder",
+        "./skills/skill-reinterpreter",
         "./skills/strategy-change-management",
         "./skills/strategy-critical-reasoning",
         "./skills/strategy-decision",

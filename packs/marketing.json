@@ -3,7 +3,22 @@
   "version": "1.0.0",
   "description": "Skills for campaigns, SEO, brand strategy, content production, customer segmentation, competitive intelligence, and sales outreach.",
   "skills": [
-    "marketing-*",
-    "sales-outreach-specialist"
+    "marketing-brand-strategist",
+    "marketing-campaign-go-to-market",
+    "marketing-campaign-ideas",
+    "marketing-campaign-product-hunt-launch",
+    "marketing-campaign-psychology",
+    "marketing-content-brand-copywriter",
+    "marketing-content-engine",
+    "marketing-content-lead-magnet",
+    "marketing-content-linkedin-writer",
+    "marketing-content-viral-hook",
+    "marketing-content-x-thread-builder",
+    "marketing-customer-segmentation",
+    "marketing-seo-adsense-readiness",
+    "marketing-seo-adsense-review",
+    "marketing-seo-cro",
+    "sales-outreach-specialist",
+    "sales-pipeline-revops"
   ]
 }

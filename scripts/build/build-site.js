@@ -80,7 +80,7 @@ function buildIndexHtml(manifest, version) {
           <td><code>${p.pluginName}</code></td>
           <td>${p.skills.length}</td>
           <td><a href="plugins/${p.name}.zip" download>${p.name}.zip</a></td>
-          <td><code>nexus-agents install --pack ${p.name}</code></td>
+          <td><code>nxa install --pack ${p.name}</code></td>
         </tr>`).join('');
 
   return `<!DOCTYPE html>
@@ -128,11 +128,11 @@ function buildIndexHtml(manifest, version) {
   </div>
 
   <h2>Install via CLI</h2>
-  <pre>npm exec --yes --package=git+https://github.com/scanady/nexus-skills.git#main -- nexus-agents install</pre>
+  <pre>npm exec --yes --package=git+https://github.com/scanady/nexus-skills.git#main -- nxa install</pre>
 
   <h2>Install a specific pack</h2>
-  <pre>nexus-agents install --pack marketing
-nexus-agents install --pack tech --pack data</pre>
+  <pre>nxa install --pack marketing
+nxa install --pack tech --pack data</pre>
 
   <h2>Install as a Claude plugin</h2>
   <p>Add this repo as a Claude Code marketplace, then install any pack plugin:</p>

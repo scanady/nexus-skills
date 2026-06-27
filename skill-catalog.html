@@ -364,10 +364,8 @@
   }
   .get-started-header {
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+    flex-direction: column;
     gap: 12px;
-    flex-wrap: wrap;
     margin-bottom: 14px;
   }
   .get-started-title {
@@ -376,6 +374,16 @@
     letter-spacing: 0.12em;
     color: var(--accent);
     font-weight: 700;
+  }
+  .get-started-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .agent-select-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    white-space: nowrap;
   }
   .get-started-sub {
     font-size: 0.85rem;
@@ -517,6 +525,28 @@
   .theme-toggle:hover { color: var(--text); border-color: var(--accent); }
   .theme-toggle .theme-icon { font-size: 0.95rem; }
 
+  /* ── REFRESH BUTTON ── */
+  .refresh-catalog-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 7px 11px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1;
+    transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  .refresh-catalog-btn:hover { color: var(--text); border-color: var(--accent); }
+  .refresh-catalog-btn:active { transform: scale(0.95); }
+  .refresh-catalog-btn.loading { opacity: 0.6; pointer-events: none; }
+  .refresh-catalog-btn.loading .refresh-icon { animation: spin 0.6s linear infinite; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
   @media (max-width: 600px) {
     .skills-grid { grid-template-columns: 1fr; }
     .risk-bar-wrap { grid-column: span 1; }
@@ -588,15 +618,15 @@
 <main class="page">
   <section class="get-started" id="getStarted">
     <div class="get-started-header">
-      <div>
-        <div class="get-started-title">Get Started</div>
-        <div class="get-started-sub">Install the CLI once, then add any skill from this catalog with <code>nexus-agents install --skill &lt;name&gt;</code>.</div>
+      <div class="get-started-title">Get Started</div>
+      <div class="get-started-controls">
+        <label for="agentSelect" class="agent-select-label">Target agent:</label>
+        <select class="get-started-agent-select" id="agentSelect" aria-label="Target agent for skill installation">
+          <option value="github-copilot">GitHub Copilot</option>
+          <option value="claude-code">Claude Code</option>
+          <option value="codex">Codex</option>
+        </select>
       </div>
-      <select class="get-started-agent-select" id="agentSelect" aria-label="Target agent">
-        <option value="github-copilot">GitHub Copilot</option>
-        <option value="claude-code">Claude Code</option>
-        <option value="codex">Codex</option>
-      </select>
     </div>
     <div class="install-block" data-copy-target="heroInstallCmd">
       <span class="install-prompt">$</span>
@@ -630,6 +660,7 @@
       <button class="view-btn active" id="viewGridBtn" onclick="setView('grid')" title="Grid view">⊞</button>
       <button class="view-btn" id="viewListBtn" onclick="setView('list')" title="List view">≡</button>
     </div>
+    <button class="refresh-catalog-btn" id="refreshCatalogBtn" onclick="refreshCatalog()" title="Refresh catalog"><span class="refresh-icon">⟳</span><span class="refresh-label">Refresh</span></button>
     <button class="control-button" id="openCatalogButton" type="button">Open Catalog</button>
     <input id="catalogPicker" type="file" accept=".json,application/json" hidden />
     <span class="catalog-source" id="catalogSource">Source: skill-catalog.json</span>
@@ -679,7 +710,7 @@ function getSelectedAgent() {
 }
 
 // One-time CLI install (hero command). Use 'npm install -g' so the
-// 'nexus-agents' binary stays on PATH for adding/upgrading skills later.
+// 'nxa' binary stays on PATH for adding/upgrading skills later.
 function buildCliInstallCommand() {
   return `npm install -g git+${SKILL_REPO_URL}#${SKILL_REPO_REF}`;
 }
@@ -688,14 +719,14 @@ function buildCliInstallCommand() {
 function buildInstallCommand(skillName, agent) {
   const a = agent || getSelectedAgent();
   const name = skillName || SKILL_PLACEHOLDER;
-  return `nexus-agents install --skill ${name} -a ${a}`;
+  return `nxa install --skill ${name} -a ${a}`;
 }
 
 function highlightInstallCommand(cmd) {
   // Lightweight token highlight — safe because we control the inputs.
   return cmd
     .replace(/^(npm)\b/, '<span class="tok-bin">$1</span>')
-    .replace(/\bnexus-agents\b/, '<span class="tok-bin">nexus-agents</span>')
+    .replace(/\bnxa\b/, '<span class="tok-bin">nxa</span>')
     .replace(/(--[a-z-]+)/g, '<span class="tok-flag">$1</span>')
     .replace(/(\s)(-[a-z])(\s)/g, '$1<span class="tok-flag">$2</span>$3');
 }
@@ -1266,6 +1297,28 @@ async function handleCatalogFileSelection(file) {
       allowFilePicker: true,
       detail: err.message
     });
+  }
+}
+
+async function refreshCatalog() {
+  const btn = document.getElementById('refreshCatalogBtn');
+  if (!btn || btn.classList.contains('loading')) return;
+  
+  btn.classList.add('loading');
+  try {
+    // Always fetch fresh from the file on refresh
+    const response = await fetch('skill-catalog.json');
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    cacheCatalog(data);
+    initializeCatalog(data, 'skill-catalog.json');
+  } catch (err) {
+    showLoadFailure('Failed to refresh skill catalog.', {
+      allowFilePicker: true,
+      detail: err.message
+    });
+  } finally {
+    btn.classList.remove('loading');
   }
 }
 

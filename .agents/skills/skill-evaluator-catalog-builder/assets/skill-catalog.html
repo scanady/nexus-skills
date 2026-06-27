@@ -354,6 +354,131 @@
   .no-results { text-align: center; padding: 60px 20px; color: var(--text-muted); display: none; }
   .no-results.visible { display: block; }
 
+  /* ── GET STARTED HERO ── */
+  .get-started {
+    background: linear-gradient(135deg, rgba(108,114,247,0.08) 0%, rgba(108,114,247,0.02) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 22px;
+  }
+  .get-started-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .get-started-title {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .get-started-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .agent-select-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .get-started-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    flex: 1 1 auto;
+  }
+  .get-started-agent-select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-size: 0.78rem;
+    padding: 5px 9px;
+    cursor: pointer;
+  }
+  .install-block {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    background: #0a0c12;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 0.85rem;
+  }
+  .light .install-block { background: #1a1d2e; }
+  .install-prompt {
+    color: var(--text-dim);
+    padding: 12px 6px 12px 14px;
+    user-select: none;
+    flex-shrink: 0;
+  }
+  .install-cmd-wrap {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .install-cmd {
+    display: block;
+    color: #d4d8f0;
+    padding: 12px 12px 12px 4px;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  /* Soft fade on the right edge so the truncation feels intentional */
+  .install-cmd-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 48px;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(10,12,18,0) 0%, #0a0c12 100%);
+  }
+  .light .install-cmd-wrap::after {
+    background: linear-gradient(to right, rgba(26,29,46,0) 0%, #1a1d2e 100%);
+  }
+  .install-cmd .tok-bin { color: #67e8f9; }
+  .install-cmd .tok-flag { color: #c084fc; }
+  .install-cmd .tok-val { color: #fbbf24; }
+  .install-copy {
+    background: var(--surface2);
+    border: none;
+    border-left: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0 16px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: color 0.15s, background 0.15s;
+    flex-shrink: 0;
+  }
+  .install-copy:hover { color: var(--text); background: var(--surface3); }
+  .install-copy.copied { color: var(--green); }
+  .get-started-hint {
+    margin-top: 10px;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+  .get-started-hint a { color: var(--accent); text-decoration: none; }
+  .get-started-hint a:hover { text-decoration: underline; }
+
+  /* ── PER-CARD INSTALL BLOCK ── */
+  .install-block.compact { font-size: 0.78rem; }
+  .install-block.compact .install-prompt { padding: 9px 4px 9px 10px; }
+  .install-block.compact .install-cmd { padding: 9px 10px 9px 4px; }
+  .install-block.compact .install-copy { padding: 0 12px; font-size: 0.68rem; }
+  .install-block.compact .install-cmd-wrap::after { width: 32px; }
+
   /* ── FOOTER ── */
   .page-footer { text-align: center; padding: 32px 0 24px; color: var(--text-dim); font-size: 0.78rem; }
 
@@ -399,6 +524,28 @@
   }
   .theme-toggle:hover { color: var(--text); border-color: var(--accent); }
   .theme-toggle .theme-icon { font-size: 0.95rem; }
+
+  /* ── REFRESH BUTTON ── */
+  .refresh-catalog-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 7px 11px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1;
+    transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  .refresh-catalog-btn:hover { color: var(--text); border-color: var(--accent); }
+  .refresh-catalog-btn:active { transform: scale(0.95); }
+  .refresh-catalog-btn.loading { opacity: 0.6; pointer-events: none; }
+  .refresh-catalog-btn.loading .refresh-icon { animation: spin 0.6s linear infinite; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
   @media (max-width: 600px) {
     .skills-grid { grid-template-columns: 1fr; }
@@ -469,6 +616,31 @@
 </header>
 
 <main class="page">
+  <section class="get-started" id="getStarted">
+    <div class="get-started-header">
+      <div class="get-started-title">Get Started</div>
+      <div class="get-started-controls">
+        <label for="agentSelect" class="agent-select-label">Target agent:</label>
+        <select class="get-started-agent-select" id="agentSelect" aria-label="Target agent for skill installation">
+          <option value="github-copilot">GitHub Copilot</option>
+          <option value="claude-code">Claude Code</option>
+          <option value="codex">Codex</option>
+        </select>
+      </div>
+    </div>
+    <div class="install-block" data-copy-target="heroInstallCmd">
+      <span class="install-prompt">$</span>
+      <div class="install-cmd-wrap">
+        <code class="install-cmd" id="heroInstallCmd" title=""></code>
+      </div>
+      <button type="button" class="install-copy" data-copy-for="heroInstallCmd" aria-label="Copy install command">Copy</button>
+    </div>
+    <div class="get-started-hint">
+      One-time CLI install. Pick your target agent above, then copy the <strong>Installation</strong> command on any skill card below.
+      Need help? See the <a href="README.md" target="_blank" rel="noopener noreferrer">README</a>.
+    </div>
+  </section>
+
   <div class="dashboard" id="dashboard"></div>
 
   <div class="controls">
@@ -488,6 +660,7 @@
       <button class="view-btn active" id="viewGridBtn" onclick="setView('grid')" title="Grid view">⊞</button>
       <button class="view-btn" id="viewListBtn" onclick="setView('list')" title="List view">≡</button>
     </div>
+    <button class="refresh-catalog-btn" id="refreshCatalogBtn" onclick="refreshCatalog()" title="Refresh catalog"><span class="refresh-icon">⟳</span><span class="refresh-label">Refresh</span></button>
     <button class="control-button" id="openCatalogButton" type="button">Open Catalog</button>
     <input id="catalogPicker" type="file" accept=".json,application/json" hidden />
     <span class="catalog-source" id="catalogSource">Source: skill-catalog.json</span>
@@ -520,6 +693,96 @@
 let CATALOG;
 let controlsBound = false;
 let currentView = 'grid';
+
+// ── INSTALL COMMAND ──
+const SKILL_REPO_URL = 'https://github.com/scanady/nexus-skills.git';
+const SKILL_REPO_REF = 'main';
+const SKILL_PLACEHOLDER = '<skill-name>';
+const AGENT_LABELS = {
+  'github-copilot': 'GitHub Copilot',
+  'claude-code': 'Claude Code',
+  'codex': 'Codex'
+};
+
+function getSelectedAgent() {
+  const sel = document.getElementById('agentSelect');
+  return (sel && sel.value) || localStorage.getItem('catalog-agent') || 'github-copilot';
+}
+
+// One-time CLI install (hero command). Use 'npm install -g' so the
+// 'nxa' binary stays on PATH for adding/upgrading skills later.
+function buildCliInstallCommand() {
+  return `npm install -g git+${SKILL_REPO_URL}#${SKILL_REPO_REF}`;
+}
+
+// Per-skill install command — assumes the CLI is already installed.
+function buildInstallCommand(skillName, agent) {
+  const a = agent || getSelectedAgent();
+  const name = skillName || SKILL_PLACEHOLDER;
+  return `nxa install --skill ${name} -a ${a}`;
+}
+
+function highlightInstallCommand(cmd) {
+  // Lightweight token highlight — safe because we control the inputs.
+  return cmd
+    .replace(/^(npm)\b/, '<span class="tok-bin">$1</span>')
+    .replace(/\bnxa\b/, '<span class="tok-bin">nxa</span>')
+    .replace(/(--[a-z-]+)/g, '<span class="tok-flag">$1</span>')
+    .replace(/(\s)(-[a-z])(\s)/g, '$1<span class="tok-flag">$2</span>$3');
+}
+
+function renderInstallCommands() {
+  const agent = getSelectedAgent();
+  // Hero block — the one-time CLI install (agent-independent).
+  const hero = document.getElementById('heroInstallCmd');
+  if (hero) {
+    const cmd = buildCliInstallCommand();
+    hero.dataset.copy = cmd;
+    hero.title = cmd;
+    hero.innerHTML = highlightInstallCommand(cmd);
+  }
+  // Per-card blocks — short-form CLI command, agent-aware.
+  document.querySelectorAll('.install-cmd[data-skill-cmd]').forEach(el => {
+    const cmd = buildInstallCommand(el.dataset.skillCmd, agent);
+    el.dataset.copy = cmd;
+    el.title = cmd;
+    el.innerHTML = highlightInstallCommand(cmd)
+      .replace(el.dataset.skillCmd, '<span class="tok-val">' + el.dataset.skillCmd + '</span>');
+  });
+}
+
+async function copyInstallCommand(button) {
+  const id = button.dataset.copyFor;
+  const target = document.getElementById(id);
+  if (!target) return;
+  const text = target.dataset.copy || target.textContent || '';
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (err) {
+    // Fallback for older browsers / non-HTTPS file:// contexts
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (_) { /* ignore */ }
+    document.body.removeChild(ta);
+  }
+  const original = button.textContent;
+  button.textContent = 'Copied';
+  button.classList.add('copied');
+  clearTimeout(button._copyTimer);
+  button._copyTimer = setTimeout(() => {
+    button.textContent = original;
+    button.classList.remove('copied');
+  }, 1400);
+}
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.install-copy');
+  if (btn) copyInstallCommand(btn);
+});
 
 const SEGMENT_LABELS = {
   ai: 'AI',
@@ -706,6 +969,25 @@ function buildCard(skill) {
   <div class="accordion">
 
     <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this, '${uniqueId}-install')">
+        Installation <span class="chevron">▼</span>
+      </button>
+      <div class="accordion-body" id="${uniqueId}-install">
+        <p class="section-title">Install into your AI agent</p>
+        <div class="install-block compact" data-copy-target="${uniqueId}-install-cmd">
+          <span class="install-prompt">$</span>
+          <div class="install-cmd-wrap">
+            <code class="install-cmd" id="${uniqueId}-install-cmd" data-skill-cmd="${skill.name}" title=""></code>
+          </div>
+          <button type="button" class="install-copy" data-copy-for="${uniqueId}-install-cmd" aria-label="Copy install command for ${skill.name}">Copy</button>
+        </div>
+        <p style="font-size:0.72rem;color:var(--text-dim);margin-top:6px">
+          Target agent follows the selector at the top of the page. Add <code>--global</code> for a user-wide install.
+        </p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
       <button class="accordion-trigger" aria-expanded="false" onclick="toggleAccordion(this, '${uniqueId}-rationale')">
         Evaluation Rationale <span class="chevron">▼</span>
       </button>
@@ -887,6 +1169,7 @@ function syncCategoryFilter() {
 function renderCards() {
   const grid = document.getElementById('skillsGrid');
   grid.innerHTML = CATALOG.skills.map(buildCard).join('');
+  renderInstallCommands();
   updateCount();
 }
 
@@ -965,6 +1248,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const isLight = document.documentElement.classList.contains('light');
   document.getElementById('themeIcon').textContent = isLight ? '☀️' : '🌙';
   document.getElementById('themeLabel').textContent = isLight ? 'Dark mode' : 'Light mode';
+
+  // Render the hero install command early so it appears even before the
+  // catalog finishes loading. Per-card install blocks are filled in by
+  // renderCards() once the catalog is ready.
+  const agentSel = document.getElementById('agentSelect');
+  if (agentSel) {
+    const saved = localStorage.getItem('catalog-agent');
+    if (saved && AGENT_LABELS[saved]) agentSel.value = saved;
+  }
+  renderInstallCommands();
 });
 
 function bindControls() {
@@ -973,6 +1266,15 @@ function bindControls() {
   document.getElementById('categoryFilter').addEventListener('change', applyFilters);
   document.getElementById('sortBy').addEventListener('change', applyFilters);
   document.getElementById('packFilter').addEventListener('change', applyFilters);
+  const agentSel = document.getElementById('agentSelect');
+  if (agentSel) {
+    const saved = localStorage.getItem('catalog-agent');
+    if (saved && AGENT_LABELS[saved]) agentSel.value = saved;
+    agentSel.addEventListener('change', () => {
+      localStorage.setItem('catalog-agent', agentSel.value);
+      renderInstallCommands();
+    });
+  }
   controlsBound = true;
 }
 
@@ -995,6 +1297,28 @@ async function handleCatalogFileSelection(file) {
       allowFilePicker: true,
       detail: err.message
     });
+  }
+}
+
+async function refreshCatalog() {
+  const btn = document.getElementById('refreshCatalogBtn');
+  if (!btn || btn.classList.contains('loading')) return;
+  
+  btn.classList.add('loading');
+  try {
+    // Always fetch fresh from the file on refresh
+    const response = await fetch('skill-catalog.json');
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    cacheCatalog(data);
+    initializeCatalog(data, 'skill-catalog.json');
+  } catch (err) {
+    showLoadFailure('Failed to refresh skill catalog.', {
+      allowFilePicker: true,
+      detail: err.message
+    });
+  } finally {
+    btn.classList.remove('loading');
   }
 }
 

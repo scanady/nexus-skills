@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "Skills for data engineering, AI/ML pipelines, RAG architecture, business performance analysis, and database design.",
   "skills": [
-    "data-*"
+    "data-ai-autoresearch",
+    "data-ai-ml-pipeline",
+    "data-ai-ml-rag-architect",
+    "data-ai-post-training-expert",
+    "data-ai-product-specialist",
+    "data-analysis-business-performance",
+    "data-eng-database-architect",
+    "data-eng-pandas-specialist",
+    "data-eng-pipeline-architect"
   ]
 }

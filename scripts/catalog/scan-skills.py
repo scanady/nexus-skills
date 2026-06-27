@@ -162,6 +162,10 @@ CREDENTIAL_RE = re.compile(
     r"|PASSWORD|BEARER|oauth|\.env\b)",
     re.IGNORECASE,
 )
+NEGATED_CREDENTIAL_RE = re.compile(
+    r"\b(?:do not|don't|never|must not|should not|cannot|can't|avoid|forbidden|forbid|hardcode|not use|not store|not expose|without storing|without exposing|exclude|omit)\b",
+    re.IGNORECASE,
+)
 NETWORK_CALL_RE = re.compile(
     r"(requests\.(get|post|put|delete|patch)|fetch\(|urllib|httpx|aiohttp"
     r"|axios\.|http\.request|curl\s|wget\s|subprocess.*curl)",
@@ -179,6 +183,21 @@ INSTALL_RE = re.compile(
 )
 
 
+def _contains_credential_reference(text: str) -> bool:
+    """Detect credential references while ignoring negated safety instructions."""
+    if not text:
+        return False
+
+    for line in text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        if CREDENTIAL_RE.search(line) and not NEGATED_CREDENTIAL_RE.search(line):
+            return True
+
+    return False
+
+
 def detect_external_indicators(skill_dir: Path, skill_text: str) -> dict:
     """Scan skill content and scripts for external service indicators."""
     indicators = {
@@ -192,7 +211,7 @@ def detect_external_indicators(skill_dir: Path, skill_text: str) -> dict:
     # Scan SKILL.md text
     urls = EXTERNAL_URL_RE.findall(skill_text)
     indicators["urls"] = list(set(urls))[:20]  # Cap at 20 unique URLs
-    indicators["credential_refs"] = bool(CREDENTIAL_RE.search(skill_text))
+    indicators["credential_refs"] = _contains_credential_reference(skill_text)
     indicators["network_calls"] = bool(NETWORK_CALL_RE.search(skill_text))
     indicators["exec_patterns"] = bool(EXEC_RE.search(skill_text))
     indicators["install_commands"] = bool(INSTALL_RE.search(skill_text))
@@ -206,7 +225,7 @@ def detect_external_indicators(skill_dir: Path, skill_text: str) -> dict:
                     content = fh.read(50_000)  # Cap at 50KB per file
                 script_urls = EXTERNAL_URL_RE.findall(content)
                 indicators["urls"].extend(script_urls)
-                if CREDENTIAL_RE.search(content):
+                if _contains_credential_reference(content):
                     indicators["credential_refs"] = True
                 if NETWORK_CALL_RE.search(content):
                     indicators["network_calls"] = True

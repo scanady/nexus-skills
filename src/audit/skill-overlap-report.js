@@ -9,7 +9,7 @@
  *   node src/audit/skill-overlap-report.js [options]
  *
  * Usage (via CLI):
- *   node bin/nexus-agents.js audit-overlap [options]
+ *   node bin/nxa.js audit-overlap [options]
  *
  * Options:
  *   --threshold, -t <n>   Minimum overall score to include (default: 0.20)
