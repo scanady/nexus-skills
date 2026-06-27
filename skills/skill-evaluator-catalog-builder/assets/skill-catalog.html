@@ -723,8 +723,14 @@ function buildInstallCommand(skillName, agent) {
 }
 
 function highlightInstallCommand(cmd) {
-  // Lightweight token highlight — safe because we control the inputs.
-  return cmd
+  // Escape first, then add trusted markup for highlighting.
+  const escaped = String(cmd)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+  return escaped
     .replace(/^(npm)\b/, '<span class="tok-bin">$1</span>')
     .replace(/\bnxa\b/, '<span class="tok-bin">nxa</span>')
     .replace(/(--[a-z-]+)/g, '<span class="tok-flag">$1</span>')
@@ -746,8 +752,16 @@ function renderInstallCommands() {
     const cmd = buildInstallCommand(el.dataset.skillCmd, agent);
     el.dataset.copy = cmd;
     el.title = cmd;
+    const skillRaw = String(el.dataset.skillCmd || '');
+    const skillEscaped = skillRaw
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+    const skillPattern = skillEscaped.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     el.innerHTML = highlightInstallCommand(cmd)
-      .replace(el.dataset.skillCmd, '<span class="tok-val">' + el.dataset.skillCmd + '</span>');
+      .replace(new RegExp(skillPattern, 'g'), '<span class="tok-val">' + skillEscaped + '</span>');
   });
 }
 
