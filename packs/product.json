@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "Skills for product specification, PRD generation, brainstorming, reverse engineering, and OKR strategy.",
   "skills": [
-    "product-*"
+    "product-discovery-spec-toolkit",
+    "product-spec-brainstorming",
+    "product-spec-game-changing-features",
+    "product-spec-prd-generator",
+    "product-spec-reverse-engineer",
+    "product-strategy-okr-specialist",
+    "product-strategy-validator",
+    "product-vision-strategy"
   ]
 }

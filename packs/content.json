@@ -3,6 +3,17 @@
   "version": "1.0.0",
   "description": "Skills for writing, editing, and transforming content — copy, email sequences, technical docs, and style extraction.",
   "skills": [
-    "content-*"
+    "content-behavioral-nudge-unit",
+    "content-copy-caveman",
+    "content-copy-clear-writing",
+    "content-copy-critical-writing",
+    "content-copy-email-sequences",
+    "content-copy-email-template-builder",
+    "content-copy-executive-writing",
+    "content-copy-humanizer",
+    "content-meta-design",
+    "content-style-extractor",
+    "content-technical-doc-coauthoring",
+    "content-technical-onboarding-docs"
   ]
 }

@@ -102,7 +102,7 @@ async function installSkills(options = {}) {
 
     const scope = options.global ? 'global' : 'project';
     const action = options.upgrade ? 'Upgrading' : 'Installing';
-    console.log(`\n🚀 ${action} nexus-agents (${scope}, source: ${source.label})...\n`);
+    console.log(`\n🚀 ${action} nxa (${scope}, source: ${source.label})...\n`);
 
     let totalInstalled = 0;
     let totalUpgraded = 0;

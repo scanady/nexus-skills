@@ -3,8 +3,31 @@
   "version": "1.0.0",
   "description": "Skills for strategic decision-making, market research, competitive intelligence, executive presentations, and critical reasoning.",
   "skills": [
-    "strategy-*",
+    "legal-compliance-regulatory-monitor",
+    "research-ai-landscape-brief",
     "research-analyst",
-    "thinking-get-unstuck"
+    "research-deep-reading-analyst",
+    "research-dtc-insurance-market-intelligence",
+    "research-market-analyst",
+    "research-market-competitor-intel",
+    "research-market-opportunity",
+    "research-market-persona-builder",
+    "research-market-researcher",
+    "research-weekly-ai-news",
+    "strategy-change-management",
+    "strategy-critical-reasoning",
+    "strategy-decision",
+    "strategy-decision-council",
+    "strategy-decision-documenter",
+    "strategy-decision-interrogator",
+    "strategy-exec-presentation-designer",
+    "strategy-frameworks-mckinsey-brief",
+    "strategy-innovation-catalyst",
+    "strategy-planning-opportunity",
+    "strategy-planning-pricing",
+    "strategy-planning-startup",
+    "tech-leader-exec-briefing",
+    "tech-leader-roadmap-narrator",
+    "tech-leader-vision-builder"
   ]
 }
