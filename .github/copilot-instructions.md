@@ -20,43 +20,43 @@
 
 ## Skill Source of Truth
 
-`skills/` is the canonical source for every skill in this repo. Folders under `.github/skills/`, `.agents/skills/`, `.claude/skills/`, `.codex/skills/`, or any other agent-specific path are **installed copies** produced by the CLI (`node bin/nexus-agents.js install`).
+`skills/` is the canonical source for every skill in this repo. Folders under `.github/skills/`, `.agents/skills/`, `.claude/skills/`, `.codex/skills/`, or any other agent-specific path are **installed copies** produced by the CLI (`node bin/nxa.js install`).
 
 When updating a skill:
 1. Always edit the source in `skills/<skill-name>/` first.
 2. Never edit an installed copy as the primary change — copies will be overwritten on the next install.
 3. If you've already edited a copy (e.g., `.github/skills/<skill-name>/SKILL.md`), mirror the change back into `skills/<skill-name>/` in the same commit.
-4. After updating the source, refresh installed copies by running `node bin/nexus-agents.js install --upgrade` from the repo root (use `npx nexus-agents install --upgrade` only when consuming this repo externally).
+4. After updating the source, refresh installed copies by running `node bin/nxa.js install --upgrade` from the repo root (use `npx nxa install --upgrade` only when consuming this repo externally).
 
-## CLI — `node bin/nexus-agents.js` (in-repo) / `npx nexus-agents` (external)
+## CLI — `node bin/nxa.js` (in-repo) / `npx nxa` (external)
 
 Use the CLI to install skills into an AI agent's skills directory. It supports the Agent Skills standard path plus GitHub Copilot, Claude Code, and Codex.
 
-**Inside this repo, use `node bin/nexus-agents.js`. When consuming this repo externally, use `npx nexus-agents`.** The two are equivalent — the examples below use the in-repo form.
+**Inside this repo, use `node bin/nxa.js`. When consuming this repo externally, use `npx nxa`.** The two are equivalent — the examples below use the in-repo form.
 
 **Common commands:**
 
 ```bash
 # List all available skills
-node bin/nexus-agents.js list
+node bin/nxa.js list
 
 # Install all skills into the current project (Agent Skills standard, default)
-node bin/nexus-agents.js install
+node bin/nxa.js install
 
 # Install a specific skill
-node bin/nexus-agents.js install --skill marketing-content-linkedin-writer
+node bin/nxa.js install --skill marketing-content-linkedin-writer
 
 # Install globally (user-level, not project-level)
-node bin/nexus-agents.js install --global
+node bin/nxa.js install --global
 
 # Install for a specific agent
-node bin/nexus-agents.js install --agent claude-code
+node bin/nxa.js install --agent claude-code
 
 # Install to multiple agents at once
-node bin/nexus-agents.js install -a github-copilot -a claude-code -a codex
+node bin/nxa.js install -a github-copilot -a claude-code -a codex
 
 # Upgrade (replace) already-installed skills
-node bin/nexus-agents.js install --upgrade
+node bin/nxa.js install --upgrade
 ```
 
 **Install targets by agent:**

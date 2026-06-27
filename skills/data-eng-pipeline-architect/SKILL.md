@@ -5,12 +5,7 @@ license: MIT
 metadata:
   version: "1.0.0"
   domain: data
-  triggers: >-
-    design data pipeline, build ETL, build ELT, data modeling, star schema, data vault, dbt model,
-    Airflow DAG, Spark job, Kafka consumer, data quality check, dataops, CDC pipeline,
-    streaming architecture, warehouse design, medallion architecture, bronze silver gold,
-    SCD type 2, data contract, pipeline orchestration, lakehouse, partitioning strategy,
-    incremental load, backfill, idempotent pipeline
+  triggers: design data pipeline, build ETL, build ELT, data modeling, star schema, data vault, dbt model, Airflow DAG, Spark job, Kafka consumer, data quality check, dataops, CDC pipeline,     streaming architecture, warehouse design, medallion architecture, bronze silver gold, SCD type 2, data contract, pipeline orchestration, lakehouse, partitioning strategy, incremental load, backfill, idempotent pipeline
   role: data-engineer
   scope: design, implementation, review
   output-format: code, architecture, specification

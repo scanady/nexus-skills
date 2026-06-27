@@ -35,7 +35,7 @@ Install any skill once and invoke it in your AI agent by name. Skills work with 
 ## Architecture Overview
 
 **Distribution layer** (`skills/`, `bin/`, `src/`)
-The `skills/` folder is the source-of-truth skill registry. Each skill is a self-contained folder with a `SKILL.md` file and optional `references/` materials. The CLI (`bin/nexus-agents.js`) copies skills from this registry into AI agent config directories on the local machine, with implementation code in `src/`.
+The `skills/` folder is the source-of-truth skill registry. Each skill is a self-contained folder with a `SKILL.md` file and optional `references/` materials. The CLI (`bin/nxa.js`) copies skills from this registry into AI agent config directories on the local machine, with implementation code in `src/`.
 
 **VS Code Copilot customization layer** (`.github/`)
 The `.github/` folder contains VS Code Copilot customizations: agent definitions (`.github/agents/`), path-scoped instruction files (`.github/instructions/`), reusable prompts (`.github/prompts/`), and global Copilot instructions (`.github/copilot-instructions.md`). These files are picked up automatically by VS Code Copilot and are not installed via the CLI.
@@ -65,7 +65,7 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 ```
 {root}/
 ├── bin/
-│   └── nexus-agents.js         # Published CLI executable
+│   └── nxa.js                  # Published CLI executable
 ├── src/
 │   ├── cli/                    # CLI parsing, help, and command handlers
 │   ├── core/                   # Skill discovery, validation, packs, and file utilities
@@ -108,25 +108,25 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 From the project root, install all skills to the current project (default agent: GitHub Copilot):
 
 ```bash
-node bin/nexus-agents.js install
+node bin/nxa.js install
 ```
 
 Install a specific skill to a specific agent:
 
 ```bash
-node bin/nexus-agents.js install --skill content-copy-humanizer -a github-copilot
+node bin/nxa.js install --skill content-copy-humanizer -a github-copilot
 ```
 
 Install to multiple agents at once:
 
 ```bash
-node bin/nexus-agents.js install -a github-copilot
+node bin/nxa.js install -a github-copilot
 ```
 
 Install globally instead of project-scoped:
 
 ```bash
-node bin/nexus-agents.js install --skill product-spec-prd-generator --global
+node bin/nxa.js install --skill product-spec-prd-generator --global
 ```
 
 ### CLI Reference
@@ -192,7 +192,7 @@ For repeatable team installs, pin a branch, tag, or commit in the git package sp
 /engineering-quality-tdd implement a user authentication service
 ```
 
-Skill names map directly to the folder names in `skills/`. Use `node bin/nexus-agents.js list --full` to see all available skills with their descriptions.
+Skill names map directly to the folder names in `skills/`. Use `node bin/nxa.js list --full` to see all available skills with their descriptions.
 
 ## Skills Reference
 
@@ -225,9 +225,6 @@ description: Use when [trigger condition] — [what it does]
 
 ## Additional Resources
 
-- [Agent Skills specification](https://agentskills.io/specification)
-- [GitHub Copilot customization docs](https://docs.github.com/en/copilot/customizing-copilot)
-- [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code)
 - [Skill authoring guide](skills/skill-architect/SKILL.md)
 - [Project docs](docs/)
 - [Changelog](CHANGELOG.md)

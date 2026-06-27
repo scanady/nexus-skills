@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-06-20T19:12:30Z",
+  "generated_at": "2026-06-22T01:26:31Z",
   "sources": [
     {
       "id": "source-1",
@@ -11,25 +11,25 @@
     }
   ],
   "summary": {
-    "total_skills": 123,
-    "evaluated": 106,
+    "total_skills": 124,
+    "evaluated": 114,
     "parse_errors": 0,
-    "avg_usage_value": 2.54,
-    "avg_executability": 2.72,
-    "avg_invocability": 2.07,
+    "avg_usage_value": 3.68,
+    "avg_executability": 2.62,
+    "avg_invocability": 2.0,
     "security_risk_distribution": {
-      "low": 78,
-      "medium": 26,
+      "low": 95,
+      "medium": 27,
       "high": 2
     },
     "complexity_distribution": {
       "compact": 59,
-      "detailed": 25,
-      "comprehensive": 39
+      "detailed": 22,
+      "comprehensive": 43
     },
     "pattern_distribution": {
-      "A": 110,
-      "B": 12,
+      "A": 107,
+      "B": 16,
       "C": 1
     },
     "over_specification_flagged": 0,
@@ -37,16 +37,26 @@
       "agent-tools": {
         "description": "Skills for designing AI agents, building agent skills, and managing knowledge context.",
         "version": "1.0.0",
-        "skill_count": 1,
+        "skill_count": 8,
         "skills": [
-          "knowledge-context-curator"
+          "agents-copilot-instructions",
+          "agents-design-persona-creator",
+          "agents-design-visual-identity",
+          "agents-skill-plugin-builder",
+          "agents-skill-spec-builder",
+          "ai-prompt-engineer",
+          "knowledge-context-curator",
+          "knowledge-ops"
         ]
       },
       "comms": {
         "description": "Skills for organizational announcements, internal community engagement, and customer email communication.",
         "version": "1.0.0",
-        "skill_count": 0,
-        "skills": []
+        "skill_count": 2,
+        "skills": [
+          "people-comms-announce-organizational",
+          "people-comms-engage-internal-community"
+        ]
       },
       "content": {
         "description": "Skills for writing, editing, and transforming content — copy, email sequences, technical docs, and style extraction.",
@@ -105,7 +115,7 @@
       "marketing": {
         "description": "Skills for campaigns, SEO, brand strategy, content production, customer segmentation, competitive intelligence, and sales outreach.",
         "version": "1.0.0",
-        "skill_count": 16,
+        "skill_count": 17,
         "skills": [
           "marketing-brand-strategist",
           "marketing-campaign-go-to-market",
@@ -122,17 +132,17 @@
           "marketing-seo-adsense-readiness",
           "marketing-seo-adsense-review",
           "marketing-seo-cro",
-          "sales-outreach-specialist"
+          "sales-outreach-specialist",
+          "sales-pipeline-revops"
         ]
       },
       "ops": {
         "description": "Skills for operational workflows — SOP creation, daily meeting notes, and productivity routines.",
         "version": "1.0.0",
-        "skill_count": 3,
+        "skill_count": 2,
         "skills": [
           "ops-process-sop-creator",
-          "productivity-daily-meeting-notes",
-          "productivity-personal-communication-style"
+          "productivity-daily-meeting-notes"
         ]
       },
       "product": {
@@ -150,12 +160,34 @@
           "product-vision-strategy"
         ]
       },
+      "skills": {
+        "description": "Skills for authoring, evaluating, cataloging, and reinterpreting other skills.",
+        "version": "1.0.0",
+        "skill_count": 5,
+        "skills": [
+          "content-copy-clear-writing",
+          "skill-architect",
+          "skill-evaluator",
+          "skill-evaluator-catalog-builder",
+          "skill-reinterpreter"
+        ]
+      },
       "strategy": {
         "description": "Skills for strategic decision-making, market research, competitive intelligence, executive presentations, and critical reasoning.",
         "version": "1.0.0",
-        "skill_count": 13,
+        "skill_count": 26,
         "skills": [
+          "legal-compliance-regulatory-monitor",
+          "research-ai-landscape-brief",
           "research-analyst",
+          "research-deep-reading-analyst",
+          "research-dtc-insurance-market-intelligence",
+          "research-market-analyst",
+          "research-market-competitor-intel",
+          "research-market-opportunity",
+          "research-market-persona-builder",
+          "research-market-researcher",
+          "research-weekly-ai-news",
           "strategy-change-management",
           "strategy-critical-reasoning",
           "strategy-decision",
@@ -167,17 +199,41 @@
           "strategy-innovation-catalyst",
           "strategy-planning-opportunity",
           "strategy-planning-pricing",
-          "strategy-planning-startup"
+          "strategy-planning-startup",
+          "tech-leader-exec-briefing",
+          "tech-leader-roadmap-narrator",
+          "tech-leader-vision-builder"
         ]
       },
       "tech": {
         "description": "Skills for software engineering — git workflows, architecture decisions, code quality, TDD, API/MCP building, and GitHub repo management.",
         "version": "1.0.0",
-        "skill_count": 3,
+        "skill_count": 24,
         "skills": [
-          "tech-leader-exec-briefing",
-          "tech-leader-roadmap-narrator",
-          "tech-leader-vision-builder"
+          "devops-incident-responder",
+          "devops-infra-engineer",
+          "devops-security-audit-lead",
+          "devops-security-vulnerability-analyst",
+          "engineering-api-mcp-builder",
+          "engineering-api-n8n-workflow-builder",
+          "engineering-arch-architecture-decision-records",
+          "engineering-arch-principle-engineer",
+          "engineering-arch-system-designer",
+          "engineering-data-scraper",
+          "engineering-database-optimizer",
+          "engineering-dev-git-commit",
+          "engineering-dev-git-finish-branch",
+          "engineering-dev-git-start-branch",
+          "engineering-dev-git-workflow-design",
+          "engineering-dev-writing-plans",
+          "engineering-feature-forge",
+          "engineering-github-ops",
+          "engineering-github-repo-standards",
+          "engineering-legacy-modernizer",
+          "engineering-quality-code-simplifier",
+          "engineering-quality-receiving-review",
+          "engineering-quality-requesting-review",
+          "engineering-quality-tdd"
         ]
       }
     }
@@ -188,7 +244,9 @@
       "source_id": "source-1",
       "path": "agents-copilot-instructions/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "agent-tools"
+      ],
       "frontmatter": {
         "name": "agents-copilot-instructions",
         "description": "Create GitHub Copilot custom instructions files (.instructions.md and copilot-instructions.md) tailored to a repository, language, framework, platform, or concern. Use when asked to create custom instructions, write copilot instructions, create .instructions.md files, set up copilot-instructions.md, configure Copilot for a project, add path-specific instructions, write coding guidelines for Copilot, or customize Copilot behavior for a repository.",
@@ -219,12 +277,22 @@
       "evaluation": {
         "name": "agents-copilot-instructions",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -267,7 +335,9 @@
       "source_id": "source-1",
       "path": "agents-design-persona-creator/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "agent-tools"
+      ],
       "frontmatter": {
         "name": "agents-design-persona-creator",
         "description": "Create agent persona bundles with persistent identity, backstory, behavior, and four-layer configuration (Soul / Body / Faculty / Skill). Use when asked to create a persona, build a character, design an AI personality, make an agent persona, define a persona bundle, or give an agent a behavioral guide rather than generate logos, icons, or avatars.",
@@ -298,15 +368,23 @@
       "evaluation": {
         "name": "agents-design-persona-creator",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
-          "findings": [
-            "References credentials/secrets"
-          ],
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
+          "findings": [],
           "sub_scores": {
             "data_privacy": 3,
             "prompt_injection": 5,
@@ -348,7 +426,9 @@
       "source_id": "source-1",
       "path": "agents-design-visual-identity/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "agent-tools"
+      ],
       "frontmatter": {
         "name": "agents-design-visual-identity",
         "description": "Generate square visual identity assets for agents and apps: icons, avatars, and logos optimized for profile, app, and brand use. Use when asked to \"create an icon\", \"make an avatar\", \"generate a logo\", \"design an agent icon\", \"make a profile picture\", or create a visual brand mark rather than define personality, backstory, or behavioral guidance.",
@@ -379,12 +459,22 @@
       "evaluation": {
         "name": "agents-design-visual-identity",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -429,7 +519,9 @@
       "source_id": "source-1",
       "path": "agents-skill-plugin-builder/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "agent-tools"
+      ],
       "frontmatter": {
         "name": "agents-skill-plugin-builder",
         "description": "Create Cowork/Claude Code knowledge-work plugins from user requirements through a guided design process. Use when asked to \"create a plugin\", \"build a plugin\", \"make a plugin\", \"scaffold a plugin\", \"new plugin\", \"plugin template\", or when packaging skills, commands, and connectors into a distributable plugin for a specific role or workflow. Walks users through requirements gathering, component design, and generates the complete plugin directory structure.",
@@ -460,12 +552,22 @@
       "evaluation": {
         "name": "agents-skill-plugin-builder",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -508,7 +610,9 @@
       "source_id": "source-1",
       "path": "agents-skill-spec-builder/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "agent-tools"
+      ],
       "frontmatter": {
         "name": "agents-skill-spec-builder",
         "description": "Create complex, multi-phase workflow skills using specification-driven decomposition with typed steps, explicit state, and verification. Use when the user needs a skill with structured control flow, branching, iteration, parallel execution, or subagent composition — not a simple single-prompt skill. Use when asked for a \"workflow skill\", \"multi-step skill\", \"skill with branching\", \"skill with parallel steps\", \"complex skill\", or when a skill request implies long-horizon orchestration that benefits from explicit state management and typed operations.",
@@ -539,12 +643,22 @@
       "evaluation": {
         "name": "agents-skill-spec-builder",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -587,7 +701,9 @@
       "source_id": "source-1",
       "path": "ai-prompt-engineer/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "agent-tools"
+      ],
       "frontmatter": {
         "name": "ai-prompt-engineer",
         "description": "Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs.",
@@ -618,12 +734,22 @@
       "evaluation": {
         "name": "ai-prompt-engineer",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -659,87 +785,6 @@
           "none"
         ],
         "license": "MIT"
-      }
-    },
-    {
-      "name": "ai-prompt-optimizer",
-      "source_id": "source-1",
-      "path": "ai-prompt-optimizer/SKILL.md",
-      "url": null,
-      "packs": [],
-      "frontmatter": {
-        "name": "ai-prompt-optimizer",
-        "description": "Analyze raw prompts, identify intent and gaps, match ECC components (skills/commands/agents/hooks), and output a ready-to-paste optimized prompt. Advisory role only — never executes the task itself. TRIGGER when: user says \"optimize prompt\", \"improve my prompt\", \"how to write a prompt for\", \"help me prompt\", \"rewrite this prompt\", or explicitly asks to enhance prompt quality. Also triggers on Chinese equivalents: \"优化prompt\", \"改进prompt\", \"怎么写prompt\", \"帮我优化这个指令\". DO NOT TRIGGER when: user wants the task executed directly, or says \"just do it\" / \"直接做\". DO NOT TRIGGER when user says \"优化代码\", \"优化性能\", \"optimize performance\", \"optimize this code\" — those are refactoring/performance tasks, not prompt optimization.",
-        "license": null,
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "1.0.0",
-          "domain": null,
-          "triggers": null,
-          "role": null,
-          "scope": null,
-          "output_format": null,
-          "related_skills": null
-        }
-      },
-      "structure": {
-        "has_scripts": false,
-        "has_references": false,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 1,
-        "estimated_tokens": 501,
-        "complexity_class": "compact",
-        "skill_pattern": "A"
-      },
-      "evaluation": {
-        "name": "ai-prompt-optimizer",
-        "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
-        },
-        "security_risk": {
-          "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
-          "findings": [
-            "References credentials/secrets"
-          ],
-          "sub_scores": {
-            "data_privacy": 3,
-            "prompt_injection": 5,
-            "illegal_content": 5,
-            "bias": 5,
-            "system_integrity": 5,
-            "untrusted_communication": 5
-          }
-        },
-        "executability": {
-          "score": 3,
-          "completeness": 3,
-          "determinism": 3,
-          "consistency": 4,
-          "usability": 4,
-          "rationale": "Workflow is well-structured with clear guidance."
-        },
-        "invocability": {
-          "score": 1,
-          "rationale": "Name and triggers clearly signal skill purpose."
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Provides generalizable patterns."
-        },
-        "core_capabilities": ">-.",
-        "external_requirements_indicator": "has-external-dependencies",
-        "external_requirements": [
-          "none"
-        ],
-        "script_languages": [
-          "none"
-        ],
-        "license": "unspecified"
       }
     },
     {
@@ -780,12 +825,22 @@
       "evaluation": {
         "name": "content-behavioral-nudge-unit",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 5,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 4
+          },
+          "weighted_score": 4.25,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -861,12 +916,22 @@
       "evaluation": {
         "name": "content-copy-caveman",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -893,7 +958,7 @@
           "flagged": false,
           "rationale": "Provides generalizable patterns."
         },
-        "core_capabilities": ">.",
+        "core_capabilities": "Ultra-compressed communication mode. Cuts token usage ~75% by speaking like caveman while keeping full technical accuracy. Supports intensity levels: lite, full (default), ultra.  Use when user says \"caveman mode\", \"talk like caveman\", \"use caveman\", \"less tokens\", \"be brief\", or invokes / content-copy-caveman. Also auto-triggers when token efficiency is requested.",
         "external_requirements_indicator": "self-contained",
         "external_requirements": [
           "none"
@@ -910,7 +975,8 @@
       "path": "content-copy-clear-writing/SKILL.md",
       "url": null,
       "packs": [
-        "content"
+        "content",
+        "skills"
       ],
       "frontmatter": {
         "name": "content-copy-clear-writing",
@@ -942,12 +1008,22 @@
       "evaluation": {
         "name": "content-copy-clear-writing",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -1022,27 +1098,37 @@
       },
       "evaluation": {
         "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
+          "score": 4,
+          "rationale": "Auto-generated from scan-only fallback.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "invocability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Write, review, and edit critical explanatory content that turns complex systems, data, research, and technology into grounded, useful prose. Use when drafting essays, articles, explainers, thought leadership, analysis, data-driven storytelling, first-principles writing, practical AI or systems commentary, hidden-history narratives, aha pivots, scale analogies, or when reviewing for narrative fallacy, over-generalization, false analogy, hidden ideology, smug contrarianism, hype, and unsupported certainty.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -1091,12 +1177,22 @@
       "evaluation": {
         "name": "content-copy-email-sequences",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -1172,12 +1268,22 @@
       "evaluation": {
         "name": "content-copy-email-template-builder",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -1252,27 +1358,37 @@
       },
       "evaluation": {
         "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
+          "score": 4,
+          "rationale": "Auto-generated from scan-only fallback.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "invocability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Rewrite communications from technical leaders for senior, non-technical audiences by matching narrative architecture to objective, applying format-specific structure, and preserving the author voice. Use whenever the user is drafting, revising, or wants feedback on executive memos, leadership emails, CIO or CEO communications, board briefings, steering committee updates, status reports, change announcements, presentation decks, talking points, capability briefs, roadmap briefs, post-mortems, escalations, or any communication targeting executive, board, or senior leadership audiences. Trigger on phrases like \"rewrite this for my CIO\", \"help me communicate this to executives\", \"make this executive-ready\", \"translate this for leadership\", \"this needs to go to the board\", \"tighten this up for the C-suite\", \"help me write this message to the team\", \"this update is going to leadership\", or whenever the user shares technical content or a draft that needs to land with a senior audience. Also trigger when the user describes a communication they need to write to executives, even before drafting, so the skill can guide the structure from the start.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -1315,18 +1431,28 @@
         "has_license_file": false,
         "file_count": 7,
         "estimated_tokens": 1415,
-        "complexity_class": "detailed",
-        "skill_pattern": "A"
+        "complexity_class": "comprehensive",
+        "skill_pattern": "B"
       },
       "evaluation": {
         "name": "content-copy-humanizer",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -1405,9 +1531,11 @@
           "rationale": "Not evaluated"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
-          "findings": []
+          "rating": "medium",
+          "rationale": "Evaluated from scanner signals.",
+          "findings": [
+            "References credentials/secrets"
+          ]
         },
         "executability": {
           "score": 0,
@@ -1421,7 +1549,7 @@
           "flagged": false,
           "rationale": "Not evaluated"
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Extract meta-level design principles, content style, tone, and structural patterns from source content. Use when asked to analyze content style, extract design patterns, reverse-engineer a content format, deconstruct a writing style, capture content DNA, create a style blueprint, extract tone and voice, analyze content structure, or when the user wants to replicate the \"feel\" of content without copying it. Produces a reusable design blueprint that captures what makes content effective — not the content itself.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -1470,12 +1598,22 @@
       "evaluation": {
         "name": "content-style-extractor",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 4
+          },
+          "weighted_score": 4.0,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -1553,12 +1691,22 @@
       "evaluation": {
         "name": "content-technical-doc-coauthoring",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -1636,12 +1784,22 @@
       "evaluation": {
         "name": "content-technical-onboarding-docs",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -1719,12 +1877,22 @@
       "evaluation": {
         "name": "data-ai-autoresearch",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -1800,12 +1968,22 @@
       "evaluation": {
         "name": "data-ai-ml-pipeline",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -1883,12 +2061,22 @@
       "evaluation": {
         "name": "data-ai-ml-rag-architect",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -1964,12 +2152,22 @@
       "evaluation": {
         "name": "data-ai-post-training-expert",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -2045,12 +2243,22 @@
       "evaluation": {
         "name": "data-ai-product-specialist",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -2127,11 +2335,21 @@
         "name": "data-analysis-business-performance",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -2207,12 +2425,22 @@
       "evaluation": {
         "name": "data-eng-database-architect",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -2288,12 +2516,22 @@
       "evaluation": {
         "name": "data-eng-pandas-specialist",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -2348,7 +2586,7 @@
         "metadata": {
           "version": "1.0.0",
           "domain": "data",
-          "triggers": ">-",
+          "triggers": "design data pipeline, build ETL, build ELT, data modeling, star schema, data vault, dbt model, Airflow DAG, Spark job, Kafka consumer, data quality check, dataops, CDC pipeline,     streaming architecture, warehouse design, medallion architecture, bronze silver gold, SCD type 2, data contract, pipeline orchestration, lakehouse, partitioning strategy, incremental load, backfill, idempotent pipeline",
           "role": "data-engineer",
           "scope": "design, implementation, review",
           "output_format": "code, architecture, specification",
@@ -2362,23 +2600,30 @@
         "has_assets": false,
         "has_license_file": false,
         "file_count": 7,
-        "estimated_tokens": 1978,
+        "estimated_tokens": 1972,
         "complexity_class": "comprehensive",
         "skill_pattern": "B"
       },
       "evaluation": {
         "name": "data-eng-pipeline-architect",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
-          "findings": [
-            "Contains executable scripts",
-            "References credentials/secrets"
-          ],
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
+          "findings": [],
           "sub_scores": {
             "data_privacy": 3,
             "prompt_injection": 5,
@@ -2404,7 +2649,7 @@
           "flagged": false,
           "rationale": "Provides generalizable patterns."
         },
-        "core_capabilities": ">-.",
+        "core_capabilities": "Expert data engineer skill for designing and building production-grade data pipelines, ETL/ELT systems, data models, and DataOps workflows. Use when designing data architecture, building batch or streaming pipelines, implementing data quality checks, modeling warehouse schemas, or applying DataOps practices with dbt, Airflow, Spark, Kafka, Snowflake, BigQuery, or Databricks.",
         "external_requirements_indicator": "has-external-dependencies",
         "external_requirements": [
           "Python 3+"
@@ -2454,11 +2699,21 @@
         "name": "design-application-sitemap",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -2535,11 +2790,21 @@
         "name": "design-application-ux",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -2616,15 +2881,24 @@
         "name": "design-product-overview-builder",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
-            "Contains executable scripts",
             "References credentials/secrets",
-            "Includes install commands"
+            "Uses install commands"
           ],
           "sub_scores": {
             "data_privacy": 3,
@@ -2702,13 +2976,22 @@
         "name": "design-product-overview-recorder",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
-            "Contains executable scripts",
             "References credentials/secrets"
           ],
           "sub_scores": {
@@ -2785,12 +3068,22 @@
       "evaluation": {
         "name": "design-research-ux-artifacts",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -2867,14 +3160,22 @@
         "name": "design-research-ux-researcher",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
-          "findings": [
-            "Contains executable scripts"
-          ],
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
+          "findings": [],
           "sub_scores": {
             "data_privacy": 5,
             "prompt_injection": 5,
@@ -2950,11 +3251,21 @@
         "name": "design-scroll-storytelling",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -3030,12 +3341,22 @@
       "evaluation": {
         "name": "design-system-architect",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -3112,15 +3433,24 @@
         "name": "design-ui-system-advisor",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
-            "Contains executable scripts",
             "References credentials/secrets",
-            "Includes install commands"
+            "Uses install commands"
           ],
           "sub_scores": {
             "data_privacy": 3,
@@ -3196,27 +3526,40 @@
       },
       "evaluation": {
         "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
+          "score": 4,
+          "rationale": "Auto-generated from scan-only fallback.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
-          "findings": []
+          "rating": "medium",
+          "rationale": "Evaluated from scanner signals.",
+          "findings": [
+            "References credentials/secrets",
+            "Uses install commands"
+          ]
         },
         "executability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "invocability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Generate general-purpose images from a user-approved creative brief using Google AI Studio (Gemini). Use when asked to \"make an image\", \"generate artwork\", \"create a scene\", \"render an illustration\", \"produce a visual\", or turn a rough prompt into image files.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -3264,27 +3607,37 @@
       },
       "evaluation": {
         "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
+          "score": 4,
+          "rationale": "Auto-generated from scan-only fallback.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "invocability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Plan and direct high-impact cohesive website or campaign image systems before generation. Use when images feel isolated, inconsistent, generic, too similar, low-value, not premium enough, or not aligned to site content; when creating a coordinated set of hero images, service-page visuals, editorial images, diagrams, texture assets, or prompt packs; or when orchestrating image generation with design-visual-image-generator.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -3327,32 +3680,42 @@
         "has_license_file": false,
         "file_count": 12,
         "estimated_tokens": 1563,
-        "complexity_class": "detailed",
+        "complexity_class": "comprehensive",
         "skill_pattern": "A"
       },
       "evaluation": {
         "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
+          "score": 4,
+          "rationale": "Auto-generated from scan-only fallback.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "invocability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Design and build conceptually distinctive, award-caliber marketing surfaces that drive conversion and earn attention. Use when a site needs genuine uniqueness: \"feels flat\", \"looks AI-generated\", \"needs to impress top designers\", \"award-worthy design\", \"standout landing page\", \"unlike any competitor\". Two modes: conversion-safe for B2B precision, expressive for award ambition. Never generic, never templated.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -3368,7 +3731,9 @@
       "source_id": "source-1",
       "path": "devops-incident-responder/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "devops-incident-responder",
         "description": "Expert SRE incident responder. Use when managing live incidents, conducting post-mortems, classifying severity, coordinating response teams, or improving reliability posture. Invoke for incident triage, runbook execution, blameless retrospectives, SLO burn rate analysis, error budget management, or on-call workflow guidance.",
@@ -3399,12 +3764,22 @@
       "evaluation": {
         "name": "devops-incident-responder",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -3447,7 +3822,9 @@
       "source_id": "source-1",
       "path": "devops-infra-engineer/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "devops-infra-engineer",
         "description": "Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.",
@@ -3478,12 +3855,22 @@
       "evaluation": {
         "name": "devops-infra-engineer",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -3528,7 +3915,9 @@
       "source_id": "source-1",
       "path": "devops-security-audit-lead/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "devops-security-audit-lead",
         "description": "Run broad security audit engagements across code, dependencies, secrets, infrastructure, and DevSecOps controls, then deliver a prioritized vulnerability report with remediation guidance. Use when asked for a 'security audit', 'SAST scan', 'secret scan', 'penetration test', or 'cloud security review' rather than a code-focused OWASP exploitability analysis.",
@@ -3559,12 +3948,22 @@
       "evaluation": {
         "name": "devops-security-audit-lead",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -3609,7 +4008,9 @@
       "source_id": "source-1",
       "path": "devops-security-vulnerability-analyst/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "devops-security-vulnerability-analyst",
         "description": "Analyze a codebase like an attacker: map attack surface, apply OWASP 2025, test exploitability, and prioritize auth, injection, supply-chain, and design flaws. Use when asked to \"review code for exploits\", \"analyze attack surface\", \"check OWASP compliance\", \"find auth or injection risks\", or perform exploitability-driven AppSec analysis rather than a broad infrastructure or DevSecOps audit.",
@@ -3640,16 +4041,25 @@
       "evaluation": {
         "name": "devops-security-vulnerability-analyst",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
-            "Contains executable scripts",
-            "Uses exec/shell patterns",
-            "References credentials/secrets"
+            "References credentials/secrets",
+            "Uses execution patterns"
           ],
           "sub_scores": {
             "data_privacy": 3,
@@ -3693,7 +4103,9 @@
       "source_id": "source-1",
       "path": "engineering-api-mcp-builder/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-api-mcp-builder",
         "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when asked to build an MCP server, create MCP tools, integrate an API with MCP, set up a protocol server, or develop an MCP integration. Supports Python (FastMCP) and Node/TypeScript (MCP SDK).",
@@ -3724,14 +4136,23 @@
       "evaluation": {
         "name": "engineering-api-mcp-builder",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
-            "Contains executable scripts",
             "References credentials/secrets"
           ],
           "sub_scores": {
@@ -3775,7 +4196,9 @@
       "source_id": "source-1",
       "path": "engineering-api-n8n-workflow-builder/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-api-n8n-workflow-builder",
         "description": "Expert n8n workflow designer. Turns a user prompt into a production-ready, importable n8n workflow JSON file with triggers, nodes, connections, AI agents, error handling, retries, and a getting-started guide. Use when the user asks to \"build an n8n workflow\", \"create an n8n automation\", \"design an n8n flow\", \"automate [task] with n8n\", \"convert this process to n8n\", \"n8n workflow from prompt\", or mentions n8n alongside automation, integration, webhook, AI agent, Zapier-alternative, or no-code workflow orchestration. Interviews the user for objectives, inputs, outputs, services, and reliability needs before generating the JSON.",
@@ -3806,12 +4229,22 @@
       "evaluation": {
         "name": "engineering-api-n8n-workflow-builder",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -3856,7 +4289,9 @@
       "source_id": "source-1",
       "path": "engineering-arch-architecture-decision-records/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-arch-architecture-decision-records",
         "description": "Create, manage, and maintain Architecture Decision Records (ADRs). Use when making significant architectural decisions, documenting technology choices, recording design trade-offs, onboarding engineers to historical decisions, or establishing ADR processes. Invoke for: ADR writing, ADR templates, MADR format, decision documentation, architecture decision record, technical decision log, ADR lifecycle, supersede decision, deprecation ADR, RFC-style decision.",
@@ -3887,14 +4322,24 @@
       "evaluation": {
         "name": "engineering-arch-architecture-decision-records",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
-            "Includes install commands"
+            "Uses install commands"
           ],
           "sub_scores": {
             "data_privacy": 5,
@@ -3937,7 +4382,9 @@
       "source_id": "source-1",
       "path": "engineering-arch-principle-engineer/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-arch-principle-engineer",
         "description": "Principled engineering review that critiques an existing codebase or architecture for simplicity, leverage, and smallest viable change. Use when asked to \"review my code\", \"is this over-engineered\", \"what should I cut\", or \"spot premature abstraction\". Not for greenfield system design or security audits.",
@@ -3968,12 +4415,22 @@
       "evaluation": {
         "name": "engineering-arch-principle-engineer",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 4
+          },
+          "weighted_score": 4.05,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -4016,7 +4473,9 @@
       "source_id": "source-1",
       "path": "engineering-arch-system-designer/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-arch-system-designer",
         "description": "Senior architect for system design, architecture decisions, pattern selection, ADRs, scalability planning, and technology evaluation. Use when designing new systems, choosing architecture patterns, writing ADRs, selecting databases, planning for scale or failure, or reviewing existing architecture.",
@@ -4047,12 +4506,22 @@
       "evaluation": {
         "name": "engineering-arch-system-designer",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -4095,7 +4564,9 @@
       "source_id": "source-1",
       "path": "engineering-data-scraper/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-data-scraper",
         "description": "Build a fully automated AI-powered data collection agent for any public source — job boards, prices, news, GitHub, sports, anything. Scrapes on a schedule, enriches data with a free LLM (Gemini Flash), stores results in Notion/Sheets/Supabase, and learns from user feedback. Runs 100% free on GitHub Actions. Use when the user wants to monitor, collect, or track any public data automatically, or when they say \"build a bot that checks\", \"monitor X for me\", \"collect data from\", \"automate data collection\", \"track prices\", \"track jobs\", \"web scraper\", or \"data scraper\".",
@@ -4126,15 +4597,25 @@
       "evaluation": {
         "name": "engineering-data-scraper",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "high",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rating": "medium",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
-            "Makes network calls",
-            "References credentials/secrets"
+            "References credentials/secrets",
+            "Makes outbound network calls"
           ],
           "sub_scores": {
             "data_privacy": 3,
@@ -4177,7 +4658,9 @@
       "source_id": "source-1",
       "path": "engineering-database-optimizer/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-database-optimizer",
         "description": "Use when a database is slow, queries are taking too long, or you need to analyze an execution plan. Invoke for index design, query rewrites, configuration tuning, partitioning, lock contention, or improving cache hit rates. Also use when asked to \"optimize this query\", \"why is my database slow\", \"EXPLAIN ANALYZE\", \"add an index\", \"tune PostgreSQL config\", or \"MySQL performance\".",
@@ -4208,12 +4691,22 @@
       "evaluation": {
         "name": "engineering-database-optimizer",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -4256,7 +4749,9 @@
       "source_id": "source-1",
       "path": "engineering-dev-git-commit/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-dev-git-commit",
         "description": "Execute the current repo's commit-and-push cycle: inspect the diff, draft a tight commit message, stage the right files, commit, and push. Use when asked to 'commit changes', 'push work', 'stage changes', 'write this commit message', or 'commit and push' rather than design a branching strategy or explain Git policy.",
@@ -4287,12 +4782,22 @@
       "evaluation": {
         "name": "engineering-dev-git-commit",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -4335,7 +4840,9 @@
       "source_id": "source-1",
       "path": "engineering-dev-git-finish-branch/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-dev-git-finish-branch",
         "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
@@ -4366,12 +4873,22 @@
       "evaluation": {
         "name": "engineering-dev-git-finish-branch",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -4414,7 +4931,9 @@
       "source_id": "source-1",
       "path": "engineering-dev-git-start-branch/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-dev-git-start-branch",
         "description": "Start a new GitHub Flow branch from an up-to-date base — infers branch type, derives a kebab-case name, pulls latest main, creates the branch, and sets up upstream tracking. Use when \"start a branch\", \"create a feature branch\", \"new fix branch\", \"begin work on\", \"checkout a new branch\", \"spin up a branch\", or \"start working on a new task\".",
@@ -4444,27 +4963,37 @@
       },
       "evaluation": {
         "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
+          "score": 4,
+          "rationale": "Auto-generated from scan-only fallback.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "invocability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Start a new GitHub Flow branch from an up-to-date base — infers branch type, derives a kebab-case name, pulls latest main, creates the branch, and sets up upstream tracking. Use when \"start a branch\", \"create a feature branch\", \"new fix branch\", \"begin work on\", \"checkout a new branch\", \"spin up a branch\", or \"start working on a new task\".",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -4480,7 +5009,9 @@
       "source_id": "source-1",
       "path": "engineering-dev-git-workflow-design/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-dev-git-workflow-design",
         "description": "Advise on team Git workflow design: branching strategy, merge vs rebase, commit conventions, PR process, release flow, and conflict handling. Use when asked to 'set up a branching strategy', 'choose between rebase and merge', 'resolve merge conflicts', 'write a PR description', or define version-control conventions rather than commit or push the current repo state.",
@@ -4511,12 +5042,22 @@
       "evaluation": {
         "name": "engineering-dev-git-workflow-design",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -4559,7 +5100,9 @@
       "source_id": "source-1",
       "path": "engineering-dev-writing-plans/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-dev-writing-plans",
         "description": "Use when you have a spec or requirements for a multi-step task, before touching code",
@@ -4590,12 +5133,22 @@
       "evaluation": {
         "name": "engineering-dev-writing-plans",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 2,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.5,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -4634,93 +5187,13 @@
       }
     },
     {
-      "name": "engineering-doc-markdown-to-pdf",
-      "source_id": "source-1",
-      "path": "engineering-doc-markdown-to-pdf/SKILL.md",
-      "url": null,
-      "packs": [],
-      "frontmatter": {
-        "name": "engineering-doc-markdown-to-pdf",
-        "description": "Convert a markdown document to a PDF file. Use when asked to \"convert markdown to PDF\", \"export markdown as PDF\", \"generate a PDF from markdown\", \"make a PDF from .md\", or when a user needs a polished PDF output from any .md file. Handles both CLI-based conversion (pandoc, wkhtmltopdf, md-to-pdf) and Node.js scripted conversion (puppeteer, markdown-pdf). Selects the best available tool automatically and applies sensible default styling.",
-        "license": null,
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": null,
-          "domain": "technical",
-          "triggers": "markdown to pdf, convert markdown, export pdf, generate pdf, md to pdf, pandoc, wkhtmltopdf, puppeteer pdf, markdown pdf, print to pdf",
-          "role": "executor",
-          "scope": "file-transformation",
-          "output_format": "file",
-          "related_skills": "content-technical-doc-coauthoring"
-        }
-      },
-      "structure": {
-        "has_scripts": false,
-        "has_references": false,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 1,
-        "estimated_tokens": 305,
-        "complexity_class": "compact",
-        "skill_pattern": "A"
-      },
-      "evaluation": {
-        "name": "engineering-doc-markdown-to-pdf",
-        "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
-        },
-        "security_risk": {
-          "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
-          "findings": [
-            "References credentials/secrets",
-            "Includes install commands"
-          ],
-          "sub_scores": {
-            "data_privacy": 3,
-            "prompt_injection": 5,
-            "illegal_content": 5,
-            "bias": 5,
-            "system_integrity": 3,
-            "untrusted_communication": 5
-          }
-        },
-        "executability": {
-          "score": 3,
-          "completeness": 3,
-          "determinism": 3,
-          "consistency": 4,
-          "usability": 4,
-          "rationale": "Workflow is well-structured with clear guidance."
-        },
-        "invocability": {
-          "score": 3,
-          "rationale": "Name and triggers clearly signal skill purpose."
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Provides generalizable patterns."
-        },
-        "core_capabilities": "Convert a markdown document to a PDF file. Use when asked to \"convert markdown to PDF\", \"export markdown as PDF\", \"generate a PDF from markdown\", \"make a PDF from.",
-        "external_requirements_indicator": "has-external-dependencies",
-        "external_requirements": [
-          "Package installation"
-        ],
-        "script_languages": [
-          "none"
-        ],
-        "license": "unspecified"
-      }
-    },
-    {
       "name": "engineering-feature-forge",
       "source_id": "source-1",
       "path": "engineering-feature-forge/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-feature-forge",
         "description": "Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements workshops, user stories, EARS requirements, acceptance criteria, and implementation-ready specs.",
@@ -4745,32 +5218,42 @@
         "has_license_file": false,
         "file_count": 6,
         "estimated_tokens": 782,
-        "complexity_class": "detailed",
+        "complexity_class": "compact",
         "skill_pattern": "A"
       },
       "evaluation": {
         "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
+          "score": 4,
+          "rationale": "Auto-generated from scan-only fallback.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "invocability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements workshops, user stories, EARS requirements, acceptance criteria, and implementation-ready specs.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -4786,7 +5269,9 @@
       "source_id": "source-1",
       "path": "engineering-github-ops/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-github-ops",
         "description": "GitHub repository operations, automation, and management. Issue triage, PR management, CI/CD operations, release management, and security monitoring using the gh CLI. Use when the user wants to manage GitHub issues, PRs, CI status, releases, contributors, stale items, or any GitHub operational task beyond simple git commands. Trigger on: \"check GitHub\", \"triage issues\", \"review open PRs\", \"close stale issues\", \"CI is broken\", \"prepare a release\", \"check dependabot\", \"merge PRs\", \"debug workflow\".",
@@ -4817,12 +5302,22 @@
       "evaluation": {
         "name": "engineering-github-ops",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -4867,7 +5362,9 @@
       "source_id": "source-1",
       "path": "engineering-github-repo-standards/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-github-repo-standards",
         "description": "Apply standardized GitHub repository best practices — branch protection, security features, access controls, and required file artifacts — directly to one or more repos via the `gh` CLI. Use when asked to \"standardize a repo\", \"harden this repository\", \"set up CODEOWNERS\", \"apply regulated settings\", or \"configure GitHub repo settings\". Supports four profiles (standard, collaborative, monorepo, regulated) and two context modes (internal, external). File artifacts are delivered via pull request; an audit-trail script is available on request.",
@@ -4897,27 +5394,40 @@
       },
       "evaluation": {
         "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
+          "score": 4,
+          "rationale": "Auto-generated from scan-only fallback.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
-          "findings": []
+          "rating": "medium",
+          "rationale": "Evaluated from scanner signals.",
+          "findings": [
+            "References credentials/secrets",
+            "Uses install commands"
+          ]
         },
         "executability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "invocability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Apply standardized GitHub repository best practices — branch protection, security features, access controls, and required file artifacts — directly to one or more repos via the `gh` CLI. Use when asked to \"standardize a repo\", \"harden this repository\", \"set up CODEOWNERS\", \"apply regulated settings\", or \"configure GitHub repo settings\". Supports four profiles (standard, collaborative, monorepo, regulated) and two context modes (internal, external). File artifacts are delivered via pull request; an audit-trail script is available on request.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -4933,7 +5443,9 @@
       "source_id": "source-1",
       "path": "engineering-legacy-modernizer/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-legacy-modernizer",
         "description": "Use when modernizing legacy systems, planning or implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades, and legacy refactoring safety nets.",
@@ -4964,12 +5476,22 @@
       "evaluation": {
         "name": "engineering-legacy-modernizer",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -5012,7 +5534,9 @@
       "source_id": "source-1",
       "path": "engineering-quality-code-simplifier/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-quality-code-simplifier",
         "description": "Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Use when asked to simplify code, clean up code, refactor for readability, reduce complexity, apply coding standards, or improve code elegance. Focuses on recently modified code unless instructed otherwise.",
@@ -5043,12 +5567,22 @@
       "evaluation": {
         "name": "engineering-quality-code-simplifier",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -5091,7 +5625,9 @@
       "source_id": "source-1",
       "path": "engineering-quality-receiving-review/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-quality-receiving-review",
         "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
@@ -5122,12 +5658,22 @@
       "evaluation": {
         "name": "engineering-quality-receiving-review",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 3,
+            "reusability": 3
+          },
+          "weighted_score": 3.5,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -5170,7 +5716,9 @@
       "source_id": "source-1",
       "path": "engineering-quality-requesting-review/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-quality-requesting-review",
         "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
@@ -5201,12 +5749,22 @@
       "evaluation": {
         "name": "engineering-quality-requesting-review",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 2,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.5,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -5249,7 +5807,9 @@
       "source_id": "source-1",
       "path": "engineering-quality-tdd/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-quality-tdd",
         "description": "Use when implementing any feature or bugfix, before writing implementation code",
@@ -5280,12 +5840,22 @@
       "evaluation": {
         "name": "engineering-quality-tdd",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 2,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.5,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -5364,8 +5934,8 @@
           "rationale": "Not evaluated"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
@@ -5380,7 +5950,7 @@
           "flagged": false,
           "rationale": "Not evaluated"
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Build a context-engineering repository: a governed knowledge base that turns source material into auditable, task-ready agent context. Default root is `context/`, but the root name is configurable and a single project may host several roots (for example `context-core/`, `context-product/`, `context-customer/`). Use when asked to \"create a context repository\", \"build a context engineering repo\", \"ingest these sources\", \"organize research for agents\", or \"build a knowledge base\".",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -5396,7 +5966,9 @@
       "source_id": "source-1",
       "path": "knowledge-ops/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "agent-tools"
+      ],
       "frontmatter": {
         "name": "knowledge-ops",
         "description": "Knowledge base management, ingestion, sync, and retrieval across multiple storage layers (local files, MCP memory, vector stores, Git repos). Use when the user wants to save, organize, sync, deduplicate, or search across their knowledge systems. Trigger on \"save this to KB\", \"sync knowledge\", \"ingest this\", \"update the knowledge base\", \"what do I know about X\", \"deduplicate my notes\", \"commit to knowledge base\".",
@@ -5427,12 +5999,22 @@
       "evaluation": {
         "name": "knowledge-ops",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -5477,7 +6059,9 @@
       "source_id": "source-1",
       "path": "legal-compliance-regulatory-monitor/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "strategy"
+      ],
       "frontmatter": {
         "name": "legal-compliance-regulatory-monitor",
         "description": "Collect and maintain upstream compliance intelligence for financial services and life insurance marketing across company, industry, federal, and state guidance. Use when teams need regulatory monitoring, state-by-state scans, standards-register updates, evidence libraries, or compliant language strategy for future reviews rather than a line-by-line go/no-go review of one asset.",
@@ -5508,12 +6092,22 @@
       "evaluation": {
         "name": "legal-compliance-regulatory-monitor",
         "usage_value": {
-          "score": 5,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -5589,12 +6183,22 @@
       "evaluation": {
         "name": "marketing-brand-strategist",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -5670,12 +6274,22 @@
       "evaluation": {
         "name": "marketing-campaign-go-to-market",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -5751,12 +6365,22 @@
       "evaluation": {
         "name": "marketing-campaign-ideas",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 2,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.5,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -5832,12 +6456,22 @@
       "evaluation": {
         "name": "marketing-campaign-product-hunt-launch",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -5914,11 +6548,21 @@
         "name": "marketing-campaign-psychology",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -5994,12 +6638,22 @@
       "evaluation": {
         "name": "marketing-content-brand-copywriter",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -6075,12 +6729,22 @@
       "evaluation": {
         "name": "marketing-content-engine",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -6156,12 +6820,22 @@
       "evaluation": {
         "name": "marketing-content-lead-magnet",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 2,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.5,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -6238,11 +6912,21 @@
         "name": "marketing-content-linkedin-writer",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -6320,12 +7004,22 @@
       "evaluation": {
         "name": "marketing-content-viral-hook",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -6404,11 +7098,21 @@
         "name": "marketing-content-x-thread-builder",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -6484,12 +7188,22 @@
       "evaluation": {
         "name": "marketing-customer-segmentation",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -6565,12 +7279,22 @@
       "evaluation": {
         "name": "marketing-seo-adsense-readiness",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -6648,12 +7372,22 @@
       "evaluation": {
         "name": "marketing-seo-adsense-review",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -6731,12 +7465,22 @@
       "evaluation": {
         "name": "marketing-seo-cro",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -6812,12 +7556,22 @@
       "evaluation": {
         "name": "ops-process-sop-creator",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -6860,7 +7614,9 @@
       "source_id": "source-1",
       "path": "people-comms-announce-organizational/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "comms"
+      ],
       "frontmatter": {
         "name": "people-comms-announce-organizational",
         "description": "Draft professional internal announcements for organizational and role changes, including promotions, new hires, restructures, and leadership transitions.",
@@ -6891,12 +7647,22 @@
       "evaluation": {
         "name": "people-comms-announce-organizational",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 3,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 4,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.45,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -6939,7 +7705,9 @@
       "source_id": "source-1",
       "path": "people-comms-engage-internal-community/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "comms"
+      ],
       "frontmatter": {
         "name": "people-comms-engage-internal-community",
         "description": "Draft internal community communications such as 3P updates, newsletters, FAQ responses, and team status reports. Use when you need clear, professional, and audience-aware internal messaging.",
@@ -6970,12 +7738,22 @@
       "evaluation": {
         "name": "people-comms-engage-internal-community",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -7051,15 +7829,23 @@
       "evaluation": {
         "name": "product-discovery-spec-toolkit",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
-          "findings": [
-            "Contains executable scripts"
-          ],
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
+          "findings": [],
           "sub_scores": {
             "data_privacy": 5,
             "prompt_injection": 5,
@@ -7085,7 +7871,7 @@
           "flagged": false,
           "rationale": "Provides generalizable patterns."
         },
-        "core_capabilities": ">.",
+        "core_capabilities": "PM toolkit for feature prioritization, customer discovery, and spec writing. Guides RICE scoring, interview insight extraction, and PRD creation. Use when asked to prioritize features, score backlog, analyze customer interviews, write PRDs, plan quarterly roadmaps, or run product discovery workflows.",
         "external_requirements_indicator": "self-contained",
         "external_requirements": [
           "Python 3+"
@@ -7135,11 +7921,21 @@
         "name": "product-spec-brainstorming",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -7216,11 +8012,21 @@
         "name": "product-spec-game-changing-features",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -7296,12 +8102,22 @@
       "evaluation": {
         "name": "product-spec-prd-generator",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 4,
+            "audience_breadth": 2,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.5,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -7377,12 +8193,22 @@
       "evaluation": {
         "name": "product-spec-reverse-engineer",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -7459,14 +8285,22 @@
         "name": "product-strategy-okr-specialist",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
-          "findings": [
-            "Contains executable scripts"
-          ],
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
+          "findings": [],
           "sub_scores": {
             "data_privacy": 5,
             "prompt_injection": 5,
@@ -7542,11 +8376,21 @@
         "name": "product-strategy-validator",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -7623,11 +8467,21 @@
         "name": "product-vision-strategy",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -7703,12 +8557,22 @@
       "evaluation": {
         "name": "productivity-daily-meeting-notes",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -7749,92 +8613,13 @@
       }
     },
     {
-      "name": "productivity-personal-communication-style",
-      "source_id": "source-1",
-      "path": "productivity-personal-communication-style/SKILL.md",
-      "url": null,
-      "packs": [
-        "ops"
-      ],
-      "frontmatter": {
-        "name": "productivity-personal-communication-style",
-        "description": "Review and rewrite content to match Sean Canady''s personal writing and communication style. Use when writing emails, memos, documents, executive communications, strategy briefs, or any written output that should sound like Sean. Also use when reviewing or editing drafts for voice and tone consistency. Covers directness, structure, formatting conventions, register adaptation, and anti-pattern removal.",
-        "license": "MIT",
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "2.0.0",
-          "domain": "communications",
-          "triggers": "write like me, my voice, my style, my tone, sean's style, personal style, communication style",
-          "role": "ghostwriter",
-          "scope": "creation",
-          "output_format": "content",
-          "related_skills": null
-        }
-      },
-      "structure": {
-        "has_scripts": false,
-        "has_references": true,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 2,
-        "estimated_tokens": 417,
-        "complexity_class": "compact",
-        "skill_pattern": "A"
-      },
-      "evaluation": {
-        "name": "productivity-personal-communication-style",
-        "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
-        },
-        "security_risk": {
-          "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
-          "findings": [],
-          "sub_scores": {
-            "data_privacy": 5,
-            "prompt_injection": 5,
-            "illegal_content": 5,
-            "bias": 5,
-            "system_integrity": 5,
-            "untrusted_communication": 5
-          }
-        },
-        "executability": {
-          "score": 3,
-          "completeness": 4,
-          "determinism": 3,
-          "consistency": 4,
-          "usability": 4,
-          "rationale": "Workflow is well-structured with clear guidance."
-        },
-        "invocability": {
-          "score": 2,
-          "rationale": "Name and triggers clearly signal skill purpose."
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Provides generalizable patterns."
-        },
-        "core_capabilities": "Review and rewrite content to match Sean Canady''s personal writing and communication style.",
-        "external_requirements_indicator": "self-contained",
-        "external_requirements": [
-          "none"
-        ],
-        "script_languages": [
-          "none"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
       "name": "research-ai-landscape-brief",
       "source_id": "source-1",
       "path": "research-ai-landscape-brief/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "strategy"
+      ],
       "frontmatter": {
         "name": "research-ai-landscape-brief",
         "description": "Produce a deep 30-day AI landscape brief that combines GitHub velocity, arXiv preprints, social signals, and web reporting into one strategic view. Use when asked for 'AI landscape brief', 'AI monthly brief', 'AI research briefing', 'frontier AI update', 'AI ecosystem roundup', or 'AI trends this month' rather than a short daily or weekly news digest.",
@@ -7866,16 +8651,25 @@
         "name": "research-ai-landscape-brief",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "high",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
-            "Contains executable scripts",
-            "Makes network calls",
             "References credentials/secrets",
-            "Includes install commands"
+            "Makes outbound network calls",
+            "Uses install commands"
           ],
           "sub_scores": {
             "data_privacy": 3,
@@ -7954,11 +8748,21 @@
         "name": "research-analyst",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -8001,7 +8805,9 @@
       "source_id": "source-1",
       "path": "research-deep-reading-analyst/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "strategy"
+      ],
       "frontmatter": {
         "name": "research-deep-reading-analyst",
         "description": "Comprehensive framework for deep analysis of articles, papers, and long-form content using 10+ thinking models (SCQA, 5W2H, critical thinking, inversion, mental models, first principles, systems thinking, six thinking hats). Use when users want to: (1) deeply understand complex articles/content, (2) analyze arguments and identify logical flaws, (3) extract actionable insights from reading materials, (4) create study notes or learning summaries, (5) compare multiple sources, (6) transform knowledge into practical applications, or (7) apply specific thinking frameworks. Triggered by phrases like 'analyze this article,' 'help me understand,' 'deep dive into,' 'extract insights from,' 'deep read,' 'use [framework name],' 'research-deep-reading-analyst,' or when users provide URLs/long-form content for analysis.",
@@ -8033,11 +8839,21 @@
         "name": "research-deep-reading-analyst",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -8080,7 +8896,9 @@
       "source_id": "source-1",
       "path": "research-dtc-insurance-market-intelligence/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "strategy"
+      ],
       "frontmatter": {
         "name": "research-dtc-insurance-market-intelligence",
         "description": "Track DTC life insurance market intelligence across carrier moves, distribution shifts, regulation, funding, and consumer signal over weekly, monthly, or quarterly windows. Use when asked for 'life insurance market intelligence', 'DTC insurance monitoring', 'insurance market watch', 'carrier movement tracking', or 'insurtech signal report' rather than generic news monitoring or AI research.",
@@ -8112,11 +8930,21 @@
         "name": "research-dtc-insurance-market-intelligence",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -8159,7 +8987,9 @@
       "source_id": "source-1",
       "path": "research-market-analyst/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "strategy"
+      ],
       "frontmatter": {
         "name": "research-market-analyst",
         "description": "Score competitive, technology, and market signals to produce strategic intelligence with confidence, impact, threats, and opportunities. Use when asked for \"competitive analysis\", \"threat assessment\", \"opportunity scoring\", \"signal classification\", \"strategic intelligence\", or a decision-oriented competitor brief rather than a simple news roundup or TAM/SAM/SOM study.",
@@ -8191,11 +9021,21 @@
         "name": "research-market-analyst",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -8238,7 +9078,9 @@
       "source_id": "source-1",
       "path": "research-market-competitor-intel/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "strategy"
+      ],
       "frontmatter": {
         "name": "research-market-competitor-intel",
         "description": "Analyzes competitors using web research to provide verified business metrics, actionable leverage strategies, and predicted next moves. Use when user needs competitive intelligence, competitor analysis, market positioning insights, or strategic leverage opportunities.",
@@ -8269,12 +9111,22 @@
       "evaluation": {
         "name": "research-market-competitor-intel",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -8317,7 +9169,9 @@
       "source_id": "source-1",
       "path": "research-market-opportunity/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "strategy"
+      ],
       "frontmatter": {
         "name": "research-market-opportunity",
         "description": "Discover distinctive software and embedded-tech business opportunities from current signals, underserved needs, and platform shifts. Use when asked to \"find startup ideas\", \"research new opportunities\", \"identify software business ideas\", \"spot emerging markets\", or \"create venture ideas\".",
@@ -8342,32 +9196,42 @@
         "has_license_file": false,
         "file_count": 5,
         "estimated_tokens": 759,
-        "complexity_class": "detailed",
+        "complexity_class": "compact",
         "skill_pattern": "A"
       },
       "evaluation": {
         "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
+          "score": 4,
+          "rationale": "Auto-generated from scan-only fallback.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "invocability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Discover distinctive software and embedded-tech business opportunities from current signals, underserved needs, and platform shifts. Use when asked to \"find startup ideas\", \"research new opportunities\", \"identify software business ideas\", \"spot emerging markets\", or \"create venture ideas\".",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -8383,7 +9247,9 @@
       "source_id": "source-1",
       "path": "research-market-persona-builder/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "strategy"
+      ],
       "frontmatter": {
         "name": "research-market-persona-builder",
         "description": "Creates research-grounded digital twin personas of real people that function as AI-powered strategic advisors, mentors, and reviewers. Use when asked to \"create a digital twin\", \"build an advisor persona\", \"simulate how [person] would advise\", \"make an AI mentor\", \"create an AI version of [person]\", \"build a review persona based on [person]\", \"set up a decision advisor\", \"replicate how [person] thinks\", or when the user wants to consult a specific expert, mentor, or historical figure as an AI-powered persona. Also triggers for \"think like [person]\", \"advise like [person]\", \"what would [person] say about this\", \"review this like [person] would\", \"channel [person]\", or \"act as my [person] advisor\".",
@@ -8415,11 +9281,21 @@
         "name": "research-market-persona-builder",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -8462,7 +9338,9 @@
       "source_id": "source-1",
       "path": "research-market-researcher/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "strategy"
+      ],
       "frontmatter": {
         "name": "research-market-researcher",
         "description": "Produce decision-ready market research with explicit assumptions, sizing logic, diligence, and recommendation-oriented synthesis. Use when asked to \"size a market\", \"compare competitors\", \"evaluate an investor\", \"research a vendor\", \"assess industry trends\", or pressure-test a business thesis rather than summarize headlines or score strategic signals.",
@@ -8493,12 +9371,22 @@
       "evaluation": {
         "name": "research-market-researcher",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -8541,7 +9429,9 @@
       "source_id": "source-1",
       "path": "research-weekly-ai-news/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "strategy"
+      ],
       "frontmatter": {
         "name": "research-weekly-ai-news",
         "description": "Aggregate the latest AI headlines into a concise daily or weekly digest with direct source links and light categorization. Use when asked for 'weekly AI news', 'AI updates this week', 'daily AI briefing', 'AI headlines', 'AI news digest', or 'latest AI developments' rather than a deeper monthly landscape or strategy report.",
@@ -8573,11 +9463,21 @@
         "name": "research-weekly-ai-news",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.7,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -8653,12 +9553,22 @@
       "evaluation": {
         "name": "sales-outreach-specialist",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 2,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.5,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -8701,7 +9611,9 @@
       "source_id": "source-1",
       "path": "sales-pipeline-revops/SKILL.md",
       "url": null,
-      "packs": [],
+      "packs": [
+        "marketing"
+      ],
       "frontmatter": {
         "name": "sales-pipeline-revops",
         "description": "Use when user wants help with revenue operations, lead lifecycle, MQL/SQL definitions, lead scoring, lead routing, pipeline stages, deal desk, CRM automation, or data hygiene. Triggers: \"RevOps\", \"revenue operations\", \"lead scoring\", \"lead routing\", \"MQL\", \"SQL\", \"pipeline stages\", \"deal desk\", \"CRM automation\", \"marketing-to-sales handoff\", \"speed-to-lead\", \"leads not reaching sales\", \"pipeline health\", \"CRM workflows\", \"lead qualification\", \"when should marketing hand off to sales\".",
@@ -8732,12 +9644,22 @@
       "evaluation": {
         "name": "sales-pipeline-revops",
         "usage_value": {
-          "score": 3,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -8764,10 +9686,288 @@
           "flagged": false,
           "rationale": "Provides generalizable patterns."
         },
-        "core_capabilities": ">.",
+        "core_capabilities": "Use when user wants help with revenue operations, lead lifecycle, MQL/SQL definitions, lead scoring, lead routing, pipeline stages, deal desk, CRM automation, or data hygiene. Triggers: \"RevOps\", \"revenue operations\", \"lead scoring\", \"lead routing\", \"MQL\", \"SQL\", \"pipeline stages\", \"deal desk\", \"CRM automation\", \"marketing-to-sales handoff\", \"speed-to-lead\", \"leads not reaching sales\", \"pipeline health\", \"CRM workflows\", \"lead qualification\", \"when should marketing hand off to sales\".",
         "external_requirements_indicator": "self-contained",
         "external_requirements": [
           "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "skill-architect",
+      "source_id": "source-1",
+      "path": "skill-architect/SKILL.md",
+      "url": null,
+      "packs": [
+        "skills"
+      ],
+      "frontmatter": {
+        "name": "skill-architect",
+        "description": "Full lifecycle management for Agent Skills — scaffold a new skill, review an existing SKILL.md for spec compliance and routing quality, or refine metadata. Use when asked to \"create a skill\", \"build a skill\", \"scaffold a skill\", \"review a skill\", \"audit a skill\", \"improve a skill\", \"optimize skill triggers\", \"fix skill description\", or \"update skill frontmatter\". Covers archetype classification, description and trigger optimization, collision detection against neighbor skills, and metadata routing. Use whenever the user is authoring or editing a SKILL.md file.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "meta",
+          "triggers": "create skill, review skill, audit skill, scaffold skill, optimize skill triggers, fix skill description, refine skill metadata, update skill frontmatter, validate SKILL.md, skill collision check",
+          "role": "skill-architect",
+          "scope": "design",
+          "output_format": "specification",
+          "related_skills": "skill-evaluator"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": true,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 17,
+        "estimated_tokens": 3702,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "medium",
+          "rationale": "Evaluated from scanner signals.",
+          "findings": [
+            "References credentials/secrets"
+          ]
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Full lifecycle management for Agent Skills — scaffold a new skill, review an existing SKILL.md for spec compliance and routing quality, or refine metadata. Use when asked to \"create a skill\", \"build a skill\", \"scaffold a skill\", \"review a skill\", \"audit a skill\", \"improve a skill\", \"optimize skill triggers\", \"fix skill description\", or \"update skill frontmatter\". Covers archetype classification, description and trigger optimization, collision detection against neighbor skills, and metadata routing. Use whenever the user is authoring or editing a SKILL.md file.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "python"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "skill-evaluator",
+      "source_id": "source-1",
+      "path": "skill-evaluator/SKILL.md",
+      "url": null,
+      "packs": [
+        "skills"
+      ],
+      "frontmatter": {
+        "name": "skill-evaluator",
+        "description": "Run structured evaluation cycles against an Agent Skill — design test cases, compare with-skill vs without-skill runs, write assertions, grade outputs with evidence, aggregate pass rates, and iterate. Use when asked to \"evaluate a skill\", \"test a skill with evals\", \"benchmark a skill\", \"run skill evals\", \"grade skill output\", \"write assertions for a skill\", or \"iterate on a skill using eval results\". Also covers routing-quality evals: invocability, collision against neighbor skills, over-specification risk.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.1.0",
+          "domain": "meta",
+          "triggers": "evaluate skill, run skill evals, benchmark skill, grade skill output, write skill assertions, compare skill vs baseline, iterate on skill evals, test skill invocability, check skill collision",
+          "role": "evaluation-engineer",
+          "scope": "analysis",
+          "output_format": "report",
+          "related_skills": "skill-architect"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": true,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 8,
+        "estimated_tokens": 1784,
+        "complexity_class": "detailed",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
+          "findings": []
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Run structured evaluation cycles against an Agent Skill — design test cases, compare with-skill vs without-skill runs, write assertions, grade outputs with evidence, aggregate pass rates, and iterate. Use when asked to \"evaluate a skill\", \"test a skill with evals\", \"benchmark a skill\", \"run skill evals\", \"grade skill output\", \"write assertions for a skill\", or \"iterate on a skill using eval results\". Also covers routing-quality evals: invocability, collision against neighbor skills, over-specification risk.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "python"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "skill-evaluator-catalog-builder",
+      "source_id": "source-1",
+      "path": "skill-evaluator-catalog-builder/SKILL.md",
+      "url": null,
+      "packs": [
+        "skills"
+      ],
+      "frontmatter": {
+        "name": "skill-evaluator-catalog-builder",
+        "description": "Scan, evaluate, and catalog large collections of agent skills into a structured JSON file. Use when asked to \"catalog skills\", \"evaluate a skill collection\", \"review a skill repository\", \"audit skill quality\", \"scan skills folder\", \"build a skill inventory\", \"compare skill libraries\", or when working with agent skill repositories like openclaw/skills or any collection following the Agent Skills specification (https://agentskills.io/specification). Handles massive repositories efficiently by scripting mechanical extraction and reserving LLM reasoning for qualitative evaluation.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "meta",
+          "triggers": "catalog skills, evaluate skills, scan skills, skill inventory, skill audit, skill collection review, skill repository, skill library, openclaw skills, skill quality report",
+          "role": "research-analyst",
+          "scope": "analysis",
+          "output_format": "report",
+          "related_skills": "skill-architect, skill-evaluator"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": true,
+        "has_license_file": false,
+        "file_count": 10,
+        "estimated_tokens": 3370,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "high",
+          "rationale": "Evaluated from scanner signals.",
+          "findings": [
+            "References credentials/secrets",
+            "Makes outbound network calls",
+            "Uses execution patterns"
+          ]
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Scan, evaluate, and catalog large collections of agent skills into a structured JSON file. Use when asked to \"catalog skills\", \"evaluate a skill collection\", \"review a skill repository\", \"audit skill quality\", \"scan skills folder\", \"build a skill inventory\", \"compare skill libraries\", or when working with agent skill repositories like openclaw/skills or any collection following the Agent Skills specification (https://agentskills.io/specification). Handles massive repositories efficiently by scripting mechanical extraction and reserving LLM reasoning for qualitative evaluation.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "python"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "skill-reinterpreter",
+      "source_id": "source-1",
+      "path": "skill-reinterpreter/SKILL.md",
+      "url": null,
+      "packs": [
+        "skills"
+      ],
+      "frontmatter": {
+        "name": "skill-reinterpreter",
+        "description": "Rebuild an existing Agent Skill from scratch in a new folder while preserving intent and outcomes, then delete the original. Use when asked to \"reinterpret a skill\", \"clone and improve a skill\", \"rebuild a skill from scratch\", \"refresh a skill with current best practices\", or \"replace a skill with a new version\". Distinct from skill-architect (which edits in place) and skill-evaluator (which tests) — this skill creates a new folder, fully rewrites every file including references and scripts, then removes the source.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.2.0",
+          "domain": "agent",
+          "triggers": "reinterpret skill, rebuild skill from scratch, clone and improve skill, replace skill with new version, refresh skill with best practices, delete original skill after rewrite",
+          "role": "architect",
+          "scope": "design",
+          "output_format": "specification",
+          "related_skills": "skill-architect, content-copy-caveman"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 408,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
+          "findings": []
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Rebuild an existing Agent Skill from scratch in a new folder while preserving intent and outcomes, then delete the original. Use when asked to \"reinterpret a skill\", \"clone and improve a skill\", \"rebuild a skill from scratch\", \"refresh a skill with current best practices\", or \"replace a skill with a new version\". Distinct from skill-architect (which edits in place) and skill-evaluator (which tests) — this skill creates a new folder, fully rewrites every file including references and scripts, then removes the source.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
         ],
         "script_languages": [
           "none"
@@ -8814,11 +10014,21 @@
         "name": "strategy-change-management",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -8895,11 +10105,21 @@
         "name": "strategy-critical-reasoning",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -8978,8 +10198,8 @@
           "rationale": "Not evaluated"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
@@ -8994,7 +10214,7 @@
           "flagged": false,
           "rationale": "Not evaluated"
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "A supportive, challenging thinking partner for someone stuck trying to deliver a specific thing. It interviews, pressure-tests assumptions, and reframes the problem until the user has a feasible path forward, then exits with a concrete plan. Use when someone says \"I am trying to do X but I am stuck\", \"I cannot get this to work\", \"help me think through a problem\", \"how do I get unstuck on\", \"I keep hitting a wall with\", or \"challenge my thinking on\". For a person who already knows what they want to deliver and needs to reach it, not for open-ended ideation from a blank page.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -9044,11 +10264,21 @@
         "name": "strategy-decision-council",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -9285,11 +10515,21 @@
         "name": "strategy-exec-presentation-designer",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets"
           ],
@@ -9367,12 +10607,22 @@
       "evaluation": {
         "name": "strategy-frameworks-mckinsey-brief",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 4.15,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -9447,27 +10697,37 @@
       },
       "evaluation": {
         "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
+          "score": 4,
+          "rationale": "Auto-generated from scan-only fallback.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 4,
+            "capability_gap": 3,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.9,
+          "domain_calibration_bonus": 0.0,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "invocability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Cross-domain innovation engine — extracts structural patterns from existing ideas and technologies and transplants them into new domains to generate novel, feasibility-assessed concept cards. Use when asked to \"innovate in\", \"invent something for\", \"apply X to Y\", \"cross-domain ideas\", \"what if we combined\", \"novel application of\", \"generate innovation ideas\", or \"think like an innovator\". Distinct from brainstorming: produces structured concept cards with stress testing, not raw idea lists.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -9515,27 +10775,37 @@
       },
       "evaluation": {
         "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
+          "score": 4,
+          "rationale": "Auto-generated from scan-only fallback.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "invocability": {
           "score": 0,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Not evaluated"
+          "rationale": "Auto-generated from scan-only fallback."
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Assess one business or startup opportunity with VC-style but scale-aware judgment, producing a scored pursue/pivot/kill decision, financial sketch, and adjacent alternatives. Use when asked to \"evaluate this idea\", \"score an opportunity\", \"should I launch this\", \"assess my startup idea\", or \"prioritize this venture\".",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -9585,11 +10855,21 @@
         "name": "strategy-planning-pricing",
         "usage_value": {
           "score": 4,
-          "rationale": "Domain-specific skill with clear purpose."
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -9665,12 +10945,22 @@
       "evaluation": {
         "name": "strategy-planning-startup",
         "usage_value": {
-          "score": 2,
-          "rationale": "Domain-specific skill with clear purpose."
+          "score": 4,
+          "rationale": "Domain-specific skill with clear purpose.",
+          "sub_scores": {
+            "problem_clarity": 5,
+            "audience_breadth": 3,
+            "capability_gap": 4,
+            "actionability": 4,
+            "reusability": 3
+          },
+          "weighted_score": 3.95,
+          "domain_calibration_bonus": 0.3,
+          "method_version": "weighted-v2"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "Evaluated based on scripts, network calls, and credential handling.",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": [],
           "sub_scores": {
             "data_privacy": 5,
@@ -9714,7 +11004,7 @@
       "path": "tech-leader-exec-briefing/SKILL.md",
       "url": null,
       "packs": [
-        "tech"
+        "strategy"
       ],
       "frontmatter": {
         "name": "tech-leader-exec-briefing",
@@ -9749,8 +11039,8 @@
           "rationale": "Not evaluated"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
@@ -9765,7 +11055,7 @@
           "flagged": false,
           "rationale": "Not evaluated"
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Prepare targeted written briefings for executives (CEO, CFO, COO, board members) that reframe technology topics in terms of business impact, cost, and risk — decision-ready, no jargon. Writes from the perspective of a senior technology executive (CIO/CTO). Use when asked to write an executive briefing, prepare a leadership update, brief the CEO/CFO/COO on a technology topic, or communicate a technology issue or decision to senior business leaders.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -9782,7 +11072,7 @@
       "path": "tech-leader-roadmap-narrator/SKILL.md",
       "url": null,
       "packs": [
-        "tech"
+        "strategy"
       ],
       "frontmatter": {
         "name": "tech-leader-roadmap-narrator",
@@ -9817,8 +11107,8 @@
           "rationale": "Not evaluated"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
@@ -9833,7 +11123,7 @@
           "flagged": false,
           "rationale": "Not evaluated"
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Translate a technology roadmap into a compelling, business-language strategic narrative that explains sequencing, tradeoffs, and value delivery over time. Helps the user refine roadmap structure — goals, milestones, dependencies, and outcomes — before narrating it. Writes from the perspective of a senior technology executive (CIO/CTO). Use when asked to tell the roadmap story, write a roadmap narrative, explain a technology roadmap to executives, articulate a technology strategy timeline, or turn roadmap artifacts into leadership-ready written communication.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -9850,7 +11140,7 @@
       "path": "tech-leader-vision-builder/SKILL.md",
       "url": null,
       "packs": [
-        "tech"
+        "strategy"
       ],
       "frontmatter": {
         "name": "tech-leader-vision-builder",
@@ -9885,8 +11175,8 @@
           "rationale": "Not evaluated"
         },
         "security_risk": {
-          "rating": "unknown",
-          "rationale": "Not evaluated",
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
           "findings": []
         },
         "executability": {
@@ -9901,7 +11191,7 @@
           "flagged": false,
           "rationale": "Not evaluated"
         },
-        "core_capabilities": "Not evaluated",
+        "core_capabilities": "Develop a compelling multi-year technology vision narrative aligned to business outcomes — the \"why, where, and how\" of technology strategy written for senior leadership consumption. Helps the user articulate, sharpen, and structure their technology vision through guided questioning before narrating it. Writes from the perspective of a senior technology executive (CIO/CTO). Use when asked to write a technology vision, articulate a technology strategy, build a vision statement, create a strategic technology narrative, define a technology direction, or communicate where the technology organization is heading and why.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"

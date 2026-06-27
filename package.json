@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "Agentic skills, prompts, agents, and instructions for AI platforms.",
   "bin": {
-    "nexus-agents": "bin/nexus-agents.js"
+    "nxa": "bin/nxa.js"
   },
   "scripts": {
     "test": "node --test",

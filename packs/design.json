@@ -3,6 +3,17 @@
   "version": "1.0.0",
   "description": "Skills for UX research, application design, product overviews, personas, scroll storytelling, and design systems.",
   "skills": [
-    "design-*"
+    "design-application-sitemap",
+    "design-application-ux",
+    "design-product-overview-builder",
+    "design-product-overview-recorder",
+    "design-research-ux-artifacts",
+    "design-research-ux-researcher",
+    "design-scroll-storytelling",
+    "design-system-architect",
+    "design-ui-system-advisor",
+    "design-visual-image-generator",
+    "design-visual-image-system-director",
+    "design-web-impactful"
   ]
 }
