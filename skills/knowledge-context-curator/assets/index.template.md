@@ -1,6 +1,6 @@
 # Context Index
 
-The catalog of all pages and agent-managed packs in this context repository. Each entry is a double-bracket link and a one-line summary. Agents read this first to identify candidate pages and recurring task context.
+The catalog of all pages and agent-managed packs in this context repository. Each entry is a standard markdown link with a short description. Agents read this first to identify candidate pages and recurring task context.
 
 Keep summaries tight. The index is engineered to be cheap to read; a bloated index defeats its purpose.
 

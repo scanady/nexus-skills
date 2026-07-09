@@ -30,6 +30,7 @@ from pathlib import Path
 
 
 LINK_RE = re.compile(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]")
+MD_LINK_RE = re.compile(r"\[([^\]]+)\]\((/[^)]+\.md|\.\.?/[^)]+\.md)\)")
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 TOKEN_RE = re.compile(r"[a-z0-9]+")
 SKIP_TOP_LEVEL_FILES = {"SCHEMA.md", "index.md", "log.md", "README.md"}
@@ -68,7 +69,14 @@ def tokenize(text: str) -> list[str]:
 
 
 def extract_links(body: str) -> list[str]:
-    return [match.group(1).strip() for match in LINK_RE.finditer(body)]
+    links = [match.group(1).strip() for match in LINK_RE.finditer(body)]
+    # Also extract standard markdown links (OKF-style) as slug references
+    for match in MD_LINK_RE.finditer(body):
+        link_path = match.group(2).strip()
+        slug = Path(link_path).stem
+        if slug:
+            links.append(slug)
+    return links
 
 
 def collect_pages(context_root: Path) -> list[dict]:
@@ -189,9 +197,9 @@ def cmd_search(args, pages: list[dict]) -> None:
 def cmd_backlinks(args, pages: list[dict]) -> None:
     inbound = [page for page in pages if args.backlinks in page["links"]]
     if not inbound:
-        print(f"No pages link to [[{args.backlinks}]].", file=sys.stderr)
+        print(f"No pages link to '{args.backlinks}'.", file=sys.stderr)
         return
-    print(f"Pages linking to [[{args.backlinks}]] ({len(inbound)}):")
+    print(f"Pages linking to '{args.backlinks}' ({len(inbound)}):")
     for page in inbound:
         title = page["meta"].get("title") or page["slug"]
         print(f"  - {title}  ({page['rel_path']})")

@@ -21,6 +21,7 @@ from pathlib import Path
 
 
 LINK_RE = re.compile(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]")
+MD_LINK_RE = re.compile(r"\[([^\]]+)\]\((/[^)]+\.md|\.\.?/[^)]+\.md)\)")
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 CAPITALIZED_PHRASE_RE = re.compile(r"\b([A-Z][a-zA-Z0-9]+(?:\s+[A-Z][a-zA-Z0-9]+){0,3})\b")
 SKIP_TOP_LEVEL_FILES = {"SCHEMA.md", "index.md", "log.md", "README.md"}
@@ -71,6 +72,13 @@ def collect_pages(context_root: Path) -> list[dict]:
             continue
         meta, body, malformed = parse_frontmatter(text)
         links = [match.group(1).strip() for match in LINK_RE.finditer(body)]
+        # Also collect standard markdown links (OKF-style) as slug references
+        for match in MD_LINK_RE.finditer(body):
+            link_path = match.group(2).strip()
+            # Convert /path/to/concept.md or ./path.md to slug
+            slug = Path(link_path).stem
+            if slug:
+                links.append(slug)
         pages.append({
             "path": str(md_path),
             "rel_path": str(rel),
@@ -259,7 +267,7 @@ def main() -> None:
     parser.add_argument("context", nargs="?", type=Path, default=Path("context"), help="Context repository directory.")
     parser.add_argument("--soft-cap", type=int, default=400, help="Page-size soft cap in lines.")
     parser.add_argument("--hard-cap", type=int, default=800, help="Page-size hard cap in lines.")
-    parser.add_argument("--required-fm", default="type,title,tags,created,updated", help="Required frontmatter fields, comma-separated.")
+    parser.add_argument("--required-fm", default="type,title,description,tags,timestamp,created,updated", help="Required frontmatter fields, comma-separated.")
     parser.add_argument("--suggest-pages", action="store_true", help="Surface candidate recurring terms without pages.")
     parser.add_argument("--suggest-min", type=int, default=5, help="Minimum page count for suggestions.")
     parser.add_argument("--json", action="store_true", help="Emit JSON.")

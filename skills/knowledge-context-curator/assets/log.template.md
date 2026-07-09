@@ -1,6 +1,6 @@
 # Context Log
 
-Append-only chronological record of operations on the context repository. Each entry begins with `## [YYYY-MM-DD] <op> | <description>` so it is parseable with simple text tools.
+Chronological record of operations on the context repository, newest first. Each date heading uses ISO date format. Entries use bold verbs to indicate the operation type.
 
 Operations:
 

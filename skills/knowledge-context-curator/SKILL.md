@@ -14,7 +14,7 @@ metadata:
 
 # Knowledge Context Curator
 
-Build and maintain a context-engineering repository: a durable knowledge system that agents can trust, navigate, query, package, and maintain across sessions. The repository converts raw source material into source-backed knowledge pages and agent-managed task aids such as context packs.
+Build and maintain a context-engineering repository: a durable knowledge system that agents can trust, navigate, query, package, and maintain across sessions. The repository converts raw source material into source-backed knowledge pages and agent-managed task aids such as context packs. Output conforms to the [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog) specification.
 
 ## Role Definition
 
@@ -22,7 +22,7 @@ Act as a senior context curator and solution architect. Design repositories that
 
 ## What This Produces
 
-A governed context-root directory for reusable agent knowledge. The output is not a generic wiki or notes folder; it is a source-backed context system with raw evidence, distilled pages, internal task-specific load plans, indexes, logs, and health checks.
+A governed context-root directory for reusable agent knowledge. The output is not a generic wiki or notes folder; it is a source-backed context system with raw evidence, distilled pages, internal task-specific load plans, indexes, logs, and health checks. All concept documents conform to OKF: YAML frontmatter with a non-empty `type` field, standard markdown links for cross-references, and `index.md`/`log.md` following OKF §6/§7 conventions.
 
 Use this when knowledge needs to survive across sessions, support repeated agent tasks, preserve source traceability, or prevent agents from rediscovering the same context over and over. For one-off answers, simple README updates, or database-style querying, recommend a lighter artifact or a more suitable data store.
 
@@ -138,6 +138,7 @@ Load these bundled references only when the user's operation calls for them:
 
 | Topic | Reference | Load When |
 |---|---|---|
+| OKF alignment | `references/okf-alignment.md` | Understanding OKF conformance, migrating from wiki links |
 | Architecture | `references/architecture.md` | Designing or explaining the repository model |
 | Initialization | `references/initialization-workflow.md` | Creating a new context-root repository or adding another root to a project |
 | Ingest | `references/ingest-workflow.md` | Adding source material to the repository |
@@ -156,9 +157,12 @@ Load these bundled references only when the user's operation calls for them:
 - Resolve which context root applies before any read or write when the project hosts more than one.
 - Read `<context-root>/SCHEMA.md` before touching an existing repository.
 - Keep raw sources immutable once placed under `<context-root>/raw/`.
-- Use atomic pages with source-backed claims and double-bracket links.
-- Maintain `<context-root>/index.md` or its shards after creating pages.
-- Append meaningful operations to `<context-root>/log.md`.
+- Use atomic pages with source-backed claims and standard markdown links (OKF §5).
+- Include a `description` field in all page frontmatter for indexes and search.
+- Include a `timestamp` field (ISO 8601) for last meaningful change.
+- Include a `# Citations` section at the bottom of pages that reference external sources (OKF §8).
+- Maintain `<context-root>/index.md` or its shards after creating pages, using the format `* [Title](path) - description` (OKF §6).
+- Append meaningful operations to `<context-root>/log.md` using date headings and newest-first order (OKF §7).
 - Maintain context packs internally for recurring tasks instead of forcing agents to rediscover load paths.
 - Ask for user input only when human judgment is needed for source choice, ambiguity, contradiction, authority, freshness, destructive scope, or semantic change.
 - Define domain terms in plain language the first time they appear in a user-facing prompt or message. Terms include: pack, root, ingest, synthesis, lint, freshness, atomic page, schema. Internal artifacts (`SCHEMA.md`, log entries, frontmatter) may use the terms without a gloss.
@@ -170,6 +174,7 @@ Load these bundled references only when the user's operation calls for them:
 - Do not treat distilled pages as ground truth when a claim needs source verification.
 - Do not silently overwrite contested or contradictory claims.
 - Do not create orphan pages with no inbound links.
+- Do not use wiki-style `[[double-bracket links]]`; use standard markdown links for OKF conformance.
 - Do not brute-force read the whole repository for ordinary queries.
 - Do not add custom page types before documenting them in `SCHEMA.md`.
 - Do not ask the user to define packs, indexes, tags, lint settings, or other repository mechanics unless the user raises them or a human decision is required.
@@ -200,4 +205,4 @@ For implementation work, deliver:
 
 ## Knowledge Reference
 
-context knowledge curation, durable context, source grounding, evidence preservation, atomic notes, context packs, index-first retrieval, frontmatter, double-bracket links, schema governance, context drift, freshness checks, repository curation, agent instruction integration
+context knowledge curation, durable context, source grounding, evidence preservation, atomic notes, context packs, index-first retrieval, frontmatter, standard markdown links, schema governance, context drift, freshness checks, repository curation, agent instruction integration, OKF, Open Knowledge Format, knowledge bundle, concept document, citations

@@ -30,7 +30,7 @@ Read selected pages and follow only the most relevant links. If a claim matters 
 
 ## Step 4: Answer With Traceability
 
-Synthesize the answer in your own words. Cite context pages with double-bracket links. Mention source briefs or raw paths when the user needs verification.
+Synthesize the answer in your own words. Cite context pages with standard markdown links (e.g., `[page title](/concepts/page-slug.md)`). Mention source briefs or raw paths when the user needs verification.
 
 If the repository contains contradictory or stale claims, surface that uncertainty explicitly. If the repository lacks coverage, say so and suggest what source, validation, or repository maintenance would fill the gap.
 
@@ -44,15 +44,22 @@ When filing back, create frontmatter:
 ---
 type: synthesis
 title: ""
+description: "One-sentence summary of the synthesis."
 question: "Original question"
 sources_consulted: []
 tags: []
+timestamp: "YYYY-MM-DDTHH:MM:SSZ"
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 ---
 ```
 
-Update the index and append a `query` log entry.
+Update the index and append a log entry:
+
+```markdown
+## YYYY-MM-DD
+* **Query**: Filed synthesis [answer-title](/synthesis/answer-slug.md).
+```
 
 ## Special Query Types
 
