@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/scanady/nexus-skills/compare/nexus-agents-v1.1.0...nexus-agents-v1.2.0) (2026-07-09)
+
+
+### Features
+
+* align knowledge-context-curator with OKF v0.1 spec ([#30](https://github.com/scanady/nexus-skills/issues/30)) ([8e3970c](https://github.com/scanady/nexus-skills/commit/8e3970ce3dc46534483a50009983ed97fa75baa8))
+
 ## [1.1.0](https://github.com/scanady/nexus-skills/compare/nexus-agents-v1.0.1...nexus-agents-v1.1.0) (2026-06-20)
 
 
