@@ -47,12 +47,14 @@ Frontmatter example:
 ---
 type: context-pack
 title: "Marketing Content Compliance Review"
+description: "Load plan for reviewing marketing content against compliance, brand, and editorial guidelines."
 task: "Review marketing content for compliance, brand, and editorial risk"
 tags: [compliance, review-boundary]
 required_pages: [compliance-review-boundaries, life-insurance-disclosure-rules]
 optional_pages: [common-review-patterns]
 exclusions: [outdated-product-language]
 freshness: "Review policy and product pages before reuse if older than 30 days."
+timestamp: "YYYY-MM-DDTHH:MM:SSZ"
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 ---
@@ -73,7 +75,7 @@ The body should include:
 
 ## Step 5: Link Back
 
-Add a link to the pack from relevant concept, synthesis, or entity pages when appropriate. Add the pack to the index.
+Add a standard markdown link to the pack from relevant concept, synthesis, or entity pages when appropriate. Add the pack to the index using the format: `* [Pack Title](packs/task-slug.md) - description`.
 
 ## Step 6: Test The Pack Mentally
 
@@ -90,7 +92,8 @@ Before finishing, ask:
 Append:
 
 ```markdown
-## [YYYY-MM-DD] package | Created or updated <pack title>
+## YYYY-MM-DD
+* **Package**: Created or updated <pack title>.
 ```
 
 Report pack maintenance only when useful to the user, and describe the outcome rather than the mechanism. Example: "I also optimized the repository for repeated compliance review tasks." Explain pack details only if the user asks.

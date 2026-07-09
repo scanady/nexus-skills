@@ -2,7 +2,28 @@
 
 This reference explains the repository model. Use it when designing, explaining, or revising a context-root repository.
 
+This repository conforms to the [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog) specification. OKF defines a minimal, vendor-neutral format for representing knowledge as a directory of markdown files with YAML frontmatter. This skill extends OKF with governance layers (schema, context packs, lint) while remaining fully conformant.
+
 Paths below use `context/` as the default root name for readability. The root is configurable, and a project may host several roots side by side (for example `context-core/`, `context-product/`, `context-customer/`). Substitute the actual root name where it applies.
+
+## OKF Alignment
+
+The repository is an OKF knowledge bundle. Key alignment points:
+
+- Every concept document has YAML frontmatter with a non-empty `type` field (OKF §4).
+- Cross-references use standard markdown links with bundle-relative (`/path/to/concept.md`) or relative (`./sibling.md`) paths (OKF §5).
+- `index.md` files use the format `* [Title](relative-url) - description` for progressive disclosure (OKF §6).
+- `log.md` uses date headings (`## YYYY-MM-DD`) with newest entries first (OKF §7).
+- External sources are cited in a `# Citations` section at the bottom of pages (OKF §8).
+- Unknown frontmatter keys and broken links are tolerated; they indicate not-yet-written knowledge, not errors.
+
+Extensions beyond OKF (allowed by the spec's extension policy):
+
+- `SCHEMA.md` as a governance configuration file.
+- Context packs (`context-pack` type) as agent-managed load plans.
+- Evidence layer (`raw/`) for immutable source material.
+- Additional frontmatter fields: `created`, `updated`, `sources`, `resource`, `freshness`, etc.
+- Structural and semantic lint tooling.
 
 ## Four Layers
 
@@ -21,7 +42,7 @@ The knowledge layer is made of distilled markdown pages:
 - `context/concepts/` - rules, methods, ideas, frameworks, terms, and domain abstractions.
 - `context/synthesis/` - cross-source analyses, comparisons, durable query answers, and open-question summaries.
 
-These pages are atomic. Each page should be about one thing, stay small enough to load confidently, and cite the sources it draws from.
+These pages are atomic. Each page should be about one thing, stay small enough to load confidently, and cite the sources it draws from. Cross-references use standard markdown links (e.g., `[entity name](/entities/entity-slug.md)`).
 
 ### Context Layer
 

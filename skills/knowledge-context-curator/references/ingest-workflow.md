@@ -43,21 +43,26 @@ Create `context/sources/<source-slug>.md` with source frontmatter:
 ---
 type: source
 title: "Original source title"
+description: "One-sentence summary of the source's contribution."
 authors: []
 url: ""
+resource: ""
 raw: "context/raw/<source-slug>.<ext>"
 ingested: YYYY-MM-DD
 tags: []
 entities: []
 concepts: []
+timestamp: "YYYY-MM-DDTHH:MM:SSZ"
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 ---
 ```
 
+The `resource` field holds the canonical URI for the original source when it has one (a URL, API endpoint, document location). Omit for sources without a stable external identity.
+
 The body should summarize the source's durable contribution. Capture key claims, constraints, definitions, evidence, and open questions. Do not paraphrase the entire source.
 
-End with links to pages the source touches.
+End with a `# Citations` section listing external URLs and links to pages the source touches.
 
 ## Step 6: Update Existing Pages
 
@@ -84,12 +89,11 @@ Ask the user only when the recurring task boundary, authority, or risk level can
 
 ## Step 9: Update Index And Log
 
-Add one-line entries for new pages and packs to `context/index.md` or the relevant shard. Append a log entry:
+Add one-line entries for new pages and packs to `context/index.md` or the relevant shard using standard markdown link format: `* [Title](relative-path.md) - description`. Append a log entry:
 
 ```markdown
-## [YYYY-MM-DD] ingest | <source title>
-- Added: [[source-slug]]
-- Updated: [[page-a]], [[page-b]]
+## YYYY-MM-DD
+* **Ingest**: Added [source-slug](/sources/source-slug.md). Updated [page-a](/entities/page-a.md), [page-b](/concepts/page-b.md).
 ```
 
 ## Step 10: Report Back

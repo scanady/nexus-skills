@@ -69,7 +69,6 @@ Report pack, index, tag, and schema mechanics as outcomes, not decisions, unless
 After running or acting on lint, append:
 
 ```markdown
-## [YYYY-MM-DD] lint | <scope>
-- Findings: <brief count or summary>
-- Actions: <pages changed, if any>
+## YYYY-MM-DD
+* **Lint**: <scope> — <brief count or summary>. Actions: <pages changed, if any>.
 ```

@@ -82,10 +82,11 @@ See `agent-integration.md` for the recommended stanzas, including the multi-root
 
 ## Step 6: Log Initialization
 
-Append to `<context-root>/log.md`:
+Append to `<context-root>/log.md` (newest first):
 
 ```markdown
-## [YYYY-MM-DD] initialize | Created context repository
+## YYYY-MM-DD
+* **Initialization**: Created context repository.
 ```
 
 Include notable customizations and, if part of a multi-root project, name the sibling roots.

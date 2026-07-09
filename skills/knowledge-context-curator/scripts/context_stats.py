@@ -16,6 +16,7 @@ from pathlib import Path
 
 
 LINK_RE = re.compile(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]")
+MD_LINK_RE = re.compile(r"\[([^\]]+)\]\((/[^)]+\.md|\.\.?/[^)]+\.md)\)")
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 SKIP_TOP_LEVEL_FILES = {"SCHEMA.md", "log.md", "README.md"}
 SKIP_TOP_LEVEL_DIRS = {"raw"}
@@ -74,9 +75,15 @@ def main() -> None:
         total_words += word_count
         body = FRONTMATTER_RE.sub("", text, count=1) if text.startswith("---") else text
         links = LINK_RE.findall(body)
+        # Also count standard markdown links (OKF-style)
+        for match in MD_LINK_RE.finditer(body):
+            link_path = match.group(2).strip()
+            slug = Path(link_path).stem
+            if slug:
+                links.append(slug)
         total_links += len(links)
         for link in links:
-            target = link.split("|")[0].strip()
+            target = link.split("|")[0].strip() if "|" in link else link
             most_linked_in[target] += 1
         page_type = parse_type(text) or "(none)"
         pages_by_type[page_type] += 1
@@ -135,7 +142,7 @@ def main() -> None:
     if most_linked_in:
         print("Most-linked-to pages:")
         for slug, count in most_linked_in.most_common(10):
-            print(f"  {count:4d}  [[{slug}]]")
+            print(f"  {count:4d}  {slug}")
         print()
 
     print("Scaling thresholds:")

@@ -1,12 +1,14 @@
 ---
 type: context-pack
 title: ""
+description: ""
 task: ""
 tags: []
 required_pages: []
 optional_pages: []
 exclusions: []
 freshness: "Review before reuse if older than 30 days."
+timestamp: "YYYY-MM-DDTHH:MM:SSZ"
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 ---
@@ -26,11 +28,11 @@ Define the recurring task this internal pack supports and the decision boundary 
 
 ## Required Context
 
-- [[required-page-1]] - why this page is required.
+- [Required page 1](/concepts/required-page-1.md) - why this page is required.
 
 ## Optional Context
 
-- [[optional-page-1]] - when to load this page.
+- [Optional page 1](/entities/optional-page-1.md) - when to load this page.
 
 ## Exclusions
 

@@ -83,9 +83,8 @@ If the same issue appears repeatedly, change the convention rather than fixing s
 Append:
 
 ```markdown
-## [YYYY-MM-DD] curate | <scope>
-- Changed: [[page-a]], [[page-b]]
-- Reason: <brief reason>
+## YYYY-MM-DD
+* **Curation**: <scope> — Changed [page-a](/entities/page-a.md), [page-b](/concepts/page-b.md). Reason: <brief reason>.
 ```
 
 ## Step 7: Report Back
