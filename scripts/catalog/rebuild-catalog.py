@@ -514,11 +514,11 @@ def main():
         else:
             evaluation = {
                 "usage_value": {"score": 0, "rationale": "Not evaluated"},
-                "security_risk": {"rating": "unknown", "rationale": "Not evaluated", "findings": []},
+                "security_risk": derive_security_risk(scan_entry, None),
                 "executability": {"score": 0, "rationale": "Not evaluated"},
                 "invocability": {"score": 0, "rationale": "Not evaluated"},
                 "over_specification_risk": {"flagged": False, "rationale": "Not evaluated"},
-                "core_capabilities": "Not evaluated",
+                "core_capabilities": derive_core_capabilities(fm, "Not evaluated"),
                 "external_requirements_indicator": "unknown",
                 "external_requirements": ["unknown"],
                 "script_languages": scan_entry.get("script_languages", ["none"]),
