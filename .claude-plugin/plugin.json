@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Agentic skills, prompts, agents, and instructions for AI development platforms.",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "plugins": [
     {
@@ -13,7 +13,7 @@
       "description": "All nexus skills (umbrella plugin).",
       "source": "./",
       "strict": false,
-      "version": "1.1.0",
+      "version": "1.2.0",
       "keywords": [
         "skills",
         "prompts",
@@ -68,6 +68,7 @@
         "./skills/engineering-api-mcp-builder",
         "./skills/engineering-api-n8n-workflow-builder",
         "./skills/engineering-arch-architecture-decision-records",
+        "./skills/engineering-arch-design-reviewer",
         "./skills/engineering-arch-principle-engineer",
         "./skills/engineering-arch-system-designer",
         "./skills/engineering-data-scraper",
@@ -103,6 +104,7 @@
         "./skills/marketing-seo-adsense-readiness",
         "./skills/marketing-seo-adsense-review",
         "./skills/marketing-seo-cro",
+        "./skills/marketing-seo-structured-data",
         "./skills/ops-process-sop-creator",
         "./skills/people-comms-announce-organizational",
         "./skills/people-comms-engage-internal-community",

@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-06-22T01:26:31Z",
+  "generated_at": "2026-07-16T04:28:45Z",
   "sources": [
     {
       "id": "source-1",
@@ -11,24 +11,24 @@
     }
   ],
   "summary": {
-    "total_skills": 124,
+    "total_skills": 126,
     "evaluated": 114,
     "parse_errors": 0,
-    "avg_usage_value": 3.68,
-    "avg_executability": 2.62,
-    "avg_invocability": 2.0,
+    "avg_usage_value": 3.62,
+    "avg_executability": 2.58,
+    "avg_invocability": 1.97,
     "security_risk_distribution": {
-      "low": 95,
+      "low": 97,
       "medium": 27,
       "high": 2
     },
     "complexity_distribution": {
       "compact": 59,
-      "detailed": 22,
-      "comprehensive": 43
+      "detailed": 23,
+      "comprehensive": 44
     },
     "pattern_distribution": {
-      "A": 107,
+      "A": 109,
       "B": 16,
       "C": 1
     },
@@ -4378,6 +4378,72 @@
       }
     },
     {
+      "name": "engineering-arch-design-reviewer",
+      "source_id": "source-1",
+      "path": "engineering-arch-design-reviewer/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "engineering-arch-design-reviewer",
+        "description": "Structural software design review of an existing codebase using John Ousterhout's \"A Philosophy of Software Design\" as the diagnostic lens. Surfaces shallow modules, information leakage, special-case proliferation, naming obscurity, and inconsistency — then recommends the smallest design change that eliminates the most complexity. Use when asked to \"review module design\", \"is this over-abstracted\", \"are my modules too shallow\", \"audit complexity\", \"find pass-through layers\", or \"review software design quality\".",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "2.1.0",
+          "domain": "engineering",
+          "triggers": "review module design, audit module structure, are my modules too shallow, is this over-abstracted, find pass-through layers, fix information leakage, reduce code complexity, simplify error handling, audit naming clarity, review interface design",
+          "role": "architect",
+          "scope": "analysis",
+          "output_format": "report",
+          "related_skills": "engineering-arch-principle-engineer, engineering-arch-system-designer, engineering-quality-code-simplifier"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 9,
+        "estimated_tokens": 3679,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
+          "findings": []
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Structural software design review of an existing codebase using John Ousterhout's \"A Philosophy of Software Design\" as the diagnostic lens. Surfaces shallow modules, information leakage, special-case proliferation, naming obscurity, and inconsistency — then recommends the smallest design change that eliminates the most complexity. Use when asked to \"review module design\", \"is this over-abstracted\", \"are my modules too shallow\", \"audit complexity\", \"find pass-through layers\", or \"review software design quality\".",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "name": "engineering-arch-principle-engineer",
       "source_id": "source-1",
       "path": "engineering-arch-principle-engineer/SKILL.md",
@@ -5923,8 +5989,8 @@
         "has_agents": false,
         "has_assets": true,
         "has_license_file": false,
-        "file_count": 20,
-        "estimated_tokens": 2719,
+        "file_count": 21,
+        "estimated_tokens": 3000,
         "complexity_class": "comprehensive",
         "skill_pattern": "B"
       },
@@ -7516,6 +7582,72 @@
           "none"
         ],
         "license": "unspecified"
+      }
+    },
+    {
+      "name": "marketing-seo-structured-data",
+      "source_id": "source-1",
+      "path": "marketing-seo-structured-data/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "marketing-seo-structured-data",
+        "description": "Audit, generate, and validate schema.org structured data (JSON-LD) and Google Search \"Appearance\" signals to make a site or page eligible for richer search results. Use when the user wants rich results / rich snippets, schema markup, JSON-LD, structured data, \"how do I get stars/breadcrumbs/sitelinks in Google\", a knowledge panel, a favicon or sitename in search, better title links or meta-description snippets, or markup for a specific entity: Article, Product, Review, Organization, Local business, Profile page (author/about/bio pages like a personal site), Person, Event, Job posting, Recipe, Video, Breadcrumb, FAQ/Q&A, Course, Dataset, Software app, Movie, and other Google-supported types. Also for \"why isn''t my structured data showing\", validating existing markup, or planning which structured data a page should have.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "seo",
+          "triggers": "structured data, schema markup, JSON-LD, rich results, rich snippets, schema.org, google search appearance, rich result test, breadcrumb markup, product schema, article schema, organization schema, local business schema, profile page schema, person schema, event schema, job posting schema, recipe schema, video schema, faq schema, review stars, sitelinks, favicon, sitename, knowledge panel, meta description, title link, why isn't my structured data showing, validate schema",
+          "role": "seo-engineer",
+          "scope": "audit-generate-validate",
+          "output_format": "report+code",
+          "related_skills": "marketing-seo-cro, content-meta-design, marketing-seo-adsense-review, engineering-data-scraper"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 8,
+        "estimated_tokens": 1042,
+        "complexity_class": "detailed",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "rationale": "No obvious credential handling or risky execution patterns detected.",
+          "findings": []
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Audit, generate, and validate schema.org structured data (JSON-LD) and Google Search \"Appearance\" signals to make a site or page eligible for richer search results. Use when the user wants rich results / rich snippets, schema markup, JSON-LD, structured data, \"how do I get stars/breadcrumbs/sitelinks in Google\", a knowledge panel, a favicon or sitename in search, better title links or meta-description snippets, or markup for a specific entity: Article, Product, Review, Organization, Local business, Profile page (author/about/bio pages like a personal site), Person, Event, Job posting, Recipe, Video, Breadcrumb, FAQ/Q&A, Course, Dataset, Software app, Movie, and other Google-supported types. Also for \"why isn''t my structured data showing\", validating existing markup, or planning which structured data a page should have.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
       }
     },
     {
