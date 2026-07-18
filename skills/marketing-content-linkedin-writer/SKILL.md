@@ -1,5 +1,6 @@
 ---
 name: marketing-content-linkedin-writer
+disable-model-invocation: false
 description: Creates LinkedIn-native authority posts for founders, operators, and professional audiences using save-worthy story arcs, insight framing, and voice matching. Use when asked for 'LinkedIn thought leadership', 'a founder LinkedIn update', 'a professional LinkedIn narrative', or polished LinkedIn copy rather than tweets or thread-first content.
 license: MIT
 metadata:

@@ -1,5 +1,6 @@
 ---
 name: strategy-decision-interrogator
+disable-model-invocation: true
 description: 'Runs live sequential interrogation of a plan or design: exactly one high-leverage question per assistant turn, with recommended answer. Use when asked "grill me", "ask one at a time", "walk the decision tree", or "question my plan".'
 license: MIT
 metadata:

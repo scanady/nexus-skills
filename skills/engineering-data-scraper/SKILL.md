@@ -1,5 +1,6 @@
 ---
 name: engineering-data-scraper
+disable-model-invocation: true
 description: Build a fully automated AI-powered data collection agent for any public source — job boards, prices, news, GitHub, sports, anything. Scrapes on a schedule, enriches data with a free LLM (Gemini Flash), stores results in Notion/Sheets/Supabase, and learns from user feedback. Runs 100% free on GitHub Actions. Use when the user wants to monitor, collect, or track any public data automatically, or when they say "build a bot that checks", "monitor X for me", "collect data from", "automate data collection", "track prices", "track jobs", "web scraper", or "data scraper".
 license: MIT
 metadata:

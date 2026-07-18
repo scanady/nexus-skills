@@ -305,6 +305,10 @@ def build_skill_entry(scan_entry: dict, eval_entry: dict | None, source_id: str,
     metadata = fm.get("metadata", {})
     if isinstance(metadata, str):
         metadata = {}
+    disable_model_invocation = scan_entry.get(
+        "disable_model_invocation",
+        str(fm.get("disable-model-invocation", "")).strip().lower() == "true",
+    )
 
     # Default evaluation if not provided
     default_eval = {
@@ -391,9 +395,11 @@ def build_skill_entry(scan_entry: dict, eval_entry: dict | None, source_id: str,
         "source_id": source_id,
         "path": scan_entry.get("path", ""),
         "url": skill_url,
+        "disable_model_invocation": disable_model_invocation,
         "frontmatter": {
             "name": fm.get("name"),
             "description": fm.get("description"),
+            "disable_model_invocation": disable_model_invocation,
             "license": fm.get("license"),
             "compatibility": fm.get("compatibility"),
             "allowed_tools": fm.get("allowed-tools"),

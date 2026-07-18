@@ -1,5 +1,6 @@
 ---
 name: engineering-arch-system-designer
+disable-model-invocation: false
 description: Senior architect for system design, architecture decisions, pattern selection, ADRs, scalability planning, and technology evaluation. Use when designing new systems, choosing architecture patterns, writing ADRs, selecting databases, planning for scale or failure, or reviewing existing architecture.
 license: MIT
 metadata:

@@ -1,5 +1,6 @@
 ---
 name: people-comms-engage-internal-community
+disable-model-invocation: false
 description: Draft internal community communications such as 3P updates, newsletters, FAQ responses, and team status reports. Use when you need clear, professional, and audience-aware internal messaging.
 license: MIT
 metadata:

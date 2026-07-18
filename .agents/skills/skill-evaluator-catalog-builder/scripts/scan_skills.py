@@ -12,6 +12,7 @@ indicators, and SKILL.md body excerpt.
 """
 
 import argparse
+import ast
 import json
 import os
 import re
@@ -76,6 +77,18 @@ def parse_yaml_frontmatter(text: str) -> dict | None:
                 frontmatter[key] = value
 
     return frontmatter
+
+
+def frontmatter_bool(frontmatter: dict | None, key: str) -> bool:
+    """Return a normalized boolean from simple YAML frontmatter values."""
+    if not frontmatter or key not in frontmatter:
+        return False
+    value = frontmatter[key]
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        return value.strip().lower() == "true"
+    return False
 
 
 def detect_script_languages(scripts_dir: Path) -> list[str]:
@@ -151,6 +164,18 @@ def _iter_files(directory: Path):
             yield entry
 
 
+def _is_test_script(file_path: Path) -> bool:
+    """Return True when a script path is clearly test-only content."""
+    stem = file_path.stem.lower()
+    parts = {part.lower() for part in file_path.parts}
+    return (
+        stem.startswith("test_")
+        or stem.endswith("_test")
+        or "tests" in parts
+        or "testdata" in parts
+    )
+
+
 # Patterns that indicate external service usage
 EXTERNAL_URL_RE = re.compile(
     r"https?://(?!agentskills\.io|modelcontextprotocol\.io|example\.com)"
@@ -198,6 +223,49 @@ def _contains_credential_reference(text: str) -> bool:
     return False
 
 
+def _strip_python_regex_definitions(content: str) -> str:
+    """Remove Python regex definition blocks so detector source code is not self-flagged."""
+    try:
+        tree = ast.parse(content)
+    except SyntaxError:
+        return content
+
+    lines = content.splitlines()
+    blocked = set()
+
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Assign):
+            continue
+        value = node.value
+        if not isinstance(value, ast.Call):
+            continue
+        if not isinstance(value.func, ast.Attribute):
+            continue
+        if not isinstance(value.func.value, ast.Name):
+            continue
+        if value.func.value.id != "re" or value.func.attr != "compile":
+            continue
+        start = getattr(node, "lineno", None)
+        end = getattr(node, "end_lineno", None)
+        if start is None or end is None:
+            continue
+        blocked.update(range(start - 1, end))
+
+    if not blocked:
+        return content
+
+    return "\n".join(
+        line for idx, line in enumerate(lines) if idx not in blocked
+    )
+
+
+def _normalize_script_content(file_path: Path, content: str) -> str:
+    """Remove non-executable detector definitions that cause scanner false positives."""
+    if file_path.suffix.lower() == ".py":
+        return _strip_python_regex_definitions(content)
+    return content
+
+
 def detect_external_indicators(skill_dir: Path, skill_text: str) -> dict:
     """Scan skill content and scripts for external service indicators."""
     indicators = {
@@ -220,18 +288,21 @@ def detect_external_indicators(skill_dir: Path, skill_text: str) -> dict:
     scripts_dir = skill_dir / "scripts"
     if scripts_dir.is_dir():
         for f in _iter_files(scripts_dir):
+            if _is_test_script(f):
+                continue
             try:
                 with open(f, "r", encoding="utf-8", errors="ignore") as fh:
                     content = fh.read(50_000)  # Cap at 50KB per file
-                script_urls = EXTERNAL_URL_RE.findall(content)
+                normalized_content = _normalize_script_content(f, content)
+                script_urls = EXTERNAL_URL_RE.findall(normalized_content)
                 indicators["urls"].extend(script_urls)
-                if _contains_credential_reference(content):
+                if _contains_credential_reference(normalized_content):
                     indicators["credential_refs"] = True
-                if NETWORK_CALL_RE.search(content):
+                if NETWORK_CALL_RE.search(normalized_content):
                     indicators["network_calls"] = True
-                if EXEC_RE.search(content):
+                if EXEC_RE.search(normalized_content):
                     indicators["exec_patterns"] = True
-                if INSTALL_RE.search(content):
+                if INSTALL_RE.search(normalized_content):
                     indicators["install_commands"] = True
             except (OSError, UnicodeDecodeError):
                 pass
@@ -364,6 +435,7 @@ def scan_skill(skill_md_path: Path, base_dir: Path) -> dict:
     return {
         "path": rel_path,
         "name": frontmatter.get("name", skill_dir.name) if frontmatter else skill_dir.name,
+        "disable_model_invocation": frontmatter_bool(frontmatter, "disable-model-invocation"),
         "frontmatter": frontmatter,
         "structure": {
             "has_scripts": has_scripts,

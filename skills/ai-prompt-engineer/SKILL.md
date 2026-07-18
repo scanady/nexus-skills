@@ -1,5 +1,6 @@
 ---
 name: ai-prompt-engineer
+disable-model-invocation: false
 description: Use when designing prompts for LLMs, optimizing model performance, building evaluation frameworks, or implementing advanced prompting techniques like chain-of-thought, few-shot learning, or structured outputs.
 license: MIT
 metadata:

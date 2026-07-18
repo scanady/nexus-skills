@@ -1,5 +1,6 @@
 ---
 name: research-weekly-ai-news
+disable-model-invocation: false
 description: Aggregate the latest AI headlines into a concise daily or weekly digest with direct source links and light categorization. Use when asked for 'weekly AI news', 'AI updates this week', 'daily AI briefing', 'AI headlines', 'AI news digest', or 'latest AI developments' rather than a deeper monthly landscape or strategy report.
 license: MIT
 metadata:

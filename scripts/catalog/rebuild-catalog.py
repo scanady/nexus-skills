@@ -527,12 +527,14 @@ def main():
 
         skill_entry = {
             "name": name,
+            "disable_model_invocation": scan_entry.get("disable_model_invocation", False),
             "source_id": "source-1",
             "path": scan_entry.get("path", ""),
             "url": None,
             "packs": resolve_skill_packs(name, packs),
             "frontmatter": {
                 "name": fm.get("name"),
+                "disable_model_invocation": scan_entry.get("disable_model_invocation", False),
                 "description": fm.get("description"),
                 "license": fm.get("license"),
                 "compatibility": fm.get("compatibility"),

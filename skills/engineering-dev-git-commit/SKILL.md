@@ -1,5 +1,6 @@
 ---
 name: engineering-dev-git-commit
+disable-model-invocation: true
 description: Execute the current repo's commit-and-push cycle: inspect the diff, draft a tight commit message, stage the right files, commit, and push. Use when asked to 'commit changes', 'push work', 'stage changes', 'write this commit message', or 'commit and push' rather than design a branching strategy or explain Git policy.
 license: MIT
 metadata:

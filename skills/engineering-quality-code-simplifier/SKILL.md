@@ -1,5 +1,6 @@
 ---
 name: engineering-quality-code-simplifier
+disable-model-invocation: false
 description: Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Use when asked to simplify code, clean up code, refactor for readability, reduce complexity, apply coding standards, or improve code elegance. Focuses on recently modified code unless instructed otherwise.
 ---
 

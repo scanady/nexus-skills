@@ -1,5 +1,6 @@
 ---
 name: product-spec-prd-generator
+disable-model-invocation: true
 description: Generates professional PRD (Product Requirements Document) files using expert product management practices. Takes a rough product idea, asks clarifying questions, and outputs a structured Markdown document ready to feed into AI coding assistants or share with stakeholders.
 ---
 

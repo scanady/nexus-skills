@@ -1,5 +1,6 @@
 ---
 name: marketing-seo-cro
+disable-model-invocation: false
 description: Analyzes landing pages and provides detailed CRO (Conversion Rate Optimization) recommendations. Use when user provides a landing page URL or HTML/CSS code and needs optimization advice to maximize conversions, signups, or sales. Extracts page elements, audits against proven CRO principles, and delivers actionable recommendations in report format.
 ---
 

@@ -1,5 +1,6 @@
 ---
 name: marketing-content-lead-magnet
+disable-model-invocation: false
 description: Creates viral lead magnet posts that drive comments and DMs. Produces 2 versions - a quick punchy format and a detailed format with bullet points. Use when user needs social media posts to give away a lead magnet in exchange for engagement.
 ---
 

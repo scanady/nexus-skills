@@ -1,5 +1,6 @@
 ---
 name: research-market-opportunity
+disable-model-invocation: false
 description: 'Discover distinctive software and embedded-tech business opportunities from current signals, underserved needs, and platform shifts. Use when asked to "find startup ideas", "research new opportunities", "identify software business ideas", "spot emerging markets", or "create venture ideas".'
 license: MIT
 metadata:

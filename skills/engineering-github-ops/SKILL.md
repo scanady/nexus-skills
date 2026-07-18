@@ -1,5 +1,6 @@
 ---
 name: engineering-github-ops
+disable-model-invocation: true
 description: GitHub repository operations, automation, and management. Issue triage, PR management, CI/CD operations, release management, and security monitoring using the gh CLI. Use when the user wants to manage GitHub issues, PRs, CI status, releases, contributors, stale items, or any GitHub operational task beyond simple git commands. Trigger on: "check GitHub", "triage issues", "review open PRs", "close stale issues", "CI is broken", "prepare a release", "check dependabot", "merge PRs", "debug workflow".
 license: MIT
 compatibility: Requires gh CLI installed and authenticated via `gh auth login`. All GitHub API operations use gh — no browser or REST calls.

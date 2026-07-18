@@ -1,5 +1,6 @@
 ---
 name: devops-security-audit-lead
+disable-model-invocation: false
 description: Run broad security audit engagements across code, dependencies, secrets, infrastructure, and DevSecOps controls, then deliver a prioritized vulnerability report with remediation guidance. Use when asked for a 'security audit', 'SAST scan', 'secret scan', 'penetration test', or 'cloud security review' rather than a code-focused OWASP exploitability analysis.
 license: MIT
 allowed-tools: Read, Grep, Glob, Bash, Write

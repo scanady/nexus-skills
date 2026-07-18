@@ -1,5 +1,6 @@
 ---
 name: engineering-quality-tdd
+disable-model-invocation: true
 description: Use when implementing any feature or bugfix, before writing implementation code
 ---
 

@@ -1,5 +1,6 @@
 ---
 name: knowledge-ops
+disable-model-invocation: true
 description: Knowledge base management, ingestion, sync, and retrieval across multiple storage layers (local files, MCP memory, vector stores, Git repos). Use when the user wants to save, organize, sync, deduplicate, or search across their knowledge systems. Trigger on "save this to KB", "sync knowledge", "ingest this", "update the knowledge base", "what do I know about X", "deduplicate my notes", "commit to knowledge base".
 metadata:
   version: "1.0.0"

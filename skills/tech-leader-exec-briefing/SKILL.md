@@ -1,5 +1,6 @@
 ---
 name: tech-leader-exec-briefing
+disable-model-invocation: false
 description: Prepare targeted written briefings for executives (CEO, CFO, COO, board members) that reframe technology topics in terms of business impact, cost, and risk — decision-ready, no jargon. Writes from the perspective of a senior technology executive (CIO/CTO). Use when asked to write an executive briefing, prepare a leadership update, brief the CEO/CFO/COO on a technology topic, or communicate a technology issue or decision to senior business leaders.
 ---
 

@@ -1,5 +1,6 @@
 ---
 name: strategy-frameworks-mckinsey-brief
+disable-model-invocation: false
 description: Build executive-ready, board-level strategic problem-solving briefs using SCQ, MECE issue trees, hypothesis-driven analysis, and pyramid-structured recommendations. Use when asked for McKinsey-style strategy memos, root-cause diagnostics, turnaround plans, market-entry decisions, profitability fixes, steering committee briefs, or implementation roadmaps for complex business problems.
 ---
 

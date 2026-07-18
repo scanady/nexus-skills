@@ -1,5 +1,6 @@
 ---
 name: research-ai-landscape-brief
+disable-model-invocation: false
 description: Produce a deep 30-day AI landscape brief that combines GitHub velocity, arXiv preprints, social signals, and web reporting into one strategic view. Use when asked for 'AI landscape brief', 'AI monthly brief', 'AI research briefing', 'frontier AI update', 'AI ecosystem roundup', or 'AI trends this month' rather than a short daily or weekly news digest.
 license: MIT
 metadata:

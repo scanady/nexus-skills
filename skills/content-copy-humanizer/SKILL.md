@@ -1,5 +1,6 @@
 ---
 name: content-copy-humanizer
+disable-model-invocation: false
 description: Review and edit copy so it reads like a human wrote it. Catch and fix AI-writing tells, unidiomatic phrasing, consultant-speak, and faux-profound brand or strategy copy. Default is a clean rewrite with changes shown; review-only mode flags issues without editing. Use when asked to humanize text, de-slop writing, review copy for AI patterns, flag unnatural phrasing, or fix unidiomatic English.
 license: MIT
 allowed-tools:

@@ -1,5 +1,6 @@
 ---
 name: design-visual-image-generator
+disable-model-invocation: false
 description: 'Generate general-purpose images from a user-approved creative brief using Google AI Studio (Gemini). Use when asked to "make an image", "generate artwork", "create a scene", "render an illustration", "produce a visual", or turn a rough prompt into image files.'
 license: MIT
 metadata:

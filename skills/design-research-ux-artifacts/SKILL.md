@@ -1,5 +1,6 @@
 ---
 name: design-research-ux-artifacts
+disable-model-invocation: false
 description: Create one or more research-backed UX artifacts for a product or feature. Use when asked to define personas, map journey maps, structure information architecture, design navigation or user flows, write UX/UI specs, or describe screen layouts, field rules, and interaction behaviors.
 license: MIT
 metadata:

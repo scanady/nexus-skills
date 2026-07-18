@@ -1,5 +1,6 @@
 ---
 name: devops-infra-engineer
+disable-model-invocation: false
 description: Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.
 license: MIT
 metadata:

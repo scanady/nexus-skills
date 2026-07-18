@@ -1,5 +1,6 @@
 ---
 name: knowledge-context-curator
+disable-model-invocation: false
 description: Build a context-engineering repository: a governed knowledge base that turns source material into auditable, task-ready agent context. Default root is `context/`, but the root name is configurable and a single project may host several roots (for example `context-core/`, `context-product/`, `context-customer/`). Use when asked to "create a context repository", "build a context engineering repo", "ingest these sources", "organize research for agents", or "build a knowledge base".
 license: MIT
 metadata:

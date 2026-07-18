@@ -1,5 +1,6 @@
 ---
 name: agents-copilot-instructions
+disable-model-invocation: true
 description: Create GitHub Copilot custom instructions files (.instructions.md and copilot-instructions.md) tailored to a repository, language, framework, platform, or concern. Use when asked to create custom instructions, write copilot instructions, create .instructions.md files, set up copilot-instructions.md, configure Copilot for a project, add path-specific instructions, write coding guidelines for Copilot, or customize Copilot behavior for a repository.
 license: MIT
 metadata:

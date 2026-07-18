@@ -1,5 +1,6 @@
 ---
 name: engineering-github-repo-standards
+disable-model-invocation: true
 description: Apply standardized GitHub repository best practices — branch protection, security features, access controls, and required file artifacts — directly to one or more repos via the `gh` CLI. Use when asked to "standardize a repo", "harden this repository", "set up CODEOWNERS", "apply regulated settings", or "configure GitHub repo settings". Supports four profiles (standard, collaborative, monorepo, regulated) and two context modes (internal, external). File artifacts are delivered via pull request; an audit-trail script is available on request.
 license: MIT
 compatibility: Requires gh CLI ≥ 2.28 installed and authenticated via `gh auth login`. Admin permissions required on target repo(s).

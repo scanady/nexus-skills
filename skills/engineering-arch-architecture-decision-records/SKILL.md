@@ -1,5 +1,6 @@
 ---
 name: engineering-arch-architecture-decision-records
+disable-model-invocation: false
 description: Create, manage, and maintain Architecture Decision Records (ADRs). Use when making significant architectural decisions, documenting technology choices, recording design trade-offs, onboarding engineers to historical decisions, or establishing ADR processes. Invoke for: ADR writing, ADR templates, MADR format, decision documentation, architecture decision record, technical decision log, ADR lifecycle, supersede decision, deprecation ADR, RFC-style decision.
 license: MIT
 metadata:

@@ -1,5 +1,6 @@
 ---
 name: data-eng-pipeline-architect
+disable-model-invocation: false
 description: Expert data engineer skill for designing and building production-grade data pipelines, ETL/ELT systems, data models, and DataOps workflows. Use when designing data architecture, building batch or streaming pipelines, implementing data quality checks, modeling warehouse schemas, or applying DataOps practices with dbt, Airflow, Spark, Kafka, Snowflake, BigQuery, or Databricks.
 license: MIT
 metadata:

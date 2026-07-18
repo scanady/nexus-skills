@@ -1,5 +1,6 @@
 ---
 name: product-spec-game-changing-features
+disable-model-invocation: true
 description: Find 10x product opportunities and write well-defined feature specs that customers will love. Use when defining a new product from scratch, finding game-changing improvements to an existing product, prioritizing what to build next, or turning a vague product idea into a concrete spec. Triggers: '10x feature', 'game-changing', 'what should we build', 'product strategy', 'feature spec', 'what would customers love', 'killer feature', 'product definition', 'what to build next', 'high-impact feature'.
 license: MIT
 metadata:

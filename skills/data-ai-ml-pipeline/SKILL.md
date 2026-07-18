@@ -1,5 +1,6 @@
 ---
 name: data-ai-ml-pipeline
+disable-model-invocation: false
 description: Use when designing or implementing end-to-end ML pipeline systems, or when a request spans multiple lifecycle stages such as feature engineering, training orchestration, experiment tracking, validation, and deployment automation. Invoke for reproducible ML platforms, feature stores, training workflows, model registries, and MLOps systems that must fit into a production pipeline rather than a one-off script.
 license: MIT
 metadata:

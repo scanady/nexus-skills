@@ -1,5 +1,6 @@
 ---
 name: content-copy-caveman
+disable-model-invocation: true
 description: Ultra-compressed communication mode. Cuts token usage ~75% by speaking like caveman while keeping full technical accuracy. Supports intensity levels: lite, full (default), ultra.  Use when user says "caveman mode", "talk like caveman", "use caveman", "less tokens", "be brief", or invokes / content-copy-caveman. Also auto-triggers when token efficiency is requested.
 ---
 

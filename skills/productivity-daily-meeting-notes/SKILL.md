@@ -1,5 +1,6 @@
 ---
 name: productivity-daily-meeting-notes
+disable-model-invocation: false
 description: Create comprehensive meeting minutes from provided meeting details, notes, transcripts, or rough summaries. Use when the user needs structured meeting minutes, board meeting notes, stakeholder updates, project meeting summaries, decision logs, action-item tracking, or when asked to recap a standup, document a retrospective, or summarize any structured discussion.
 metadata:
   version: "1.0.0"

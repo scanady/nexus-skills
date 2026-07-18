@@ -1,5 +1,6 @@
 ---
 name: sales-outreach-specialist
+disable-model-invocation: false
 description: Crafts high-converting outreach messages and email sequences for cold outreach, LinkedIn DMs, and follow-ups. Use when user needs personalized outreach messages that book calls and get replies.
 ---
 

@@ -1,5 +1,6 @@
 ---
 name: marketing-seo-adsense-review
+disable-model-invocation: true
 version: v1.0.0
 description: Perform a comprehensive live-site review mimicking the Google AdSense approval process. Use when a site has been rejected by AdSense (especially for "low value content"), when preparing to submit/resubmit a site for AdSense approval, or when diagnosing why a site keeps getting flagged. Requires a URL. Crawls the live site and evaluates it against every criterion Google reviewers check: content quality/depth/originality, navigation/UX, technical compliance, privacy policy, ads.txt, Better Ads Standards, and more.
 ---
