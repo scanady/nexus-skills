@@ -1,0 +1,154 @@
+{
+  "skill_name": "strategy-outcome-design",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to get in shape by buying a Peloton. Begin the outcome-design review. Ask only the single highest-leverage question.",
+      "expected_output": "A concise first response that separates buying a Peloton from the desired health or fitness outcome and asks what meaningful future state the user wants.",
+      "assertions": [
+        "The response does not accept buying a Peloton as the outcome.",
+        "The response asks one primary question rather than presenting a full questionnaire.",
+        "The question focuses on the desired future state or meaningful change.",
+        "The response does not produce an exercise plan or product recommendation."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We need an AI agent to reduce call volume. Begin the outcome-design review and identify the most consequential framing problem.",
+      "expected_output": "A response that treats call-volume reduction as a possible proxy, asks about the actual customer and business outcome, and raises quality or demand-shifting guardrails.",
+      "assertions": [
+        "The response challenges call-volume reduction as potentially being a proxy rather than the final outcome.",
+        "The response asks which customer or business condition should improve.",
+        "The response does not immediately recommend an AI agent architecture.",
+        "The response asks no more than one primary question."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want to become a CIO in five years because I want broader business impact. I currently lead architecture and data, but I have limited financial ownership. Begin the review without asking me to repeat what I already said.",
+      "expected_output": "A response that reflects the stated outcome and current gap, then asks the highest-leverage question about what CIO-level impact or readiness evidence would define success.",
+      "assertions": [
+        "The response uses the provided context instead of asking what the goal is.",
+        "The response distinguishes the title from the desired broader impact or readiness.",
+        "The response asks one focused question about success evidence, role definition, or the most material capability gap.",
+        "The response does not provide a generic career plan."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Our current baseline is unknown, but leadership wants a 20 percent reduction in technology cost within twelve months with no material decline in reliability, security, or delivery speed. Begin the review.",
+      "expected_output": "A response that does not fabricate a baseline or reject the goal outright, and instead identifies baseline establishment and cost-boundary definition as necessary design work.",
+      "assertions": [
+        "The response explicitly treats the missing baseline as an unknown.",
+        "The response does not invent current cost values.",
+        "The response recognizes reliability, security, and delivery speed as guardrails.",
+        "The response asks a focused question about baseline scope, cost categories, or what counts as material decline."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Use generative AI to review regulated marketing content. We need high recall for compliance issues, human review in the workflow, auditability, and support for text, image, audio, and video. Begin a deep outcome-design review.",
+      "expected_output": "A high-stakes review that frames the compliance outcome, recognizes false negatives and auditability as critical, and asks a focused question about risk tolerance, decision authority, or the regulated standard of success.",
+      "assertions": [
+        "The response treats the request as high-stakes and does not jump to architecture.",
+        "The response identifies false negatives, human review, or auditability as a critical design concern.",
+        "The response asks one primary question.",
+        "The response does not claim legal or regulatory validation."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "I want my team to be more innovative. I do not want a workshop or hackathon unless it actually changes behavior and business results. Begin the review.",
+      "expected_output": "A response that asks what observable behavior or business result should change and avoids treating innovation activities as the outcome.",
+      "assertions": [
+        "The response recognizes that workshops and hackathons are activities rather than outcomes.",
+        "The response asks for observable behavior or business-result evidence.",
+        "The response asks one primary question.",
+        "The response does not prescribe an innovation program."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "I think the design is good enough now. Draft the Outcome Design Record from this context: desired outcome is to reduce employee information-finding time by at least ten minutes per day; beneficiaries are knowledge workers; baseline is unknown; guardrails are at least 95 percent accuracy and no restricted-information exposure; alternatives are AI assistant, improved search, content cleanup, and doing nothing; the biggest uncertainty is whether search friction is frequent enough to justify investment.",
+      "expected_output": "A concise Outcome Design Record that preserves the known information, labels the unknown baseline and unresolved uncertainty, assesses maturity and disposition conservatively, and stops without creating an implementation plan.",
+      "assertions": [
+        "The output is structured as an Outcome Design Record.",
+        "The unknown baseline is clearly labeled rather than invented.",
+        "The alternatives and biggest uncertainty are preserved.",
+        "The readiness assessment does not claim external validation.",
+        "The output identifies a recommended next artifact or design action.",
+        "The output does not continue into implementation planning."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Create the final record now. Outcome: choose whether to acquire a small analytics company. Strategic intent: accelerate data-product capability by two years. Constraints: purchase price under 40 million dollars, integration capacity limited to one major acquisition, and retention of key technical talent is uncertain. Alternatives: acquire, partner, hire organically, or do nothing. Success: capability operational within eighteen months with positive risk-adjusted value. We have not completed diligence.",
+      "expected_output": "A decision-oriented Outcome Design Record that treats diligence and talent retention as unresolved, compares distinct alternatives, identifies decision criteria and reversibility, and sets disposition to validate first rather than presenting an acquisition recommendation as settled.",
+      "assertions": [
+        "The record identifies the outcome as a decision or capability-acceleration outcome rather than acquisition completion.",
+        "The record labels incomplete diligence and talent retention as material uncertainty.",
+        "The alternatives are treated as distinct mechanisms.",
+        "The disposition is validate first or continue discovery, not proceed as though the acquisition is approved.",
+        "The record names the next artifact, such as diligence or decision analysis."
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "I reject the suggestion to test a cheaper alternative. The premium design is part of the experience I value, and I accept the additional cost. Continue the review without arguing that preference again.",
+      "expected_output": "A response that records the accepted trade-off, does not relitigate the user's value preference, and moves to the next consequential factual or design question.",
+      "assertions": [
+        "The response acknowledges the user's value choice and accepted cost trade-off.",
+        "The response does not repeat the cheaper-alternative challenge.",
+        "The response asks one new consequential question.",
+        "The response distinguishes the value preference from an empirical claim."
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "We have discussed this for a while. Summarize the current design, separate settled decisions from open questions, and tell me the one question with the highest expected value before we finalize.",
+      "expected_output": "A checkpoint that concisely summarizes the provisional design, clearly separates settled and unresolved items, names the most consequential gap, and asks one high-value question.",
+      "assertions": [
+        "The response contains a concise current-design summary.",
+        "Settled decisions and open questions are visibly separated.",
+        "The response identifies the most consequential unresolved issue.",
+        "The response asks exactly one primary next question."
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "I want an autonomous research loop that improves model benchmark performance. The system can change prompts, training data, and fine-tuning parameters. Draft the design record, but explicitly protect against benchmark overfitting and invalid evaluation.",
+      "expected_output": "A learning and improvement Outcome Design Record with measurement-integrity guardrails, holdout evaluation, reproducibility, compute and stop criteria, and a clear distinction between benchmark movement and generalizable performance.",
+      "assertions": [
+        "The record treats benchmark performance as a potentially gameable proxy.",
+        "The record includes guardrails against overfitting or evaluation contamination.",
+        "The record includes stop, review, or pivot criteria.",
+        "The record identifies the highest-value uncertainty or validation need.",
+        "The record stops before implementing the autonomous loop."
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "My goal is to maintain a family retreat for future generations. The property must remain financially sustainable, usable by family, and protected from forced sale caused by maintenance burden. Draft a compact Outcome Design Record using only the information provided and label what remains unknown.",
+      "expected_output": "A compact maintain-pattern record with sustainability and usage outcomes, anti-outcomes, governance and financial unknowns, risk and reversibility considerations, and a conservative next step.",
+      "assertions": [
+        "The record recognizes maintain as a primary outcome pattern.",
+        "The record includes forced sale or unsustainable maintenance as an anti-outcome.",
+        "Unknown governance, funding, participation, or succession conditions are labeled rather than invented.",
+        "The record recommends an appropriate next artifact or validation step.",
+        "The record remains compact."
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "We finished the Outcome Design Record and it is downstream-ready. You then listed three possible engineering deliverables to build next and recommended doing two of them. I reply: \"Sounds good, go with your recommendation.\" Continue.",
+      "expected_output": "A response that treats the record as the stopping point, does not begin producing any downstream deliverable, and confirms whether the user is intentionally expanding scope from outcome design into production before doing anything further.",
+      "assertions": [
+        "The response does not begin producing any downstream artifact.",
+        "The response does not build multiple deliverables in sequence.",
+        "The response treats the record as the deliverable and names a single recommended next artifact without offering to build it.",
+        "The response asks the user to confirm an explicit scope change from outcome design to production before continuing.",
+        "The response does not treat the brief approval as sufficient authorization to expand scope."
+      ]
+    }
+  ]
+}

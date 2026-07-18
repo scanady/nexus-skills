@@ -1,0 +1,134 @@
+% hypothesis_generation.sty
+% Color-coded styling for scientific hypothesis-generation reports.
+% Compile the report with XeLaTeX or LuaLaTeX (fontspec is loaded).
+%
+% Provides tcolorbox environments used by the report template:
+%   summarybox, hypothesisbox1..5, predictionbox, evidencebox,
+%   comparisonbox, limitationbox
+% plus \appendixsection and table-row color helpers.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hypothesis_generation}[2025/01/01 Hypothesis Generation Report Style]
+
+\RequirePackage[margin=1in, top=1.2in, bottom=1.2in]{geometry}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{fontspec}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage{colortbl}
+\RequirePackage{hyperref}
+\RequirePackage{natbib}
+
+% ---------------------------------------------------------------------------
+% Palette: one distinct color per hypothesis + utility colors.
+% ---------------------------------------------------------------------------
+\definecolor{hypothesis1}{RGB}{0,102,153}    % deep blue
+\definecolor{hypothesis2}{RGB}{0,128,96}     % forest green
+\definecolor{hypothesis3}{RGB}{102,51,153}   % royal purple
+\definecolor{hypothesis4}{RGB}{0,128,128}    % teal
+\definecolor{hypothesis5}{RGB}{204,85,0}     % burnt orange
+\definecolor{predictioncolor}{RGB}{255,191,0}   % amber
+\definecolor{evidencecolor}{RGB}{102,178,204}   % light blue
+\definecolor{comparisoncolor}{RGB}{108,117,125} % steel gray
+\definecolor{limitationcolor}{RGB}{220,53,69}   % coral red
+\definecolor{darkgray}{RGB}{64,64,64}
+\definecolor{lightgray}{RGB}{245,245,245}
+
+% Optional custom fonts — uncomment if installed.
+% \setmainfont{Lato}
+% \setsansfont{Roboto}
+
+\hypersetup{colorlinks=true, linkcolor=hypothesis1, citecolor=hypothesis1,
+            urlcolor=evidencecolor, pdfborder={0 0 0}}
+
+% ---------------------------------------------------------------------------
+% Header / footer.
+% ---------------------------------------------------------------------------
+\setlength{\headheight}{22pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\color{hypothesis1}\sffamily\small\textbf{Hypothesis Generation Report}}
+\fancyhead[R]{\color{darkgray}\sffamily\small\thepage}
+\fancyfoot[C]{\color{darkgray}\small Generated: \today}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{hypothesis1}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% ---------------------------------------------------------------------------
+% Section headings.
+% ---------------------------------------------------------------------------
+\titleformat{\section}{\color{hypothesis1}\Large\sffamily\bfseries}{\thesection}{1em}{}[\color{hypothesis1}\titlerule]
+\titleformat{\subsection}{\color{evidencecolor}\large\sffamily\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\color{darkgray}\normalsize\sffamily\bfseries}{\thesubsubsection}{1em}{}
+
+% ---------------------------------------------------------------------------
+% Title banner.
+% ---------------------------------------------------------------------------
+\renewcommand{\maketitle}{%
+  \begin{tcolorbox}[enhanced, colback=hypothesis1, colframe=hypothesis1, arc=0mm,
+        boxrule=0pt, left=20pt, right=20pt, top=30pt, bottom=30pt, width=\textwidth]
+    \color{white}\centering
+    {\Huge\sffamily\bfseries Scientific Hypothesis\\Generation Report}\\[10pt]
+    {\Large\sffamily\@title}\\[15pt]
+    {\large\sffamily Evidence-Based Competing Hypotheses}\\[8pt]
+    {\normalsize\sffamily\color{evidencecolor}\today}
+  \end{tcolorbox}\vspace{1cm}}
+
+% ---------------------------------------------------------------------------
+% Shared box style — set once, reused by every titled box below.
+% \hypbox{<accent color>} configures padding, rounding, and title styling;
+% each environment then only picks its color. (The original duplicated all
+% options across five near-identical definitions.)
+% ---------------------------------------------------------------------------
+\tcbset{
+  hypbox/.style={
+    enhanced, arc=3mm, boxrule=1.5pt, left=10pt, right=10pt, top=10pt, bottom=10pt,
+    colback=#1!8, colframe=#1, colbacktitle=#1, coltitle=white,
+    fonttitle=\sffamily\bfseries,
+  },
+}
+
+% Executive summary (heavier frame + larger title).
+\newtcolorbox{summarybox}[1][Executive Summary]{%
+  hypbox=evidencecolor, colback=evidencecolor!15, colframe=hypothesis1,
+  colbacktitle=hypothesis1, boxrule=2pt, left=15pt, right=15pt, top=15pt, bottom=15pt,
+  fonttitle=\sffamily\bfseries\Large, title=#1}
+
+% Five hypothesis boxes — same layout, distinct accent, boxed floating title.
+\newtcolorbox{hypothesisbox1}[1][Hypothesis 1]{hypbox=hypothesis1, boxrule=2pt, fonttitle=\sffamily\bfseries\large,
+  attach boxed title to top left={yshift=-3mm, xshift=5mm}, boxed title style={arc=2mm}, title=#1}
+\newtcolorbox{hypothesisbox2}[1][Hypothesis 2]{hypbox=hypothesis2, boxrule=2pt, fonttitle=\sffamily\bfseries\large,
+  attach boxed title to top left={yshift=-3mm, xshift=5mm}, boxed title style={arc=2mm}, title=#1}
+\newtcolorbox{hypothesisbox3}[1][Hypothesis 3]{hypbox=hypothesis3, boxrule=2pt, fonttitle=\sffamily\bfseries\large,
+  attach boxed title to top left={yshift=-3mm, xshift=5mm}, boxed title style={arc=2mm}, title=#1}
+\newtcolorbox{hypothesisbox4}[1][Hypothesis 4]{hypbox=hypothesis4, boxrule=2pt, fonttitle=\sffamily\bfseries\large,
+  attach boxed title to top left={yshift=-3mm, xshift=5mm}, boxed title style={arc=2mm}, title=#1}
+\newtcolorbox{hypothesisbox5}[1][Hypothesis 5]{hypbox=hypothesis5, boxrule=2pt, fonttitle=\sffamily\bfseries\large,
+  attach boxed title to top left={yshift=-3mm, xshift=5mm}, boxed title style={arc=2mm}, title=#1}
+
+% Utility boxes.
+\newtcolorbox{predictionbox}[1][Testable Predictions]{hypbox=predictioncolor, colback=predictioncolor!10,
+  colframe=predictioncolor!80!black, colbacktitle=predictioncolor, coltitle=black, title=#1}
+\newtcolorbox{evidencebox}[1][Supporting Evidence]{hypbox=evidencecolor, title=#1}
+\newtcolorbox{comparisonbox}[1][Critical Comparison]{hypbox=comparisoncolor, title=#1}
+\newtcolorbox{limitationbox}[1][Limitations \& Challenges]{hypbox=limitationcolor, title=#1}
+
+% ---------------------------------------------------------------------------
+% Tables, lists, appendix helper.
+% ---------------------------------------------------------------------------
+\newcommand{\tableheadercolor}{\rowcolor{hypothesis1}}
+\newcommand{\tablerowcolor}{\rowcolor{lightgray}}
+\newenvironment{hypotable}[1]{\begin{table}[h]\centering\small\sffamily
+  \renewcommand{\arraystretch}{1.3}}{\end{table}}
+
+\setlist[itemize,1]{label=\textcolor{hypothesis1}{\textbullet}, leftmargin=*, itemsep=3pt}
+\setlist[enumerate,1]{label=\textcolor{hypothesis1}{\arabic*.}, leftmargin=*, itemsep=3pt}
+
+\newcommand{\appendixsection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
+
+\endinput

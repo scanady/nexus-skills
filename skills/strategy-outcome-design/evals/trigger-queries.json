@@ -1,0 +1,22 @@
+[
+  {"query":"I want to get in shape by buying a Peloton. Help me think this through before I spend the money.","should_trigger":true},
+  {"query":"We need an AI agent to reduce call volume, but I want to make sure we are solving the right problem.","should_trigger":true},
+  {"query":"I want to become a CIO in five years. Help me work backward from that goal.","should_trigger":true},
+  {"query":"Can you pressure-test this initiative and help me define what success would actually mean?","should_trigger":true},
+  {"query":"I have a vague idea for improving team accountability. Grill me until the goal and design are solid.","should_trigger":true},
+  {"query":"Before we write a project plan, I want to know whether this outcome is feasible and what assumptions we are making.","should_trigger":true},
+  {"query":"Help me decide what outcome our executive dashboard should create, not just what charts it should contain.","should_trigger":true},
+  {"query":"I need a reviewable goal spec that another agent can use to design an experiment.","should_trigger":true},
+  {"query":"We want to use generative AI for regulated marketing review. Help us design backward from the compliance outcome.","should_trigger":true},
+  {"query":"I want a family retreat that lasts for generations, but I need to test whether the idea is coherent and sustainable.","should_trigger":true},
+  {"query":"Write Python code that calls the OpenAI API and prints the response.","should_trigger":false},
+  {"query":"Create a detailed project plan from the approved requirements below. The goal, metrics, scope, budget, and architecture are final.","should_trigger":false},
+  {"query":"What is the difference between a goal and an objective?","should_trigger":false},
+  {"query":"Summarize this article about OKRs.","should_trigger":false},
+  {"query":"Turn these finalized milestones into a Gantt chart.","should_trigger":false},
+  {"query":"Remind me tomorrow to go to the gym.","should_trigger":false},
+  {"query":"Proofread this goal statement without changing its meaning.","should_trigger":false},
+  {"query":"Calculate the percentage change from 120 to 150.","should_trigger":false},
+  {"query":"Build the dashboard described in this complete design specification.","should_trigger":false},
+  {"query":"What are common metrics for customer service?","should_trigger":false}
+]

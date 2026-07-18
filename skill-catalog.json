@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-07-18T11:32:42Z",
+  "generated_at": "2026-07-18T20:30:37Z",
   "sources": [
     {
       "id": "source-1",
@@ -11,25 +11,25 @@
     }
   ],
   "summary": {
-    "total_skills": 126,
+    "total_skills": 138,
     "evaluated": 114,
     "parse_errors": 0,
-    "avg_usage_value": 3.62,
-    "avg_executability": 2.58,
-    "avg_invocability": 1.97,
+    "avg_usage_value": 3.3,
+    "avg_executability": 2.36,
+    "avg_invocability": 1.8,
     "security_risk_distribution": {
-      "low": 97,
-      "medium": 27,
+      "low": 108,
+      "medium": 28,
       "high": 2
     },
     "complexity_distribution": {
-      "compact": 59,
-      "detailed": 23,
+      "compact": 67,
+      "detailed": 27,
       "comprehensive": 44
     },
     "pattern_distribution": {
-      "A": 109,
-      "B": 16,
+      "A": 119,
+      "B": 18,
       "C": 1
     },
     "over_specification_flagged": 0,
@@ -2436,6 +2436,210 @@
       }
     },
     {
+      "name": "data-analysis-hypothesis-generation",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "data-analysis-hypothesis-generation/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "data-analysis-hypothesis-generation",
+        "disable_model_invocation": false,
+        "description": "Generate competing, testable scientific hypotheses from an observation — propose distinct mechanisms, ground them in the literature, evaluate them against quality criteria (testability, falsifiability, parsimony), design experiments to distinguish them, and state falsifiable predictions. Use when you have observations or data and need \"testable hypotheses\", \"competing explanations\", \"a mechanistic hypothesis\", or \"what experiment would test this\". For product/UX outcome hypotheses see the lean-ux skill; for fitting statistical models see the statistical-modeling skill.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "data",
+          "triggers": "formulate testable hypotheses, propose competing mechanisms, what experiment would test this, design an experiment to distinguish hypotheses, evaluate hypothesis falsifiability, mechanistic explanation for this observation",
+          "role": "scientist",
+          "scope": "hypothesis",
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": true,
+        "has_license_file": false,
+        "file_count": 7,
+        "estimated_tokens": 445,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Generate competing, testable scientific hypotheses from an observation — propose distinct mechanisms, ground them in the literature, evaluate them against quality criteria (testability, falsifiability, parsimony), design experiments to distinguish them, and state falsifiable predictions. Use when you have observations or data and need \"testable hypotheses\", \"competing explanations\", \"a mechanistic hypothesis\", or \"what experiment would test this\". For product/UX outcome hypotheses see the lean-ux skill; for fitting statistical models see the statistical-modeling skill.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "data-analysis-scientific-eda",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "data-analysis-scientific-eda/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "data-analysis-scientific-eda",
+        "disable_model_invocation": false,
+        "description": "Profile a scientific data file — detect its format across chemistry, bioinformatics/genomics, microscopy/imaging, spectroscopy, proteomics/metabolomics, and general scientific types (200+ extensions), extract format-specific metadata and quality metrics, and produce a markdown EDA report with downstream-analysis recommendations. Use when asked to \"analyze this .fastq/.mzML/.czi/.nd2\", \"what's in this scientific data file\", or \"profile this dataset before analysis\". For classical statistical inference on tabular data, see the statistical-modeling skill.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "data",
+          "triggers": "analyze this scientific data file, what format is this fastq/mzml/czi, profile a dataset before analysis, detect scientific file type, generate an eda report, which analysis suits this file",
+          "role": "data-profiler",
+          "scope": "scientific-eda",
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": true,
+        "has_license_file": false,
+        "file_count": 9,
+        "estimated_tokens": 1190,
+        "complexity_class": "detailed",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Profile a scientific data file — detect its format across chemistry, bioinformatics/genomics, microscopy/imaging, spectroscopy, proteomics/metabolomics, and general scientific types (200+ extensions), extract format-specific metadata and quality metrics, and produce a markdown EDA report with downstream-analysis recommendations. Use when asked to \"analyze this .fastq/.mzML/.czi/.nd2\", \"what's in this scientific data file\", or \"profile this dataset before analysis\". For classical statistical inference on tabular data, see the statistical-modeling skill.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "python"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "data-analysis-statistical-modeling",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "data-analysis-statistical-modeling/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "data-analysis-statistical-modeling",
+        "disable_model_invocation": false,
+        "description": "Fit, diagnose, and interpret classical statistical models in Python with statsmodels — OLS/GLM/logit/Poisson/ARIMA — for rigorous inference with coefficient tables, standard errors, and residual diagnostics. Use when you need \"a regression with p-values\", \"logistic regression odds ratios\", \"time series forecast with confidence intervals\", \"check heteroskedasticity\", or \"which model fits this outcome type\".",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "data",
+          "triggers": "fit a regression in statsmodels, logistic regression odds ratios, poisson count model, arima forecast, test residual assumptions, robust standard errors, pick a model for this outcome, interpret coefficient table",
+          "role": "statistician",
+          "scope": "inference",
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 6,
+        "estimated_tokens": 950,
+        "complexity_class": "detailed",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Fit, diagnose, and interpret classical statistical models in Python with statsmodels — OLS/GLM/logit/Poisson/ARIMA — for rigorous inference with coefficient tables, standard errors, and residual diagnostics. Use when you need \"a regression with p-values\", \"logistic regression odds ratios\", \"time series forecast with confidence intervals\", \"check heteroskedasticity\", or \"which model fits this outcome type\".",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "name": "data-eng-database-architect",
       "disable_model_invocation": false,
       "source_id": "source-1",
@@ -3093,6 +3297,74 @@
       }
     },
     {
+      "name": "design-research-lean-ux",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "design-research-lean-ux/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "design-research-lean-ux",
+        "disable_model_invocation": false,
+        "description": "Run design as hypothesis-driven experiments — declare assumptions, turn the riskiest into testable hypotheses, run the smallest experiment that settles them, and measure outcomes over outputs — instead of heavy specs and handoffs. Use for \"Lean UX\", \"what's the smallest experiment\", \"outcome over output\", \"dual-track discovery\", \"design studio session\", or deciding what to build before building it. For facilitating the research sessions themselves, defer to the UX researcher skill.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "design",
+          "triggers": "declare and prioritize assumptions, write a design hypothesis, pick the smallest experiment, measure outcomes not outputs, run a design studio, set up dual-track discovery, avoid building the wrong feature",
+          "role": "lean-ux-practitioner",
+          "scope": "process",
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 7,
+        "estimated_tokens": 585,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Run design as hypothesis-driven experiments — declare assumptions, turn the riskiest into testable hypotheses, run the smallest experiment that settles them, and measure outcomes over outputs — instead of heavy specs and handoffs. Use for \"Lean UX\", \"what's the smallest experiment\", \"outcome over output\", \"dual-track discovery\", \"design studio session\", or deciding what to build before building it. For facilitating the research sessions themselves, defer to the UX researcher skill.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "name": "design-research-ux-artifacts",
       "disable_model_invocation": false,
       "source_id": "source-1",
@@ -3465,6 +3737,76 @@
       }
     },
     {
+      "name": "design-ui-microinteractions",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "design-ui-microinteractions/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "design-ui-microinteractions",
+        "disable_model_invocation": false,
+        "description": "Design a single self-contained interaction end-to-end using Dan Saffer's four-part structure — trigger, rules, feedback, loops & modes. Use for one contained moment: \"design a toggle\", \"get the button/loading feedback right\", \"pull-to-refresh behavior\", \"what should happen when they tap this\", \"error and empty state behavior\". For overall visual polish defer to the visual-refactor skill; for affordance and discoverability defer to the usability-principles skill.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "design",
+          "triggers": "design a toggle switch, get button press feedback right, loading and progress states, pull to refresh behavior, what happens when they tap this, error and empty state behavior, add a signature delight moment",
+          "role": "interaction-designer",
+          "scope": "single-interaction",
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 7,
+        "estimated_tokens": 648,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "medium",
+          "findings": [
+            "References credentials/secrets"
+          ],
+          "rationale": "Evaluated from scanner signals."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Design a single self-contained interaction end-to-end using Dan Saffer's four-part structure — trigger, rules, feedback, loops & modes. Use for one contained moment: \"design a toggle\", \"get the button/loading feedback right\", \"pull-to-refresh behavior\", \"what should happen when they tap this\", \"error and empty state behavior\". For overall visual polish defer to the visual-refactor skill; for affordance and discoverability defer to the usability-principles skill.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "name": "design-ui-system-advisor",
       "disable_model_invocation": false,
       "source_id": "source-1",
@@ -3557,6 +3899,142 @@
         ],
         "script_languages": [
           "python"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "design-ui-usability-principles",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "design-ui-usability-principles/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "design-ui-usability-principles",
+        "disable_model_invocation": false,
+        "description": "Diagnose why a product is confusing or error-prone with Don Norman's foundational usability principles — affordances, signifiers, mappings, constraints, feedback, conceptual models, the two gulfs, and human error. Use when the user asks \"why is this confusing\", \"users keep getting this wrong\", \"is this discoverable\", \"what's the mental model here\", or \"how do I prevent this error\". A diagnostic lens, not visual styling (see the visual-refactor skill) or single-interaction choreography (see microinteractions).",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "design",
+          "triggers": "why is this confusing, users keep making this mistake, is this discoverable, prevent this user error, does this afford the right action, whats the mental model here, walk the seven stages of action",
+          "role": "usability-analyst",
+          "scope": "diagnosis",
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 11,
+        "estimated_tokens": 744,
+        "complexity_class": "detailed",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Diagnose why a product is confusing or error-prone with Don Norman's foundational usability principles — affordances, signifiers, mappings, constraints, feedback, conceptual models, the two gulfs, and human error. Use when the user asks \"why is this confusing\", \"users keep getting this wrong\", \"is this discoverable\", \"what's the mental model here\", or \"how do I prevent this error\". A diagnostic lens, not visual styling (see the visual-refactor skill) or single-interaction choreography (see microinteractions).",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "design-ui-visual-refactor",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "design-ui-visual-refactor/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "design-ui-visual-refactor",
+        "disable_model_invocation": false,
+        "description": "Audit an existing UI's visual layer and fix what makes it read as amateur — weak hierarchy, arbitrary spacing, flat depth, clashing color. Produces a scored diagnosis plus concrete edits. Use when the user says \"my UI looks off\", \"make this look more polished\", \"fix the spacing\", \"the design feels amateur\", or \"tighten up this component\". For choosing a design system or component library up front, defer to the UI system advisor; this skill repairs what already exists.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "design",
+          "triggers": "my ui looks off, make this look more polished, fix the spacing and hierarchy, the design feels amateur, why does this look cheap, tighten up this component, refactor the visual design",
+          "role": "ui-refactorer",
+          "scope": "audit-and-fix",
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 6,
+        "estimated_tokens": 565,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Audit an existing UI's visual layer and fix what makes it read as amateur — weak hierarchy, arbitrary spacing, flat depth, clashing color. Produces a scored diagnosis plus concrete edits. Use when the user says \"my UI looks off\", \"make this look more polished\", \"fix the spacing\", \"the design feels amateur\", or \"tighten up this component\". For choosing a design system or component library up front, defer to the UI system advisor; this skill repairs what already exists.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
         ],
         "license": "MIT"
       }
@@ -4913,6 +5391,74 @@
       }
     },
     {
+      "name": "engineering-dev-clarify-requirements",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "engineering-dev-clarify-requirements/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "engineering-dev-clarify-requirements",
+        "disable_model_invocation": false,
+        "description": "Ask the smallest set of clarifying questions before starting work when a request has multiple plausible readings or missing key details, so you avoid building the wrong thing. Use when a task is ambiguous and you catch yourself about to \"just start coding\", when \"the requirements are unclear\", or when there are \"several ways to interpret this\" and picking wrong is costly.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "engineering",
+          "triggers": "request is ambiguous, unclear what to build, multiple interpretations possible, confirm scope before coding, what does done mean here, ask before implementing, requirements are vague",
+          "role": "developer",
+          "scope": "intake",
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 146,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Ask the smallest set of clarifying questions before starting work when a request has multiple plausible readings or missing key details, so you avoid building the wrong thing. Use when a task is ambiguous and you catch yourself about to \"just start coding\", when \"the requirements are unclear\", or when there are \"several ways to interpret this\" and picking wrong is costly.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "name": "engineering-dev-git-commit",
       "disable_model_invocation": true,
       "source_id": "source-1",
@@ -5809,6 +6355,74 @@
       }
     },
     {
+      "name": "engineering-quality-critique-panel",
+      "disable_model_invocation": true,
+      "source_id": "source-1",
+      "path": "engineering-quality-critique-panel/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "engineering-quality-critique-panel",
+        "disable_model_invocation": true,
+        "description": "Orchestrate a panel of independent judge agents that review completed work, debate their disagreements, and reach a consensus verdict — report-only, no fixes applied. Use when asked to \"critique my work\", \"run a multi-perspective review\", \"get a second opinion on these changes\", or \"score my implementation before I ship\".",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "engineering",
+          "triggers": "review my code from multiple angles, run a debate review, spin up a judge panel, evaluate implementation quality, find weaknesses in my changes, adversarial review of my work, decide if this is ready to ship",
+          "role": "reviewer",
+          "scope": "quality",
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 167,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Orchestrate a panel of independent judge agents that review completed work, debate their disagreements, and reach a consensus verdict — report-only, no fixes applied. Use when asked to \"critique my work\", \"run a multi-perspective review\", \"get a second opinion on these changes\", or \"score my implementation before I ship\".",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "name": "engineering-quality-receiving-review",
       "disable_model_invocation": true,
       "source_id": "source-1",
@@ -6153,6 +6767,74 @@
         ],
         "script_languages": [
           "python"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "knowledge-context-session-handover",
+      "disable_model_invocation": true,
+      "source_id": "source-1",
+      "path": "knowledge-context-session-handover/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "knowledge-context-session-handover",
+        "disable_model_invocation": true,
+        "description": "Write an end-of-session handover document that captures progress, decisions and their rationale, current file state, blockers, and concrete next steps, so the next session or agent resumes without re-deriving context. Use when asked to \"create a handover\", \"save session state\", \"write a handoff doc\", or \"capture where we left off\" before ending or switching a work session.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "knowledge",
+          "triggers": "create a handover, save session state, write a handoff before I stop, capture where we left off, document this session for next time, hand this off to another agent",
+          "role": "context-curator",
+          "scope": "continuity",
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 205,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Write an end-of-session handover document that captures progress, decisions and their rationale, current file state, blockers, and concrete next steps, so the next session or agent resumes without re-deriving context. Use when asked to \"create a handover\", \"save session state\", \"write a handoff doc\", or \"capture where we left off\" before ending or switching a work session.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
         ],
         "license": "MIT"
       }
@@ -8553,6 +9235,74 @@
         "external_requirements_indicator": "self-contained",
         "external_requirements": [
           "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "product-strategy-habit-loops",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "product-strategy-habit-loops/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "product-strategy-habit-loops",
+        "disable_model_invocation": false,
+        "description": "Design habit-forming product loops with Nir Eyal's Hook Model — trigger → action → variable reward → investment — moving users from external prompts to internal triggers, and stress-test the ethics with the Manipulation Matrix. Use for \"users aren't coming back\", \"build an engagement/retention loop\", \"habit formation\", \"variable rewards\", or \"why won't this product stick\". For single-interaction feedback choreography, defer to design-ui-microinteractions.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "product",
+          "triggers": "users arent coming back, design an engagement loop, build a retention habit, add variable rewards, move users to internal triggers, is this engagement ethical, why wont this product stick",
+          "role": "product-strategist",
+          "scope": "engagement",
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 8,
+        "estimated_tokens": 591,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Design habit-forming product loops with Nir Eyal's Hook Model — trigger → action → variable reward → investment — moving users from external prompts to internal triggers, and stress-test the ethics with the Manipulation Matrix. Use for \"users aren't coming back\", \"build an engagement/retention loop\", \"habit formation\", \"variable rewards\", or \"why won't this product stick\". For single-interaction feedback choreography, defer to design-ui-microinteractions.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
         ],
         "script_languages": [
           "none"
@@ -11106,6 +11856,74 @@
         ],
         "script_languages": [
           "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "strategy-outcome-design",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "strategy-outcome-design/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "strategy-outcome-design",
+        "disable_model_invocation": false,
+        "description": "Use this skill when a user wants to clarify, pressure-test, or work backward from a goal, ambition, initiative, decision, or proposed solution before planning or execution. It defines the desired outcome, success evidence, current state, constraints, assumptions, alternatives, causal path, feasibility, risks, and next design artifact, then produces a reviewable Outcome Design Record. Trigger for vague goals, solution-first requests, \"help me think this through,\" goal feasibility, success criteria, or outcome-oriented design. Do not use for straightforward execution of an already-defined plan or simple factual questions.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.2.0",
+          "domain": "strategy",
+          "triggers": "clarify a goal, pressure-test a goal, work backward from an outcome, define success criteria, is this goal feasible, help me think this through, separate the outcome from the solution, design backward from the outcome, outcome-oriented design, produce a design record",
+          "role": "expert",
+          "scope": "design",
+          "output_format": "document",
+          "related_skills": "strategy-critical-reasoning, strategy-decision, strategy-planning-opportunity"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": true,
+        "has_license_file": false,
+        "file_count": 13,
+        "estimated_tokens": 1933,
+        "complexity_class": "detailed",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Use this skill when a user wants to clarify, pressure-test, or work backward from a goal, ambition, initiative, decision, or proposed solution before planning or execution. It defines the desired outcome, success evidence, current state, constraints, assumptions, alternatives, causal path, feasibility, risks, and next design artifact, then produces a reviewable Outcome Design Record. Trigger for vague goals, solution-first requests, \"help me think this through,\" goal feasibility, success criteria, or outcome-oriented design. Do not use for straightforward execution of an already-defined plan or simple factual questions.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "python"
         ],
         "license": "MIT"
       }
