@@ -1,5 +1,6 @@
 ---
 name: strategy-decision-council
+disable-model-invocation: true
 description: Convene a four-voice council for ambiguous decisions, tradeoffs, and go/no-go calls. Use when multiple valid paths exist and you need structured disagreement before choosing. Trigger when a user says "help me decide", "second opinion", "what would you choose", "should I", "go/no-go", "multiple perspectives", "I'm torn between", "tradeoff analysis", or when facing decisions like monorepo vs polyrepo, ship now vs hold, or scope vs speed tradeoffs.
 license: MIT
 metadata:

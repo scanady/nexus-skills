@@ -1,5 +1,6 @@
 ---
 name: data-ai-ml-rag-architect
+disable-model-invocation: false
 description: Design, evaluate, and optimize RAG systems including vector databases, chunking pipelines, retrieval strategies, and semantic search. Use when building or debugging knowledge-grounded AI applications, selecting embedding models, comparing vector stores, or improving retrieval quality.
 license: MIT
 metadata:

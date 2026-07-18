@@ -1,5 +1,6 @@
 ---
 name: strategy-planning-opportunity
+disable-model-invocation: false
 description: 'Assess one business or startup opportunity with VC-style but scale-aware judgment, producing a scored pursue/pivot/kill decision, financial sketch, and adjacent alternatives. Use when asked to "evaluate this idea", "score an opportunity", "should I launch this", "assess my startup idea", or "prioritize this venture".'
 license: MIT
 metadata:

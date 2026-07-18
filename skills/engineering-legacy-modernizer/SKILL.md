@@ -1,5 +1,6 @@
 ---
 name: engineering-legacy-modernizer
+disable-model-invocation: false
 description: Use when modernizing legacy systems, planning or implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades, and legacy refactoring safety nets.
 license: MIT
 metadata:

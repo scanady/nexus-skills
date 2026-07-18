@@ -1,5 +1,6 @@
 ---
 name: strategy-decision-documenter
+disable-model-invocation: true
 description: 'Runs one-question plan interrogation tied to project language docs and decision records. Use when asked "grill this with docs", "stress-test against CONTEXT.md", "update ADRs as we decide", or "challenge my plan against the glossary".'
 license: MIT
 metadata:

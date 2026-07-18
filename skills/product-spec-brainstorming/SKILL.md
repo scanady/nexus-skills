@@ -1,5 +1,6 @@
 ---
 name: product-spec-brainstorming
+disable-model-invocation: true
 description: Turn a vague idea into a fully-formed, approved design before any implementation begins. Use when the user wants to design a feature, plan what to build, explore approaches before coding, brainstorm a new component or system, think through requirements, or needs to understand constraints before committing to an implementation. Triggers: 'brainstorm', 'design this', 'help me think through', 'plan this feature', 'what should I build', 'let's think about this', 'design a system', 'explore approaches', 'before we code', 'requirements for'.
 license: MIT
 metadata:

@@ -1,5 +1,6 @@
 ---
 name: design-system-architect
+disable-model-invocation: false
 description: Create or audit a reusable product design system for an application interface. Use when asked to define design tokens, colors, typography, spacing, radius, shadows, component consistency rules, styling review criteria, or to audit UI consistency, review styling pull requests, detect generic AI-generated UI patterns, or package a visual system into reusable artifacts.
 license: MIT
 metadata:

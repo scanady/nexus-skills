@@ -1,5 +1,6 @@
 ---
 name: people-comms-announce-organizational
+disable-model-invocation: false
 description: Draft professional internal announcements for organizational and role changes, including promotions, new hires, restructures, and leadership transitions.
 ---
 

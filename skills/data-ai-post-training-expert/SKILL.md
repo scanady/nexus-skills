@@ -1,5 +1,6 @@
 ---
 name: data-ai-post-training-expert
+disable-model-invocation: false
 description: Use when designing or implementing LLM post-training workflows, including supervised fine-tuning, parameter-efficient adaptation, preference optimization, reward modeling, RLHF, distillation, or deployment packaging. Invoke for SFT, LoRA/QLoRA/PEFT, DPO/ORPO/PPO/GRPO, preference dataset preparation, adapter merging, model compression, and serving tradeoffs.
 license: MIT
 metadata:

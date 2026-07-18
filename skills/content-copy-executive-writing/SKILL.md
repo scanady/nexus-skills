@@ -1,5 +1,6 @@
 ---
 name: content-copy-executive-writing
+disable-model-invocation: false
 description: 'Rewrite communications from technical leaders for senior, non-technical audiences by matching narrative architecture to objective, applying format-specific structure, and preserving the author voice. Use whenever the user is drafting, revising, or wants feedback on executive memos, leadership emails, CIO or CEO communications, board briefings, steering committee updates, status reports, change announcements, presentation decks, talking points, capability briefs, roadmap briefs, post-mortems, escalations, or any communication targeting executive, board, or senior leadership audiences. Trigger on phrases like "rewrite this for my CIO", "help me communicate this to executives", "make this executive-ready", "translate this for leadership", "this needs to go to the board", "tighten this up for the C-suite", "help me write this message to the team", "this update is going to leadership", or whenever the user shares technical content or a draft that needs to land with a senior audience. Also trigger when the user describes a communication they need to write to executives, even before drafting, so the skill can guide the structure from the start.'
 metadata:
   version: "1.0.0"

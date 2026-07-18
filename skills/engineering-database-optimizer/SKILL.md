@@ -1,5 +1,6 @@
 ---
 name: engineering-database-optimizer
+disable-model-invocation: false
 description: Use when a database is slow, queries are taking too long, or you need to analyze an execution plan. Invoke for index design, query rewrites, configuration tuning, partitioning, lock contention, or improving cache hit rates. Also use when asked to "optimize this query", "why is my database slow", "EXPLAIN ANALYZE", "add an index", "tune PostgreSQL config", or "MySQL performance".
 license: MIT
 metadata:

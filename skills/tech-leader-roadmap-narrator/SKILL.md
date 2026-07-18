@@ -1,5 +1,6 @@
 ---
 name: tech-leader-roadmap-narrator
+disable-model-invocation: false
 description: Translate a technology roadmap into a compelling, business-language strategic narrative that explains sequencing, tradeoffs, and value delivery over time. Helps the user refine roadmap structure — goals, milestones, dependencies, and outcomes — before narrating it. Writes from the perspective of a senior technology executive (CIO/CTO). Use when asked to tell the roadmap story, write a roadmap narrative, explain a technology roadmap to executives, articulate a technology strategy timeline, or turn roadmap artifacts into leadership-ready written communication.
 ---
 

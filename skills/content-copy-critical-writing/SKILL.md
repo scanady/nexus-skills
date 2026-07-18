@@ -1,5 +1,6 @@
 ---
 name: content-copy-critical-writing
+disable-model-invocation: false
 description: 'Write, review, and edit critical explanatory content that turns complex systems, data, research, and technology into grounded, useful prose. Use when drafting essays, articles, explainers, thought leadership, analysis, data-driven storytelling, first-principles writing, practical AI or systems commentary, hidden-history narratives, aha pivots, scale analogies, or when reviewing for narrative fallacy, over-generalization, false analogy, hidden ideology, smug contrarianism, hype, and unsupported certainty.'
 license: MIT
 metadata:

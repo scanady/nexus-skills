@@ -1,5 +1,6 @@
 ---
 name: engineering-dev-git-workflow-design
+disable-model-invocation: false
 description: Advise on team Git workflow design: branching strategy, merge vs rebase, commit conventions, PR process, release flow, and conflict handling. Use when asked to 'set up a branching strategy', 'choose between rebase and merge', 'resolve merge conflicts', 'write a PR description', or define version-control conventions rather than commit or push the current repo state.
 license: MIT
 metadata:

@@ -1,5 +1,6 @@
 ---
 name: data-eng-database-architect
+disable-model-invocation: false
 description: Expert database architect. Design scalable, performant data layers from scratch. Use when selecting DB tech, modeling schemas, designing indexes, planning migrations, or architecting multi-region/cloud databases. Invoke for greenfield architecture, re-architecture, partitioning, caching layers, HA/DR design, and compliance-aware storage patterns.
 license: MIT
 metadata:

@@ -1,5 +1,6 @@
 ---
 name: content-copy-clear-writing
+disable-model-invocation: false
 description: Apply Strunk writing rules to produce clear, concise prose for humans. Use when writing or editing documentation, README files, commit messages, UI copy, error messages, or any human-facing text.
 license: MIT
 metadata:

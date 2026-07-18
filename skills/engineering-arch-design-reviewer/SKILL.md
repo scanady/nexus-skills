@@ -1,5 +1,6 @@
 ---
 name: engineering-arch-design-reviewer
+disable-model-invocation: true
 description: Structural software design review of an existing codebase using John Ousterhout's "A Philosophy of Software Design" as the diagnostic lens. Surfaces shallow modules, information leakage, special-case proliferation, naming obscurity, and inconsistency — then recommends the smallest design change that eliminates the most complexity. Use when asked to "review module design", "is this over-abstracted", "are my modules too shallow", "audit complexity", "find pass-through layers", or "review software design quality".
 license: MIT
 metadata:

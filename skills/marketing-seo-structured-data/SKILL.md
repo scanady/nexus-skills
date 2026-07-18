@@ -1,5 +1,6 @@
 ---
 name: marketing-seo-structured-data
+disable-model-invocation: false
 description: 'Audit, generate, and validate schema.org structured data (JSON-LD) and Google Search "Appearance" signals to make a site or page eligible for richer search results. Use when the user wants rich results / rich snippets, schema markup, JSON-LD, structured data, "how do I get stars/breadcrumbs/sitelinks in Google", a knowledge panel, a favicon or sitename in search, better title links or meta-description snippets, or markup for a specific entity: Article, Product, Review, Organization, Local business, Profile page (author/about/bio pages like a personal site), Person, Event, Job posting, Recipe, Video, Breadcrumb, FAQ/Q&A, Course, Dataset, Software app, Movie, and other Google-supported types. Also for "why isn''t my structured data showing", validating existing markup, or planning which structured data a page should have.'
 license: MIT
 metadata:

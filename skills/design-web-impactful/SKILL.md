@@ -1,5 +1,6 @@
 ---
 name: design-web-impactful
+disable-model-invocation: false
 description: 'Design and build conceptually distinctive, award-caliber marketing surfaces that drive conversion and earn attention. Use when a site needs genuine uniqueness: "feels flat", "looks AI-generated", "needs to impress top designers", "award-worthy design", "standout landing page", "unlike any competitor". Two modes: conversion-safe for B2B precision, expressive for award ambition. Never generic, never templated.'
 license: MIT
 metadata:

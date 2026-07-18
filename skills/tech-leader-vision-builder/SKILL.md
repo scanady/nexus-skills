@@ -1,5 +1,6 @@
 ---
 name: tech-leader-vision-builder
+disable-model-invocation: false
 description: Develop a compelling multi-year technology vision narrative aligned to business outcomes — the "why, where, and how" of technology strategy written for senior leadership consumption. Helps the user articulate, sharpen, and structure their technology vision through guided questioning before narrating it. Writes from the perspective of a senior technology executive (CIO/CTO). Use when asked to write a technology vision, articulate a technology strategy, build a vision statement, create a strategic technology narrative, define a technology direction, or communicate where the technology organization is heading and why.
 ---
 

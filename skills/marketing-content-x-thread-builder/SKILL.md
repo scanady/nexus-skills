@@ -1,5 +1,6 @@
 ---
 name: marketing-content-x-thread-builder
+disable-model-invocation: false
 description: Creates tweetstorms, hot takes, and fast-moving X threads using creator-voice matching, punchy hooks, and feed-native brevity. Use when asked for 'a tweetstorm', 'an X thread', 'a Twitter hot take', 'feed-ready X copy', or thread-first social content rather than polished LinkedIn narrative writing.
 license: MIT
 metadata:

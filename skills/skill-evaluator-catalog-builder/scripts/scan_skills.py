@@ -79,6 +79,18 @@ def parse_yaml_frontmatter(text: str) -> dict | None:
     return frontmatter
 
 
+def frontmatter_bool(frontmatter: dict | None, key: str) -> bool:
+    """Return a normalized boolean from simple YAML frontmatter values."""
+    if not frontmatter or key not in frontmatter:
+        return False
+    value = frontmatter[key]
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        return value.strip().lower() == "true"
+    return False
+
+
 def detect_script_languages(scripts_dir: Path) -> list[str]:
     """Detect programming languages in a scripts/ directory."""
     ext_map = {
@@ -423,6 +435,7 @@ def scan_skill(skill_md_path: Path, base_dir: Path) -> dict:
     return {
         "path": rel_path,
         "name": frontmatter.get("name", skill_dir.name) if frontmatter else skill_dir.name,
+        "disable_model_invocation": frontmatter_bool(frontmatter, "disable-model-invocation"),
         "frontmatter": frontmatter,
         "structure": {
             "has_scripts": has_scripts,

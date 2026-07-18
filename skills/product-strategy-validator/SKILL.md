@@ -1,5 +1,6 @@
 ---
 name: product-strategy-validator
+disable-model-invocation: true
 description: Validates product direction before implementation begins. Use when asked to validate a feature idea, run a product diagnostic, check if you're building the right thing, prioritize features, run a founder review, audit user onboarding, pressure-test product direction, score product-market fit signals, or when a user says "should I build this", "help me prioritize", "review my product", "validate my idea", "user journey audit", "feature prioritization", "ICE scoring", or "am I building the right thing". Do not use for writing specs or PRDs — hand off to product-spec-prd-generator for those.
 license: MIT
 metadata:

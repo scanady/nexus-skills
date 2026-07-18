@@ -1,5 +1,6 @@
 ---
 name: strategy-critical-reasoning
+disable-model-invocation: true
 description: Challenges ideas, plans, decisions, and proposals using 5 structured reasoning modes. Use when stress-testing a strategy, running a pre-mortem, red teaming, playing devil's advocate, auditing evidence, or pressure-testing assumptions before committing. Triggers: challenge this, stress test, poke holes, what could go wrong, red team, pre-mortem, devil's advocate, test my assumptions, argue against this, am I missing something.
 license: MIT
 metadata:

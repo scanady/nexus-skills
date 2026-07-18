@@ -1,5 +1,6 @@
 ---
 name: strategy-innovation-catalyst
+disable-model-invocation: false
 description: 'Cross-domain innovation engine — extracts structural patterns from existing ideas and technologies and transplants them into new domains to generate novel, feasibility-assessed concept cards. Use when asked to "innovate in", "invent something for", "apply X to Y", "cross-domain ideas", "what if we combined", "novel application of", "generate innovation ideas", or "think like an innovator". Distinct from brainstorming: produces structured concept cards with stress testing, not raw idea lists.'
 license: MIT
 metadata:

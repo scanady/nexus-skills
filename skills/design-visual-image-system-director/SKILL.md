@@ -1,5 +1,6 @@
 ---
 name: design-visual-image-system-director
+disable-model-invocation: false
 description: 'Plan and direct high-impact cohesive website or campaign image systems before generation. Use when images feel isolated, inconsistent, generic, too similar, low-value, not premium enough, or not aligned to site content; when creating a coordinated set of hero images, service-page visuals, editorial images, diagrams, texture assets, or prompt packs; or when orchestrating image generation with design-visual-image-generator.'
 license: MIT
 metadata:

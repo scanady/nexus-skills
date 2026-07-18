@@ -1,5 +1,6 @@
 ---
 name: marketing-campaign-psychology
+disable-model-invocation: false
 description: Apply psychological principles and mental models to marketing. Use when working with cognitive bias, persuasion frameworks, consumer behavior, pricing psychology, or behavioral science in campaigns. Invoke for buyer decision-making, conversion optimization, ethical influence tactics, or mental model selection for marketing strategy.
 license: MIT
 metadata:

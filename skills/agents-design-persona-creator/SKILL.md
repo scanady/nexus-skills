@@ -1,5 +1,6 @@
 ---
 name: agents-design-persona-creator
+disable-model-invocation: true
 description: Create agent persona bundles with persistent identity, backstory, behavior, and four-layer configuration (Soul / Body / Faculty / Skill). Use when asked to create a persona, build a character, design an AI personality, make an agent persona, define a persona bundle, or give an agent a behavioral guide rather than generate logos, icons, or avatars.
 license: MIT
 metadata:

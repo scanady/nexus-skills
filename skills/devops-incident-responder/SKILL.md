@@ -1,5 +1,6 @@
 ---
 name: devops-incident-responder
+disable-model-invocation: false
 description: Expert SRE incident responder. Use when managing live incidents, conducting post-mortems, classifying severity, coordinating response teams, or improving reliability posture. Invoke for incident triage, runbook execution, blameless retrospectives, SLO burn rate analysis, error budget management, or on-call workflow guidance.
 license: MIT
 metadata:

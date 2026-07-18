@@ -1,5 +1,6 @@
 ---
 name: engineering-dev-git-start-branch
+disable-model-invocation: true
 description: Start a new GitHub Flow branch from an up-to-date base — infers branch type, derives a kebab-case name, pulls latest main, creates the branch, and sets up upstream tracking. Use when "start a branch", "create a feature branch", "new fix branch", "begin work on", "checkout a new branch", "spin up a branch", or "start working on a new task".
 license: MIT
 metadata:

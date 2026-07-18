@@ -1046,6 +1046,7 @@ function buildCard(skill) {
           <span class="detail-key">Scripts</span><span class="detail-val">${st.has_scripts ? (ev.script_languages?.filter(l=>l!=='none').join(', ')||'yes') : 'none'}</span>
           <span class="detail-key">References</span><span class="detail-val">${st.has_references ? 'yes' : 'no'}</span>
           <span class="detail-key">Sub-Agents</span><span class="detail-val">${st.has_agents ? 'yes' : 'no'}</span>
+          <span class="detail-key">Model Invocation</span><span class="detail-val">${skill.disable_model_invocation ? 'disabled' : 'enabled'}</span>
           <span class="detail-key">License</span><span class="detail-val">${ev.license||'unspecified'}</span>
           <span class="detail-key">Packs</span><span class="detail-val">${(skill.packs||[]).join(', ')||'none'}</span>
           <span class="detail-key">Source</span><span class="detail-val"><a href="${skill.url}" style="color:var(--accent);text-decoration:none" target="_blank">view on GitHub ↗</a></span>
