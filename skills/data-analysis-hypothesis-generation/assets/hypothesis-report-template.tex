@@ -1,0 +1,166 @@
+% !TEX program = xelatex
+% Scientific hypothesis-generation report.
+% Main text = 4 pages max (concise); everything detailed goes to the appendices.
+% Replace [bracketed] placeholders. Compile: xelatex -> bibtex -> xelatex x2.
+\documentclass[11pt,letterpaper]{article}
+\usepackage{hypothesis_generation}
+
+\title{[Phenomenon Name]}
+\author{Scientific Hypothesis Generation}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% ===== EXECUTIVE SUMMARY (0.5-1 page) =====
+\section*{Executive Summary}
+\addcontentsline{toc}{section}{Executive Summary}
+\begin{summarybox}[Executive Summary]
+\textbf{Phenomenon:} [one paragraph — what was observed, why it matters]\par\vspace{0.2cm}
+\textbf{Key Question:} [single sentence]\par\vspace{0.2cm}
+\textbf{Competing Hypotheses:}
+\begin{enumerate}
+  \item \textbf{[H1 title]:} [one-sentence mechanistic summary]
+  \item \textbf{[H2 title]:} [one-sentence mechanistic summary]
+  \item \textbf{[H3 title]:} [one-sentence mechanistic summary]
+\end{enumerate}
+\vspace{0.2cm}\textbf{Recommended Approach:} [one sentence on priority experiments]
+\end{summarybox}
+
+% ===== COMPETING HYPOTHESES (2-2.5 pages, 3-5 hypotheses) =====
+% Each box: brief mechanism (1-2 paragraphs) + 2-3 evidence bullets + 1-2 assumptions.
+% Use \newpage before each box (tcolorbox does not break across pages).
+\section{Competing Hypotheses}
+This section presents [3--5] distinct mechanistic hypotheses. Detailed literature and comprehensive evidence are in Appendix~A.
+
+\newpage
+\begin{hypothesisbox1}[Hypothesis 1: [Title]]
+\textbf{Mechanistic Explanation:}\par
+[1--2 brief paragraphs on HOW and WHY, e.g. "\dots operates through [pathway], producing [outcome] \citep{key2023}."]\par\vspace{0.2cm}
+\textbf{Key Supporting Evidence:}
+\begin{itemize}
+  \item [evidence 1 \citep{a2023}]
+  \item [evidence 2 \citep{b2022}]
+\end{itemize}\vspace{0.2cm}
+\textbf{Core Assumptions:}
+\begin{enumerate}\item [assumption 1]\item [assumption 2]\end{enumerate}
+\end{hypothesisbox1}
+
+\newpage
+\begin{hypothesisbox2}[Hypothesis 2: [Title]]
+\textbf{Mechanistic Explanation:} [distinct from H1]\par\vspace{0.2cm}
+\textbf{Key Supporting Evidence:}
+\begin{itemize}\item [evidence + citation]\item [evidence + citation]\end{itemize}\vspace{0.2cm}
+\textbf{Core Assumptions:}
+\begin{enumerate}\item [assumption]\item [assumption]\end{enumerate}
+\end{hypothesisbox2}
+
+\newpage
+\begin{hypothesisbox3}[Hypothesis 3: [Title]]
+\textbf{Mechanistic Explanation:} [distinct from H1, H2]\par\vspace{0.2cm}
+\textbf{Key Supporting Evidence:}
+\begin{itemize}\item [evidence + citation]\item [evidence + citation]\end{itemize}\vspace{0.2cm}
+\textbf{Core Assumptions:}
+\begin{enumerate}\item [assumption]\item [assumption]\end{enumerate}
+\end{hypothesisbox3}
+
+% Add hypothesisbox4 / hypothesisbox5 (teal / orange) the same way if needed.
+
+% ===== TESTABLE PREDICTIONS (0.5-1 page) =====
+% 1-2 most critical predictions per hypothesis; the rest go to Appendix B.
+\section{Testable Predictions}
+\begin{predictionbox}[Predictions: Hypothesis 1]
+\textbf{Prediction 1.1:} [critical prediction]
+\begin{itemize}\item \textbf{Expected outcome:} [result, with magnitude if possible]\item \textbf{Falsification:} [what would disprove it]\end{itemize}
+\end{predictionbox}
+\vspace{0.3cm}
+\begin{predictionbox}[Predictions: Hypothesis 2]
+\textbf{Prediction 2.1:} [critical prediction]
+\begin{itemize}\item \textbf{Expected outcome:} [result]\item \textbf{Falsification:} [what would disprove it]\end{itemize}
+\end{predictionbox}
+% ... add a prediction box per hypothesis.
+
+% ===== CRITICAL COMPARISONS (0.5-1 page) =====
+% Highest-priority discriminating comparison only; others go to Appendix B.
+\section{Critical Comparisons}
+\begin{comparisonbox}[H1 vs. H2: Key Distinction]
+\textbf{Fundamental difference:} [one sentence on the core mechanistic difference]\par\vspace{0.2cm}
+\textbf{Discriminating experiment:} [brief description]\par\vspace{0.2cm}
+\textbf{Outcome interpretation:}
+\begin{itemize}\item \textbf{If [result A]:} H1 supported\item \textbf{If [result B]:} H2 supported\end{itemize}
+\end{comparisonbox}
+\vspace{0.3cm}
+\textbf{Highest-priority test:} [name]\par
+\textbf{Justification:} [2--3 sentences on informativeness and feasibility; full protocol in Appendix~B]
+
+% ===================== APPENDICES =====================
+\newpage
+\appendix
+
+\appendixsection{Appendix A: Comprehensive Literature Review}
+\subsection*{A.1 Phenomenon Background and Context}
+[Historical context, what is known, why it matters, controversies. ~10--15 citations.]
+\subsection*{A.2 Current Understanding and Established Mechanisms}
+[Theories/frameworks that apply, known mechanisms from related systems. ~15--20 citations.]
+\subsection*{A.3--A.5 Evidence Supporting Each Hypothesis}
+[Per hypothesis: detailed findings, mechanistic studies, analogous systems, theoretical support. 8--12 citations each.]
+\subsection*{A.6 Conflicting Findings and Unresolved Debates}
+[Contradictions, ongoing debates, alternative interpretations. 5--10 citations.]
+\subsection*{A.7 Knowledge Gaps and Limitations}
+[What remains unknown, untested assumptions. 3--5 citations.]
+
+\newpage
+\appendixsection{Appendix B: Detailed Experimental Designs}
+\subsection*{B.1 Experiments for Hypothesis 1}
+\subsubsection*{Experiment 1A: [Title]}
+\textbf{Design type:} [in vitro dose-response / in vivo knockout / RCT / cohort / computational]\par
+\textbf{Objective:} [what aspect of H1 it tests]\par
+\textbf{Methods:}
+\begin{itemize}
+  \item \textbf{System/model:} [organism, cell type, population]
+  \item \textbf{Intervention:} [what is varied/manipulated]
+  \item \textbf{Measurements:} [primary/secondary endpoints, timing]
+  \item \textbf{Controls:} [negative, positive, vehicle, sham]
+  \item \textbf{Sample size:} [n per group + power justification]
+  \item \textbf{Randomization \& blinding:} [approach]
+  \item \textbf{Statistics:} [tests, multiple-comparison correction, thresholds]
+\end{itemize}
+\textbf{Feasibility:} [High/Medium/Low + why]\par
+\textbf{Confounds \& mitigation:} [list]
+% Repeat B.2, B.3 for other hypotheses; B.4 = discriminating experiments.
+
+\newpage
+\appendixsection{Appendix C: Quality Assessment}
+\subsection*{C.1 Comparative Quality Assessment}
+\begin{hypotable}{Hypothesis quality criteria}
+\begin{tabular}{|p{2.5cm}|p{3cm}|p{3cm}|p{3cm}|}
+\hline\tableheadercolor
+\textcolor{white}{\textbf{Criterion}} & \textcolor{white}{\textbf{H1}} & \textcolor{white}{\textbf{H2}} & \textcolor{white}{\textbf{H3}}\\\hline
+\textbf{Testability} & [rating+note] & [rating+note] & [rating+note]\\\hline
+\tablerowcolor \textbf{Falsifiability} & & & \\\hline
+\textbf{Parsimony} & & & \\\hline
+\tablerowcolor \textbf{Explanatory power} & & & \\\hline
+\textbf{Scope} & & & \\\hline
+\tablerowcolor \textbf{Consistency} & & & \\\hline
+\textbf{Novelty} & & & \\\hline
+\end{tabular}
+\caption{Strong = meets well; Moderate = partial; Weak = does not meet well.}
+\end{hypotable}
+\subsection*{C.2--C.4 Detailed Evaluation per Hypothesis}
+[Per hypothesis: strengths, weaknesses, overall assessment of trade-offs and viability.]
+\subsection*{C.5 Recommendations}
+[Which hypothesis is most promising, which to test first and why, whether several could be partially correct.]
+
+\newpage
+\appendixsection{Appendix D: Supplementary Evidence}
+\subsection*{D.1 Analogous Mechanisms in Related Systems}
+\subsection*{D.2 Preliminary Data or Observations}
+\subsection*{D.3 Theoretical Frameworks}
+\subsection*{D.4 Historical Context and Evolution of Ideas}
+
+% ===================== REFERENCES =====================
+\newpage
+\bibliographystyle{plainnat}
+\bibliography{references}   % target: 50+ references (most in the appendices)
+
+\end{document}
