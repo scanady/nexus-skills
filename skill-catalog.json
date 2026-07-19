@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-07-18T20:30:37Z",
+  "generated_at": "2026-07-19T13:06:41Z",
   "sources": [
     {
       "id": "source-1",
@@ -11,25 +11,25 @@
     }
   ],
   "summary": {
-    "total_skills": 138,
+    "total_skills": 139,
     "evaluated": 114,
     "parse_errors": 0,
-    "avg_usage_value": 3.3,
-    "avg_executability": 2.36,
-    "avg_invocability": 1.8,
+    "avg_usage_value": 3.28,
+    "avg_executability": 2.34,
+    "avg_invocability": 1.78,
     "security_risk_distribution": {
-      "low": 108,
+      "low": 109,
       "medium": 28,
       "high": 2
     },
     "complexity_distribution": {
       "compact": 67,
-      "detailed": 27,
+      "detailed": 28,
       "comprehensive": 44
     },
     "pattern_distribution": {
       "A": 119,
-      "B": 18,
+      "B": 19,
       "C": 1
     },
     "over_specification_flagged": 0,
@@ -37,11 +37,12 @@
       "agent-tools": {
         "description": "Skills for designing AI agents, building agent skills, and managing knowledge context.",
         "version": "1.0.0",
-        "skill_count": 8,
+        "skill_count": 9,
         "skills": [
           "agents-copilot-instructions",
           "agents-design-persona-creator",
           "agents-design-visual-identity",
+          "agents-nexus-skills-manager",
           "agents-skill-plugin-builder",
           "agents-skill-spec-builder",
           "ai-prompt-engineer",
@@ -516,6 +517,76 @@
         ],
         "script_languages": [
           "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "agents-nexus-skills-manager",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "agents-nexus-skills-manager/SKILL.md",
+      "url": null,
+      "packs": [
+        "agent-tools"
+      ],
+      "frontmatter": {
+        "name": "agents-nexus-skills-manager",
+        "disable_model_invocation": false,
+        "description": "Manage Nexus Skills installs and updates with the `nxa` CLI across project and global agent skill directories. Use when asked to \"install a skill\", \"upgrade skills\", \"export a skill\", \"list available skills\", or troubleshoot Nexus Skills CLI installs. Do not use for authoring, reviewing, or evaluating skill content.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "agents",
+          "triggers": "install nexus skills, update installed skills, install skills globally, install skills in project, sync installed copies, export nexus skill, list available skills, troubleshoot skill install, manage skill packs",
+          "role": "manager",
+          "scope": "operations",
+          "output_format": "procedure",
+          "related_skills": "skill-architect, skill-evaluator"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 8,
+        "estimated_tokens": 859,
+        "complexity_class": "detailed",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Manage Nexus Skills installs and updates with the `nxa` CLI across project and global agent skill directories. Use when asked to \"install a skill\", \"upgrade skills\", \"export a skill\", \"list available skills\", or troubleshoot Nexus Skills CLI installs. Do not use for authoring, reviewing, or evaluating skill content.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "python"
         ],
         "license": "MIT"
       }
@@ -11870,14 +11941,14 @@
       "frontmatter": {
         "name": "strategy-outcome-design",
         "disable_model_invocation": false,
-        "description": "Use this skill when a user wants to clarify, pressure-test, or work backward from a goal, ambition, initiative, decision, or proposed solution before planning or execution. It defines the desired outcome, success evidence, current state, constraints, assumptions, alternatives, causal path, feasibility, risks, and next design artifact, then produces a reviewable Outcome Design Record. Trigger for vague goals, solution-first requests, \"help me think this through,\" goal feasibility, success criteria, or outcome-oriented design. Do not use for straightforward execution of an already-defined plan or simple factual questions.",
+        "description": "Use this skill when a user wants to clarify, pressure-test, or work backward from a goal, ambition, initiative, decision, or proposed solution before planning or execution. It defines the desired outcome, success evidence, current state, constraints, assumptions, alternatives, causal path, feasibility, risks, and next design artifact, then produces a reviewable Solution Brief. Trigger for vague goals, solution-first requests, \"help me think this through,\" goal feasibility, success criteria, or outcome-oriented design. Do not use for straightforward execution of an already-defined plan or simple factual questions.",
         "license": "MIT",
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": "1.2.0",
+          "version": "1.3.0",
           "domain": "strategy",
-          "triggers": "clarify a goal, pressure-test a goal, work backward from an outcome, define success criteria, is this goal feasible, help me think this through, separate the outcome from the solution, design backward from the outcome, outcome-oriented design, produce a design record",
+          "triggers": "clarify a goal, pressure-test a goal, work backward from an outcome, define success criteria, is this goal feasible, help me think this through, separate the outcome from the solution, design backward from the outcome, outcome-oriented design",
           "role": "expert",
           "scope": "design",
           "output_format": "document",
@@ -11891,7 +11962,7 @@
         "has_assets": true,
         "has_license_file": false,
         "file_count": 13,
-        "estimated_tokens": 1933,
+        "estimated_tokens": 2059,
         "complexity_class": "detailed",
         "skill_pattern": "B"
       },

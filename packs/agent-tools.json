@@ -6,6 +6,7 @@
     "agents-copilot-instructions",
     "agents-design-persona-creator",
     "agents-design-visual-identity",
+    "agents-nexus-skills-manager",
     "agents-skill-plugin-builder",
     "agents-skill-spec-builder",
     "ai-prompt-engineer",
