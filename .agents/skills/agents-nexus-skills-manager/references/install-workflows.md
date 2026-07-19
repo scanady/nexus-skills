@@ -60,6 +60,28 @@ For broad upgrades, first explain that installed copies will be deleted and repl
 
 Use `--overwrite` only if the user explicitly asked to skip confirmation.
 
+## Remove or Uninstall One Installed Skill
+
+`nxa` does not currently have an uninstall command. Remove a skill by deleting that skill folder from the resolved target directory.
+
+Linux or macOS shell:
+
+```bash
+rm -rf <target-dir>/<skill-name>
+```
+
+PowerShell:
+
+```powershell
+Remove-Item -Recurse -Force <target-dir>/<skill-name>
+```
+
+Before deleting:
+
+- Confirm scope (`--project` vs `--global`) and agent target path.
+- Confirm the exact skill folder name.
+- Remove only one folder unless the user asked for multiple removals.
+
 ## Install From an Explicit Source
 
 Use an explicit source for repeatable team installs or non-default repositories:
@@ -83,4 +105,5 @@ Confirm the output zip exists after export.
 - Run `<runner> list --names` to verify a skill exists in the available source.
 - Check command output for installed or upgraded skill names.
 - For a specific project install, confirm the expected skill directory exists under the target agent path.
+- For a remove operation, confirm the requested skill directory is absent and neighboring skill folders remain.
 - If an installed skill includes a local validation script, run it after upgrade when practical.

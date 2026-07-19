@@ -20,6 +20,8 @@ If the user needs a pinned version, add the relevant branch, tag, or commit to t
 | `install` | Install skills or packs |
 | `audit-overlap` | Find duplicate or overlapping skills |
 
+`nxa` does not currently provide an `uninstall` command. For remove operations, uninstall by deleting exactly one installed skill folder from the resolved scope and agent target path.
+
 ## Common Flags
 
 | Flag | Purpose | Notes |
@@ -47,6 +49,8 @@ If the user needs a pinned version, add the relevant branch, tag, or commit to t
 | `codex` | `~/.codex/skills/` | `.agents/skills/` |
 
 Use these paths for explanation and verification only. Prefer CLI flags over manually copying files.
+
+For remove operations, derive the target directory from scope and agent target, then remove only the matching skill folder.
 
 ## Export Scripts
 
