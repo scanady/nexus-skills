@@ -36,12 +36,7 @@ jobs:
 
       - name: Detect generated artifact drift
         if: github.event_name == 'pull_request'
-        run: |
-          if ! git diff --quiet -- skill-catalog.json .claude-plugin/marketplace.json .claude-plugin/plugin.json; then
-            echo "::error::Generated artifacts differ from the committed copies. Run 'npm run build' locally and commit the regenerated files."
-            git diff --stat -- skill-catalog.json .claude-plugin/marketplace.json .claude-plugin/plugin.json
-            exit 1
-          fi
+        run: npm run check:artifacts
 
       - name: Upload site artifact
         uses: actions/upload-artifact@v7

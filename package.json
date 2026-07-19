@@ -8,11 +8,14 @@
   "scripts": {
     "test": "node --test",
     "validate": "node scripts/validation/validate-skills.js",
-    "scan": "python scripts/catalog/scan-skills.py skills --output skill-catalog-scan.json",
-    "catalog": "python scripts/catalog/rebuild-catalog.py",
+    "scan": "node scripts/run-python.js scripts/catalog/scan-skills.py skills --output skill-catalog-scan.json",
+    "catalog": "node scripts/run-python.js scripts/catalog/rebuild-catalog.py",
     "build:plugins": "node scripts/build/build-plugins.js",
     "build:site": "node scripts/build/build-site.js",
-    "build": "npm run validate && npm run scan && npm run catalog && npm run build:plugins && npm run build:site"
+    "build": "npm run validate && npm run scan && npm run catalog && npm run build:plugins && npm run build:site",
+    "check:artifacts": "node scripts/validation/check-generated-artifacts.js",
+    "prepr": "npm run build && npm run check:artifacts",
+    "hooks:install": "git config core.hooksPath .githooks"
   },
   "files": [
     "bin/",

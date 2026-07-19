@@ -44,6 +44,18 @@ Fix:
 
 - Reinstall with the intended scope and agent target.
 
+## Uninstall Removed the Wrong Skill
+
+Cause:
+
+- The remove command targeted the wrong scope, agent path, or folder name.
+
+Fix:
+
+1. Reinstall the accidentally removed skill with a scoped install command.
+2. Re-run removal against the correct directory and exact skill folder name.
+3. Verify only the requested folder is absent.
+
 ## Upgrade Prompt Lists Unexpected Skills
 
 Cause:

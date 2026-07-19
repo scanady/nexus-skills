@@ -35,6 +35,7 @@ Closes #<!-- issue number, or delete if not applicable -->
 - [ ] Follows CONTRIBUTING.md conventions
 - [ ] Self-reviewed
 - [ ] Documentation updated where needed
+- [ ] Generated artifacts updated with `npm run prepr`
 - [ ] No new warnings or linting errors
 
 ## Screenshots (if applicable)

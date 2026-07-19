@@ -243,9 +243,16 @@ npm run scan            # writes skill-catalog-scan.json (mechanical metadata)
 npm run catalog         # rebuilds skill-catalog.json (merges scan + evaluations + packs)
 npm run build:plugins   # regenerates .claude-plugin/marketplace.json + per-pack bundles in dist/plugins/
 npm run build:site      # assembles GitHub Pages site in dist/site/ (catalog browser, pack manager, per-pack zips)
+npm run check:artifacts # fails if committed generated artifacts are stale
 
 npm run build           # all of the above in order
+npm run prepr           # build, then verify committed artifacts match generated output
 ```
+
+Before opening a pull request, run `npm run prepr` and commit any changes to
+`skill-catalog.json`, `.claude-plugin/marketplace.json`, or
+`.claude-plugin/plugin.json`. To install the same check as a local pre-push hook,
+run `npm run hooks:install` once in your clone.
 
 Outputs:
 
