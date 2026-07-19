@@ -1,13 +1,13 @@
-# Outcome Design Record Template
+# Solution Brief Template
 
-Use this structure adaptively. Do not include empty sections or placeholder tables in the final record. A compact record is the default. Expand the detailed review only when it adds decision value.
+Use this structure adaptively. Do not include empty sections or placeholder tables in the final brief. A compact brief is the default. Expand the detailed review only when it adds decision value.
 
-When saving the record as a Markdown file, include this YAML frontmatter:
+When saving the brief as a Markdown file, include this YAML frontmatter:
 
 ```yaml
 ---
-record_type: outcome-design
-schema_version: "1.1"
+artifact_type: solution-brief
+schema_version: "1.0"
 title: ""
 status: draft
 maturity: unframed
@@ -23,7 +23,7 @@ Allowed values:
 - `maturity`: `unframed`, `framed`, `designed`, `downstream-ready`
 - `disposition`: `continue-discovery`, `validate-first`, `proceed-to-downstream-planning`, `accepted-with-known-gaps`
 
-# [Outcome Design Title]
+# [Solution Brief Title]
 
 ## 1. Handoff summary
 
@@ -31,6 +31,8 @@ Allowed values:
 **Primary beneficiary:**  
 **Why it matters:**  
 **Success condition:**  
+**Experience or operating conditions for success:**
+
 **Time horizon:**  
 **Selected design or current design hypothesis:**  
 **Maturity:**  
@@ -72,6 +74,14 @@ Explain why this outcome is worth pursuing and what may need to be delayed, redu
 
 State what must not happen or what valued conditions must be protected.
 
+### Outcome hierarchy
+
+Use only the relevant layers: impact, beneficiary, experience, capability, operational, and guardrail outcomes.
+
+| Layer | Outcome statement | Evidence that it is succeeding |
+|---|---|---|
+| | | |
+
 ## 3. Success and evidence
 
 ### Success model
@@ -83,6 +93,14 @@ State what must not happen or what valued conditions must be protected.
 ### Acceptance conditions
 
 State the minimum combination of conditions required to call the outcome successful.
+
+### Experience and operating conditions
+
+Use when success depends on how a service, workflow, product, or interaction feels, behaves, degrades, or recovers in real use.
+
+| Condition or event | Required behavior | Threshold or quality signal | Evidence source | Failure or recovery expectation |
+|---|---|---|---|---|
+| | | | | |
 
 ### Continue, adjust, pivot, or stop conditions
 
@@ -191,7 +209,7 @@ Include only applicable dimensions.
 **The downstream artifact must still resolve:**  
 **Qualified review required:**
 
-## 10. Record history
+## 10. Change history
 
 **Version:**  
 **Date:**  

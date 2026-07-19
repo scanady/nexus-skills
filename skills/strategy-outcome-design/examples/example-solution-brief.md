@@ -1,6 +1,6 @@
 ---
-record_type: outcome-design
-schema_version: "1.1"
+artifact_type: solution-brief
+schema_version: "1.0"
 title: "Reduce Internal Information-Finding Time"
 status: draft
 maturity: designed

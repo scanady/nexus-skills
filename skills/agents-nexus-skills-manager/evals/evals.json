@@ -1,0 +1,59 @@
+{
+  "skill_name": "agents-nexus-skills-manager",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Install the strategy-outcome-design skill into this project for GitHub Copilot.",
+      "expected_output": "A command plan that detects project scope, targets github-copilot, uses the Nexus Skills runner appropriate to context, installs only strategy-outcome-design, and verifies the installed copy.",
+      "assertions": [
+        "The response does not suggest a global install.",
+        "The command includes --skill strategy-outcome-design.",
+        "The command targets github-copilot with -a or --agent.",
+        "The response includes a verification step."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Update my installed skills, but only the agents-nexus-skills-manager skill.",
+      "expected_output": "A narrow upgrade plan that uses --upgrade with --skill agents-nexus-skills-manager, explains replacement behavior, and does not upgrade all installed skills.",
+      "assertions": [
+        "The response uses a skill-specific upgrade.",
+        "The response does not run or recommend a broad all-skill upgrade.",
+        "The response explains that installed copies may be replaced.",
+        "The response includes post-upgrade verification."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Install the marketing pack globally for Claude Code and Codex.",
+      "expected_output": "A global pack install plan that uses --pack marketing, --global, and repeated agent flags for claude-code and codex, with confirmation of the global scope.",
+      "assertions": [
+        "The response includes --pack marketing.",
+        "The response includes --global because the user requested it.",
+        "The response targets both claude-code and codex.",
+        "The response explains the affected global target directories or scope."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "The upgrade prompt says five unrelated skills will be deleted and replaced, but I only wanted to refresh skill-evaluator. What should I do?",
+      "expected_output": "A troubleshooting response that tells the user to decline the broad upgrade and rerun a skill-specific upgrade for skill-evaluator.",
+      "assertions": [
+        "The response tells the user not to proceed with the broad prompt.",
+        "The response recommends --upgrade --skill skill-evaluator.",
+        "The response identifies broad upgrade scope as the likely cause.",
+        "The response includes a verification step after the corrected command."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Improve the trigger wording in this SKILL.md so it routes better.",
+      "expected_output": "A refusal or handoff response that says this is skill authoring or review work, not install management, and points to skill-architect when available.",
+      "assertions": [
+        "The response does not run install or upgrade commands.",
+        "The response classifies the request as skill authoring or review.",
+        "The response names skill-architect or an equivalent authoring workflow."
+      ]
+    }
+  ]
+}

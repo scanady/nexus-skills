@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the Outcome Design Agent Skill package using only the standard library."""
+"""Validate the Nexus Skills Manager skill package using only the standard library."""
 
 from __future__ import annotations
 
@@ -12,22 +12,22 @@ from pathlib import Path
 REQUIRED_FILES = [
     "SKILL.md",
     "README.md",
-    "assets/solution-brief.md",
-    "references/methodology.md",
-    "references/patterns.md",
-    "references/quality-rubric.md",
+    "references/cli-reference.md",
+    "references/install-workflows.md",
+    "references/troubleshooting.md",
     "evals/evals.json",
     "evals/trigger-queries.json",
 ]
 
-REQUIRED_TEMPLATE_TERMS = [
-    "Handoff summary",
-    "Desired outcome",
-    "Success and evidence",
-    "Causal design",
-    "Assumptions, feasibility, and risk",
-    "Readiness assessment",
-    "Downstream contract",
+REQUIRED_SKILL_TERMS = [
+    "node bin/nxa.js",
+    "npx nxa",
+    "--global",
+    "--project",
+    "--upgrade",
+    "--skill",
+    "--pack",
+    "installed copies",
 ]
 
 
@@ -98,14 +98,13 @@ def main() -> int:
             fail(errors, "Frontmatter description is required")
         if len(description) > 1024:
             fail(errors, f"Description is {len(description)} characters; maximum is 1024")
-        if "version" in frontmatter:
-            fail(errors, "Version must be nested under metadata, not a top-level frontmatter field")
+        if not isinstance(metadata, dict) or metadata.get("domain") != "agents":
+            fail(errors, "metadata.domain must be 'agents'")
         if not isinstance(metadata, dict) or not metadata.get("version"):
-            fail(errors, "metadata.version is required for this package")
-        if len(skill_text.splitlines()) > 500:
-            fail(errors, "SKILL.md exceeds the recommended 500-line limit")
-        if len(skill_text) / 4 > 5000:
-            fail(errors, "SKILL.md exceeds the recommended approximate 5,000-token limit")
+            fail(errors, "metadata.version is required")
+        for term in REQUIRED_SKILL_TERMS:
+            if term not in skill_text:
+                fail(errors, f"SKILL.md is missing required term: {term}")
 
         links = re.findall(r"\[[^\]]+\]\(([^)]+)\)", skill_text)
         for link in links:
@@ -113,13 +112,6 @@ def main() -> int:
                 continue
             if not (root / link).is_file():
                 fail(errors, f"Broken relative link in SKILL.md: {link}")
-
-    template_path = root / "assets/solution-brief.md"
-    if template_path.is_file():
-        template = template_path.read_text(encoding="utf-8")
-        for term in REQUIRED_TEMPLATE_TERMS:
-            if term not in template:
-                fail(errors, f"Solution brief template is missing required term: {term}")
 
     evals_path = root / "evals/evals.json"
     if evals_path.is_file():
