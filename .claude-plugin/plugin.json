@@ -25,7 +25,6 @@
         "./skills/agents-copilot-instructions",
         "./skills/agents-design-persona-creator",
         "./skills/agents-design-visual-identity",
-        "./skills/agents-nexus-skills-manager",
         "./skills/agents-skill-plugin-builder",
         "./skills/agents-skill-spec-builder",
         "./skills/ai-prompt-engineer",

@@ -81,7 +81,7 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 │   ├── content-copy-humanizer/
 │   ├── engineering-quality-tdd/
 │   ├── product-spec-prd-generator/
-│   └── ...                     # 123 skills total
+│   └── ...                     # 138 skills total
 ├── prompts/                    # Legacy prompt templates
 ├── docs/                       # Project documentation
 ├── .github/

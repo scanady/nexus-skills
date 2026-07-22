@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-07-19T21:12:00Z",
+  "generated_at": "2026-07-22T00:39:53Z",
   "sources": [
     {
       "id": "source-1",
@@ -11,25 +11,25 @@
     }
   ],
   "summary": {
-    "total_skills": 139,
+    "total_skills": 138,
     "evaluated": 114,
     "parse_errors": 0,
-    "avg_usage_value": 3.28,
-    "avg_executability": 2.34,
-    "avg_invocability": 1.78,
+    "avg_usage_value": 3.3,
+    "avg_executability": 2.36,
+    "avg_invocability": 1.8,
     "security_risk_distribution": {
-      "low": 109,
+      "low": 108,
       "medium": 28,
       "high": 2
     },
     "complexity_distribution": {
       "compact": 67,
-      "detailed": 28,
+      "detailed": 27,
       "comprehensive": 44
     },
     "pattern_distribution": {
       "A": 119,
-      "B": 19,
+      "B": 18,
       "C": 1
     },
     "over_specification_flagged": 0,
@@ -37,12 +37,11 @@
       "agent-tools": {
         "description": "Skills for designing AI agents, building agent skills, and managing knowledge context.",
         "version": "1.0.0",
-        "skill_count": 9,
+        "skill_count": 8,
         "skills": [
           "agents-copilot-instructions",
           "agents-design-persona-creator",
           "agents-design-visual-identity",
-          "agents-nexus-skills-manager",
           "agents-skill-plugin-builder",
           "agents-skill-spec-builder",
           "ai-prompt-engineer",
@@ -517,76 +516,6 @@
         ],
         "script_languages": [
           "none"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
-      "name": "agents-nexus-skills-manager",
-      "disable_model_invocation": false,
-      "source_id": "source-1",
-      "path": "agents-nexus-skills-manager/SKILL.md",
-      "url": null,
-      "packs": [
-        "agent-tools"
-      ],
-      "frontmatter": {
-        "name": "agents-nexus-skills-manager",
-        "disable_model_invocation": false,
-        "description": "Manage Nexus Skills installs and updates with the `nxa` CLI across project and global agent skill directories. Use when asked to \"install a skill\", \"upgrade skills\", \"remove a skill\", \"export a skill\", \"list available skills\", or troubleshoot Nexus Skills CLI installs. Do not use for authoring, reviewing, or evaluating skill content.",
-        "license": "MIT",
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "1.1.0",
-          "domain": "agents",
-          "triggers": "install nexus skills, update installed skills, remove installed skill, uninstall skill, install skills globally, install skills in project, sync installed copies, export nexus skill, list available skills, troubleshoot skill install, manage skill packs",
-          "role": "manager",
-          "scope": "operations",
-          "output_format": "procedure",
-          "related_skills": "skill-architect, skill-evaluator"
-        }
-      },
-      "structure": {
-        "has_scripts": true,
-        "has_references": true,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 8,
-        "estimated_tokens": 925,
-        "complexity_class": "detailed",
-        "skill_pattern": "B"
-      },
-      "evaluation": {
-        "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
-        },
-        "security_risk": {
-          "rating": "low",
-          "findings": [],
-          "rationale": "No obvious credential handling or risky execution patterns detected."
-        },
-        "executability": {
-          "score": 0,
-          "rationale": "Not evaluated"
-        },
-        "invocability": {
-          "score": 0,
-          "rationale": "Not evaluated"
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Not evaluated"
-        },
-        "core_capabilities": "Manage Nexus Skills installs and updates with the `nxa` CLI across project and global agent skill directories. Use when asked to \"install a skill\", \"upgrade skills\", \"export a skill\", \"list available skills\", or troubleshoot Nexus Skills CLI installs. Do not use for authoring, reviewing, or evaluating skill content.",
-        "external_requirements_indicator": "unknown",
-        "external_requirements": [
-          "unknown"
-        ],
-        "script_languages": [
-          "python"
         ],
         "license": "MIT"
       }
