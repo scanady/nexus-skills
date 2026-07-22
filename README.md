@@ -1,7 +1,7 @@
 
 > Agentic skills, prompts, and instructions for AI coding platforms — GitHub Copilot, Claude Code, and Codex.
 
-[![Skills](https://img.shields.io/badge/skills-123-blue.svg)](skills/)
+[![Skills](https://img.shields.io/badge/skills-141-blue.svg)](skills/)
 
 ## Table of Contents
 
@@ -24,7 +24,7 @@ Install any skill once and invoke it in your AI agent by name. Skills work with 
 
 ## Features & Capabilities
 
-- **123 production-ready skills** organized by domain: marketing, strategy, product, design, tech, and more
+- **141 production-ready skills** organized by domain: marketing, strategy, product, design, tech, and more
 - **Multi-platform support** — install to GitHub Copilot, Claude Code, or Codex
 - **Project or global scope** — install skills for a single project or system-wide
 - **CLI installer** — install, list, and upgrade skills from the command line
@@ -81,7 +81,7 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 │   ├── content-copy-humanizer/
 │   ├── engineering-quality-tdd/
 │   ├── product-spec-prd-generator/
-│   └── ...                     # 138 skills total
+│   └── ...                     # 141 skills total
 ├── prompts/                    # Legacy prompt templates
 ├── docs/                       # Project documentation
 ├── .github/

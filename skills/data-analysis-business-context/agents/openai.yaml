@@ -1,0 +1,6 @@
+interface:
+  display_name: "Business Context Framer"
+  short_description: "Lock definitions and evidence before analysis"
+  default_prompt: "Build a source-backed business context note for this analytical question, including scope, definitions, current state, conflicts, gaps, and downstream handoff."
+policy:
+  allow_implicit_invocation: true

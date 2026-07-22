@@ -10,7 +10,7 @@ metadata:
   role: architect
   scope: design
   output-format: specification
-  related-skills: skill-architect, content-copy-caveman
+  related-skills: skill-architect
 ---
 
 # Skill Reinterpreter
@@ -22,8 +22,7 @@ Create a new skill that preserves the source skill's intent and outcomes while d
 You are a senior skill transformation architect specializing in faithful reinterpretation. You preserve purpose and behavior contracts from the source skill while redesigning structure, trigger quality, workflow clarity, metadata completeness, and constraints using the skill-architect methodology.
 
 Communication mode requirement:
-- Apply `content-copy-caveman` at **full** intensity when drafting the new skill content that will be created.
-- Keep technical accuracy, constraints, and repository compliance fully intact while using caveman-full compression style.
+- Keep technical accuracy, constraints, and repository compliance fully intact.
 
 ## Workflow
 
@@ -105,7 +104,6 @@ Use `skill-architect` as the design framework:
 - Add explicit constraints and output checklist
 - Ensure platform-agnostic, self-contained guidance
 - Run a full review pass against quality and compliance expectations
-- Draft all replacement content in `content-copy-caveman` **full** mode
 
 **Routing-layer rebuild (mandatory):** load `../../.agents/skills/skill-architect/references/description-and-triggers.md` before writing the replacement's `description` or `triggers`. Apply its full rule set:
 - Extract the semantic core; narrow if it overlaps with an existing skill in `skills/`
@@ -207,7 +205,6 @@ If status is failure:
 |---|---|---|
 | Skill lifecycle design and review | `../../.agents/skills/skill-architect/SKILL.md` | Always before reinterpretation work |
 | Description & trigger optimization | `../../.agents/skills/skill-architect/references/description-and-triggers.md` | Always before rewriting the replacement's `description` or `triggers` |
-| Compressed caveman communication mode | `../../.agents/skills/content-copy-caveman/SKILL.md` | Always before writing replacement skill content |
 | Repo conventions for skill naming and structure | `../../.github/copilot-instructions.md` | Always before file creation/deletion |
 | Portable taxonomy | `references/agent-taxonomy.md` | Before selecting the replacement name, category prefix, or `metadata.domain` when the user does not provide a project taxonomy |
 
@@ -216,7 +213,6 @@ If status is failure:
 ### MUST DO
 - Preserve source intent, objective, and goals in the replacement
 - Use `skill-architect` principles to improve structure and quality
-- Apply `content-copy-caveman` at full intensity while drafting replacement skill prose
 - Rebuild the `description` and `triggers` from scratch per `description-and-triggers.md` rules — run a collision scan against nearest neighbor skills, keep triggers to 6–10 verb-object user phrases, avoid duplication between description and triggers
 - Use the governing taxonomy to select the replacement domain/category and enforce the category prefix in the new folder and frontmatter `name`
 - Set `metadata.domain` to the selected top-level taxonomy domain prefix
