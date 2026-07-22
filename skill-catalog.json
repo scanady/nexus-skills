@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-07-22T00:39:53Z",
+  "generated_at": "2026-07-22T01:14:53Z",
   "sources": [
     {
       "id": "source-1",
@@ -11,25 +11,25 @@
     }
   ],
   "summary": {
-    "total_skills": 138,
+    "total_skills": 141,
     "evaluated": 114,
     "parse_errors": 0,
-    "avg_usage_value": 3.3,
-    "avg_executability": 2.36,
-    "avg_invocability": 1.8,
+    "avg_usage_value": 3.23,
+    "avg_executability": 2.3,
+    "avg_invocability": 1.76,
     "security_risk_distribution": {
-      "low": 108,
+      "low": 111,
       "medium": 28,
       "high": 2
     },
     "complexity_distribution": {
-      "compact": 67,
-      "detailed": 27,
+      "compact": 71,
+      "detailed": 26,
       "comprehensive": 44
     },
     "pattern_distribution": {
-      "A": 119,
-      "B": 18,
+      "A": 123,
+      "B": 17,
       "C": 1
     },
     "over_specification_flagged": 0,
@@ -2343,6 +2343,74 @@
       }
     },
     {
+      "name": "data-analysis-business-context",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "data-analysis-business-context/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "data-analysis-business-context",
+        "disable_model_invocation": false,
+        "description": "Build a source-backed business context note that locks metric meaning, decision scope, current state, and evidence gaps before analysis begins. Use when asked to \"frame this analysis\", \"find the metric definition\", \"check what changed\", or \"identify the source of truth\". Not for diagnosis, modeling, dashboards, or recommendations.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "data",
+          "triggers": "trace KPI ownership, verify rollout status, map decision context, reconcile conflicting definitions, locate canonical dashboard, establish analysis assumptions, research product context, validate data source authority",
+          "role": "context-analyst",
+          "scope": "retrieval",
+          "output_format": "context-note",
+          "related_skills": "data-analysis-business-performance, data-analysis-statistical-modeling"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": true,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 274,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Build a source-backed business context note that locks metric meaning, decision scope, current state, and evidence gaps before analysis begins. Use when asked to \"frame this analysis\", \"find the metric definition\", \"check what changed\", or \"identify the source of truth\". Not for diagnosis, modeling, dashboards, or recommendations.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "name": "data-analysis-business-performance",
       "disable_model_invocation": false,
       "source_id": "source-1",
@@ -2504,39 +2572,39 @@
       }
     },
     {
-      "name": "data-analysis-scientific-eda",
+      "name": "data-analysis-kpi-designer",
       "disable_model_invocation": false,
       "source_id": "source-1",
-      "path": "data-analysis-scientific-eda/SKILL.md",
+      "path": "data-analysis-kpi-designer/SKILL.md",
       "url": null,
       "packs": [],
       "frontmatter": {
-        "name": "data-analysis-scientific-eda",
+        "name": "data-analysis-kpi-designer",
         "disable_model_invocation": false,
-        "description": "Profile a scientific data file — detect its format across chemistry, bioinformatics/genomics, microscopy/imaging, spectroscopy, proteomics/metabolomics, and general scientific types (200+ extensions), extract format-specific metadata and quality metrics, and produce a markdown EDA report with downstream-analysis recommendations. Use when asked to \"analyze this .fastq/.mzML/.czi/.nd2\", \"what's in this scientific data file\", or \"profile this dataset before analysis\". For classical statistical inference on tabular data, see the statistical-modeling skill.",
+        "description": "Turn a business decision into a governed KPI portfolio and implementation-ready metric contracts. Use when asked to \"define success measures\", \"choose operational metrics\", \"write metric specs\", or \"set KPI thresholds\". Not for OKR cascades, dashboard analysis, or metric reconciliation.",
         "license": "MIT",
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
           "domain": "data",
-          "triggers": "analyze this scientific data file, what format is this fastq/mzml/czi, profile a dataset before analysis, detect scientific file type, generate an eda report, which analysis suits this file",
-          "role": "data-profiler",
-          "scope": "scientific-eda",
-          "output_format": null,
-          "related_skills": null
+          "triggers": "design decision metrics, specify metric formulas, choose outcome indicators, create measurement plan, define alert thresholds, assign metric ownership, select decision guardrails, operationalize success criteria",
+          "role": "measurement-architect",
+          "scope": "design",
+          "output_format": "specification",
+          "related_skills": "data-analysis-business-context, data-analysis-business-performance, product-strategy-okr-specialist"
         }
       },
       "structure": {
-        "has_scripts": true,
-        "has_references": true,
+        "has_scripts": false,
+        "has_references": false,
         "has_agents": false,
-        "has_assets": true,
+        "has_assets": false,
         "has_license_file": false,
-        "file_count": 9,
-        "estimated_tokens": 1190,
-        "complexity_class": "detailed",
-        "skill_pattern": "B"
+        "file_count": 1,
+        "estimated_tokens": 310,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
       },
       "evaluation": {
         "usage_value": {
@@ -2560,13 +2628,81 @@
           "flagged": false,
           "rationale": "Not evaluated"
         },
-        "core_capabilities": "Profile a scientific data file — detect its format across chemistry, bioinformatics/genomics, microscopy/imaging, spectroscopy, proteomics/metabolomics, and general scientific types (200+ extensions), extract format-specific metadata and quality metrics, and produce a markdown EDA report with downstream-analysis recommendations. Use when asked to \"analyze this .fastq/.mzML/.czi/.nd2\", \"what's in this scientific data file\", or \"profile this dataset before analysis\". For classical statistical inference on tabular data, see the statistical-modeling skill.",
+        "core_capabilities": "Turn a business decision into a governed KPI portfolio and implementation-ready metric contracts. Use when asked to \"define success measures\", \"choose operational metrics\", \"write metric specs\", or \"set KPI thresholds\". Not for OKR cascades, dashboard analysis, or metric reconciliation.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
         ],
         "script_languages": [
-          "python"
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "data-analysis-kpi-reporting",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "data-analysis-kpi-reporting/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "data-analysis-kpi-reporting",
+        "disable_model_invocation": false,
+        "description": "Convert established metrics into a comparable, evidence-backed operating readout with status, pacing, drivers, and decisions. Use when asked to \"prepare a KPI update\", \"write a WBR\", \"build an MBR scorecard\", or \"summarize performance for leaders\". Not for choosing KPIs or open-ended diagnosis.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "data",
+          "triggers": "report weekly results, assemble executive scorecard, compare actuals to budget, explain scorecard movement, prepare quarterly readout, update operating review, assess target pacing, package performance narrative",
+          "role": "performance-reporter",
+          "scope": "reporting",
+          "output_format": "report",
+          "related_skills": "data-analysis-kpi-designer, data-analysis-business-context, data-analysis-business-performance"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 501,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Convert established metrics into a comparable, evidence-backed operating readout with status, pacing, drivers, and decisions. Use when asked to \"prepare a KPI update\", \"write a WBR\", \"build an MBR scorecard\", or \"summarize performance for leaders\". Not for choosing KPIs or open-ended diagnosis.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
         ],
         "license": "MIT"
       }
@@ -2629,6 +2765,74 @@
           "rationale": "Not evaluated"
         },
         "core_capabilities": "Fit, diagnose, and interpret classical statistical models in Python with statsmodels — OLS/GLM/logit/Poisson/ARIMA — for rigorous inference with coefficient tables, standard errors, and residual diagnostics. Use when you need \"a regression with p-values\", \"logistic regression odds ratios\", \"time series forecast with confidence intervals\", \"check heteroskedasticity\", or \"which model fits this outcome type\".",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "data-analysis-validator",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "data-analysis-validator/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "data-analysis-validator",
+        "disable_model_invocation": false,
+        "description": "Audit an existing analysis for decision readiness, tracing its claims through methods, calculations, visuals, and evidence. Use when asked to \"review this analysis\", \"check these numbers\", \"QA this dashboard\", \"verify this conclusion\", or \"is this ready to share\". Not for profiling a raw dataset or fitting a new model.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "data",
+          "triggers": "audit stakeholder report, challenge methodology choices, recompute headline metric, inspect chart integrity, substantiate report claims, approve sharing readiness, find calculation errors, rate evidence confidence",
+          "role": "analysis-reviewer",
+          "scope": "quality-assurance",
+          "output_format": "validation-report",
+          "related_skills": "data-analysis-business-context, data-analysis-statistical-modeling, data-eng-pipeline-architect"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 2,
+        "estimated_tokens": 535,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Audit an existing analysis for decision readiness, tracing its claims through methods, calculations, visuals, and evidence. Use when asked to \"review this analysis\", \"check these numbers\", \"QA this dashboard\", \"verify this conclusion\", or \"is this ready to share\". Not for profiling a raw dataset or fitting a new model.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -9322,18 +9526,18 @@
       "frontmatter": {
         "name": "product-strategy-okr-specialist",
         "disable_model_invocation": false,
-        "description": "OKR cascade architect and metrics strategist for product leaders. Translates company strategy into aligned, measurable OKRs across company, product, and team levels. Defines KPIs and metric trees for any product area. Use when building OKR cascades, aligning product goals to company strategy, scoring OKR alignment, generating team-level goal breakdowns, running quarterly planning, defining product KPIs, building metric frameworks, or selecting leading vs lagging indicators.",
+        "description": "Build traceable OKR cascades from company strategy through product and team goals, including alignment scoring and contribution targets. Use when asked to \"cascade company OKRs\", \"align team goals\", \"score OKR alignment\", or \"plan quarterly objectives\". Not for standalone KPI contracts or performance analysis.",
         "license": "MIT",
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
           "domain": "product",
-          "triggers": "okr cascade, product okrs, align product goals, team okrs, company to product goals, okr alignment score, product strategy goals, quarterly planning, okr breakdown, goal cascade, strategy to okrs, head of product planning, product goal alignment, define kpis, product metrics, kpi framework, metric tree, leading indicators, lagging indicators, north star metric, success metrics, product measurement, metrics strategy",
+          "triggers": "translate strategy to objectives, create product key results, distribute team contributions, map parent child goals, balance team objective load, generate goal cascade dashboard, link company and product goals, audit quarterly goal coverage",
           "role": "product-strategist",
           "scope": "planning",
           "output_format": "document",
-          "related_skills": "design-system-architect, data-analysis-business-performance"
+          "related_skills": "data-analysis-kpi-designer, data-analysis-business-performance"
         }
       },
       "structure": {
@@ -9343,7 +9547,7 @@
         "has_assets": false,
         "has_license_file": false,
         "file_count": 2,
-        "estimated_tokens": 989,
+        "estimated_tokens": 906,
         "complexity_class": "detailed",
         "skill_pattern": "B"
       },
