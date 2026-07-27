@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-07-22T01:14:53Z",
+  "generated_at": "2026-07-27T05:03:31Z",
   "sources": [
     {
       "id": "source-1",
@@ -11,24 +11,24 @@
     }
   ],
   "summary": {
-    "total_skills": 141,
+    "total_skills": 144,
     "evaluated": 114,
     "parse_errors": 0,
-    "avg_usage_value": 3.23,
-    "avg_executability": 2.3,
-    "avg_invocability": 1.76,
+    "avg_usage_value": 3.17,
+    "avg_executability": 2.26,
+    "avg_invocability": 1.72,
     "security_risk_distribution": {
-      "low": 111,
+      "low": 114,
       "medium": 28,
       "high": 2
     },
     "complexity_distribution": {
-      "compact": 71,
-      "detailed": 26,
+      "compact": 72,
+      "detailed": 28,
       "comprehensive": 44
     },
     "pattern_distribution": {
-      "A": 123,
+      "A": 126,
       "B": 17,
       "C": 1
     },
@@ -2352,28 +2352,28 @@
       "frontmatter": {
         "name": "data-analysis-business-context",
         "disable_model_invocation": false,
-        "description": "Build a source-backed business context note that locks metric meaning, decision scope, current state, and evidence gaps before analysis begins. Use when asked to \"frame this analysis\", \"find the metric definition\", \"check what changed\", or \"identify the source of truth\". Not for diagnosis, modeling, dashboards, or recommendations.",
+        "description": "Assemble the framing an analysis needs before the numbers — what a metric officially means, who owns it, what changed, and which source wins when they conflict. Use when asked \"what does this metric mean\", \"who owns this number\", \"which dashboard is the source of truth\", or \"get me up to speed before I analyze this\". Not for profiling a dataset or running the analysis.",
         "license": "MIT",
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "domain": "data",
-          "triggers": "trace KPI ownership, verify rollout status, map decision context, reconcile conflicting definitions, locate canonical dashboard, establish analysis assumptions, research product context, validate data source authority",
+          "triggers": "trace metric ownership, reconcile conflicting definitions, check what shipped recently, locate metric definition doc, brief me before this analysis, verify rollout state, establish analysis assumptions, find who decided this",
           "role": "context-analyst",
           "scope": "retrieval",
-          "output_format": "context-note",
-          "related_skills": "data-analysis-business-performance, data-analysis-statistical-modeling"
+          "output_format": "context-brief",
+          "related_skills": "data-analysis-dataset-profiler, data-analysis-business-performance, data-analysis-kpi-designer, data-analysis-validator"
         }
       },
       "structure": {
         "has_scripts": false,
-        "has_references": false,
-        "has_agents": true,
+        "has_references": true,
+        "has_agents": false,
         "has_assets": false,
         "has_license_file": false,
-        "file_count": 2,
-        "estimated_tokens": 274,
+        "file_count": 4,
+        "estimated_tokens": 687,
         "complexity_class": "compact",
         "skill_pattern": "A"
       },
@@ -2496,6 +2496,74 @@
         "external_requirements_indicator": "self-contained",
         "external_requirements": [
           "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "data-analysis-dataset-profiler",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "data-analysis-dataset-profiler/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "data-analysis-dataset-profiler",
+        "disable_model_invocation": false,
+        "description": "Profile an unfamiliar table or file into a structured read on its grain, column types, quality defects, and analysis-ready dimensions and metrics. Use when asked to \"explore this dataset\", \"profile this table\", \"what's in this CSV\", \"check the data quality\", \"how many nulls are there\", or \"what should I analyze here\". Not for auditing a finished analysis or building a pipeline.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "data",
+          "triggers": "inspect unfamiliar table, determine table grain, measure null rates, summarize column distributions, detect duplicate keys, spot placeholder values, rank slice-worthy dimensions, find join key candidates, document dataset schema",
+          "role": "data-profiler",
+          "scope": "discovery",
+          "output_format": "profile-report",
+          "related_skills": "data-analysis-validator, data-eng-pandas-specialist, data-analysis-business-context"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 3,
+        "estimated_tokens": 795,
+        "complexity_class": "detailed",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Profile an unfamiliar table or file into a structured read on its grain, column types, quality defects, and analysis-ready dimensions and metrics. Use when asked to \"explore this dataset\", \"profile this table\", \"what's in this CSV\", \"check the data quality\", \"how many nulls are there\", or \"what should I analyze here\". Not for auditing a finished analysis or building a pipeline.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
         ],
         "script_languages": [
           "none"
@@ -2697,6 +2765,74 @@
           "rationale": "Not evaluated"
         },
         "core_capabilities": "Convert established metrics into a comparable, evidence-backed operating readout with status, pacing, drivers, and decisions. Use when asked to \"prepare a KPI update\", \"write a WBR\", \"build an MBR scorecard\", or \"summarize performance for leaders\". Not for choosing KPIs or open-ended diagnosis.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "data-analysis-statistical-methods",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "data-analysis-statistical-methods/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "data-analysis-statistical-methods",
+        "disable_model_invocation": false,
+        "description": "Apply and interpret working statistical methods on business data — descriptive statistics, trend and seasonality analysis, outlier and anomaly detection, hypothesis testing — and state what the numbers do and do not support. Use when asked to \"describe this distribution\", \"is this difference significant\", \"read this A/B test\", \"find anomalies in this metric\", \"what's the trend\", \"compute the correlation\", or \"can we say X caused Y\". Not for fitting regression models with coefficient tables (use statistical-modeling), auditing someone else's finished analysis (use analysis-validator), or choosing chart form (use chart-designer).",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "data",
+          "triggers": "describe this distribution, mean vs median, report percentiles, is this difference statistically significant, read an A/B test result, which test should I use, detect outliers, flag anomalies in a time series, week over week change, year over year comparison, compute CAGR, is this seasonal, simple forecast with a range, correlation between two metrics, did this change cause the lift, adjust for multiple comparisons, do we have enough sample",
+          "role": "analyst",
+          "scope": "analysis",
+          "output_format": "analysis",
+          "related_skills": "data-analysis-statistical-modeling, data-analysis-validator, data-visual-chart-designer, data-eng-pandas-specialist, data-analysis-kpi-reporting"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 6,
+        "estimated_tokens": 907,
+        "complexity_class": "detailed",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Apply and interpret working statistical methods on business data — descriptive statistics, trend and seasonality analysis, outlier and anomaly detection, hypothesis testing — and state what the numbers do and do not support. Use when asked to \"describe this distribution\", \"is this difference significant\", \"read this A/B test\", \"find anomalies in this metric\", \"what's the trend\", \"compute the correlation\", or \"can we say X caused Y\". Not for fitting regression models with coefficient tables (use statistical-modeling), auditing someone else's finished analysis (use analysis-validator), or choosing chart form (use chart-designer).",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -3118,6 +3254,74 @@
         ],
         "script_languages": [
           "python"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "data-visual-chart-designer",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "data-visual-chart-designer/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "data-visual-chart-designer",
+        "disable_model_invocation": false,
+        "description": "Pick the right quantitative chart form, then build and QA it against an explicit chart contract before delivery. Use when asked to \"make a chart\", \"visualize this data\", \"which chart should I use\", \"fix this graph\", or \"why does this chart look wrong\". Covers encoding, data sufficiency, palette policy, and final-container QA. Not for image art direction or choosing which KPIs to track.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "data",
+          "triggers": "plot these numbers, redesign a confusing graph, choose axis and encoding, pick chart colors, turn a table into a visual, review a dashboard chart, add a comparison baseline, export a figure for a report",
+          "role": "visualization-designer",
+          "scope": "design",
+          "output_format": "specification",
+          "related_skills": "data-analysis-kpi-reporting, data-analysis-validator, data-analysis-business-performance, strategy-exec-presentation-designer"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 3,
+        "estimated_tokens": 565,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Pick the right quantitative chart form, then build and QA it against an explicit chart contract before delivery. Use when asked to \"make a chart\", \"visualize this data\", \"which chart should I use\", \"fix this graph\", or \"why does this chart look wrong\". Covers encoding, data sufficiency, palette policy, and final-container QA. Not for image art direction or choosing which KPIs to track.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
         ],
         "license": "MIT"
       }
