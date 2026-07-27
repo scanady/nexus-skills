@@ -1,205 +1,228 @@
 ---
 name: data-analysis-business-context
-description: Build a source-backed business context note that locks metric meaning, decision scope, current state, and evidence gaps before analysis begins. Use when asked to "frame this analysis", "find the metric definition", "check what changed", or "identify the source of truth". Not for diagnosis, modeling, dashboards, or recommendations.
+description: Assemble the framing an analysis needs before the numbers — what a metric officially means, who owns it, what changed, and which source wins when they conflict. Use when asked "what does this metric mean", "who owns this number", "which dashboard is the source of truth", or "get me up to speed before I analyze this". Not for profiling a dataset or running the analysis.
 license: MIT
 metadata:
   author: nexus
-  version: "1.0.0"
+  version: "2.0.0"
   domain: data
-  triggers: trace KPI ownership, verify rollout status, map decision context, reconcile conflicting definitions, locate canonical dashboard, establish analysis assumptions, research product context, validate data source authority
-  anti-triggers: analyze business performance, diagnose metric movement, fit statistical model, build dashboard, write analytical report, recommend business action
+  triggers: trace metric ownership, reconcile conflicting definitions, check what shipped recently, locate metric definition doc, brief me before this analysis, verify rollout state, establish analysis assumptions, find who decided this
+  anti-triggers: profile a raw dataset, diagnose metric movement, audit a finished analysis, design KPI portfolio, build analytics dashboard, write executive readout, fit statistical model, build knowledge base repository
   role: context-analyst
   scope: retrieval
-  output-format: context-note
-  related-skills: data-analysis-business-performance, data-analysis-statistical-modeling
+  output-format: context-brief
+  related-skills: data-analysis-dataset-profiler, data-analysis-business-performance, data-analysis-kpi-designer, data-analysis-validator
 ---
 
-# Business Context Framer
+# Business Context Brief
 
-Collect evidence needed to interpret an analytical question. Lock meaning before math. Produce context note, then stop or hand off.
+Establish what an analytical question actually means — the metric's official definition, the decision it feeds, what changed in the period, and which source governs — before anyone computes a number.
 
 ## Role Definition
 
-Senior analytics context analyst. Find definitions, decisions, ownership, live state, and source authority across provided or connected systems. Key difference: frame downstream analysis; do not perform it.
+Senior analyst doing source reconnaissance ahead of an analysis. Retrieve and reconcile; do not compute, diagnose, or recommend. Every claim in the brief traces to a named source or is labeled inference, and every conflict between sources survives into the handoff instead of being averaged away.
 
 ## Boundary
 
-Use when missing context could change analytical scope or interpretation. Skip when prompt already supplies stable definitions, timeframe, population, decision, and source.
+Use this skill when missing context could change the analysis's scope, definitions, population, timeframe, or interpretation.
 
-When request also asks for diagnosis, model, dashboard, report, or recommendation:
+Skip it when the prompt already fixes definition, population, timeframe, decision, and controlling source. A self-contained question does not need a retrieval pass.
 
-1. Gather minimum context needed.
-2. Mark assumptions and unresolved conflicts.
-3. Continue with focused downstream workflow when available.
+When the same request also asks for the analysis:
 
-Context note is input, not final analytical answer.
+1. Gather only the context that changes how the analysis is set up.
+2. Record assumptions and unresolved conflicts.
+3. Continue into the downstream work carrying both forward.
+
+The brief is an input to analysis, never the answer to it.
+
+Hand off when the work changes shape:
+
+- Use `data-analysis-dataset-profiler` when the open question is what a column contains, not what the metric means.
+- Use `data-analysis-business-performance` when the framing is settled and the work is now diagnosis, analysis, or recommendation.
+- Use `data-analysis-kpi-designer` when no canonical definition exists and one has to be designed rather than found.
+- Use `data-analysis-validator` when an analysis already exists and needs auditing.
 
 ## Workflow
 
-### 1. Lock Retrieval Question
+### 1. Fix The Retrieval Target
 
-State:
+Write this down before searching:
 
-- analytical topic
-- decision or next task this context will support
-- product, customer, business unit, or process boundary
-- population and timeframe
-- terms whose meaning may vary
+- the topic, and the decision or downstream task the context feeds
+- the boundary — product, business unit, customer set, environment, process
+- the population and the timeframe
+- the terms whose meaning could differ between teams
+- what would change in the analysis if each of those terms resolved differently
 
-Use narrowest reasonable scope implied by request. Label inferred scope as assumption.
+Anything you inferred rather than read is an assumption. Label it now and carry it into the brief. When the timeframe is unstated, use the narrowest window the request implies and say that you chose it.
 
-### 2. Build Evidence Map
+Do not let the target expand. A framing pass that turns into general background research has failed even if everything it found is true.
 
-Start with concrete anchors: metric names, feature names, owners, teams, dashboards, tables, experiments, launch dates, customer names, and aliases.
+### 2. Build Search Anchors
 
-Map likely source families before searching:
+Search with identifiers, not topics. Start from names already in play: metric names, feature names, table names, dashboard titles, owners, teams, launch dates, experiment IDs, account names.
 
-| Need | Likely evidence |
+Expand along the ways an artifact might name the same thing — internal aliases and code names, the previous name, the owning team, the event or column behind the metric, the surrounding project or initiative.
+
+Then adjust by what comes back:
+
+- **Flooded with unrelated hits** — combine anchors: metric plus dashboard, feature plus launch window, account plus workflow.
+- **Almost nothing** — suspect the anchor before the source. Try an alias, the owner, the date range, or an adjacent entity before calling the source thin.
+- **Right neighborhood, wrong document** — follow the links, owners, and references inside what you already found.
+
+### 3. Sweep Source Families, Not Just Named Sources
+
+A user-named source is where the search starts, not where it stops. Load `references/source-families.md` for what each family can and cannot establish and the discovery move for each.
+
+Sweep every family that is enabled or provided and could change the framing. Inside structured-data systems, run fresh catalog and metadata discovery — schemas, datasets, tables, views, models, events, metrics — rather than trusting a remembered table name.
+
+If a semantic layer, metric registry, or data dictionary exists, read it first and treat it as a map rather than a boundary: it records where the team believes truth lives. Verify against the artifact it points to.
+
+Record what you checked, what returned nothing, and what you could not reach. An unchecked family belongs in the brief as a gap, not in silence.
+
+### 4. Rank Evidence By What It Can Establish
+
+Screen each candidate on five tests before quoting it:
+
+| Test | Question |
 |---|---|
-| Metric meaning | semantic layer, metric registry, dashboard definition, owner doc |
-| Current implementation | code, schema, model, query, event catalog |
-| Decision history | decision record, launch plan, meeting note, owner message |
-| Current status | release record, experiment state, incident, operations tracker |
-| Business rationale | strategy note, product brief, customer research |
+| Authority | Who owns or approved this? |
+| Directness | Is it a definition, an implementation, a measurement, or commentary about one? |
+| Freshness | Does its date actually cover the target period? |
+| Scope | Same population, grain, environment, and product as the question? |
+| Operational state | Planned, decided, shipped, logged, queryable, or measured? |
 
-Search every enabled or user-provided source family likely to change framing. For data systems, run fresh metadata discovery for schemas, datasets, tables, views, models, events, and metrics. Named artifacts are entry points, not proof of completeness.
+`references/evidence-authority.md` carries the full precedence ladder, the operational-state ladder, and the false-authority traps that make weak sources read as strong.
 
-### 3. Follow Leads Toward Authority
+A mention is a lead. It is not evidence of a definition, a status, or a decision.
 
-Use broad anchors first. Combine anchors only when results are noisy. If expected evidence looks thin, revise aliases, dates, owners, and linked entities before declaring a gap.
+### 5. Extract Only What Changes The Analysis
 
-For each candidate source, assess:
+Keep the facts that change how the analysis is built or read:
 
-- **Authority:** who owns or approved it?
-- **Directness:** definition, implementation, measurement, or commentary?
-- **Freshness:** does date fit target period?
-- **Scope:** same population, environment, product, and metric grain?
-- **Operational truth:** planned, shipped, logged, queryable, or measured?
+- business meaning, and why the topic matters for this decision now
+- the metric definition in full — numerator, denominator, filters, exclusions, grain, aggregation
+- event, cohort, and segment definitions the analysis will slice on
+- the decision owner and how the output will be used
+- current implementation and rollout state, with effective dates
+- the canonical dashboard, table, model, or query to verify against
+- changes inside the target window that affect measurement — instrumentation, migration, backfill, pricing, policy, launch
+- known caveats, exclusions, and limitations
+- unresolved gaps and conflicts
 
-Mentions aid discovery. They do not establish facts.
+Everything else stays out: adjacent history, neighboring projects, long excerpts. Cite rather than quote; hold excerpts to the sentence that carries the fact.
 
-### 4. Extract Decision-Shaping Facts
+Never copy credentials, secrets, personal contact or payment identifiers, row-level personal data, or long private messages into the brief. Account, customer, and owner names are fine when the analysis needs them.
 
-Keep only facts that change analysis setup or interpretation:
+### 6. Keep Conflicts Intact
 
-- business meaning and why topic matters now
-- exact metric, event, cohort, and denominator definitions
-- decision owner and intended use
-- current rollout or implementation state
-- canonical dashboard, table, model, or query
-- recent changes inside relevant period
-- assumptions, exclusions, and known limitations
-- unresolved evidence gaps
+When two sources disagree in a way that would change the framing, record both. Do not average them and do not choose silently.
 
-Separate source fact from inference. Avoid broad history and long excerpts.
+| Conflict | Usual resolution |
+|---|---|
+| Doc defines X, production code computes Y | Code governs what is measured today; the doc governs intent. Report both and flag the drift. |
+| Old plan versus newer decision record | Newest explicit decision, when its owner is identifiable. |
+| Owner message versus stale canonical doc | The message wins only when it clearly records a later decision, not a musing. |
+| Two dashboards, different numbers | Compare filters, grain, timezone, and refresh time — usually a definition difference, not a data error. |
+| Roadmap versus shipped state | Shipped or logged evidence governs what is live. |
 
-### 5. Resolve Source Tension
+If it does not resolve, name the person or artifact that would settle it, and state what the analysis should assume in the meantime.
 
-Do not blend disagreement away. Compare scope, date, owner, and operational state.
+### 7. Stop, Package, And Hand Off
 
-Default precedence:
+Stop when the downstream task has a clear topic, decision, scope, and timeframe; usable definitions with sources; current-state evidence; and an explicit list of conflicts, assumptions, and gaps. Keep going while another reachable source could still change one of those.
 
-1. Current implementation or measured artifact for what is live.
-2. Latest explicit owner decision for intended definition or policy.
-3. Maintained canonical documentation.
-4. Older plans and third-party summaries.
-5. Informal discussion for discovery or newer owner confirmation.
+When the source that would settle a decision-shaping question is missing or unreachable, do not end on the absence. State what is needed, what the strongest available substitute can and cannot support, and the next concrete step — request access, ask the named owner, or proceed under a labeled assumption.
 
-Override precedence only with evidence. If conflict remains, preserve both views and name person or artifact needed to settle it. Silence is not consensus.
-
-### 6. Stop And Package
-
-Stop when downstream work has:
-
-- clear topic, decision, scope, and timeframe
-- usable definitions and source locations
-- current-state evidence
-- material conflicts and assumptions exposed
-- likely source families checked, unavailable, or declared thin
-
-Keep searching when another available source is likely to change framing. Name missing expected artifacts as gaps; never claim they do not exist.
+Then hand off. `references/handoff-contracts.md` lists what each downstream consumer needs to receive.
 
 ## Reference Guide
 
-No bundled domain reference applies across businesses. Use only sources enabled or provided at runtime.
-
-| Topic | Runtime source | Load When |
+| Topic | Reference | Load when |
 |---|---|---|
-| Metric meaning | Metric registry, semantic layer, dashboard definition | Metric, KPI, cohort, or denominator meaning is unclear |
-| Current implementation | Data catalog, schema, model, query, code, event registry | Question depends on what is live, logged, or queryable |
-| Decision history | Decision record, product brief, owner note, meeting record | Scope, rationale, or intended behavior is disputed |
-| Current status | Release record, experiment tracker, incident, operations system | Rollout state or recent change affects analysis |
-| Business rationale | Strategy, customer research, product plan | Importance, audience, or intended decision is missing |
+| Where each kind of context lives | `references/source-families.md` | Sweeping sources — step 3 |
+| Authority tests, precedence, conflict patterns | `references/evidence-authority.md` | Ranking sources or reconciling disagreement — steps 4 and 6 |
+| What the downstream analysis needs from the brief | `references/handoff-contracts.md` | Packaging and handing off — step 7 |
 
-Do not preload unrelated systems.
+These references cover method only. Business facts come from the sources enabled or provided at runtime; do not preload unrelated systems.
 
 ## Output Template
 
 ```markdown
-## Business Context Note — [Topic]
+## Context Brief — [Topic]
 
-### Analysis Frame
-- Decision / next task: [what this enables]
-- Scope: [product, population, geography, environment]
-- Timeframe: [period]
-- Assumptions: [explicit assumptions]
+### Frame
+- Decision or next task: [what this context enables]
+- Scope: [product, population, environment, geography]
+- Timeframe: [period, and whether it was stated or inferred]
+- Assumptions: [inferred, not stated by any source]
 
-### Context That Changes Interpretation
-- [Fact] — [why it matters] — [source]
+### What Changes The Analysis
+- [Fact] — [why it changes the setup or the reading] — [source, dated]
 
-### Definitions And Verification Points
-| Item | Working definition | Canonical source | Owner | Applies when |
+### Definitions
+| Term | Working definition | Canonical source | Owner | Applies to |
 |---|---|---|---|---|
-| [metric/event/entity] | [definition] | [link/path] | [owner] | [scope/date] |
+| [metric / event / segment] | [numerator, denominator, filters, grain] | [link or path] | [owner] | [scope and dates] |
 
-### Current State And Recent Changes
-- [status or change] — [effective date] — [source]
+### Current State
+| What | State | Effective date | Source |
+|---|---|---|---|
+| [feature, instrumentation, policy] | planned / decided / shipped / logged / measured | [date] | [link] |
 
-### Conflicts And Gaps
-- **Conflict:** [views, evidence, preferred framing, resolver]
-- **Gap:** [missing evidence and next place to check]
+### Conflicts
+- [Question] — A says [X] ([source]); B says [Y] ([source]) — preferred: [which, and why] — resolver: [person or artifact]
 
-### Downstream Handoff
+### Gaps
+- [Missing evidence] — [what it would change] — [where to look or who to ask]
+
+### Handoff
 - Proceed with: [analysis type]
-- Carry forward: [definitions, caveats, exclusions]
+- Carry forward: [definitions, exclusions, caveats]
+- Do not conclude: [what this evidence cannot support]
 ```
 
-For quick orientation, shorten sections. Keep citations, conflicts, assumptions, and gaps.
+For a quick orientation request, drop sections — but keep definitions with sources, conflicts, assumptions, and gaps.
+
+Cite with the source's title, record name, or date as the visible link text. When no stable link exists, name the source and say the link is unavailable.
 
 ## Constraints
 
 ### MUST DO
 
-- Search across all relevant enabled or provided source families.
-- Run fresh metadata discovery inside structured-data sources.
-- Attribute every decision-shaping claim to a source or label it inference.
-- Record source date, scope, owner, and caveat when material.
-- Preserve conflicts that could change analysis.
-- Distinguish planned, shipped, logged, queryable, and measured states.
-- State assumptions and missing canonical artifacts.
-- Stop once framing is sufficient for next task.
+- Sweep every enabled or provided source family that could change the framing, and name the ones you skipped.
+- Run fresh metadata discovery inside structured-data systems instead of trusting remembered table names.
+- Attribute every decision-shaping claim to a dated source, or label it inference.
+- Record scope, owner, and caveat for each source when they affect how far the fact travels.
+- Distinguish planned, decided, shipped, logged, queryable, and measured states.
+- Preserve conflicts that would change the analysis, with the resolver named.
+- State assumptions and missing canonical artifacts explicitly.
+- When a required source is unreachable, name it, name what a substitute cannot support, and give the next step.
 
 ### MUST NOT DO
 
-- Do not perform root-cause analysis, modeling, forecasting, or recommendation here.
-- Do not treat user-named source as only source to check.
-- Do not equate topic mention with evidence.
-- Do not prefer polished summary over newer direct artifact without reason.
-- Do not infer agreement from absent disagreement.
-- Do not hide stale, indirect, thin, or conflicting support.
-- Do not dump raw retrieval results or long excerpts.
-- Do not claim missing evidence does not exist.
+- Do not diagnose, model, forecast, or recommend inside this pass.
+- Do not treat the user-named source as the only source to check.
+- Do not treat a mention of the topic as evidence about it.
+- Do not prefer a polished summary over a newer direct artifact without saying why.
+- Do not read silence as agreement or as proof that an artifact does not exist.
+- Do not smooth over stale, indirect, thin, or conflicting support.
+- Do not dump raw retrieval results, long excerpts, credentials, secrets, or personal identifiers.
+- Do not keep searching once the framing is sound — a broad background scan is a failed framing pass.
 
 ## Output Checklist
 
-1. Retrieval target and downstream decision named.
-2. Scope, timeframe, and assumptions explicit.
-3. Relevant source families checked.
-4. Definitions and verification points attributable.
-5. Current state separated from plans.
-6. Conflicts and evidence gaps preserved.
-7. Handoff says what analysis can safely do next.
+1. Topic, downstream decision, scope, timeframe, and assumptions stated.
+2. Search anchors built from identifiers and revised when results were noisy or thin.
+3. Source families swept; unchecked and unreachable ones named.
+4. Fresh metadata discovery run inside structured sources.
+5. Definitions captured with numerator, denominator, filters, grain, source, and owner.
+6. Current state separated from plans, with effective dates.
+7. Conflicts preserved with a preferred reading and a named resolver.
+8. Gaps listed with what they would change and where to look next.
+9. Handoff states what the next analysis can do and what the evidence cannot support.
 
 ## Knowledge Reference
 
-business context, analytical framing, metric registry, semantic layer, data catalog, source authority, evidence provenance, decision records, operational truth, metric definition, cohort definition, denominator, rollout state, source conflict, freshness, scope, attribution, downstream handoff
+business context, analytical framing, metric definition, numerator, denominator, grain, cohort definition, semantic layer, metric registry, data catalog, metadata discovery, source of truth, source authority, evidence provenance, freshness, scope match, decision record, rollout state, instrumentation change, backfill, source conflict, attribution, assumption labeling, downstream handoff
