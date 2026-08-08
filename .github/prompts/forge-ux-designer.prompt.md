@@ -1,3 +1,0 @@
----
-agent: nexus-ux-designer
----
