@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-07-27T05:03:31Z",
+  "generated_at": "2026-08-05T10:10:36Z",
   "sources": [
     {
       "id": "source-1",
@@ -11,24 +11,24 @@
     }
   ],
   "summary": {
-    "total_skills": 144,
+    "total_skills": 145,
     "evaluated": 114,
     "parse_errors": 0,
-    "avg_usage_value": 3.17,
-    "avg_executability": 2.26,
-    "avg_invocability": 1.72,
+    "avg_usage_value": 3.14,
+    "avg_executability": 2.24,
+    "avg_invocability": 1.71,
     "security_risk_distribution": {
-      "low": 114,
+      "low": 115,
       "medium": 28,
       "high": 2
     },
     "complexity_distribution": {
       "compact": 72,
-      "detailed": 28,
+      "detailed": 29,
       "comprehensive": 44
     },
     "pattern_distribution": {
-      "A": 126,
+      "A": 127,
       "B": 17,
       "C": 1
     },
@@ -9178,6 +9178,74 @@
         "external_requirements_indicator": "self-contained",
         "external_requirements": [
           "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "personal-design-meeting-background",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "personal-design-meeting-background/SKILL.md",
+      "url": null,
+      "packs": [],
+      "frontmatter": {
+        "name": "personal-design-meeting-background",
+        "disable_model_invocation": false,
+        "description": "Designs a personalized video-call background as a portrait room — a self-portrait built from the real books, places, hobbies, brand marks, and working philosophy of the person it is for, arranged with real architecture (corner geometry, horizontal registers, a bright center anchor) and real light, then written as a dense photorealistic image-generation prompt. Use when asked to \"make me a Zoom background\", \"create a custom Teams background\", \"generate a webcam background\", \"design my virtual office background\", or \"personalize my video call background\".",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "domain": "personal",
+          "triggers": "custom video call background, branded home office background, ai generated office background, swap out my meeting background, personal branding background image, virtual background prompt, portrait room background, conversation starter background",
+          "role": "specialist",
+          "scope": "creation",
+          "output_format": "document",
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 6,
+        "estimated_tokens": 1014,
+        "complexity_class": "detailed",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Designs a personalized video-call background as a portrait room — a self-portrait built from someone''s own books, places, hobbies, brand, and working philosophy, arranged with real architecture (corner geometry, horizontal registers, a bright center anchor) and real light, then written as a dense photorealistic image-generation prompt. Use when asked to \"make me a Zoom background\", \"create a custom Teams background\", \"generate a webcam background\", \"design my virtual office background\", or \"personalize my video call background\".",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
         ],
         "script_languages": [
           "none"
