@@ -1,13 +1,16 @@
 {
   "name": "nexus-skills",
   "version": "1.0.0",
-  "description": "Skills for authoring, evaluating, cataloging, and reinterpreting other skills.",
+  "description": "Author and maintain Agent Skills — scaffolding, spec compliance, evaluation, and cataloging. Keep a skill library consistent, discoverable, and worth loading.",
   "keywords": [
-    "skills",
-    "prompts",
-    "agents",
-    "instructions",
-    "ai",
+    "agent-skills",
+    "skill-authoring",
+    "skill-review",
+    "skill-evaluation",
+    "skill-catalog",
+    "claude-code",
+    "plugins",
+    "ai-agents",
     "skills"
   ]
 }

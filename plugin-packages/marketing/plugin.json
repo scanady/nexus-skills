@@ -1,13 +1,19 @@
 {
   "name": "nexus-marketing",
   "version": "1.0.0",
-  "description": "Skills for campaigns, SEO, brand strategy, content production, customer segmentation, and sales outreach.",
+  "description": "Create demand and convert it — brand positioning, campaign planning, content production, SEO, segmentation, and sales outreach. Take a product to market and keep the pipeline full.",
   "keywords": [
-    "skills",
-    "prompts",
-    "agents",
-    "instructions",
-    "ai",
-    "marketing"
+    "marketing",
+    "seo",
+    "campaigns",
+    "go-to-market",
+    "brand-strategy",
+    "content-marketing",
+    "social-media",
+    "copywriting",
+    "conversion-optimization",
+    "lead-generation",
+    "customer-segmentation",
+    "sales"
   ]
 }

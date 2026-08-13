@@ -1,13 +1,15 @@
 {
   "name": "nexus-comms",
   "version": "1.0.0",
-  "description": "Skills for organizational announcements, internal community engagement, and customer email communication.",
+  "description": "Reach your organization and your customers — announcements, community engagement, and stakeholder messaging. Deliver news clearly and keep people informed.",
   "keywords": [
-    "skills",
-    "prompts",
-    "agents",
-    "instructions",
-    "ai",
+    "internal-communications",
+    "announcements",
+    "employee-engagement",
+    "stakeholder-updates",
+    "change-communication",
+    "company-culture",
+    "email",
     "comms"
   ]
 }

@@ -1,13 +1,17 @@
 {
   "name": "nexus-content",
   "version": "1.0.0",
-  "description": "Skills for writing, editing, and transforming content — copy, email sequences, technical docs, and style extraction.",
+  "description": "Write, edit, and reshape content for human readers — copy, long-form, technical documentation, and voice consistency. Turn rough drafts into clear, publishable prose.",
   "keywords": [
-    "skills",
-    "prompts",
-    "agents",
-    "instructions",
-    "ai",
+    "copywriting",
+    "writing",
+    "editing",
+    "technical-writing",
+    "documentation",
+    "email-copy",
+    "tone-of-voice",
+    "style-guide",
+    "proofreading",
     "content"
   ]
 }

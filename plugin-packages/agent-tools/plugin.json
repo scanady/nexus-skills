@@ -1,13 +1,17 @@
 {
   "name": "nexus-agent-tools",
   "version": "1.0.0",
-  "description": "Skills for designing AI agents, building agent skills, and managing knowledge context.",
+  "description": "Design and equip AI agents — personas, skill authoring, prompt engineering, and context curation. Build agents that behave consistently and carry the right knowledge into every session.",
   "keywords": [
-    "skills",
-    "prompts",
-    "agents",
-    "instructions",
-    "ai",
+    "ai-agents",
+    "agent-skills",
+    "prompt-engineering",
+    "system-prompts",
+    "context-engineering",
+    "knowledge-management",
+    "copilot-instructions",
+    "claude-code",
+    "agent-persona",
     "agent-tools"
   ]
 }
