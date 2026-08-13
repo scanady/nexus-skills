@@ -1,0 +1,13 @@
+{
+  "name": "nexus-product",
+  "version": "1.0.0",
+  "description": "Skills for product specification, PRD generation, brainstorming, reverse engineering, OKR strategy, and engagement loops.",
+  "keywords": [
+    "skills",
+    "prompts",
+    "agents",
+    "instructions",
+    "ai",
+    "product"
+  ]
+}

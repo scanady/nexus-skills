@@ -5,7 +5,7 @@ const {
   getTargetGroups
 } = require('../../core/skills');
 const { withSkillSource } = require('../../sources/skill-source');
-const { resolvePackSkills } = require('../../core/packs');
+const { resolvePluginSkills } = require('../../core/plugins');
 const { listSkills } = require('./list');
 
 function confirm(question) {
@@ -57,9 +57,9 @@ async function installSkills(options = {}) {
   await withSkillSource(options, async source => {
     const availableSkills = await source.listSkills();
 
-    if (options.packs && options.packs.length > 0) {
-      const packSkills = resolvePackSkills(options.packs, availableSkills);
-      options.skills = [...new Set([...(options.skills || []), ...packSkills])];
+    if (options.plugins && options.plugins.length > 0) {
+      const pluginSkills = resolvePluginSkills(options.plugins, availableSkills);
+      options.skills = [...new Set([...(options.skills || []), ...pluginSkills])];
     }
 
     const selectedSkills = options.skills || [];

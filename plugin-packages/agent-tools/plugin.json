@@ -1,0 +1,13 @@
+{
+  "name": "nexus-agent-tools",
+  "version": "1.0.0",
+  "description": "Skills for designing AI agents, building agent skills, and managing knowledge context.",
+  "keywords": [
+    "skills",
+    "prompts",
+    "agents",
+    "instructions",
+    "ai",
+    "agent-tools"
+  ]
+}

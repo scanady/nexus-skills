@@ -7,7 +7,7 @@ test('parseArgs defaults to install target agent skills for project scope', () =
   assert.deepEqual(parseArgs(['install']), {
     command: 'install',
     skills: [],
-    packs: [],
+    plugins: [],
     agents: ['agent-skills'],
     global: false,
     listMode: 'bare',
@@ -18,12 +18,12 @@ test('parseArgs defaults to install target agent skills for project scope', () =
   });
 });
 
-test('parseArgs collects repeatable skills, packs, and agents', () => {
+test('parseArgs collects repeatable skills, plugins, and agents', () => {
   const args = parseArgs([
     'install',
     '--skill', 'content-copy-humanizer',
     '-s', 'research-analyst',
-    '--pack', 'marketing',
+    '--plugin', 'marketing',
     '-P', 'tech',
     '--agent', 'github-copilot',
     '-a', 'claude-code',
@@ -37,7 +37,7 @@ test('parseArgs collects repeatable skills, packs, and agents', () => {
   assert.deepEqual(args, {
     command: 'install',
     skills: ['content-copy-humanizer', 'research-analyst'],
-    packs: ['marketing', 'tech'],
+    plugins: ['marketing', 'tech'],
     agents: ['github-copilot', 'claude-code'],
     global: true,
     listMode: 'bare',
@@ -46,6 +46,10 @@ test('parseArgs collects repeatable skills, packs, and agents', () => {
     sourceUrl: 'https://github.com/scanady/nexus-skills.git',
     sourceRef: 'main'
   });
+});
+
+test('parseArgs still accepts the deprecated --pack alias', () => {
+  assert.deepEqual(parseArgs(['install', '--pack', 'marketing']).plugins, ['marketing']);
 });
 
 test('parseArgs supports list output modes', () => {

@@ -68,7 +68,7 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 │   └── nxa.js                  # Published CLI executable
 ├── src/
 │   ├── cli/                    # CLI parsing, help, and command handlers
-│   ├── core/                   # Skill discovery, validation, packs, and file utilities
+│   ├── core/                   # Skill discovery, validation, plugins, and file utilities
 │   ├── sources/                # Local, git, and GitHub skill sources
 │   └── audit/                  # Skill overlap analysis engine
 ├── scripts/
@@ -81,15 +81,18 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 │   ├── content-copy-humanizer/
 │   ├── engineering-quality-tdd/
 │   ├── product-spec-prd-generator/
-│   └── ...                     # 141 skills total
-├── prompts/                    # Legacy prompt templates
+│   └── ...                     # 145 skills total
+├── plugin-packages/            # Plugin definitions (manifest + membership + optional MCP)
+│   ├── content/
+│   ├── data/
+│   └── ...                     # 12 plugins total
 ├── docs/                       # Project documentation
 ├── .github/
 │   ├── copilot-instructions.md # Global Copilot instructions
 │   ├── agents/                 # Copilot agent definitions
 │   ├── instructions/           # Path-scoped instruction files
 │   └── prompts/                # Reusable Copilot prompt files
-└── package.json
+
 ```
 
 ## Prerequisites & Requirements
@@ -137,7 +140,7 @@ node bin/nxa.js install --skill product-spec-prd-generator --global
 | `list` | | List available skills |
 | `audit-overlap` | | Find duplicate and overlapping skills |
 | `--skill <name>` | `-s` | Install a specific skill (repeatable) |
-| `--pack <name>` | `-P` | Install all skills in a named pack (repeatable) |
+| `--plugin <name>` | `-P` | Install all skills in a named plugin (repeatable) |
 | `--agent <name>` | `-a` | Target agent (repeatable, default: `agent-skills`) |
 | `--global` | `-g` | Install globally (default: project) |
 | `--project` | `-p` | Install to project (explicit) |
@@ -240,9 +243,9 @@ in CI, so a local build matches what gets published.
 ```bash
 npm run validate        # spec checks against every skills/<skill>/SKILL.md
 npm run scan            # writes skill-catalog-scan.json (mechanical metadata)
-npm run catalog         # rebuilds skill-catalog.json (merges scan + evaluations + packs)
-npm run build:plugins   # regenerates .claude-plugin/marketplace.json + per-pack bundles in dist/plugins/
-npm run build:site      # assembles GitHub Pages site in dist/site/ (catalog browser, pack manager, per-pack zips)
+npm run catalog         # rebuilds skill-catalog.json (merges scan + evaluations + plugins)
+npm run build:plugins   # regenerates .claude-plugin/marketplace.json + per-plugin bundles in dist/plugins/
+npm run build:site      # assembles GitHub Pages site in dist/site/ (catalog browser, plugin manager, per-plugin zips)
 npm run check:artifacts # fails if committed generated artifacts are stale
 
 npm run build           # all of the above in order
@@ -260,9 +263,9 @@ Outputs:
 |------|------|------|
 | `skill-catalog-scan.json` | `npm run scan` | no |
 | `skill-catalog.json` | `npm run catalog` (merges scan + `skill-catalog-evaluations.json`) | yes |
-| `.claude-plugin/marketplace.json` | `npm run build:plugins` (from `packs/*.json`) | yes |
+| `.claude-plugin/marketplace.json` | `npm run build:plugins` (from `plugin-packages/`) | yes |
 | `.claude-plugin/plugin.json` | `npm run build:plugins` (umbrella `nexus-all`) | yes |
-| `dist/plugins/<pack>/` | `npm run build:plugins` (self-contained pack bundles) | no |
+| `dist/plugins/<plugin>/` | `npm run build:plugins` (self-contained plugin bundles) | no |
 | `dist/site/` | `npm run build:site` (GitHub Pages root) | no |
 
 ### CI workflows
@@ -270,7 +273,7 @@ Outputs:
 | Workflow | Trigger | Purpose |
 |---|---|---|
 | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | PR + push to `main` | Validate skills, rebuild catalog, generate plugins, build site; warns if committed catalog/marketplace drifts from source. |
-| [`.github/workflows/release.yml`](.github/workflows/release.yml) | push to `main` | release-please opens a release PR with bumped version + changelog from Conventional Commits. On merge, tags a release and attaches per-pack zips, `skill-catalog.json`, and `marketplace.json` as release assets. |
+| [`.github/workflows/release.yml`](.github/workflows/release.yml) | push to `main` | release-please opens a release PR with bumped version + changelog from Conventional Commits. On merge, tags a release and attaches per-plugin zips, `skill-catalog.json`, and `marketplace.json` as release assets. |
 | [`.github/workflows/pages.yml`](.github/workflows/pages.yml) | release published (or manual) | Builds `dist/site/` and deploys it to GitHub Pages. |
 
 ### Releases and changelog
@@ -285,7 +288,7 @@ Use the following prefixes so release-please can categorize commits into the
 | `fix:` | patch | 🐛 Bug Fixes |
 | `perf:` | patch | ⚡ Performance |
 | `skill:` | patch | 🧠 New / Updated Skills |
-| `pack:` | patch | 📦 Pack Changes |
+| `plugin:` | patch | 📦 Plugin Changes |
 | `docs:` | patch | 📝 Documentation |
 | `build:` / `ci:` | patch | 🛠️ Build / 🤖 CI |
 | `chore:` / `refactor:` / `test:` / `style:` | none | hidden |
@@ -294,12 +297,21 @@ Use the following prefixes so release-please can categorize commits into the
 release-please maintains a long-lived PR titled `chore(main): release X.Y.Z`.
 Merging that PR cuts the release; nothing else needs to be tagged manually.
 
-### Adding a pack
+### Adding a plugin
 
-1. Create `packs/<your-pack>.json` with `name`, `description`, and a `skills`
-   array (literal names or `prefix-*` globs).
+A plugin is defined by a directory under `plugin-packages/`:
+
+| File | Required | Contents |
+|---|---|---|
+| `plugin.json` | yes | [Agent Plugins](https://agent-plugins.org/) manifest fields. Its schema is closed, so only `$schema`, `name`, `version`, `description`, `author`, `homepage`, `repository`, `license`, `keywords`, and `extensions` are allowed. Name it `nexus-<directory>`. |
+| `skills.json` | yes | `{ "skills": [...] }` — literal skill names or `prefix-*` globs. Build-only; it is never shipped. |
+| `mcp.json` | yes | `{ "mcpServers": {...} }`. Every plugin carries one; new plugins start from an empty stub. Declared servers are copied into the bundle and inlined into the marketplace entry, which is where Claude Code reads them. An empty stub ships nothing. |
+
+1. Create the directory and its files.
 2. Run `npm run build` locally and commit the regenerated catalog and plugin
    manifests. Do not commit `skill-catalog-scan.json`.
+   Validation fails if any skill belongs to no plugin, so add new skills to a
+   plugin in the same change.
 3. Open a PR. CI verifies everything compiles; on merge, release-please will
    pick the change up in the next release.
 

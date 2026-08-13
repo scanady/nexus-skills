@@ -217,7 +217,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .card-category { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
   .risk-badge {
     flex-shrink: 0;
     padding: 3px 9px;
@@ -275,7 +274,7 @@
   .tag.lang-javascript { background: rgba(234,179,8,0.08); color: #fbbf24; border-color: rgba(234,179,8,0.2); }
   .tag.ext { background: rgba(249,115,22,0.08); color: #fb923c; border-color: rgba(249,115,22,0.2); }
   .tag.lic { background: rgba(34,197,94,0.08); color: #4ade80; border-color: rgba(34,197,94,0.2); }
-  .tag.pack { background: rgba(6,182,212,0.08); color: #22d3ee; border-color: rgba(6,182,212,0.2); }
+  .tag.plugin { background: rgba(6,182,212,0.08); color: #22d3ee; border-color: rgba(6,182,212,0.2); }
 
   /* ── CAPABILITIES ── */
   .capabilities {
@@ -645,11 +644,8 @@
 
   <div class="controls">
     <input class="search-box" type="search" id="searchBox" placeholder="Search skills by name, capability, or keyword…" />
-    <select class="filter-select" id="packFilter">
-      <option value="">All Packs</option>
-    </select>
-    <select class="filter-select" id="categoryFilter">
-      <option value="">All Categories</option>
+    <select class="filter-select" id="pluginFilter">
+      <option value="">All Plugins</option>
     </select>
     <select class="filter-select" id="sortBy">
       <option value="name">Sort: Name</option>
@@ -673,8 +669,7 @@
       <thead>
         <tr>
           <th>Skill</th>
-          <th>Domain</th>
-          <th>Category</th>
+          <th>Plugin</th>
           <th>Description</th>
           <th>Usage Value</th>
           <th>Executability</th>
@@ -805,58 +800,20 @@ function formatTaxonomyLabel(value) {
     .join(' ');
 }
 
-function parseSkillName(name) {
-  const parts = String(name || '').split('-').filter(Boolean);
-
-  if (parts.length >= 3) {
-    return {
-      domain: parts[0],
-      category: parts[1],
-      skill: parts.slice(2).join('-')
-    };
-  }
-
-  if (parts.length === 2) {
-    return {
-      domain: parts[0],
-      category: 'general',
-      skill: parts[1]
-    };
-  }
-
-  if (parts.length === 1) {
-    return {
-      domain: 'other',
-      category: 'general',
-      skill: parts[0]
-    };
-  }
-
-  return {
-    domain: 'other',
-    category: 'general',
-    skill: 'unknown'
-  };
-}
-
-function getSkillTaxonomy(skill) {
-  return parseSkillName(skill.name);
-}
-
 // ── CATEGORY ICON + COLOR ──
-const CATEGORY_STYLES = {
-  'marketing': { icon: '📣', bg: '#1e1230', color: '#c084fc' },
-  'tech': { icon: '⚙️', bg: '#0f1f30', color: '#38bdf8' },
-  'agent': { icon: '🤖', bg: '#10201a', color: '#34d399' },
-  'product': { icon: '🎯', bg: '#121a1a', color: '#2dd4bf' },
-  'productivity': { icon: '⚡', bg: '#101a14', color: '#4ade80' },
-  'strategy': { icon: '🧠', bg: '#101520', color: '#818cf8' },
-  'design': { icon: '🎨', bg: '#1a1020', color: '#e879f9' },
-  'sales': { icon: '🤝', bg: '#1a1410', color: '#fdba74' },
+const PLUGIN_STYLES = {
+  'agent-tools': { icon: '🤖', bg: '#10201a', color: '#34d399' },
+  'comms': { icon: '📢', bg: '#102019', color: '#5eead4' },
   'content': { icon: '✍️', bg: '#151324', color: '#f9a8d4' },
   'data': { icon: '📊', bg: '#1a1410', color: '#fb923c' },
-  'comms': { icon: '📢', bg: '#102019', color: '#5eead4' },
-  'ops': { icon: '📋', bg: '#1a1410', color: '#fdba74' },
+  'design': { icon: '🎨', bg: '#1a1020', color: '#e879f9' },
+  'marketing': { icon: '📣', bg: '#1e1230', color: '#c084fc' },
+  'ops': { icon: '📋', bg: '#1a1612', color: '#fdba74' },
+  'product': { icon: '🎯', bg: '#121a1a', color: '#2dd4bf' },
+  'research': { icon: '🔍', bg: '#101a20', color: '#67e8f9' },
+  'skills': { icon: '🧩', bg: '#14121f', color: '#a5b4fc' },
+  'strategy': { icon: '🧠', bg: '#101520', color: '#818cf8' },
+  'tech': { icon: '⚙️', bg: '#0f1f30', color: '#38bdf8' },
   'Other': { icon: '◦', bg: '#1a1a1a', color: '#94a3b8' }
 };
 
@@ -889,12 +846,8 @@ function execSubScoresHtml(exec) {
 
 function buildCard(skill) {
   const ev = skill.evaluation;
-  const taxonomy = getSkillTaxonomy(skill);
-  const domain = taxonomy.domain;
-  const category = taxonomy.category;
-  const domainLabel = formatTaxonomyLabel(domain);
-  const categoryLabel = formatTaxonomyLabel(category);
-  const style = CATEGORY_STYLES[domain] || CATEGORY_STYLES['Other'];
+  const plugins = skill.plugins || [];
+  const style = PLUGIN_STYLES[plugins[0]] || PLUGIN_STYLES['Other'];
   const st = skill.structure;
   const nameHtml = skill.url
     ? `<a href="${skill.url}" class="card-name-link" target="_blank" rel="noopener noreferrer" title="Open ${skill.name} in repository">${skill.name}</a>`
@@ -910,8 +863,8 @@ function buildCard(skill) {
   if (ev.external_requirements_indicator !== 'self-contained') tags.push('<span class="tag ext">external deps</span>');
   if (ev.license && ev.license !== 'unspecified') tags.push(`<span class="tag lic">${ev.license}</span>`);
   if (st.estimated_tokens) tags.push(`<span class="tag">${st.estimated_tokens} tokens</span>`);
-  if (skill.packs && skill.packs.length > 0) {
-    skill.packs.forEach(p => tags.push(`<span class="tag pack">${p}</span>`));
+  if (skill.plugins && skill.plugins.length > 0) {
+    skill.plugins.forEach(p => tags.push(`<span class="tag plugin">${p}</span>`));
   }
 
   // Security findings
@@ -934,12 +887,11 @@ function buildCard(skill) {
   const uniqueId = skill.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
 
   return `
-<div class="skill-card" data-name="${skill.name.toLowerCase()}" data-domain="${domain}" data-category="${category}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}" data-pack="${(skill.packs||[]).join(',')}">  
+<div class="skill-card" data-name="${skill.name.toLowerCase()}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}" data-plugin="${plugins.join(',')}">  
   <div class="card-header">
     <div class="card-icon" style="background:${style.bg};color:${style.color}">${style.icon}</div>
     <div class="card-title-group">
       <div class="card-name" title="${skill.name}">${nameHtml}</div>
-      <div class="card-category">${domainLabel} / ${categoryLabel}</div>
     </div>
     ${riskBadge(ev.security_risk?.rating||'low')}
   </div>
@@ -1034,7 +986,7 @@ function buildCard(skill) {
           <span class="detail-key">Sub-Agents</span><span class="detail-val">${st.has_agents ? 'yes' : 'no'}</span>
           <span class="detail-key">Model Invocation</span><span class="detail-val">${skill.disable_model_invocation ? 'disabled' : 'enabled'}</span>
           <span class="detail-key">License</span><span class="detail-val">${ev.license||'unspecified'}</span>
-          <span class="detail-key">Packs</span><span class="detail-val">${(skill.packs||[]).join(', ')||'none'}</span>
+          <span class="detail-key">Plugins</span><span class="detail-val">${(skill.plugins||[]).join(', ')||'none'}</span>
           <span class="detail-key">Source</span><span class="detail-val"><a href="${skill.url}" style="color:var(--accent);text-decoration:none" target="_blank">view on GitHub ↗</a></span>
         </div>
       </div>
@@ -1046,20 +998,17 @@ function buildCard(skill) {
 
 function buildTableRow(skill) {
   const ev = skill.evaluation;
-  const taxonomy = getSkillTaxonomy(skill);
-  const domain = taxonomy.domain;
-  const category = taxonomy.category;
-  const style = CATEGORY_STYLES[domain] || CATEGORY_STYLES['Other'];
+  const plugins = skill.plugins || [];
+  const style = PLUGIN_STYLES[plugins[0]] || PLUGIN_STYLES['Other'];
   const st = skill.structure;
   const nameHtml = skill.url
     ? `<a href="${skill.url}" class="card-name-link" target="_blank" rel="noopener noreferrer">${skill.name}</a>`
     : skill.name;
 
   return `
-<tr class="table-row" data-name="${skill.name.toLowerCase()}" data-domain="${domain}" data-category="${category}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}" data-pack="${(skill.packs||[]).join(',')}">  
+<tr class="table-row" data-name="${skill.name.toLowerCase()}" data-risk="${ev.security_risk?.rating||'low'}" data-usage="${ev.usage_value?.score||0}" data-exec="${ev.executability?.score||0}" data-tokens="${st.estimated_tokens||0}" data-plugin="${plugins.join(',')}">  
   <td><div class="tbl-name-cell"><span class="tbl-icon" style="background:${style.bg};color:${style.color}">${style.icon}</span><span class="tbl-skill-name">${nameHtml}</span></div></td>
-  <td>${formatTaxonomyLabel(domain)}</td>
-  <td>${formatTaxonomyLabel(category)}</td>
+  <td>${plugins.map(formatTaxonomyLabel).join(', ')||'—'}</td>
   <td class="col-desc">${ev.core_capabilities||''}</td>
   <td class="col-score">${stars(ev.usage_value?.score||0)}<div class="score-num">${ev.usage_value?.score||0} / 5</div></td>
   <td class="col-score">${stars(ev.executability?.score||0)}<div class="score-num">${ev.executability?.score||0} / 5</div></td>
@@ -1125,45 +1074,11 @@ function buildOptions(selectId, values, defaultLabel) {
   });
 }
 
-function getAvailableDomains() {
-  return [...new Set(CATALOG.skills.map(skill => getSkillTaxonomy(skill).domain))].sort();
-}
-
-function getAvailableCategories(domain='') {
-  return [...new Set(
-    CATALOG.skills
-      .map(skill => getSkillTaxonomy(skill))
-      .filter(taxonomy => !domain || taxonomy.domain === domain)
-      .map(taxonomy => taxonomy.category)
-  )].sort();
-}
-
-function buildDomainFilter() {
-  buildOptions('domainFilter', getAvailableDomains(), 'All Domains');
-}
-
-function buildCategoryFilter(domain='') {
-  buildOptions('categoryFilter', getAvailableCategories(domain), 'All Categories');
-}
-
-function buildPackFilter() {
-  const packNames = CATALOG.summary?.packs
-    ? Object.keys(CATALOG.summary.packs).sort()
-    : [...new Set(CATALOG.skills.flatMap(s => s.packs || []))].sort();
-  buildOptions('packFilter', packNames, 'All Packs');
-}
-
-function syncCategoryFilter() {
-  const domain = document.getElementById('domainFilter').value;
-  const categoryFilter = document.getElementById('categoryFilter');
-  const currentCategory = categoryFilter.value;
-  const categories = getAvailableCategories(domain);
-
-  buildCategoryFilter(domain);
-
-  if (currentCategory && categories.includes(currentCategory)) {
-    categoryFilter.value = currentCategory;
-  }
+function buildPluginFilter() {
+  const pluginNames = CATALOG.summary?.plugins
+    ? Object.keys(CATALOG.summary.plugins).sort()
+    : [...new Set(CATALOG.skills.flatMap(s => s.plugins || []))].sort();
+  buildOptions('pluginFilter', pluginNames, 'All Plugins');
 }
 
 // ── RENDER CARDS ──
@@ -1177,8 +1092,7 @@ function renderCards() {
 // ── FILTER + SORT ──
 function applyFilters() {
   const search = document.getElementById('searchBox').value.toLowerCase();
-  const category = document.getElementById('categoryFilter').value;
-  const pack = document.getElementById('packFilter').value;
+  const plugin = document.getElementById('pluginFilter').value;
   const sortBy = document.getElementById('sortBy').value;
 
   const compare = (a, b) => {
@@ -1197,11 +1111,9 @@ function applyFilters() {
   cards.forEach(card => {
     const capText = card.querySelector('.capabilities')?.textContent.toLowerCase() || '';
     const nameMatch = !search || card.dataset.name.includes(search) || capText.includes(search) ||
-      formatTaxonomyLabel(card.dataset.domain).toLowerCase().includes(search) ||
-      formatTaxonomyLabel(card.dataset.category).toLowerCase().includes(search);
+      (card.dataset.plugin||'').toLowerCase().includes(search);
     const show = nameMatch &&
-      (!category || card.dataset.category === category) &&
-      (!pack || (card.dataset.pack||'').split(',').includes(pack));
+      (!plugin || (card.dataset.plugin||'').split(',').includes(plugin));
     card.classList.toggle('hidden', !show);
     if (show) visible++;
   });
@@ -1213,11 +1125,9 @@ function applyFilters() {
   rows.forEach(row => {
     const descText = row.querySelector('.col-desc')?.textContent.toLowerCase() || '';
     const nameMatch = !search || row.dataset.name.includes(search) || descText.includes(search) ||
-      formatTaxonomyLabel(row.dataset.domain).toLowerCase().includes(search) ||
-      formatTaxonomyLabel(row.dataset.category).toLowerCase().includes(search);
+      (row.dataset.plugin||'').toLowerCase().includes(search);
     const show = nameMatch &&
-      (!category || row.dataset.category === category) &&
-      (!pack || (row.dataset.pack||'').split(',').includes(pack));
+      (!plugin || (row.dataset.plugin||'').split(',').includes(plugin));
     row.classList.toggle('hidden', !show);
   });
 
@@ -1264,9 +1174,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function bindControls() {
   if (controlsBound) return;
   document.getElementById('searchBox').addEventListener('input', applyFilters);
-  document.getElementById('categoryFilter').addEventListener('change', applyFilters);
   document.getElementById('sortBy').addEventListener('change', applyFilters);
-  document.getElementById('packFilter').addEventListener('change', applyFilters);
+  document.getElementById('pluginFilter').addEventListener('change', applyFilters);
   const agentSel = document.getElementById('agentSelect');
   if (agentSel) {
     const saved = localStorage.getItem('catalog-agent');
@@ -1281,8 +1190,7 @@ function bindControls() {
 
 function resetFilters() {
   document.getElementById('searchBox').value = '';
-  document.getElementById('categoryFilter').value = '';
-  document.getElementById('packFilter').value = '';
+  document.getElementById('pluginFilter').value = '';
   document.getElementById('sortBy').value = 'name';
 }
 
@@ -1364,8 +1272,7 @@ function initializeCatalog(data, sourceLabel='local file') {
 
   resetFilters();
   buildDashboard();
-  buildCategoryFilter();
-  buildPackFilter();
+  buildPluginFilter();
   renderCards();
   renderTable();
   const savedView = localStorage.getItem('catalog-view') || 'grid';

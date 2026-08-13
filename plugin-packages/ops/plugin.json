@@ -1,0 +1,13 @@
+{
+  "name": "nexus-ops",
+  "version": "1.0.0",
+  "description": "Skills for operational workflows — SOP creation, daily meeting notes, and productivity routines.",
+  "keywords": [
+    "skills",
+    "prompts",
+    "agents",
+    "instructions",
+    "ai",
+    "ops"
+  ]
+}

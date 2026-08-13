@@ -4,7 +4,7 @@ function parseArgs(args) {
   const result = {
     command: null,
     skills: [],
-    packs: [],
+    plugins: [],
     agents: [],
     global: false,
     listMode: 'bare',
@@ -25,10 +25,11 @@ function parseArgs(args) {
       if (index < args.length) {
         result.skills.push(args[index]);
       }
-    } else if (arg === '--pack' || arg === '-P') {
+    } else if (arg === '--plugin' || arg === '-P' || arg === '--pack') {
+      // --pack is the pre-1.3 spelling, kept as a deprecated alias.
       index++;
       if (index < args.length) {
-        result.packs.push(args[index]);
+        result.plugins.push(args[index]);
       }
     } else if (arg === '--agent' || arg === '-a') {
       index++;

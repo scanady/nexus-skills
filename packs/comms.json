@@ -1,9 +1,0 @@
-{
-  "name": "comms",
-  "version": "1.0.0",
-  "description": "Skills for organizational announcements, internal community engagement, and customer email communication.",
-  "skills": [
-    "people-comms-announce-organizational",
-    "people-comms-engage-internal-community"
-  ]
-}

@@ -1,28 +1,39 @@
 # Plugin Reference
 
-Complete technical reference for Cowork/Claude Code knowledge-work plugin components, manifest schema, and directory structure.
+Complete technical reference for Cowork/Claude Code knowledge-work plugin components, manifest schema, and directory structure. The portable parts of this format (`plugin.json`, `mcp.json`, `skills/`) follow the [Agent Plugins specification](https://agent-plugins.org/) v1.0.0. Commands are a Claude-specific extension layered on top via the spec's reverse-domain namespace mechanism.
 
 ## Plugin Manifest Schema
 
-The `.claude-plugin/plugin.json` file defines plugin metadata. This is the only file that goes inside the `.claude-plugin/` directory.
+`plugin.json` sits at the plugin root and defines plugin metadata. There is no `.claude-plugin/` wrapper directory in the Agent Plugins spec.
 
 ### Fields
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `name` | **Yes** | string | Unique identifier (kebab-case, no spaces) | `"sales"` |
-| `version` | No | string | Semantic version | `"1.0.0"` |
+| `$schema` | **Yes** | string (const) | Must be `"https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"` | `"https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"` |
+| `name` | **Yes** | string | 1-64 chars; lowercase alphanumeric, hyphens, periods only; no leading/trailing `-`/`.`; no `--` or `..` | `"sales"` |
+| `version` | No | string | Semantic version (recommended) | `"1.0.0"` |
 | `description` | No | string | Brief explanation of plugin purpose | `"Sales workflows and deal management"` |
-| `author` | No | string | Author name | `"Anthropic"` |
-| `keywords` | No | array | Discovery tags | `["sales", "crm", "deals"]` |
+| `author` | No | object | `{"name": string, "email": string, "url": string}` — not a plain string | `{"name": "Anthropic"}` |
+| `homepage` | No | string | Project homepage URL | `"https://example.com"` |
+| `repository` | No | string | Source repository URL | `"https://github.com/org/plugin"` |
+| `license` | No | string | License identifier | `"MIT"` |
+| `keywords` | No | array of strings | Discovery tags | `["sales", "crm", "deals"]` |
+| `extensions` | No | object | Client-specific manifest data keyed by reverse-domain namespace | `{"com.anthropic.claude": {}}` |
+
+The schema is **closed**: `additionalProperties` is `false`. Fields outside this list are invalid — put client-specific configuration under `extensions.<namespace>` instead of adding new top-level fields. A conformant client must report unknown top-level fields but is not required to reject the plugin for them; any other schema violation is fatal.
 
 ### Example Manifest
 
 ```json
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "sales",
   "version": "1.0.0",
-  "description": "Turn Claude into a sales specialist with CRM integration, call summaries, and deal management"
+  "description": "Turn Claude into a sales specialist with CRM integration, call summaries, and deal management",
+  "extensions": {
+    "com.anthropic.claude": {}
+  }
 }
 ```
 
@@ -32,24 +43,24 @@ The `name` field determines the command namespace. A plugin named `"sales"` has 
 
 ```
 plugin-name/
-├── .claude-plugin/              # Metadata directory
-│   └── plugin.json                # Plugin manifest — ONLY file here
-├── .mcp.json                    # MCP server connections (connectors)
-├── CONNECTORS.md                # Tool category documentation
-├── README.md                    # Usage documentation
-├── commands/                    # Slash command definitions
-│   ├── command-one.md
-│   └── command-two.md
-└── skills/                      # Domain knowledge
-    ├── skill-one/
-    │   ├── SKILL.md
-    │   └── references/            # Optional: large reference docs
-    │       └── detailed-guide.md
-    └── skill-two/
-        └── SKILL.md
+├── plugin.json                  # Plugin manifest — plugin root, spec-defined
+├── mcp.json                     # MCP server connections (connectors) — plugin root, spec-defined
+├── com.anthropic.claude/        # Client extension namespace (reverse-domain)
+│   └── commands/                  # Slash command definitions
+│       ├── command-one.md
+│       └── command-two.md
+├── skills/                      # Domain knowledge — plugin root, spec-defined
+│   ├── skill-one/
+│   │   ├── SKILL.md
+│   │   └── references/            # Optional: large reference docs
+│   │       └── detailed-guide.md
+│   └── skill-two/
+│       └── SKILL.md
+├── CONNECTORS.md                # Tool category documentation (not spec-defined, informational)
+└── README.md                    # Usage documentation (not spec-defined, informational)
 ```
 
-**Critical**: All component directories (`commands/`, `skills/`) go at the plugin root, NOT inside `.claude-plugin/`. Only `plugin.json` lives in `.claude-plugin/`.
+**Critical**: `plugin.json`, `mcp.json`, and `skills/` are the three spec-defined locations and all live at the plugin root — no wrapper directory. Commands are not part of the portable spec; they live under the reverse-domain client namespace `com.anthropic.claude/`, per the spec's client-extension mechanism. All resolved paths (including symlink targets) must stay inside the plugin root.
 
 ## Component Reference
 
@@ -58,6 +69,8 @@ plugin-name/
 Skills encode domain expertise that Claude draws on automatically when relevant. Each skill is a directory containing a `SKILL.md` file.
 
 **Location**: `skills/<skill-name>/SKILL.md`
+
+**Discovery rule**: a client treats each immediate child directory of `skills/` that contains a file named exactly `SKILL.md` as one skill. Clients do not recursively search deeper descendants — do not nest a skill inside a subdirectory of `skills/`. Invalid skills are skipped without failing the rest of the plugin.
 
 **Frontmatter fields:**
 
@@ -90,13 +103,14 @@ description: 'Domain expertise this skill covers. Claude uses this automatically
 
 | Subdirectory | Purpose |
 |---|---|
+| `scripts/` | Executable helper scripts for the skill |
 | `references/` | Large reference docs split from main SKILL.md |
 
 ### Commands
 
-Commands define explicit slash commands users invoke. Each command is a markdown file in `commands/`.
+Commands define explicit slash commands users invoke. The Agent Plugins spec defines no portable command component, so commands live under the `com.anthropic.claude` client extension namespace. Each command is a markdown file.
 
-**Location**: `commands/<command-name>.md`
+**Location**: `com.anthropic.claude/commands/<command-name>.md`
 
 **Frontmatter fields:**
 
@@ -113,7 +127,7 @@ description: One-line summary of what this command does
 
 # /command-name
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../CONNECTORS.md).
+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
 
 [Purpose description]
 
@@ -133,44 +147,73 @@ description: One-line summary of what this command does
 ```
 
 **Guidelines:**
-- Command file name becomes the command suffix: `commands/call-summary.md` → `/plugin-name:call-summary`
-- Always include the CONNECTORS.md callout at the top
+- Command file name becomes the command suffix: `com.anthropic.claude/commands/call-summary.md` → `/plugin-name:call-summary`
+- Always include the CONNECTORS.md callout at the top, with a relative path back to the plugin root (`../../CONNECTORS.md` from inside `com.anthropic.claude/commands/`)
 - Define clear input/output expectations
 - Use `~~category` placeholders for tool references
 
 ### Connectors (MCP Servers)
 
-Connectors wire Claude to external tools via MCP servers. Two files work together:
+Connectors wire Claude to external tools via MCP servers. Two files work together: `mcp.json` (spec-defined, machine-readable) and `CONNECTORS.md` (informational).
 
-#### .mcp.json
+#### mcp.json
 
 Pre-configures specific MCP servers for the plugin.
 
-**Location**: `.mcp.json` at plugin root
+**Location**: `mcp.json` at the plugin root.
 
-**Format:**
+**Top-level fields:**
+
+| Field | Required | Description |
+|---|---|---|
+| `$schema` | Yes | Must be `"https://agent-plugins.org/schemas/1.0.0/mcp.schema.json"` |
+| `mcpServers` | Yes | Object mapping server name → server config |
+
+**Server config, by `type`:**
+
+| Type | Purpose | Required fields | Optional fields |
+|---|---|---|---|
+| `streamable-http` | Remote server, current transport (preferred) | `type`, `url` | `headers` |
+| `sse` | Remote server, legacy transport | `type`, `url` | `headers` |
+| `stdio` | Local subprocess | `type`, `command` | `args`, `env`, `cwd` |
+
+`url` must be an absolute HTTP/HTTPS URL with no fragment; non-loopback hosts must use HTTPS. `command` must resolve as a single executable token or a `./`-relative path inside the plugin. For `stdio` servers, `args` items, `env` values, and `cwd` may reference `${PLUGIN_ROOT}` (the plugin's install directory) and `${PLUGIN_DATA}` (a client-managed writable directory persisted across updates) — expansion is single-pass and only applies in those three places, never in `command` or `env` keys. `env` must not define a key literally named `PLUGIN_ROOT` or `PLUGIN_DATA`. `cwd` defaults to the plugin root when omitted, and must itself be plugin-relative (`./...`) or rooted at `${PLUGIN_ROOT}`/`${PLUGIN_DATA}`.
+
+**Example — remote server:**
 
 ```json
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
-    "server-name": {
-      "type": "http",
-      "url": "https://mcp-server-url.example.com/sse"
+    "hubspot": {
+      "type": "streamable-http",
+      "url": "https://mcp.hubspot.com/mcp"
     }
   }
 }
 ```
 
-**Server configuration fields:**
+**Example — local subprocess server:**
 
-| Field | Description |
-|---|---|
-| `type` | Connection type — typically `"http"` for remote servers |
-| `url` | MCP server endpoint URL |
+```json
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "local-index": {
+      "type": "stdio",
+      "command": "./scripts/server.sh",
+      "args": ["--data-dir", "${PLUGIN_DATA}"],
+      "cwd": "${PLUGIN_ROOT}"
+    }
+  }
+}
+```
+
+A bare `"type": "http"` is not valid under the spec — remote servers must declare `streamable-http` (or `sse` for legacy servers only).
 
 #### CONNECTORS.md
 
-Documents every tool category used in the plugin, mapping `~~category` placeholders to actual tools.
+Documents every tool category used in the plugin, mapping `~~category` placeholders to actual tools. Not part of the Agent Plugins spec — a plain informational file for plugin authors and users.
 
 **Location**: `CONNECTORS.md` at plugin root
 
@@ -183,7 +226,7 @@ Documents every tool category used in the plugin, mapping `~~category` placehold
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~CRM` might mean Salesforce, HubSpot, or any other CRM with an MCP server.
 
-Plugins are **tool-agnostic** — they describe workflows in terms of categories (CRM, chat, email, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.
+Plugins are **tool-agnostic** — they describe workflows in terms of categories (CRM, chat, email, etc.) rather than specific products. `mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.
 
 ## Connectors for this plugin
 
@@ -196,7 +239,7 @@ Plugins are **tool-agnostic** — they describe workflows in terms of categories
 
 **Guidelines:**
 - Every `~~category` used anywhere in skills or commands must appear in CONNECTORS.md
-- "Included servers" are pre-configured in `.mcp.json`
+- "Included servers" are pre-configured in `mcp.json`
 - "Other options" lists alternatives the user could swap in
 - Keep the standard preamble explaining how placeholders work
 
@@ -207,9 +250,9 @@ The `~~category` placeholder system makes plugins tool-agnostic. Instead of hard
 ### How It Works
 
 1. Plugin author writes workflows using `~~category` placeholders
-2. `.mcp.json` pre-configures default servers for each category
+2. `mcp.json` pre-configures default servers for each category
 3. `CONNECTORS.md` documents available options per category
-4. Users customize by swapping `.mcp.json` entries or replacing `~~` placeholders
+4. Users customize by swapping `mcp.json` entries or replacing `~~` placeholders
 
 ### Common Placeholder Categories
 
@@ -301,25 +344,28 @@ Claude: [Step-by-step of what Claude does]
 
 ## Configuration
 
-[Any customization steps — editing .mcp.json, adding API keys, etc.]
+[Any customization steps — editing mcp.json, adding API keys, etc.]
 ```
 
 ## Validation Checklist
 
 Use this checklist to verify a plugin before distribution:
 
-- [ ] `.claude-plugin/plugin.json` exists with valid JSON and a `name` field
-- [ ] `name` is kebab-case with no spaces
-- [ ] No component directories inside `.claude-plugin/` (only `plugin.json`)
-- [ ] Each skill folder contains a `SKILL.md` with `name` and `description` frontmatter
+- [ ] `plugin.json` exists at the plugin root (no `.claude-plugin/` wrapper) with valid JSON
+- [ ] `plugin.json` has `$schema` = `https://agent-plugins.org/schemas/1.0.0/plugin.schema.json` and a `name` field
+- [ ] `name` matches the spec pattern (lowercase alphanumeric/hyphen/period, no leading/trailing separator, no `--`/`..`)
+- [ ] `plugin.json` has no fields beyond the closed schema's allowed set; `author`, if present, is an object
+- [ ] `skills/` sits at the plugin root; each skill folder is an immediate child containing `SKILL.md` with `name` and `description` frontmatter
 - [ ] Skill folder name matches the `name` frontmatter field
-- [ ] Each command file has a `description` frontmatter field
+- [ ] Command files live under `com.anthropic.claude/commands/`, not at the plugin root; each has a `description` frontmatter field
 - [ ] All tool references use `~~category` placeholders, not hardcoded tool names
 - [ ] `CONNECTORS.md` documents every `~~category` placeholder used in the plugin
-- [ ] `.mcp.json` pre-configures at least the primary connectors
+- [ ] `mcp.json` exists at the plugin root with `$schema` = `https://agent-plugins.org/schemas/1.0.0/mcp.schema.json` and pre-configures at least the primary connectors
+- [ ] Every `mcp.json` server entry declares `type: stdio`, `type: streamable-http`, or `type: sse` — never a bare `"http"`
 - [ ] `README.md` covers: Installation, What It Does, Commands, Skills, Example Workflows, Data Sources
 - [ ] Skill files are under 500 lines (use `references/` for overflow)
 - [ ] Everything is markdown and JSON — no code, no build steps, no executables
+- [ ] No resolved path, including symlink targets, escapes the plugin root
 
 ## Distribution
 
@@ -351,7 +397,7 @@ Install from [claude.com/plugins](https://claude.com/plugins/).
 ### Customization After Install
 
 Teams typically customize plugins by:
-1. Editing `.mcp.json` to connect their specific tool instances
+1. Editing `mcp.json` to connect their specific tool instances
 2. Replacing `~~category` placeholders with specific tool names (optional)
 3. Adding company-specific context to skill files (terminology, processes)
 4. Modifying command workflows to match team processes

@@ -30,6 +30,7 @@
         "./skills/agents-skill-spec-builder",
         "./skills/ai-prompt-engineer",
         "./skills/knowledge-context-curator",
+        "./skills/knowledge-context-session-handover",
         "./skills/knowledge-ops"
       ]
     },
@@ -83,7 +84,7 @@
     },
     {
       "name": "nexus-data",
-      "description": "Skills for data engineering, AI/ML pipelines, RAG architecture, business performance analysis, and database design.",
+      "description": "Skills for data engineering, analysis, and AI/ML — pipelines, RAG architecture, statistical modeling, KPI design, dataset profiling, and chart design.",
       "source": "./",
       "strict": false,
       "version": "1.0.0",
@@ -101,15 +102,24 @@
         "./skills/data-ai-ml-rag-architect",
         "./skills/data-ai-post-training-expert",
         "./skills/data-ai-product-specialist",
+        "./skills/data-analysis-business-context",
         "./skills/data-analysis-business-performance",
+        "./skills/data-analysis-dataset-profiler",
+        "./skills/data-analysis-hypothesis-generation",
+        "./skills/data-analysis-kpi-designer",
+        "./skills/data-analysis-kpi-reporting",
+        "./skills/data-analysis-statistical-methods",
+        "./skills/data-analysis-statistical-modeling",
+        "./skills/data-analysis-validator",
         "./skills/data-eng-database-architect",
         "./skills/data-eng-pandas-specialist",
-        "./skills/data-eng-pipeline-architect"
+        "./skills/data-eng-pipeline-architect",
+        "./skills/data-visual-chart-designer"
       ]
     },
     {
       "name": "nexus-design",
-      "description": "Skills for UX research, application design, product overviews, personas, scroll storytelling, and design systems.",
+      "description": "Skills for UX research, application design, UI craft, design systems, and visual and image direction.",
       "source": "./",
       "strict": false,
       "version": "1.0.0",
@@ -126,19 +136,24 @@
         "./skills/design-application-ux",
         "./skills/design-product-overview-builder",
         "./skills/design-product-overview-recorder",
+        "./skills/design-research-lean-ux",
         "./skills/design-research-ux-artifacts",
         "./skills/design-research-ux-researcher",
         "./skills/design-scroll-storytelling",
         "./skills/design-system-architect",
+        "./skills/design-ui-microinteractions",
         "./skills/design-ui-system-advisor",
+        "./skills/design-ui-usability-principles",
+        "./skills/design-ui-visual-refactor",
         "./skills/design-visual-image-generator",
         "./skills/design-visual-image-system-director",
-        "./skills/design-web-impactful"
+        "./skills/design-web-impactful",
+        "./skills/personal-design-meeting-background"
       ]
     },
     {
       "name": "nexus-marketing",
-      "description": "Skills for campaigns, SEO, brand strategy, content production, customer segmentation, competitive intelligence, and sales outreach.",
+      "description": "Skills for campaigns, SEO, brand strategy, content production, customer segmentation, and sales outreach.",
       "source": "./",
       "strict": false,
       "version": "1.0.0",
@@ -166,6 +181,7 @@
         "./skills/marketing-seo-adsense-readiness",
         "./skills/marketing-seo-adsense-review",
         "./skills/marketing-seo-cro",
+        "./skills/marketing-seo-structured-data",
         "./skills/sales-outreach-specialist",
         "./skills/sales-pipeline-revops"
       ]
@@ -191,7 +207,7 @@
     },
     {
       "name": "nexus-product",
-      "description": "Skills for product specification, PRD generation, brainstorming, reverse engineering, and OKR strategy.",
+      "description": "Skills for product specification, PRD generation, brainstorming, reverse engineering, OKR strategy, and engagement loops.",
       "source": "./",
       "strict": false,
       "version": "1.0.0",
@@ -209,9 +225,37 @@
         "./skills/product-spec-game-changing-features",
         "./skills/product-spec-prd-generator",
         "./skills/product-spec-reverse-engineer",
+        "./skills/product-strategy-habit-loops",
         "./skills/product-strategy-okr-specialist",
         "./skills/product-strategy-validator",
         "./skills/product-vision-strategy"
+      ]
+    },
+    {
+      "name": "nexus-research",
+      "description": "Skills for market research, competitive intelligence, opportunity sizing, persona building, and deep reading analysis.",
+      "source": "./",
+      "strict": false,
+      "version": "1.0.0",
+      "keywords": [
+        "skills",
+        "prompts",
+        "agents",
+        "instructions",
+        "ai",
+        "research"
+      ],
+      "skills": [
+        "./skills/research-ai-landscape-brief",
+        "./skills/research-analyst",
+        "./skills/research-deep-reading-analyst",
+        "./skills/research-dtc-insurance-market-intelligence",
+        "./skills/research-market-analyst",
+        "./skills/research-market-competitor-intel",
+        "./skills/research-market-opportunity",
+        "./skills/research-market-persona-builder",
+        "./skills/research-market-researcher",
+        "./skills/research-weekly-ai-news"
       ]
     },
     {
@@ -238,7 +282,7 @@
     },
     {
       "name": "nexus-strategy",
-      "description": "Skills for strategic decision-making, market research, competitive intelligence, executive presentations, and critical reasoning.",
+      "description": "Skills for strategic decision-making, outcome design, planning, executive presentations, and critical reasoning.",
       "source": "./",
       "strict": false,
       "version": "1.0.0",
@@ -252,16 +296,6 @@
       ],
       "skills": [
         "./skills/legal-compliance-regulatory-monitor",
-        "./skills/research-ai-landscape-brief",
-        "./skills/research-analyst",
-        "./skills/research-deep-reading-analyst",
-        "./skills/research-dtc-insurance-market-intelligence",
-        "./skills/research-market-analyst",
-        "./skills/research-market-competitor-intel",
-        "./skills/research-market-opportunity",
-        "./skills/research-market-persona-builder",
-        "./skills/research-market-researcher",
-        "./skills/research-weekly-ai-news",
         "./skills/strategy-change-management",
         "./skills/strategy-critical-reasoning",
         "./skills/strategy-decision",
@@ -271,17 +305,15 @@
         "./skills/strategy-exec-presentation-designer",
         "./skills/strategy-frameworks-mckinsey-brief",
         "./skills/strategy-innovation-catalyst",
+        "./skills/strategy-outcome-design",
         "./skills/strategy-planning-opportunity",
         "./skills/strategy-planning-pricing",
-        "./skills/strategy-planning-startup",
-        "./skills/tech-leader-exec-briefing",
-        "./skills/tech-leader-roadmap-narrator",
-        "./skills/tech-leader-vision-builder"
+        "./skills/strategy-planning-startup"
       ]
     },
     {
       "name": "nexus-tech",
-      "description": "Skills for software engineering — git workflows, architecture decisions, code quality, TDD, API/MCP building, and GitHub repo management.",
+      "description": "Skills for software engineering and engineering leadership — git workflows, architecture decisions, code quality, TDD, API and MCP building, GitHub repo management, and executive briefings.",
       "source": "./",
       "strict": false,
       "version": "1.0.0",
@@ -301,10 +333,12 @@
         "./skills/engineering-api-mcp-builder",
         "./skills/engineering-api-n8n-workflow-builder",
         "./skills/engineering-arch-architecture-decision-records",
+        "./skills/engineering-arch-design-reviewer",
         "./skills/engineering-arch-principle-engineer",
         "./skills/engineering-arch-system-designer",
         "./skills/engineering-data-scraper",
         "./skills/engineering-database-optimizer",
+        "./skills/engineering-dev-clarify-requirements",
         "./skills/engineering-dev-git-commit",
         "./skills/engineering-dev-git-finish-branch",
         "./skills/engineering-dev-git-start-branch",
@@ -315,9 +349,13 @@
         "./skills/engineering-github-repo-standards",
         "./skills/engineering-legacy-modernizer",
         "./skills/engineering-quality-code-simplifier",
+        "./skills/engineering-quality-critique-panel",
         "./skills/engineering-quality-receiving-review",
         "./skills/engineering-quality-requesting-review",
-        "./skills/engineering-quality-tdd"
+        "./skills/engineering-quality-tdd",
+        "./skills/tech-leader-exec-briefing",
+        "./skills/tech-leader-roadmap-narrator",
+        "./skills/tech-leader-vision-builder"
       ]
     },
     {

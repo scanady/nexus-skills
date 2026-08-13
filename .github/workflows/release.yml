@@ -52,7 +52,7 @@ jobs:
       - name: Build everything
         run: npm run build
 
-      - name: Attach pack zips to release
+      - name: Attach plugin zips to release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

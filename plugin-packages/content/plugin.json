@@ -1,0 +1,13 @@
+{
+  "name": "nexus-content",
+  "version": "1.0.0",
+  "description": "Skills for writing, editing, and transforming content — copy, email sequences, technical docs, and style extraction.",
+  "keywords": [
+    "skills",
+    "prompts",
+    "agents",
+    "instructions",
+    "ai",
+    "content"
+  ]
+}

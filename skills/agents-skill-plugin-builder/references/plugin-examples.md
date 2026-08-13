@@ -1,6 +1,6 @@
 # Plugin Examples
 
-Concrete examples of knowledge-work plugin components modeled after the [Anthropic knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) repository. Use these as reference during plugin generation.
+Concrete examples of knowledge-work plugin components modeled after the [Anthropic knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) repository, adapted to the [Agent Plugins specification](https://agent-plugins.org/) v1.0.0 directory layout: `plugin.json` and `mcp.json` at the plugin root, `skills/` at the plugin root, and commands under the `com.anthropic.claude/` client extension namespace. Use these as reference during plugin generation.
 
 ---
 
@@ -12,31 +12,35 @@ A role-based plugin that turns Claude into a sales specialist with CRM integrati
 
 ```
 sales/
-├── .claude-plugin/
-│   └── plugin.json
-├── .mcp.json
+├── plugin.json
+├── mcp.json
+├── com.anthropic.claude/
+│   └── commands/
+│       ├── call-summary.md
+│       ├── deal-review.md
+│       └── prospect-research.md
+├── skills/
+│   ├── account-research/
+│   │   └── SKILL.md
+│   ├── deal-management/
+│   │   └── SKILL.md
+│   └── objection-handling/
+│       └── SKILL.md
 ├── CONNECTORS.md
-├── README.md
-├── commands/
-│   ├── call-summary.md
-│   ├── deal-review.md
-│   └── prospect-research.md
-└── skills/
-    ├── account-research/
-    │   └── SKILL.md
-    ├── deal-management/
-    │   └── SKILL.md
-    └── objection-handling/
-        └── SKILL.md
+└── README.md
 ```
 
 ### plugin.json
 
 ```json
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "sales",
   "version": "1.0.0",
-  "description": "Turn Claude into a sales specialist with CRM integration, call summaries, and deal management"
+  "description": "Turn Claude into a sales specialist with CRM integration, call summaries, and deal management",
+  "extensions": {
+    "com.anthropic.claude": {}
+  }
 }
 ```
 
@@ -132,7 +136,7 @@ For each objection type, prepare:
 4. **Next step** — Clear call to action
 ```
 
-### Command: commands/call-summary.md
+### Command: com.anthropic.claude/commands/call-summary.md
 
 ```markdown
 ---
@@ -141,7 +145,7 @@ description: Process sales call notes into structured summaries with action item
 
 # /call-summary
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../CONNECTORS.md).
+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
 
 Process sales call notes or transcripts into a structured summary with extracted action items and recommended follow-ups.
 
@@ -187,7 +191,7 @@ Process sales call notes or transcripts into a structured summary with extracted
 [Draft email]
 ```
 
-### Command: commands/prospect-research.md
+### Command: com.anthropic.claude/commands/prospect-research.md
 
 ```markdown
 ---
@@ -196,7 +200,7 @@ description: Research a prospect or account and produce a comprehensive intellig
 
 # /prospect-research
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../CONNECTORS.md).
+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
 
 Research a company or contact and produce an intelligence brief for sales preparation.
 
@@ -233,7 +237,7 @@ Claude: I'll research Acme Corp for you. Let me check our internal data first...
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~CRM` might mean Salesforce, HubSpot, or any other CRM with an MCP server.
 
-Plugins are **tool-agnostic** — they describe workflows in terms of categories (CRM, chat, email, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.
+Plugins are **tool-agnostic** — they describe workflows in terms of categories (CRM, chat, email, etc.) rather than specific products. `mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.
 
 ## Connectors for this plugin
 
@@ -246,18 +250,19 @@ Plugins are **tool-agnostic** — they describe workflows in terms of categories
 | Calendar | `~~calendar` | Google Calendar | Microsoft Outlook |
 ```
 
-### .mcp.json
+### mcp.json
 
 ```json
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
     "hubspot": {
-      "type": "http",
-      "url": "https://mcp.hubspot.com/sse"
+      "type": "streamable-http",
+      "url": "https://mcp.hubspot.com/mcp"
     },
     "slack": {
-      "type": "http",
-      "url": "https://mcp.slack.com/sse"
+      "type": "streamable-http",
+      "url": "https://mcp.slack.com/mcp"
     }
   }
 }
@@ -273,30 +278,34 @@ A plugin for legal professionals focused on contract review and compliance.
 
 ```
 legal/
-├── .claude-plugin/
-│   └── plugin.json
-├── .mcp.json
+├── plugin.json
+├── mcp.json
+├── com.anthropic.claude/
+│   └── commands/
+│       ├── review-contract.md
+│       └── summarize-agreement.md
+├── skills/
+│   ├── contract-review/
+│   │   ├── SKILL.md
+│   │   └── references/
+│   │       └── clause-library.md
+│   └── compliance/
+│       └── SKILL.md
 ├── CONNECTORS.md
-├── README.md
-├── commands/
-│   ├── review-contract.md
-│   └── summarize-agreement.md
-└── skills/
-    ├── contract-review/
-    │   ├── SKILL.md
-    │   └── references/
-    │       └── clause-library.md
-    └── compliance/
-        └── SKILL.md
+└── README.md
 ```
 
 ### plugin.json
 
 ```json
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "legal",
   "version": "1.0.0",
-  "description": "Contract review, clause analysis, and legal compliance workflows"
+  "description": "Contract review, clause analysis, and legal compliance workflows",
+  "extensions": {
+    "com.anthropic.claude": {}
+  }
 }
 ```
 
@@ -357,7 +366,7 @@ Produce a review memo with:
 For the full clause library reference, see [references/clause-library.md](references/clause-library.md).
 ```
 
-### Command: commands/review-contract.md
+### Command: com.anthropic.claude/commands/review-contract.md
 
 ```markdown
 ---
@@ -366,7 +375,7 @@ description: Review a contract against the playbook, flag deviations, and genera
 
 # /review-contract
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../CONNECTORS.md).
+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
 
 Perform a comprehensive contract review using the playbook-based methodology.
 
@@ -407,19 +416,19 @@ A plugin for data analysts and engineers focused on SQL, analysis, and data pipe
 
 ```
 data/
-├── .claude-plugin/
-│   └── plugin.json
-├── .mcp.json
+├── plugin.json
+├── mcp.json
+├── com.anthropic.claude/
+│   └── commands/
+│       ├── analyze.md
+│       └── build-dashboard.md
+├── skills/
+│   ├── sql-queries/
+│   │   └── SKILL.md
+│   └── data-modeling/
+│       └── SKILL.md
 ├── CONNECTORS.md
-├── README.md
-├── commands/
-│   ├── analyze.md
-│   └── build-dashboard.md
-└── skills/
-    ├── sql-queries/
-    │   └── SKILL.md
-    └── data-modeling/
-        └── SKILL.md
+└── README.md
 ```
 
 ### Skill: sql-queries/SKILL.md
@@ -494,7 +503,7 @@ FROM steps
 ```
 ```
 
-### Command: commands/analyze.md
+### Command: com.anthropic.claude/commands/analyze.md
 
 ```markdown
 ---
@@ -503,7 +512,7 @@ description: Answer data questions — from quick lookups to full analyses with 
 
 # /analyze
 
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../CONNECTORS.md).
+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).
 
 Answer data questions by querying ~~data warehouse, analyzing results, and presenting insights.
 
@@ -547,8 +556,7 @@ The simplest useful plugin — just a skill with no commands or connectors.
 
 ```
 code-standards/
-├── .claude-plugin/
-│   └── plugin.json
+├── plugin.json
 └── skills/
     └── style-guide/
         └── SKILL.md
@@ -558,6 +566,7 @@ code-standards/
 
 ```json
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "code-standards",
   "version": "1.0.0",
   "description": "Team coding standards and conventions"
@@ -599,29 +608,30 @@ description: 'Team coding standards, naming conventions, and project structure r
 
 ## Minimal Plugin: Single Command
 
-A plugin with just one command and no skills or connectors.
+A plugin with just one command and no skills or connectors. Even with no skills, commands still live under the `com.anthropic.claude/` namespace — there is no root-level `commands/` shortcut in the spec-conformant layout.
 
 ### Directory Structure
 
 ```
 standup/
-├── .claude-plugin/
-│   └── plugin.json
-└── commands/
-    └── generate.md
+├── plugin.json
+└── com.anthropic.claude/
+    └── commands/
+        └── generate.md
 ```
 
 ### plugin.json
 
 ```json
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "standup",
   "version": "1.0.0",
   "description": "Generate daily standup updates from recent work"
 }
 ```
 
-### commands/generate.md
+### com.anthropic.claude/commands/generate.md
 
 ```markdown
 ---
@@ -665,7 +675,7 @@ Some plugins serve multiple related roles. Here's the pattern for a customer-sup
 
 Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~CRM` might mean Salesforce, HubSpot, or any other CRM with an MCP server.
 
-Plugins are **tool-agnostic** — they describe workflows in terms of categories (CRM, chat, email, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.
+Plugins are **tool-agnostic** — they describe workflows in terms of categories (CRM, chat, email, etc.) rather than specific products. `mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.
 
 ## Connectors for this plugin
 
@@ -688,5 +698,7 @@ Plugins are **tool-agnostic** — they describe workflows in terms of categories
 - `/support:triage` — Pulls new tickets from `~~helpdesk`, categorizes using `ticket-triage` skill, routes based on rules
 - `/support:respond` — Drafts responses using `response-drafting` skill, checks `~~knowledge base` for relevant articles
 - `/support:escalate` — Evaluates escalation criteria from `escalation` skill, notifies team via `~~chat`
+
+Command files for this pattern live at `com.anthropic.claude/commands/triage.md`, `com.anthropic.claude/commands/respond.md`, and `com.anthropic.claude/commands/escalate.md`.
 
 This pattern shows how skills provide the domain knowledge while commands provide the workflows, all connected through shared `~~category` placeholders documented in CONNECTORS.md.
