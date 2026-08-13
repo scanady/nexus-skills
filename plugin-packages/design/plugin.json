@@ -1,13 +1,18 @@
 {
   "name": "nexus-design",
   "version": "1.0.0",
-  "description": "Skills for UX research, application design, UI craft, design systems, and visual and image direction.",
+  "description": "Take products from research to polished interface — UX research, information architecture, UI craft, design systems, and visual direction. Ship products that look deliberate and work the way people expect.",
   "keywords": [
-    "skills",
-    "prompts",
-    "agents",
-    "instructions",
-    "ai",
+    "ux",
+    "ui",
+    "user-research",
+    "usability",
+    "design-systems",
+    "information-architecture",
+    "web-design",
+    "visual-design",
+    "product-design",
+    "image-generation",
     "design"
   ]
 }

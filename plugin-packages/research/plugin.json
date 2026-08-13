@@ -1,13 +1,17 @@
 {
   "name": "nexus-research",
   "version": "1.0.0",
-  "description": "Skills for market research, competitive intelligence, opportunity sizing, persona building, and deep reading analysis.",
+  "description": "Understand a market before you commit to it — competitive intelligence, opportunity sizing, customer personas, and deep source analysis. Replace assumptions with evidence.",
   "keywords": [
-    "skills",
-    "prompts",
-    "agents",
-    "instructions",
-    "ai",
+    "market-research",
+    "competitive-analysis",
+    "competitor-intelligence",
+    "customer-personas",
+    "market-sizing",
+    "tam",
+    "industry-analysis",
+    "literature-review",
+    "due-diligence",
     "research"
   ]
 }

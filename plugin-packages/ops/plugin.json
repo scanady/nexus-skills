@@ -1,13 +1,15 @@
 {
   "name": "nexus-ops",
   "version": "1.0.0",
-  "description": "Skills for operational workflows — SOP creation, daily meeting notes, and productivity routines.",
+  "description": "Run the business day to day — standard operating procedures, process documentation, meeting records, and working routines. Make repeatable work actually repeatable.",
   "keywords": [
-    "skills",
-    "prompts",
-    "agents",
-    "instructions",
-    "ai",
+    "operations",
+    "sop",
+    "process-documentation",
+    "workflows",
+    "meeting-notes",
+    "checklists",
+    "productivity",
     "ops"
   ]
 }

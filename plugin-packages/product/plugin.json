@@ -1,13 +1,18 @@
 {
   "name": "nexus-product",
   "version": "1.0.0",
-  "description": "Skills for product specification, PRD generation, brainstorming, reverse engineering, OKR strategy, and engagement loops.",
+  "description": "Move product ideas from discovery to spec — requirements, feature definition, prioritization, and product strategy. Decide what to build and describe it clearly enough to build it.",
   "keywords": [
-    "skills",
-    "prompts",
-    "agents",
-    "instructions",
-    "ai",
+    "product-management",
+    "prd",
+    "product-requirements",
+    "roadmap",
+    "okr",
+    "prioritization",
+    "product-discovery",
+    "product-strategy",
+    "user-stories",
+    "brainstorming",
     "product"
   ]
 }

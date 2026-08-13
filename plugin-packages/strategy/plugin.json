@@ -1,13 +1,17 @@
 {
   "name": "nexus-strategy",
   "version": "1.0.0",
-  "description": "Skills for strategic decision-making, outcome design, planning, executive presentations, and critical reasoning.",
+  "description": "Make hard calls and defend them — planning, decision frameworks, critical reasoning, change management, and executive communication. Choose a direction and bring people with you.",
   "keywords": [
-    "skills",
-    "prompts",
-    "agents",
-    "instructions",
-    "ai",
-    "strategy"
+    "strategy",
+    "strategic-planning",
+    "decision-making",
+    "business-planning",
+    "pricing-strategy",
+    "change-management",
+    "executive-communication",
+    "critical-thinking",
+    "startup",
+    "compliance"
   ]
 }

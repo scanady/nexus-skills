@@ -1,13 +1,20 @@
 {
   "name": "nexus-data",
   "version": "1.0.0",
-  "description": "Skills for data engineering, analysis, and AI/ML — pipelines, RAG architecture, statistical modeling, KPI design, dataset profiling, and chart design.",
+  "description": "Build and interrogate data systems — pipelines, databases, statistical analysis, metric design, and applied AI/ML. Move from raw data to decisions you can defend.",
   "keywords": [
-    "skills",
-    "prompts",
-    "agents",
-    "instructions",
-    "ai",
+    "data-analysis",
+    "data-engineering",
+    "analytics",
+    "sql",
+    "etl",
+    "pandas",
+    "statistics",
+    "kpi",
+    "metrics",
+    "machine-learning",
+    "rag",
+    "data-visualization",
     "data"
   ]
 }
