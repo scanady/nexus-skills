@@ -1,0 +1,13 @@
+{
+  "name": "nexus-skills",
+  "version": "1.0.0",
+  "description": "Skills for authoring, evaluating, cataloging, and reinterpreting other skills.",
+  "keywords": [
+    "skills",
+    "prompts",
+    "agents",
+    "instructions",
+    "ai",
+    "skills"
+  ]
+}

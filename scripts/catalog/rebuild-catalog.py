@@ -18,7 +18,7 @@ SCAN_FILE = ROOT / "skill-catalog-scan.json"
 OLD_CATALOG = ROOT / "skill-catalog.json"
 OUT_FILE = ROOT / "skill-catalog.json"
 EVALUATIONS_FILE = ROOT / "skill-catalog-evaluations.json"
-PACKS_DIR = ROOT / "packs"
+PACKAGES_DIR = ROOT / "plugin-packages"
 
 
 # ---------------------------------------------------------------------------
@@ -38,33 +38,43 @@ def classify_pattern(has_scripts: bool) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Pack helpers
+# Plugin helpers
 # ---------------------------------------------------------------------------
 
-def load_packs() -> dict:
-    """Load all pack manifests from packs/ and return a dict keyed by pack name."""
-    packs = {}
-    if PACKS_DIR.exists():
-        for f in sorted(PACKS_DIR.glob("*.json")):
+def load_plugins() -> dict:
+    """Load every plugin package from plugin-packages/, keyed by directory name.
+
+    A package is a directory holding plugin.json (Agent Plugins manifest fields)
+    and skills.json (the build-only membership list).
+    """
+    plugins = {}
+    if PACKAGES_DIR.exists():
+        for d in sorted(p for p in PACKAGES_DIR.iterdir() if p.is_dir()):
             try:
-                pack = json.loads(f.read_text(encoding="utf-8"))
-                packs[pack["name"]] = pack
+                manifest = json.loads((d / "plugin.json").read_text(encoding="utf-8"))
+                membership = json.loads((d / "skills.json").read_text(encoding="utf-8"))
             except Exception:
-                pass
-    return packs
+                continue
+            plugins[d.name] = {
+                "plugin_name": manifest.get("name", d.name),
+                "description": manifest.get("description", ""),
+                "version": manifest.get("version", "1.0.0"),
+                "skills": membership.get("skills", []),
+            }
+    return plugins
 
 
-def resolve_skill_packs(skill_name: str, packs: dict) -> list:
-    """Return sorted list of pack names that claim this skill."""
+def resolve_skill_plugins(skill_name: str, plugins: dict) -> list:
+    """Return sorted list of plugin names that claim this skill."""
     result = []
-    for pack_name, pack in packs.items():
-        for pattern in pack.get("skills", []):
+    for plugin_name, plugin in plugins.items():
+        for pattern in plugin.get("skills", []):
             if pattern.endswith("*"):
                 if skill_name.startswith(pattern[:-1]):
-                    result.append(pack_name)
+                    result.append(plugin_name)
                     break
             elif skill_name == pattern:
-                result.append(pack_name)
+                result.append(plugin_name)
                 break
     return sorted(result)
 
@@ -428,8 +438,8 @@ def main():
     scan_data = json.loads(SCAN_FILE.read_text(encoding="utf-8"))
     old_catalog = json.loads(OLD_CATALOG.read_text(encoding="utf-8"))
 
-    # Load pack manifests
-    packs = load_packs()
+    # Load plugin packages
+    plugins = load_plugins()
 
     # Load external evaluations file (highest priority)
     fresh_evals = {}
@@ -531,7 +541,7 @@ def main():
             "source_id": "source-1",
             "path": scan_entry.get("path", ""),
             "url": None,
-            "packs": resolve_skill_packs(name, packs),
+            "plugins": resolve_skill_plugins(name, plugins),
             "frontmatter": {
                 "name": fm.get("name"),
                 "disable_model_invocation": scan_entry.get("disable_model_invocation", False),
@@ -541,7 +551,6 @@ def main():
                 "allowed_tools": fm.get("allowed-tools"),
                 "metadata": {
                     "version": metadata.get("version"),
-                    "domain": metadata.get("domain"),
                     "triggers": metadata.get("triggers"),
                     "role": metadata.get("role"),
                     "scope": metadata.get("scope"),
@@ -589,13 +598,14 @@ def main():
         if s["evaluation"].get("over_specification_risk", {}).get("flagged", False)
     )
 
-    # Pack summary: name, description, skill_count, skills list
-    packs_summary = {}
-    for pack_name, pack in packs.items():
-        member_skills = [s["name"] for s in skills_out if pack_name in s["packs"]]
-        packs_summary[pack_name] = {
-            "description": pack.get("description", ""),
-            "version": pack.get("version", "1.0.0"),
+    # Plugin summary: name, description, skill_count, skills list
+    plugins_summary = {}
+    for plugin_name, plugin in plugins.items():
+        member_skills = [s["name"] for s in skills_out if plugin_name in s["plugins"]]
+        plugins_summary[plugin_name] = {
+            "plugin_name": plugin["plugin_name"],
+            "description": plugin["description"],
+            "version": plugin["version"],
             "skill_count": len(member_skills),
             "skills": sorted(member_skills),
         }
@@ -623,7 +633,7 @@ def main():
             "complexity_distribution": complexity_dist,
             "pattern_distribution": {k: v for k, v in pattern_dist.items() if v > 0},
             "over_specification_flagged": over_spec_flagged,
-            "packs": packs_summary,
+            "plugins": plugins_summary,
         },
         "skills": skills_out,
     }

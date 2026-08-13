@@ -1,0 +1,13 @@
+{
+  "name": "nexus-tech",
+  "version": "1.0.0",
+  "description": "Skills for software engineering and engineering leadership — git workflows, architecture decisions, code quality, TDD, API and MCP building, GitHub repo management, and executive briefings.",
+  "keywords": [
+    "skills",
+    "prompts",
+    "agents",
+    "instructions",
+    "ai",
+    "tech"
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-08-05T10:10:36Z",
+  "generated_at": "2026-08-13T03:46:27Z",
   "sources": [
     {
       "id": "source-1",
@@ -33,11 +33,12 @@
       "C": 1
     },
     "over_specification_flagged": 0,
-    "packs": {
+    "plugins": {
       "agent-tools": {
+        "plugin_name": "nexus-agent-tools",
         "description": "Skills for designing AI agents, building agent skills, and managing knowledge context.",
         "version": "1.0.0",
-        "skill_count": 8,
+        "skill_count": 9,
         "skills": [
           "agents-copilot-instructions",
           "agents-design-persona-creator",
@@ -46,10 +47,12 @@
           "agents-skill-spec-builder",
           "ai-prompt-engineer",
           "knowledge-context-curator",
+          "knowledge-context-session-handover",
           "knowledge-ops"
         ]
       },
       "comms": {
+        "plugin_name": "nexus-comms",
         "description": "Skills for organizational announcements, internal community engagement, and customer email communication.",
         "version": "1.0.0",
         "skill_count": 2,
@@ -59,6 +62,7 @@
         ]
       },
       "content": {
+        "plugin_name": "nexus-content",
         "description": "Skills for writing, editing, and transforming content — copy, email sequences, technical docs, and style extraction.",
         "version": "1.0.0",
         "skill_count": 12,
@@ -78,44 +82,61 @@
         ]
       },
       "data": {
-        "description": "Skills for data engineering, AI/ML pipelines, RAG architecture, business performance analysis, and database design.",
+        "plugin_name": "nexus-data",
+        "description": "Skills for data engineering, analysis, and AI/ML — pipelines, RAG architecture, statistical modeling, KPI design, dataset profiling, and chart design.",
         "version": "1.0.0",
-        "skill_count": 9,
+        "skill_count": 18,
         "skills": [
           "data-ai-autoresearch",
           "data-ai-ml-pipeline",
           "data-ai-ml-rag-architect",
           "data-ai-post-training-expert",
           "data-ai-product-specialist",
+          "data-analysis-business-context",
           "data-analysis-business-performance",
+          "data-analysis-dataset-profiler",
+          "data-analysis-hypothesis-generation",
+          "data-analysis-kpi-designer",
+          "data-analysis-kpi-reporting",
+          "data-analysis-statistical-methods",
+          "data-analysis-statistical-modeling",
+          "data-analysis-validator",
           "data-eng-database-architect",
           "data-eng-pandas-specialist",
-          "data-eng-pipeline-architect"
+          "data-eng-pipeline-architect",
+          "data-visual-chart-designer"
         ]
       },
       "design": {
-        "description": "Skills for UX research, application design, product overviews, personas, scroll storytelling, and design systems.",
+        "plugin_name": "nexus-design",
+        "description": "Skills for UX research, application design, UI craft, design systems, and visual and image direction.",
         "version": "1.0.0",
-        "skill_count": 12,
+        "skill_count": 17,
         "skills": [
           "design-application-sitemap",
           "design-application-ux",
           "design-product-overview-builder",
           "design-product-overview-recorder",
+          "design-research-lean-ux",
           "design-research-ux-artifacts",
           "design-research-ux-researcher",
           "design-scroll-storytelling",
           "design-system-architect",
+          "design-ui-microinteractions",
           "design-ui-system-advisor",
+          "design-ui-usability-principles",
+          "design-ui-visual-refactor",
           "design-visual-image-generator",
           "design-visual-image-system-director",
-          "design-web-impactful"
+          "design-web-impactful",
+          "personal-design-meeting-background"
         ]
       },
       "marketing": {
-        "description": "Skills for campaigns, SEO, brand strategy, content production, customer segmentation, competitive intelligence, and sales outreach.",
+        "plugin_name": "nexus-marketing",
+        "description": "Skills for campaigns, SEO, brand strategy, content production, customer segmentation, and sales outreach.",
         "version": "1.0.0",
-        "skill_count": 17,
+        "skill_count": 18,
         "skills": [
           "marketing-brand-strategist",
           "marketing-campaign-go-to-market",
@@ -132,11 +153,13 @@
           "marketing-seo-adsense-readiness",
           "marketing-seo-adsense-review",
           "marketing-seo-cro",
+          "marketing-seo-structured-data",
           "sales-outreach-specialist",
           "sales-pipeline-revops"
         ]
       },
       "ops": {
+        "plugin_name": "nexus-ops",
         "description": "Skills for operational workflows — SOP creation, daily meeting notes, and productivity routines.",
         "version": "1.0.0",
         "skill_count": 2,
@@ -146,21 +169,42 @@
         ]
       },
       "product": {
-        "description": "Skills for product specification, PRD generation, brainstorming, reverse engineering, and OKR strategy.",
+        "plugin_name": "nexus-product",
+        "description": "Skills for product specification, PRD generation, brainstorming, reverse engineering, OKR strategy, and engagement loops.",
         "version": "1.0.0",
-        "skill_count": 8,
+        "skill_count": 9,
         "skills": [
           "product-discovery-spec-toolkit",
           "product-spec-brainstorming",
           "product-spec-game-changing-features",
           "product-spec-prd-generator",
           "product-spec-reverse-engineer",
+          "product-strategy-habit-loops",
           "product-strategy-okr-specialist",
           "product-strategy-validator",
           "product-vision-strategy"
         ]
       },
+      "research": {
+        "plugin_name": "nexus-research",
+        "description": "Skills for market research, competitive intelligence, opportunity sizing, persona building, and deep reading analysis.",
+        "version": "1.0.0",
+        "skill_count": 10,
+        "skills": [
+          "research-ai-landscape-brief",
+          "research-analyst",
+          "research-deep-reading-analyst",
+          "research-dtc-insurance-market-intelligence",
+          "research-market-analyst",
+          "research-market-competitor-intel",
+          "research-market-opportunity",
+          "research-market-persona-builder",
+          "research-market-researcher",
+          "research-weekly-ai-news"
+        ]
+      },
       "skills": {
+        "plugin_name": "nexus-skills",
         "description": "Skills for authoring, evaluating, cataloging, and reinterpreting other skills.",
         "version": "1.0.0",
         "skill_count": 5,
@@ -173,21 +217,12 @@
         ]
       },
       "strategy": {
-        "description": "Skills for strategic decision-making, market research, competitive intelligence, executive presentations, and critical reasoning.",
+        "plugin_name": "nexus-strategy",
+        "description": "Skills for strategic decision-making, outcome design, planning, executive presentations, and critical reasoning.",
         "version": "1.0.0",
-        "skill_count": 26,
+        "skill_count": 14,
         "skills": [
           "legal-compliance-regulatory-monitor",
-          "research-ai-landscape-brief",
-          "research-analyst",
-          "research-deep-reading-analyst",
-          "research-dtc-insurance-market-intelligence",
-          "research-market-analyst",
-          "research-market-competitor-intel",
-          "research-market-opportunity",
-          "research-market-persona-builder",
-          "research-market-researcher",
-          "research-weekly-ai-news",
           "strategy-change-management",
           "strategy-critical-reasoning",
           "strategy-decision",
@@ -197,18 +232,17 @@
           "strategy-exec-presentation-designer",
           "strategy-frameworks-mckinsey-brief",
           "strategy-innovation-catalyst",
+          "strategy-outcome-design",
           "strategy-planning-opportunity",
           "strategy-planning-pricing",
-          "strategy-planning-startup",
-          "tech-leader-exec-briefing",
-          "tech-leader-roadmap-narrator",
-          "tech-leader-vision-builder"
+          "strategy-planning-startup"
         ]
       },
       "tech": {
-        "description": "Skills for software engineering — git workflows, architecture decisions, code quality, TDD, API/MCP building, and GitHub repo management.",
+        "plugin_name": "nexus-tech",
+        "description": "Skills for software engineering and engineering leadership — git workflows, architecture decisions, code quality, TDD, API and MCP building, GitHub repo management, and executive briefings.",
         "version": "1.0.0",
-        "skill_count": 24,
+        "skill_count": 30,
         "skills": [
           "devops-incident-responder",
           "devops-infra-engineer",
@@ -217,10 +251,12 @@
           "engineering-api-mcp-builder",
           "engineering-api-n8n-workflow-builder",
           "engineering-arch-architecture-decision-records",
+          "engineering-arch-design-reviewer",
           "engineering-arch-principle-engineer",
           "engineering-arch-system-designer",
           "engineering-data-scraper",
           "engineering-database-optimizer",
+          "engineering-dev-clarify-requirements",
           "engineering-dev-git-commit",
           "engineering-dev-git-finish-branch",
           "engineering-dev-git-start-branch",
@@ -231,9 +267,13 @@
           "engineering-github-repo-standards",
           "engineering-legacy-modernizer",
           "engineering-quality-code-simplifier",
+          "engineering-quality-critique-panel",
           "engineering-quality-receiving-review",
           "engineering-quality-requesting-review",
-          "engineering-quality-tdd"
+          "engineering-quality-tdd",
+          "tech-leader-exec-briefing",
+          "tech-leader-roadmap-narrator",
+          "tech-leader-vision-builder"
         ]
       }
     }
@@ -245,7 +285,7 @@
       "source_id": "source-1",
       "path": "agents-copilot-instructions/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "agent-tools"
       ],
       "frontmatter": {
@@ -257,7 +297,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -338,7 +377,7 @@
       "source_id": "source-1",
       "path": "agents-design-persona-creator/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "agent-tools"
       ],
       "frontmatter": {
@@ -350,7 +389,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "workflow",
           "triggers": "create a persona, build a character, design an AI personality, make an agent persona, persona bundle, AI identity, persona json, four-layer persona",
           "role": "specialist",
           "scope": "design",
@@ -431,7 +469,7 @@
       "source_id": "source-1",
       "path": "agents-design-visual-identity/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "agent-tools"
       ],
       "frontmatter": {
@@ -443,7 +481,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "content",
           "triggers": "create an icon, make an avatar, generate a logo, design an agent icon, make a profile picture, agent branding, bot avatar, visual brand mark",
           "role": "specialist",
           "scope": "creation",
@@ -526,7 +563,7 @@
       "source_id": "source-1",
       "path": "agents-skill-plugin-builder/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "agent-tools"
       ],
       "frontmatter": {
@@ -538,7 +575,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -553,7 +589,7 @@
         "has_assets": false,
         "has_license_file": false,
         "file_count": 4,
-        "estimated_tokens": 1968,
+        "estimated_tokens": 2070,
         "complexity_class": "comprehensive",
         "skill_pattern": "A"
       },
@@ -619,7 +655,7 @@
       "source_id": "source-1",
       "path": "agents-skill-spec-builder/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "agent-tools"
       ],
       "frontmatter": {
@@ -631,7 +667,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "agents",
           "triggers": "workflow skill, multi-step skill, multi-phase skill, complex skill, structured skill, skill with branching, skill with iteration, skill with parallel steps, skill with control flow, skill with typed steps, skill with verification, skill with state management, composable skill, orchestration skill, long-horizon skill, spec-driven skill, skill with subagents",
           "role": "architect",
           "scope": "design",
@@ -712,7 +747,7 @@
       "source_id": "source-1",
       "path": "ai-prompt-engineer/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "agent-tools"
       ],
       "frontmatter": {
@@ -724,7 +759,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data-ml",
           "triggers": "prompt engineering, prompt optimization, chain-of-thought, few-shot learning, prompt testing, LLM prompts, prompt evaluation, system prompts, structured outputs, prompt design",
           "role": "expert",
           "scope": "design",
@@ -805,7 +839,7 @@
       "source_id": "source-1",
       "path": "content-behavioral-nudge-unit/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "content"
       ],
       "frontmatter": {
@@ -817,7 +851,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -898,7 +931,7 @@
       "source_id": "source-1",
       "path": "content-copy-caveman/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "content"
       ],
       "frontmatter": {
@@ -910,7 +943,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -991,7 +1023,7 @@
       "source_id": "source-1",
       "path": "content-copy-clear-writing/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "content",
         "skills"
       ],
@@ -1004,7 +1036,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "content",
           "triggers": "write documentation, draft README, edit for clarity, make this concise, tighten this up, write UI copy, write error message, omit needless words, apply strunk",
           "role": "editor",
           "scope": "creation",
@@ -1085,7 +1116,7 @@
       "source_id": "source-1",
       "path": "content-copy-critical-writing/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "content"
       ],
       "frontmatter": {
@@ -1097,7 +1128,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "content",
           "triggers": "critical writing, data-driven essay, first-principles writing, practical explainer, explain complex systems, aha pivot, scale analogy, hidden history, review an argument, edit analytical prose, data storytelling, avoid hype, fact-check narrative, content critique",
           "role": "writer-editor",
           "scope": "creation",
@@ -1165,7 +1195,7 @@
       "source_id": "source-1",
       "path": "content-copy-email-sequences/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "content"
       ],
       "frontmatter": {
@@ -1177,7 +1207,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.1.0",
-          "domain": "content",
           "triggers": "email sequence, drip campaign, welcome emails, nurture sequence, onboarding emails, re-engagement emails, email automation, lifecycle emails, win-back emails, billing emails, email copy, email flow, lifecycle campaign, nurture flow, post-purchase emails, event-based emails, educational sequence, new customers series, cancelled customer win-back, product update email, seasonal promotion, pricing update email, new user invite, failed payment, cancellation survey, renewal reminder, NPS email, review request email, referral email, upsell email",
           "role": "specialist",
           "scope": "creation",
@@ -1258,7 +1287,7 @@
       "source_id": "source-1",
       "path": "content-copy-email-template-builder/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "content"
       ],
       "frontmatter": {
@@ -1270,7 +1299,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "content",
           "triggers": "HTML email template, email template code, responsive email template, branded email template, transactional email design, email design system, email component, ESP template, import email template, email layout, email header footer, email button component, email on-brand, Resend template, Postmark template, Mailgun template, SendGrid template, Mailchimp template, Customer.io template, email HTML, mjml template, email CSS, dark mode email",
           "role": "specialist",
           "scope": "creation",
@@ -1351,7 +1379,7 @@
       "source_id": "source-1",
       "path": "content-copy-executive-writing/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "content"
       ],
       "frontmatter": {
@@ -1363,7 +1391,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "communications",
           "triggers": "executive communication, CIO message, board briefing, leadership email, status update, change announcement, executive memo, talking points, presentation deck, post-mortem, escalation, roadmap brief, capability brief, executive rewrite, audience translation, AI-generated tone",
           "role": "communicator",
           "scope": "rewrite",
@@ -1431,7 +1458,7 @@
       "source_id": "source-1",
       "path": "content-copy-humanizer/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "content"
       ],
       "frontmatter": {
@@ -1443,7 +1470,6 @@
         "allowed_tools": {},
         "metadata": {
           "version": "2.0.0",
-          "domain": "content",
           "triggers": "make this sound human, does this sound AI-written, clean up this chatbot output, remove the consultant-speak, edit out the AI voice, rewrite this AI-generated content, check this copy for AI tells, make this read naturally",
           "role": "editor",
           "scope": "creation",
@@ -1524,7 +1550,7 @@
       "source_id": "source-1",
       "path": "content-meta-design/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "content"
       ],
       "frontmatter": {
@@ -1536,7 +1562,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "content-analysis",
           "triggers": "extract style, content analysis, design patterns, tone extraction, reverse engineer content, style blueprint, content DNA, deconstruct format, analyze structure, meta design",
           "role": "analyst",
           "scope": "analysis",
@@ -1596,7 +1621,7 @@
       "source_id": "source-1",
       "path": "content-style-extractor/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "content"
       ],
       "frontmatter": {
@@ -1608,7 +1633,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "content-analysis",
           "triggers": "extract style, content analysis, design patterns, tone extraction, reverse engineer content, style blueprint, content DNA, deconstruct format, analyze structure, meta design",
           "role": "analyst",
           "scope": "analysis",
@@ -1691,7 +1715,7 @@
       "source_id": "source-1",
       "path": "content-technical-doc-coauthoring/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "content"
       ],
       "frontmatter": {
@@ -1703,7 +1727,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -1786,7 +1809,7 @@
       "source_id": "source-1",
       "path": "content-technical-onboarding-docs/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "content"
       ],
       "frontmatter": {
@@ -1798,7 +1821,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.2.0",
-          "domain": "content",
           "triggers": "generate readme overview, build onboarding docs, write functional readme, design getting started flow, create quickstart guides, write technical overview, refresh project docs, map documentation path, design power user shortcuts, plan proficiency progression",
           "role": "technical-documentation-architect",
           "scope": "documentation",
@@ -1881,7 +1903,7 @@
       "source_id": "source-1",
       "path": "data-ai-autoresearch/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "data"
       ],
       "frontmatter": {
@@ -1893,7 +1915,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.1.0",
-          "domain": "data",
           "triggers": "autoresearch, autonomous research, autonomous training, self-improving model, iterative model training, experiment loop, automated ML research, model evaluation harness, training pipeline design, autonomous AI experiments, autoresearch framework, research automation, ML experiment design",
           "role": "expert",
           "scope": "design",
@@ -1974,7 +1995,7 @@
       "source_id": "source-1",
       "path": "data-ai-ml-pipeline/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "data"
       ],
       "frontmatter": {
@@ -1986,7 +2007,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.1.0",
-          "domain": "data",
           "triggers": "ML pipeline, MLflow, Kubeflow, feature engineering, model training, experiment tracking, feature store, hyperparameter tuning, pipeline orchestration, model registry, training workflow, MLOps, model deployment, data pipeline, model versioning",
           "role": "expert",
           "scope": "implementation",
@@ -2069,7 +2089,7 @@
       "source_id": "source-1",
       "path": "data-ai-ml-rag-architect/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "data"
       ],
       "frontmatter": {
@@ -2081,7 +2101,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.1.0",
-          "domain": "data-ai-ml",
           "triggers": "RAG, retrieval-augmented generation, vector search, embeddings, semantic search, vector database, document retrieval, knowledge base, context retrieval, similarity search",
           "role": "architect",
           "scope": "system-design",
@@ -2162,7 +2181,7 @@
       "source_id": "source-1",
       "path": "data-ai-post-training-expert/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "data"
       ],
       "frontmatter": {
@@ -2174,7 +2193,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "2.0.0",
-          "domain": "data",
           "triggers": "post-training, fine-tuning, fine tuning, finetuning, supervised fine-tuning, SFT, LoRA, QLoRA, PEFT, adapter tuning, DPO, ORPO, PPO, GRPO, RLHF, reward model, preference optimization, distillation, model merging, quantization",
           "role": "expert",
           "scope": "implementation",
@@ -2255,7 +2273,7 @@
       "source_id": "source-1",
       "path": "data-ai-product-specialist/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "data"
       ],
       "frontmatter": {
@@ -2267,7 +2285,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data-ai",
           "triggers": "ai product, llm integration, rag architecture, prompt engineering, ai ux, hallucination mitigation, model cost optimization, ai guardrails, ai evals",
           "role": "specialist",
           "scope": "implementation",
@@ -2348,7 +2365,9 @@
       "source_id": "source-1",
       "path": "data-analysis-business-context/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "data"
+      ],
       "frontmatter": {
         "name": "data-analysis-business-context",
         "disable_model_invocation": false,
@@ -2358,7 +2377,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "2.0.0",
-          "domain": "data",
           "triggers": "trace metric ownership, reconcile conflicting definitions, check what shipped recently, locate metric definition doc, brief me before this analysis, verify rollout state, establish analysis assumptions, find who decided this",
           "role": "context-analyst",
           "scope": "retrieval",
@@ -2416,7 +2434,7 @@
       "source_id": "source-1",
       "path": "data-analysis-business-performance/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "data"
       ],
       "frontmatter": {
@@ -2428,7 +2446,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "strategy",
           "triggers": "business performance, P&L analysis, financial analysis, revenue forecast, profitability, KPI review, variance analysis, business case, unit economics, operational efficiency, strategic analysis, financial modeling, business metrics, margin analysis, cost structure, growth analysis, business statistics, managerial accounting, business modeling",
           "role": "analyst",
           "scope": "analysis",
@@ -2509,7 +2526,9 @@
       "source_id": "source-1",
       "path": "data-analysis-dataset-profiler/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "data"
+      ],
       "frontmatter": {
         "name": "data-analysis-dataset-profiler",
         "disable_model_invocation": false,
@@ -2519,7 +2538,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data",
           "triggers": "inspect unfamiliar table, determine table grain, measure null rates, summarize column distributions, detect duplicate keys, spot placeholder values, rank slice-worthy dimensions, find join key candidates, document dataset schema",
           "role": "data-profiler",
           "scope": "discovery",
@@ -2577,7 +2595,9 @@
       "source_id": "source-1",
       "path": "data-analysis-hypothesis-generation/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "data"
+      ],
       "frontmatter": {
         "name": "data-analysis-hypothesis-generation",
         "disable_model_invocation": false,
@@ -2587,7 +2607,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data",
           "triggers": "formulate testable hypotheses, propose competing mechanisms, what experiment would test this, design an experiment to distinguish hypotheses, evaluate hypothesis falsifiability, mechanistic explanation for this observation",
           "role": "scientist",
           "scope": "hypothesis",
@@ -2645,7 +2664,9 @@
       "source_id": "source-1",
       "path": "data-analysis-kpi-designer/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "data"
+      ],
       "frontmatter": {
         "name": "data-analysis-kpi-designer",
         "disable_model_invocation": false,
@@ -2655,7 +2676,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data",
           "triggers": "design decision metrics, specify metric formulas, choose outcome indicators, create measurement plan, define alert thresholds, assign metric ownership, select decision guardrails, operationalize success criteria",
           "role": "measurement-architect",
           "scope": "design",
@@ -2713,7 +2733,9 @@
       "source_id": "source-1",
       "path": "data-analysis-kpi-reporting/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "data"
+      ],
       "frontmatter": {
         "name": "data-analysis-kpi-reporting",
         "disable_model_invocation": false,
@@ -2723,7 +2745,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data",
           "triggers": "report weekly results, assemble executive scorecard, compare actuals to budget, explain scorecard movement, prepare quarterly readout, update operating review, assess target pacing, package performance narrative",
           "role": "performance-reporter",
           "scope": "reporting",
@@ -2781,7 +2802,9 @@
       "source_id": "source-1",
       "path": "data-analysis-statistical-methods/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "data"
+      ],
       "frontmatter": {
         "name": "data-analysis-statistical-methods",
         "disable_model_invocation": false,
@@ -2791,7 +2814,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data",
           "triggers": "describe this distribution, mean vs median, report percentiles, is this difference statistically significant, read an A/B test result, which test should I use, detect outliers, flag anomalies in a time series, week over week change, year over year comparison, compute CAGR, is this seasonal, simple forecast with a range, correlation between two metrics, did this change cause the lift, adjust for multiple comparisons, do we have enough sample",
           "role": "analyst",
           "scope": "analysis",
@@ -2849,7 +2871,9 @@
       "source_id": "source-1",
       "path": "data-analysis-statistical-modeling/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "data"
+      ],
       "frontmatter": {
         "name": "data-analysis-statistical-modeling",
         "disable_model_invocation": false,
@@ -2859,7 +2883,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data",
           "triggers": "fit a regression in statsmodels, logistic regression odds ratios, poisson count model, arima forecast, test residual assumptions, robust standard errors, pick a model for this outcome, interpret coefficient table",
           "role": "statistician",
           "scope": "inference",
@@ -2917,7 +2940,9 @@
       "source_id": "source-1",
       "path": "data-analysis-validator/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "data"
+      ],
       "frontmatter": {
         "name": "data-analysis-validator",
         "disable_model_invocation": false,
@@ -2927,7 +2952,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data",
           "triggers": "audit stakeholder report, challenge methodology choices, recompute headline metric, inspect chart integrity, substantiate report claims, approve sharing readiness, find calculation errors, rate evidence confidence",
           "role": "analysis-reviewer",
           "scope": "quality-assurance",
@@ -2985,7 +3009,7 @@
       "source_id": "source-1",
       "path": "data-eng-database-architect/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "data"
       ],
       "frontmatter": {
@@ -2997,7 +3021,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data",
           "triggers": "database architecture, schema design, DB tech selection, data modeling, index strategy, migration planning, database performance, sharding, partitioning, replication, caching layer, HA design, disaster recovery, database security, cloud database, polyglot persistence",
           "role": "architect",
           "scope": "design",
@@ -3078,7 +3101,7 @@
       "source_id": "source-1",
       "path": "data-eng-pandas-specialist/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "data"
       ],
       "frontmatter": {
@@ -3090,7 +3113,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data-eng",
           "triggers": "pandas, DataFrame, data wrangling, data manipulation, data cleaning, missing values, fillna, dropna, groupby, aggregation, merge, join, concat, time series, pivot table, vectorization, memory optimization, chunking, dtype optimization, method chaining, SettingWithCopyWarning, categorical dtype, downcast",
           "role": "expert",
           "scope": "implementation",
@@ -3171,7 +3193,7 @@
       "source_id": "source-1",
       "path": "data-eng-pipeline-architect/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "data"
       ],
       "frontmatter": {
@@ -3183,7 +3205,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data",
           "triggers": "design data pipeline, build ETL, build ELT, data modeling, star schema, data vault, dbt model, Airflow DAG, Spark job, Kafka consumer, data quality check, dataops, CDC pipeline,     streaming architecture, warehouse design, medallion architecture, bronze silver gold, SCD type 2, data contract, pipeline orchestration, lakehouse, partitioning strategy, incremental load, backfill, idempotent pipeline",
           "role": "data-engineer",
           "scope": "design, implementation, review",
@@ -3264,7 +3285,9 @@
       "source_id": "source-1",
       "path": "data-visual-chart-designer/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "data"
+      ],
       "frontmatter": {
         "name": "data-visual-chart-designer",
         "disable_model_invocation": false,
@@ -3274,7 +3297,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "data",
           "triggers": "plot these numbers, redesign a confusing graph, choose axis and encoding, pick chart colors, turn a table into a visual, review a dashboard chart, add a comparison baseline, export a figure for a report",
           "role": "visualization-designer",
           "scope": "design",
@@ -3332,7 +3354,7 @@
       "source_id": "source-1",
       "path": "design-application-sitemap/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "design"
       ],
       "frontmatter": {
@@ -3344,7 +3366,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "design",
           "triggers": "sitemap, application sitemap, page hierarchy, navigation architecture, information architecture, screen map, app structure, route planning, page organization, IA design, nav structure, site map, screen inventory, page tree",
           "role": "ia-architect",
           "scope": "design",
@@ -3425,7 +3446,7 @@
       "source_id": "source-1",
       "path": "design-application-ux/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "design"
       ],
       "frontmatter": {
@@ -3437,7 +3458,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "2.3.0",
-          "domain": "design",
           "triggers": "build an application, design a full app UI, redesign a portal, build admin panel screens, implement dashboard UI, design SaaS product interface, end-to-end app UI in code, build internal tool UI, ship multi-screen product interface",
           "role": "ux-designer",
           "scope": "implementation",
@@ -3518,7 +3538,7 @@
       "source_id": "source-1",
       "path": "design-product-overview-builder/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "design"
       ],
       "frontmatter": {
@@ -3530,7 +3550,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "3.0.0",
-          "domain": "design",
           "triggers": "product overview, product tour, feature page, feature showcase, platform walkthrough, product marketing page, feature tour, explore the platform, product showcase, how it works page, feature highlights, product demo page, SaaS landing page, conversion page, architecture diagram, process flow, product screenshots",
           "role": "expert",
           "scope": "creation",
@@ -3615,7 +3634,7 @@
       "source_id": "source-1",
       "path": "design-product-overview-recorder/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "design"
       ],
       "frontmatter": {
@@ -3627,7 +3646,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "design",
           "triggers": "demo video, screen recording, ui walkthrough, product demo, feature tutorial, record demo, video recording, app walkthrough, ui demo, product walkthrough, onboarding video, record screen",
           "role": "specialist",
           "scope": "creation",
@@ -3710,7 +3728,9 @@
       "source_id": "source-1",
       "path": "design-research-lean-ux/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "design"
+      ],
       "frontmatter": {
         "name": "design-research-lean-ux",
         "disable_model_invocation": false,
@@ -3720,7 +3740,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "design",
           "triggers": "declare and prioritize assumptions, write a design hypothesis, pick the smallest experiment, measure outcomes not outputs, run a design studio, set up dual-track discovery, avoid building the wrong feature",
           "role": "lean-ux-practitioner",
           "scope": "process",
@@ -3778,7 +3797,7 @@
       "source_id": "source-1",
       "path": "design-research-ux-artifacts/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "design"
       ],
       "frontmatter": {
@@ -3790,7 +3809,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -3871,7 +3889,7 @@
       "source_id": "source-1",
       "path": "design-research-ux-researcher/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "design"
       ],
       "frontmatter": {
@@ -3883,7 +3901,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "design",
           "triggers": "user research, persona creation, journey mapping, usability testing, research synthesis, design validation, UX research, user interviews, research insights, usability study, jobs to be done, research plan, affinity mapping, design recommendations",
           "role": "researcher",
           "scope": "design",
@@ -3964,7 +3981,7 @@
       "source_id": "source-1",
       "path": "design-scroll-storytelling/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "design"
       ],
       "frontmatter": {
@@ -3976,7 +3993,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "design",
           "triggers": "scroll animation, scroll storytelling, parallax, cinematic website, interactive narrative, scroll experience, GSAP scroll, Framer Motion scroll, sticky section, horizontal scroll, scroll snapping, scroll trigger, scroll-driven, scroll-based animation",
           "role": "specialist",
           "scope": "implementation",
@@ -4057,7 +4073,7 @@
       "source_id": "source-1",
       "path": "design-system-architect/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "design"
       ],
       "frontmatter": {
@@ -4069,7 +4085,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -4150,7 +4165,9 @@
       "source_id": "source-1",
       "path": "design-ui-microinteractions/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "design"
+      ],
       "frontmatter": {
         "name": "design-ui-microinteractions",
         "disable_model_invocation": false,
@@ -4160,7 +4177,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "design",
           "triggers": "design a toggle switch, get button press feedback right, loading and progress states, pull to refresh behavior, what happens when they tap this, error and empty state behavior, add a signature delight moment",
           "role": "interaction-designer",
           "scope": "single-interaction",
@@ -4220,7 +4236,7 @@
       "source_id": "source-1",
       "path": "design-ui-system-advisor/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "design"
       ],
       "frontmatter": {
@@ -4232,7 +4248,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.1.0",
-          "domain": "design",
           "triggers": "design system, ui design, ux review, color palette, typography, landing page, accessibility check, chart recommendation, form design, form controls, radio vs checkbox, radio vs dropdown, autocomplete, combobox, slider, rating, likert, nps, transfer list, date picker, tag input, toggle switch, build ui, create component, review design, implement layout, choose style, font pairing, stack guidelines, design website, build dashboard, create landing page, saas design, mobile ui, dark mode, glassmorphism, brutalism, minimalism",
           "role": "ui-system-advisor",
           "scope": "implementation",
@@ -4317,7 +4332,9 @@
       "source_id": "source-1",
       "path": "design-ui-usability-principles/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "design"
+      ],
       "frontmatter": {
         "name": "design-ui-usability-principles",
         "disable_model_invocation": false,
@@ -4327,7 +4344,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "design",
           "triggers": "why is this confusing, users keep making this mistake, is this discoverable, prevent this user error, does this afford the right action, whats the mental model here, walk the seven stages of action",
           "role": "usability-analyst",
           "scope": "diagnosis",
@@ -4385,7 +4401,9 @@
       "source_id": "source-1",
       "path": "design-ui-visual-refactor/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "design"
+      ],
       "frontmatter": {
         "name": "design-ui-visual-refactor",
         "disable_model_invocation": false,
@@ -4395,7 +4413,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "design",
           "triggers": "my ui looks off, make this look more polished, fix the spacing and hierarchy, the design feels amateur, why does this look cheap, tighten up this component, refactor the visual design",
           "role": "ui-refactorer",
           "scope": "audit-and-fix",
@@ -4453,7 +4470,7 @@
       "source_id": "source-1",
       "path": "design-visual-image-generator/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "design"
       ],
       "frontmatter": {
@@ -4465,7 +4482,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "design",
           "triggers": "turn prompt into image, ask image clarifiers, create concept artwork, render product visual, produce campaign visual, build image prompt, generate reference art, create scene image",
           "role": "specialist",
           "scope": "creation",
@@ -4536,7 +4552,7 @@
       "source_id": "source-1",
       "path": "design-visual-image-system-director/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "design"
       ],
       "frontmatter": {
@@ -4548,7 +4564,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "design",
           "triggers": "cohesive image set, website imagery, image system, art direction, prompt pack, visual system, consistent generated images, isolated image generation, campaign image suite, hero image set, service page imagery, premium imagery, consulting-grade imagery, high-impact visuals, enterprise-grade art direction",
           "role": "art-director",
           "scope": "design",
@@ -4616,7 +4631,7 @@
       "source_id": "source-1",
       "path": "design-web-impactful/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "design"
       ],
       "frontmatter": {
@@ -4628,7 +4643,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "2.0.0",
-          "domain": "frontend",
           "triggers": "award-worthy design, make it unique, feels flat, looks AI-generated, standout landing page, impress top designers, high-impact homepage, expressive web design, conversion design, redesign homepage",
           "role": "principal-marketing-frontend-designer",
           "scope": "implementation",
@@ -4696,7 +4710,7 @@
       "source_id": "source-1",
       "path": "devops-incident-responder/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -4708,7 +4722,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "tech",
           "triggers": "incident response, incident management, SRE, on-call, post-mortem, outage, degradation, severity classification, P0, P1, SEV-1, SEV-2, runbook, MTTR, MTTD, error budget, SLO, SLI, blameless retrospective, war room, incident commander, on-call rotation, alert triage, service reliability",
           "role": "specialist",
           "scope": "implementation",
@@ -4789,7 +4802,7 @@
       "source_id": "source-1",
       "path": "devops-infra-engineer/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -4801,7 +4814,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "tech",
           "triggers": "DevOps, CI/CD, deployment, Docker, Kubernetes, Terraform, GitHub Actions, infrastructure, platform engineering, incident response, on-call, self-service",
           "role": "engineer",
           "scope": "implementation",
@@ -4884,7 +4896,7 @@
       "source_id": "source-1",
       "path": "devops-security-audit-lead/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -4896,7 +4908,6 @@
         "allowed_tools": "Read, Grep, Glob, Bash, Write",
         "metadata": {
           "version": "1.1.0",
-          "domain": "tech",
           "triggers": "security audit, SAST scan, secret scan, penetration test, cloud security review, infrastructure security audit, DevSecOps security review, vulnerability report",
           "role": "specialist",
           "scope": "review",
@@ -4979,7 +4990,7 @@
       "source_id": "source-1",
       "path": "devops-security-vulnerability-analyst/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -4991,7 +5002,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "tech",
           "triggers": "review code for exploits, attack surface analysis, OWASP compliance, injection risk review, auth vulnerability analysis, exploit check, appsec review, supply chain security analysis",
           "role": "specialist",
           "scope": "analysis",
@@ -5076,7 +5086,7 @@
       "source_id": "source-1",
       "path": "engineering-api-mcp-builder/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -5088,7 +5098,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -5171,7 +5180,7 @@
       "source_id": "source-1",
       "path": "engineering-api-n8n-workflow-builder/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -5183,7 +5192,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "tech",
           "triggers": "n8n, n8n workflow, n8n automation, build n8n flow, n8n JSON, workflow automation, no-code automation, webhook workflow, AI agent workflow, zapier alternative, make.com alternative, process automation, integration workflow, orchestration pipeline",
           "role": "n8n-workflow-architect",
           "scope": "design",
@@ -5266,7 +5274,7 @@
       "source_id": "source-1",
       "path": "engineering-arch-architecture-decision-records/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -5278,7 +5286,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "tech",
           "triggers": "create ADR, write ADR, architecture decision record, document architecture decision, ADR template, MADR, record technical decision, decision log, ADR lifecycle, ADR management, supersede ADR, deprecate decision, architecture governance",
           "role": "architect",
           "scope": "design",
@@ -5361,7 +5368,9 @@
       "source_id": "source-1",
       "path": "engineering-arch-design-reviewer/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-arch-design-reviewer",
         "disable_model_invocation": true,
@@ -5371,7 +5380,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "2.1.0",
-          "domain": "engineering",
           "triggers": "review module design, audit module structure, are my modules too shallow, is this over-abstracted, find pass-through layers, fix information leakage, reduce code complexity, simplify error handling, audit naming clarity, review interface design",
           "role": "architect",
           "scope": "analysis",
@@ -5429,7 +5437,7 @@
       "source_id": "source-1",
       "path": "engineering-arch-principle-engineer/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -5441,7 +5449,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "tech",
           "triggers": "principal engineer review, codebase complexity audit, find missing leverage, surgical engineering critique, avoid rewrite, reduce technical debt, simplify architecture, review architecture tradeoffs",
           "role": "principal-engineer",
           "scope": "analysis",
@@ -5522,7 +5529,7 @@
       "source_id": "source-1",
       "path": "engineering-arch-system-designer/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -5534,7 +5541,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "tech",
           "triggers": "architecture, system design, design pattern, microservices, monolith, event-driven, CQRS, scalability, NFR, non-functional requirements, database selection, distributed systems, technical design, infrastructure design, review architecture, tech stack",
           "role": "architect",
           "scope": "design",
@@ -5615,7 +5621,7 @@
       "source_id": "source-1",
       "path": "engineering-data-scraper/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -5627,7 +5633,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "tech",
           "triggers": "scrape website, build a bot that checks, monitor X for me, collect data, track prices, track jobs, automate data collection, data scraper, web scraper, build scraper, free scraper, GitHub Actions scraper, Gemini scraper, Notion scraper",
           "role": "specialist",
           "scope": "execution",
@@ -5711,7 +5716,7 @@
       "source_id": "source-1",
       "path": "engineering-database-optimizer/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -5723,7 +5728,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "infrastructure",
           "triggers": "database optimization, slow query, query performance, database tuning, index optimization, execution plan, EXPLAIN ANALYZE, database performance, PostgreSQL optimization, MySQL optimization",
           "role": "specialist",
           "scope": "optimization",
@@ -5804,7 +5808,9 @@
       "source_id": "source-1",
       "path": "engineering-dev-clarify-requirements/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-dev-clarify-requirements",
         "disable_model_invocation": false,
@@ -5814,7 +5820,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "engineering",
           "triggers": "request is ambiguous, unclear what to build, multiple interpretations possible, confirm scope before coding, what does done mean here, ask before implementing, requirements are vague",
           "role": "developer",
           "scope": "intake",
@@ -5872,7 +5877,7 @@
       "source_id": "source-1",
       "path": "engineering-dev-git-commit/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -5884,7 +5889,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "tech",
           "triggers": "commit changes, commit and push, push work, stage changes, write this commit message, git commit this repo, push this branch, save to remote",
           "role": "developer",
           "scope": "workflow",
@@ -5965,7 +5969,7 @@
       "source_id": "source-1",
       "path": "engineering-dev-git-finish-branch/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -5977,7 +5981,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "tech",
           "triggers": "finish branch, merge branch, open PR, create pull request, complete work, done with feature, ship this, integrate branch",
           "role": "developer",
           "scope": "workflow",
@@ -6058,7 +6061,7 @@
       "source_id": "source-1",
       "path": "engineering-dev-git-start-branch/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -6070,7 +6073,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "tech",
           "triggers": "start a branch, create a branch, new feature branch, new fix branch, begin work, spin up branch, start working on, checkout new branch, create branch from main, start github flow, new branch",
           "role": "developer",
           "scope": "workflow",
@@ -6138,7 +6140,7 @@
       "source_id": "source-1",
       "path": "engineering-dev-git-workflow-design/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -6150,7 +6152,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "tech",
           "triggers": "branching strategy, merge vs rebase, conflict resolution, PR description, pull request template, gitflow, trunk-based development, github flow, release management",
           "role": "specialist",
           "scope": "advisory",
@@ -6231,7 +6232,7 @@
       "source_id": "source-1",
       "path": "engineering-dev-writing-plans/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -6243,7 +6244,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -6324,7 +6324,7 @@
       "source_id": "source-1",
       "path": "engineering-feature-forge/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -6336,7 +6336,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.1.0",
-          "domain": "tech",
           "triggers": "feature definition, requirements gathering, requirements workshop, specification writing, user stories, EARS, acceptance criteria, implementation planning",
           "role": "specialist",
           "scope": "design",
@@ -6404,7 +6403,7 @@
       "source_id": "source-1",
       "path": "engineering-github-ops/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -6416,7 +6415,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "devops",
           "triggers": "triage issues, review PRs, merge PRs, close stale, CI failure, prepare release, check dependabot, security alerts, github ops, manage contributors, stale issues, PR review",
           "role": "specialist",
           "scope": "operational",
@@ -6499,7 +6497,7 @@
       "source_id": "source-1",
       "path": "engineering-github-repo-standards/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -6511,7 +6509,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "2.1.1",
-          "domain": "tech",
           "triggers": "standardize repo, apply github repo settings, set up CODEOWNERS, harden repository, apply regulated settings, branch protection at scale, repo compliance settings, squash merge policy, dependabot and secret scanning setup, gh cli repo configuration",
           "role": "specialist",
           "scope": "automation",
@@ -6582,7 +6579,7 @@
       "source_id": "source-1",
       "path": "engineering-legacy-modernizer/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -6594,7 +6591,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.1.0",
-          "domain": "tech",
           "triggers": "legacy modernization, strangler fig, incremental migration, technical debt, legacy refactoring, system migration, legacy system, modernize codebase",
           "role": "specialist",
           "scope": "design-and-implementation",
@@ -6675,7 +6671,7 @@
       "source_id": "source-1",
       "path": "engineering-quality-code-simplifier/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -6687,7 +6683,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -6768,7 +6763,9 @@
       "source_id": "source-1",
       "path": "engineering-quality-critique-panel/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "tech"
+      ],
       "frontmatter": {
         "name": "engineering-quality-critique-panel",
         "disable_model_invocation": true,
@@ -6778,7 +6775,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "engineering",
           "triggers": "review my code from multiple angles, run a debate review, spin up a judge panel, evaluate implementation quality, find weaknesses in my changes, adversarial review of my work, decide if this is ready to ship",
           "role": "reviewer",
           "scope": "quality",
@@ -6836,7 +6832,7 @@
       "source_id": "source-1",
       "path": "engineering-quality-receiving-review/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -6848,7 +6844,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -6929,7 +6924,7 @@
       "source_id": "source-1",
       "path": "engineering-quality-requesting-review/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -6941,7 +6936,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -7022,7 +7016,7 @@
       "source_id": "source-1",
       "path": "engineering-quality-tdd/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "tech"
       ],
       "frontmatter": {
@@ -7034,7 +7028,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -7115,7 +7108,7 @@
       "source_id": "source-1",
       "path": "knowledge-context-curator/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "agent-tools"
       ],
       "frontmatter": {
@@ -7127,7 +7120,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "knowledge",
           "triggers": "set up agent context repository, turn documents into agent context, ingest source material, query governed context, clean up knowledge base, resolve context contradictions, organize research for agents, maintain source-backed wiki",
           "role": "context curator",
           "scope": "system-design",
@@ -7185,7 +7177,9 @@
       "source_id": "source-1",
       "path": "knowledge-context-session-handover/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "agent-tools"
+      ],
       "frontmatter": {
         "name": "knowledge-context-session-handover",
         "disable_model_invocation": true,
@@ -7195,7 +7189,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "knowledge",
           "triggers": "create a handover, save session state, write a handoff before I stop, capture where we left off, document this session for next time, hand this off to another agent",
           "role": "context-curator",
           "scope": "continuity",
@@ -7253,7 +7246,7 @@
       "source_id": "source-1",
       "path": "knowledge-ops/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "agent-tools"
       ],
       "frontmatter": {
@@ -7265,7 +7258,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "knowledge",
           "triggers": "save to KB, sync knowledge, ingest this, update knowledge base, deduplicate notes, commit to knowledge base, what do I know about, organize knowledge, search knowledge base, knowledge sync",
           "role": "specialist",
           "scope": "operational",
@@ -7348,7 +7340,7 @@
       "source_id": "source-1",
       "path": "legal-compliance-regulatory-monitor/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -7360,7 +7352,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "legal",
           "triggers": "compliance research, regulatory monitoring, federal and state compliance scan, standards register, compliance evidence library, regulatory watchlist, state DOI guidance, SEC advertising guidance",
           "role": "analyst",
           "scope": "analysis",
@@ -7441,7 +7432,7 @@
       "source_id": "source-1",
       "path": "marketing-brand-strategist/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -7453,7 +7444,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -7534,7 +7524,7 @@
       "source_id": "source-1",
       "path": "marketing-campaign-go-to-market/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -7546,7 +7536,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -7627,7 +7616,7 @@
       "source_id": "source-1",
       "path": "marketing-campaign-ideas/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -7639,7 +7628,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -7720,7 +7708,7 @@
       "source_id": "source-1",
       "path": "marketing-campaign-product-hunt-launch/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -7732,7 +7720,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -7813,7 +7800,7 @@
       "source_id": "source-1",
       "path": "marketing-campaign-psychology/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -7825,7 +7812,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "marketing",
           "triggers": "marketing psychology, mental models, cognitive bias, persuasion, behavioral science, consumer behavior, why people buy, decision-making, pricing psychology, buyer behavior, conversion psychology, ethical influence",
           "role": "specialist",
           "scope": "analysis",
@@ -7906,7 +7892,7 @@
       "source_id": "source-1",
       "path": "marketing-content-brand-copywriter/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -7918,7 +7904,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -7999,7 +7984,7 @@
       "source_id": "source-1",
       "path": "marketing-content-engine/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -8011,7 +7996,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -8092,7 +8076,7 @@
       "source_id": "source-1",
       "path": "marketing-content-lead-magnet/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -8104,7 +8088,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -8185,7 +8168,7 @@
       "source_id": "source-1",
       "path": "marketing-content-linkedin-writer/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -8197,7 +8180,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "marketing",
           "triggers": "LinkedIn thought leadership, founder LinkedIn update, professional LinkedIn narrative, LinkedIn authority post, LinkedIn carousel caption, polished LinkedIn copy",
           "role": "writer",
           "scope": "creation",
@@ -8280,7 +8262,7 @@
       "source_id": "source-1",
       "path": "marketing-content-viral-hook/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -8292,7 +8274,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -8375,7 +8356,7 @@
       "source_id": "source-1",
       "path": "marketing-content-x-thread-builder/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -8387,7 +8368,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "marketing",
           "triggers": "tweetstorm, X thread, Twitter hot take, feed-ready X copy, thread-first social content, tweet-sized opinion",
           "role": "writer",
           "scope": "creation",
@@ -8468,7 +8448,7 @@
       "source_id": "source-1",
       "path": "marketing-customer-segmentation/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -8480,7 +8460,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -8561,7 +8540,7 @@
       "source_id": "source-1",
       "path": "marketing-seo-adsense-readiness/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -8573,7 +8552,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -8656,7 +8634,7 @@
       "source_id": "source-1",
       "path": "marketing-seo-adsense-review/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -8668,7 +8646,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -8751,7 +8728,7 @@
       "source_id": "source-1",
       "path": "marketing-seo-cro/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -8763,7 +8740,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -8844,7 +8820,9 @@
       "source_id": "source-1",
       "path": "marketing-seo-structured-data/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "marketing"
+      ],
       "frontmatter": {
         "name": "marketing-seo-structured-data",
         "disable_model_invocation": false,
@@ -8854,7 +8832,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "seo",
           "triggers": "structured data, schema markup, JSON-LD, rich results, rich snippets, schema.org, google search appearance, rich result test, breadcrumb markup, product schema, article schema, organization schema, local business schema, profile page schema, person schema, event schema, job posting schema, recipe schema, video schema, faq schema, review stars, sitelinks, favicon, sitename, knowledge panel, meta description, title link, why isn't my structured data showing, validate schema",
           "role": "seo-engineer",
           "scope": "audit-generate-validate",
@@ -8912,7 +8889,7 @@
       "source_id": "source-1",
       "path": "ops-process-sop-creator/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "ops"
       ],
       "frontmatter": {
@@ -8924,7 +8901,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -9005,7 +8981,7 @@
       "source_id": "source-1",
       "path": "people-comms-announce-organizational/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "comms"
       ],
       "frontmatter": {
@@ -9017,7 +8993,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -9098,7 +9073,7 @@
       "source_id": "source-1",
       "path": "people-comms-engage-internal-community/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "comms"
       ],
       "frontmatter": {
@@ -9110,7 +9085,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "comms",
           "triggers": "internal comms, team update, 3p update, newsletter, faq response, leadership update",
           "role": "specialist",
           "scope": "creation",
@@ -9191,7 +9165,9 @@
       "source_id": "source-1",
       "path": "personal-design-meeting-background/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "design"
+      ],
       "frontmatter": {
         "name": "personal-design-meeting-background",
         "disable_model_invocation": false,
@@ -9201,7 +9177,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "personal",
           "triggers": "custom video call background, branded home office background, ai generated office background, swap out my meeting background, personal branding background image, virtual background prompt, portrait room background, conversation starter background",
           "role": "specialist",
           "scope": "creation",
@@ -9259,7 +9234,7 @@
       "source_id": "source-1",
       "path": "product-discovery-spec-toolkit/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "product"
       ],
       "frontmatter": {
@@ -9271,7 +9246,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "product",
           "triggers": ">",
           "role": "product-manager",
           "scope": "workflow",
@@ -9352,7 +9326,7 @@
       "source_id": "source-1",
       "path": "product-spec-brainstorming/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "product"
       ],
       "frontmatter": {
@@ -9364,7 +9338,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "2.0.0",
-          "domain": "product",
           "triggers": "brainstorm, design this, help me think through, plan this feature, what should I build, let's think about this, design a system, explore approaches, before we code, requirements for, spec this out",
           "role": "specialist",
           "scope": "design + specification",
@@ -9445,7 +9418,7 @@
       "source_id": "source-1",
       "path": "product-spec-game-changing-features/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "product"
       ],
       "frontmatter": {
@@ -9457,7 +9430,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "2.0.0",
-          "domain": "product",
           "triggers": "10x feature, game-changing feature, what should we build, product strategy, feature spec, killer feature, what would customers love, product definition, what to build next, high-impact feature, product opportunity",
           "role": "specialist",
           "scope": "strategic + specification",
@@ -9538,7 +9510,7 @@
       "source_id": "source-1",
       "path": "product-spec-prd-generator/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "product"
       ],
       "frontmatter": {
@@ -9550,7 +9522,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -9631,7 +9602,7 @@
       "source_id": "source-1",
       "path": "product-spec-reverse-engineer/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "product"
       ],
       "frontmatter": {
@@ -9643,7 +9614,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "2.0.0",
-          "domain": "engineering",
           "triggers": "reverse engineer, document project, extract architecture, functional spec, technical design, system documentation, greenfield documentation, codebase review, product documentation, product overview",
           "role": "architect",
           "scope": "analysis",
@@ -9724,7 +9694,9 @@
       "source_id": "source-1",
       "path": "product-strategy-habit-loops/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "product"
+      ],
       "frontmatter": {
         "name": "product-strategy-habit-loops",
         "disable_model_invocation": false,
@@ -9734,7 +9706,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "product",
           "triggers": "users arent coming back, design an engagement loop, build a retention habit, add variable rewards, move users to internal triggers, is this engagement ethical, why wont this product stick",
           "role": "product-strategist",
           "scope": "engagement",
@@ -9792,7 +9763,7 @@
       "source_id": "source-1",
       "path": "product-strategy-okr-specialist/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "product"
       ],
       "frontmatter": {
@@ -9804,7 +9775,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "product",
           "triggers": "translate strategy to objectives, create product key results, distribute team contributions, map parent child goals, balance team objective load, generate goal cascade dashboard, link company and product goals, audit quarterly goal coverage",
           "role": "product-strategist",
           "scope": "planning",
@@ -9885,7 +9855,7 @@
       "source_id": "source-1",
       "path": "product-strategy-validator/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "product"
       ],
       "frontmatter": {
@@ -9897,7 +9867,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "product",
           "triggers": "validate idea, should I build this, product diagnostic, feature prioritization, ICE scoring, founder review, user journey audit, product-market fit, pressure-test product, prioritize features, review my product, am I building the right thing",
           "role": "specialist",
           "scope": "analysis",
@@ -9978,7 +9947,7 @@
       "source_id": "source-1",
       "path": "product-vision-strategy/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "product"
       ],
       "frontmatter": {
@@ -9990,7 +9959,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "product",
           "triggers": "product vision, product strategy, jobs to be done, jtbd, north star metric, north star framework, horizon model, horizon planning, opportunity solution tree, wardley map, strategic framework, product direction, vision setting, strategy workshop, strategic bets, product positioning, long-term roadmap, where to play, how to win, product differentiation, vision statement, mission alignment",
           "role": "product-strategist",
           "scope": "design",
@@ -10071,7 +10039,7 @@
       "source_id": "source-1",
       "path": "productivity-daily-meeting-notes/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "ops"
       ],
       "frontmatter": {
@@ -10083,7 +10051,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "content",
           "triggers": "meeting notes, meeting minutes, minutes, action items, decision log, meeting summary, recap, board minutes, standup notes",
           "role": "specialist",
           "scope": "writing",
@@ -10166,8 +10133,8 @@
       "source_id": "source-1",
       "path": "research-ai-landscape-brief/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "research"
       ],
       "frontmatter": {
         "name": "research-ai-landscape-brief",
@@ -10178,7 +10145,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "research",
           "triggers": "AI landscape brief, AI monthly brief, AI research briefing, frontier AI update, AI ecosystem roundup, AI trends this month, AI intelligence report, trending AI repos, AI preprint roundup",
           "role": "analyst",
           "scope": "research",
@@ -10265,8 +10231,8 @@
       "source_id": "source-1",
       "path": "research-analyst/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "research"
       ],
       "frontmatter": {
         "name": "research-analyst",
@@ -10277,7 +10243,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "research",
           "triggers": "news about a topic, what's happening in an industry, competitor news, recent developments, press coverage, latest announcements from a company, current events research, industry news briefing",
           "role": "analyst",
           "scope": "research",
@@ -10358,8 +10323,8 @@
       "source_id": "source-1",
       "path": "research-deep-reading-analyst/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "research"
       ],
       "frontmatter": {
         "name": "research-deep-reading-analyst",
@@ -10370,7 +10335,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "research",
           "triggers": "analyze this article, deep dive, extract insights, help me understand, deep read, critical analysis, SCQA, mental models, inversion, first principles, systems thinking, six hats, research-deep-reading-analyst, thinking frameworks",
           "role": "specialist",
           "scope": "analysis",
@@ -10451,8 +10415,8 @@
       "source_id": "source-1",
       "path": "research-dtc-insurance-market-intelligence/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "research"
       ],
       "frontmatter": {
         "name": "research-dtc-insurance-market-intelligence",
@@ -10463,7 +10427,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "research",
           "triggers": "life insurance market intelligence, DTC insurance monitoring, insurance market watch, carrier movement tracking, insurtech signal report, insurance regulation tracking, LIMRA signal watch, direct insurance market monitoring",
           "role": "analyst",
           "scope": "research",
@@ -10544,8 +10507,8 @@
       "source_id": "source-1",
       "path": "research-market-analyst/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "research"
       ],
       "frontmatter": {
         "name": "research-market-analyst",
@@ -10556,7 +10519,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "strategy",
           "triggers": "competitive analysis, threat assessment, opportunity scoring, signal classification, strategic intelligence, competitor threat analysis, technology signal assessment, industry intelligence, strategic briefing",
           "role": "analyst",
           "scope": "analysis",
@@ -10637,8 +10599,8 @@
       "source_id": "source-1",
       "path": "research-market-competitor-intel/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "research"
       ],
       "frontmatter": {
         "name": "research-market-competitor-intel",
@@ -10649,7 +10611,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -10730,8 +10691,8 @@
       "source_id": "source-1",
       "path": "research-market-opportunity/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "research"
       ],
       "frontmatter": {
         "name": "research-market-opportunity",
@@ -10742,7 +10703,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "strategy",
           "triggers": "discover venture opportunities, map underserved problems, mine platform shifts, generate tech business concepts, scout ESP32 ideas, find niche SaaS wedges, research embedded software markets, create opportunity briefs",
           "role": "analyst",
           "scope": "research",
@@ -10810,8 +10770,8 @@
       "source_id": "source-1",
       "path": "research-market-persona-builder/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "research"
       ],
       "frontmatter": {
         "name": "research-market-persona-builder",
@@ -10822,7 +10782,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "strategy",
           "triggers": "digital twin, advisor persona, mentor persona, simulate person, build persona, strategic advisor, decision advisor, AI mentor, review persona, think like, advise like, how would X advise, digital twin persona, personal advisor AI, replicate thinking, channel expert",
           "role": "persona-architect",
           "scope": "design",
@@ -10903,8 +10862,8 @@
       "source_id": "source-1",
       "path": "research-market-researcher/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "research"
       ],
       "frontmatter": {
         "name": "research-market-researcher",
@@ -10915,7 +10874,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -10996,8 +10954,8 @@
       "source_id": "source-1",
       "path": "research-weekly-ai-news/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "research"
       ],
       "frontmatter": {
         "name": "research-weekly-ai-news",
@@ -11008,7 +10966,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "research",
           "triggers": "weekly AI news, AI updates this week, daily AI briefing, AI news digest, AI headlines, latest AI developments, AI announcements roundup, AI recap",
           "role": "specialist",
           "scope": "research",
@@ -11089,7 +11046,7 @@
       "source_id": "source-1",
       "path": "sales-outreach-specialist/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -11101,7 +11058,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -11182,7 +11138,7 @@
       "source_id": "source-1",
       "path": "sales-pipeline-revops/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "marketing"
       ],
       "frontmatter": {
@@ -11194,7 +11150,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "sales",
           "triggers": "revops, revenue operations, lead scoring, lead routing, MQL, SQL, pipeline stages, deal desk, CRM automation, marketing to sales handoff, speed to lead, data hygiene, pipeline management, lead qualification, lifecycle stages, CRM workflows",
           "role": "revenue-operations-architect",
           "scope": "gtm",
@@ -11275,7 +11230,7 @@
       "source_id": "source-1",
       "path": "skill-architect/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "skills"
       ],
       "frontmatter": {
@@ -11287,7 +11242,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "meta",
           "triggers": "create skill, review skill, audit skill, scaffold skill, optimize skill triggers, fix skill description, refine skill metadata, update skill frontmatter, validate SKILL.md, skill collision check",
           "role": "skill-architect",
           "scope": "design",
@@ -11347,7 +11301,7 @@
       "source_id": "source-1",
       "path": "skill-evaluator/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "skills"
       ],
       "frontmatter": {
@@ -11359,7 +11313,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.1.0",
-          "domain": "meta",
           "triggers": "evaluate skill, run skill evals, benchmark skill, grade skill output, write skill assertions, compare skill vs baseline, iterate on skill evals, test skill invocability, check skill collision",
           "role": "evaluation-engineer",
           "scope": "analysis",
@@ -11417,7 +11370,7 @@
       "source_id": "source-1",
       "path": "skill-evaluator-catalog-builder/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "skills"
       ],
       "frontmatter": {
@@ -11429,7 +11382,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "meta",
           "triggers": "catalog skills, evaluate skills, scan skills, skill inventory, skill audit, skill collection review, skill repository, skill library, openclaw skills, skill quality report",
           "role": "research-analyst",
           "scope": "analysis",
@@ -11491,7 +11443,7 @@
       "source_id": "source-1",
       "path": "skill-reinterpreter/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "skills"
       ],
       "frontmatter": {
@@ -11503,7 +11455,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.2.0",
-          "domain": "agent",
           "triggers": "reinterpret skill, rebuild skill from scratch, clone and improve skill, replace skill with new version, refresh skill with best practices, delete original skill after rewrite",
           "role": "architect",
           "scope": "design",
@@ -11561,7 +11512,7 @@
       "source_id": "source-1",
       "path": "strategy-change-management/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -11573,7 +11524,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "strategy",
           "triggers": "change management, organizational change, transformation, adoption, resistance, stakeholder engagement, change readiness, communication plan, training rollout, culture change, process change, technology change",
           "role": "strategist",
           "scope": "design",
@@ -11654,7 +11604,7 @@
       "source_id": "source-1",
       "path": "strategy-critical-reasoning/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -11666,7 +11616,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "2.0.0",
-          "domain": "strategy",
           "triggers": "challenge this, stress test, poke holes, what could go wrong, red team, pre-mortem, devil's advocate, test my assumptions, argue against this, am I missing something, find the flaws, audit evidence, play devil's advocate, question assumptions",
           "role": "expert",
           "scope": "review",
@@ -11747,7 +11696,7 @@
       "source_id": "source-1",
       "path": "strategy-decision/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -11759,7 +11708,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "thinking",
           "triggers": "I am stuck on, help me get unstuck, cannot get this to work, challenge my thinking, reframe this problem, work through a problem with me, keep hitting a wall, is this even feasible",
           "role": "expert",
           "scope": "analysis",
@@ -11817,7 +11765,7 @@
       "source_id": "source-1",
       "path": "strategy-decision-council/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -11829,7 +11777,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "strategy",
           "triggers": "help me decide, second opinion, what would you choose, should I, go/no-go, I'm torn between, tradeoff analysis, multiple perspectives, ambiguous decision, decision council, dissent, ship now or hold",
           "role": "specialist",
           "scope": "analysis",
@@ -11910,7 +11857,7 @@
       "source_id": "source-1",
       "path": "strategy-decision-documenter/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -11922,7 +11869,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "strategy",
           "triggers": "reconcile domain terms, capture architecture decision, document resolved ambiguity, test plan against glossary, record tradeoff outcome, probe context mismatch",
           "role": "specialist",
           "scope": "design",
@@ -11992,7 +11938,7 @@
       "source_id": "source-1",
       "path": "strategy-decision-interrogator/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -12004,7 +11950,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "strategy",
           "triggers": "ask one question, probe plan gaps, resolve design branch, test proposal dependency, challenge rollout choice, interrogate implementation plan, pressure-check architecture call, grill me",
           "role": "specialist",
           "scope": "design",
@@ -12074,7 +12019,7 @@
       "source_id": "source-1",
       "path": "strategy-exec-presentation-designer/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -12086,7 +12031,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "strategy",
           "triggers": "executive presentation, leadership meeting, steering committee, exec briefing, decision meeting, progress review, readout, deck outline, presentation structure, exec deck",
           "role": "strategist",
           "scope": "design",
@@ -12169,7 +12113,7 @@
       "source_id": "source-1",
       "path": "strategy-frameworks-mckinsey-brief/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -12181,7 +12125,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -12262,7 +12205,7 @@
       "source_id": "source-1",
       "path": "strategy-innovation-catalyst/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -12274,7 +12217,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "strategy",
           "triggers": "generate innovation ideas, cross-domain innovation, invent something for, apply concept to new domain, novel application of existing technology, think like an innovator, what if we combined, innovate in, cross-pollinate ideas, recombine technologies",
           "role": "specialist",
           "scope": "design",
@@ -12342,7 +12284,9 @@
       "source_id": "source-1",
       "path": "strategy-outcome-design/SKILL.md",
       "url": null,
-      "packs": [],
+      "plugins": [
+        "strategy"
+      ],
       "frontmatter": {
         "name": "strategy-outcome-design",
         "disable_model_invocation": false,
@@ -12352,7 +12296,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.3.0",
-          "domain": "strategy",
           "triggers": "clarify a goal, pressure-test a goal, work backward from an outcome, define success criteria, is this goal feasible, help me think this through, separate the outcome from the solution, design backward from the outcome, outcome-oriented design",
           "role": "expert",
           "scope": "design",
@@ -12410,7 +12353,7 @@
       "source_id": "source-1",
       "path": "strategy-planning-opportunity/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -12422,7 +12365,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "strategy",
           "triggers": "rate business concept, judge venture potential, analyze idea economics, decide grow pivot kill, rank startup backlog, review side project, assess microbusiness potential, compare opportunity options",
           "role": "analyst",
           "scope": "analysis",
@@ -12490,7 +12432,7 @@
       "source_id": "source-1",
       "path": "strategy-planning-pricing/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -12502,7 +12444,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "domain": "strategy",
           "triggers": "pricing strategy, pricing plan, price points, tier structure, pricing model, subscription pricing, freemium pricing, SaaS pricing, B2B pricing, B2C pricing, pricing tiers, price my product, how to price, pricing recommendation",
           "role": "pricing-strategist",
           "scope": "analysis",
@@ -12583,7 +12524,7 @@
       "source_id": "source-1",
       "path": "strategy-planning-startup/SKILL.md",
       "url": null,
-      "packs": [
+      "plugins": [
         "strategy"
       ],
       "frontmatter": {
@@ -12595,7 +12536,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -12676,8 +12616,8 @@
       "source_id": "source-1",
       "path": "tech-leader-exec-briefing/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "tech"
       ],
       "frontmatter": {
         "name": "tech-leader-exec-briefing",
@@ -12688,7 +12628,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -12746,8 +12685,8 @@
       "source_id": "source-1",
       "path": "tech-leader-roadmap-narrator/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "tech"
       ],
       "frontmatter": {
         "name": "tech-leader-roadmap-narrator",
@@ -12758,7 +12697,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,
@@ -12816,8 +12754,8 @@
       "source_id": "source-1",
       "path": "tech-leader-vision-builder/SKILL.md",
       "url": null,
-      "packs": [
-        "strategy"
+      "plugins": [
+        "tech"
       ],
       "frontmatter": {
         "name": "tech-leader-vision-builder",
@@ -12828,7 +12766,6 @@
         "allowed_tools": null,
         "metadata": {
           "version": null,
-          "domain": null,
           "triggers": null,
           "role": null,
           "scope": null,

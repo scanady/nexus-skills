@@ -1,0 +1,13 @@
+{
+  "skills": [
+    "agents-copilot-instructions",
+    "agents-design-persona-creator",
+    "agents-design-visual-identity",
+    "agents-skill-plugin-builder",
+    "agents-skill-spec-builder",
+    "ai-prompt-engineer",
+    "knowledge-context-curator",
+    "knowledge-context-session-handover",
+    "knowledge-ops"
+  ]
+}

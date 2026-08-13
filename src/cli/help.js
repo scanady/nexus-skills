@@ -21,7 +21,7 @@ Commands:
 
 Options:
   --skill, -s <name>   Install specific skill(s) (repeatable)
-  --pack, -P <name>    Install all skills in a named pack (repeatable)
+  --plugin, -P <name>  Install all skills in a named plugin (repeatable)
   --agent, -a <agent>  Target agent(s) (repeatable, default: agent-skills)
   --project, -p        Install to current project directory (default)
   --global, -g         Install globally
@@ -50,8 +50,8 @@ Examples:
   npx nxa install -a github-copilot --skill content-copy-humanizer -p
   npx nxa install --upgrade
   npx nxa install --upgrade --overwrite
-  npx nxa install --pack marketing
-  npx nxa install --pack tech --pack data
+  npx nxa install --plugin marketing
+  npx nxa install --plugin tech --plugin data
   npx nxa install --source-url https://github.com/scanady/nexus-skills.git --source-ref main
   npx nxa list
   npx nxa list --names

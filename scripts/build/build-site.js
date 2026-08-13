@@ -5,12 +5,12 @@
  * Assembles the GitHub Pages distribution under dist/site/:
  *   - index.html                            ← landing page with install commands
  *   - skill-catalog.html                    ← catalog browser (existing)
- *   - pack-manager.html                     ← pack manager (existing)
+ *   - plugin-manager.html                     ← plugin manager (existing)
  *   - skill-catalog.json                    ← raw catalog
  *   - skill-catalog-summary.md              ← summary doc
  *   - marketplace/.claude-plugin/marketplace.json   ← published marketplace
- *   - plugins/<pack>.zip                    ← per-pack downloadable bundles
- *   - plugins/manifest.json                 ← pack manifest (machine readable)
+ *   - plugins/<plugin>.zip                    ← per-plugin downloadable bundles
+ *   - plugins/manifest.json                 ← plugin manifest (machine readable)
  *
  * Prerequisite: run `node scripts/build/build-plugins.js` first so dist/plugins/ exists.
  *
@@ -67,7 +67,7 @@ function zipDirectory(sourceDir, outZip) {
     const psCmd = `Compress-Archive -Path '${sourceDir}\\*' -DestinationPath '${outZip}' -Force`;
     childProcess.execSync(`powershell -NoProfile -Command "${psCmd}"`, { stdio: 'inherit' });
   } else {
-    // -j would junk paths; we want to keep the pack folder name as the top-level entry
+    // -j would junk paths; we want to keep the plugin folder name as the top-level entry
     const parent = path.dirname(sourceDir);
     const base = path.basename(sourceDir);
     childProcess.execSync(`cd "${parent}" && zip -rq "${outZip}" "${base}"`, { stdio: 'inherit' });
@@ -75,12 +75,12 @@ function zipDirectory(sourceDir, outZip) {
 }
 
 function buildIndexHtml(manifest, version) {
-  const packRows = manifest.packs.map(p => `
+  const pluginRows = manifest.plugins.map(p => `
         <tr>
           <td><code>${p.pluginName}</code></td>
           <td>${p.skills.length}</td>
           <td><a href="plugins/${p.name}.zip" download>${p.name}.zip</a></td>
-          <td><code>nxa install --pack ${p.name}</code></td>
+          <td><code>nxa install --plugin ${p.name}</code></td>
         </tr>`).join('');
 
   return `<!DOCTYPE html>
@@ -122,7 +122,7 @@ function buildIndexHtml(manifest, version) {
 
   <div class="links">
     <a href="skill-catalog.html">📚 Skill Catalog</a>
-    <a href="pack-manager.html">📦 Pack Manager</a>
+    <a href="plugin-manager.html">📦 Plugin Manager</a>
     <a href="skill-catalog.json">📄 Raw Catalog JSON</a>
     <a href="skill-catalog-summary.md">📝 Summary</a>
   </div>
@@ -130,19 +130,19 @@ function buildIndexHtml(manifest, version) {
   <h2>Install via CLI</h2>
   <pre>npm exec --yes --package=git+https://github.com/scanady/nexus-skills.git#main -- nxa install</pre>
 
-  <h2>Install a specific pack</h2>
-  <pre>nxa install --pack marketing
-nxa install --pack tech --pack data</pre>
+  <h2>Install a specific plugin</h2>
+  <pre>nxa install --plugin marketing
+nxa install --plugin tech --plugin data</pre>
 
   <h2>Install as a Claude plugin</h2>
-  <p>Add this repo as a Claude Code marketplace, then install any pack plugin:</p>
+  <p>Add this repo as a Claude Code marketplace, then install any plugin:</p>
   <pre>/plugin marketplace add https://github.com/scanady/nexus-skills.git
 /plugin install nexus-marketing</pre>
 
-  <h2>Download a pack bundle</h2>
+  <h2>Download a plugin bundle</h2>
   <table>
     <thead><tr><th>Plugin</th><th>Skills</th><th>Download</th><th>CLI</th></tr></thead>
-    <tbody>${packRows}
+    <tbody>${pluginRows}
     </tbody>
   </table>
 
@@ -167,7 +167,7 @@ function main() {
 
   // 1. Copy browser assets
   copyFile(path.join(ROOT, 'skill-catalog.html'), path.join(SITE_DIR, 'skill-catalog.html'));
-  copyFile(path.join(ROOT, 'pack-manager.html'), path.join(SITE_DIR, 'pack-manager.html'));
+  copyFile(path.join(ROOT, 'plugin-manager.html'), path.join(SITE_DIR, 'plugin-manager.html'));
   copyFile(path.join(ROOT, 'skill-catalog.json'), path.join(SITE_DIR, 'skill-catalog.json'));
   const summaryPath = path.join(ROOT, 'skill-catalog-summary.md');
   if (fs.existsSync(summaryPath)) {
@@ -180,11 +180,11 @@ function main() {
     path.join(SITE_MARKETPLACE_DIR, 'marketplace.json')
   );
 
-  // 3. Per-pack zips
+  // 3. Per-plugin zips
   fs.mkdirSync(SITE_PLUGINS_DIR, { recursive: true });
-  for (const pack of manifest.packs) {
-    const src = path.join(DIST_PLUGINS, pack.name);
-    const out = path.join(SITE_PLUGINS_DIR, `${pack.name}.zip`);
+  for (const plugin of manifest.plugins) {
+    const src = path.join(DIST_PLUGINS, plugin.name);
+    const out = path.join(SITE_PLUGINS_DIR, `${plugin.name}.zip`);
     if (fs.existsSync(out)) fs.rmSync(out);
     zipDirectory(src, out);
   }
@@ -196,7 +196,7 @@ function main() {
   // 5. .nojekyll so GitHub Pages serves files starting with _
   fs.writeFileSync(path.join(SITE_DIR, '.nojekyll'), '', 'utf8');
 
-  console.log(`Site built at ${path.relative(ROOT, SITE_DIR)}/ (${manifest.packs.length} pack zips)`);
+  console.log(`Site built at ${path.relative(ROOT, SITE_DIR)}/ (${manifest.plugins.length} plugin zips)`);
 }
 
 if (require.main === module) {
