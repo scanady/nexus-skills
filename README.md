@@ -245,6 +245,7 @@ npm run validate        # spec checks against every skills/<skill>/SKILL.md
 npm run scan            # writes skill-catalog-scan.json (mechanical metadata)
 npm run catalog         # rebuilds skill-catalog.json (merges scan + evaluations + plugins)
 npm run build:plugins   # regenerates .claude-plugin/marketplace.json + per-plugin bundles in dist/plugins/
+npm run build:skills    # creates one skill zip per source skill in dist/skills/
 npm run build:site      # assembles GitHub Pages site in dist/site/ (catalog browser, plugin manager, per-plugin zips)
 npm run check:artifacts # fails if committed generated artifacts are stale
 
@@ -266,6 +267,7 @@ Outputs:
 | `.claude-plugin/marketplace.json` | `npm run build:plugins` (from `plugin-packages/`) | yes |
 | `.claude-plugin/plugin.json` | `npm run build:plugins` (umbrella `nexus-all`) | yes |
 | `dist/plugins/<plugin>/` | `npm run build:plugins` (self-contained plugin bundles) | no |
+| `dist/skills/<skill>.zip` | `npm run build:skills` (one archive per source skill) | no |
 | `dist/site/` | `npm run build:site` (GitHub Pages root) | no |
 
 ### CI workflows
