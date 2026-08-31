@@ -87,6 +87,7 @@
         "./skills/content-copy-executive-writing",
         "./skills/content-copy-humanizer",
         "./skills/content-meta-design",
+        "./skills/content-narrative-story-brief",
         "./skills/content-style-extractor",
         "./skills/content-technical-doc-coauthoring",
         "./skills/content-technical-onboarding-docs"
@@ -341,6 +342,7 @@
         "compliance"
       ],
       "skills": [
+        "./skills/content-narrative-story-brief",
         "./skills/legal-compliance-regulatory-monitor",
         "./skills/strategy-change-management",
         "./skills/strategy-critical-reasoning",
@@ -441,6 +443,7 @@
         "./skills/content-copy-executive-writing",
         "./skills/content-copy-humanizer",
         "./skills/content-meta-design",
+        "./skills/content-narrative-story-brief",
         "./skills/content-style-extractor",
         "./skills/content-technical-doc-coauthoring",
         "./skills/content-technical-onboarding-docs",

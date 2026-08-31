@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-08-13T10:12:33Z",
+  "generated_at": "2026-08-31T00:54:07Z",
   "sources": [
     {
       "id": "source-1",
@@ -11,24 +11,24 @@
     }
   ],
   "summary": {
-    "total_skills": 145,
+    "total_skills": 146,
     "evaluated": 114,
     "parse_errors": 0,
-    "avg_usage_value": 3.14,
-    "avg_executability": 2.24,
-    "avg_invocability": 1.71,
+    "avg_usage_value": 3.12,
+    "avg_executability": 2.23,
+    "avg_invocability": 1.7,
     "security_risk_distribution": {
       "low": 115,
-      "medium": 28,
+      "medium": 29,
       "high": 2
     },
     "complexity_distribution": {
-      "compact": 72,
+      "compact": 73,
       "detailed": 29,
       "comprehensive": 44
     },
     "pattern_distribution": {
-      "A": 127,
+      "A": 128,
       "B": 17,
       "C": 1
     },
@@ -65,7 +65,7 @@
         "plugin_name": "nexus-content",
         "description": "Write, edit, and reshape content for human readers — copy, long-form, technical documentation, and voice consistency. Turn rough drafts into clear, publishable prose.",
         "version": "1.0.0",
-        "skill_count": 12,
+        "skill_count": 13,
         "skills": [
           "content-behavioral-nudge-unit",
           "content-copy-caveman",
@@ -76,6 +76,7 @@
           "content-copy-executive-writing",
           "content-copy-humanizer",
           "content-meta-design",
+          "content-narrative-story-brief",
           "content-style-extractor",
           "content-technical-doc-coauthoring",
           "content-technical-onboarding-docs"
@@ -220,8 +221,9 @@
         "plugin_name": "nexus-strategy",
         "description": "Make hard calls and defend them — planning, decision frameworks, critical reasoning, change management, and executive communication. Choose a direction and bring people with you.",
         "version": "1.0.0",
-        "skill_count": 14,
+        "skill_count": 15,
         "skills": [
+          "content-narrative-story-brief",
           "legal-compliance-regulatory-monitor",
           "strategy-change-management",
           "strategy-critical-reasoning",
@@ -1605,6 +1607,78 @@
           "rationale": "Not evaluated"
         },
         "core_capabilities": "Extract meta-level design principles, content style, tone, and structural patterns from source content. Use when asked to analyze content style, extract design patterns, reverse-engineer a content format, deconstruct a writing style, capture content DNA, create a style blueprint, extract tone and voice, analyze content structure, or when the user wants to replicate the \"feel\" of content without copying it. Produces a reusable design blueprint that captures what makes content effective — not the content itself.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "content-narrative-story-brief",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "content-narrative-story-brief/SKILL.md",
+      "url": null,
+      "plugins": [
+        "content",
+        "strategy"
+      ],
+      "frontmatter": {
+        "name": "content-narrative-story-brief",
+        "disable_model_invocation": false,
+        "description": "Develops the outcome, audience alignment, and narrative arc behind a presentation, brief, or memo before any drafting starts, producing a structured story brief rather than slides or draft copy. Use when asked to \"find the story for this deck\", \"shape the narrative before I build it\", \"align this to the audience\", \"flip the story for executives\", or \"nail the story arc first\".",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "triggers": "develop the story arc, build a story brief, define the ask and takeaways, structure this for the board, front-load the ask for executives, outline the story before the deck, identify the driver for this change, distinguish the ask from the fyi",
+          "role": "strategist",
+          "scope": "creation",
+          "output_format": "document",
+          "related_skills": "doc-coauthoring"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 5,
+        "estimated_tokens": 321,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "medium",
+          "findings": [
+            "References credentials/secrets"
+          ],
+          "rationale": "Evaluated from scanner signals."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Develops the outcome, audience alignment, and narrative arc behind a presentation, brief, or memo before any drafting starts, producing a structured story brief rather than slides or draft copy. Use when asked to \"find the story for this deck\", \"shape the narrative before I build it\", \"align this to the audience\", \"flip the story for executives\", or \"nail the story arc first\".",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
