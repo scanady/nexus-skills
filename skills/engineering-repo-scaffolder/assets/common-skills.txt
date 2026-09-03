@@ -1,0 +1,5 @@
+agents-nexus-skills-manager
+skill-architect
+skill-evaluator
+engineering-github-repo-standards
+content-copy-clear-writing

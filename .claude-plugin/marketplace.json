@@ -27,12 +27,12 @@
         "agent-tools"
       ],
       "skills": [
-        "./skills/agents-copilot-instructions",
         "./skills/agents-design-persona-creator",
         "./skills/agents-design-visual-identity",
         "./skills/agents-skill-plugin-builder",
         "./skills/agents-skill-spec-builder",
         "./skills/ai-prompt-engineer",
+        "./skills/engineering-agents-md-curator",
         "./skills/knowledge-context-curator",
         "./skills/knowledge-context-session-handover",
         "./skills/knowledge-ops"
@@ -172,6 +172,30 @@
         "./skills/design-visual-image-system-director",
         "./skills/design-web-impactful",
         "./skills/personal-design-meeting-background"
+      ]
+    },
+    {
+      "name": "nexus-dev",
+      "description": "Software engineering and development workflows.",
+      "source": "./",
+      "strict": false,
+      "version": "1.0.0",
+      "keywords": [
+        "software-engineering",
+        "git",
+        "github",
+        "scaffolding",
+        "development-workflow",
+        "development"
+      ],
+      "skills": [
+        "./skills/engineering-dev-git-commit",
+        "./skills/engineering-dev-git-finish-branch",
+        "./skills/engineering-dev-git-start-branch",
+        "./skills/engineering-dev-git-workflow-design",
+        "./skills/engineering-github-ops",
+        "./skills/engineering-github-repo-standards",
+        "./skills/engineering-repo-scaffolder"
       ]
     },
     {
@@ -428,7 +452,6 @@
         "ai"
       ],
       "skills": [
-        "./skills/agents-copilot-instructions",
         "./skills/agents-design-persona-creator",
         "./skills/agents-design-visual-identity",
         "./skills/agents-skill-plugin-builder",
@@ -485,6 +508,7 @@
         "./skills/devops-infra-engineer",
         "./skills/devops-security-audit-lead",
         "./skills/devops-security-vulnerability-analyst",
+        "./skills/engineering-agents-md-curator",
         "./skills/engineering-api-mcp-builder",
         "./skills/engineering-api-n8n-workflow-builder",
         "./skills/engineering-arch-architecture-decision-records",
@@ -508,6 +532,7 @@
         "./skills/engineering-quality-receiving-review",
         "./skills/engineering-quality-requesting-review",
         "./skills/engineering-quality-tdd",
+        "./skills/engineering-repo-scaffolder",
         "./skills/knowledge-context-curator",
         "./skills/knowledge-context-session-handover",
         "./skills/knowledge-ops",

@@ -1,0 +1,243 @@
+{
+  "version": "2.6.0",
+  "lastUpdated": "2026-09-01",
+  "starter_shell": {
+    "description": "Minimal committed baseline required in all repositories",
+    "paths": [
+      "README.md",
+      "{project-name}.code-workspace",
+      ".gitignore",
+      ".agents/.gitkeep",
+      ".agents/skills/.gitkeep",
+      ".claude/CLAUDE.md",
+      ".github/.gitkeep",
+      "docs/.gitkeep",
+      "docs/index.md"
+    ],
+    "symlinks": {
+      ".claude/skills": "../.agents/skills"
+    }
+  },
+  "root_files": {
+    "README.md": "Main project overview, getting started guidance, and navigation.",
+    "CONTRIBUTING.md": "Contribution workflow, branch strategy, pull request expectations, coding expectations.",
+    "LICENSE": "Project license.",
+    "LICENSE_EE": "Enterprise or commercial license terms, when the project uses a dual-license or enterprise-license model.",
+    "LICENSE_NOTICE.md": "Human-readable summary of the repository's license structure and contact path.",
+    "SECURITY.md": "Security policy, reporting process, and supported versions.",
+    "CHANGELOG.md": "Notable changes by version or release.",
+    ".gitignore": "Files and folders excluded from version control.",
+    "AGENTS.md": "Repository-wide agent-facing instructions and system of truth. Read by Codex, GitHub Copilot, and Claude Code (via the .claude/CLAUDE.md shim). Carries the synced shared-principles preamble block at the top; everything below it is repo-owned. See shared_standards for the synced block.",
+    "{project-name}.code-workspace": "VS Code workspace file for opening the project root with shared workspace settings.",
+    ".env.example": "Example environment variables.",
+    "package.json": "Project manifest (single-module projects).",
+    "pyproject.toml": "Python project manifest.",
+    "go.mod": "Go project manifest.",
+    "Cargo.toml": "Rust project manifest.",
+    "pom.xml": "Maven project manifest.",
+    "Dockerfile": "Container definition (simple single-service projects).",
+    "docker-compose.yml": "Container orchestration (simple single-service projects)."
+  },
+  "root_directories": {
+    ".github": "GitHub-native workflows, Copilot instructions, prompts, agents, skills, templates.",
+    ".agents": "Reusable cross-project agent assets.",
+    ".claude": "Claude Code integration folder. Contains `CLAUDE.md` as a one-line `@../AGENTS.md` shim so Claude Code loads the repo-root AGENTS.md, plus a `skills/` symlink to `.agents/skills/` so reusable skills auto-load. Created at scaffold time; do not hand-author additional content here.",
+    "docs": "Documentation, standards, templates, decisions, references, and generated durable docs.",
+    "src": "Source code.",
+    "bin": "Runtime entry points, command-line tools, or executable wrappers.",
+    "scripts": "Development, build, setup, generation, and maintenance scripts.",
+    "infrastructure": "Infrastructure-as-code, container, and deployment infrastructure.",
+    "output": "Local generated output.",
+    "scratchpad": "Temporary working material."
+  },
+  "docs_structure": {
+    "docs/index.md": "Documentation landing page and navigation map.",
+    "docs/glossary.md": "Shared terminology, acronyms, and definitions.",
+    "docs/design": "Higher-level design principles and quality expectations.",
+    "docs/product": "Product vision, roadmap, requirements, personas, use cases, and UX work.",
+    "docs/product/ux": "UX prototypes, wireframes, and research notes.",
+    "docs/engineering": "Architecture and technical documentation.",
+    "docs/standards": "Canonical standards used by humans and agents.",
+    "docs/standards/engineering": "Engineering standards for code, APIs, data, security, testing, observability.",
+    "docs/standards/product": "Product documentation, UX, and acceptance criteria standards.",
+    "docs/standards/ai": "Agent, prompt, skill, tool-use, and context-management standards.",
+    "docs/standards/governance": "Decision, risk, release-readiness, and governance standards.",
+    "docs/templates": "Reusable templates for repeatable work products.",
+    "docs/decisions": "Architecture Decision Records and other durable decision records.",
+    "docs/operations": "Runbooks, deployment documentation, support model, and incident response.",
+    "docs/generated": "Durable generated documentation, such as API references or schema documentation.",
+    "docs/references": "Curated internal or upstream references for humans and agents."
+  },
+  "github_structure": {
+    ".github/CODEOWNERS": "Default ownership rules for repository paths and reviews.",
+    ".github/dependabot.yml": "Automated dependency update configuration.",
+    ".github/prompts": "Repository-specific prompts used with GitHub Copilot or agent workflows.",
+    ".github/agents": "Repository-specific agents.",
+    ".github/skills": "Repository-specific skills that agents can use.",
+    ".github/instructions": "Optional supplemental Copilot instruction files (.instructions.md).",
+    ".github/workflows": "GitHub Actions workflows.",
+    ".github/ISSUE_TEMPLATE": "Issue templates.",
+    ".github/pull_request_template.md": "Pull request template."
+  },
+  "agents_structure": {
+    ".agents/.gitkeep": "Placeholder when .agents/ is intentionally scaffolded before it contains a reusable asset file.",
+    ".agents/agents": "Reusable cross-project agent definitions.",
+    ".agents/agents/.gitkeep": "Placeholder when .agents/agents/ is intentionally scaffolded before it contains an agent file.",
+    ".agents/skills": "Reusable cross-project agent skills.",
+    ".agents/skills/.gitkeep": "Placeholder when .agents/skills/ is intentionally scaffolded before it contains a skill folder."
+  },
+  "common_skills": {
+    "source_url": "https://github.com/scanady/nexus-skills.git",
+    "source_ref": "main",
+    "source_paths": [
+      "skills/<name>",
+      ".agents/skills/<name>"
+    ],
+    "source_path_note": "The source stores skills in either location. Check both before reporting a skill as missing — agents-nexus-skills-manager currently lives under .agents/skills/, while the others live under skills/.",
+    "target_dir": ".agents/skills",
+    "skills": [
+      "agents-nexus-skills-manager",
+      "skill-architect",
+      "skill-evaluator",
+      "engineering-github-repo-standards",
+      "content-copy-clear-writing"
+    ]
+  },
+  "claude_code_integration": {
+    "description": "Claude Code discovers project skills under .claude/skills/. The repo standard keeps reusable skills under .agents/skills/ so they stay portable. To satisfy both without duplicating content, scaffold creates .claude/skills as a symlink (junction on Windows) pointing to ../.agents/skills.",
+    "symlinks": {
+      ".claude/skills": {
+        "target": "../.agents/skills",
+        "purpose": "Expose reusable skills to Claude Code without moving them out of .agents/skills.",
+        "windows_note": "Created as a directory junction to avoid the admin/developer-mode requirement of NTFS symlinks."
+      }
+    }
+  },
+  "shared_standards": {
+    "description": "Cross-project engineering standards. Kept identical across every repo and synced from the source repo below — do not hand-author or hand-edit these; edit the source and run the sync tool.",
+    "source_repo": "ifoundry-development",
+    "sync_tool": {
+      "windows": "scripts/sync-standards.ps1 (run as `sync-standards` from any directory when the alias is installed; also scans DevRoot for a multi-repo sweep)",
+      "linux_macos": "scripts/sync-standards.sh --target-repo <path> (single-target only; use the .ps1 for the multi-repo sweep)"
+    },
+    "files": {
+      ".github/instructions/coding-principles.instructions.md": "Simplicity, scope, completion, modernization, DRY.",
+      ".github/instructions/core-principles.instructions.md": "Think before acting; build for people; coherence.",
+      "AGENTS.md": "Only the block between <!-- shared-principles:start --> and <!-- shared-principles:end --> markers is synced. Template source: ifoundry-development/docs/standards/ai/agents-md-shared-preamble.md. A repo with no AGENTS.md gets one created by the sync tool, carrying the block plus a placeholder Repository specifics section. Everything below the markers is repo-owned from then on. The `.claude/CLAUDE.md` one-line shim (`@../AGENTS.md`) is written by the scaffolder, not the sync tool; the repo-root CLAUDE.md is retired and never scaffolded."
+    }
+  },
+  "non_standard_paths": {
+    "/config": {
+      "issue": "Generic config folder violates placement principle",
+      "action": "Move tool configs to root, application config near consuming code in /src, infrastructure config to /infrastructure"
+    },
+    "/test": {
+      "issue": "Top-level test folder violates colocation principle",
+      "action": "Colocate tests with code under /src per placement rules"
+    },
+    "/tests": {
+      "issue": "Top-level tests folder violates colocation principle",
+      "action": "Colocate tests with code under /src per placement rules"
+    },
+    "/lib": {
+      "issue": "Non-standard library folder",
+      "action": "Reclassify to /src/common, /scripts, or /bin based on purpose"
+    },
+    "/tools": {
+      "issue": "Non-standard tools folder",
+      "action": "Reclassify to /scripts, /bin, or /src based on purpose"
+    },
+    "/assets": {
+      "issue": "Non-standard assets folder",
+      "action": "If documentation assets, move under /docs; if runtime assets, place near consuming code in /src"
+    },
+    "/build": {
+      "issue": "Build output at root should be ignored",
+      "action": "Add to .gitignore patterns; do not commit build outputs; do not add README files, .gitkeep files, or explanatory notes inside build outputs"
+    },
+    "/dist": {
+      "issue": "Distribution output at root should be ignored",
+      "action": "Add to .gitignore patterns; do not commit distribution outputs; do not add README files, .gitkeep files, or explanatory notes inside distribution outputs"
+    },
+    "/out": {
+      "issue": "Output folder at root should be ignored",
+      "action": "Add to .gitignore patterns; do not commit generated outputs; do not add README files, .gitkeep files, or explanatory notes inside generated outputs"
+    },
+    "/target": {
+      "issue": "Build target at root should be ignored",
+      "action": "Add to .gitignore patterns; do not commit build targets; do not add README files, .gitkeep files, or explanatory notes inside build targets"
+    },
+    "/venv": {
+      "issue": "Virtual environment folder should be ignored",
+      "action": "Add to .gitignore patterns; do not commit virtual environments; do not add README files, .gitkeep files, or explanatory notes inside virtual environments"
+    },
+    "/logs": {
+      "issue": "Log folder should be ignored",
+      "action": "Add to .gitignore patterns; do not commit logs; do not add README files, .gitkeep files, or explanatory notes inside log folders"
+    },
+    "/coverage": {
+      "issue": "Coverage output folder should be ignored",
+      "action": "Add to .gitignore patterns; do not commit coverage outputs; do not add README files, .gitkeep files, or explanatory notes inside coverage outputs"
+    },
+    "/playwright-report": {
+      "issue": "Playwright report folder should be ignored",
+      "action": "Add to .gitignore patterns; do not commit test reports; do not add README files, .gitkeep files, or explanatory notes inside test reports"
+    },
+    "/test-results": {
+      "issue": "Test results folder should be ignored",
+      "action": "Add to .gitignore patterns; do not commit test results; do not add README files, .gitkeep files, or explanatory notes inside test result folders"
+    },
+    "/infra": {
+      "issue": "Non-standard infrastructure folder name",
+      "action": "Rename to /infrastructure"
+    },
+    "/.agents/prompts": {
+      "issue": "Prompts folder in .agents violates asset routing",
+      "action": "Move to /.github/prompts (repository-specific) or remove"
+    }
+  },
+  "optional_templates": {
+    "governance": {
+      "CONTRIBUTING.md": "assets/optional/governance/CONTRIBUTING.md",
+      "LICENSE": "assets/optional/governance/LICENSE",
+      "LICENSE_EE": "assets/optional/governance/LICENSE_EE",
+      "LICENSE_NOTICE.md": "assets/optional/governance/LICENSE_NOTICE.md",
+      "SECURITY.md": "assets/optional/governance/SECURITY.md",
+      "CHANGELOG.md": "assets/optional/governance/CHANGELOG.md"
+    }
+  },
+  "adoption_triggers": {
+    "CONTRIBUTING.md": "The project has governance, sharing, release, or contribution needs that require them. Use assets/optional/governance/CONTRIBUTING.md as the template.",
+    "LICENSE": "The project has an approved project license. Use assets/optional/governance/LICENSE as the placeholder template only when the license text is not yet final.",
+    "LICENSE_EE": "The project has an approved enterprise or commercial license model. Use assets/optional/governance/LICENSE_EE as the placeholder template only when the license text is not yet final.",
+    "LICENSE_NOTICE.md": "The project needs a human-readable license summary. Use assets/optional/governance/LICENSE_NOTICE.md as the template.",
+    "SECURITY.md": "The project has security reporting or supported-version needs. Use assets/optional/governance/SECURITY.md as the template.",
+    "CHANGELOG.md": "The project tracks release-visible changes. Use assets/optional/governance/CHANGELOG.md as the template.",
+    ".env.example": "The project has environment variables that contributors need documented.",
+    "src/": "The repository contains code, executables, automation, or infrastructure definitions.",
+    "bin/": "The repository contains code, executables, automation, or infrastructure definitions.",
+    "scripts/": "The repository contains code, executables, automation, or infrastructure definitions.",
+    "infrastructure/": "The repository contains code, executables, automation, or infrastructure definitions.",
+    ".github/workflows/": "The repository is ready to automate CI/CD, review ownership, dependency management, or contribution workflows.",
+    ".github/CODEOWNERS": "The repository is ready to automate CI/CD, review ownership, dependency management, or contribution workflows.",
+    "dependabot.yml": "The repository is ready to automate CI/CD, review ownership, dependency management, or contribution workflows.",
+    ".github/ISSUE_TEMPLATE/": "The repository is ready to automate CI/CD, review ownership, dependency management, or contribution workflows.",
+    ".github/pull_request_template.md": "The repository is ready to automate CI/CD, review ownership, dependency management, or contribution workflows.",
+    ".github/prompts/": "Repository-specific AI assets have been created and will be maintained.",
+    ".github/agents/": "Repository-specific AI assets have been created and will be maintained.",
+    ".github/skills/": "Repository-specific AI assets have been created and will be maintained.",
+    ".github/instructions/": "Repository-specific AI assets have been created and will be maintained.",
+    ".agents/": "Reusable cross-project agent assets exist and need a portable home.",
+    "docs/design/": "That class of documentation is being actively authored.",
+    "docs/product/": "That class of documentation is being actively authored.",
+    "docs/engineering/": "That class of documentation is being actively authored.",
+    "docs/standards/": "That class of documentation is being actively authored.",
+    "docs/templates/": "That class of documentation is being actively authored.",
+    "docs/decisions/": "That class of documentation is being actively authored.",
+    "docs/operations/": "That class of documentation is being actively authored.",
+    "docs/generated/": "That class of documentation is being actively authored.",
+    "docs/references/": "That class of documentation is being actively authored.",
+    "output/": "The team explicitly wants committed placeholders for local generated output.",
+    "scratchpad/": "The team explicitly wants committed placeholders for local temporary work."
+  }
+}
