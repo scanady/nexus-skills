@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.3.0](https://github.com/scanady/nexus-skills/compare/nexus-agents-v1.2.0...nexus-agents-v1.3.0) (2026-09-03)
+
+
+### Features
+
+* add uninstall flow to Nexus Skills manager and update repo guardrails ([#37](https://github.com/scanady/nexus-skills/issues/37)) ([d0282f5](https://github.com/scanady/nexus-skills/commit/d0282f5b6120b60205f054470bc9dbd32acccd4b))
+* replace skill packs with plugin packages ([#45](https://github.com/scanady/nexus-skills/issues/45)) ([3bef0d7](https://github.com/scanady/nexus-skills/commit/3bef0d79c1ed5a2b71161e83eb23b4cefbc1b992))
+* **skills:** add data profiler, statistical methods, and chart designer skills ([#43](https://github.com/scanady/nexus-skills/issues/43)) ([a5ccf8e](https://github.com/scanady/nexus-skills/commit/a5ccf8ee8eced6cbdfb5bfefa626a255df464785))
+* **skills:** add personal-design-meeting-background ([#44](https://github.com/scanady/nexus-skills/issues/44)) ([f468994](https://github.com/scanady/nexus-skills/commit/f46899432a661c6f8a151cbd7112871946f25aa6))
+
 ## [1.2.0](https://github.com/scanady/nexus-skills/compare/nexus-agents-v1.1.0...nexus-agents-v1.2.0) (2026-07-09)
 
 
