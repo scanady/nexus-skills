@@ -22,7 +22,6 @@
         "ai"
       ],
       "skills": [
-        "./skills/agents-copilot-instructions",
         "./skills/agents-design-persona-creator",
         "./skills/agents-design-visual-identity",
         "./skills/agents-skill-plugin-builder",
@@ -79,6 +78,7 @@
         "./skills/devops-infra-engineer",
         "./skills/devops-security-audit-lead",
         "./skills/devops-security-vulnerability-analyst",
+        "./skills/engineering-agents-md-curator",
         "./skills/engineering-api-mcp-builder",
         "./skills/engineering-api-n8n-workflow-builder",
         "./skills/engineering-arch-architecture-decision-records",
@@ -102,6 +102,7 @@
         "./skills/engineering-quality-receiving-review",
         "./skills/engineering-quality-requesting-review",
         "./skills/engineering-quality-tdd",
+        "./skills/engineering-repo-scaffolder",
         "./skills/knowledge-context-curator",
         "./skills/knowledge-context-session-handover",
         "./skills/knowledge-ops",

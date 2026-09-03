@@ -77,7 +77,7 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 │   ├── export/                 # Manual skill zip export scripts
 │   └── validation/             # Repository validation scripts
 ├── skills/                     # Source skill registry
-│   ├── agents-copilot-instructions/
+│   ├── engineering-agents-md-curator/
 │   ├── content-copy-humanizer/
 │   ├── engineering-quality-tdd/
 │   ├── product-spec-prd-generator/
