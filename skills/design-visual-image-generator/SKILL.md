@@ -132,7 +132,7 @@ The script detects the actual image format returned by the API and adjusts the f
 
 Use descriptive file names that reflect the brief, such as `hero-quiet-lab-workbench.jpg`, `campaign-visual-solar-rooftop.jpg`, or `concept-art-rainy-neon-market.jpg`.
 
-If `gemini-3-pro-image` is unavailable, the generator automatically falls back to `gemini-3.1-flash-image-preview`.
+If `gemini-3-pro-image` is unavailable, the generator automatically falls back to `gemini-3.1-flash-image`.
 
 ### Step 5: Critique and Iterate
 
@@ -224,7 +224,7 @@ Google AI Studio, Gemini image generation, prompt engineering, creative brief, a
 ## Troubleshooting
 
 - **API key error**: Verify `.env` exists in this skill folder with a valid `GOOGLE_AI_STUDIO_API_KEY`.
-- **Model not available**: The generator tries `gemini-3-pro-image` first and automatically falls back to `gemini-3.1-flash-image-preview`.
+- **Model not available**: The generator tries `gemini-3-pro-image` first and automatically falls back to `gemini-3.1-flash-image`.
 - **Prompt fidelity issues**: Use `--prompt-file`, not inline prompt text.
 - **Image feels generic**: Add more specific subject, use case, composition, or negative direction. Do not fix a weak prompt with only style adjectives.
 - **Artifacts or warped text**: Reduce complexity, remove small text, simplify the composition, and regenerate.

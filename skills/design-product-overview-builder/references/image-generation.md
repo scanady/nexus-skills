@@ -52,14 +52,14 @@ python3 ./scripts/generate.py \
 # Override model (optional)
 python3 ./scripts/generate.py \
   --prompt "Generate an image: ..." \
-  --model gemini-3.1-flash-image-preview \
+  --model gemini-3.1-flash-image \
   --output ./output/<product-name>/generated/generated-process-flow.png
 ```
 
 ### Script Behavior
 
 - **Default model**: `gemini-3-pro-image` (override via `--model` or `GOOGLE_AI_STUDIO_MODEL` env var)
-- **Fallback model**: `gemini-3.1-flash-image-preview` — automatic fallback if the primary model is unavailable
+- **Fallback model**: `gemini-3.1-flash-image` — automatic fallback if the primary model is unavailable
 - **Retry logic**: Up to 3 retries with exponential backoff on transient errors (429, 500, 503)
 - **Format detection**: Auto-corrects file extension based on actual image magic bytes (PNG, JPG, WebP)
 - **API key**: Read from `GOOGLE_AI_STUDIO_API_KEY` env var or `.env` file in the skill root
@@ -92,7 +92,7 @@ POST https://generativelanguage.googleapis.com/v1beta/models/{MODEL_ID}:generate
 ```
 
 **Default model:** `gemini-3-pro-image`
-**Fallback model:** `gemini-3.1-flash-image-preview`
+**Fallback model:** `gemini-3.1-flash-image`
 
 ---
 
