@@ -193,7 +193,7 @@ For each identified visual, use the bundled `scripts/generate.py` script:
      --output ./output/<product-name>/generated/generated-<type>-<descriptive-name>.png
    ```
    Or for long prompts, save to a file first and use `--prompt-file`.
-3. **The script handles** model selection (defaults to `gemini-3-pro-image-preview` with automatic fallback), retries on transient errors, and auto-corrects the output file extension based on actual format
+3. **The script handles** model selection (defaults to `gemini-3-pro-image` with automatic fallback), retries on transient errors, and auto-corrects the output file extension based on actual format
 4. **Verify** the output file was saved successfully (check terminal output for path and size)
 
 **Prompt construction rules:**

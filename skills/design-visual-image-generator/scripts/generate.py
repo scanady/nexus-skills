@@ -15,7 +15,7 @@ SKILL_ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(SKILL_ROOT / ".env")
 
 DEFAULT_MODEL_ID = os.environ.get(
-    "GOOGLE_AI_STUDIO_MODEL", "gemini-3-pro-image-preview"
+    "GOOGLE_AI_STUDIO_MODEL", "gemini-3-pro-image"
 )
 FALLBACK_MODEL_ID = "gemini-3.1-flash-image-preview"
 MAX_RETRIES = 3
@@ -37,7 +37,7 @@ def parse_args() -> argparse.Namespace:
         "--model",
         default=DEFAULT_MODEL_ID,
         help=(
-            "Preferred Gemini model ID. Defaults to gemini-3-pro-image-preview "
+            "Preferred Gemini model ID. Defaults to gemini-3-pro-image "
             "or GOOGLE_AI_STUDIO_MODEL when set."
         ),
     )
