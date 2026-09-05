@@ -1,0 +1,292 @@
+{
+  "strategy-decision-documenter": {
+    "usage_value": {
+      "score": 4,
+      "rationale": "Addresses a practical workflow with solid reuse beyond a single project. Pairing live interrogation with real-time CONTEXT.md and ADR updates is a genuine productivity multiplier for design teams."
+    },
+    "security_risk": {
+      "rating": "low",
+      "rationale": "Pure instruction-led skill. No scripts, no external URLs, no credential references.",
+      "findings": [],
+      "sub_scores": {
+        "data_privacy": 5,
+        "prompt_injection": 5,
+        "illegal_content": 5,
+        "bias": 5,
+        "system_integrity": 5,
+        "untrusted_communication": 5
+      }
+    },
+    "executability": {
+      "score": 4,
+      "completeness": 4,
+      "determinism": 4,
+      "consistency": 5,
+      "usability": 4,
+      "rationale": "Clear five-step workflow with specific turn patterns. Minor interpretation required for context-doc location heuristics."
+    },
+    "invocability": {
+      "score": 4,
+      "rationale": "Triggers and description are specific; name could overlap with general documentation skills but anti-triggers and priority field mitigate collision."
+    },
+    "over_specification_risk": {
+      "flagged": false,
+      "rationale": "Workflow is framed as reusable guidance; no hardcoded paths or project-specific assumptions."
+    },
+    "core_capabilities": "strategy-decision-documenter is an instruction-led skill. Combines Socratic plan interrogation with real-time documentation edits — grilling one question per turn while updating CONTEXT.md, CONTEXT-MAP.md, and ADRs whenever terms or decisions resolve. Primary output: sharpened domain vocabulary and durable decision records.",
+    "external_requirements_indicator": "self-contained",
+    "external_requirements": [
+      "none"
+    ]
+  },
+  "strategy-decision-interrogator": {
+    "usage_value": {
+      "score": 4,
+      "rationale": "Highly useful for design and planning sessions. The one-question-at-a-time Socratic pattern is a real workflow enhancer with broad appeal across tech and strategy teams."
+    },
+    "security_risk": {
+      "rating": "low",
+      "rationale": "Pure instruction-led skill. No scripts, no external URLs, no credential references.",
+      "findings": [],
+      "sub_scores": {
+        "data_privacy": 5,
+        "prompt_injection": 5,
+        "illegal_content": 5,
+        "bias": 5,
+        "system_integrity": 5,
+        "untrusted_communication": 5
+      }
+    },
+    "executability": {
+      "score": 4,
+      "completeness": 4,
+      "determinism": 4,
+      "consistency": 5,
+      "usability": 4,
+      "rationale": "Workflow is clear and well-structured. Compact skill by design — no references needed."
+    },
+    "invocability": {
+      "score": 5,
+      "rationale": "Triggers like 'grill me' and 'ask one at a time' are distinctive; strong anti-triggers prevent doc-editing collision."
+    },
+    "over_specification_risk": {
+      "flagged": false,
+      "rationale": "Workflow is fully generic — no project-specific assumptions."
+    },
+    "core_capabilities": "strategy-decision-interrogator is an instruction-led skill. Runs live, dependency-ordered Socratic interrogation of plans and designs — one precise question per turn with a recommended answer and rationale, narrowing ambiguity through sequential branch resolution. Primary output: a clarified decision tree with resolved branches and locked choices.",
+    "external_requirements_indicator": "self-contained",
+    "external_requirements": [
+      "none"
+    ]
+  },
+  "tech-dev-git-commit": {
+    "usage_value": {
+      "score": 5,
+      "rationale": "Git commit-and-push is an extremely high-frequency developer task. Every dev team benefits from consistent Conventional Commit message formatting with minimal friction."
+    },
+    "security_risk": {
+      "rating": "low",
+      "rationale": "Pure instruction-led skill. No scripts, no external URLs, no credential references. Git push guidance is user-executed, not agent-executed.",
+      "findings": [],
+      "sub_scores": {
+        "data_privacy": 5,
+        "prompt_injection": 5,
+        "illegal_content": 5,
+        "bias": 5,
+        "system_integrity": 4,
+        "untrusted_communication": 5
+      }
+    },
+    "executability": {
+      "score": 4,
+      "completeness": 4,
+      "determinism": 5,
+      "consistency": 5,
+      "usability": 4,
+      "rationale": "Step sequence is deterministic. Caveman writing style is intentional compression — functional but unconventional."
+    },
+    "invocability": {
+      "score": 5,
+      "rationale": "Triggers are precise git action phrases; anti-triggers cleanly separate from workflow-design use cases."
+    },
+    "over_specification_risk": {
+      "flagged": false,
+      "rationale": "Workflow is platform-agnostic and applies to any git repository."
+    },
+    "core_capabilities": "tech-dev-git-commit is an instruction-led skill. Executes the full git commit-and-push cycle — inspecting diffs, categorizing changes, drafting tight Conventional Commit messages (≤50 char subject, imperative mood), staging appropriate files, committing, and pushing. Primary output: executed git commands with a precisely formatted commit message.",
+    "external_requirements_indicator": "self-contained",
+    "external_requirements": [
+      "none"
+    ]
+  },
+  "tech-dev-git-finish-branch": {
+    "usage_value": {
+      "score": 4,
+      "rationale": "Completing development work and integrating branches is a common, important workflow. The four-option menu (merge, PR, keep, discard) with test verification makes this broadly useful."
+    },
+    "security_risk": {
+      "rating": "medium",
+      "rationale": "The workflow guides git merge, git push, and PR creation — modifying remote repository state. No scripts, but system-state modification via user-executed commands warrants medium.",
+      "findings": [
+        "Workflow instructs git push to remote repository.",
+        "Workflow instructs branch deletion after merge."
+      ],
+      "sub_scores": {
+        "data_privacy": 5,
+        "prompt_injection": 5,
+        "illegal_content": 5,
+        "bias": 5,
+        "system_integrity": 3,
+        "untrusted_communication": 5
+      }
+    },
+    "executability": {
+      "score": 4,
+      "completeness": 4,
+      "determinism": 4,
+      "consistency": 5,
+      "usability": 4,
+      "rationale": "Workflow is clear with well-defined decision branches. Missing license field is a minor spec gap."
+    },
+    "invocability": {
+      "score": 5,
+      "rationale": "Triggers like 'finish branch', 'merge branch', and 'create pull request' are specific and unambiguous."
+    },
+    "over_specification_risk": {
+      "flagged": false,
+      "rationale": "Workflow is generic — no project-specific assumptions beyond detecting base branch name."
+    },
+    "core_capabilities": "tech-dev-git-finish-branch is an instruction-led skill. Guides branch completion with test verification, a four-option integration menu (local merge, PR, keep, or discard), and post-merge cleanup. Primary output: executed branch integration with optional automated PR creation and local branch cleanup.",
+    "external_requirements_indicator": "self-contained",
+    "external_requirements": [
+      "none"
+    ]
+  },
+  "tech-dev-git-start-branch": {
+    "usage_value": {
+      "score": 5,
+      "rationale": "Starting a properly-named branch from an up-to-date base is a foundational, high-frequency developer action. Consistent naming and upstream tracking prevent common team friction."
+    },
+    "security_risk": {
+      "rating": "low",
+      "rationale": "Pure instruction-led skill. Creates local branches and pulls base — non-destructive operations. No scripts, no external URLs, no credential references.",
+      "findings": [],
+      "sub_scores": {
+        "data_privacy": 5,
+        "prompt_injection": 5,
+        "illegal_content": 5,
+        "bias": 5,
+        "system_integrity": 5,
+        "untrusted_communication": 5
+      }
+    },
+    "executability": {
+      "score": 4,
+      "completeness": 4,
+      "determinism": 5,
+      "consistency": 5,
+      "usability": 4,
+      "rationale": "Step sequence is clear and deterministic. Proposes branch name before executing — good confirmation gate."
+    },
+    "invocability": {
+      "score": 5,
+      "rationale": "Triggers are precise; anti-triggers cleanly separate from commit/merge/finish-branch scenarios."
+    },
+    "over_specification_risk": {
+      "flagged": false,
+      "rationale": "GitHub Flow naming conventions are widely applicable — no hardcoded project assumptions."
+    },
+    "core_capabilities": "tech-dev-git-start-branch is an instruction-led skill. Infers work type, derives a kebab-case branch name (with optional ticket prefix), updates the base branch with --ff-only, creates the branch, and sets upstream tracking. Primary output: a correctly named, up-to-date development branch with upstream tracking confirmed.",
+    "external_requirements_indicator": "self-contained",
+    "external_requirements": [
+      "none"
+    ]
+  },
+  "tech-dev-git-workflow-design": {
+    "usage_value": {
+      "score": 4,
+      "rationale": "Git workflow design is an important team-level decision. Well-scoped for team leads and platform engineers; reference loading table is exemplary."
+    },
+    "security_risk": {
+      "rating": "low",
+      "rationale": "Pure advisory skill with no scripts and no external service calls. Explicitly warns about destructive commands like --force.",
+      "findings": [],
+      "sub_scores": {
+        "data_privacy": 5,
+        "prompt_injection": 5,
+        "illegal_content": 5,
+        "bias": 5,
+        "system_integrity": 5,
+        "untrusted_communication": 5
+      }
+    },
+    "executability": {
+      "score": 5,
+      "completeness": 5,
+      "determinism": 4,
+      "consistency": 5,
+      "usability": 5,
+      "rationale": "Excellent reference loading table, clear workflow, explicit MUST/MUST NOT constraints, and Knowledge Reference section — exemplary structure."
+    },
+    "invocability": {
+      "score": 5,
+      "rationale": "Specific advisory triggers; strong anti-triggers prevent collision with action-oriented git skills."
+    },
+    "over_specification_risk": {
+      "flagged": false,
+      "rationale": "Workflow is framed as tailored-to-context guidance — no hardcoded assumptions."
+    },
+    "core_capabilities": "tech-dev-git-workflow-design is an instruction-led skill. Advises teams on branching strategy, commit conventions, merge vs rebase trade-offs, PR processes, conflict resolution, and release management by loading domain-specific reference files on demand. Primary output: tailored workflow recommendations with copy-paste ready commands, templates, and configuration.",
+    "external_requirements_indicator": "self-contained",
+    "external_requirements": [
+      "none"
+    ]
+  },
+  "tech-github-repo-standards": {
+    "usage_value": {
+      "score": 4,
+      "rationale": "Repository standardization at scale is genuinely valuable for platform engineers and compliance-oriented teams. Four profiles and two context modes make this practical for diverse org types."
+    },
+    "security_risk": {
+      "rating": "high",
+      "rationale": "Applies branch protection, security scanning, and access controls directly to GitHub repositories via the gh CLI with admin-level permissions. Modifies shared infrastructure. References credential scopes and token requirements.",
+      "findings": [
+        "Directly modifies GitHub repository settings via gh CLI API calls.",
+        "Requires admin permissions on target repository.",
+        "References token scopes and authentication credentials.",
+        "Scanner detected install/credential patterns in skill content.",
+        "Modifies branch protection rules that could lock out contributors if misconfigured."
+      ],
+      "sub_scores": {
+        "data_privacy": 4,
+        "prompt_injection": 4,
+        "illegal_content": 5,
+        "bias": 5,
+        "system_integrity": 2,
+        "untrusted_communication": 3
+      }
+    },
+    "executability": {
+      "score": 5,
+      "completeness": 5,
+      "determinism": 5,
+      "consistency": 5,
+      "usability": 4,
+      "rationale": "Comprehensive workflow with input validation, dry-run support, profile matrix, and prerequisite checks. One of the most thoroughly designed skills in the collection."
+    },
+    "invocability": {
+      "score": 5,
+      "rationale": "Specific triggers; compatibility field documents runtime requirement upfront; description clearly distinguishes from general GitHub ops."
+    },
+    "over_specification_risk": {
+      "flagged": true,
+      "rationale": "Bakes in specific gh CLI version requirement (≥ 2.28) and fixed profile names. Profiles are intentional design choices but tie the skill to a specific version contract."
+    },
+    "core_capabilities": "tech-github-repo-standards is an instruction-led skill. Applies standardized branch protection, security scanning, access controls, and file artifacts to one or more GitHub repositories via the gh CLI across four configurable profiles (standard, collaborative, monorepo, regulated) and two context modes (internal, external). Primary output: applied repository settings plus a pull request delivering generated file artifacts.",
+    "external_requirements_indicator": "has-external-dependencies",
+    "external_requirements": [
+      "gh CLI ≥ 2.28",
+      "GitHub API (admin permissions)"
+    ]
+  }
+}

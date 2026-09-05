@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nexus-design",
   "version": "1.0.0",
   "description": "Take products from research to polished interface — UX research, information architecture, UI craft, design systems, and visual direction. Ship products that look deliberate and work the way people expect.",

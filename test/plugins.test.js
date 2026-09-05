@@ -5,7 +5,12 @@ const os = require('os');
 const path = require('path');
 
 const {
+  PLUGIN_SCHEMA,
+  MCP_SCHEMA,
   MANIFEST_KEYS,
+  MANIFEST_REQUIRED,
+  NAME_PATTERN,
+  validateMcpServer,
   listPluginNames,
   loadPluginPackage,
   matchSkills,
@@ -106,5 +111,56 @@ test('every shipped plugin package matches the closed Agent Plugins schema', () 
 
     const unknown = Object.keys(pkg.manifest).filter(key => !MANIFEST_KEYS.includes(key));
     assert.deepEqual(unknown, [], `${name} manifest has forbidden keys`);
+  }
+});
+
+// plugin.schema.json requires $schema and name; mcp.schema.json requires
+// $schema and mcpServers. The build injects neither any more, so the authored
+// files have to satisfy both on their own.
+test('every authored plugin.json declares the required Agent Plugins fields', () => {
+  for (const name of listPluginNames()) {
+    const { manifest } = loadPluginPackage(name);
+    for (const field of MANIFEST_REQUIRED) {
+      assert.ok(manifest[field], `${name} plugin.json is missing "${field}"`);
+    }
+    assert.equal(manifest.$schema, PLUGIN_SCHEMA, `${name} plugin.json has the wrong $schema`);
+    assert.ok(NAME_PATTERN.test(manifest.name), `${name} plugin.json name breaks the spec pattern`);
+    assert.ok(manifest.name.length <= 64, `${name} plugin.json name exceeds 64 characters`);
+  }
+});
+
+test('every authored mcp.json matches the closed Agent Plugins MCP schema', () => {
+  for (const name of listPluginNames()) {
+    const { mcp } = loadPluginPackage(name);
+    assert.ok(mcp, `${name} should carry an mcp.json`);
+    assert.equal(mcp.$schema, MCP_SCHEMA, `${name} mcp.json has the wrong $schema`);
+    assert.ok(mcp.mcpServers, `${name} mcp.json is missing "mcpServers"`);
+
+    const forbidden = Object.keys(mcp).filter(k => k !== '$schema' && k !== 'mcpServers');
+    assert.deepEqual(forbidden, [], `${name} mcp.json has forbidden keys`);
+
+    for (const [server, config] of Object.entries(mcp.mcpServers)) {
+      assert.deepEqual(validateMcpServer(server, config), [], `${name} declares an invalid server`);
+    }
+  }
+});
+
+test('validateMcpServer accepts each transport the MCP schema defines', () => {
+  assert.deepEqual(validateMcpServer('a', { type: 'stdio', command: 'npx', args: ['x'] }), []);
+  assert.deepEqual(validateMcpServer('b', { type: 'streamable-http', url: 'https://example.com' }), []);
+  assert.deepEqual(validateMcpServer('c', { type: 'sse', url: 'https://example.com' }), []);
+  assert.deepEqual(validateMcpServer('d', { type: 'stdio', command: 'npx', cwd: '${PLUGIN_ROOT}/bin' }), []);
+});
+
+test('validateMcpServer rejects what the MCP schema forbids', () => {
+  const cases = [
+    [{ type: 'stdio' }, 'stdio without a command'],
+    [{ type: 'websocket', url: 'wss://x' }, 'an unknown transport'],
+    [{ type: 'sse', url: 'https://x', command: 'npx' }, 'a key the transport forbids'],
+    [{ type: 'stdio', command: 'npx', env: { PLUGIN_ROOT: '/tmp' } }, 'a reserved env name'],
+    [{ type: 'stdio', command: 'npx', cwd: '/etc' }, 'a cwd escaping the plugin root']
+  ];
+  for (const [server, label] of cases) {
+    assert.ok(validateMcpServer('x', server).length > 0, `should reject ${label}`);
   }
 });

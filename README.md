@@ -236,15 +236,17 @@ description: Use when [trigger condition] — [what it does]
 
 The repo ships an end-to-end automation that keeps the catalog, plugins, and
 distribution site consistent with `skills/`. The same scripts run locally and
-in CI, so a local build matches what gets published.
+in CI, so a local build matches what gets published. Node 20+ is the only
+prerequisite — every build script is JavaScript, with no other runtime and no
+runtime dependencies.
 
 ### Local build
 
 ```bash
 npm run validate        # spec checks against every skills/<skill>/SKILL.md
 npm run scan            # writes skill-catalog-scan.json (mechanical metadata)
-npm run catalog         # rebuilds skill-catalog.json (merges scan + evaluations + plugins)
-npm run build:plugins   # regenerates .claude-plugin/marketplace.json + per-plugin bundles in dist/plugins/
+npm run catalog         # rebuilds skill-catalog.json (merges scan + evaluations + plugin membership)
+npm run build:plugins   # builds per-plugin bundles + dist/plugins/manifest.json from plugin-packages/
 npm run build:skills    # creates one skill zip per source skill in dist/skills/
 npm run build:site      # assembles GitHub Pages site in dist/site/ (catalog browser, plugin manager, per-plugin zips)
 npm run check:artifacts # fails if committed generated artifacts are stale
@@ -254,28 +256,28 @@ npm run prepr           # build, then verify committed artifacts match generated
 ```
 
 Before opening a pull request, run `npm run prepr` and commit any changes to
-`skill-catalog.json`, `.claude-plugin/marketplace.json`, or
-`.claude-plugin/plugin.json`. To install the same check as a local pre-push hook,
-run `npm run hooks:install` once in your clone.
+`skill-catalog.json`. It is the only generated file this repo commits — the
+plugin distribution is rebuilt into `dist/`, which is gitignored. To install the
+same check as a local pre-push hook, run `npm run hooks:install` once in your
+clone.
 
 Outputs:
 
 | Path | Source of truth | Committed? |
 |------|------|------|
 | `skill-catalog-scan.json` | `npm run scan` | no |
-| `skill-catalog.json` | `npm run catalog` (merges scan + `skill-catalog-evaluations.json`) | yes |
-| `.claude-plugin/marketplace.json` | `npm run build:plugins` (from `plugin-packages/`) | yes |
-| `.claude-plugin/plugin.json` | `npm run build:plugins` (umbrella `nexus-all`) | yes |
+| `skill-catalog.json` | `npm run catalog` (merges scan + `skill-catalog-evaluations.json` + `scripts/catalog/new-evaluations.json`) | yes |
 | `dist/plugins/<plugin>/` | `npm run build:plugins` (self-contained plugin bundles) | no |
 | `dist/skills/<skill>.zip` | `npm run build:skills` (one archive per source skill) | no |
+| `dist/plugins/manifest.json` | `npm run build:plugins` (machine-readable index of `plugin-packages/`) | no |
 | `dist/site/` | `npm run build:site` (GitHub Pages root) | no |
 
 ### CI workflows
 
 | Workflow | Trigger | Purpose |
 |---|---|---|
-| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | PR + push to `main` | Validate skills, rebuild catalog, generate plugins, build site; warns if committed catalog/marketplace drifts from source. |
-| [`.github/workflows/release.yml`](.github/workflows/release.yml) | push to `main` | release-please opens a release PR with bumped version + changelog from Conventional Commits. On merge, tags a release and attaches per-plugin zips, `skill-catalog.json`, and `marketplace.json` as release assets. |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | PR + push to `main` | Validate skills, rebuild catalog, generate plugins, build site; warns if the committed catalog drifts from source. |
+| [`.github/workflows/release.yml`](.github/workflows/release.yml) | push to `main` | release-please opens a release PR with bumped version + changelog from Conventional Commits. On merge, tags a release and attaches per-plugin zips and `skill-catalog.json` as release assets. |
 | [`.github/workflows/pages.yml`](.github/workflows/pages.yml) | release published (or manual) | Builds `dist/site/` and deploys it to GitHub Pages. |
 
 ### Releases and changelog
@@ -305,13 +307,43 @@ A plugin is defined by a directory under `plugin-packages/`:
 
 | File | Required | Contents |
 |---|---|---|
-| `plugin.json` | yes | [Agent Plugins](https://agent-plugins.org/) manifest fields. Its schema is closed, so only `$schema`, `name`, `version`, `description`, `author`, `homepage`, `repository`, `license`, `keywords`, and `extensions` are allowed. Name it `nexus-<directory>`. |
-| `skills.json` | yes | `{ "skills": [...] }` — literal skill names or `prefix-*` globs. Build-only; it is never shipped. |
-| `mcp.json` | yes | `{ "mcpServers": {...} }`. Every plugin carries one; new plugins start from an empty stub. Declared servers are copied into the bundle and inlined into the marketplace entry, which is where Claude Code reads them. An empty stub ships nothing. |
+| `plugin.json` | yes | [Agent Plugins](https://agent-plugins.org/) v1.0.0 manifest. `$schema` and `name` are required; the schema is closed, so only `$schema`, `name`, `version`, `description`, `author`, `homepage`, `repository`, `license`, `keywords`, and `extensions` are allowed. Name it `nexus-<directory>`. |
+| `skills.json` | yes | `{ "skills": [...] }` — literal skill names or `prefix-*` globs. Build-only; it is never shipped, and it is not part of the spec. |
+| `mcp.json` | yes | `{ "$schema": ..., "mcpServers": {...} }`. Both keys are required and the schema is closed. Every plugin carries one; new plugins start from an empty stub. Declared servers are copied into the bundle as `mcp.json`, the Agent Plugins location. An empty stub ships nothing. |
+
+`plugin-packages/` is the single source of truth for plugin packages. Nothing
+about a plugin is authored anywhere else. `npm run build:plugins` projects every
+package into `dist/plugins/manifest.json` — description, version, keywords,
+membership patterns, resolved skills, and MCP servers — which is what the
+[plugin manager](plugin-manager.html) reads and writes back. `skill-catalog.json`
+records only which plugins each skill belongs to, never the plugin definitions.
+
+### Agent Plugins conformance
+
+Bundles under `dist/plugins/<name>/` are portable
+[Agent Plugins v1.0.0](https://agent-plugins.org/specification) packages:
+
+- `plugin.json` sits at the plugin root — there is no `.claude-plugin/` wrapper.
+  It declares `$schema` and `name`, both required, and nothing outside the
+  schema's closed key set.
+- Skills are **discovered** from `skills/`, not listed in the manifest. Each
+  immediate child directory holding a `SKILL.md` is one skill; clients must not
+  search deeper, so a nested `SKILL.md` would be invisible.
+- `mcp.json` is the only place MCP servers are declared. It is written only when
+  a package declares at least one server.
+- `version` follows Semantic Versioning, which the spec recommends.
+
+The spec defines no registry, marketplace, or distribution mechanism, so this
+repo ships none. Install with `nxa install --plugin <name>` or unzip a bundle.
+
+`npm run validate` checks both schemas: required fields, the closed key sets,
+the `name` pattern, and every MCP server against its transport — `stdio`,
+`streamable-http`, or `sse`, including the reserved `PLUGIN_ROOT` / `PLUGIN_DATA`
+env names and the plugin-root containment rule for `cwd`.
 
 1. Create the directory and its files.
-2. Run `npm run build` locally and commit the regenerated catalog and plugin
-   manifests. Do not commit `skill-catalog-scan.json`.
+2. Run `npm run build` locally and commit the regenerated `skill-catalog.json`.
+   Do not commit `skill-catalog-scan.json` or anything under `dist/`.
    Validation fails if any skill belongs to no plugin, so add new skills to a
    plugin in the same change.
 3. Open a PR. CI verifies everything compiles; on merge, release-please will

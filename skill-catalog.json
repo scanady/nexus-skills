@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-09-03T03:10:51Z",
+  "generated_at": "2026-09-05T01:49:24Z",
   "sources": [
     {
       "id": "source-1",
@@ -32,268 +32,7 @@
       "B": 18,
       "C": 1
     },
-    "over_specification_flagged": 0,
-    "plugins": {
-      "agent-tools": {
-        "plugin_name": "nexus-agent-tools",
-        "description": "Design and equip AI agents — personas, skill authoring, prompt engineering, and context curation. Build agents that behave consistently and carry the right knowledge into every session.",
-        "version": "1.0.0",
-        "skill_count": 9,
-        "skills": [
-          "agents-design-persona-creator",
-          "agents-design-visual-identity",
-          "agents-skill-plugin-builder",
-          "agents-skill-spec-builder",
-          "ai-prompt-engineer",
-          "engineering-agents-md-curator",
-          "knowledge-context-curator",
-          "knowledge-context-session-handover",
-          "knowledge-ops"
-        ]
-      },
-      "comms": {
-        "plugin_name": "nexus-comms",
-        "description": "Reach your organization and your customers — announcements, community engagement, and stakeholder messaging. Deliver news clearly and keep people informed.",
-        "version": "1.0.0",
-        "skill_count": 2,
-        "skills": [
-          "people-comms-announce-organizational",
-          "people-comms-engage-internal-community"
-        ]
-      },
-      "content": {
-        "plugin_name": "nexus-content",
-        "description": "Write, edit, and reshape content for human readers — copy, long-form, technical documentation, and voice consistency. Turn rough drafts into clear, publishable prose.",
-        "version": "1.0.0",
-        "skill_count": 13,
-        "skills": [
-          "content-behavioral-nudge-unit",
-          "content-copy-caveman",
-          "content-copy-clear-writing",
-          "content-copy-critical-writing",
-          "content-copy-email-sequences",
-          "content-copy-email-template-builder",
-          "content-copy-executive-writing",
-          "content-copy-humanizer",
-          "content-meta-design",
-          "content-narrative-story-brief",
-          "content-style-extractor",
-          "content-technical-doc-coauthoring",
-          "content-technical-onboarding-docs"
-        ]
-      },
-      "data": {
-        "plugin_name": "nexus-data",
-        "description": "Build and interrogate data systems — pipelines, databases, statistical analysis, metric design, and applied AI/ML. Move from raw data to decisions you can defend.",
-        "version": "1.0.0",
-        "skill_count": 18,
-        "skills": [
-          "data-ai-autoresearch",
-          "data-ai-ml-pipeline",
-          "data-ai-ml-rag-architect",
-          "data-ai-post-training-expert",
-          "data-ai-product-specialist",
-          "data-analysis-business-context",
-          "data-analysis-business-performance",
-          "data-analysis-dataset-profiler",
-          "data-analysis-hypothesis-generation",
-          "data-analysis-kpi-designer",
-          "data-analysis-kpi-reporting",
-          "data-analysis-statistical-methods",
-          "data-analysis-statistical-modeling",
-          "data-analysis-validator",
-          "data-eng-database-architect",
-          "data-eng-pandas-specialist",
-          "data-eng-pipeline-architect",
-          "data-visual-chart-designer"
-        ]
-      },
-      "design": {
-        "plugin_name": "nexus-design",
-        "description": "Take products from research to polished interface — UX research, information architecture, UI craft, design systems, and visual direction. Ship products that look deliberate and work the way people expect.",
-        "version": "1.0.0",
-        "skill_count": 17,
-        "skills": [
-          "design-application-sitemap",
-          "design-application-ux",
-          "design-product-overview-builder",
-          "design-product-overview-recorder",
-          "design-research-lean-ux",
-          "design-research-ux-artifacts",
-          "design-research-ux-researcher",
-          "design-scroll-storytelling",
-          "design-system-architect",
-          "design-ui-microinteractions",
-          "design-ui-system-advisor",
-          "design-ui-usability-principles",
-          "design-ui-visual-refactor",
-          "design-visual-image-generator",
-          "design-visual-image-system-director",
-          "design-web-impactful",
-          "personal-design-meeting-background"
-        ]
-      },
-      "dev": {
-        "plugin_name": "nexus-dev",
-        "description": "Software engineering and development workflows.",
-        "version": "1.0.0",
-        "skill_count": 7,
-        "skills": [
-          "engineering-dev-git-commit",
-          "engineering-dev-git-finish-branch",
-          "engineering-dev-git-start-branch",
-          "engineering-dev-git-workflow-design",
-          "engineering-github-ops",
-          "engineering-github-repo-standards",
-          "engineering-repo-scaffolder"
-        ]
-      },
-      "marketing": {
-        "plugin_name": "nexus-marketing",
-        "description": "Create demand and convert it — brand positioning, campaign planning, content production, SEO, segmentation, and sales outreach. Take a product to market and keep the pipeline full.",
-        "version": "1.0.0",
-        "skill_count": 18,
-        "skills": [
-          "marketing-brand-strategist",
-          "marketing-campaign-go-to-market",
-          "marketing-campaign-ideas",
-          "marketing-campaign-product-hunt-launch",
-          "marketing-campaign-psychology",
-          "marketing-content-brand-copywriter",
-          "marketing-content-engine",
-          "marketing-content-lead-magnet",
-          "marketing-content-linkedin-writer",
-          "marketing-content-viral-hook",
-          "marketing-content-x-thread-builder",
-          "marketing-customer-segmentation",
-          "marketing-seo-adsense-readiness",
-          "marketing-seo-adsense-review",
-          "marketing-seo-cro",
-          "marketing-seo-structured-data",
-          "sales-outreach-specialist",
-          "sales-pipeline-revops"
-        ]
-      },
-      "ops": {
-        "plugin_name": "nexus-ops",
-        "description": "Run the business day to day — standard operating procedures, process documentation, meeting records, and working routines. Make repeatable work actually repeatable.",
-        "version": "1.0.0",
-        "skill_count": 2,
-        "skills": [
-          "ops-process-sop-creator",
-          "productivity-daily-meeting-notes"
-        ]
-      },
-      "product": {
-        "plugin_name": "nexus-product",
-        "description": "Move product ideas from discovery to spec — requirements, feature definition, prioritization, and product strategy. Decide what to build and describe it clearly enough to build it.",
-        "version": "1.0.0",
-        "skill_count": 9,
-        "skills": [
-          "product-discovery-spec-toolkit",
-          "product-spec-brainstorming",
-          "product-spec-game-changing-features",
-          "product-spec-prd-generator",
-          "product-spec-reverse-engineer",
-          "product-strategy-habit-loops",
-          "product-strategy-okr-specialist",
-          "product-strategy-validator",
-          "product-vision-strategy"
-        ]
-      },
-      "research": {
-        "plugin_name": "nexus-research",
-        "description": "Understand a market before you commit to it — competitive intelligence, opportunity sizing, customer personas, and deep source analysis. Replace assumptions with evidence.",
-        "version": "1.0.0",
-        "skill_count": 10,
-        "skills": [
-          "research-ai-landscape-brief",
-          "research-analyst",
-          "research-deep-reading-analyst",
-          "research-dtc-insurance-market-intelligence",
-          "research-market-analyst",
-          "research-market-competitor-intel",
-          "research-market-opportunity",
-          "research-market-persona-builder",
-          "research-market-researcher",
-          "research-weekly-ai-news"
-        ]
-      },
-      "skills": {
-        "plugin_name": "nexus-skills",
-        "description": "Author and maintain Agent Skills — scaffolding, spec compliance, evaluation, and cataloging. Keep a skill library consistent, discoverable, and worth loading.",
-        "version": "1.0.0",
-        "skill_count": 5,
-        "skills": [
-          "content-copy-clear-writing",
-          "skill-architect",
-          "skill-evaluator",
-          "skill-evaluator-catalog-builder",
-          "skill-reinterpreter"
-        ]
-      },
-      "strategy": {
-        "plugin_name": "nexus-strategy",
-        "description": "Make hard calls and defend them — planning, decision frameworks, critical reasoning, change management, and executive communication. Choose a direction and bring people with you.",
-        "version": "1.0.0",
-        "skill_count": 15,
-        "skills": [
-          "content-narrative-story-brief",
-          "legal-compliance-regulatory-monitor",
-          "strategy-change-management",
-          "strategy-critical-reasoning",
-          "strategy-decision",
-          "strategy-decision-council",
-          "strategy-decision-documenter",
-          "strategy-decision-interrogator",
-          "strategy-exec-presentation-designer",
-          "strategy-frameworks-mckinsey-brief",
-          "strategy-innovation-catalyst",
-          "strategy-outcome-design",
-          "strategy-planning-opportunity",
-          "strategy-planning-pricing",
-          "strategy-planning-startup"
-        ]
-      },
-      "tech": {
-        "plugin_name": "nexus-tech",
-        "description": "Ship software and lead the people who build it — git workflows, architecture decisions, code quality, testing, APIs, and infrastructure. Keep delivery fast without letting the codebase rot.",
-        "version": "1.0.0",
-        "skill_count": 30,
-        "skills": [
-          "devops-incident-responder",
-          "devops-infra-engineer",
-          "devops-security-audit-lead",
-          "devops-security-vulnerability-analyst",
-          "engineering-api-mcp-builder",
-          "engineering-api-n8n-workflow-builder",
-          "engineering-arch-architecture-decision-records",
-          "engineering-arch-design-reviewer",
-          "engineering-arch-principle-engineer",
-          "engineering-arch-system-designer",
-          "engineering-data-scraper",
-          "engineering-database-optimizer",
-          "engineering-dev-clarify-requirements",
-          "engineering-dev-git-commit",
-          "engineering-dev-git-finish-branch",
-          "engineering-dev-git-start-branch",
-          "engineering-dev-git-workflow-design",
-          "engineering-dev-writing-plans",
-          "engineering-feature-forge",
-          "engineering-github-ops",
-          "engineering-github-repo-standards",
-          "engineering-legacy-modernizer",
-          "engineering-quality-code-simplifier",
-          "engineering-quality-critique-panel",
-          "engineering-quality-receiving-review",
-          "engineering-quality-requesting-review",
-          "engineering-quality-tdd",
-          "tech-leader-exec-briefing",
-          "tech-leader-roadmap-narrator",
-          "tech-leader-vision-builder"
-        ]
-      }
-    }
+    "over_specification_flagged": 0
   },
   "skills": [
     {
@@ -623,7 +362,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -715,7 +454,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -992,7 +731,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -1346,7 +1085,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -1426,7 +1165,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -1660,8 +1399,8 @@
             "actionability": 4,
             "reusability": 4
           },
-          "weighted_score": 4.0,
-          "domain_calibration_bonus": 0.0,
+          "weighted_score": 4,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -1849,7 +1588,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -2129,7 +1868,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -2221,7 +1960,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -2313,7 +2052,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -2474,7 +2213,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -3141,7 +2880,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -3233,7 +2972,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -3394,7 +3133,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -3486,7 +3225,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -3674,7 +3413,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -3837,7 +3576,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -4021,7 +3760,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -4113,7 +3852,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -4591,7 +4330,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -4842,7 +4581,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -5289,7 +5028,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -5730,7 +5469,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -5825,7 +5564,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -5987,7 +5726,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -6080,7 +5819,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -6172,7 +5911,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -6253,7 +5992,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -6345,7 +6084,7 @@
             "reusability": 3
           },
           "weighted_score": 3.5,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -6517,7 +6256,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -6694,7 +6433,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -6786,7 +6525,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -6947,7 +6686,7 @@
             "reusability": 3
           },
           "weighted_score": 3.5,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -7039,7 +6778,7 @@
             "reusability": 3
           },
           "weighted_score": 3.5,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -7131,7 +6870,7 @@
             "reusability": 3
           },
           "weighted_score": 3.5,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -7205,8 +6944,8 @@
         "has_agents": false,
         "has_assets": true,
         "has_license_file": false,
-        "file_count": 27,
-        "estimated_tokens": 4399,
+        "file_count": 26,
+        "estimated_tokens": 4397,
         "complexity_class": "comprehensive",
         "skill_pattern": "B"
       },
@@ -7712,7 +7451,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -7804,7 +7543,7 @@
             "reusability": 3
           },
           "weighted_score": 3.5,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -7896,7 +7635,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -8080,7 +7819,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -8172,7 +7911,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -8264,7 +8003,7 @@
             "reusability": 3
           },
           "weighted_score": 3.5,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -8356,7 +8095,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -8544,7 +8283,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -8916,7 +8655,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -9169,7 +8908,7 @@
             "reusability": 3
           },
           "weighted_score": 3.45,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -9261,7 +9000,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -9514,7 +9253,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -9606,7 +9345,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -9790,7 +9529,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -9951,7 +9690,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -10043,7 +9782,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -10135,7 +9874,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -10227,7 +9966,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -10511,7 +10250,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -10787,7 +10526,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -11142,7 +10881,7 @@
             "reusability": 3
           },
           "weighted_score": 3.7,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -11234,7 +10973,7 @@
             "reusability": 3
           },
           "weighted_score": 3.5,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -11792,7 +11531,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -12207,7 +11946,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {
@@ -12392,7 +12131,7 @@
             "reusability": 3
           },
           "weighted_score": 3.9,
-          "domain_calibration_bonus": 0.0,
+          "domain_calibration_bonus": 0,
           "method_version": "weighted-v2"
         },
         "security_risk": {

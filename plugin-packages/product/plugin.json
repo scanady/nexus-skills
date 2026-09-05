@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nexus-product",
   "version": "1.0.0",
   "description": "Move product ideas from discovery to spec — requirements, feature definition, prioritization, and product strategy. Decide what to build and describe it clearly enough to build it.",

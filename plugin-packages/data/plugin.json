@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nexus-data",
   "version": "1.0.0",
   "description": "Build and interrogate data systems — pipelines, databases, statistical analysis, metric design, and applied AI/ML. Move from raw data to decisions you can defend.",

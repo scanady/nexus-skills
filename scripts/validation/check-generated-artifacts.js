@@ -2,10 +2,11 @@
 
 const { spawnSync } = require('child_process');
 
+// plugin-packages/ is authored by hand and the whole plugin distribution is
+// rebuilt into dist/ (gitignored), so skill-catalog.json is the only generated
+// file this repo commits.
 const artifacts = [
   'skill-catalog.json',
-  '.claude-plugin/marketplace.json',
-  '.claude-plugin/plugin.json',
 ];
 
 function git(args) {

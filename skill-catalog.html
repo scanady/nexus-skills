@@ -1074,10 +1074,10 @@ function buildOptions(selectId, values, defaultLabel) {
   });
 }
 
+// The catalog records per-skill membership only; the plugin definitions live in
+// plugin-packages/. Derive the filter list from the memberships actually present.
 function buildPluginFilter() {
-  const pluginNames = CATALOG.summary?.plugins
-    ? Object.keys(CATALOG.summary.plugins).sort()
-    : [...new Set(CATALOG.skills.flatMap(s => s.plugins || []))].sort();
+  const pluginNames = [...new Set(CATALOG.skills.flatMap(s => s.plugins || []))].sort();
   buildOptions('pluginFilter', pluginNames, 'All Plugins');
 }
 

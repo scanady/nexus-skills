@@ -378,7 +378,7 @@
       <span class="theme-icon" id="themeIcon">🌙</span>
       <span id="themeLabel">Light mode</span>
     </button>
-    <button class="btn" onclick="openPicker()">📂 Load Catalog</button>
+    <button class="btn" onclick="openPicker()">📂 Load Files</button>
     <button class="btn primary" id="btnDownloadAll" onclick="downloadAll()" disabled>⬇ Download All</button>
   </div>
 </header>
@@ -406,8 +406,8 @@
       <div class="empty-state">
         <div class="empty-state-icon">📦</div>
         <div class="empty-state-title">No catalog loaded</div>
-        <div class="empty-state-sub">Click "Load Catalog" to open<br>skill-catalog.json</div>
-        <button class="btn primary" onclick="openPicker()">Load Catalog</button>
+        <div class="empty-state-sub">Click "Load Files" to open skill-catalog.json<br>and dist/plugins/manifest.json</div>
+        <button class="btn primary" onclick="openPicker()">Load Files</button>
       </div>
     </div>
   </aside>
@@ -425,7 +425,7 @@
       <div class="empty-state" style="grid-column:1/-1">
         <div class="empty-state-icon">🗂️</div>
         <div class="empty-state-title">No plugins yet</div>
-        <div class="empty-state-sub">Load skill-catalog.json to see existing plugins,<br>or create a new plugin to get started.</div>
+        <div class="empty-state-sub">Load dist/plugins/manifest.json to see existing plugins,<br>or create a new plugin to get started.</div>
       </div>
     </div>
   </main>
@@ -433,7 +433,7 @@
 </div>
 
 <!-- file picker -->
-<input type="file" id="filePicker" accept=".json" style="display:none" onchange="onFileChosen()" />
+<input type="file" id="filePicker" accept=".json" multiple style="display:none" onchange="onFileChosen()" />
 
 <!-- ── NEW PLUGIN MODAL ── -->
 <div class="modal-backdrop" id="newPluginModal">
@@ -462,9 +462,14 @@
 // ────────────────────────────────────────────
 // STATE
 // ────────────────────────────────────────────
+// plugin-packages/ is the single source of truth for plugin packages. This tool
+// loads them from dist/plugins/manifest.json — the projection `npm run
+// build:plugins` writes — and downloads edits back as the same three files a
+// package is authored from. Every authored field round-trips, including the
+// keywords and MCP servers that never appear in skill-catalog.json.
 const state = {
   skills: {},   // name → { name, domain }
-  plugins: {},    // name → { name, description, version, skills: string[] }
+  plugins: {},  // name → { name, description, version, keywords, mcpServers, skills: string[] }
   loaded: false,
   dirty: false
 };
@@ -517,36 +522,73 @@ const domainIcon = name => DOMAIN_ICONS[name.split('-')[0]] || '◦';
 function openPicker() { document.getElementById('filePicker').click(); }
 
 function onFileChosen() {
-  const file = document.getElementById('filePicker').files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    try { ingestCatalog(JSON.parse(reader.result), file.name); }
-    catch { toast('Could not parse JSON', 'err'); }
-  };
-  reader.readAsText(file);
+  const files = [...document.getElementById('filePicker').files];
   document.getElementById('filePicker').value = '';
+  if (!files.length) return;
+
+  // Either file can be picked alone, or both at once. A skill catalog carries a
+  // top-level `skills` array; a plugin manifest carries `plugins`.
+  Promise.all(files.map(readFileAsJson)).then(results => {
+    let ingested = 0;
+    for (const { name, data } of results) {
+      if (!data) { toast(`Could not parse ${name}`, 'err'); continue; }
+      if (Array.isArray(data.skills)) { ingestCatalog(data); ingested++; }
+      else if (Array.isArray(data.plugins)) { ingestPackages(data); ingested++; }
+      else toast(`${name} is neither a skill catalog nor a plugin manifest`, 'err');
+    }
+    if (ingested) finishLoad(results.map(r => r.name).join(' + '));
+  });
 }
 
-function ingestCatalog(catalog, label = 'skill-catalog.json') {
+function readFileAsJson(file) {
+  return new Promise(resolve => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      try { resolve({ name: file.name, data: JSON.parse(reader.result) }); }
+      catch { resolve({ name: file.name, data: null }); }
+    };
+    reader.onerror = () => resolve({ name: file.name, data: null });
+    reader.readAsText(file);
+  });
+}
+
+/** skill-catalog.json supplies the skill library only. */
+function ingestCatalog(catalog) {
   state.skills = {};
   (catalog.skills || []).forEach(s => {
     state.skills[s.name] = { name: s.name, domain: s.name.split('-')[0] };
   });
+  reconcileMembership();
+}
 
+/** dist/plugins/manifest.json supplies the plugin packages. */
+function ingestPackages(manifest) {
   state.plugins = {};
-  const sp = catalog.summary?.plugins || {};
-  Object.entries(sp).forEach(([k, v]) => {
+  (manifest.plugins || []).forEach(p => {
     // ensure style is cached deterministically before anything else renders
-    pluginStyle(k);
-    state.plugins[k] = {
-      name: k,
-      description: v.description || '',
-      version: v.version || '1.0.0',
-      skills: (v.skills || []).filter(n => state.skills[n])
+    pluginStyle(p.name);
+    state.plugins[p.name] = {
+      name: p.name,
+      description: p.description || '',
+      version: p.version || '1.0.0',
+      keywords: p.keywords || [],
+      mcpServers: p.mcpServers || {},
+      // Prefer the authored membership patterns; `skills` is the resolved form.
+      skills: [...(p.patterns || p.skills || [])]
     };
   });
+  reconcileMembership();
+}
 
+/** Drop memberships naming a skill the loaded catalog does not have. */
+function reconcileMembership() {
+  if (!Object.keys(state.skills).length) return;
+  Object.values(state.plugins).forEach(p => {
+    p.skills = p.skills.filter(n => state.skills[n]);
+  });
+}
+
+function finishLoad(label) {
   state.loaded = true;
   state.dirty = false;
 
@@ -612,7 +654,7 @@ function renderPlugins() {
     grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1">
       <div class="empty-state-icon">🗂️</div>
       <div class="empty-state-title">No plugins yet</div>
-      <div class="empty-state-sub">Load skill-catalog.json to see existing plugins,<br>or create a new plugin to get started.</div>
+      <div class="empty-state-sub">Load dist/plugins/manifest.json to see existing plugins,<br>or create a new plugin to get started.</div>
     </div>`;
     return;
   }
@@ -856,7 +898,14 @@ function createPlugin() {
     const existingCount = Object.keys(pluginStyleCache).length;
     pluginStyleCache[name] = STYLE_POOL[existingCount % STYLE_POOL.length];
   }
-  state.plugins[name] = { name, description: desc, version: '1.0.0', skills: [] };
+  state.plugins[name] = {
+    name,
+    description: desc,
+    version: '1.0.0',
+    keywords: [...DEFAULT_KEYWORDS, name],
+    mcpServers: {},
+    skills: []
+  };
   markDirty();
   closeNewPluginModal();
   render();
@@ -877,37 +926,50 @@ document.getElementById('newPluginDescInput').addEventListener('keydown', e => {
 // ────────────────────────────────────────────
 // EXPORT
 // ────────────────────────────────────────────
-// A plugin package is two files. plugin.json carries only keys the closed
-// agent-plugins.org schema allows; skills.json carries the membership list.
+// A plugin package is three files, exactly as authored in plugin-packages/.
+// plugin.json carries only keys the closed agent-plugins.org schema allows;
+// skills.json carries the membership list; mcp.json carries the MCP servers.
+// Keywords and servers come from the loaded package, never regenerated, so a
+// round-trip through this tool cannot silently drop them.
 const PLUGIN_SCHEMA = 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json';
-const PLUGIN_KEYWORDS = ['skills', 'prompts', 'agents', 'instructions', 'ai'];
+const MCP_SCHEMA = 'https://agent-plugins.org/schemas/1.0.0/mcp.schema.json';
+const DEFAULT_KEYWORDS = ['skills', 'prompts', 'agents', 'instructions', 'ai'];
 
 function manifestJSON(pluginName) {
   const p = state.plugins[pluginName];
+  const keywords = p.keywords && p.keywords.length ? p.keywords : [...DEFAULT_KEYWORDS, p.name];
   return JSON.stringify({
     $schema: PLUGIN_SCHEMA,
     name: `nexus-${p.name}`,
     version: p.version || '1.0.0',
     description: p.description,
-    keywords: [...PLUGIN_KEYWORDS, p.name]
+    keywords
   }, null, 2);
 }
 
-function pluginJSON(pluginName) {
+function skillsJSON(pluginName) {
   const p = state.plugins[pluginName];
   return JSON.stringify({ skills: [...p.skills].sort() }, null, 2);
 }
 
+// Every package carries an mcp.json; an empty stub is the starting point for a
+// new plugin and ships nothing.
+function mcpJSON(pluginName) {
+  const p = state.plugins[pluginName];
+  return JSON.stringify({ $schema: MCP_SCHEMA, mcpServers: p.mcpServers || {} }, null, 2);
+}
+
 function downloadPlugin(pluginName) {
   triggerDownload(`${pluginName}-plugin.json`, manifestJSON(pluginName));
-  setTimeout(() => triggerDownload(`${pluginName}-skills.json`, pluginJSON(pluginName)), 60);
+  setTimeout(() => triggerDownload(`${pluginName}-skills.json`, skillsJSON(pluginName)), 60);
+  setTimeout(() => triggerDownload(`${pluginName}-mcp.json`, mcpJSON(pluginName)), 120);
   toast(`Downloaded ${pluginName} → plugin-packages/${pluginName}/`, 'ok');
 }
 
 function downloadAll() {
   const names = Object.keys(state.plugins).sort();
   if (!names.length) return;
-  names.forEach((n, i) => setTimeout(() => downloadPlugin(n), i * 200));
+  names.forEach((n, i) => setTimeout(() => downloadPlugin(n), i * 260));
 }
 
 function triggerDownload(filename, content) {
@@ -957,12 +1019,35 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ── AUTO-LOAD (works when served over HTTP)
+// Skills come from skill-catalog.json. Plugin packages come from
+// dist/plugins/manifest.json, written by `npm run build:plugins` — the repo
+// root path is first, the published-site path second.
 // ────────────────────────────────────────────
+const CATALOG_URLS = ['skill-catalog.json'];
+const PACKAGE_URLS = ['dist/plugins/manifest.json', 'plugins/manifest.json'];
+
+async function fetchFirstJson(urls) {
+  for (const url of urls) {
+    try {
+      const r = await fetch(url);
+      if (r.ok) return { url, data: await r.json() };
+    } catch { /* try the next candidate */ }
+  }
+  return null;
+}
+
 (async () => {
-  try {
-    const r = await fetch('skill-catalog.json');
-    if (r.ok) ingestCatalog(await r.json());
-  } catch { /* file:// protocol — user must load manually */ }
+  const catalog = await fetchFirstJson(CATALOG_URLS);
+  const packages = await fetchFirstJson(PACKAGE_URLS);
+  if (!catalog && !packages) return;  // file:// protocol — user must load manually
+
+  if (catalog) ingestCatalog(catalog.data);
+  if (packages) ingestPackages(packages.data);
+  finishLoad([catalog?.url, packages?.url].filter(Boolean).join(' + '));
+
+  if (!packages) {
+    toast('No dist/plugins/manifest.json — run `npm run build:plugins`, then reload', 'err');
+  }
 })();
 </script>
 </body>

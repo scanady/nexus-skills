@@ -8,8 +8,8 @@
   "scripts": {
     "test": "node --test",
     "validate": "node scripts/validation/validate-skills.js",
-    "scan": "node scripts/run-python.js scripts/catalog/scan-skills.py skills --output skill-catalog-scan.json",
-    "catalog": "node scripts/run-python.js scripts/catalog/rebuild-catalog.py",
+    "scan": "node scripts/catalog/scan-skills.js skills --output skill-catalog-scan.json",
+    "catalog": "node scripts/catalog/rebuild-catalog.js",
     "build:plugins": "node scripts/build/build-plugins.js",
     "build:skills": "node scripts/build/build-skill-zips.js",
     "build:site": "node scripts/build/build-site.js",

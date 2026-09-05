@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nexus-strategy",
   "version": "1.0.0",
   "description": "Make hard calls and defend them — planning, decision frameworks, critical reasoning, change management, and executive communication. Choose a direction and bring people with you.",
