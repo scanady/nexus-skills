@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nexus-tech",
   "version": "1.0.0",
   "description": "Ship software and lead the people who build it — git workflows, architecture decisions, code quality, testing, APIs, and infrastructure. Keep delivery fast without letting the codebase rot.",

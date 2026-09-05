@@ -8,7 +8,6 @@
  *   - plugin-manager.html                     ← plugin manager (existing)
  *   - skill-catalog.json                    ← raw catalog
  *   - skill-catalog-summary.md              ← summary doc
- *   - marketplace/.claude-plugin/marketplace.json   ← published marketplace
  *   - plugins/<plugin>.zip                    ← per-plugin downloadable bundles
  *   - plugins/manifest.json                 ← plugin manifest (machine readable)
  *
@@ -26,7 +25,6 @@ const ROOT = path.join(__dirname, '..', '..');
 const DIST_PLUGINS = path.join(ROOT, 'dist', 'plugins');
 const SITE_DIR = path.join(ROOT, 'dist', 'site');
 const SITE_PLUGINS_DIR = path.join(SITE_DIR, 'plugins');
-const SITE_MARKETPLACE_DIR = path.join(SITE_DIR, 'marketplace', '.claude-plugin');
 
 function copyFile(src, dest) {
   fs.mkdirSync(path.dirname(dest), { recursive: true });
@@ -134,10 +132,9 @@ function buildIndexHtml(manifest, version) {
   <pre>nxa install --plugin marketing
 nxa install --plugin tech --plugin data</pre>
 
-  <h2>Install as a Claude plugin</h2>
-  <p>Add this repo as a Claude Code marketplace, then install any plugin:</p>
-  <pre>/plugin marketplace add https://github.com/scanady/nexus-skills.git
-/plugin install nexus-marketing</pre>
+  <h2>Install a plugin bundle by hand</h2>
+  <p>Download a bundle below, unzip it into your plugins directory, and restart the client:</p>
+  <pre>unzip marketing.zip -d ~/.claude/plugins/</pre>
 
   <h2>Download a plugin bundle</h2>
   <table>
@@ -174,13 +171,7 @@ function main() {
     copyFile(summaryPath, path.join(SITE_DIR, 'skill-catalog-summary.md'));
   }
 
-  // 2. Marketplace JSON (so users can point Claude at the Pages URL)
-  copyFile(
-    path.join(ROOT, '.claude-plugin', 'marketplace.json'),
-    path.join(SITE_MARKETPLACE_DIR, 'marketplace.json')
-  );
-
-  // 3. Per-plugin zips
+  // 2. Per-plugin zips
   fs.mkdirSync(SITE_PLUGINS_DIR, { recursive: true });
   for (const plugin of manifest.plugins) {
     const src = path.join(DIST_PLUGINS, plugin.name);
@@ -190,10 +181,10 @@ function main() {
   }
   copyFile(path.join(DIST_PLUGINS, 'manifest.json'), path.join(SITE_PLUGINS_DIR, 'manifest.json'));
 
-  // 4. Landing page
+  // 3. Landing page
   fs.writeFileSync(path.join(SITE_DIR, 'index.html'), buildIndexHtml(manifest, version), 'utf8');
 
-  // 5. .nojekyll so GitHub Pages serves files starting with _
+  // 4. .nojekyll so GitHub Pages serves files starting with _
   fs.writeFileSync(path.join(SITE_DIR, '.nojekyll'), '', 'utf8');
 
   console.log(`Site built at ${path.relative(ROOT, SITE_DIR)}/ (${manifest.plugins.length} plugin zips)`);

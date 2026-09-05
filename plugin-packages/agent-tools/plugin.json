@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nexus-agent-tools",
   "version": "1.0.0",
   "description": "Design and equip AI agents — personas, skill authoring, prompt engineering, and context curation. Build agents that behave consistently and carry the right knowledge into every session.",

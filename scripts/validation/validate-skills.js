@@ -18,7 +18,12 @@ const path = require('path');
 const { SKILLS_DIR, getAvailableSkills, validateSkillStructure } = require('../../src/core/skills');
 const {
   PACKAGES_DIR,
+  PLUGIN_SCHEMA,
+  MCP_SCHEMA,
   MANIFEST_KEYS,
+  MANIFEST_REQUIRED,
+  NAME_PATTERN,
+  validateMcpServer,
   listPluginNames,
   loadPluginPackage,
   matchSkills
@@ -35,9 +40,9 @@ function parseArgs(argv) {
 
 /*
  * Validates plugin-packages/. Every skill must belong to at least one plugin —
- * a skill in no plugin ships only in the nexus-all umbrella, which is how
- * membership silently drifted before. Manifests are checked against the closed
- * Agent Plugins schema so a bundle can never be built with a forbidden key.
+ * a skill in no plugin ships in no bundle at all, which is how membership
+ * silently drifted before. Manifests are checked against the closed Agent
+ * Plugins schema so a bundle can never be built with a forbidden key.
  */
 function validatePluginPackages(availableSkills) {
   const errors = [];
@@ -60,7 +65,16 @@ function validatePluginPackages(availableSkills) {
     const issues = [];
     const { manifest } = pkg;
 
-    for (const field of ['name', 'version', 'description']) {
+    // plugin.schema.json requires $schema and name, and closes the key set.
+    for (const field of MANIFEST_REQUIRED) {
+      if (!manifest[field]) issues.push(`plugin.json is missing "${field}"`);
+    }
+    if (manifest.$schema && manifest.$schema !== PLUGIN_SCHEMA) {
+      issues.push(`plugin.json $schema must be "${PLUGIN_SCHEMA}"`);
+    }
+
+    // Not required by the schema, but every package in this repo carries them.
+    for (const field of ['version', 'description']) {
       if (!manifest[field]) issues.push(`plugin.json is missing "${field}"`);
     }
 
@@ -69,15 +83,35 @@ function validatePluginPackages(availableSkills) {
       issues.push(`plugin.json has keys the Agent Plugins schema forbids: ${unknown.join(', ')}`);
     }
 
+    if (manifest.name && !NAME_PATTERN.test(manifest.name)) {
+      issues.push(`plugin.json name "${manifest.name}" does not match the Agent Plugins name pattern`);
+    }
+    if (manifest.name && manifest.name.length > 64) {
+      issues.push(`plugin.json name "${manifest.name}" exceeds the 64-character limit`);
+    }
     if (manifest.name && manifest.name !== `nexus-${name}`) {
       issues.push(`plugin.json name "${manifest.name}" does not match the directory (expected "nexus-${name}")`);
     }
 
-    // Every plugin carries an mcp.json, empty until it declares a server.
+    // mcp.schema.json requires both $schema and mcpServers. Every plugin here
+    // carries an mcp.json, empty until it declares a server.
     if (!pkg.mcp) {
       issues.push('missing mcp.json (start from an empty { "mcpServers": {} } stub)');
-    } else if (!pkg.mcp.mcpServers) {
-      issues.push('mcp.json is missing "mcpServers"');
+    } else {
+      if (pkg.mcp.$schema !== MCP_SCHEMA) {
+        issues.push(`mcp.json $schema must be "${MCP_SCHEMA}"`);
+      }
+      if (!pkg.mcp.mcpServers) {
+        issues.push('mcp.json is missing "mcpServers"');
+      } else {
+        const forbidden = Object.keys(pkg.mcp).filter(k => k !== '$schema' && k !== 'mcpServers');
+        if (forbidden.length > 0) {
+          issues.push(`mcp.json has keys the Agent Plugins schema forbids: ${forbidden.join(', ')}`);
+        }
+        for (const [server, config] of Object.entries(pkg.mcp.mcpServers)) {
+          issues.push(...validateMcpServer(server, config));
+        }
+      }
     }
 
     if (pkg.patterns.length === 0) {

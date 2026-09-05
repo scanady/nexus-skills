@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nexus-comms",
   "version": "1.0.0",
   "description": "Reach your organization and your customers — announcements, community engagement, and stakeholder messaging. Deliver news clearly and keep people informed.",

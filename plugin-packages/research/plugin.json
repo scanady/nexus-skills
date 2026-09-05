@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nexus-research",
   "version": "1.0.0",
   "description": "Understand a market before you commit to it — competitive intelligence, opportunity sizing, customer personas, and deep source analysis. Replace assumptions with evidence.",

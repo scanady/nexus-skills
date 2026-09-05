@@ -29,11 +29,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.11'
-
       - name: Build everything
         run: npm run build
 

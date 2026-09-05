@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nexus-content",
   "version": "1.0.0",
   "description": "Write, edit, and reshape content for human readers — copy, long-form, technical documentation, and voice consistency. Turn rough drafts into clear, publishable prose.",

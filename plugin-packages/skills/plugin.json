@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nexus-skills",
   "version": "1.0.0",
   "description": "Author and maintain Agent Skills — scaffolding, spec compliance, evaluation, and cataloging. Keep a skill library consistent, discoverable, and worth loading.",
