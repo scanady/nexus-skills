@@ -58,7 +58,7 @@ python3 ./scripts/generate.py \
 
 ### Script Behavior
 
-- **Default model**: `gemini-3-pro-image-preview` (override via `--model` or `GOOGLE_AI_STUDIO_MODEL` env var)
+- **Default model**: `gemini-3-pro-image` (override via `--model` or `GOOGLE_AI_STUDIO_MODEL` env var)
 - **Fallback model**: `gemini-3.1-flash-image-preview` — automatic fallback if the primary model is unavailable
 - **Retry logic**: Up to 3 retries with exponential backoff on transient errors (429, 500, 503)
 - **Format detection**: Auto-corrects file extension based on actual image magic bytes (PNG, JPG, WebP)
@@ -91,7 +91,7 @@ When the script is not available, use the REST API directly:
 POST https://generativelanguage.googleapis.com/v1beta/models/{MODEL_ID}:generateContent?key={API_KEY}
 ```
 
-**Default model:** `gemini-3-pro-image-preview`
+**Default model:** `gemini-3-pro-image`
 **Fallback model:** `gemini-3.1-flash-image-preview`
 
 ---
@@ -175,7 +175,7 @@ python3 ./scripts/generate.py \
 
 ```bash
 curl -s -X POST \
-  "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-image-preview:generateContent?key=${GOOGLE_AI_STUDIO_API_KEY}" \
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-image:generateContent?key=${GOOGLE_AI_STUDIO_API_KEY}" \
   -H "Content-Type: application/json" \
   -d '{
     "contents": [
