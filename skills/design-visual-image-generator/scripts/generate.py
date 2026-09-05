@@ -17,7 +17,7 @@ load_dotenv(SKILL_ROOT / ".env")
 DEFAULT_MODEL_ID = os.environ.get(
     "GOOGLE_AI_STUDIO_MODEL", "gemini-3-pro-image"
 )
-FALLBACK_MODEL_ID = "gemini-3.1-flash-image-preview"
+FALLBACK_MODEL_ID = "gemini-3.1-flash-image"
 MAX_RETRIES = 3
 BASE_DELAY_S = 2.0
 
