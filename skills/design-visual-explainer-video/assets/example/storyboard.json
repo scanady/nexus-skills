@@ -1,0 +1,98 @@
+{
+  "design": {
+    "summary": "Hand-drawn paper look: cream and pale-blue paper grounds, ink lines that write on, one paper cut-out sun",
+    "palette": {
+      "paper": "#f4ecd8",
+      "sky": "#e7f1f4",
+      "ink": "#1f1a17",
+      "red": "#d8452f",
+      "teal": "#2f8f8a"
+    },
+    "fonts": [
+      "Caveat 700 (headlines)",
+      "Nunito 400/800 (body)"
+    ],
+    "motion": "Pop entrances on spoken words, ink write-ons, a torn-paper wipe into the mechanism",
+    "voice": "Warm, curious, explaining to a smart friend",
+    "music": "Built-in synth bed, bright, 96 BPM",
+    "theme": {
+      "light": "#f4ecd8",
+      "dark": "#23395b",
+      "ink": "#1f1a17",
+      "inkOnDark": "#f4ecd8",
+      "accent": "#d8452f",
+      "muted": "#6b5e52",
+      "card": "#fffaf0",
+      "border": "#e2d6bd",
+      "display": "Caveat",
+      "serif": "Caveat",
+      "mono": "Nunito"
+    }
+  },
+  "scenes": [
+    {
+      "name": "hook",
+      "title": "Why is the sky blue?",
+      "lines": [
+        0
+      ],
+      "visual": "Big handwritten question with a red underline; a paper sun pops in",
+      "onScreen": [
+        "Why is the sky blue?",
+        "not the water"
+      ],
+      "motion": "Question pops at 0.3 s; sun on 'sunlight'; red note on 'water'",
+      "assets": [
+        "sun"
+      ],
+      "frame": {
+        "layout": "photo-card",
+        "image": "sun",
+        "headline": "Why is the sky blue?",
+        "sub": "not the water"
+      }
+    },
+    {
+      "name": "scatter",
+      "title": "Scattering",
+      "lines": [
+        1
+      ],
+      "visual": "Six colored light rays; the blue and violet ones bounce off an air molecule",
+      "onScreen": [
+        "Short blue waves bounce around the most"
+      ],
+      "motion": "Rays draw on; the bounce and a sparkle on 'scatters'",
+      "assets": [],
+      "frame": {
+        "layout": "diagram",
+        "bg": "#e7f1f4",
+        "headline": "Short blue waves bounce around the most",
+        "items": [
+          "Sunlight",
+          "Air",
+          "Blue scatters"
+        ]
+      }
+    },
+    {
+      "name": "recap",
+      "title": "Recap",
+      "lines": [
+        2
+      ],
+      "visual": "An eye with blue arrows arriving from every side",
+      "onScreen": [
+        "Scattered light = blue sky"
+      ],
+      "motion": "Arrows on 'look'; highlight swipe and chime on 'blue'",
+      "assets": [],
+      "frame": {
+        "layout": "type",
+        "headline": "Scattered light",
+        "headline2": "= blue sky"
+      }
+    }
+  ],
+  "questions": []
+}
