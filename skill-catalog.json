@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-09-05T01:49:24Z",
+  "generated_at": "2026-09-26T20:23:09Z",
   "sources": [
     {
       "id": "source-1",
@@ -11,25 +11,25 @@
     }
   ],
   "summary": {
-    "total_skills": 147,
+    "total_skills": 148,
     "evaluated": 113,
     "parse_errors": 0,
-    "avg_usage_value": 3.07,
-    "avg_executability": 2.19,
-    "avg_invocability": 1.67,
+    "avg_usage_value": 3.05,
+    "avg_executability": 2.18,
+    "avg_invocability": 1.66,
     "security_risk_distribution": {
       "low": 115,
       "medium": 30,
-      "high": 2
+      "high": 3
     },
     "complexity_distribution": {
       "compact": 72,
       "detailed": 30,
-      "comprehensive": 45
+      "comprehensive": 46
     },
     "pattern_distribution": {
       "A": 128,
-      "B": 18,
+      "B": 19,
       "C": 1
     },
     "over_specification_flagged": 0
@@ -4196,6 +4196,79 @@
         ],
         "script_languages": [
           "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "design-visual-explainer-video",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "design-visual-explainer-video/SKILL.md",
+      "url": null,
+      "plugins": [
+        "design"
+      ],
+      "frontmatter": {
+        "name": "design-visual-explainer-video",
+        "disable_model_invocation": false,
+        "description": "Produce a narrated, animated explainer video (MP4 + offline HTML player) from a topic prompt: research, script, AI voice-over, generated art, music, and code-driven canvas animation rendered frame by frame. Use when asked to \"make an explainer video\", \"animate how X works\", \"create a video explaining\", or \"turn this into a short animated video\".",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "triggers": "explain this codebase in a video, make an animated intro, produce a narrated animation, create a whiteboard animation, generate a promo video, turn a script into video, make a short video about a concept",
+          "role": "specialist",
+          "scope": "creation",
+          "output_format": "content",
+          "related_skills": "design-product-overview-recorder, design-visual-image-generator, content-narrative-story-brief"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": true,
+        "has_license_file": false,
+        "file_count": 42,
+        "estimated_tokens": 2264,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "high",
+          "findings": [
+            "References credentials/secrets",
+            "Makes outbound network calls",
+            "Uses install commands"
+          ],
+          "rationale": "Evaluated from scanner signals."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Produce a narrated, animated explainer video (MP4 + offline HTML player) from a topic prompt: research, script, AI voice-over, generated art, music, and code-driven canvas animation rendered frame by frame. Use when asked to \"make an explainer video\", \"animate how X works\", \"create a video explaining\", or \"turn this into a short animated video\".",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "javascript"
         ],
         "license": "MIT"
       }

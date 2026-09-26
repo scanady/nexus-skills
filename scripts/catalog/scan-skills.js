@@ -467,7 +467,8 @@ function findSkillFiles(baseDir) {
     }
     for (const entry of entries) {
       const full = path.join(dir, entry.name);
-      if (entry.isDirectory()) walk(full);
+      // Skip runtime dirs: a skill's installed npm packages can ship their own SKILL.md files.
+      if (entry.isDirectory()) { if (!RUNTIME_DIRS.has(entry.name)) walk(full); }
       else if (entry.isFile() && entry.name === 'SKILL.md') found.push(full);
     }
   };

@@ -1,0 +1,6 @@
+{
+  "style": "Hand-drawn paper cut-out illustration, warm vintage palette (kraft, cream, teal, mustard, tomato red), visible paper texture, thick near-black ink outlines, flat lighting, no text.",
+  "images": [
+    { "id": "sun", "prompt": "A friendly cartoon sun with a small smile, cut from yellow paper with a white torn rim.", "aspect": "1:1", "background": "green" }
+  ]
+}
