@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/scanady/nexus-skills/compare/nexus-agents-v1.3.0...nexus-agents-v1.4.0) (2026-09-26)
+
+
+### Features
+
+* add design-visual-explainer-video skill ([#53](https://github.com/scanady/nexus-skills/issues/53)) ([4286b55](https://github.com/scanady/nexus-skills/commit/4286b554780bcf5d2cb4037d75fec68af64e45a5))
+
+
+### Bug Fixes
+
+* use stable Gemini image fallback ([#51](https://github.com/scanady/nexus-skills/issues/51)) ([e22bc5f](https://github.com/scanady/nexus-skills/commit/e22bc5f720b2edc8e79578f3262cc9d0a0e83ee2))
+
 ## [1.3.0](https://github.com/scanady/nexus-skills/compare/nexus-agents-v1.2.0...nexus-agents-v1.3.0) (2026-09-03)
 
 
