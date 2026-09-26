@@ -1,0 +1,346 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storyboard · {{TITLE}}</title>
+<style>
+/*{{FONT_FACES}}*/
+:root {
+  color-scheme: light;
+  --bg: #f3f2ef; --card: #fff; --ink: #1d1c1a; --muted: #6b6760; --line: #e3e0da; --soft: #f8f7f4;
+  --accent: #e07a2e; --accent-soft: rgba(224,122,46,.12); --ok: #2f7d5b;
+  --radius: 14px; --shadow: 0 1px 2px rgba(0,0,0,.05), 0 6px 24px rgba(0,0,0,.06);
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 1320px; margin: 0 auto; padding: 0 24px 80px; }
+@media (max-width: 640px) { header.top { position: static !important; } }
+header.top { position: sticky; top: 0; z-index: 10; background: rgba(243,242,239,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; gap: 16px; align-items: center; padding-block: 14px; flex-wrap: wrap; padding-bottom: 14px; }
+h1 { font-size: 20px; margin: 0; letter-spacing: -.01em; }
+.status { background: var(--accent-soft); color: #9a4b12; border-radius: 99px; padding: 3px 12px; font-size: 13px; font-weight: 600; }
+.stats { display: flex; gap: 18px; color: var(--muted); font-size: 13px; flex-wrap: wrap; }
+.stats b { color: var(--ink); font-weight: 600; }
+.spacer { flex: 1; }
+button { font: inherit; border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 10px; padding: 8px 14px; cursor: pointer; }
+button:hover { border-color: #c9c5bd; }
+button.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+button.accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+section { margin-top: 36px; }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 14px; font-weight: 600; }
+.note { color: var(--muted); font-size: 13px; }
+.alert { background: #fff4ec; border: 1px solid #f3c79e; border-radius: var(--radius); padding: 14px 18px; }
+.alert.err { background: #fdeeee; border-color: #efb3b3; }
+.alert ul { margin: 6px 0 0; padding-left: 20px; }
+
+/* player */
+.player { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; margin-top: 24px; }
+@media (max-width: 980px) { .player { grid-template-columns: minmax(0, 1fr); } }
+.player > div { min-width: 0; }
+.stage { position: relative; aspect-ratio: 16 / 9; background: #111; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .45s ease; }
+.stage .textframe { position: absolute; inset: 0; display: grid; place-items: center; padding: 8%; color: #eee; text-align: center; font-size: 22px; background: #222; }
+.caption { position: absolute; left: 50%; bottom: 5%; transform: translateX(-50%); max-width: 86%; background: rgba(0,0,0,.66); color: #fff; padding: 8px 16px; border-radius: 10px; font-size: clamp(13px, 1.6vw, 19px); text-align: center; line-height: 1.35; }
+.caption:empty { display: none; }
+.big-play { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,.25); border: 0; border-radius: 0; color: #fff; font-size: 18px; }
+.big-play span { background: rgba(0,0,0,.6); padding: 14px 24px; border-radius: 99px; }
+.controls { display: flex; gap: 10px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+.time { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; }
+.voice-mode { font-size: 12px; color: var(--muted); }
+.timeline { position: relative; display: flex; height: 44px; margin-top: 12px; border-radius: 10px; overflow: hidden; background: var(--line); cursor: pointer; }
+.seg { position: relative; height: 100%; border-right: 2px solid var(--bg); display: flex; align-items: flex-end; padding: 0 6px 4px; font-size: 11px; color: rgba(0,0,0,.65); overflow: hidden; white-space: nowrap; }
+.seg.changed::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 5px; background: var(--accent); }
+.seg.active { outline: 3px solid var(--ink); outline-offset: -3px; }
+.playhead { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ink); pointer-events: none; }
+.chapters { display: flex; margin-top: 6px; font-size: 12px; color: var(--muted); }
+.chapters div { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-right: 6px; border-left: 2px solid var(--line); padding-left: 6px; }
+.side { background: var(--card); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); align-self: start; }
+.side .num { color: var(--accent); font-weight: 700; font-size: 13px; }
+.side h3 { margin: 4px 0 10px; font-size: 20px; line-height: 1.2; }
+.kv { margin-top: 12px; font-size: 13px; }
+.kv b { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { background: var(--soft); border: 1px solid var(--line); border-radius: 99px; padding: 2px 10px; font-size: 12.5px; }
+.chip.new { border-color: var(--accent); color: #9a4b12; background: var(--accent-soft); }
+.chip.made, .chip.supplied { color: var(--ok); }
+
+/* filmstrip */
+.strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px; }
+@media (max-width: 420px) { .strip { grid-template-columns: 1fr; } }
+.panel { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; border: 2px solid transparent; }
+.panel.changed { border-color: var(--accent); }
+.panel.current { outline: 3px solid var(--ink); }
+.thumb { position: relative; aspect-ratio: 16 / 9; background: #222; cursor: pointer; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumb .textframe { position: absolute; inset: 0; display: grid; place-items: center; padding: 8%; color: #ddd; text-align: center; font-size: 14px; }
+.badges { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; }
+.badge { background: rgba(0,0,0,.65); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 99px; letter-spacing: .02em; }
+.badge.changed { background: var(--accent); }
+.pbody { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.phead { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.phead h3 { margin: 0; font-size: 16px; line-height: 1.25; }
+.phead .n { color: var(--accent); font-weight: 700; margin-right: 6px; }
+.phead .t { color: var(--muted); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.chapter { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.lines p { margin: 0 0 6px; padding-left: 10px; border-left: 3px solid var(--line); font-size: 14px; }
+.lines p.changed { border-left-color: var(--accent); background: var(--accent-soft); padding: 4px 8px 4px 10px; border-radius: 0 6px 6px 0; }
+.lines .play1 { border: 0; background: none; padding: 0 4px; color: var(--muted); cursor: pointer; font-size: 12px; }
+.row { font-size: 13px; }
+.row b { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-right: 6px; }
+textarea { width: 100%; font: inherit; font-size: 14px; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; resize: vertical; min-height: 40px; background: var(--soft); }
+textarea:focus { outline: 2px solid var(--accent); background: #fff; }
+
+/* design */
+.design { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.box { background: var(--card); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+.swatches { display: flex; flex-wrap: wrap; gap: 10px; }
+.sw { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
+.sw i { width: 64px; height: 44px; border-radius: 8px; border: 1px solid rgba(0,0,0,.08); }
+.fontsample { font-size: 26px; margin: 6px 0; line-height: 1.2; }
+.qa { background: var(--card); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow); margin-bottom: 12px; }
+.qa p { margin: 0 0 8px; font-weight: 600; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+td, th { text-align: left; padding: 8px 10px; border-top: 1px solid var(--line); vertical-align: top; }
+.tablewrap { overflow-x: auto; background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); }
+footer.feedback { margin-top: 40px; background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 18px; border-radius: 99px; opacity: 0; transition: opacity .25s; pointer-events: none; }
+.toast.show { opacity: 1; }
+</style>
+
+<header class="top"><div class="wrap">
+  <h1 id="title"></h1><span class="status">Waiting for your approval</span>
+  <div class="stats" id="stats"></div>
+  <div class="spacer"></div>
+  <button id="copy" class="accent">Copy feedback</button>
+</div></header>
+
+<div class="wrap">
+  <div id="alerts"></div>
+
+  <div class="player">
+    <div>
+      <div class="stage" id="stage">
+        <img id="imgA" alt=""><img id="imgB" alt="" style="opacity:0">
+        <div class="textframe" id="textframe" hidden></div>
+        <div class="caption" id="caption"></div>
+        <button class="big-play" id="bigplay"><span>▶ Play the animatic</span></button>
+      </div>
+      <div class="controls">
+        <button id="play" class="primary">▶ Play</button>
+        <button id="prev" title="Previous scene (←)">◀ Scene</button>
+        <button id="next" title="Next scene (→)">Scene ▶</button>
+        <span class="time" id="time">0:00 / 0:00</span>
+        <span class="spacer"></span>
+        <span class="voice-mode" id="voicemode"></span>
+      </div>
+      <div class="timeline" id="timeline"><div class="playhead" id="playhead"></div></div>
+      <div class="chapters" id="chapters"></div>
+    </div>
+    <aside class="side" id="side"></aside>
+  </div>
+
+  <section id="changes-sec" hidden><h2>What changed in this version</h2><div class="alert"><ul id="changes"></ul></div></section>
+
+  <section>
+    <h2>Scenes</h2>
+    <p class="note">Click a frame to play from that scene. Orange borders mark new or changed scenes. "Sketch" frames show layout and content, not final motion. "From the current video" frames come from the last build.</p>
+    <div class="strip" id="strip"></div>
+  </section>
+
+  <section>
+    <h2>Look and sound</h2>
+    <div class="design" id="design"></div>
+  </section>
+
+  <section id="q-sec" hidden><h2>Questions for you</h2><div id="questions"></div></section>
+  <section id="img-sec" hidden><h2>Images to generate</h2><div class="tablewrap"><table id="images"></table></div></section>
+  <section><h2>Sources</h2><div class="box" id="sources"></div></section>
+
+  <footer class="feedback">
+    <h2>Anything else</h2>
+    <textarea id="general" rows="3" placeholder="Overall notes: pacing, tone, what to cut or add…"></textarea>
+    <div class="controls">
+      <button id="copy2" class="accent">Copy feedback</button>
+      <span class="note">Paste it into the chat. When you are happy with the plan, reply "approved" and the build starts.</span>
+    </div>
+    <textarea id="fallback" rows="8" hidden></textarea>
+  </footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const SB = /*{{SB}}*/;
+const $ = id => document.getElementById(id);
+const el = (tag, attrs = {}, ...kids) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs)) { if (k === "class") e.className = v; else if (k === "text") e.textContent = v; else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else if (v !== undefined && v !== null) e.setAttribute(k, v); } for (const c of kids.flat()) if (c != null) e.append(c); return e; };
+const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+const accent = SB.design?.theme?.accent || Object.values(SB.design?.palette || {}).find(v => /^#/.test(v) && !/^#(f|e|1|0)/i.test(v)) || "#e07a2e";
+document.documentElement.style.setProperty("--accent", accent);
+const store = (() => { const k = "storyboard:" + SB.title; let o = {}; try { o = JSON.parse(localStorage.getItem(k) || "{}"); } catch {} return { get: n => o[n] || "", set: (n, v) => { o[n] = v; try { localStorage.setItem(k, JSON.stringify(o)); } catch {} } }; })();
+
+// ---------- header ----------
+$("title").textContent = SB.title;
+const S = SB.stats;
+$("stats").append(
+  el("span", {}, el("b", { text: fmt(S.end) }), S.measured === S.lines ? " long" : " long (est.)"),
+  el("span", {}, el("b", { text: SB.scenes.length }), " scenes"),
+  el("span", {}, el("b", { text: S.words }), ` words · ${S.wpm} wpm`),
+  el("span", {}, "build ", el("b", { text: "$" + SB.costTotal.toFixed(2) }), ` of $${SB.budget}`),
+);
+if (SB.errors.length) $("alerts").append(el("div", { class: "alert err", style: "margin-top:20px" }, el("b", { text: "Plan errors (the agent fixes these):" }), el("ul", {}, SB.errors.map(e => el("li", { text: e })))));
+if (SB.changes.length) { $("changes-sec").hidden = false; SB.changes.forEach(c => $("changes").append(el("li", { text: c }))); }
+
+// ---------- timeline ----------
+const total = S.end, chColors = ["#d9cfc0", "#c9d8d2", "#d6d0e3", "#e6d3c4", "#cfdbe6", "#e3dcc2", "#d8e3cc"];
+const chapterIdx = {}; SB.scenes.forEach(s => { if (!(s.chapter in chapterIdx)) chapterIdx[s.chapter] = Object.keys(chapterIdx).length; });
+const segs = SB.scenes.map((s, k) => {
+  const seg = el("div", { class: "seg" + (s.changed ? " changed" : ""), title: `${s.n}. ${s.title} (${fmt(s.a)}–${fmt(s.b)})`, onclick: e => { e.stopPropagation(); jumpScene(k, true); } }, String(s.n));
+  seg.style.width = (100 * (s.b - s.a) / total) + "%"; seg.style.background = chColors[chapterIdx[s.chapter] % chColors.length];
+  $("timeline").insertBefore(seg, $("playhead"));
+  return seg;
+});
+{ let cur = null, a = 0; const flush = b => { if (cur !== null) { const d = el("div", { text: cur || "" }); d.style.width = (100 * (b - a) / total) + "%"; $("chapters").append(d); } };
+  SB.scenes.forEach(s => { if (s.chapter !== cur) { flush(s.a); cur = s.chapter; a = s.a; } }); flush(total); }
+
+// ---------- stage ----------
+let front = $("imgA"), back = $("imgB");
+function showFrame(s) {
+  const tf = $("textframe");
+  if (!s.frame) { tf.hidden = false; tf.textContent = s.visual || s.title; front.style.opacity = 0; back.style.opacity = 0; return; }
+  tf.hidden = true;
+  if (front.getAttribute("src") === s.frame) { front.style.opacity = 1; return; }
+  back.src = s.frame; back.style.opacity = 1; front.style.opacity = 0; [front, back] = [back, front];
+}
+function showSide(s) {
+  const side = $("side"); side.innerHTML = "";
+  side.append(el("div", { class: "num", text: `Scene ${s.n} of ${SB.scenes.length}${s.chapter ? " · " + s.chapter : ""}` }), el("h3", { text: s.title }));
+  if (s.visual) side.append(el("div", { class: "kv" }, el("b", { text: "Picture" }), s.visual));
+  if (s.onScreen.length) side.append(el("div", { class: "kv" }, el("b", { text: "On screen" }), el("div", { class: "chips" }, s.onScreen.map(t => el("span", { class: "chip", text: t })))));
+  if (s.motion) side.append(el("div", { class: "kv" }, el("b", { text: "Motion and sound" }), s.motion));
+  if (s.notes) side.append(el("div", { class: "kv" }, el("b", { text: "Note" }), s.notes));
+}
+
+// ---------- filmstrip ----------
+const panels = SB.scenes.map((s, k) => {
+  const badges = el("div", { class: "badges" },
+    el("span", { class: "badge", text: s.frameKind === "render" ? "From the current video" : s.frameKind === "sketch" ? "Sketch" : "Text only" }),
+    s.changed ? el("span", { class: "badge changed", text: "Changed" }) : null);
+  const thumb = el("div", { class: "thumb", onclick: () => { jumpScene(k, true); window.scrollTo({ top: 0, behavior: "smooth" }); } },
+    s.frame ? el("img", { src: s.frame, alt: `Scene ${s.n}: ${s.title}`, loading: "lazy" }) : el("div", { class: "textframe", text: s.visual || s.title }), badges);
+  const ta = el("textarea", { rows: 2, placeholder: "Notes on this scene…", "data-scene": s.n });
+  ta.value = store.get("scene" + s.n); ta.addEventListener("input", () => store.set("scene" + s.n, ta.value));
+  const lines = el("div", { class: "lines" }, s.lines.map(l => el("p", { class: l.changed ? "changed" : "" },
+    el("button", { class: "play1", title: "Play this line", onclick: () => playOne(l) }, "▶"), l.text, l.changed ? el("em", { class: "note", text: " new" }) : null)));
+  const p = el("article", { class: "panel" + (s.changed ? " changed" : "") }, thumb,
+    el("div", { class: "pbody" },
+      el("div", { class: "chapter", text: s.chapter || " " }),
+      el("div", { class: "phead" }, el("h3", {}, el("span", { class: "n", text: String(s.n).padStart(2, "0") }), s.title), el("span", { class: "t", text: `${fmt(s.a)}–${fmt(s.b)} · ${Math.round(s.b - s.a)} s` })),
+      lines,
+      s.onScreen.length ? el("div", { class: "row" }, el("b", { text: "On screen" }), el("div", { class: "chips" }, s.onScreen.map(t => el("span", { class: "chip", text: t })))) : null,
+      s.motion ? el("div", { class: "row" }, el("b", { text: "Motion" }), s.motion) : null,
+      s.assets.length ? el("div", { class: "row" }, el("b", { text: "Images" }), el("span", { class: "chips" }, s.assets.map(x => el("span", { class: "chip " + x.status, text: `${x.id} · ${x.status}` })))) : null,
+      s.notes ? el("div", { class: "row" }, el("b", { text: "Note" }), s.notes) : null,
+      ta));
+  $("strip").append(p);
+  return p;
+});
+
+// ---------- design ----------
+const D = SB.design || {};
+const pal = el("div", { class: "swatches" }, Object.entries(D.palette || {}).map(([n, h]) => el("div", { class: "sw" }, el("i", { style: `background:${h}` }), `${n} ${h}`)));
+$("design").append(
+  el("div", { class: "box" }, el("h2", { text: "Look" }), el("p", { text: D.summary || "" }), pal),
+  el("div", { class: "box" }, el("h2", { text: "Type" }), (D.families || []).map(f => el("div", { class: "fontsample", style: `font-family:"${f}"`, text: `${f}: ${SB.title}` })), el("p", { class: "note", text: [].concat(D.fonts || []).join(" · ") })),
+  el("div", { class: "box" }, el("h2", { text: "Motion" }), el("p", { text: D.motion || "" }), el("h2", { text: "Images" }), el("p", { class: "note", text: D.imageStyle || "" })),
+  el("div", { class: "box" }, el("h2", { text: "Voice" }), el("p", { text: D.voice || "" }), el("h2", { text: "Music" }), el("p", { text: D.music || "" })),
+);
+
+// ---------- questions, images, sources ----------
+if (SB.questions.length || SB.notes.length) {
+  $("q-sec").hidden = false;
+  [...SB.questions, ...SB.notes].forEach((q, i) => {
+    const ta = el("textarea", { rows: 2, placeholder: "Your answer…" }); ta.value = store.get("q" + i); ta.addEventListener("input", () => store.set("q" + i, ta.value));
+    $("questions").append(el("div", { class: "qa" }, el("p", { text: `${i + 1}. ${q}` }), ta));
+  });
+}
+if (SB.images.length) { $("img-sec").hidden = false; $("images").append(el("tr", {}, el("th", { text: "Image" }), el("th", { text: "Prompt" }))); SB.images.forEach(x => $("images").append(el("tr", {}, el("td", { text: x.id }), el("td", { text: x.prompt })))); }
+$("sources").append(el("p", { class: "note", text: `${SB.factCount} facts are listed in facts.md. Every spoken claim traces to one of them.` }), el("ul", {}, SB.sources.map(s => el("li", {}, el("a", { href: s, target: "_blank", rel: "noopener", text: s })))));
+if (SB.userFacts.length) $("sources").append(el("p", { class: "note", text: "Facts you gave directly:" }), el("ul", {}, SB.userFacts.map(f => el("li", { text: f }))));
+$("general").value = store.get("general"); $("general").addEventListener("input", () => store.set("general", $("general").value));
+
+// ---------- animatic ----------
+const seq = SB.scenes.flatMap((s, k) => s.lines.map(l => ({ k, l })));
+const hasReal = seq.some(x => x.l.audio), hasTTS = "speechSynthesis" in window;
+const missing = seq.filter(x => !x.l.audio).length;
+$("voicemode").textContent = missing === 0 ? "Real voice" : hasReal ? `Real voice, plus a preview voice for ${missing} new line${missing > 1 ? "s" : ""}` : hasTTS ? "Preview voice (your browser's). The final voice comes after approval" : "No audio: timed text only";
+let cursor = 0, playing = false, token = 0, audio = null, lineT0 = 0, lineStart = 0, lineDur = 0, curScene = -1;
+function voice() { const vs = speechSynthesis.getVoices(); return vs.find(v => /en/i.test(v.lang) && /natural|online|neural/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || null; }
+if (hasTTS) speechSynthesis.onvoiceschanged = () => {};
+const sleep = (ms, tk) => new Promise(r => setTimeout(r, ms));
+function say(l, tk) {
+  return new Promise(res => {
+    const done = () => { clearTimeout(guard); res(); };
+    const guard = setTimeout(done, (l.dur || 4) * 2000 + 2500);
+    if (l.audio) { audio = new Audio(l.audio); audio.onended = done; audio.onerror = done; audio.play().catch(done); return; }
+    if (hasTTS) { const u = new SpeechSynthesisUtterance(l.text); const v = voice(); if (v) u.voice = v; u.rate = 1.0; u.onend = done; u.onerror = done; speechSynthesis.speak(u); return; }
+    setTimeout(done, (l.dur || 3) * 1000);
+  });
+}
+function stopSound() { if (audio) { audio.pause(); audio = null; } if (hasTTS) speechSynthesis.cancel(); }
+function setScene(k) {
+  if (k === curScene) return; curScene = k;
+  const s = SB.scenes[k]; showFrame(s); showSide(s);
+  segs.forEach((g, i) => g.classList.toggle("active", i === k)); panels.forEach((p, i) => p.classList.toggle("current", i === k));
+}
+async function run() {
+  const tk = ++token; playing = true; $("play").textContent = "❚❚ Pause"; $("bigplay").hidden = true;
+  while (playing && tk === token && cursor < seq.length) {
+    const { k, l } = seq[cursor];
+    setScene(k); $("caption").textContent = l.text;
+    lineStart = l.at ?? SB.scenes[k].a; lineDur = l.dur || 3; lineT0 = performance.now();
+    await say(l, tk);
+    if (tk !== token || !playing) return;
+    $("caption").textContent = "";
+    await sleep((l.pauseAfter ?? 0.55) * 1000);
+    if (tk !== token || !playing) return;
+    cursor++;
+  }
+  if (tk === token && cursor >= seq.length) { await sleep(1500); pause(); cursor = 0; }
+}
+function pause() { playing = false; token++; stopSound(); $("play").textContent = "▶ Play"; }
+function jumpScene(k, andPlay) {
+  const i = seq.findIndex(x => x.k === k); if (i < 0) return;
+  pause(); cursor = i; setScene(k); $("bigplay").hidden = true; $("caption").textContent = ""; lineStart = SB.scenes[k].a; lineDur = 0; lineT0 = performance.now();
+  if (andPlay) run();
+}
+async function playOne(l) { pause(); $("caption").textContent = l.text; await say(l, token); $("caption").textContent = ""; }
+$("play").onclick = () => (playing ? pause() : run());
+$("bigplay").onclick = () => run();
+$("prev").onclick = () => jumpScene(Math.max(0, (curScene < 0 ? 0 : curScene) - 1), playing);
+$("next").onclick = () => jumpScene(Math.min(SB.scenes.length - 1, curScene + 1), playing);
+$("timeline").onclick = e => { const r = e.currentTarget.getBoundingClientRect(), t = (e.clientX - r.left) / r.width * total; const k = SB.scenes.findIndex(s => t >= s.a && t < s.b); if (k >= 0) jumpScene(k, true); };
+document.addEventListener("keydown", e => { if (e.target.tagName === "TEXTAREA") return; if (e.code === "Space") { e.preventDefault(); playing ? pause() : run(); } if (e.code === "ArrowRight") $("next").click(); if (e.code === "ArrowLeft") $("prev").click(); });
+(function tick() {
+  const t = playing ? lineStart + Math.min(lineDur, (performance.now() - lineT0) / 1000) : lineStart;
+  $("playhead").style.left = (100 * Math.min(t, total) / total) + "%";
+  $("time").textContent = `${fmt(t)} / ${fmt(total)}`;
+  requestAnimationFrame(tick);
+})();
+setScene(0);
+
+// ---------- feedback ----------
+function feedback() {
+  const out = [`# Storyboard feedback: ${SB.title}`, `(storyboard generated ${SB.generated})`, ""];
+  const g = $("general").value.trim(); if (g) out.push("## Overall", g, "");
+  SB.scenes.forEach(s => { const v = store.get("scene" + s.n).trim(); if (v) out.push(`## Scene ${s.n}: ${s.title}`, v, ""); });
+  [...SB.questions, ...SB.notes].forEach((q, i) => { const v = store.get("q" + i).trim(); if (v) out.push(`## Q${i + 1}: ${q}`, v, ""); });
+  if (out.length <= 3) out.push("No changes. Approved.");
+  return out.join("\n");
+}
+function toast(msg) { const t = $("toast"); t.textContent = msg; t.classList.add("show"); setTimeout(() => t.classList.remove("show"), 1800); }
+async function copy() {
+  const txt = feedback();
+  try { await navigator.clipboard.writeText(txt); toast("Feedback copied: paste it into the chat"); }
+  catch { const f = $("fallback"); f.hidden = false; f.value = txt; f.focus(); f.select(); toast("Select all and copy the text below"); f.scrollIntoView({ behavior: "smooth" }); }
+}
+$("copy").onclick = copy; $("copy2").onclick = copy;
+</script>

@@ -1,0 +1,8 @@
+{
+  "voice": { "style": "Warm, curious, unhurried. Smile slightly. Explaining to a smart friend." },
+  "lines": [
+    { "text": "Why is the sky blue? It's sunlight, not the water." },
+    { "text": "Sunlight holds every colour, and air scatters short blue waves far more than red ones.", "pauseAfter": 0.9 },
+    { "text": "So wherever you look, scattered blue light comes back to you." }
+  ]
+}

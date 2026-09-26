@@ -1,0 +1,14 @@
+{
+  "name": "explainer-video-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Pipeline scripts for the design-visual-explainer-video skill",
+  "engines": { "node": ">=20.10" },
+  "dependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "playwright": "^1.55.0"
+  },
+  "optionalDependencies": {
+    "msedge-tts": "^2.0.0"
+  }
+}
