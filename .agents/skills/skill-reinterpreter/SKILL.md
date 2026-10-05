@@ -1,267 +1,224 @@
 ---
 name: skill-reinterpreter
 disable-model-invocation: true
-description: Rebuild an existing Agent Skill from scratch in a new folder while preserving intent and outcomes, then delete the original. Use when asked to "reinterpret a skill", "clone and improve a skill", "rebuild a skill from scratch", "refresh a skill with current best practices", or "replace a skill with a new version". Distinct from skill-architect (which edits in place) and skill-evaluator (which tests) — this skill creates a new folder, fully rewrites every file including references and scripts, then removes the source.
+description: Reinterpret a local or remote skill into this repo, either by merging the ideas that fit into an existing skill or by creating a new skill inspired by it. Use when asked to "reinterpret a skill", "merge this skill into my existing one", "port ideas from this skill", or "create a skill inspired by this GitHub skill". Not skill-architect (edits one skill in place) or skill-evaluator (tests).
 license: MIT
 metadata:
-  version: "1.2.0"
+  version: "1.4.0"
   domain: agent
-  triggers: reinterpret skill, rebuild skill from scratch, clone and improve skill, replace skill with new version, refresh skill with best practices, delete original skill after rewrite
+  triggers: reinterpret skill, merge skill into existing skill, port skill from GitHub, create skill inspired by another skill, rebuild skill from scratch, clone and improve skill, refresh skill with best practices
   role: architect
   scope: design
   output-format: specification
-  related-skills: skill-architect
+  related-skills: skill-architect, content-copy-clear-writing
 ---
 
 # Skill Reinterpreter
 
-Create a new skill that preserves the source skill's intent and outcomes while delivering a distinct, higher-quality interpretation aligned to repository conventions.
+Take a reference skill. Keep its intent and outcomes. Deliver a distinct, higher-quality interpretation, inspired by the reference, never a copy.
+
+The reference skill is **read-only input**. This skill never edits it and never deletes it.
 
 ## Role Definition
 
-You are a senior skill transformation architect specializing in faithful reinterpretation. You preserve purpose and behavior contracts from the source skill while redesigning structure, trigger quality, workflow clarity, metadata completeness, and constraints using the skill-architect methodology.
+Senior skill transformation architect. Preserve purpose and behavior contract of the reference. Redesign structure, trigger quality, workflow clarity, metadata, constraints using the `skill-architect` methodology.
 
-Communication mode requirement:
-- Keep technical accuracy, constraints, and repository compliance fully intact.
+Style: draft new skill prose with `content-copy-clear-writing`. Active voice, specific words, no needless words. `description` and `triggers` stay plain user language. Code and quoted strings stay verbatim. Technical accuracy and constraints stay intact.
+
+## Modes
+
+Two modes. Both take a local or remote reference. Pick one. State pick in one line before any write.
+
+| Mode | Result |
+|---|---|
+| **Create** | New skill folder in this repo's `skills/` library, inspired by the reference |
+| **Merge** | Reference ideas that fit, rewritten into an existing skill in the library |
+
+How to pick:
+- Request names an existing skill to improve or extend → Merge.
+- Request names a new skill, or says "new skill" / "save in `skills/`" → Create.
+- Unclear → ask once. Never improvise a hybrid silently.
+
+Reference types:
+- Local folder, any location. A skill already in `skills/` counts, as long as it is not the Merge target.
+- Remote (GitHub URL or similar): fetch raw files, not summaries, to a scratch dir. Read them there.
+
+## Scope
+
+User names what to port ("only the review method and the word list") → that is the scope. Scope narrows file coverage. Every in-scope file gets reinterpreted. Out-of-scope files are listed in the report as "excluded by scope", with one-line reason. Not silently dropped.
+
+No scope stated → everything in scope.
+
+## Integrity Rule
+
+Never skip or bend a step silently. Deviation needed → say what, why, before acting. Deviation touches a gate → get user confirmation first. Final report lists every deviation.
 
 ## Workflow
 
-### 0. Preflight Safety Gate (Mandatory)
+### 0. Preflight Gate (Mandatory)
 
-Before any write/delete action, run this gate and proceed only if all checks pass.
+Run before any write. All checks for chosen mode must pass.
 
-Required preflight checks:
-- Source folder exists and contains `SKILL.md`
-- Source folder path is outside `skills/`
-- Target folder path is inside `skills/`
-- Target folder does not equal source folder
-- New skill name uses a valid category prefix from the governing taxonomy
-- New skill `metadata.domain` will match the selected top-level taxonomy domain prefix
-- Replacement mode confirmed: create new skill in `skills/`, then delete source folder
+All modes:
+- Reference readable, contains `SKILL.md`, every support file enumerated
+- Target library located (the folder holding this repo's skills)
+- Governing taxonomy chosen (see Step 3)
 
-If any check fails:
-- Stop immediately
-- Ask only for the missing or conflicting input
-- Do not edit or delete any file
+Create only:
+- New folder name free in the library
+- Name and domain fit the taxonomy
 
-### 1. Gather Inputs and Confirm Replacement Scope
+Merge only:
+- Target skill exists in the library, has `SKILL.md`
+- Target is not the reference
+- Uncommitted changes in target noted. Tell user before editing.
 
-Collect the source skill path and verify the target location is under `skills/`.
+Gate fails → stop. Ask only for missing or conflicting input. Write nothing.
 
-Required inputs:
-- Source skill folder path
-- New skill folder name (must use a valid category prefix from the governing taxonomy)
-- Target taxonomy domain/category, or enough task context to select one from `references/agent-taxonomy.md` or a user-supplied taxonomy
-- Confirmation that source skill should be deleted after successful replacement
+### 1. Gather Inputs
 
-If any input is missing, request only the missing fields.
+Required:
+- Reference: path or URL
+- Mode (infer, then state)
+- Target: new folder name (Create) or existing skill (Merge)
+- Scope (default: all)
+- Governing taxonomy: user-supplied, project-supplied, or `references/agent-taxonomy.md`
 
-### 2. Load and Analyze the Source Skill
+Ask only for missing fields.
 
-Read the source `SKILL.md` AND enumerate every support file in the source folder.
+### 2. Load and Analyze Reference
 
-Source handling rule during analysis and build:
-- Treat the source skill as read-only.
-- Do not edit, rewrite, or partially update any file in the source skill folder.
+1. Read `SKILL.md`. List every file in the tree (references, scripts, assets, agents).
+2. Pull from `SKILL.md`: core intent, objective, deliverables, activation scenarios, hard constraints.
+3. Pull from each support file: role in workflow, what the agent does with it, structure worth keeping.
+4. Note weak points: thin description, long steps, missing MUST DO / MUST NOT DO, poor script quality, dense unscanned references.
+5. **Intent lock** (write it out before any file): reference intent, objective, top constraints. Plus one line per in-scope support file: purpose → new structure.
 
-Enumeration rule:
-- List all files in the source skill directory tree (SKILL.md, references/*, scripts/*, assets/*, agents/*).
-- Every file found must be reinterpreted — none may be skipped or copied as-is.
-- Record the full file list as part of the analysis artifact.
+Draft drifts from intent lock → fix draft, not the lock.
 
-Extract and preserve from SKILL.md:
-- Core intent and primary objective
-- Target outcomes and expected deliverables
-- Typical activation scenarios and triggers
-- Hard constraints that define acceptable behavior
+Merge mode, add:
+- Read the target skill fully. Note its voice, structure, existing rules.
+- List where reference ideas fit, clash, or duplicate target content. Reference rule contradicts target rule → keep target rule, adapt the idea, report the conflict.
+- Name the target's nearest neighbor skills for the collision scan.
 
-Extract purpose from each support file:
-- What role does this file play in the skill's workflow?
-- What information does it provide, what does the agent do with it?
-- What structure and content patterns are worth preserving in spirit?
+### 3. Apply skill-architect Design Logic
 
-Also identify weak points to improve across all files:
-- Missing or weak metadata (SKILL.md)
-- Generic, ambiguous, or undertriggered description text
-- Overlong workflow steps or unclear phase transitions
-- Missing MUST DO / MUST NOT DO safeguards
-- Poor code quality or missing structure in scripts
-- Dense or unscanned reference content that should be restructured
+Use the `skill-architect` skill as framework. Invoke it. Apply its guidance on archetype, structure, and especially its description-and-triggers guidance.
 
-Mandatory analysis artifact:
-- Create a concise "intent lock" summary that captures source intent, objective, and top constraints.
-- Attach to the intent lock: a reinterpretation plan for every support file (purpose → new structure/approach).
-- Use both as non-negotiable contracts during rewriting.
-- If any rewrite drifts from these contracts, revise before writing files.
+- Classify archetype.
+- Select domain and category prefix from the governing taxonomy. Folder name equals frontmatter `name`. `metadata.domain` equals the top-level domain prefix. Map legacy prefixes (`agent-*`, `prompt-*`, `tech-*`, `comms-*`) to current homes. No invented domain or prefix.
+- Rebuild `description` and `triggers` from scratch. Never carry the reference's over.
+- Collision scan: read the 2–3 nearest neighbor skills. Opening sentences must not be interchangeable.
+- Description 150–400 chars, differentiator in sentence one, 3–6 quoted user phrases in WHEN clause. Triggers 6–10, verb-object, user-authored, no duplicates of description, no morphological variants, no category-only words. No PUSH sentence on narrow skills.
+- Add explicit MUST DO / MUST NOT DO and an output checklist.
+- Self-contained skill: workflow must not depend on project config files or paths outside the skill folder. Reference other skills by name only.
 
-### 3. Apply skill-architect Build + Review Logic
+Merge mode: target's description and triggers change only if the merge widens what the skill does. Then re-run the collision scan.
 
-Use `skill-architect` as the design framework:
-- Classify archetype
-- Load `references/agent-taxonomy.md` or a user-supplied taxonomy, select the target domain/category, and derive the required category prefix
-- Rebuild frontmatter and trigger language for discoverability
-- Rewrite role and workflow with clear expert lifecycle steps
-- Add explicit constraints and output checklist
-- Ensure platform-agnostic, self-contained guidance
-- Run a full review pass against quality and compliance expectations
+Reinterpretation by file type:
 
-**Routing-layer rebuild (mandatory):** load `../../.agents/skills/skill-architect/references/description-and-triggers.md` before writing the replacement's `description` or `triggers`. Apply its full rule set:
-- Extract the semantic core; narrow if it overlaps with an existing skill in `skills/`
-- Run a collision scan against the 2–3 nearest neighbor skills — opening sentences must not be interchangeable
-- Description 150–400 chars, 3–6 quoted user-language phrases in the WHEN clause, differentiator in sentence one
-- Triggers 6–10 entries, verb-object, user-authored, distinctive, no duplication with the description, no morphological variants, no category-only terms
-- No PUSH sentence on a narrow, purpose-specific skill
-
-Do not carry over the source skill's description or triggers unchanged — they are the most common source of original quality problems and are explicitly in scope for the rebuild.
-
-**Taxonomy rebuild (mandatory):** the replacement skill must live under the current taxonomy unless the user explicitly requests a documented hero-skill exception.
-- Folder name and frontmatter `name` must match exactly.
-- Name must start with the selected category prefix from the governing taxonomy.
-- `metadata.domain` must match the selected top-level domain prefix.
-- Stray legacy prefixes such as `agent-*`, `prompt-*`, `tech-*`, and `comms-*` must be remapped to current taxonomy homes.
-
-Reinterpretation applies to EVERY file in the skill, not just SKILL.md:
-
-| File type | Reinterpretation approach |
+| File type | Approach |
 |---|---|
-| `SKILL.md` | Full rebuild: frontmatter, role, workflow, constraints, checklist |
-| `references/*.md` | Rewrite structure and prose; same domain knowledge, new organization and compression |
-| `scripts/*.py` / `scripts/*.js` | Rewrite with improved code quality, structure, and inline docs; preserve behavior contract |
-| `assets/*` | Regenerate or redesign; do not copy binary or template files verbatim |
-| `agents/*.md` | Rewrite role definition, workflow, and constraints; preserve delegation intent |
+| `SKILL.md` | Rebuild: frontmatter, role, workflow, constraints, checklist |
+| `references/*.md` | New organization and prose. Same knowledge. |
+| `scripts/*` | Rewrite from the behavior contract. Better structure, naming, docs. |
+| `assets/*` | Regenerate or redesign. No verbatim copy. |
+| `agents/*.md` | Rewrite role, workflow, constraints. Keep delegation intent. |
 
-The new skill must remain functionally faithful to source intent while being a distinct interpretation, not a copy of any file.
+### 4. Write
 
-### 4. Create Full Replacement Skill Directory
+Create mode:
+- Create `<library>/<new-name>/`. Mirror the reference's subfolders. Write all in-scope files there.
 
-Create `skills/<new-skill-name>/` and write ALL reinterpreted files — SKILL.md and every support file.
+Merge mode:
+- Edit the target skill. Large new material (a method, a long table) goes in a new `references/` file, linked from `SKILL.md`. `SKILL.md` gets the workflow hook and the constraints.
+- Match target's existing style, file naming, and reference conventions.
+- Update target's description, triggers, reference table, and checklist where the merge changes them.
+- Do not touch files the merge does not need.
 
-Replacement creation rule:
-- Write all reinterpreted content only to the `skills/` folder.
-- Do not write replacement content into the source skill folder.
-- Keep the source skill unchanged while replacement is being created and validated.
-- Mirror the source subdirectory structure (references/, scripts/, assets/, agents/) in the new skill folder — but with fully rewritten content.
+Both modes:
+- Write only into the new or target skill. Never into the reference.
+- No file is a verbatim copy of its reference counterpart.
 
-File-by-file reinterpretation rule:
-- Write every file identified in Step 2's enumeration.
-- Each file must be an original reinterpretation — not a copy or light edit of the source file.
-- Scripts: rewrite from scratch preserving behavior contract; improve structure, naming, and inline documentation.
-- References: restructure and rewrite prose; same domain knowledge base, new organization and compression.
-- No file from the source skill may be duplicated verbatim into the replacement, including scripts, markdown references, templates, or assets.
+### 5. Validate
 
-Mandatory write rule:
-- Never call file update/edit operations on source path.
-- Only create files under `skills/<new-skill-name>/`.
-- If source path is touched by mistake, stop and report failure before any delete action.
+Before declaring done:
+- Frontmatter complete. Name matches folder.
+- Intent, objective, constraints match intent lock.
+- Every in-scope support file has a reinterpreted counterpart.
+- No verbatim copies. Spot-check by diffing against the reference.
+- Collision scan done, result recorded.
+- Run the repository's skill validator if one exists. Report output, pass or fail.
+- Merge mode: target's original behavior still intact. Nothing it did before is broken.
+- Reference unchanged.
 
-Validation criteria before deletion:
-- New `SKILL.md` includes complete frontmatter
-- Intent/objective/goals align with source skill
-- Every support file from source has a reinterpreted counterpart
-- No file in replacement is a verbatim copy of its source counterpart
-- Content is materially rewritten and structurally improved across all files
-- Naming, folder conventions, category prefix, and `metadata.domain` are valid for this repository taxonomy
+Any check fails → fix, then re-run. Cannot fix → report failing check.
 
-Deletion authorization gate (all required):
-- Replacement file exists at `skills/<new-skill-name>/SKILL.md`
-- All enumerated support files have reinterpreted counterparts in the new skill folder
-- Source folder content is unchanged from preflight read
-- Replacement passed quality validation criteria
-- Replacement mode explicitly requested
+### 6. Report (Mandatory)
 
-If any authorization check fails:
-- Do not delete source folder
-- Return failure status with reason
+Always output:
 
-### 5. Replace by Deleting the Source Skill
+1. Mode
+2. Reference (path or URL)
+3. Target path (new or merged skill)
+4. Reference unchanged: yes/no
+5. Files created or edited: list, with one-line improvement per file
+6. Files excluded by scope: list with reason
+7. Collision scan: neighbors checked, result
+8. Validator output: pass/fail
+9. Deviations from this workflow: list, or "none"
+10. Final status: success/failure. On failure: failing check.
 
-After successful creation and validation of the replacement skill:
-- Delete the entire source skill folder
-- Confirm the source folder no longer exists
-- Report both actions clearly: created replacement + removed original
-
-If replacement creation or validation fails, do not delete the source skill.
-If replacement creation or validation fails, do not modify the source skill.
-
-### 6. Post-Run Verification and Evidence Output (Mandatory)
-
-Always output a verification block with explicit evidence:
-
-1. Source path
-2. Target path
-3. Source unchanged before delete: yes/no
-4. Replacement created in `skills/`: yes/no
-5. Source deleted after successful replacement: yes/no
-6. Final status: success/failure
-
-If status is failure:
-- Keep source intact
-- Report exact failing gate
-- Report no-delete confirmation
+No success claim without this block.
 
 ## Reference Guide
 
-| Topic | Reference | Load When |
+| Topic | Source | Load when |
 |---|---|---|
-| Skill lifecycle design and review | `../../.agents/skills/skill-architect/SKILL.md` | Always before reinterpretation work |
-| Description & trigger optimization | `../../.agents/skills/skill-architect/references/description-and-triggers.md` | Always before rewriting the replacement's `description` or `triggers` |
-| Repo conventions for skill naming and structure | `../../.github/copilot-instructions.md` | Always before file creation/deletion |
-| Portable taxonomy | `references/agent-taxonomy.md` | Before selecting the replacement name, category prefix, or `metadata.domain` when the user does not provide a project taxonomy |
+| Skill lifecycle design, description and trigger rules | `skill-architect` skill | Always, before Step 3 |
+| Prose drafting style | `content-copy-clear-writing` skill | Before drafting new prose |
+| Portable taxonomy | `references/agent-taxonomy.md` | Choosing name prefix or `metadata.domain` when no taxonomy supplied |
 
 ## Constraints
 
 ### MUST DO
-- Preserve source intent, objective, and goals in the replacement
-- Use `skill-architect` principles to improve structure and quality
-- Rebuild the `description` and `triggers` from scratch per `description-and-triggers.md` rules — run a collision scan against nearest neighbor skills, keep triggers to 6–10 verb-object user phrases, avoid duplication between description and triggers
-- Use the governing taxonomy to select the replacement domain/category and enforce the category prefix in the new folder and frontmatter `name`
-- Set `metadata.domain` to the selected top-level taxonomy domain prefix
-- Create a new skill folder under `skills/` (do not overwrite source folder in place)
-- Keep the source skill unchanged until replacement validation is complete
-- Ensure the replacement is a genuine reinterpretation, not near-copy content
-- Validate replacement quality before deleting the source skill
-- Delete the source skill folder only after successful replacement creation
-- Report exact old/new folder paths in the final summary
-- Run preflight safety gate before any write/delete action
-- Enforce deletion authorization gate before deleting source folder
-- Produce post-run evidence output with explicit yes/no checks
+- Preserve reference intent, objective, goals
+- Pick a mode, state it, and honor it
+- Run the preflight gate before any write
+- Write the intent lock before any file
+- Treat the reference as read-only
+- Rebuild `description` and `triggers` from scratch, with a collision scan
+- Enforce taxonomy prefix on folder, `name`, and `metadata.domain`
+- Honor user scope. List what scope excluded.
+- Get raw reference files for remote references
+- Validate before declaring done
+- Keep produced skill self-contained
+- Output the report block with explicit evidence
 
 ### MUST NOT DO
-- Do not change the business purpose of the source skill
-- Do not edit or update source skill files in place
-- Do not keep both old and new skills when replacement mode is requested
-- Do not delete the source skill before replacement validation passes
-- Do not copy any source file verbatim into the replacement — not SKILL.md, not scripts, not references, not assets
-- Do not carry over the source `description` or `triggers` unchanged — rebuild them through `description-and-triggers.md`
-- Do not carry over legacy or stray prefixes when the current taxonomy provides a valid home
-- Do not invent a new taxonomy domain or category prefix without updating the governing taxonomy source
-- Do not ship a replacement whose opening sentence is interchangeable with a neighbor skill's — that is a collision
-- Do not stuff `triggers` past ~12 entries; do not include morphological variants, skill-name echoes, or category-only terms
-- Do not skip reinterpretation of any file found in the source skill directory
-- Do not copy-paste script code from source and make only cosmetic edits — rewrite from the behavior contract
-- Do not copy reference file prose and only reformat it — rewrite the content with new structure
-- Do not place output into sandbox directories unless explicitly requested
-- Do not skip metadata and trigger-quality improvements
-- Do not perform in-place edits to source skill under any circumstance
-- Do not delete source folder when replacement verification is incomplete
-- Do not report success without verification evidence block
+- Edit, rewrite, move, or delete any reference file or folder
+- Copy any reference file verbatim, or only reformat it
+- Carry over the reference `description` or `triggers`
+- Interchangeable opening sentence with a neighbor (collision)
+- Pad triggers past ~12, or use variants, name echoes, category-only words
+- Invent a taxonomy domain or prefix
+- Make the produced skill depend on project config files (agent instruction files, CLAUDE.md, copilot instructions) or on paths outside its own folder
+- Write content into sandbox folders unless asked
+- Skip or bend a step silently
+- Report success without the report block
 
 ## Output Checklist
 
-1. Source skill analyzed: intent/objective/goals captured in intent lock
-2. All source files enumerated: reinterpretation plan created for each
-3. New skill folder created in `skills/`
-4. New `SKILL.md` written with improved architecture and constraints
-5. All support files (references/, scripts/, assets/, agents/) reinterpreted and written — none copied
-6. Source skill remained unchanged during all reinterpretation work
-7. Source skill folder deleted only after successful replacement creation and validation
-8. Final report includes:
-   - Source path removed
-   - Replacement path created
-   - Full list of reinterpreted files
-   - Summary of major improvements made per file
-   - Verification evidence block with pass/fail status
+1. Mode stated
+2. Preflight passed
+3. Intent lock written, with per-file plan
+4. Reference unchanged
+5. New or merged content written, none copied verbatim
+6. `description` and `triggers` rebuilt, collision scan recorded
+7. Taxonomy compliance checked
+8. Validator run, output reported
+9. Report block complete, deviations listed
 
 ## Knowledge Reference
 
-Skill reinterpretation, semantic equivalence, skill architecture, archetype classification, metadata optimization, trigger engineering, progressive disclosure, quality review, repository skill conventions, replacement safety
+Skill reinterpretation, merge versus create, semantic equivalence, skill architecture, archetype classification, trigger engineering, collision scanning, progressive disclosure, taxonomy compliance

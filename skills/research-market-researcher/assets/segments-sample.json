@@ -1,0 +1,25 @@
+{
+  "profile": "b2b-saas",
+  "market_accounts": 341000,
+  "segments": [
+    {"name": "Regional carriers with in-house shops", "basis": "needs",
+     "accounts": 6200, "annual_value": 9000, "attainable_share": 0.06,
+     "channels": [{"name": "state trucking association events", "reach": 0.45, "cac": 6500},
+                  {"name": "outbound to maintenance managers", "reach": 0.60, "cac": 11000}],
+     "scores": {"measurable": {"score": 4, "evidence": "Registry flags carriers with registered repair facilities"},
+                "differentiable": {"score": 4, "evidence": "12 interviews: downtime cost drives purchase, not price"},
+                "actionable": {"score": 4, "evidence": "Product already supports work orders and parts inventory"}}},
+    {"name": "Owner-operators (1-2 trucks)", "basis": "firmographic",
+     "accounts": 300000, "annual_value": 300, "attainable_share": 0.01,
+     "channels": [{"name": "app store search", "reach": 0.10, "cac": 400}],
+     "scores": {"measurable": {"score": 4, "evidence": "Registry count"},
+                "differentiable": {"score": 2, "evidence": "Needs match small fleets"},
+                "actionable": {"score": 2, "evidence": "Would need a mobile-only product"}}},
+    {"name": "Carriers run by owners under 40", "basis": "demographic",
+     "accounts": 5000, "annual_value": 8000, "attainable_share": 0.05,
+     "channels": [{"name": "social ads", "reach": 0.35, "cac": 5000}],
+     "scores": {"measurable": {"score": 2, "evidence": "Owner age not in any registry"},
+                "differentiable": {"score": 2},
+                "actionable": {"score": 3, "evidence": "Same product"}}}
+  ]
+}

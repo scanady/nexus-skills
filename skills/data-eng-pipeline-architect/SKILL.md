@@ -10,7 +10,7 @@ metadata:
   role: data-engineer
   scope: design, implementation, review
   output-format: code, architecture, specification
-  related-skills: data-ai-ml-pipeline, design-system-architect
+  related-skills: ai-model-ml-pipeline, design-system-architect
 ---
 
 # Data Pipeline Architect

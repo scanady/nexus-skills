@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "nexus-ai",
+  "version": "1.0.0",
+  "description": "Build with AI systems — prompt design, RAG, model training and post-training, ML pipelines, and AI product features.",
+  "keywords": [
+    "ai",
+    "prompt-engineering",
+    "rag",
+    "machine-learning",
+    "fine-tuning",
+    "mlops",
+    "ai-product"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "_note": "Synthetic demo book of business.",
+  "growth_pct": 0.40,
+  "book": {
+    "strategic": {"customers": 8, "arr": 3200000, "csms": 1},
+    "enterprise": {"customers": 42, "arr": 2100000, "csms": 2},
+    "mid_market": {"customers": 120, "arr": 1080000, "csms": 1},
+    "smb": {"customers": 280, "arr": 560000, "csms": 0}
+  }
+}

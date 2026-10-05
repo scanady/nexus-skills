@@ -5,6 +5,18 @@
 #              e.g. Marketing > Market Intelligence → "marketing-intel-{name}"
 # description: user-facing "I want to..." statement to aid discovery
 #
+# Placing IT practices: ask what the skill mainly produces.
+#   code, architecture, tests, repo workflow     -> engineering
+#   a change to running systems (infra, security,
+#     incidents, releases)                       -> devops
+#   specs, PRDs, requirements, acceptance criteria -> product (product-spec)
+#   a decision, roadmap, or executive briefing   -> strategy (strategy-tech for technology topics)
+#   analysis, pipelines, schemas, charts         -> data
+#   UX research, interfaces, visual systems      -> design
+#   prompts, RAG, model work                     -> ai
+# "ops" is business process work. IT operations belongs to devops.
+# One skill has one prefix. A plugin matches one domain.
+#
 # Revision notes (v3):
 #   - tech renamed to engineering throughout (aligns with Anthropic Cowork plugin naming)
 #   - devops split out from engineering as standalone top-level domain
@@ -41,6 +53,9 @@ domains:
       - name: Market Intelligence
         prefix: marketing-intel
         description: Research audiences, segments, and market opportunities
+      - name: Marketing Analytics
+        prefix: marketing-analytics
+        description: Measure channel, campaign, and social performance, and test whether results are real
 
   - name: Sales
     prefix: sales
@@ -161,9 +176,6 @@ domains:
       - name: Data Engineering
         prefix: data-eng
         description: Build pipelines, schemas, and data infrastructure
-      - name: AI & ML
-        prefix: data-ai
-        description: Design and build machine learning models and AI pipelines
 
   - name: AI
     prefix: ai

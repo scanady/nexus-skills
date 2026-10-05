@@ -1,0 +1,16 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "nexus-engineering",
+  "version": "1.0.0",
+  "description": "Build and maintain software — architecture decisions, code quality, testing, and APIs. Keep delivery fast without letting the codebase rot.",
+  "keywords": [
+    "software-engineering",
+    "code-review",
+    "software-architecture",
+    "testing",
+    "tdd",
+    "api-development",
+    "mcp",
+    "refactoring"
+  ]
+}

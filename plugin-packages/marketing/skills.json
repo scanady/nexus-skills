@@ -1,5 +1,7 @@
 {
   "skills": [
+    "marketing-analytics-campaign-attribution",
+    "marketing-analytics-social-performance",
     "marketing-brand-strategist",
     "marketing-campaign-go-to-market",
     "marketing-campaign-ideas",
@@ -13,10 +15,9 @@
     "marketing-content-x-thread-builder",
     "marketing-customer-segmentation",
     "marketing-seo-adsense-readiness",
-    "marketing-seo-adsense-review",
+    "marketing-seo-analytics-tracking-plan",
+    "marketing-seo-audit",
     "marketing-seo-cro",
-    "marketing-seo-structured-data",
-    "sales-outreach-specialist",
-    "sales-pipeline-revops"
+    "marketing-seo-structured-data"
   ]
 }

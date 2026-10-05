@@ -1,0 +1,23 @@
+{
+  "name": "orders-schema-split",
+  "type": "database",
+  "pattern": "expand_contract",
+  "constraints": {
+    "max_downtime_minutes": 0,
+    "data_volume_gb": 800,
+    "dependencies": ["checkout-api", "billing-service", "reporting-etl", "support-console"],
+    "compliance": ["PCI-DSS"],
+    "backfill_gb_per_hour": 40
+  },
+  "tables": [
+    {"name": "orders", "rows": 42000000, "critical": true},
+    {"name": "order_events", "rows": 310000000, "critical": false}
+  ],
+  "schema_changes": [
+    {"table": "orders", "changes": [
+      {"type": "add_column", "column": "shipping_address_id"},
+      {"type": "modify_column", "column": "total_cents"},
+      {"type": "drop_column", "column": "legacy_address_blob"}
+    ]}
+  ]
+}

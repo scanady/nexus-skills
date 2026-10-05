@@ -10,7 +10,7 @@ metadata:
   role: architect
   scope: design
   output-format: architecture
-  related-skills: data-ai-ml-pipeline, data-ai-ml-rag-architect, design-system-architect
+  related-skills: ai-model-ml-pipeline, ai-rag-architect, design-system-architect
 ---
 
 # Data Engineering: Database Architect

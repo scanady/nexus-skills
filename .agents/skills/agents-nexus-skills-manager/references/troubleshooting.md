@@ -23,7 +23,7 @@ Cause:
 Fix:
 
 ```bash
-<runner> install --upgrade --skill <skill-name>
+<runner> upgrade --skill <skill-name> [--global] [-a <agent>]
 ```
 
 Verify the installed `SKILL.md` contains the expected version or wording.
@@ -48,11 +48,31 @@ Fix:
 
 Cause:
 
-- A broad `--upgrade` may replace every installed skill in the target directory.
+- A broad `upgrade` with no `--skill` or `--plugin` replaces every installed skill in the target directory.
 
 Fix:
 
-- Answer no, then rerun with `--skill <name>` or `--pack <name>`.
+- Answer no, then rerun with `--skill <name>` or `--plugin <name>`.
+
+## An Upgrade or Remove Fails With "input is not a terminal"
+
+Cause:
+
+- The command needs to ask for confirmation but has no terminal.
+
+Fix:
+
+- Rerun with `--yes` once the user has agreed to the plan. `--yes` proceeds and keeps `.env` and `.env.local` files.
+
+## A .env File Is Gone
+
+Cause:
+
+- `upgrade` keeps only `.env` and `.env.local`. Other `.env.*` files, such as `.env.production`, are replaced. `remove --delete-env` deletes all of them.
+
+Fix:
+
+- Restore the file from the user's own backup. The CLI cannot recover deleted files.
 
 ## Routing Does Not Pick the Installed Skill
 

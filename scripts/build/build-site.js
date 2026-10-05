@@ -130,7 +130,7 @@ function buildIndexHtml(manifest, version) {
 
   <h2>Install a specific plugin</h2>
   <pre>nxa install --plugin marketing
-nxa install --plugin tech --plugin data</pre>
+nxa install --plugin engineering --plugin data</pre>
 
   <h2>Install a plugin bundle by hand</h2>
   <p>Download a bundle below, unzip it into your plugins directory, and restart the client:</p>

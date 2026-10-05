@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nexus-marketing",
   "version": "1.0.0",
-  "description": "Create demand and convert it — brand positioning, campaign planning, content production, SEO, segmentation, and sales outreach. Take a product to market and keep the pipeline full.",
+  "description": "Create demand — brand positioning, campaign planning, content production, SEO, and segmentation. Take a product to market and keep attention on it.",
   "keywords": [
     "marketing",
     "seo",
@@ -13,8 +13,6 @@
     "social-media",
     "copywriting",
     "conversion-optimization",
-    "lead-generation",
-    "customer-segmentation",
-    "sales"
+    "customer-segmentation"
   ]
 }

@@ -11,7 +11,7 @@ metadata:
   role: editor
   scope: creation
   output-format: content
-  related-skills: content-copy-caveman, content-copy-humanizer
+  related-skills: content-copy-humanizer
   knowledge: Elements of Style, Strunk, active voice, passive voice, serial comma, topic sentence, parallel structure, dangling modifier, AI writing patterns, puffery, -ing phrases, Wikipedia AI field guide
 ---
 

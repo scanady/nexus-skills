@@ -1,0 +1,728 @@
+{
+  "attribution": {
+    "summary": {
+      "journeys": 40,
+      "converted_journeys": 22,
+      "conversion_rate_pct": 55.0,
+      "total_value": 4690.0,
+      "value_unit": "revenue",
+      "single_touch_conversion_share_pct": 13.6,
+      "time_decay_half_life_days": 7.0
+    },
+    "models": {
+      "first-touch": [
+        {
+          "channel": "display",
+          "credit": 1920.0,
+          "share_pct": 40.9
+        },
+        {
+          "channel": "email",
+          "credit": 920.0,
+          "share_pct": 19.6
+        },
+        {
+          "channel": "paid_search",
+          "credit": 750.0,
+          "share_pct": 16.0
+        },
+        {
+          "channel": "paid_social",
+          "credit": 680.0,
+          "share_pct": 14.5
+        },
+        {
+          "channel": "direct",
+          "credit": 210.0,
+          "share_pct": 4.5
+        },
+        {
+          "channel": "referral",
+          "credit": 210.0,
+          "share_pct": 4.5
+        },
+        {
+          "channel": "organic_search",
+          "credit": 0.0,
+          "share_pct": 0.0
+        }
+      ],
+      "last-touch": [
+        {
+          "channel": "organic_search",
+          "credit": 1830.0,
+          "share_pct": 39.0
+        },
+        {
+          "channel": "display",
+          "credit": 1190.0,
+          "share_pct": 25.4
+        },
+        {
+          "channel": "referral",
+          "credit": 540.0,
+          "share_pct": 11.5
+        },
+        {
+          "channel": "direct",
+          "credit": 390.0,
+          "share_pct": 8.3
+        },
+        {
+          "channel": "paid_search",
+          "credit": 330.0,
+          "share_pct": 7.0
+        },
+        {
+          "channel": "email",
+          "credit": 320.0,
+          "share_pct": 6.8
+        },
+        {
+          "channel": "paid_social",
+          "credit": 90.0,
+          "share_pct": 1.9
+        }
+      ],
+      "linear": [
+        {
+          "channel": "display",
+          "credit": 1326.67,
+          "share_pct": 28.3
+        },
+        {
+          "channel": "organic_search",
+          "credit": 1246.67,
+          "share_pct": 26.6
+        },
+        {
+          "channel": "email",
+          "credit": 580.0,
+          "share_pct": 12.4
+        },
+        {
+          "channel": "paid_social",
+          "credit": 511.67,
+          "share_pct": 10.9
+        },
+        {
+          "channel": "paid_search",
+          "credit": 470.0,
+          "share_pct": 10.0
+        },
+        {
+          "channel": "direct",
+          "credit": 300.0,
+          "share_pct": 6.4
+        },
+        {
+          "channel": "referral",
+          "credit": 255.0,
+          "share_pct": 5.4
+        }
+      ],
+      "time-decay": [
+        {
+          "channel": "organic_search",
+          "credit": 1380.43,
+          "share_pct": 29.4
+        },
+        {
+          "channel": "display",
+          "credit": 1285.65,
+          "share_pct": 27.4
+        },
+        {
+          "channel": "email",
+          "credit": 526.77,
+          "share_pct": 11.2
+        },
+        {
+          "channel": "paid_social",
+          "credit": 461.24,
+          "share_pct": 9.8
+        },
+        {
+          "channel": "paid_search",
+          "credit": 443.62,
+          "share_pct": 9.5
+        },
+        {
+          "channel": "referral",
+          "credit": 304.4,
+          "share_pct": 6.5
+        },
+        {
+          "channel": "direct",
+          "credit": 287.88,
+          "share_pct": 6.1
+        }
+      ],
+      "position-based": [
+        {
+          "channel": "display",
+          "credit": 1424.0,
+          "share_pct": 30.4
+        },
+        {
+          "channel": "organic_search",
+          "credit": 1120.0,
+          "share_pct": 23.9
+        },
+        {
+          "channel": "email",
+          "credit": 608.0,
+          "share_pct": 13.0
+        },
+        {
+          "channel": "paid_search",
+          "credit": 486.0,
+          "share_pct": 10.4
+        },
+        {
+          "channel": "paid_social",
+          "credit": 431.0,
+          "share_pct": 9.2
+        },
+        {
+          "channel": "referral",
+          "credit": 321.0,
+          "share_pct": 6.8
+        },
+        {
+          "channel": "direct",
+          "credit": 300.0,
+          "share_pct": 6.4
+        }
+      ]
+    },
+    "reach": [
+      {
+        "channel": "organic_search",
+        "journeys_touched": 19,
+        "converted_journeys": 9,
+        "conversion_rate_pct": 47.4
+      },
+      {
+        "channel": "display",
+        "journeys_touched": 17,
+        "converted_journeys": 10,
+        "conversion_rate_pct": 58.8
+      },
+      {
+        "channel": "paid_social",
+        "journeys_touched": 16,
+        "converted_journeys": 8,
+        "conversion_rate_pct": 50.0
+      },
+      {
+        "channel": "direct",
+        "journeys_touched": 13,
+        "converted_journeys": 6,
+        "conversion_rate_pct": 46.2
+      },
+      {
+        "channel": "paid_search",
+        "journeys_touched": 12,
+        "converted_journeys": 6,
+        "conversion_rate_pct": 50.0
+      },
+      {
+        "channel": "email",
+        "journeys_touched": 11,
+        "converted_journeys": 5,
+        "conversion_rate_pct": 45.5
+      },
+      {
+        "channel": "referral",
+        "journeys_touched": 9,
+        "converted_journeys": 5,
+        "conversion_rate_pct": 55.6
+      }
+    ],
+    "sensitivity": [
+      {
+        "channel": "organic_search",
+        "min_share_pct": 0.0,
+        "max_share_pct": 39.0,
+        "spread_pts": 39.0,
+        "model_sensitive": true
+      },
+      {
+        "channel": "display",
+        "min_share_pct": 25.4,
+        "max_share_pct": 40.9,
+        "spread_pts": 15.5,
+        "model_sensitive": true
+      },
+      {
+        "channel": "email",
+        "min_share_pct": 6.8,
+        "max_share_pct": 19.6,
+        "spread_pts": 12.8,
+        "model_sensitive": true
+      },
+      {
+        "channel": "paid_social",
+        "min_share_pct": 1.9,
+        "max_share_pct": 14.5,
+        "spread_pts": 12.6,
+        "model_sensitive": true
+      },
+      {
+        "channel": "paid_search",
+        "min_share_pct": 7.0,
+        "max_share_pct": 16.0,
+        "spread_pts": 9.0,
+        "model_sensitive": false
+      },
+      {
+        "channel": "referral",
+        "min_share_pct": 4.5,
+        "max_share_pct": 11.5,
+        "spread_pts": 7.0,
+        "model_sensitive": false
+      },
+      {
+        "channel": "direct",
+        "min_share_pct": 4.5,
+        "max_share_pct": 8.3,
+        "spread_pts": 3.8,
+        "model_sensitive": false
+      }
+    ],
+    "warnings": [
+      "Only 22 converted journeys (< 30). Credit shares are anecdotal, not stable."
+    ]
+  },
+  "funnel": {
+    "stages": [
+      {
+        "stage": "Visit",
+        "count": 48000,
+        "cumulative_pct": 100.0
+      },
+      {
+        "stage": "Product view",
+        "count": 21600,
+        "cumulative_pct": 45.0,
+        "from_stage": "Visit",
+        "rate_pct": 45.0,
+        "rate_ci95_pct": [
+          44.6,
+          45.4
+        ],
+        "lost": 26400,
+        "small_sample": false
+      },
+      {
+        "stage": "Add to cart",
+        "count": 6480,
+        "cumulative_pct": 13.5,
+        "from_stage": "Product view",
+        "rate_pct": 30.0,
+        "rate_ci95_pct": [
+          29.4,
+          30.6
+        ],
+        "lost": 15120,
+        "small_sample": false
+      },
+      {
+        "stage": "Checkout",
+        "count": 3240,
+        "cumulative_pct": 6.75,
+        "from_stage": "Add to cart",
+        "rate_pct": 50.0,
+        "rate_ci95_pct": [
+          48.8,
+          51.2
+        ],
+        "lost": 3240,
+        "small_sample": false
+      },
+      {
+        "stage": "Purchase",
+        "count": 1944,
+        "cumulative_pct": 4.05,
+        "from_stage": "Checkout",
+        "rate_pct": 60.0,
+        "rate_ci95_pct": [
+          58.3,
+          61.7
+        ],
+        "lost": 1296,
+        "small_sample": false
+      }
+    ],
+    "overall_conversion_pct": 4.05,
+    "bottlenecks": {
+      "largest_absolute_loss": {
+        "transition": "Visit -> Product view",
+        "lost": 26400
+      },
+      "lowest_rate": {
+        "transition": "Product view -> Add to cart",
+        "rate_pct": 30.0
+      }
+    },
+    "warnings": [
+      "Segment tests are descriptive. Segments are not randomized, so a gap shows a difference, not a cause. Gap-to-best is an upper bound: it assumes the segment can match the best segment."
+    ],
+    "segments": {
+      "alpha_after_bonferroni": 0.00417,
+      "tests": 12,
+      "findings": [
+        {
+          "segment": "paid",
+          "transition": "Checkout -> Purchase",
+          "rate_pct": 42.86,
+          "other_segments_rate_pct": 64.72,
+          "p_value": 0.0,
+          "differs": true,
+          "gap_to_best_extra_conversions": 169.3,
+          "gap_to_best_extra_value": 16087.7
+        },
+        {
+          "segment": "paid",
+          "transition": "Product view -> Add to cart",
+          "rate_pct": 25.0,
+          "other_segments_rate_pct": 32.26,
+          "p_value": 0.0,
+          "differs": true,
+          "gap_to_best_extra_conversions": 108.0,
+          "gap_to_best_extra_value": 10255.68
+        },
+        {
+          "segment": "email",
+          "transition": "Product view -> Add to cart",
+          "rate_pct": 28.01,
+          "other_segments_rate_pct": 30.5,
+          "p_value": 0.0014,
+          "differs": true,
+          "gap_to_best_extra_conversions": 87.4,
+          "gap_to_best_extra_value": 8305.22
+        },
+        {
+          "segment": "paid",
+          "transition": "Add to cart -> Checkout",
+          "rate_pct": 41.67,
+          "other_segments_rate_pct": 52.92,
+          "p_value": 0.0,
+          "differs": true,
+          "gap_to_best_extra_conversions": 87.1,
+          "gap_to_best_extra_value": 8272.14
+        },
+        {
+          "segment": "organic",
+          "transition": "Checkout -> Purchase",
+          "rate_pct": 63.99,
+          "other_segments_rate_pct": 54.12,
+          "p_value": 0.0,
+          "differs": true,
+          "gap_to_best_extra_conversions": 59.0,
+          "gap_to_best_extra_value": 5609.67
+        },
+        {
+          "segment": "email",
+          "transition": "Visit -> Product view",
+          "rate_pct": 43.2,
+          "other_segments_rate_pct": 45.47,
+          "p_value": 0.0,
+          "differs": true,
+          "gap_to_best_extra_conversions": 45.4,
+          "gap_to_best_extra_value": 4317.22
+        },
+        {
+          "segment": "paid",
+          "transition": "Visit -> Product view",
+          "rate_pct": 42.0,
+          "other_segments_rate_pct": 46.5,
+          "p_value": 0.0,
+          "differs": true,
+          "gap_to_best_extra_conversions": 42.9,
+          "gap_to_best_extra_value": 4071.43
+        },
+        {
+          "segment": "email",
+          "transition": "Add to cart -> Checkout",
+          "rate_pct": 50.41,
+          "other_segments_rate_pct": 49.91,
+          "p_value": 0.7499,
+          "differs": false,
+          "gap_to_best_extra_conversions": 27.2,
+          "gap_to_best_extra_value": 2579.81
+        },
+        {
+          "segment": "organic",
+          "transition": "Visit -> Product view",
+          "rate_pct": 48.0,
+          "other_segments_rate_pct": 42.46,
+          "p_value": 0.0,
+          "differs": true
+        },
+        {
+          "segment": "organic",
+          "transition": "Product view -> Add to cart",
+          "rate_pct": 34.0,
+          "other_segments_rate_pct": 26.18,
+          "p_value": 0.0,
+          "differs": true
+        },
+        {
+          "segment": "organic",
+          "transition": "Add to cart -> Checkout",
+          "rate_pct": 53.76,
+          "other_segments_rate_pct": 45.33,
+          "p_value": 0.0,
+          "differs": true
+        },
+        {
+          "segment": "email",
+          "transition": "Checkout -> Purchase",
+          "rate_pct": 67.05,
+          "other_segments_rate_pct": 58.37,
+          "p_value": 0.0001,
+          "differs": true
+        }
+      ]
+    }
+  },
+  "roi": {
+    "campaigns": [
+      {
+        "name": "Spring Welcome Series",
+        "channel": "email",
+        "spend": 1800.0,
+        "other_costs": 900.0,
+        "revenue": 41000.0,
+        "roi_pct": 1418.5,
+        "roas": 22.78,
+        "loaded_roas": 15.19,
+        "cpa": 10.38,
+        "cpl": 5.19,
+        "cpc": 0.58,
+        "cpm": 28.12,
+        "ctr_pct": 4.844,
+        "click_to_lead_pct": 16.77,
+        "lead_to_customer_pct": 50.0,
+        "revenue_per_customer": 157.69,
+        "benchmark_bands": {
+          "ctr_pct": "good",
+          "roas": "below_target",
+          "cpl": "good",
+          "cpa": "good"
+        },
+        "loses_money": false
+      },
+      {
+        "name": "Brand Search",
+        "channel": "paid_search",
+        "spend": 9500.0,
+        "other_costs": 1200.0,
+        "revenue": 52000.0,
+        "roi_pct": 386.0,
+        "roas": 5.47,
+        "loaded_roas": 4.86,
+        "cpa": 34.52,
+        "cpl": 13.72,
+        "cpc": 0.97,
+        "cpm": 45.24,
+        "ctr_pct": 4.667,
+        "click_to_lead_pct": 7.96,
+        "lead_to_customer_pct": 39.74,
+        "revenue_per_customer": 167.74,
+        "benchmark_bands": {
+          "ctr_pct": "good",
+          "roas": "good",
+          "cpl": "excellent",
+          "cpa": "good"
+        },
+        "loses_money": false
+      },
+      {
+        "name": "Prospecting Social",
+        "channel": "paid_social",
+        "spend": 14000.0,
+        "other_costs": 4000.0,
+        "revenue": 21500.0,
+        "roi_pct": 19.4,
+        "roas": 1.54,
+        "loaded_roas": 1.19,
+        "cpa": 189.47,
+        "cpl": 43.9,
+        "cpc": 1.73,
+        "cpm": 15.56,
+        "ctr_pct": 0.9,
+        "click_to_lead_pct": 5.06,
+        "lead_to_customer_pct": 23.17,
+        "revenue_per_customer": 226.32,
+        "benchmark_bands": {
+          "ctr_pct": "below_target",
+          "roas": "below_target",
+          "cpl": "below_target",
+          "cpa": "underperforming"
+        },
+        "loses_money": false
+      },
+      {
+        "name": "Retargeting Display",
+        "channel": "display",
+        "spend": 4200.0,
+        "other_costs": 0.0,
+        "revenue": 12600.0,
+        "roi_pct": 200.0,
+        "roas": 3.0,
+        "loaded_roas": 3.0,
+        "cpa": 87.5,
+        "cpl": 28.0,
+        "cpc": 2.21,
+        "cpm": 2.8,
+        "ctr_pct": 0.127,
+        "click_to_lead_pct": 7.89,
+        "lead_to_customer_pct": 32.0,
+        "revenue_per_customer": 262.5,
+        "benchmark_bands": {
+          "ctr_pct": "good",
+          "roas": "excellent",
+          "cpl": "good",
+          "cpa": "below_target"
+        },
+        "loses_money": false
+      },
+      {
+        "name": "Creator Referral Push",
+        "channel": "referral",
+        "spend": 3000.0,
+        "other_costs": 700.0,
+        "revenue": 2400.0,
+        "roi_pct": -35.1,
+        "roas": 0.8,
+        "loaded_roas": 0.65,
+        "cpa": 411.11,
+        "cpl": 61.67,
+        "cpc": 4.29,
+        "cpm": null,
+        "ctr_pct": null,
+        "click_to_lead_pct": 8.57,
+        "lead_to_customer_pct": 15.0,
+        "revenue_per_customer": 266.67,
+        "benchmark_bands": {
+          "ctr_pct": "n/a",
+          "roas": "underperforming",
+          "cpl": "underperforming",
+          "cpa": "underperforming"
+        },
+        "loses_money": true
+      }
+    ],
+    "portfolio": {
+      "spend": 32500.0,
+      "other_costs": 6800.0,
+      "revenue": 129500.0,
+      "customers": 722.0,
+      "roi_pct": 229.5,
+      "roas": 3.98,
+      "loaded_roas": 3.3,
+      "cpa": 54.43,
+      "cpl": 20.47,
+      "cpc": 1.38,
+      "cpm": 12.15,
+      "ctr_pct": 0.883,
+      "click_to_lead_pct": 8.14,
+      "lead_to_customer_pct": 37.6,
+      "revenue_per_customer": 179.36
+    },
+    "by_channel": {
+      "display": {
+        "spend": 4200.0,
+        "other_costs": 0.0,
+        "revenue": 12600.0,
+        "customers": 48.0,
+        "roi_pct": 200.0,
+        "roas": 3.0,
+        "loaded_roas": 3.0,
+        "cpa": 87.5,
+        "cpl": 28.0,
+        "cpc": 2.21,
+        "cpm": 2.8,
+        "ctr_pct": 0.127,
+        "click_to_lead_pct": 7.89,
+        "lead_to_customer_pct": 32.0,
+        "revenue_per_customer": 262.5
+      },
+      "email": {
+        "spend": 1800.0,
+        "other_costs": 900.0,
+        "revenue": 41000.0,
+        "customers": 260.0,
+        "roi_pct": 1418.5,
+        "roas": 22.78,
+        "loaded_roas": 15.19,
+        "cpa": 10.38,
+        "cpl": 5.19,
+        "cpc": 0.58,
+        "cpm": 28.12,
+        "ctr_pct": 4.844,
+        "click_to_lead_pct": 16.77,
+        "lead_to_customer_pct": 50.0,
+        "revenue_per_customer": 157.69
+      },
+      "paid_search": {
+        "spend": 9500.0,
+        "other_costs": 1200.0,
+        "revenue": 52000.0,
+        "customers": 310.0,
+        "roi_pct": 386.0,
+        "roas": 5.47,
+        "loaded_roas": 4.86,
+        "cpa": 34.52,
+        "cpl": 13.72,
+        "cpc": 0.97,
+        "cpm": 45.24,
+        "ctr_pct": 4.667,
+        "click_to_lead_pct": 7.96,
+        "lead_to_customer_pct": 39.74,
+        "revenue_per_customer": 167.74
+      },
+      "paid_social": {
+        "spend": 14000.0,
+        "other_costs": 4000.0,
+        "revenue": 21500.0,
+        "customers": 95.0,
+        "roi_pct": 19.4,
+        "roas": 1.54,
+        "loaded_roas": 1.19,
+        "cpa": 189.47,
+        "cpl": 43.9,
+        "cpc": 1.73,
+        "cpm": 15.56,
+        "ctr_pct": 0.9,
+        "click_to_lead_pct": 5.06,
+        "lead_to_customer_pct": 23.17,
+        "revenue_per_customer": 226.32
+      },
+      "referral": {
+        "spend": 3000.0,
+        "other_costs": 700.0,
+        "revenue": 2400.0,
+        "customers": 9.0,
+        "roi_pct": -35.1,
+        "roas": 0.8,
+        "loaded_roas": 0.65,
+        "cpa": 411.11,
+        "cpl": 61.67,
+        "cpc": 4.29,
+        "cpm": null,
+        "ctr_pct": null,
+        "click_to_lead_pct": 8.57,
+        "lead_to_customer_pct": 15.0,
+        "revenue_per_customer": 266.67
+      }
+    },
+    "warnings": [
+      "Some campaigns list no 'other_costs'. Their ROI and CPA cover media spend only and overstate returns.",
+      "Sum of campaign revenue can double count when each platform claims the same sale. Use one attribution view."
+    ]
+  }
+}

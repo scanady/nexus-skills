@@ -1,13 +1,15 @@
 ---
 name: marketing-content-brand-copywriter
 disable-model-invocation: false
-description: Writes marketing copy using proven copywriting frameworks. Use when user needs copy for ads (Facebook, Instagram, TikTok, YouTube), landing pages, sales pages, email sequences, LinkedIn posts, product descriptions, or any marketing content.
+description: Writes marketing copy with proven frameworks, or edits an existing draft through seven ordered sweeps. Use for ads, landing pages, sales pages, email sequences, LinkedIn posts, or when asked to "edit this copy", "review my copy", "polish this draft", or "give copy feedback".
 ---
 
 # Brand Copywriter
 
 ## Purpose
-Generate professional marketing copy in two versions: one using the optimal framework for the platform/use case, and one using an AI-selected alternative framework for comparison.
+Two modes:
+- **Write mode:** generate marketing copy in two versions: one using the optimal framework for the platform/use case, and one using an AI-selected alternative framework for comparison. Every version goes through the Seven Sweeps edit pass before delivery.
+- **Edit mode:** user supplies existing copy. Run the Seven Sweeps and return findings plus a clean edited version.
 
 ---
 
@@ -17,12 +19,14 @@ Generate professional marketing copy in two versions: one using the optimal fram
 
 ### If $ARGUMENTS is empty or not provided:
 Respond with:
-"brand-copywriter loaded, proceed with what you need copy for (e.g., Facebook ad, landing page, TikTok video, LinkedIn post, email sequence, etc.)"
+"brand-copywriter loaded, proceed with what you need (e.g., write a Facebook ad, landing page, TikTok video, LinkedIn post, email sequence, or paste copy you want edited)"
 
 Then wait for the user to provide their requirements in the next message.
 
 ### If $ARGUMENTS contains content:
-Proceed immediately to Task Execution (skip the "loaded" message).
+Choose the mode, then proceed immediately (skip the "loaded" message):
+- User pasted or pointed to existing copy and asks to edit, review, polish, proofread, or give feedback → **Edit Mode** (see section below).
+- User wants new copy → **Task Execution** (Write mode).
 
 ---
 
@@ -90,9 +94,38 @@ Write the complete copy using the alternative framework:
 - Explain why this framework was chosen as the alternative
 - Follow all Writing Rules below
 
-### 7. Format and Verify
+### 7. Edit Pass — Seven Sweeps
+**BLOCKING:** Read `./references/edit_sweeps.md` and `./references/plain_english_alternatives.md` with the Read tool before this step.
+
+Run Seven Sweeps on Version A, then on Version B, before presenting either:
+Clarity → Voice and Tone → So What → Prove It → Specificity → Heightened Emotion → Zero Risk.
+
+- Fix in the draft. Do not show sweep findings in write mode. Show the result.
+- Prove It: never invent testimonials, numbers, or logos. Missing proof = soften the claim or ask.
+- Zero Risk: never invent a guarantee or fake scarcity. Use only offers the user stated.
+- Heightened Emotion: obey the Voice Rules. No fake vulnerability, no staged punch.
+- Re-check earlier sweeps on changed lines (regression rule in `edit_sweeps.md`).
+- Platform limits (character counts, video length) hold after edits. Recount.
+
+### 8. Format and Verify
 - Structure output according to **Output Format** section
 - Complete **Quality Checklist** self-verification before presenting output
+
+---
+
+## Edit Mode
+
+For copy the user already wrote. Goal: enhance, not rewrite. Keep the core message and the author's voice.
+
+1. **Read references.** Read `./references/edit_sweeps.md`, `./references/plain_english_alternatives.md`, and `./references/writing_styles.md` (Banned List drives Sweep 2).
+2. **Check context.** Read `FOUNDER_CONTEXT.md` if present. Confirm goal, reader action, and audience. If copy arrives with no stated goal, ask before sweeping. Editing blind gives misaligned feedback.
+3. **Run the sweeps** in order from `edit_sweeps.md`. User asks for one sweep only → run that one. User asks for a quick pass → run the Quick Pass.
+4. **Report** using the Edit-Mode Report format in `edit_sweeps.md`: bottom line first, then findings per sweep (what, why, fix, confidence tag), then the clean edited copy and a short change log.
+5. **Flag proactively**, even if not asked: missing goal, tone shifts, features outnumbering benefits 2:1, superlatives without proof, vague or buried CTA. Report a vague or buried CTA first, because it is the highest-impact fix.
+6. **Hand back control.** Author makes final calls. Offer to re-run the sweeps on the revised copy.
+
+Edit mode does not rewrite from scratch. Draft is beyond saving or has no usable core message → say so, offer Write mode.
+Draft reads as raw AI output (stock phrases, uniform rhythm) → recommend `content-copy-humanizer` first. Polishing AI filler yields polished AI filler.
 
 ---
 
@@ -224,14 +257,16 @@ Test Version B (PAS) first. The pain is real and daily for this audience, so lea
 
 ## References
 
-**Both files MUST be read using the Read tool before writing any copy (see Step 1):**
+**`copy_frameworks.md` and `writing_styles.md` MUST be read using the Read tool before writing any copy (see Step 1). `edit_sweeps.md` and `plain_english_alternatives.md` MUST be read before the edit pass (Step 7) and in Edit Mode.**
 
 | File | Purpose |
 |------|---------|
 | `./references/copy_frameworks.md` | 14 copywriting frameworks with structures, examples, and selection matrix |
 | `./references/writing_styles.md` | Voice and tone rules from Ogilvy, Schwartz, Hopkins, Halbert, Sugarman, Caples, Collier. Contains the full Banned Phrases list, AI tell patterns, and what human copy actually sounds like. |
+| `./references/edit_sweeps.md` | Seven Sweeps edit method (Clarity, Voice and Tone, So What, Prove It, Specificity, Heightened Emotion, Zero Risk), regression rule, quick pass, edit-mode report format |
+| `./references/plain_english_alternatives.md` | Plain-word swaps grouped by edit type: phrases to delete, wordy phrases, formal verbs, nouns and adjectives, connectors |
 
-**Why both matter:** copy_frameworks.md picks the right structure. writing_styles.md makes the words sound like a human wrote them. A great structure with AI-sounding copy still fails. Great voice with the wrong structure still underperforms. Both together is what actually converts.
+**Why the first two matter:** copy_frameworks.md picks the right structure. writing_styles.md makes the words sound like a human wrote them. A great structure with AI-sounding copy still fails. Great voice with the wrong structure still underperforms. Both together is what actually converts.
 
 ---
 
@@ -272,6 +307,13 @@ Before finalizing output, verify ALL of the following:
 - [ ] At least one opinion or honest admission
 - [ ] Copy could NOT have been written about a different product (it's specific enough)
 - [ ] Read both versions aloud in your head. If either one stumbles or bores, rewrite before presenting.
+
+### Edit Pass Check
+- [ ] I read `./references/edit_sweeps.md` and `./references/plain_english_alternatives.md`
+- [ ] Both versions went through all seven sweeps in order
+- [ ] Every claim has proof from the user, or is softened. No invented testimonials, numbers, or guarantees
+- [ ] Edits did not break an earlier sweep or a platform character limit
+- [ ] (Edit Mode) Report opens with a bottom line. Each finding has what, why, fix, and a confidence tag
 
 ### Output Check
 - [ ] Both versions are complete and ready to use

@@ -14,13 +14,13 @@ Use this bundled taxonomy when no project-specific taxonomy is supplied. If the 
 
 | Domain | Domain Prefix | Category Prefixes |
 |---|---|---|
-| Marketing | `marketing` | `marketing-content`, `marketing-brand`, `marketing-campaign`, `marketing-seo`, `marketing-intel` |
+| Marketing | `marketing` | `marketing-content`, `marketing-brand`, `marketing-campaign`, `marketing-seo`, `marketing-intel`, `marketing-analytics` |
 | Sales | `sales` | `sales-outreach`, `sales-pipeline`, `sales-call`, `sales-intel`, `sales-cs` |
 | Content & Writing | `content` | `content-copy`, `content-technical`, `content-story`, `content-visual`, `content-behavioral`, `content-style` |
 | Design | `design` | `design-research`, `design-visual`, `design-delivery`, `design-copy`, `design-app`, `design-web` |
 | Engineering | `engineering` | `engineering-arch`, `engineering-dev`, `engineering-quality`, `engineering-api`, `engineering-doc`, `engineering-github` |
 | DevOps | `devops` | `devops-infra`, `devops-security`, `devops-incident`, `devops-deploy` |
-| Data & Analytics | `data` | `data-analysis`, `data-visual`, `data-eng`, `data-ai` |
+| Data & Analytics | `data` | `data-analysis`, `data-visual`, `data-eng` |
 | AI | `ai` | `ai-prompt`, `ai-product`, `ai-rag`, `ai-model`, `ai-research` |
 | Agents | `agents` | `agents-skill`, `agents-design`, `agents-copilot`, `agents-catalog` |
 | Product | `product` | `product-spec`, `product-strategy`, `product-discovery`, `product-roadmap`, `product-stakeholder` |

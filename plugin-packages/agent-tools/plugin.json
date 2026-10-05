@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nexus-agent-tools",
   "version": "1.0.0",
-  "description": "Design and equip AI agents — personas, skill authoring, prompt engineering, and context curation. Build agents that behave consistently and carry the right knowledge into every session.",
+  "description": "Design, build, and equip AI agents — personas, skill authoring and evaluation, plugin packaging, prompt-ready context, and catalog upkeep. Keep a skill library consistent, discoverable, and worth loading.",
   "keywords": [
     "ai-agents",
     "agent-skills",
@@ -13,6 +13,11 @@
     "copilot-instructions",
     "claude-code",
     "agent-persona",
-    "agent-tools"
+    "agent-tools",
+    "skill-authoring",
+    "skill-review",
+    "skill-evaluation",
+    "skill-catalog",
+    "plugins"
   ]
 }

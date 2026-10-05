@@ -1,0 +1,18 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "nexus-devops",
+  "version": "1.0.0",
+  "description": "Run and secure production systems — infrastructure, incident response, security audits, vulnerability analysis, repository hardening, release operations, and safe legacy cutover.",
+  "keywords": [
+    "devops",
+    "infrastructure",
+    "incident-response",
+    "security",
+    "vulnerability-analysis",
+    "operations",
+    "ci-cd",
+    "releases",
+    "migration",
+    "repository-security"
+  ]
+}

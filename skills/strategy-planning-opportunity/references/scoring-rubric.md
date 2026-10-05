@@ -26,6 +26,8 @@ Use this rubric to produce a scale-aware opportunity score. Score each dimension
 | 40–54 | Weak | Park, pivot, or run only if it has special non-financial value |
 | 0–39 | Poor | Kill or remove unless new evidence changes the thesis |
 
+Band sets the **base** decision only. Veto gates in `verdict-gates.md` can lower it, never raise it. Weights here and in `scripts/opportunity_verdict.py` must match — change one, change both.
+
 ## Dimension Scoring Anchors
 
 ### Customer pain and urgency
@@ -87,5 +89,7 @@ Use this rubric to produce a scale-aware opportunity score. Score each dimension
 Use **High** when the assessment has strong customer evidence, comparable benchmarks, clear economics, and direct user constraints.
 Use **Medium** when the idea is specific but relies on several estimates.
 Use **Low** when the user provides a thin description, market facts are missing, or the core customer/problem is vague.
+
+This is the starting level. The gate script caps it: a tension gap of 6+ forces Low, a gap of 4–5 caps at Medium, and a gate-lowered decision caps at Medium.
 
 Always explain what evidence would increase confidence.

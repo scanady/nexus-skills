@@ -46,7 +46,7 @@ The `.github/` folder contains VS Code Copilot customizations: agent definitions
 
 A **skill** is a `SKILL.md` file that gives an AI agent a specialized behavior or workflow. Skills use YAML frontmatter to declare their `name`, `description`, and `metadata`. The description is the search trigger — the agent routes to a skill when the user's request matches it.
 
-Skills are installed into an AI agent's config directory (e.g., `.agents/skills/` for GitHub Copilot). Once installed, skills are invoked by name in chat.
+Skills are installed into an AI agent's skills directory (e.g., `.github/skills/` for GitHub Copilot, `.claude/skills/` for Claude Code). Once installed, skills are invoked by name in chat.
 
 ### Agents
 
@@ -77,15 +77,15 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 │   ├── export/                 # Manual skill zip export scripts
 │   └── validation/             # Repository validation scripts
 ├── skills/                     # Source skill registry
-│   ├── engineering-agents-md-curator/
+│   ├── engineering-doc-agents-md-curator/
 │   ├── content-copy-humanizer/
 │   ├── engineering-quality-tdd/
 │   ├── product-spec-prd-generator/
-│   └── ...                     # 145 skills total
+│   └── ...                     # 153 skills total
 ├── plugin-packages/            # Plugin definitions (manifest + membership + optional MCP)
 │   ├── content/
 │   ├── data/
-│   └── ...                     # 12 plugins total
+│   └── ...                     # 14 plugins total
 ├── docs/                       # Project documentation
 ├── .github/
 │   ├── copilot-instructions.md # Global Copilot instructions
@@ -97,8 +97,9 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 
 ## Prerequisites & Requirements
 
-- **Node.js** v16 or later
+- **Node.js** v20 or later
 - **npm** (included with Node.js)
+- **git** (only for `--source-url`)
 - One or more supported AI agents installed:
   - [GitHub Copilot](https://github.com/features/copilot) (VS Code extension)
   - [Claude Code](https://claude.ai/code)
@@ -108,68 +109,206 @@ Skills are installed into an AI agent's config directory (e.g., `.agents/skills/
 
 ### From a cloned repo
 
-From the project root, install all skills to the current project (default agent: GitHub Copilot):
+From the project root, install every skill into the current project. With no `--agent`, the target is the Agent Skills standard path `.agents/skills/`:
 
 ```bash
 node bin/nxa.js install
 ```
 
-Install a specific skill to a specific agent:
+Install one skill for one agent:
 
 ```bash
 node bin/nxa.js install --skill content-copy-humanizer -a github-copilot
 ```
 
-Install to multiple agents at once:
+Install to several agents at once:
 
 ```bash
-node bin/nxa.js install -a github-copilot
+node bin/nxa.js install -a agent-skills -a claude-code -a github-copilot -a codex
 ```
 
-Install globally instead of project-scoped:
+Install every skill in a plugin:
+
+```bash
+node bin/nxa.js install --plugin marketing
+```
+
+Install globally instead of into the project:
 
 ```bash
 node bin/nxa.js install --skill product-spec-prd-generator --global
 ```
 
+Refresh every skill you already have installed globally. It adds no new skills:
+
+```bash
+node bin/nxa.js upgrade --global
+```
+
+Refresh one installed skill:
+
+```bash
+node bin/nxa.js upgrade --skill content-copy-humanizer
+```
+
+See what is installed globally, and remove a skill:
+
+```bash
+node bin/nxa.js list --installed --global --full
+node bin/nxa.js remove --skill content-copy-humanizer --global
+```
+
+### Without a clone
+
+`npx nxa <command>` runs the same CLI. When it finds no `skills/` folder next to itself, it downloads skills from GitHub instead of copying a local bundle. The command header shows which source it used (`local bundle`, `GitHub fallback`, or `repository <url>`).
+
 ### CLI Reference
 
-| Command | Short | Description |
-|---------|-------|-------------|
-| `install` | | Install skills |
-| `list` | | List available skills |
-| `audit-overlap` | | Find duplicate and overlapping skills |
-| `--skill <name>` | `-s` | Install a specific skill (repeatable) |
-| `--plugin <name>` | `-P` | Install all skills in a named plugin (repeatable) |
-| `--agent <name>` | `-a` | Target agent (repeatable, default: `agent-skills`) |
-| `--global` | `-g` | Install globally (default: project) |
-| `--project` | `-p` | Install to project (explicit) |
-| `--upgrade` | `-u` | Upgrade existing skills (prompts for confirmation) |
-| `--overwrite` | `-o` | Skip confirmation when upgrading |
-| `--source-url <url>` |  | Clone skills from a git repository instead of the bundled skills |
-| `--source-ref <ref>` |  | Branch, tag, or commit to clone with `--source-url` |
-| `--full` | `-f` | List skills with descriptions |
-| `--names` | `-n` | List skill names only |
-| `--count` | `-c` | Print skill count only |
+```
+node bin/nxa.js <command> [options]
+```
 
-**`audit-overlap` options:**
+Inside this repo use `node bin/nxa.js`. Outside it use `npx nxa`. The command comes first, then its options in any order. Run with no command, `help`, `--help`, or `-h` to print the built-in help. `--help` anywhere on the line prints help and runs nothing. `--version` or `-v` prints the version.
+
+The CLI is strict, so a typo never turns into a large or partial install:
+
+- An unknown command, unknown option, or stray word is an error. `nxa install content-copy-humanizer` fails and tells you to use `--skill`.
+- An option that does not apply to the command is an error, for example `list --global`.
+- An option that needs a value and has none is an error, for example `--skill` at the end of the line.
+- An unknown skill, plugin, or agent stops the command before it writes anything.
+- Usage errors exit with code 2. Other failures exit with code 1. Errors go to standard error.
+
+Value options also accept `--option=value`. `--skill`, `--plugin`, and `--agent` accept comma-separated lists: `--skill a,b,c`.
+
+#### Commands
+
+| Command | Description |
+|---------|-------------|
+| `install` | Copy skills into one or more agent skill directories. Skips skills that are already there unless `--upgrade` is set. |
+| `upgrade` | Replace skills that are already installed with the source version. Never adds a skill. |
+| `remove` | Delete installed skills. Needs `--skill` or `--plugin`. |
+| `list` | Print the available skills, or with `--installed`, the skills installed in a target |
+| `audit-overlap` | Score every skill pair for duplicate or colliding purpose and write a report |
+| `help` | Print usage |
+
+An unknown command is an error (exit code 2).
+
+#### `install` options
 
 | Option | Short | Description |
 |--------|-------|-------------|
-| `--threshold <n>` | `-t` | Minimum overlap score to report (default: 0.20) |
-| `--top <n>` | | Limit output to top N pairs |
-| `--json-only` | | Write JSON report only |
-| `--md-only` | | Write Markdown report only |
-| `--output <dir>` | `-o` | Output directory (default: `output/`) |
+| `--skill <name>` | `-s` | Install this skill. Repeatable or comma-separated. Default: every available skill. |
+| `--plugin <name>` | `-P` | Install every skill in a plugin from `plugin-packages/`, such as `marketing`, `engineering`, or `data`. Repeatable or comma-separated. Combines with `--skill`. |
+| `--agent <name>` | `-a` | Target agent. Repeat for several. Default: `agent-skills`. See [Supported agents](#supported-agents). |
+| `--project` | `-p` | Install into the current directory (default). |
+| `--global` | `-g` | Install into the user-level directory. |
+| `--upgrade` | `-u` | Delete and replace skills that already exist. Without this flag, existing skills are skipped. |
+| `--yes` | `-y` | With `--upgrade`, skip the `[y/N]` confirmation. Without `--upgrade` it is an error. `--overwrite` / `-o` is the same flag. |
+| `--source-url <url>` | | Clone this git repository and read its `skills/` folder instead of the local bundle. |
+| `--source-ref <ref>` | | Branch or tag to clone with `--source-url`. Default: the repository's default branch. Without `--source-url` it is an error. |
 
-### Supported agents
+How `install` behaves:
 
-| Agent | Global path | Project path |
-|-------|-------------|--------------|
-| `agent-skills` (default) | `~/.agents/skills/` | `.agents/skills/` |
-| `github-copilot` | `~/.github/skills/` | `.github/skills/` |
-| `claude-code` | `~/.claude/skills/` | `.claude/skills/` |
-| `codex` | `~/.codex/skills/` | `.agents/skills/` |
+- It installs into `<agent dir>/<skill-name>/` and prints one line per skill: installed, skipped (already installed), upgraded, or failed. A summary count follows.
+- `--upgrade` first lists the existing skills it will replace, then asks `Proceed with upgrade? [y/N]`. When standard input is not a terminal, the command stops with an error and changes nothing. Add `--overwrite` there.
+- `install --upgrade` without `--skill` or `--plugin` installs every available skill and replaces the ones already there. To refresh only what is installed, use `upgrade`.
+- `--skill` and `--plugin` add up. An unknown skill or plugin name stops the command before it writes anything.
+- An unknown agent name stops the command before it writes anything.
+- Replacing a skill keeps your `.env` and `.env.local` files, wherever they are in the skill folder (root, `scripts/`, or any other subfolder). Everything else is removed and replaced by the source copy: `SKILL.md`, `scripts/`, `assets/`, `references/`, `.env.example`, and any other file. The output line lists the kept files.
+- Each skill is copied into a hidden staging folder first, then swapped into place. If a copy or download fails, the installed version stays as it was, and the command exits with code 1.
+- `__pycache__`, `*.pyc`, `.DS_Store`, `.pytest_cache`, and `node_modules` are never copied.
+- Agents that share a directory install once. In project scope, `agent-skills` and `codex` both use `.agents/skills/`.
+- `--plugin` reads `plugin-packages/`, so it needs a checkout of this repository.
+- `--project` against `--global`, and `--names`, `--full`, `--count` against each other: the last one on the command line wins.
+
+#### `upgrade` options
+
+`upgrade` takes the same `--skill`, `--plugin`, `--agent`, `--project`, `--global`, `--yes`, `--source-url`, and `--source-ref` options as `install`.
+
+How `upgrade` behaves:
+
+- It looks at the skills already installed in each target directory and replaces only those. It never adds a skill.
+- It keeps your `.env` and `.env.local` files and replaces everything else, as `install --upgrade` does.
+- With no `--skill` or `--plugin`, it upgrades every installed skill. With them, it upgrades only the named skills. A plugin's skills that are not installed are ignored.
+- A skill named with `--skill` that is not installed is an error. Use `install` to add it.
+- An installed skill that the source does not have, such as your own private skill, is listed as left unchanged and is not touched.
+- It lists what it will replace and asks for confirmation. `--yes` skips the prompt. When standard input is not a terminal and `--yes` is not set, it stops with an error and changes nothing.
+
+#### `remove` options
+
+`remove` takes `--skill`, `--plugin`, `--agent`, `--project`, `--global`, `--yes`, and `--delete-env`.
+
+How `remove` behaves:
+
+- It needs `--skill` or `--plugin`. It never removes every skill.
+- It matches names against what is installed, not against the source, so it can remove a skill the source no longer has. `--plugin` removes the installed skills that the plugin lists.
+- A `--skill` name that is not installed in any target stops the command before it deletes anything.
+- By default it keeps `.env` and `.env.local` files where they are (root, `scripts/`, or any subfolder) and deletes everything else. A folder left with only those files no longer counts as installed. A later `install` of the same skill fills it back in and keeps the files.
+- It lists every skill it will remove and names any `.env` or `.env.local` inside. If there are any, it asks `Keep .env and .env.local files? [Y/n]` (default: keep). Then it asks `Proceed with removal? [y/N]`.
+- `--yes` skips both prompts and takes the defaults: proceed, and keep the `.env` files. An agent can run `remove --skill <name> --yes` without waiting for input.
+- `--delete-env` also deletes the `.env` and `.env.local` files. Combine it with `--yes` to delete whole folders without prompting.
+- When standard input is not a terminal and `--yes` is not set, it stops with an error and changes nothing.
+
+#### `list` options
+
+| Option | Short | Description |
+|--------|-------|-------------|
+| `--installed` | `-i` | List the skills installed in the target instead of the available ones. Takes `--agent`, `--project`, and `--global`, which `list` rejects without it. |
+| `--names` | `-n` | One skill name per line (default). |
+| `--full` | `-f` | Each skill with its description. With `--installed`, also marks skills the source does not have and skills that hold `.env` files. |
+| `--count` | `-c` | Only the number of skills. |
+| `--source-url <url>`, `--source-ref <ref>` | | List the skills of another repository, as in `install`. |
+
+#### `audit-overlap` options
+
+Reads the local `skills/` folder, so run it from a clone. It writes `skill-overlap-report.json` and `skill-overlap-report.md`, then prints the pairs that need action. Put the options after the command. An unknown option, a missing value, a threshold outside 0 to 1, or `--json-only` with `--md-only` is an error.
+
+| Option | Short | Description |
+|--------|-------|-------------|
+| `--threshold <n>` | `-t` | Minimum overall score to report (default: `0.20`). |
+| `--top <n>` | | Report only the top N pairs (default: all). |
+| `--json-only` | | Write the JSON report only. |
+| `--md-only` | | Write the Markdown report only. |
+| `--output <dir>` | `-o` | Report directory (default: `output/`). |
+
+`-o` means `--overwrite` (same as `--yes`) for `install`, `upgrade`, and `remove`, and `--output` for `audit-overlap`.
+
+#### Supported agents
+
+| Agent | Aliases | Global path | Project path |
+|-------|---------|-------------|--------------|
+| `agent-skills` (default) | `agents`, `agentskills`, `standard` | `~/.agents/skills/` | `.agents/skills/` |
+| `github-copilot` | `copilot` | `~/.github/skills/` | `.github/skills/` |
+| `claude-code` | `claude` | `~/.claude/skills/` | `.claude/skills/` |
+| `codex` | `openai-codex` | `~/.codex/skills/` | `.agents/skills/` |
+
+#### Environment variables
+
+| Variable | Effect |
+|----------|--------|
+| `NEXUS_AGENTS_REPO_URL` | Same as `--source-url`. The flag wins when both are set. |
+| `NEXUS_AGENTS_REPO_REF` | Same as `--source-ref`. In the GitHub fallback it selects the branch or tag to download (default: `main`). |
+| `NEXUS_AGENTS_FORCE_REMOTE` | Set to `1` to ignore the local `skills/` folder and use the GitHub fallback. |
+| `NEXUS_AGENTS_REPO_OWNER`, `NEXUS_AGENTS_REPO_NAME` | Repository the GitHub fallback downloads from (default: `scanady/nexus-skills`). |
+
+Source order: `--source-url` (or `NEXUS_AGENTS_REPO_URL`), then the local `skills/` folder, then the GitHub fallback.
+
+#### Older flag spellings
+
+These still work but are not in the built-in help: `--pack` for `--plugin`, `--repo-url` for `--source-url`, `--ref` for `--source-ref`.
+
+#### More examples
+
+```bash
+node bin/nxa.js list --full
+node bin/nxa.js list --count
+node bin/nxa.js install --plugin engineering,data -a claude-code
+node bin/nxa.js install -a github-copilot --skill content-copy-humanizer -p
+node bin/nxa.js upgrade --global --yes
+node bin/nxa.js upgrade -a claude-code --plugin marketing
+node bin/nxa.js install --source-url https://github.com/scanady/nexus-skills.git --source-ref main
+node bin/nxa.js audit-overlap --threshold 0.30 --top 25 --output reports/
+```
 
 ## Usage
 
@@ -307,7 +446,7 @@ A plugin is defined by a directory under `plugin-packages/`:
 
 | File | Required | Contents |
 |---|---|---|
-| `plugin.json` | yes | [Agent Plugins](https://agent-plugins.org/) v1.0.0 manifest. `$schema` and `name` are required; the schema is closed, so only `$schema`, `name`, `version`, `description`, `author`, `homepage`, `repository`, `license`, `keywords`, and `extensions` are allowed. Name it `nexus-<directory>`. |
+| `plugin.json` | yes | [Agent Plugins](https://agent-plugins.org/) v1.0.0 manifest. `$schema` and `name` are required; the schema is closed, so only `$schema`, `name`, `version`, `description`, `author`, `homepage`, `repository`, `license`, `keywords`, and `extensions` are allowed. Name it `nexus-<directory>`, except `workplace`, whose name is the directory name. |
 | `skills.json` | yes | `{ "skills": [...] }` — literal skill names or `prefix-*` globs. Build-only; it is never shipped, and it is not part of the spec. |
 | `mcp.json` | yes | `{ "$schema": ..., "mcpServers": {...} }`. Both keys are required and the schema is closed. Every plugin carries one; new plugins start from an empty stub. Declared servers are copied into the bundle as `mcp.json`, the Agent Plugins location. An empty stub ships nothing. |
 

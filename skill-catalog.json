@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-09-26T20:23:09Z",
+  "generated_at": "2026-10-05T03:39:53Z",
   "sources": [
     {
       "id": "source-1",
@@ -11,25 +11,25 @@
     }
   ],
   "summary": {
-    "total_skills": 148,
-    "evaluated": 113,
+    "total_skills": 153,
+    "evaluated": 103,
     "parse_errors": 0,
-    "avg_usage_value": 3.05,
-    "avg_executability": 2.18,
-    "avg_invocability": 1.66,
+    "avg_usage_value": 2.69,
+    "avg_executability": 1.93,
+    "avg_invocability": 1.44,
     "security_risk_distribution": {
-      "low": 115,
-      "medium": 30,
+      "low": 119,
+      "medium": 31,
       "high": 3
     },
     "complexity_distribution": {
-      "compact": 72,
-      "detailed": 30,
+      "compact": 71,
+      "detailed": 36,
       "comprehensive": 46
     },
     "pattern_distribution": {
-      "A": 128,
-      "B": 19,
+      "A": 126,
+      "B": 26,
       "C": 1
     },
     "over_specification_flagged": 0
@@ -406,13 +406,291 @@
       }
     },
     {
+      "name": "ai-model-autoresearch",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "ai-model-autoresearch/SKILL.md",
+      "url": null,
+      "plugins": [
+        "ai"
+      ],
+      "frontmatter": {
+        "name": "ai-model-autoresearch",
+        "disable_model_invocation": false,
+        "description": "Design autonomous AI research systems inspired by Karpathy's autoresearch framework. Use when asked to 'set up autoresearch', 'design an autonomous training loop', 'create an AI research experiment', 'build a self-improving model pipeline', 'autonomous model training', 'autoresearch for my problem', or when the user has a problem/challenge that could benefit from autonomous iterative model training with automated evaluation. Also use when asked to 'design evaluation criteria for model training', 'create a training harness', 'set up experiment tracking for ML', or when someone wants an AI agent to autonomously explore model architectures, hyperparameters, or training strategies to solve a specific problem.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.1.0",
+          "triggers": "autoresearch, autonomous research, autonomous training, self-improving model, iterative model training, experiment loop, automated ML research, model evaluation harness, training pipeline design, autonomous AI experiments, autoresearch framework, research automation, ML experiment design",
+          "role": "expert",
+          "scope": "design",
+          "output_format": "specification",
+          "related_skills": "product-spec-brainstorming, engineering-quality-tdd"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 9,
+        "estimated_tokens": 3538,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Design autonomous AI research systems inspired by Karpathy's autoresearch framework. Use when asked to 'set up autoresearch', 'design an autonomous training loop', 'create an AI research experiment', 'build a self-improving model pipeline', 'autonomous model training', 'autoresearch for my problem', or when the user has a problem/challenge that could benefit from autonomous iterative model training with automated evaluation. Also use when asked to 'design evaluation criteria for model training', 'create a training harness', 'set up experiment tracking for ML', or when someone wants an AI agent to autonomously explore model architectures, hyperparameters, or training strategies to solve a specific problem.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "ai-model-ml-pipeline",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "ai-model-ml-pipeline/SKILL.md",
+      "url": null,
+      "plugins": [
+        "ai"
+      ],
+      "frontmatter": {
+        "name": "ai-model-ml-pipeline",
+        "disable_model_invocation": false,
+        "description": "Use when designing or implementing end-to-end ML pipeline systems, or when a request spans multiple lifecycle stages such as feature engineering, training orchestration, experiment tracking, validation, and deployment automation. Invoke for reproducible ML platforms, feature stores, training workflows, model registries, and MLOps systems that must fit into a production pipeline rather than a one-off script.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.1.0",
+          "triggers": "ML pipeline, MLflow, Kubeflow, feature engineering, model training, experiment tracking, feature store, hyperparameter tuning, pipeline orchestration, model registry, training workflow, MLOps, model deployment, data pipeline, model versioning",
+          "role": "expert",
+          "scope": "implementation",
+          "output_format": "code",
+          "related_skills": "devops-infra-engineer, ai-model-post-training-expert, ai-model-autoresearch"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 6,
+        "estimated_tokens": 5499,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "medium",
+          "findings": [
+            "References credentials/secrets"
+          ],
+          "rationale": "Evaluated from scanner signals."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Use when designing or implementing end-to-end ML pipeline systems, or when a request spans multiple lifecycle stages such as feature engineering, training orchestration, experiment tracking, validation, and deployment automation. Invoke for reproducible ML platforms, feature stores, training workflows, model registries, and MLOps systems that must fit into a production pipeline rather than a one-off script.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "ai-model-post-training-expert",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "ai-model-post-training-expert/SKILL.md",
+      "url": null,
+      "plugins": [
+        "ai"
+      ],
+      "frontmatter": {
+        "name": "ai-model-post-training-expert",
+        "disable_model_invocation": false,
+        "description": "Use when designing or implementing LLM post-training workflows, including supervised fine-tuning, parameter-efficient adaptation, preference optimization, reward modeling, RLHF, distillation, or deployment packaging. Invoke for SFT, LoRA/QLoRA/PEFT, DPO/ORPO/PPO/GRPO, preference dataset preparation, adapter merging, model compression, and serving tradeoffs.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "2.0.0",
+          "triggers": "post-training, fine-tuning, fine tuning, finetuning, supervised fine-tuning, SFT, LoRA, QLoRA, PEFT, adapter tuning, DPO, ORPO, PPO, GRPO, RLHF, reward model, preference optimization, distillation, model merging, quantization",
+          "role": "expert",
+          "scope": "implementation",
+          "output_format": "code",
+          "related_skills": "devops-infra-engineer, ai-model-ml-pipeline, ai-model-autoresearch"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 8,
+        "estimated_tokens": 3807,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Use when designing or implementing LLM post-training workflows, including supervised fine-tuning, parameter-efficient adaptation, preference optimization, reward modeling, RLHF, distillation, or deployment packaging. Invoke for SFT, LoRA/QLoRA/PEFT, DPO/ORPO/PPO/GRPO, preference dataset preparation, adapter merging, model compression, and serving tradeoffs.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "ai-product-specialist",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "ai-product-specialist/SKILL.md",
+      "url": null,
+      "plugins": [
+        "ai"
+      ],
+      "frontmatter": {
+        "name": "ai-product-specialist",
+        "disable_model_invocation": false,
+        "description": "Build production-ready AI product features with robust LLM integration, retrieval quality, safety controls, AI UX trust patterns, and cost-aware operations. Use when designing, implementing, or reviewing AI-powered product capabilities.",
+        "license": "Apache-2.0",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "triggers": "ai product, llm integration, rag architecture, prompt engineering, ai ux, hallucination mitigation, model cost optimization, ai guardrails, ai evals",
+          "role": "specialist",
+          "scope": "implementation",
+          "output_format": "specification",
+          "related_skills": "ai-rag-architect, ai-model-autoresearch, ai-model-post-training-expert"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 183,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Build production-ready AI product features with robust LLM integration, retrieval quality, safety controls, AI UX trust patterns, and cost-aware operations. Use when designing, implementing, or reviewing AI-powered product capabilities.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "Apache-2.0"
+      }
+    },
+    {
       "name": "ai-prompt-engineer",
       "disable_model_invocation": false,
       "source_id": "source-1",
       "path": "ai-prompt-engineer/SKILL.md",
       "url": null,
       "plugins": [
-        "agent-tools"
+        "ai"
       ],
       "frontmatter": {
         "name": "ai-prompt-engineer",
@@ -490,6 +768,75 @@
         "external_requirements_indicator": "self-contained",
         "external_requirements": [
           "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "ai-rag-architect",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "ai-rag-architect/SKILL.md",
+      "url": null,
+      "plugins": [
+        "ai"
+      ],
+      "frontmatter": {
+        "name": "ai-rag-architect",
+        "disable_model_invocation": false,
+        "description": "Design, evaluate, and optimize RAG systems including vector databases, chunking pipelines, retrieval strategies, and semantic search. Use when building or debugging knowledge-grounded AI applications, selecting embedding models, comparing vector stores, or improving retrieval quality.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.1.0",
+          "triggers": "RAG, retrieval-augmented generation, vector search, embeddings, semantic search, vector database, document retrieval, knowledge base, context retrieval, similarity search",
+          "role": "architect",
+          "scope": "system-design",
+          "output_format": "architecture",
+          "related_skills": "python-pro, database-optimizer, monitoring-expert, api-designer"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 6,
+        "estimated_tokens": 4852,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Design, evaluate, and optimize RAG systems including vector databases, chunking pipelines, retrieval strategies, and semantic search. Use when building or debugging knowledge-grounded AI applications, selecting embedding models, comparing vector stores, or improving retrieval quality.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
         ],
         "script_languages": [
           "none"
@@ -591,7 +938,7 @@
     },
     {
       "name": "content-copy-caveman",
-      "disable_model_invocation": true,
+      "disable_model_invocation": false,
       "source_id": "source-1",
       "path": "content-copy-caveman/SKILL.md",
       "url": null,
@@ -600,7 +947,7 @@
       ],
       "frontmatter": {
         "name": "content-copy-caveman",
-        "disable_model_invocation": true,
+        "disable_model_invocation": false,
         "description": "Ultra-compressed communication mode. Cuts token usage ~75% by speaking like caveman while keeping full technical accuracy. Supports intensity levels: lite, full (default), ultra.  Use when user says \"caveman mode\", \"talk like caveman\", \"use caveman\", \"less tokens\", \"be brief\", or invokes / content-copy-caveman. Also auto-triggers when token efficiency is requested.",
         "license": null,
         "compatibility": null,
@@ -688,8 +1035,8 @@
       "path": "content-copy-clear-writing/SKILL.md",
       "url": null,
       "plugins": [
-        "content",
-        "skills"
+        "agent-tools",
+        "content"
       ],
       "frontmatter": {
         "name": "content-copy-clear-writing",
@@ -704,7 +1051,7 @@
           "role": "editor",
           "scope": "creation",
           "output_format": "content",
-          "related_skills": "content-copy-caveman, content-copy-humanizer"
+          "related_skills": "content-copy-humanizer"
         }
       },
       "structure": {
@@ -1634,468 +1981,6 @@
       }
     },
     {
-      "name": "data-ai-autoresearch",
-      "disable_model_invocation": false,
-      "source_id": "source-1",
-      "path": "data-ai-autoresearch/SKILL.md",
-      "url": null,
-      "plugins": [
-        "data"
-      ],
-      "frontmatter": {
-        "name": "data-ai-autoresearch",
-        "disable_model_invocation": false,
-        "description": "Design autonomous AI research systems inspired by Karpathy's autoresearch framework. Use when asked to 'set up autoresearch', 'design an autonomous training loop', 'create an AI research experiment', 'build a self-improving model pipeline', 'autonomous model training', 'autoresearch for my problem', or when the user has a problem/challenge that could benefit from autonomous iterative model training with automated evaluation. Also use when asked to 'design evaluation criteria for model training', 'create a training harness', 'set up experiment tracking for ML', or when someone wants an AI agent to autonomously explore model architectures, hyperparameters, or training strategies to solve a specific problem.",
-        "license": "MIT",
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "1.1.0",
-          "triggers": "autoresearch, autonomous research, autonomous training, self-improving model, iterative model training, experiment loop, automated ML research, model evaluation harness, training pipeline design, autonomous AI experiments, autoresearch framework, research automation, ML experiment design",
-          "role": "expert",
-          "scope": "design",
-          "output_format": "specification",
-          "related_skills": "product-spec-brainstorming, engineering-quality-tdd"
-        }
-      },
-      "structure": {
-        "has_scripts": false,
-        "has_references": true,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 9,
-        "estimated_tokens": 3538,
-        "complexity_class": "comprehensive",
-        "skill_pattern": "A"
-      },
-      "evaluation": {
-        "name": "data-ai-autoresearch",
-        "usage_value": {
-          "score": 4,
-          "rationale": "Domain-specific skill with clear purpose.",
-          "sub_scores": {
-            "problem_clarity": 5,
-            "audience_breadth": 4,
-            "capability_gap": 4,
-            "actionability": 4,
-            "reusability": 3
-          },
-          "weighted_score": 4.15,
-          "domain_calibration_bonus": 0.3,
-          "method_version": "weighted-v2"
-        },
-        "security_risk": {
-          "rating": "low",
-          "rationale": "No obvious credential handling or risky execution patterns detected.",
-          "findings": [],
-          "sub_scores": {
-            "data_privacy": 5,
-            "prompt_injection": 5,
-            "illegal_content": 5,
-            "bias": 5,
-            "system_integrity": 5,
-            "untrusted_communication": 5
-          }
-        },
-        "executability": {
-          "score": 3,
-          "completeness": 4,
-          "determinism": 3,
-          "consistency": 4,
-          "usability": 4,
-          "rationale": "Workflow is well-structured with clear guidance."
-        },
-        "invocability": {
-          "score": 2,
-          "rationale": "Name and triggers clearly signal skill purpose."
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Provides generalizable patterns."
-        },
-        "core_capabilities": "Design autonomous AI research systems inspired by Karpathy's autoresearch framework.",
-        "external_requirements_indicator": "self-contained",
-        "external_requirements": [
-          "none"
-        ],
-        "script_languages": [
-          "none"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
-      "name": "data-ai-ml-pipeline",
-      "disable_model_invocation": false,
-      "source_id": "source-1",
-      "path": "data-ai-ml-pipeline/SKILL.md",
-      "url": null,
-      "plugins": [
-        "data"
-      ],
-      "frontmatter": {
-        "name": "data-ai-ml-pipeline",
-        "disable_model_invocation": false,
-        "description": "Use when designing or implementing end-to-end ML pipeline systems, or when a request spans multiple lifecycle stages such as feature engineering, training orchestration, experiment tracking, validation, and deployment automation. Invoke for reproducible ML platforms, feature stores, training workflows, model registries, and MLOps systems that must fit into a production pipeline rather than a one-off script.",
-        "license": "MIT",
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "1.1.0",
-          "triggers": "ML pipeline, MLflow, Kubeflow, feature engineering, model training, experiment tracking, feature store, hyperparameter tuning, pipeline orchestration, model registry, training workflow, MLOps, model deployment, data pipeline, model versioning",
-          "role": "expert",
-          "scope": "implementation",
-          "output_format": "code",
-          "related_skills": "devops-infra-engineer, data-ai-post-training-expert, data-ai-autoresearch"
-        }
-      },
-      "structure": {
-        "has_scripts": false,
-        "has_references": true,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 6,
-        "estimated_tokens": 5499,
-        "complexity_class": "comprehensive",
-        "skill_pattern": "A"
-      },
-      "evaluation": {
-        "name": "data-ai-ml-pipeline",
-        "usage_value": {
-          "score": 4,
-          "rationale": "Domain-specific skill with clear purpose.",
-          "sub_scores": {
-            "problem_clarity": 5,
-            "audience_breadth": 4,
-            "capability_gap": 4,
-            "actionability": 4,
-            "reusability": 3
-          },
-          "weighted_score": 4.15,
-          "domain_calibration_bonus": 0.3,
-          "method_version": "weighted-v2"
-        },
-        "security_risk": {
-          "rating": "medium",
-          "rationale": "Evaluated from scanner signals.",
-          "findings": [
-            "References credentials/secrets"
-          ],
-          "sub_scores": {
-            "data_privacy": 3,
-            "prompt_injection": 5,
-            "illegal_content": 5,
-            "bias": 5,
-            "system_integrity": 5,
-            "untrusted_communication": 5
-          }
-        },
-        "executability": {
-          "score": 3,
-          "completeness": 4,
-          "determinism": 3,
-          "consistency": 4,
-          "usability": 4,
-          "rationale": "Workflow is well-structured with clear guidance."
-        },
-        "invocability": {
-          "score": 4,
-          "rationale": "Name and triggers clearly signal skill purpose."
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Provides generalizable patterns."
-        },
-        "core_capabilities": "Use when designing or implementing end-to-end ML pipeline systems, or when a request spans multiple lifecycle stages such as feature engineering, training orchestration, experiment tracking, validation, and deployment automation.",
-        "external_requirements_indicator": "has-external-dependencies",
-        "external_requirements": [
-          "none"
-        ],
-        "script_languages": [
-          "none"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
-      "name": "data-ai-ml-rag-architect",
-      "disable_model_invocation": false,
-      "source_id": "source-1",
-      "path": "data-ai-ml-rag-architect/SKILL.md",
-      "url": null,
-      "plugins": [
-        "data"
-      ],
-      "frontmatter": {
-        "name": "data-ai-ml-rag-architect",
-        "disable_model_invocation": false,
-        "description": "Design, evaluate, and optimize RAG systems including vector databases, chunking pipelines, retrieval strategies, and semantic search. Use when building or debugging knowledge-grounded AI applications, selecting embedding models, comparing vector stores, or improving retrieval quality.",
-        "license": "MIT",
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "1.1.0",
-          "triggers": "RAG, retrieval-augmented generation, vector search, embeddings, semantic search, vector database, document retrieval, knowledge base, context retrieval, similarity search",
-          "role": "architect",
-          "scope": "system-design",
-          "output_format": "architecture",
-          "related_skills": "python-pro, database-optimizer, monitoring-expert, api-designer"
-        }
-      },
-      "structure": {
-        "has_scripts": false,
-        "has_references": true,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 6,
-        "estimated_tokens": 4852,
-        "complexity_class": "comprehensive",
-        "skill_pattern": "A"
-      },
-      "evaluation": {
-        "name": "data-ai-ml-rag-architect",
-        "usage_value": {
-          "score": 4,
-          "rationale": "Domain-specific skill with clear purpose.",
-          "sub_scores": {
-            "problem_clarity": 5,
-            "audience_breadth": 4,
-            "capability_gap": 3,
-            "actionability": 4,
-            "reusability": 3
-          },
-          "weighted_score": 3.9,
-          "domain_calibration_bonus": 0,
-          "method_version": "weighted-v2"
-        },
-        "security_risk": {
-          "rating": "low",
-          "rationale": "No obvious credential handling or risky execution patterns detected.",
-          "findings": [],
-          "sub_scores": {
-            "data_privacy": 5,
-            "prompt_injection": 5,
-            "illegal_content": 5,
-            "bias": 5,
-            "system_integrity": 5,
-            "untrusted_communication": 5
-          }
-        },
-        "executability": {
-          "score": 3,
-          "completeness": 4,
-          "determinism": 3,
-          "consistency": 4,
-          "usability": 4,
-          "rationale": "Workflow is well-structured with clear guidance."
-        },
-        "invocability": {
-          "score": 3,
-          "rationale": "Name and triggers clearly signal skill purpose."
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Provides generalizable patterns."
-        },
-        "core_capabilities": "Design, evaluate, and optimize RAG systems including vector databases, chunking pipelines, retrieval strategies, and semantic search.",
-        "external_requirements_indicator": "self-contained",
-        "external_requirements": [
-          "none"
-        ],
-        "script_languages": [
-          "none"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
-      "name": "data-ai-post-training-expert",
-      "disable_model_invocation": false,
-      "source_id": "source-1",
-      "path": "data-ai-post-training-expert/SKILL.md",
-      "url": null,
-      "plugins": [
-        "data"
-      ],
-      "frontmatter": {
-        "name": "data-ai-post-training-expert",
-        "disable_model_invocation": false,
-        "description": "Use when designing or implementing LLM post-training workflows, including supervised fine-tuning, parameter-efficient adaptation, preference optimization, reward modeling, RLHF, distillation, or deployment packaging. Invoke for SFT, LoRA/QLoRA/PEFT, DPO/ORPO/PPO/GRPO, preference dataset preparation, adapter merging, model compression, and serving tradeoffs.",
-        "license": "MIT",
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "2.0.0",
-          "triggers": "post-training, fine-tuning, fine tuning, finetuning, supervised fine-tuning, SFT, LoRA, QLoRA, PEFT, adapter tuning, DPO, ORPO, PPO, GRPO, RLHF, reward model, preference optimization, distillation, model merging, quantization",
-          "role": "expert",
-          "scope": "implementation",
-          "output_format": "code",
-          "related_skills": "devops-infra-engineer, data-ai-ml-pipeline, data-ai-autoresearch"
-        }
-      },
-      "structure": {
-        "has_scripts": false,
-        "has_references": true,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 8,
-        "estimated_tokens": 3807,
-        "complexity_class": "comprehensive",
-        "skill_pattern": "A"
-      },
-      "evaluation": {
-        "name": "data-ai-post-training-expert",
-        "usage_value": {
-          "score": 4,
-          "rationale": "Domain-specific skill with clear purpose.",
-          "sub_scores": {
-            "problem_clarity": 5,
-            "audience_breadth": 4,
-            "capability_gap": 3,
-            "actionability": 4,
-            "reusability": 3
-          },
-          "weighted_score": 3.9,
-          "domain_calibration_bonus": 0,
-          "method_version": "weighted-v2"
-        },
-        "security_risk": {
-          "rating": "low",
-          "rationale": "No obvious credential handling or risky execution patterns detected.",
-          "findings": [],
-          "sub_scores": {
-            "data_privacy": 5,
-            "prompt_injection": 5,
-            "illegal_content": 5,
-            "bias": 5,
-            "system_integrity": 5,
-            "untrusted_communication": 5
-          }
-        },
-        "executability": {
-          "score": 3,
-          "completeness": 4,
-          "determinism": 3,
-          "consistency": 4,
-          "usability": 4,
-          "rationale": "Workflow is well-structured with clear guidance."
-        },
-        "invocability": {
-          "score": 4,
-          "rationale": "Name and triggers clearly signal skill purpose."
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Provides generalizable patterns."
-        },
-        "core_capabilities": "Use when designing or implementing LLM post-training workflows, including supervised fine-tuning, parameter-efficient adaptation, preference optimization, reward modeling, RLHF, distillation, or deployment packaging.",
-        "external_requirements_indicator": "self-contained",
-        "external_requirements": [
-          "none"
-        ],
-        "script_languages": [
-          "none"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
-      "name": "data-ai-product-specialist",
-      "disable_model_invocation": false,
-      "source_id": "source-1",
-      "path": "data-ai-product-specialist/SKILL.md",
-      "url": null,
-      "plugins": [
-        "data"
-      ],
-      "frontmatter": {
-        "name": "data-ai-product-specialist",
-        "disable_model_invocation": false,
-        "description": "Build production-ready AI product features with robust LLM integration, retrieval quality, safety controls, AI UX trust patterns, and cost-aware operations. Use when designing, implementing, or reviewing AI-powered product capabilities.",
-        "license": "Apache-2.0",
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "1.0.0",
-          "triggers": "ai product, llm integration, rag architecture, prompt engineering, ai ux, hallucination mitigation, model cost optimization, ai guardrails, ai evals",
-          "role": "specialist",
-          "scope": "implementation",
-          "output_format": "specification",
-          "related_skills": "data-ai-ml-rag-architect, data-ai-autoresearch, data-ai-post-training-expert"
-        }
-      },
-      "structure": {
-        "has_scripts": false,
-        "has_references": false,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 1,
-        "estimated_tokens": 183,
-        "complexity_class": "compact",
-        "skill_pattern": "A"
-      },
-      "evaluation": {
-        "name": "data-ai-product-specialist",
-        "usage_value": {
-          "score": 4,
-          "rationale": "Domain-specific skill with clear purpose.",
-          "sub_scores": {
-            "problem_clarity": 5,
-            "audience_breadth": 3,
-            "capability_gap": 3,
-            "actionability": 4,
-            "reusability": 3
-          },
-          "weighted_score": 3.7,
-          "domain_calibration_bonus": 0,
-          "method_version": "weighted-v2"
-        },
-        "security_risk": {
-          "rating": "low",
-          "rationale": "No obvious credential handling or risky execution patterns detected.",
-          "findings": [],
-          "sub_scores": {
-            "data_privacy": 5,
-            "prompt_injection": 5,
-            "illegal_content": 5,
-            "bias": 5,
-            "system_integrity": 5,
-            "untrusted_communication": 5
-          }
-        },
-        "executability": {
-          "score": 3,
-          "completeness": 3,
-          "determinism": 3,
-          "consistency": 4,
-          "usability": 4,
-          "rationale": "Workflow is well-structured with clear guidance."
-        },
-        "invocability": {
-          "score": 3,
-          "rationale": "Name and triggers clearly signal skill purpose."
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Provides generalizable patterns."
-        },
-        "core_capabilities": "Build production-ready AI product features with robust LLM integration, retrieval quality, safety controls, AI UX trust patterns, and cost-aware operations.",
-        "external_requirements_indicator": "self-contained",
-        "external_requirements": [
-          "none"
-        ],
-        "script_languages": [
-          "none"
-        ],
-        "license": "Apache-2.0"
-      }
-    },
-    {
       "name": "data-analysis-business-context",
       "disable_model_invocation": false,
       "source_id": "source-1",
@@ -2533,6 +2418,75 @@
       }
     },
     {
+      "name": "data-analysis-product-cohorts",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "data-analysis-product-cohorts/SKILL.md",
+      "url": null,
+      "plugins": [
+        "data"
+      ],
+      "frontmatter": {
+        "name": "data-analysis-product-cohorts",
+        "disable_model_invocation": false,
+        "description": "Show whether users come back by turning event data into cohort retention tables, curve-shape readings, and funnel leak findings. Use when asked to \"analyze retention\", \"build a cohort table\", \"why are users churning\", \"compare signup cohorts\", or \"find the funnel drop-off\". Not for choosing KPIs or writing scorecards.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "triggers": "calculate day-30 retention, plot retention curves, check if newer cohorts retain better, find where onboarding loses users, segment users by signup week, measure feature stickiness, compare retention by channel, explain a retention plateau",
+          "role": "analyst",
+          "scope": "analysis",
+          "output_format": "report",
+          "related_skills": "data-analysis-kpi-designer, data-analysis-kpi-reporting, data-analysis-statistical-methods, data-analysis-validator, data-visual-chart-designer"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 6,
+        "estimated_tokens": 1024,
+        "complexity_class": "detailed",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Show whether users come back by turning event data into cohort retention tables, curve-shape readings, and funnel leak findings. Use when asked to \"analyze retention\", \"build a cohort table\", \"why are users churning\", \"compare signup cohorts\", or \"find the funnel drop-off\". Not for choosing KPIs or writing scorecards.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "python"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "name": "data-analysis-statistical-methods",
       "disable_model_invocation": false,
       "source_id": "source-1",
@@ -2544,13 +2498,13 @@
       "frontmatter": {
         "name": "data-analysis-statistical-methods",
         "disable_model_invocation": false,
-        "description": "Apply and interpret working statistical methods on business data — descriptive statistics, trend and seasonality analysis, outlier and anomaly detection, hypothesis testing — and state what the numbers do and do not support. Use when asked to \"describe this distribution\", \"is this difference significant\", \"read this A/B test\", \"find anomalies in this metric\", \"what's the trend\", \"compute the correlation\", or \"can we say X caused Y\". Not for fitting regression models with coefficient tables (use statistical-modeling), auditing someone else's finished analysis (use analysis-validator), or choosing chart form (use chart-designer).",
+        "description": "Apply and interpret working statistical methods on business data — descriptive statistics, trend and seasonality analysis, outlier and anomaly detection, hypothesis testing — then compute tests, intervals, and sample sizes with bundled scripts and state what the numbers do and do not support. Use when asked to \"describe this distribution\", \"is this difference significant\", \"read this A/B test\", \"how many users do we need\", \"find anomalies in this metric\", \"what's the trend\", \"compute the correlation\", or \"can we say X caused Y\". Not for fitting regression models with coefficient tables (use statistical-modeling), auditing someone else's finished analysis (use analysis-validator), or choosing chart form (use chart-designer).",
         "license": "MIT",
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
           "version": "1.0.0",
-          "triggers": "describe this distribution, mean vs median, report percentiles, is this difference statistically significant, read an A/B test result, which test should I use, detect outliers, flag anomalies in a time series, week over week change, year over year comparison, compute CAGR, is this seasonal, simple forecast with a range, correlation between two metrics, did this change cause the lift, adjust for multiple comparisons, do we have enough sample",
+          "triggers": "describe this distribution, mean vs median, report percentiles, is this difference statistically significant, read an A/B test result, which test should I use, detect outliers, flag anomalies in a time series, week over week change, year over year comparison, compute CAGR, is this seasonal, simple forecast with a range, correlation between two metrics, did this change cause the lift, adjust for multiple comparisons, how many users do we need for this test, confidence interval for a conversion rate",
           "role": "analyst",
           "scope": "analysis",
           "output_format": "analysis",
@@ -2558,13 +2512,13 @@
         }
       },
       "structure": {
-        "has_scripts": false,
+        "has_scripts": true,
         "has_references": true,
         "has_agents": false,
         "has_assets": false,
         "has_license_file": false,
-        "file_count": 6,
-        "estimated_tokens": 907,
+        "file_count": 12,
+        "estimated_tokens": 2024,
         "complexity_class": "detailed",
         "skill_pattern": "A"
       },
@@ -2596,7 +2550,7 @@
           "unknown"
         ],
         "script_languages": [
-          "none"
+          "python"
         ],
         "license": "MIT"
       }
@@ -2761,7 +2715,7 @@
           "role": "architect",
           "scope": "design",
           "output_format": "architecture",
-          "related_skills": "data-ai-ml-pipeline, data-ai-ml-rag-architect, design-system-architect"
+          "related_skills": "ai-model-ml-pipeline, ai-rag-architect, design-system-architect"
         }
       },
       "structure": {
@@ -2832,6 +2786,75 @@
       }
     },
     {
+      "name": "data-eng-database-optimizer",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "data-eng-database-optimizer/SKILL.md",
+      "url": null,
+      "plugins": [
+        "data"
+      ],
+      "frontmatter": {
+        "name": "data-eng-database-optimizer",
+        "disable_model_invocation": false,
+        "description": "Use when a database is slow, queries are taking too long, or you need to analyze an execution plan. Invoke for index design, query rewrites, configuration tuning, partitioning, lock contention, or improving cache hit rates. Also use when asked to \"optimize this query\", \"why is my database slow\", \"EXPLAIN ANALYZE\", \"add an index\", \"tune PostgreSQL config\", or \"MySQL performance\".",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "triggers": "database optimization, slow query, query performance, database tuning, index optimization, execution plan, EXPLAIN ANALYZE, database performance, PostgreSQL optimization, MySQL optimization",
+          "role": "specialist",
+          "scope": "optimization",
+          "output_format": "analysis-and-code",
+          "related_skills": "ai-model-autoresearch"
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 6,
+        "estimated_tokens": 2644,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Use when a database is slow, queries are taking too long, or you need to analyze an execution plan. Invoke for index design, query rewrites, configuration tuning, partitioning, lock contention, or improving cache hit rates. Also use when asked to \"optimize this query\", \"why is my database slow\", \"EXPLAIN ANALYZE\", \"add an index\", \"tune PostgreSQL config\", or \"MySQL performance\".",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "name": "data-eng-pandas-specialist",
       "disable_model_invocation": false,
       "source_id": "source-1",
@@ -2853,7 +2876,7 @@
           "role": "expert",
           "scope": "implementation",
           "output_format": "code",
-          "related_skills": "python-pro, data-ai-ml-pipeline"
+          "related_skills": "python-pro, ai-model-ml-pipeline"
         }
       },
       "structure": {
@@ -2945,7 +2968,7 @@
           "role": "data-engineer",
           "scope": "design, implementation, review",
           "output_format": "code, architecture, specification",
-          "related_skills": "data-ai-ml-pipeline, design-system-architect"
+          "related_skills": "ai-model-ml-pipeline, design-system-architect"
         }
       },
       "structure": {
@@ -3723,27 +3746,27 @@
       "frontmatter": {
         "name": "design-scroll-storytelling",
         "disable_model_invocation": false,
-        "description": "Builds scroll-driven web experiences — parallax storytelling, cinematic animations, sticky sections, interactive narratives. Use when: scroll animation, scroll storytelling, parallax design, cinematic website, interactive narrative, Apple-style product scroll, NY Times-style interactives, GSAP ScrollTrigger, Framer Motion scroll, CSS scroll-timeline, scroll snapping, scroll-driven animation.",
+        "description": "Builds layered scroll-driven web experiences: parallax depth scenes, pinned chapters, clip-path section reveals, and products that travel between sections. Use when asked for \"scroll storytelling\", \"parallax landing page\", \"Apple-style product scroll\", \"sections that overlap\", \"product floating between sections\", or \"text that lights up on scroll\".",
         "license": "MIT",
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": "1.0.0",
-          "triggers": "scroll animation, scroll storytelling, parallax, cinematic website, interactive narrative, scroll experience, GSAP scroll, Framer Motion scroll, sticky section, horizontal scroll, scroll snapping, scroll trigger, scroll-driven, scroll-based animation",
+          "version": "1.1.0",
+          "triggers": "add scroll animation, build a parallax hero, pin a section while content changes, use GSAP ScrollTrigger, animate with Framer Motion scroll, make horizontal scroll panels, reveal a section with clip-path, use CSS scroll-timeline, check product PNG backgrounds, audit scroll motion accessibility",
           "role": "specialist",
           "scope": "implementation",
           "output_format": "code",
-          "related_skills": "design-application-ux"
+          "related_skills": "design-application-ux, design-web-impactful"
         }
       },
       "structure": {
-        "has_scripts": false,
+        "has_scripts": true,
         "has_references": true,
         "has_agents": false,
         "has_assets": false,
         "has_license_file": false,
-        "file_count": 2,
-        "estimated_tokens": 546,
+        "file_count": 13,
+        "estimated_tokens": 3108,
         "complexity_class": "compact",
         "skill_pattern": "A"
       },
@@ -3764,9 +3787,11 @@
           "method_version": "weighted-v2"
         },
         "security_risk": {
-          "rating": "low",
-          "rationale": "No obvious credential handling or risky execution patterns detected.",
-          "findings": [],
+          "rating": "medium",
+          "rationale": "Evaluated from scanner signals.",
+          "findings": [
+            "Uses install commands"
+          ],
           "sub_scores": {
             "data_privacy": 5,
             "prompt_injection": 5,
@@ -3798,7 +3823,8 @@
           "none"
         ],
         "script_languages": [
-          "none"
+          "javascript",
+          "python"
         ],
         "license": "MIT"
       }
@@ -4520,7 +4546,7 @@
       "path": "devops-incident-responder/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "devops"
       ],
       "frontmatter": {
         "name": "devops-incident-responder",
@@ -4612,7 +4638,7 @@
       "path": "devops-infra-engineer/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "devops"
       ],
       "frontmatter": {
         "name": "devops-infra-engineer",
@@ -4706,7 +4732,7 @@
       "path": "devops-security-audit-lead/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "devops"
       ],
       "frontmatter": {
         "name": "devops-security-audit-lead",
@@ -4800,7 +4826,7 @@
       "path": "devops-security-vulnerability-analyst/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "devops"
       ],
       "frontmatter": {
         "name": "devops-security-vulnerability-analyst",
@@ -4890,82 +4916,13 @@
       }
     },
     {
-      "name": "engineering-agents-md-curator",
-      "disable_model_invocation": true,
-      "source_id": "source-1",
-      "path": "engineering-agents-md-curator/SKILL.md",
-      "url": null,
-      "plugins": [
-        "agent-tools"
-      ],
-      "frontmatter": {
-        "name": "engineering-agents-md-curator",
-        "disable_model_invocation": true,
-        "description": "Curate a repository's AGENTS.md (the system-of-truth agent-instructions file) and, when needed, the Copilot per-file rules at .github/instructions/*.instructions.md that AGENTS.md points to. Use when asked to clean up an AGENTS.md, refine agent instructions, reorganize a messy AGENTS.md, lift content out of migrated blocks, standardize an AGENTS.md, add sections to an AGENTS.md, or write a path-specific .instructions.md file for Copilot.",
-        "license": "MIT",
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "3.0.0",
-          "triggers": "refine agents.md, curate agents.md, clean up agents.md, reorganize agents.md, lift migrated content out of agents.md, standardize agents.md, add sections to agents.md, write path-specific instructions.md, add copilot per-file rules",
-          "role": "specialist",
-          "scope": "execution",
-          "output_format": "markdown-file",
-          "related_skills": null
-        }
-      },
-      "structure": {
-        "has_scripts": false,
-        "has_references": true,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 5,
-        "estimated_tokens": 838,
-        "complexity_class": "detailed",
-        "skill_pattern": "A"
-      },
-      "evaluation": {
-        "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
-        },
-        "security_risk": {
-          "rating": "low",
-          "findings": [],
-          "rationale": "No obvious credential handling or risky execution patterns detected."
-        },
-        "executability": {
-          "score": 0,
-          "rationale": "Not evaluated"
-        },
-        "invocability": {
-          "score": 0,
-          "rationale": "Not evaluated"
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Not evaluated"
-        },
-        "core_capabilities": "Curate a repository's AGENTS.md (the system-of-truth agent-instructions file) and, when needed, the Copilot per-file rules at .github/instructions/*.instructions.md that AGENTS.md points to. Use when asked to clean up an AGENTS.md, refine agent instructions, reorganize a messy AGENTS.md, lift content out of migrated blocks, standardize an AGENTS.md, add sections to an AGENTS.md, or write a path-specific .instructions.md file for Copilot.",
-        "external_requirements_indicator": "unknown",
-        "external_requirements": [
-          "unknown"
-        ],
-        "script_languages": [
-          "none"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
       "name": "engineering-api-mcp-builder",
       "disable_model_invocation": false,
       "source_id": "source-1",
       "path": "engineering-api-mcp-builder/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
         "name": "engineering-api-mcp-builder",
@@ -5059,7 +5016,7 @@
       "path": "engineering-api-n8n-workflow-builder/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
         "name": "engineering-api-n8n-workflow-builder",
@@ -5153,7 +5110,7 @@
       "path": "engineering-arch-architecture-decision-records/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
         "name": "engineering-arch-architecture-decision-records",
@@ -5247,7 +5204,7 @@
       "path": "engineering-arch-design-reviewer/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
         "name": "engineering-arch-design-reviewer",
@@ -5310,13 +5267,83 @@
       }
     },
     {
+      "name": "engineering-arch-legacy-modernizer",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "engineering-arch-legacy-modernizer/SKILL.md",
+      "url": null,
+      "plugins": [
+        "devops",
+        "engineering"
+      ],
+      "frontmatter": {
+        "name": "engineering-arch-legacy-modernizer",
+        "disable_model_invocation": false,
+        "description": "Plan and de-risk legacy modernization with strangler fig, expand-contract, and zero-downtime cutover, using a migration planner, compatibility checker, and rollback generator. Use when asked to \"modernize a legacy system\", \"plan a zero-downtime migration\", \"check schema compatibility\", or \"write a rollback plan\".",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.2.0",
+          "triggers": "strangler fig migration, expand and contract schema change, reconcile migrated data, generate rollback runbook, plan database cutover, break up monolith incrementally, reduce legacy technical debt, characterize legacy behavior",
+          "role": "specialist",
+          "scope": "design-and-implementation",
+          "output_format": "plan+code",
+          "related_skills": "tech-spec-miner, engineering-quality-tdd, devops-infra-engineer"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": true,
+        "has_license_file": false,
+        "file_count": 16,
+        "estimated_tokens": 4369,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Plan and de-risk legacy modernization with strangler fig, expand-contract, and zero-downtime cutover, using a migration planner, compatibility checker, and rollback generator. Use when asked to \"modernize a legacy system\", \"plan a zero-downtime migration\", \"check schema compatibility\", or \"write a rollback plan\".",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "python"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "name": "engineering-arch-principle-engineer",
       "disable_model_invocation": true,
       "source_id": "source-1",
       "path": "engineering-arch-principle-engineer/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
         "name": "engineering-arch-principle-engineer",
@@ -5408,7 +5435,7 @@
       "path": "engineering-arch-system-designer/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
         "name": "engineering-arch-system-designer",
@@ -5494,16 +5521,16 @@
       }
     },
     {
-      "name": "engineering-data-scraper",
+      "name": "engineering-dev-data-scraper",
       "disable_model_invocation": true,
       "source_id": "source-1",
-      "path": "engineering-data-scraper/SKILL.md",
+      "path": "engineering-dev-data-scraper/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
-        "name": "engineering-data-scraper",
+        "name": "engineering-dev-data-scraper",
         "disable_model_invocation": true,
         "description": "Build a fully automated AI-powered data collection agent for any public source — job boards, prices, news, GitHub, sports, anything. Scrapes on a schedule, enriches data with a free LLM (Gemini Flash), stores results in Notion/Sheets/Supabase, and learns from user feedback. Runs 100% free on GitHub Actions. Use when the user wants to monitor, collect, or track any public data automatically, or when they say \"build a bot that checks\", \"monitor X for me\", \"collect data from\", \"automate data collection\", \"track prices\", \"track jobs\", \"web scraper\", or \"data scraper\".",
         "license": "MIT",
@@ -5526,205 +5553,21 @@
         "has_license_file": false,
         "file_count": 8,
         "estimated_tokens": 1225,
-        "complexity_class": "comprehensive",
+        "complexity_class": "detailed",
         "skill_pattern": "A"
       },
       "evaluation": {
-        "name": "engineering-data-scraper",
         "usage_value": {
-          "score": 4,
-          "rationale": "Domain-specific skill with clear purpose.",
-          "sub_scores": {
-            "problem_clarity": 5,
-            "audience_breadth": 4,
-            "capability_gap": 3,
-            "actionability": 4,
-            "reusability": 3
-          },
-          "weighted_score": 3.9,
-          "domain_calibration_bonus": 0,
-          "method_version": "weighted-v2"
+          "score": 0,
+          "rationale": "Not evaluated"
         },
         "security_risk": {
           "rating": "medium",
-          "rationale": "Evaluated from scanner signals.",
           "findings": [
             "References credentials/secrets",
             "Makes outbound network calls"
           ],
-          "sub_scores": {
-            "data_privacy": 3,
-            "prompt_injection": 5,
-            "illegal_content": 5,
-            "bias": 5,
-            "system_integrity": 5,
-            "untrusted_communication": 2
-          }
-        },
-        "executability": {
-          "score": 3,
-          "completeness": 4,
-          "determinism": 3,
-          "consistency": 4,
-          "usability": 4,
-          "rationale": "Workflow is well-structured with clear guidance."
-        },
-        "invocability": {
-          "score": 2,
-          "rationale": "Name and triggers clearly signal skill purpose."
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Provides generalizable patterns."
-        },
-        "core_capabilities": "Build a fully automated AI-powered data collection agent for any public source — job boards, prices, news, GitHub, sports, anything.",
-        "external_requirements_indicator": "has-external-dependencies",
-        "external_requirements": [
-          "External APIs or services"
-        ],
-        "script_languages": [
-          "none"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
-      "name": "engineering-database-optimizer",
-      "disable_model_invocation": false,
-      "source_id": "source-1",
-      "path": "engineering-database-optimizer/SKILL.md",
-      "url": null,
-      "plugins": [
-        "tech"
-      ],
-      "frontmatter": {
-        "name": "engineering-database-optimizer",
-        "disable_model_invocation": false,
-        "description": "Use when a database is slow, queries are taking too long, or you need to analyze an execution plan. Invoke for index design, query rewrites, configuration tuning, partitioning, lock contention, or improving cache hit rates. Also use when asked to \"optimize this query\", \"why is my database slow\", \"EXPLAIN ANALYZE\", \"add an index\", \"tune PostgreSQL config\", or \"MySQL performance\".",
-        "license": "MIT",
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "1.0.0",
-          "triggers": "database optimization, slow query, query performance, database tuning, index optimization, execution plan, EXPLAIN ANALYZE, database performance, PostgreSQL optimization, MySQL optimization",
-          "role": "specialist",
-          "scope": "optimization",
-          "output_format": "analysis-and-code",
-          "related_skills": "data-ai-autoresearch"
-        }
-      },
-      "structure": {
-        "has_scripts": false,
-        "has_references": true,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 6,
-        "estimated_tokens": 2644,
-        "complexity_class": "comprehensive",
-        "skill_pattern": "A"
-      },
-      "evaluation": {
-        "name": "engineering-database-optimizer",
-        "usage_value": {
-          "score": 4,
-          "rationale": "Domain-specific skill with clear purpose.",
-          "sub_scores": {
-            "problem_clarity": 5,
-            "audience_breadth": 4,
-            "capability_gap": 3,
-            "actionability": 4,
-            "reusability": 3
-          },
-          "weighted_score": 3.9,
-          "domain_calibration_bonus": 0,
-          "method_version": "weighted-v2"
-        },
-        "security_risk": {
-          "rating": "low",
-          "rationale": "No obvious credential handling or risky execution patterns detected.",
-          "findings": [],
-          "sub_scores": {
-            "data_privacy": 5,
-            "prompt_injection": 5,
-            "illegal_content": 5,
-            "bias": 5,
-            "system_integrity": 5,
-            "untrusted_communication": 5
-          }
-        },
-        "executability": {
-          "score": 3,
-          "completeness": 4,
-          "determinism": 3,
-          "consistency": 4,
-          "usability": 4,
-          "rationale": "Workflow is well-structured with clear guidance."
-        },
-        "invocability": {
-          "score": 3,
-          "rationale": "Name and triggers clearly signal skill purpose."
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Provides generalizable patterns."
-        },
-        "core_capabilities": "Use when a database is slow, queries are taking too long, or you need to analyze an execution plan.",
-        "external_requirements_indicator": "self-contained",
-        "external_requirements": [
-          "none"
-        ],
-        "script_languages": [
-          "none"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
-      "name": "engineering-dev-clarify-requirements",
-      "disable_model_invocation": false,
-      "source_id": "source-1",
-      "path": "engineering-dev-clarify-requirements/SKILL.md",
-      "url": null,
-      "plugins": [
-        "tech"
-      ],
-      "frontmatter": {
-        "name": "engineering-dev-clarify-requirements",
-        "disable_model_invocation": false,
-        "description": "Ask the smallest set of clarifying questions before starting work when a request has multiple plausible readings or missing key details, so you avoid building the wrong thing. Use when a task is ambiguous and you catch yourself about to \"just start coding\", when \"the requirements are unclear\", or when there are \"several ways to interpret this\" and picking wrong is costly.",
-        "license": "MIT",
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "1.0.0",
-          "triggers": "request is ambiguous, unclear what to build, multiple interpretations possible, confirm scope before coding, what does done mean here, ask before implementing, requirements are vague",
-          "role": "developer",
-          "scope": "intake",
-          "output_format": null,
-          "related_skills": null
-        }
-      },
-      "structure": {
-        "has_scripts": false,
-        "has_references": false,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 1,
-        "estimated_tokens": 146,
-        "complexity_class": "compact",
-        "skill_pattern": "A"
-      },
-      "evaluation": {
-        "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
-        },
-        "security_risk": {
-          "rating": "low",
-          "findings": [],
-          "rationale": "No obvious credential handling or risky execution patterns detected."
+          "rationale": "Evaluated from scanner signals."
         },
         "executability": {
           "score": 0,
@@ -5738,7 +5581,7 @@
           "flagged": false,
           "rationale": "Not evaluated"
         },
-        "core_capabilities": "Ask the smallest set of clarifying questions before starting work when a request has multiple plausible readings or missing key details, so you avoid building the wrong thing. Use when a task is ambiguous and you catch yourself about to \"just start coding\", when \"the requirements are unclear\", or when there are \"several ways to interpret this\" and picking wrong is costly.",
+        "core_capabilities": "Build a fully automated AI-powered data collection agent for any public source — job boards, prices, news, GitHub, sports, anything. Scrapes on a schedule, enriches data with a free LLM (Gemini Flash), stores results in Notion/Sheets/Supabase, and learns from user feedback. Runs 100% free on GitHub Actions. Use when the user wants to monitor, collect, or track any public data automatically, or when they say \"build a bot that checks\", \"monitor X for me\", \"collect data from\", \"automate data collection\", \"track prices\", \"track jobs\", \"web scraper\", or \"data scraper\".",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -5756,8 +5599,7 @@
       "path": "engineering-dev-git-commit/SKILL.md",
       "url": null,
       "plugins": [
-        "dev",
-        "tech"
+        "git"
       ],
       "frontmatter": {
         "name": "engineering-dev-git-commit",
@@ -5849,8 +5691,7 @@
       "path": "engineering-dev-git-finish-branch/SKILL.md",
       "url": null,
       "plugins": [
-        "dev",
-        "tech"
+        "git"
       ],
       "frontmatter": {
         "name": "engineering-dev-git-finish-branch",
@@ -5942,8 +5783,7 @@
       "path": "engineering-dev-git-start-branch/SKILL.md",
       "url": null,
       "plugins": [
-        "dev",
-        "tech"
+        "git"
       ],
       "frontmatter": {
         "name": "engineering-dev-git-start-branch",
@@ -6022,8 +5862,7 @@
       "path": "engineering-dev-git-workflow-design/SKILL.md",
       "url": null,
       "plugins": [
-        "dev",
-        "tech"
+        "git"
       ],
       "frontmatter": {
         "name": "engineering-dev-git-workflow-design",
@@ -6115,7 +5954,7 @@
       "path": "engineering-dev-writing-plans/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
         "name": "engineering-dev-writing-plans",
@@ -6201,27 +6040,28 @@
       }
     },
     {
-      "name": "engineering-feature-forge",
-      "disable_model_invocation": false,
+      "name": "engineering-doc-agents-md-curator",
+      "disable_model_invocation": true,
       "source_id": "source-1",
-      "path": "engineering-feature-forge/SKILL.md",
+      "path": "engineering-doc-agents-md-curator/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "agent-tools",
+        "engineering"
       ],
       "frontmatter": {
-        "name": "engineering-feature-forge",
-        "disable_model_invocation": false,
-        "description": "Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements workshops, user stories, EARS requirements, acceptance criteria, and implementation-ready specs.",
+        "name": "engineering-doc-agents-md-curator",
+        "disable_model_invocation": true,
+        "description": "Curate a repository's AGENTS.md (the system-of-truth agent-instructions file) and, when needed, the Copilot per-file rules at .github/instructions/*.instructions.md that AGENTS.md points to. Use when asked to clean up an AGENTS.md, refine agent instructions, reorganize a messy AGENTS.md, lift content out of migrated blocks, standardize an AGENTS.md, add sections to an AGENTS.md, or write a path-specific .instructions.md file for Copilot.",
         "license": "MIT",
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": "1.1.0",
-          "triggers": "feature definition, requirements gathering, requirements workshop, specification writing, user stories, EARS, acceptance criteria, implementation planning",
+          "version": "3.0.0",
+          "triggers": "refine agents.md, curate agents.md, clean up agents.md, reorganize agents.md, lift migrated content out of agents.md, standardize agents.md, add sections to agents.md, write path-specific instructions.md, add copilot per-file rules",
           "role": "specialist",
-          "scope": "design",
-          "output_format": "document",
+          "scope": "execution",
+          "output_format": "markdown-file",
           "related_skills": null
         }
       },
@@ -6231,44 +6071,34 @@
         "has_agents": false,
         "has_assets": false,
         "has_license_file": false,
-        "file_count": 6,
-        "estimated_tokens": 783,
-        "complexity_class": "compact",
+        "file_count": 5,
+        "estimated_tokens": 838,
+        "complexity_class": "detailed",
         "skill_pattern": "A"
       },
       "evaluation": {
         "usage_value": {
-          "score": 4,
-          "rationale": "Auto-generated from scan-only fallback.",
-          "sub_scores": {
-            "problem_clarity": 5,
-            "audience_breadth": 3,
-            "capability_gap": 4,
-            "actionability": 4,
-            "reusability": 3
-          },
-          "weighted_score": 3.95,
-          "domain_calibration_bonus": 0.3,
-          "method_version": "weighted-v2"
+          "score": 0,
+          "rationale": "Not evaluated"
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "No obvious credential handling or risky execution patterns detected.",
-          "findings": []
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
         },
         "executability": {
           "score": 0,
-          "rationale": "Auto-generated from scan-only fallback."
+          "rationale": "Not evaluated"
         },
         "invocability": {
           "score": 0,
-          "rationale": "Auto-generated from scan-only fallback."
+          "rationale": "Not evaluated"
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Auto-generated from scan-only fallback."
+          "rationale": "Not evaluated"
         },
-        "core_capabilities": "Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements workshops, user stories, EARS requirements, acceptance criteria, and implementation-ready specs.",
+        "core_capabilities": "Curate a repository's AGENTS.md (the system-of-truth agent-instructions file) and, when needed, the Copilot per-file rules at .github/instructions/*.instructions.md that AGENTS.md points to. Use when asked to clean up an AGENTS.md, refine agent instructions, reorganize a messy AGENTS.md, lift content out of migrated blocks, standardize an AGENTS.md, add sections to an AGENTS.md, or write a path-specific .instructions.md file for Copilot.",
         "external_requirements_indicator": "unknown",
         "external_requirements": [
           "unknown"
@@ -6286,8 +6116,8 @@
       "path": "engineering-github-ops/SKILL.md",
       "url": null,
       "plugins": [
-        "dev",
-        "tech"
+        "devops",
+        "git"
       ],
       "frontmatter": {
         "name": "engineering-github-ops",
@@ -6375,14 +6205,87 @@
       }
     },
     {
+      "name": "engineering-github-repo-scaffolder",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "engineering-github-repo-scaffolder/SKILL.md",
+      "url": null,
+      "plugins": [
+        "git"
+      ],
+      "frontmatter": {
+        "name": "engineering-github-repo-scaffolder",
+        "disable_model_invocation": false,
+        "description": "Engineering repository scaffolding and alignment skill for minimal starter shells, structure audits, and existing-project migrations. Use when a user wants a new repo baseline, a repository brought back to standard, or a reorganization plan for docs, automation, source, and agent assets.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "2.6.0",
+          "triggers": "create starter shell, bootstrap project structure, apply project structure, align existing repository, audit repository layout, migrate repo to standard, reorganize repository, update scaffold artifacts",
+          "role": "repo-scaffolder",
+          "scope": "design",
+          "output_format": "plan",
+          "related_skills": "skill-architect"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": true,
+        "has_license_file": false,
+        "file_count": 27,
+        "estimated_tokens": 4399,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "medium",
+          "findings": [
+            "References credentials/secrets",
+            "Uses install commands"
+          ],
+          "rationale": "Evaluated from scanner signals."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Engineering repository scaffolding and alignment skill for minimal starter shells, structure audits, and existing-project migrations. Use when a user wants a new repo baseline, a repository brought back to standard, or a reorganization plan for docs, automation, source, and agent assets.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "bash",
+          "powershell"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "name": "engineering-github-repo-standards",
       "disable_model_invocation": true,
       "source_id": "source-1",
       "path": "engineering-github-repo-standards/SKILL.md",
       "url": null,
       "plugins": [
-        "dev",
-        "tech"
+        "devops",
+        "git"
       ],
       "frontmatter": {
         "name": "engineering-github-repo-standards",
@@ -6458,105 +6361,13 @@
       }
     },
     {
-      "name": "engineering-legacy-modernizer",
-      "disable_model_invocation": false,
-      "source_id": "source-1",
-      "path": "engineering-legacy-modernizer/SKILL.md",
-      "url": null,
-      "plugins": [
-        "tech"
-      ],
-      "frontmatter": {
-        "name": "engineering-legacy-modernizer",
-        "disable_model_invocation": false,
-        "description": "Use when modernizing legacy systems, planning or implementing incremental migration strategies, or reducing technical debt. Invoke for strangler fig pattern, monolith decomposition, framework upgrades, and legacy refactoring safety nets.",
-        "license": "MIT",
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "1.1.0",
-          "triggers": "legacy modernization, strangler fig, incremental migration, technical debt, legacy refactoring, system migration, legacy system, modernize codebase",
-          "role": "specialist",
-          "scope": "design-and-implementation",
-          "output_format": "plan+code",
-          "related_skills": "tech-spec-miner, engineering-quality-tdd, devops-infra-engineer"
-        }
-      },
-      "structure": {
-        "has_scripts": false,
-        "has_references": true,
-        "has_agents": false,
-        "has_assets": false,
-        "has_license_file": false,
-        "file_count": 6,
-        "estimated_tokens": 2706,
-        "complexity_class": "comprehensive",
-        "skill_pattern": "A"
-      },
-      "evaluation": {
-        "name": "engineering-legacy-modernizer",
-        "usage_value": {
-          "score": 4,
-          "rationale": "Domain-specific skill with clear purpose.",
-          "sub_scores": {
-            "problem_clarity": 5,
-            "audience_breadth": 3,
-            "capability_gap": 3,
-            "actionability": 4,
-            "reusability": 3
-          },
-          "weighted_score": 3.7,
-          "domain_calibration_bonus": 0,
-          "method_version": "weighted-v2"
-        },
-        "security_risk": {
-          "rating": "low",
-          "rationale": "No obvious credential handling or risky execution patterns detected.",
-          "findings": [],
-          "sub_scores": {
-            "data_privacy": 5,
-            "prompt_injection": 5,
-            "illegal_content": 5,
-            "bias": 5,
-            "system_integrity": 5,
-            "untrusted_communication": 5
-          }
-        },
-        "executability": {
-          "score": 3,
-          "completeness": 4,
-          "determinism": 3,
-          "consistency": 4,
-          "usability": 4,
-          "rationale": "Workflow is well-structured with clear guidance."
-        },
-        "invocability": {
-          "score": 3,
-          "rationale": "Name and triggers clearly signal skill purpose."
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Provides generalizable patterns."
-        },
-        "core_capabilities": "Use when modernizing legacy systems, planning or implementing incremental migration strategies, or reducing technical debt.",
-        "external_requirements_indicator": "self-contained",
-        "external_requirements": [
-          "none"
-        ],
-        "script_languages": [
-          "none"
-        ],
-        "license": "MIT"
-      }
-    },
-    {
       "name": "engineering-quality-code-simplifier",
       "disable_model_invocation": false,
       "source_id": "source-1",
       "path": "engineering-quality-code-simplifier/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
         "name": "engineering-quality-code-simplifier",
@@ -6648,7 +6459,7 @@
       "path": "engineering-quality-critique-panel/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
         "name": "engineering-quality-critique-panel",
@@ -6717,7 +6528,7 @@
       "path": "engineering-quality-receiving-review/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
         "name": "engineering-quality-receiving-review",
@@ -6809,7 +6620,7 @@
       "path": "engineering-quality-requesting-review/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
         "name": "engineering-quality-requesting-review",
@@ -6901,7 +6712,7 @@
       "path": "engineering-quality-tdd/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "engineering"
       ],
       "frontmatter": {
         "name": "engineering-quality-tdd",
@@ -6984,79 +6795,6 @@
           "none"
         ],
         "license": "unspecified"
-      }
-    },
-    {
-      "name": "engineering-repo-scaffolder",
-      "disable_model_invocation": false,
-      "source_id": "source-1",
-      "path": "engineering-repo-scaffolder/SKILL.md",
-      "url": null,
-      "plugins": [
-        "dev"
-      ],
-      "frontmatter": {
-        "name": "engineering-repo-scaffolder",
-        "disable_model_invocation": false,
-        "description": "Engineering repository scaffolding and alignment skill for minimal starter shells, structure audits, and existing-project migrations. Use when a user wants a new repo baseline, a repository brought back to standard, or a reorganization plan for docs, automation, source, and agent assets.",
-        "license": "MIT",
-        "compatibility": null,
-        "allowed_tools": null,
-        "metadata": {
-          "version": "2.6.0",
-          "triggers": "create starter shell, bootstrap project structure, apply project structure, align existing repository, audit repository layout, migrate repo to standard, reorganize repository, update scaffold artifacts",
-          "role": "repo-scaffolder",
-          "scope": "design",
-          "output_format": "plan",
-          "related_skills": "skill-architect"
-        }
-      },
-      "structure": {
-        "has_scripts": true,
-        "has_references": true,
-        "has_agents": false,
-        "has_assets": true,
-        "has_license_file": false,
-        "file_count": 26,
-        "estimated_tokens": 4397,
-        "complexity_class": "comprehensive",
-        "skill_pattern": "B"
-      },
-      "evaluation": {
-        "usage_value": {
-          "score": 0,
-          "rationale": "Not evaluated"
-        },
-        "security_risk": {
-          "rating": "medium",
-          "findings": [
-            "References credentials/secrets",
-            "Uses install commands"
-          ],
-          "rationale": "Evaluated from scanner signals."
-        },
-        "executability": {
-          "score": 0,
-          "rationale": "Not evaluated"
-        },
-        "invocability": {
-          "score": 0,
-          "rationale": "Not evaluated"
-        },
-        "over_specification_risk": {
-          "flagged": false,
-          "rationale": "Not evaluated"
-        },
-        "core_capabilities": "Engineering repository scaffolding and alignment skill for minimal starter shells, structure audits, and existing-project migrations. Use when a user wants a new repo baseline, a repository brought back to standard, or a reorganization plan for docs, automation, source, and agent assets.",
-        "external_requirements_indicator": "unknown",
-        "external_requirements": [
-          "unknown"
-        ],
-        "script_languages": [
-          "bash",
-          "powershell"
-        ],
-        "license": "MIT"
       }
     },
     {
@@ -7298,7 +7036,7 @@
       "path": "legal-compliance-regulatory-monitor/SKILL.md",
       "url": null,
       "plugins": [
-        "strategy"
+        "research"
       ],
       "frontmatter": {
         "name": "legal-compliance-regulatory-monitor",
@@ -7323,7 +7061,7 @@
         "has_assets": false,
         "has_license_file": false,
         "file_count": 14,
-        "estimated_tokens": 2022,
+        "estimated_tokens": 2035,
         "complexity_class": "comprehensive",
         "skill_pattern": "A"
       },
@@ -7379,6 +7117,144 @@
         ],
         "script_languages": [
           "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "marketing-analytics-campaign-attribution",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "marketing-analytics-campaign-attribution/SKILL.md",
+      "url": null,
+      "plugins": [
+        "marketing"
+      ],
+      "frontmatter": {
+        "name": "marketing-analytics-campaign-attribution",
+        "disable_model_invocation": false,
+        "description": "Credits channels for conversions from journey data, finds funnel drop-off, and computes ROI, ROAS, and CPA with offline Python scripts. Use for \"which channel gets credit\", \"compare attribution models\", \"where do we lose people in the funnel\", \"is this campaign profitable\", \"calculate ROAS\".",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "triggers": "run first-touch versus last-touch, split revenue credit across touchpoints, find the funnel bottleneck, rank campaigns by CPA, compare segment funnels, reallocate channel budget, work out blended CAC, benchmark CTR and CPC, set time-decay half-life",
+          "role": "analyst",
+          "scope": "analysis",
+          "output_format": "report",
+          "related_skills": "marketing-seo-analytics-tracking-plan, marketing-analytics-social-performance, data-analysis-kpi-reporting, data-analysis-statistical-methods"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": true,
+        "has_license_file": false,
+        "file_count": 16,
+        "estimated_tokens": 4041,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Credits channels for conversions from journey data, finds funnel drop-off, and computes ROI, ROAS, and CPA with offline Python scripts. Use for \"which channel gets credit\", \"compare attribution models\", \"where do we lose people in the funnel\", \"is this campaign profitable\", \"calculate ROAS\".",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "python"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "marketing-analytics-social-performance",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "marketing-analytics-social-performance/SKILL.md",
+      "url": null,
+      "plugins": [
+        "marketing"
+      ],
+      "frontmatter": {
+        "name": "marketing-analytics-social-performance",
+        "disable_model_invocation": false,
+        "description": "Stress-test your own social post data before you act on it: robust medians, a permutation null, multiple-comparisons correction, and power sizing for any platform''s export. Use when asked to \"analyze my post performance\", \"do videos really work better for me\", \"why did my reach drop\", \"is this pattern real\", or \"how many posts do I need to test this\". Own exports only.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "triggers": "find which format works for me, check whether a result is just noise, compare my posts before and after a change, plan a posting experiment, size an A/B test for posts, set up an outcome log, review my engagement rate, profile my post export",
+          "role": "analyst",
+          "scope": "analysis",
+          "output_format": "report",
+          "related_skills": "data-analysis-statistical-methods, data-analysis-kpi-reporting, marketing-content-linkedin-writer, marketing-seo-analytics-tracking-plan"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": true,
+        "has_license_file": false,
+        "file_count": 9,
+        "estimated_tokens": 1766,
+        "complexity_class": "detailed",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Stress-test your own social post data before you act on it: robust medians, a permutation null, multiple-comparisons correction, and power sizing for any platform''s export. Use when asked to \"analyze my post performance\", \"do videos really work better for me\", \"why did my reach drop\", \"is this pattern real\", or \"how many posts do I need to test this\". Own exports only.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "python"
         ],
         "license": "MIT"
       }
@@ -7855,7 +7731,7 @@
       "frontmatter": {
         "name": "marketing-content-brand-copywriter",
         "disable_model_invocation": false,
-        "description": "Writes marketing copy using proven copywriting frameworks. Use when user needs copy for ads (Facebook, Instagram, TikTok, YouTube), landing pages, sales pages, email sequences, LinkedIn posts, product descriptions, or any marketing content.",
+        "description": "Writes marketing copy with proven frameworks, or edits an existing draft through seven ordered sweeps. Use for ads, landing pages, sales pages, email sequences, LinkedIn posts, or when asked to \"edit this copy\", \"review my copy\", \"polish this draft\", or \"give copy feedback\".",
         "license": null,
         "compatibility": null,
         "allowed_tools": null,
@@ -7874,8 +7750,8 @@
         "has_agents": false,
         "has_assets": false,
         "has_license_file": false,
-        "file_count": 4,
-        "estimated_tokens": 1430,
+        "file_count": 6,
+        "estimated_tokens": 2057,
         "complexity_class": "comprehensive",
         "skill_pattern": "A"
       },
@@ -8503,7 +8379,7 @@
       "frontmatter": {
         "name": "marketing-seo-adsense-readiness",
         "disable_model_invocation": false,
-        "description": "Analyze websites and projects for Google AdSense compliance and readiness. Use when asked to check AdSense eligibility, audit a site for Google Ads, verify publisher policy compliance, prepare a site for monetization, or fix AdSense policy violations. Covers content quality, ad placement, privacy requirements, and technical standards.",
+        "description": "Analyze websites and projects for Google AdSense compliance and readiness, in two modes - a source-code audit of a project, or a live-site review of a URL that mimics Google's approval process. Use when asked to check AdSense eligibility, audit a site for Google Ads, verify publisher policy compliance, prepare a site for monetization, fix AdSense policy violations, diagnose an AdSense rejection (especially \"low value content\"), or prepare a resubmission. Covers content quality, ad placement, privacy requirements, and technical standards.",
         "license": null,
         "compatibility": null,
         "allowed_tools": null,
@@ -8522,8 +8398,8 @@
         "has_agents": false,
         "has_assets": false,
         "has_license_file": false,
-        "file_count": 7,
-        "estimated_tokens": 1427,
+        "file_count": 10,
+        "estimated_tokens": 2736,
         "complexity_class": "comprehensive",
         "skill_pattern": "A"
       },
@@ -8586,97 +8462,143 @@
       }
     },
     {
-      "name": "marketing-seo-adsense-review",
-      "disable_model_invocation": true,
+      "name": "marketing-seo-analytics-tracking-plan",
+      "disable_model_invocation": false,
       "source_id": "source-1",
-      "path": "marketing-seo-adsense-review/SKILL.md",
+      "path": "marketing-seo-analytics-tracking-plan/SKILL.md",
       "url": null,
       "plugins": [
         "marketing"
       ],
       "frontmatter": {
-        "name": "marketing-seo-adsense-review",
-        "disable_model_invocation": true,
-        "description": "Perform a comprehensive live-site review mimicking the Google AdSense approval process. Use when a site has been rejected by AdSense (especially for \"low value content\"), when preparing to submit/resubmit a site for AdSense approval, or when diagnosing why a site keeps getting flagged. Requires a URL. Crawls the live site and evaluates it against every criterion Google reviewers check: content quality/depth/originality, navigation/UX, technical compliance, privacy policy, ads.txt, Better Ads Standards, and more.",
-        "license": null,
+        "name": "marketing-seo-analytics-tracking-plan",
+        "disable_model_invocation": false,
+        "description": "Writes a tracking plan and debugs GA4, Google Tag Manager, and Plausible setups: event names, key events or goals, GTM tags, missing or double-counted hits. Use for \"write a tracking plan\", \"set up GA4 events\", \"GTM tag not firing\", \"events missing in GA4\", \"set up Plausible goals\".",
+        "license": "MIT",
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": null,
-          "triggers": null,
-          "role": null,
-          "scope": null,
-          "output_format": null,
-          "related_skills": null
+          "version": "1.0.0",
+          "triggers": "draft event taxonomy, set up GTM data layer, mark GA4 key events, fix duplicate GA4 hits, audit analytics setup, track Plausible custom events, add Plausible custom properties, configure consent mode",
+          "role": "specialist",
+          "scope": "implementation",
+          "output_format": "specification",
+          "related_skills": "marketing-seo-cro, data-analysis-kpi-designer, data-analysis-kpi-reporting"
         }
       },
       "structure": {
-        "has_scripts": false,
+        "has_scripts": true,
         "has_references": true,
         "has_agents": false,
         "has_assets": false,
         "has_license_file": false,
-        "file_count": 5,
-        "estimated_tokens": 1779,
-        "complexity_class": "comprehensive",
-        "skill_pattern": "A"
+        "file_count": 7,
+        "estimated_tokens": 1413,
+        "complexity_class": "detailed",
+        "skill_pattern": "B"
       },
       "evaluation": {
-        "name": "marketing-seo-adsense-review",
         "usage_value": {
-          "score": 4,
-          "rationale": "Domain-specific skill with clear purpose.",
-          "sub_scores": {
-            "problem_clarity": 5,
-            "audience_breadth": 3,
-            "capability_gap": 4,
-            "actionability": 4,
-            "reusability": 3
-          },
-          "weighted_score": 3.95,
-          "domain_calibration_bonus": 0.3,
-          "method_version": "weighted-v2"
+          "score": 0,
+          "rationale": "Not evaluated"
         },
         "security_risk": {
-          "rating": "medium",
-          "rationale": "Evaluated from scanner signals.",
-          "findings": [
-            "References credentials/secrets"
-          ],
-          "sub_scores": {
-            "data_privacy": 3,
-            "prompt_injection": 5,
-            "illegal_content": 5,
-            "bias": 5,
-            "system_integrity": 5,
-            "untrusted_communication": 5
-          }
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
         },
         "executability": {
-          "score": 3,
-          "completeness": 4,
-          "determinism": 3,
-          "consistency": 4,
-          "usability": 4,
-          "rationale": "Workflow is well-structured with clear guidance."
+          "score": 0,
+          "rationale": "Not evaluated"
         },
         "invocability": {
-          "score": 2,
-          "rationale": "Name and triggers clearly signal skill purpose."
+          "score": 0,
+          "rationale": "Not evaluated"
         },
         "over_specification_risk": {
           "flagged": false,
-          "rationale": "Provides generalizable patterns."
+          "rationale": "Not evaluated"
         },
-        "core_capabilities": "Perform a comprehensive live-site review mimicking the Google AdSense approval process.",
-        "external_requirements_indicator": "has-external-dependencies",
+        "core_capabilities": "Writes a tracking plan and debugs GA4, Google Tag Manager, and Plausible setups: event names, key events or goals, GTM tags, missing or double-counted hits. Use for \"write a tracking plan\", \"set up GA4 events\", \"GTM tag not firing\", \"events missing in GA4\", \"set up Plausible goals\".",
+        "external_requirements_indicator": "unknown",
         "external_requirements": [
-          "none"
+          "unknown"
         ],
         "script_languages": [
-          "none"
+          "python"
         ],
-        "license": "unspecified"
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "marketing-seo-audit",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "marketing-seo-audit/SKILL.md",
+      "url": null,
+      "plugins": [
+        "marketing"
+      ],
+      "frontmatter": {
+        "name": "marketing-seo-audit",
+        "disable_model_invocation": false,
+        "description": "Audit a website''s general search health end to end: crawl, indexation, Core Web Vitals, on-page, E-E-A-T, and URL or internal-link structure, scored 0-100 with a prioritized fix plan. Use when asked to \"audit my SEO\", \"why am I not ranking\", \"check my site''s technical SEO\", \"find orphan pages\", or \"review my URL structure\". Not for AdSense approval.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "triggers": "score my site's SEO health, check my sitemap, fix my internal linking, diagnose an organic traffic drop, plan a site restructure, review title tags and meta descriptions, triage Core Web Vitals, run a pre-migration SEO check",
+          "role": "analyst",
+          "scope": "analysis",
+          "output_format": "report",
+          "related_skills": "marketing-seo-structured-data, marketing-seo-cro, marketing-seo-adsense-readiness, design-application-sitemap"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 11,
+        "estimated_tokens": 1751,
+        "complexity_class": "detailed",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "medium",
+          "findings": [
+            "Makes outbound network calls"
+          ],
+          "rationale": "Evaluated from scanner signals."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Audit a website''s general search health end to end: crawl, indexation, Core Web Vitals, on-page, E-E-A-T, and URL or internal-link structure, scored 0-100 with a prioritized fix plan. Use when asked to \"audit my SEO\", \"why am I not ranking\", \"check my site''s technical SEO\", \"find orphan pages\", or \"review my URL structure\". Not for AdSense approval.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "python"
+        ],
+        "license": "MIT"
       }
     },
     {
@@ -8793,7 +8715,7 @@
           "role": "seo-engineer",
           "scope": "audit-generate-validate",
           "output_format": "report+code",
-          "related_skills": "marketing-seo-cro, content-meta-design, marketing-seo-adsense-review, engineering-data-scraper"
+          "related_skills": "marketing-seo-cro, content-meta-design, marketing-seo-adsense-readiness, engineering-dev-data-scraper"
         }
       },
       "structure": {
@@ -8847,7 +8769,7 @@
       "path": "ops-process-sop-creator/SKILL.md",
       "url": null,
       "plugins": [
-        "ops"
+        "workplace"
       ],
       "frontmatter": {
         "name": "ops-process-sop-creator",
@@ -8939,7 +8861,7 @@
       "path": "people-comms-announce-organizational/SKILL.md",
       "url": null,
       "plugins": [
-        "comms"
+        "workplace"
       ],
       "frontmatter": {
         "name": "people-comms-announce-organizational",
@@ -9031,7 +8953,7 @@
       "path": "people-comms-engage-internal-community/SKILL.md",
       "url": null,
       "plugins": [
-        "comms"
+        "workplace"
       ],
       "frontmatter": {
         "name": "people-comms-engage-internal-community",
@@ -9123,7 +9045,7 @@
       "path": "personal-design-meeting-background/SKILL.md",
       "url": null,
       "plugins": [
-        "design"
+        "workplace"
       ],
       "frontmatter": {
         "name": "personal-design-meeting-background",
@@ -9362,6 +9284,144 @@
         "external_requirements_indicator": "self-contained",
         "external_requirements": [
           "none"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "product-spec-clarify-requirements",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "product-spec-clarify-requirements/SKILL.md",
+      "url": null,
+      "plugins": [
+        "product"
+      ],
+      "frontmatter": {
+        "name": "product-spec-clarify-requirements",
+        "disable_model_invocation": false,
+        "description": "Ask the smallest set of clarifying questions before starting work when a request has multiple plausible readings or missing key details, so you avoid building the wrong thing. Use when a task is ambiguous and you catch yourself about to \"just start coding\", when \"the requirements are unclear\", or when there are \"several ways to interpret this\" and picking wrong is costly.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "triggers": "request is ambiguous, unclear what to build, multiple interpretations possible, confirm scope before coding, what does done mean here, ask before implementing, requirements are vague",
+          "role": "developer",
+          "scope": "intake",
+          "output_format": null,
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": false,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 1,
+        "estimated_tokens": 146,
+        "complexity_class": "compact",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Ask the smallest set of clarifying questions before starting work when a request has multiple plausible readings or missing key details, so you avoid building the wrong thing. Use when a task is ambiguous and you catch yourself about to \"just start coding\", when \"the requirements are unclear\", or when there are \"several ways to interpret this\" and picking wrong is costly.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "none"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
+      "name": "product-spec-feature-forge",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "product-spec-feature-forge/SKILL.md",
+      "url": null,
+      "plugins": [
+        "product"
+      ],
+      "frontmatter": {
+        "name": "product-spec-feature-forge",
+        "disable_model_invocation": false,
+        "description": "Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements workshops, user stories, EARS requirements, acceptance criteria, and implementation-ready specs.",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.1.0",
+          "triggers": "feature definition, requirements gathering, requirements workshop, specification writing, user stories, EARS, acceptance criteria, implementation planning",
+          "role": "specialist",
+          "scope": "design",
+          "output_format": "document",
+          "related_skills": null
+        }
+      },
+      "structure": {
+        "has_scripts": false,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": false,
+        "has_license_file": false,
+        "file_count": 6,
+        "estimated_tokens": 783,
+        "complexity_class": "detailed",
+        "skill_pattern": "A"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Use when defining new features, gathering requirements, or writing specifications. Invoke for feature definition, requirements workshops, user stories, EARS requirements, acceptance criteria, and implementation-ready specs.",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
         ],
         "script_languages": [
           "none"
@@ -9997,7 +10057,7 @@
       "path": "productivity-daily-meeting-notes/SKILL.md",
       "url": null,
       "plugins": [
-        "ops"
+        "workplace"
       ],
       "frontmatter": {
         "name": "productivity-daily-meeting-notes",
@@ -10825,7 +10885,7 @@
       "frontmatter": {
         "name": "research-market-researcher",
         "disable_model_invocation": false,
-        "description": "Produce decision-ready market research with explicit assumptions, sizing logic, diligence, and recommendation-oriented synthesis. Use when asked to \"size a market\", \"compare competitors\", \"evaluate an investor\", \"research a vendor\", \"assess industry trends\", or pressure-test a business thesis rather than summarize headlines or score strategic signals.",
+        "description": "Produce decision-ready market research with triangulated TAM/SAM/SOM, per-segment survey sample plans, and gated target segments, plus competitor, investor, and vendor diligence. Use when asked to \"size a market\", \"plan a survey sample\", \"pick target segments\", \"compare competitors\", or \"evaluate an investor\".",
         "license": "MIT",
         "compatibility": null,
         "allowed_tools": null,
@@ -10839,13 +10899,13 @@
         }
       },
       "structure": {
-        "has_scripts": false,
-        "has_references": false,
+        "has_scripts": true,
+        "has_references": true,
         "has_agents": false,
-        "has_assets": false,
+        "has_assets": true,
         "has_license_file": false,
-        "file_count": 1,
-        "estimated_tokens": 310,
+        "file_count": 10,
+        "estimated_tokens": 1435,
         "complexity_class": "compact",
         "skill_pattern": "A"
       },
@@ -10900,7 +10960,7 @@
           "none"
         ],
         "script_languages": [
-          "none"
+          "python"
         ],
         "license": "MIT"
       }
@@ -10998,13 +11058,82 @@
       }
     },
     {
+      "name": "sales-customer-success",
+      "disable_model_invocation": false,
+      "source_id": "source-1",
+      "path": "sales-customer-success/SKILL.md",
+      "url": null,
+      "plugins": [
+        "sales"
+      ],
+      "frontmatter": {
+        "name": "sales-customer-success",
+        "disable_model_invocation": false,
+        "description": "Score post-sale customer health, churn risk, and expansion with weighted scorers, segment thresholds, and calibration on your churn history. Use when asked to \"score customer health\", \"which accounts will churn\", \"calibrate our health score\", \"decompose NRR vs GRR\", or \"how many CSMs do we need\".",
+        "license": "MIT",
+        "compatibility": null,
+        "allowed_tools": null,
+        "metadata": {
+          "version": "1.0.0",
+          "triggers": "flag at-risk accounts, rank accounts by health trend, find expansion in existing customers, size customer success team, tier customers for CS coverage, prepare quarterly business review, write customer success plan, build renewal save plan, find top churn causes",
+          "role": "customer-success-analyst",
+          "scope": "analysis",
+          "output_format": "report",
+          "related_skills": "sales-pipeline-revops, data-analysis-kpi-designer, strategy-planning-pricing, content-copy-executive-writing"
+        }
+      },
+      "structure": {
+        "has_scripts": true,
+        "has_references": true,
+        "has_agents": false,
+        "has_assets": true,
+        "has_license_file": false,
+        "file_count": 29,
+        "estimated_tokens": 8009,
+        "complexity_class": "comprehensive",
+        "skill_pattern": "B"
+      },
+      "evaluation": {
+        "usage_value": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "security_risk": {
+          "rating": "low",
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
+        },
+        "executability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "invocability": {
+          "score": 0,
+          "rationale": "Not evaluated"
+        },
+        "over_specification_risk": {
+          "flagged": false,
+          "rationale": "Not evaluated"
+        },
+        "core_capabilities": "Score post-sale customer health, churn risk, and expansion with weighted scorers, segment thresholds, and calibration on your churn history. Use when asked to \"score customer health\", \"which accounts will churn\", \"calibrate our health score\", \"decompose NRR vs GRR\", or \"how many CSMs do we need\".",
+        "external_requirements_indicator": "unknown",
+        "external_requirements": [
+          "unknown"
+        ],
+        "script_languages": [
+          "python"
+        ],
+        "license": "MIT"
+      }
+    },
+    {
       "name": "sales-outreach-specialist",
       "disable_model_invocation": false,
       "source_id": "source-1",
       "path": "sales-outreach-specialist/SKILL.md",
       "url": null,
       "plugins": [
-        "marketing"
+        "sales"
       ],
       "frontmatter": {
         "name": "sales-outreach-specialist",
@@ -11096,7 +11225,7 @@
       "path": "sales-pipeline-revops/SKILL.md",
       "url": null,
       "plugins": [
-        "marketing"
+        "sales"
       ],
       "frontmatter": {
         "name": "sales-pipeline-revops",
@@ -11188,7 +11317,7 @@
       "path": "skill-architect/SKILL.md",
       "url": null,
       "plugins": [
-        "skills"
+        "agent-tools"
       ],
       "frontmatter": {
         "name": "skill-architect",
@@ -11259,7 +11388,7 @@
       "path": "skill-evaluator/SKILL.md",
       "url": null,
       "plugins": [
-        "skills"
+        "agent-tools"
       ],
       "frontmatter": {
         "name": "skill-evaluator",
@@ -11328,7 +11457,7 @@
       "path": "skill-evaluator-catalog-builder/SKILL.md",
       "url": null,
       "plugins": [
-        "skills"
+        "agent-tools"
       ],
       "frontmatter": {
         "name": "skill-evaluator-catalog-builder",
@@ -11401,22 +11530,22 @@
       "path": "skill-reinterpreter/SKILL.md",
       "url": null,
       "plugins": [
-        "skills"
+        "agent-tools"
       ],
       "frontmatter": {
         "name": "skill-reinterpreter",
         "disable_model_invocation": true,
-        "description": "Rebuild an existing Agent Skill from scratch in a new folder while preserving intent and outcomes, then delete the original. Use when asked to \"reinterpret a skill\", \"clone and improve a skill\", \"rebuild a skill from scratch\", \"refresh a skill with current best practices\", or \"replace a skill with a new version\". Distinct from skill-architect (which edits in place) and skill-evaluator (which tests) — this skill creates a new folder, fully rewrites every file including references and scripts, then removes the source.",
+        "description": "Reinterpret a local or remote skill into this repo, either by merging the ideas that fit into an existing skill or by creating a new skill inspired by it. Use when asked to \"reinterpret a skill\", \"merge this skill into my existing one\", \"port ideas from this skill\", or \"create a skill inspired by this GitHub skill\". Not skill-architect (edits one skill in place) or skill-evaluator (tests).",
         "license": "MIT",
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": "1.2.0",
-          "triggers": "reinterpret skill, rebuild skill from scratch, clone and improve skill, replace skill with new version, refresh skill with best practices, delete original skill after rewrite",
+          "version": "1.4.0",
+          "triggers": "reinterpret skill, merge skill into existing skill, port skill from GitHub, create skill inspired by another skill, rebuild skill from scratch, clone and improve skill, refresh skill with best practices",
           "role": "architect",
           "scope": "design",
           "output_format": "specification",
-          "related_skills": "skill-architect, content-copy-caveman"
+          "related_skills": "skill-architect, content-copy-clear-writing"
         }
       },
       "structure": {
@@ -11426,7 +11555,7 @@
         "has_assets": false,
         "has_license_file": false,
         "file_count": 2,
-        "estimated_tokens": 409,
+        "estimated_tokens": 348,
         "complexity_class": "compact",
         "skill_pattern": "A"
       },
@@ -12316,27 +12445,27 @@
       "frontmatter": {
         "name": "strategy-planning-opportunity",
         "disable_model_invocation": false,
-        "description": "Assess one business or startup opportunity with VC-style but scale-aware judgment, producing a scored pursue/pivot/kill decision, financial sketch, and adjacent alternatives. Use when asked to \"evaluate this idea\", \"score an opportunity\", \"should I launch this\", \"assess my startup idea\", or \"prioritize this venture\".",
+        "description": "Assess one business or startup opportunity and return a gated pursue/pivot/kill decision: weighted score, veto gates a high average cannot buy past, named tensions, and the cheapest test for the riskiest assumption. Use when asked to \"evaluate this idea\", \"should I launch this\", \"roast my startup idea\", \"score an opportunity\", or \"kill or keep this project\".",
         "license": "MIT",
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": "1.0.0",
-          "triggers": "rate business concept, judge venture potential, analyze idea economics, decide grow pivot kill, rank startup backlog, review side project, assess microbusiness potential, compare opportunity options",
+          "version": "1.1.0",
+          "triggers": "rate business concept, judge venture potential, analyze idea economics, stress-test a business idea, find the riskiest assumption, design a cheapest validation test, rank startup backlog, review side project, assess microbusiness potential, compare opportunity options",
           "role": "analyst",
           "scope": "analysis",
           "output_format": "report",
-          "related_skills": "research-market-opportunity, research-market-researcher, strategy-planning-startup, product-strategy-validator, data-analysis-business-performance"
+          "related_skills": "research-market-opportunity, research-market-researcher, strategy-planning-startup, product-strategy-validator, data-analysis-business-performance, design-research-lean-ux"
         }
       },
       "structure": {
-        "has_scripts": false,
+        "has_scripts": true,
         "has_references": true,
         "has_agents": false,
-        "has_assets": false,
+        "has_assets": true,
         "has_license_file": false,
-        "file_count": 4,
-        "estimated_tokens": 542,
+        "file_count": 9,
+        "estimated_tokens": 1497,
         "complexity_class": "compact",
         "skill_pattern": "A"
       },
@@ -12378,7 +12507,7 @@
           "unknown"
         ],
         "script_languages": [
-          "none"
+          "python"
         ],
         "license": "MIT"
       }
@@ -12395,27 +12524,27 @@
       "frontmatter": {
         "name": "strategy-planning-pricing",
         "disable_model_invocation": false,
-        "description": "Builds comprehensive pricing strategies by reading business context and asking targeted questions interactively. Use when user needs pricing plans, tier structures, price points, pricing model recommendations, or any pricing-related strategy for their product or service.",
+        "description": "Build justified pricing from business context — value metric, model fit, tiers, survey-tested price ranges, and price-increase plans — backed by a revenue modeler and Van Westendorp WTP analysis. Use when asked to \"price my product\", \"design pricing tiers\", \"plan a price increase\", \"analyze our willingness-to-pay survey\", or \"pick a value metric\".",
         "license": "MIT",
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": "1.0.0",
-          "triggers": "pricing strategy, pricing plan, price points, tier structure, pricing model, subscription pricing, freemium pricing, SaaS pricing, B2B pricing, B2C pricing, pricing tiers, price my product, how to price, pricing recommendation",
+          "version": "2.1.0",
+          "triggers": "choose per seat or usage pricing, model revenue at a new price, grandfather existing customers, run a Van Westendorp survey, set an annual discount, structure freemium tiers, price an enterprise plan, read trial conversion for pricing, find packaging mistakes in our tiers, score which pricing model fits",
           "role": "pricing-strategist",
           "scope": "analysis",
           "output_format": "document",
-          "related_skills": "strategy-planning-startup, marketing-campaign-go-to-market"
+          "related_skills": "strategy-planning-startup, marketing-campaign-go-to-market, marketing-campaign-psychology, marketing-seo-cro, research-market-researcher"
         }
       },
       "structure": {
-        "has_scripts": false,
-        "has_references": false,
+        "has_scripts": true,
+        "has_references": true,
         "has_agents": false,
-        "has_assets": false,
+        "has_assets": true,
         "has_license_file": false,
-        "file_count": 1,
-        "estimated_tokens": 267,
+        "file_count": 12,
+        "estimated_tokens": 2536,
         "complexity_class": "compact",
         "skill_pattern": "A"
       },
@@ -12470,7 +12599,7 @@
           "none"
         ],
         "script_languages": [
-          "none"
+          "python"
         ],
         "license": "MIT"
       }
@@ -12568,16 +12697,16 @@
       }
     },
     {
-      "name": "tech-leader-exec-briefing",
+      "name": "strategy-tech-exec-briefing",
       "disable_model_invocation": false,
       "source_id": "source-1",
-      "path": "tech-leader-exec-briefing/SKILL.md",
+      "path": "strategy-tech-exec-briefing/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "strategy"
       ],
       "frontmatter": {
-        "name": "tech-leader-exec-briefing",
+        "name": "strategy-tech-exec-briefing",
         "disable_model_invocation": false,
         "description": "Prepare targeted written briefings for executives (CEO, CFO, COO, board members) that reframe technology topics in terms of business impact, cost, and risk — decision-ready, no jargon. Writes from the perspective of a senior technology executive (CIO/CTO). Use when asked to write an executive briefing, prepare a leadership update, brief the CEO/CFO/COO on a technology topic, or communicate a technology issue or decision to senior business leaders.",
         "license": null,
@@ -12610,8 +12739,8 @@
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "No obvious credential handling or risky execution patterns detected.",
-          "findings": []
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
         },
         "executability": {
           "score": 0,
@@ -12637,16 +12766,16 @@
       }
     },
     {
-      "name": "tech-leader-roadmap-narrator",
+      "name": "strategy-tech-roadmap-narrator",
       "disable_model_invocation": false,
       "source_id": "source-1",
-      "path": "tech-leader-roadmap-narrator/SKILL.md",
+      "path": "strategy-tech-roadmap-narrator/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "strategy"
       ],
       "frontmatter": {
-        "name": "tech-leader-roadmap-narrator",
+        "name": "strategy-tech-roadmap-narrator",
         "disable_model_invocation": false,
         "description": "Translate a technology roadmap into a compelling, business-language strategic narrative that explains sequencing, tradeoffs, and value delivery over time. Helps the user refine roadmap structure — goals, milestones, dependencies, and outcomes — before narrating it. Writes from the perspective of a senior technology executive (CIO/CTO). Use when asked to tell the roadmap story, write a roadmap narrative, explain a technology roadmap to executives, articulate a technology strategy timeline, or turn roadmap artifacts into leadership-ready written communication.",
         "license": null,
@@ -12679,8 +12808,8 @@
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "No obvious credential handling or risky execution patterns detected.",
-          "findings": []
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
         },
         "executability": {
           "score": 0,
@@ -12706,16 +12835,16 @@
       }
     },
     {
-      "name": "tech-leader-vision-builder",
+      "name": "strategy-tech-vision-builder",
       "disable_model_invocation": false,
       "source_id": "source-1",
-      "path": "tech-leader-vision-builder/SKILL.md",
+      "path": "strategy-tech-vision-builder/SKILL.md",
       "url": null,
       "plugins": [
-        "tech"
+        "strategy"
       ],
       "frontmatter": {
-        "name": "tech-leader-vision-builder",
+        "name": "strategy-tech-vision-builder",
         "disable_model_invocation": false,
         "description": "Develop a compelling multi-year technology vision narrative aligned to business outcomes — the \"why, where, and how\" of technology strategy written for senior leadership consumption. Helps the user articulate, sharpen, and structure their technology vision through guided questioning before narrating it. Writes from the perspective of a senior technology executive (CIO/CTO). Use when asked to write a technology vision, articulate a technology strategy, build a vision statement, create a strategic technology narrative, define a technology direction, or communicate where the technology organization is heading and why.",
         "license": null,
@@ -12748,8 +12877,8 @@
         },
         "security_risk": {
           "rating": "low",
-          "rationale": "No obvious credential handling or risky execution patterns detected.",
-          "findings": []
+          "findings": [],
+          "rationale": "No obvious credential handling or risky execution patterns detected."
         },
         "executability": {
           "score": 0,

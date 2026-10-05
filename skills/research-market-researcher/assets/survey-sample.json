@@ -1,0 +1,13 @@
+{
+  "confidence": 0.95,
+  "margin_of_error": 0.04,
+  "segment_margin_of_error": 0.08,
+  "expected_proportion": 0.5,
+  "response_rate": 0.12,
+  "design_effect": 1.2,
+  "segments": [
+    {"name": "10-49 trucks", "population": 29000},
+    {"name": "50-199 trucks", "population": 9800},
+    {"name": "200+ trucks", "population": 2200, "margin_of_error": 0.10}
+  ]
+}

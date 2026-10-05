@@ -1,7 +1,6 @@
 {
   "skills": [
     "content-narrative-story-brief",
-    "legal-compliance-regulatory-monitor",
     "strategy-change-management",
     "strategy-critical-reasoning",
     "strategy-decision",
@@ -14,6 +13,9 @@
     "strategy-outcome-design",
     "strategy-planning-opportunity",
     "strategy-planning-pricing",
-    "strategy-planning-startup"
+    "strategy-planning-startup",
+    "strategy-tech-exec-briefing",
+    "strategy-tech-roadmap-narrator",
+    "strategy-tech-vision-builder"
   ]
 }

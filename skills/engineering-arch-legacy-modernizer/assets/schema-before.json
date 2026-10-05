@@ -1,0 +1,17 @@
+{
+  "tables": {
+    "orders": {
+      "columns": {
+        "id": {"type": "bigint", "nullable": false, "primary_key": true},
+        "customer_email": {"type": "varchar", "length": 120, "nullable": true},
+        "total_cents": {"type": "int", "nullable": false},
+        "legacy_address_blob": {"type": "text", "nullable": true},
+        "status": {"type": "varchar", "length": 20, "nullable": true, "default": "new"}
+      },
+      "indexes": {"idx_orders_status": {"columns": ["status"], "unique": false}}
+    },
+    "coupons": {
+      "columns": {"code": {"type": "varchar", "length": 16, "nullable": false, "primary_key": true}}
+    }
+  }
+}

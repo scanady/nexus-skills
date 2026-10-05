@@ -26,7 +26,7 @@ REQUIRED_SKILL_TERMS = [
     "--project",
     "--upgrade",
     "--skill",
-    "--pack",
+    "--plugin",
     "installed copies",
 ]
 

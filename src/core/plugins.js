@@ -20,6 +20,14 @@ const MANIFEST_REQUIRED = ['$schema', 'name'];
 // plugin.schema.json name pattern, verbatim.
 const NAME_PATTERN = /^(?!.*(?:--|\.\.))[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$/;
 
+// Plugin directories whose manifest name is the directory name, with no `nexus-` prefix.
+const UNPREFIXED_PLUGINS = new Set(['workplace']);
+
+/** The manifest name a plugin directory must carry. */
+function expectedPluginName(dir) {
+  return UNPREFIXED_PLUGINS.has(dir) ? dir : `nexus-${dir}`;
+}
+
 // mcp.schema.json: one entry per transport, each closed, `type` always required.
 const MCP_SERVER_SHAPES = {
   'stdio': { required: ['type', 'command'], allowed: ['type', 'command', 'args', 'env', 'cwd'] },
@@ -128,16 +136,17 @@ function matchSkills(patterns, availableSkills) {
   return [...matched].sort();
 }
 
-/** Resolve the skills named by one or more plugins, for `nxa install --plugin`. */
+/**
+ * Resolve the skills named by one or more plugins, for `nxa install --plugin`.
+ * Unknown plugins contribute nothing; callers that must reject them check
+ * loadPluginPackage first.
+ */
 function resolvePluginSkills(pluginNames, availableSkills, packagesDir = PACKAGES_DIR) {
   const resolved = new Set();
 
   for (const name of pluginNames) {
     const pkg = loadPluginPackage(name, packagesDir);
-    if (!pkg) {
-      console.log(`  ⚠️  Plugin not found: ${name}`);
-      continue;
-    }
+    if (!pkg) continue;
     matchSkills(pkg.patterns, availableSkills).forEach(skill => resolved.add(skill));
   }
 
@@ -151,6 +160,7 @@ module.exports = {
   MANIFEST_KEYS,
   MANIFEST_REQUIRED,
   NAME_PATTERN,
+  expectedPluginName,
   validateMcpServer,
   listPluginNames,
   loadPluginPackage,

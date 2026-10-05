@@ -1,0 +1,65 @@
+{
+  "_note": "Rough practitioner ranges for orientation only. No dataset or publication backs them, and they were not checked against a current source. Replace with your own history before you act on a flag. Each channel list is [low, target, high].",
+  "metrics": {
+    "ctr_pct": {
+      "label": "CTR (%)",
+      "higher_is_better": true,
+      "channels": {
+        "email": [1.0, 2.5, 5.0],
+        "paid_search": [1.5, 3.5, 7.0],
+        "paid_social": [0.5, 1.2, 3.0],
+        "display": [0.05, 0.1, 0.5],
+        "organic_search": [1.5, 3.0, 8.0],
+        "organic_social": [0.5, 1.5, 4.0],
+        "referral": [1.0, 3.0, 6.0],
+        "direct": [2.0, 4.0, 8.0],
+        "default": [0.5, 2.0, 5.0]
+      }
+    },
+    "roas": {
+      "label": "ROAS (x)",
+      "higher_is_better": true,
+      "channels": {
+        "email": [10.0, 36.0, 60.0],
+        "paid_search": [2.0, 4.0, 8.0],
+        "paid_social": [1.5, 3.0, 6.0],
+        "display": [0.5, 1.5, 3.0],
+        "organic_search": [5.0, 10.0, 20.0],
+        "organic_social": [3.0, 6.0, 12.0],
+        "referral": [3.0, 5.0, 10.0],
+        "direct": [4.0, 8.0, 15.0],
+        "default": [2.0, 4.0, 8.0]
+      }
+    },
+    "cpl": {
+      "label": "CPL ($)",
+      "higher_is_better": false,
+      "channels": {
+        "email": [3.0, 10.0, 25.0],
+        "paid_search": [15.0, 35.0, 90.0],
+        "paid_social": [8.0, 20.0, 50.0],
+        "display": [20.0, 50.0, 120.0],
+        "organic_search": [5.0, 20.0, 60.0],
+        "organic_social": [5.0, 25.0, 70.0],
+        "referral": [8.0, 20.0, 60.0],
+        "direct": [5.0, 15.0, 50.0],
+        "default": [10.0, 30.0, 80.0]
+      }
+    },
+    "cpa": {
+      "label": "CPA ($)",
+      "higher_is_better": false,
+      "channels": {
+        "email": [5.0, 15.0, 40.0],
+        "paid_search": [20.0, 50.0, 150.0],
+        "paid_social": [15.0, 40.0, 100.0],
+        "display": [30.0, 75.0, 200.0],
+        "organic_search": [5.0, 20.0, 60.0],
+        "organic_social": [10.0, 30.0, 80.0],
+        "referral": [10.0, 25.0, 70.0],
+        "direct": [5.0, 15.0, 50.0],
+        "default": [15.0, 45.0, 120.0]
+      }
+    }
+  }
+}

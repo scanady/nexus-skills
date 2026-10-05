@@ -1,0 +1,233 @@
+{
+  "report": "churn_risk",
+  "as_of": "2026-05-04",
+  "summary": {
+    "total_customers": 4,
+    "critical_count": 1,
+    "high_count": 1,
+    "medium_count": 0,
+    "low_count": 2,
+    "arr_at_risk": 159000
+  },
+  "customers": [
+    {
+      "customer_id": "C-301",
+      "name": "Tidewater Bakery",
+      "segment": "smb",
+      "arr": 9000,
+      "risk_score": 100.0,
+      "raw_score": 94.6,
+      "tier": "critical",
+      "first_action": "Executive escalation within 48 hours",
+      "urgency_multiplier": 1.35,
+      "days_to_renewal": 47,
+      "signal_scores": {
+        "usage_decline": 83.0,
+        "engagement_drop": 100.0,
+        "support_issues": 98.5,
+        "relationship_signals": 100.0,
+        "commercial_factors": 100.0
+      },
+      "warnings": [
+        {
+          "severity": "critical",
+          "signal": "Logins down 35%"
+        },
+        {
+          "severity": "critical",
+          "signal": "4 meeting cancellations: customer disengaging"
+        },
+        {
+          "severity": "critical",
+          "signal": "Customer silent for 8 days"
+        },
+        {
+          "severity": "critical",
+          "signal": "NPS down 5 points"
+        },
+        {
+          "severity": "critical",
+          "signal": "2 unresolved critical tickets"
+        },
+        {
+          "severity": "critical",
+          "signal": "Competitor named 3 times"
+        },
+        {
+          "severity": "critical",
+          "signal": "Internal champion left the customer"
+        },
+        {
+          "severity": "critical",
+          "signal": "Support satisfaction critical"
+        },
+        {
+          "severity": "high",
+          "signal": "Feature adoption down 20%"
+        },
+        {
+          "severity": "high",
+          "signal": "DAU/MAU fell 0.12"
+        },
+        {
+          "severity": "high",
+          "signal": "3 open escalations"
+        },
+        {
+          "severity": "high",
+          "signal": "Executive sponsor changed"
+        },
+        {
+          "severity": "high",
+          "signal": "Customer raised pricing complaints"
+        },
+        {
+          "severity": "high",
+          "signal": "Customer mentioned budget cuts"
+        },
+        {
+          "severity": "medium",
+          "signal": "Month-to-month contract: low switching cost"
+        }
+      ],
+      "playbook": [
+        "Executive-to-executive call within 48 hours",
+        "Write a save plan with dated value milestones",
+        "Pre-approve concessions or contract restructure",
+        "Assign a rescue team: CSM, solutions engineer, support lead",
+        "Run a daily internal stand-up until stable",
+        "Prepare a competitive defence if a rival is involved"
+      ]
+    },
+    {
+      "customer_id": "A-102",
+      "name": "Harbor Health Group",
+      "segment": "enterprise",
+      "arr": 150000,
+      "risk_score": 63.9,
+      "raw_score": 53.3,
+      "tier": "high",
+      "first_action": "CSM intervention within 1 week",
+      "urgency_multiplier": 1.2,
+      "days_to_renewal": 72,
+      "signal_scores": {
+        "usage_decline": 54.5,
+        "engagement_drop": 57.0,
+        "support_issues": 50.8,
+        "relationship_signals": 57.0,
+        "commercial_factors": 40.0
+      },
+      "warnings": [
+        {
+          "severity": "critical",
+          "signal": "Logins down 22%"
+        },
+        {
+          "severity": "critical",
+          "signal": "Internal champion left the customer"
+        },
+        {
+          "severity": "high",
+          "signal": "2 recent meeting cancellations"
+        },
+        {
+          "severity": "high",
+          "signal": "Customer reply time up to 5 days"
+        },
+        {
+          "severity": "high",
+          "signal": "NPS down 3 points"
+        },
+        {
+          "severity": "high",
+          "signal": "Unresolved critical ticket"
+        },
+        {
+          "severity": "high",
+          "signal": "Customer mentioned budget cuts"
+        },
+        {
+          "severity": "high",
+          "signal": "Support satisfaction declining"
+        },
+        {
+          "severity": "medium",
+          "signal": "Feature adoption down 12%"
+        },
+        {
+          "severity": "medium",
+          "signal": "Open escalation"
+        },
+        {
+          "severity": "medium",
+          "signal": "Competitor named 1 time(s)"
+        }
+      ],
+      "playbook": [
+        "Dedicated CSM call within 1 week (not a routine check-in)",
+        "Root-cause the weakest dimensions",
+        "Build a 30-day recovery plan with weekly checkpoints",
+        "Re-engage the executive sponsor",
+        "Fast-track open bugs and feature requests",
+        "Touch weekly until the score improves"
+      ]
+    },
+    {
+      "customer_id": "B-201",
+      "name": "Pinecrest Software",
+      "segment": "mid-market",
+      "arr": 48000,
+      "risk_score": 9.6,
+      "raw_score": 9.6,
+      "tier": "low",
+      "first_action": "Standard monitoring",
+      "urgency_multiplier": 1.0,
+      "days_to_renewal": 282,
+      "signal_scores": {
+        "usage_decline": 15.3,
+        "engagement_drop": 12.8,
+        "support_issues": 9.0,
+        "relationship_signals": 0.0,
+        "commercial_factors": 0.0
+      },
+      "warnings": [
+        {
+          "severity": "medium",
+          "signal": "Logins down 6%"
+        }
+      ],
+      "playbook": [
+        "Keep the standard touch cadence",
+        "Share product updates",
+        "Review the score trend monthly",
+        "Start renewal prep 90 days out"
+      ]
+    },
+    {
+      "customer_id": "A-101",
+      "name": "Northwind Logistics",
+      "segment": "enterprise",
+      "arr": 240000,
+      "risk_score": 0.6,
+      "raw_score": 0.6,
+      "tier": "low",
+      "first_action": "Standard monitoring",
+      "urgency_multiplier": 1.0,
+      "days_to_renewal": 210,
+      "signal_scores": {
+        "usage_decline": 0.0,
+        "engagement_drop": 0.0,
+        "support_issues": 3.0,
+        "relationship_signals": 0.0,
+        "commercial_factors": 0.0
+      },
+      "warnings": [],
+      "playbook": [
+        "Keep the standard touch cadence",
+        "Share product updates",
+        "Review the score trend monthly",
+        "Start renewal prep 90 days out"
+      ]
+    }
+  ]
+}

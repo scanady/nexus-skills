@@ -1,0 +1,206 @@
+{
+  "report": "customer_health",
+  "summary": {
+    "total_customers": 4,
+    "average_score": 66.3,
+    "green_count": 2,
+    "yellow_count": 1,
+    "red_count": 1,
+    "arr_in_critical": 159000
+  },
+  "customers": [
+    {
+      "customer_id": "A-102",
+      "name": "Harbor Health Group",
+      "segment": "enterprise",
+      "arr": 150000,
+      "overall_score": 52.3,
+      "band": "yellow",
+      "thresholds": {
+        "green_min": 75,
+        "yellow_min": 50
+      },
+      "dimensions": {
+        "usage": {
+          "score": 66.7,
+          "weight": 0.3,
+          "band": "yellow"
+        },
+        "engagement": {
+          "score": 56.8,
+          "weight": 0.25,
+          "band": "yellow"
+        },
+        "support": {
+          "score": 23.9,
+          "weight": 0.2,
+          "band": "red"
+        },
+        "relationship": {
+          "score": 53.2,
+          "weight": 0.25,
+          "band": "yellow"
+        }
+      },
+      "trends": {
+        "usage": "declining",
+        "engagement": "declining",
+        "support": "declining",
+        "relationship": "declining",
+        "overall": "declining"
+      },
+      "priority": "critical",
+      "baseline_missing": false,
+      "data_coverage": 1.0,
+      "recommendations": [
+        "Ticket volume high: review root causes with support",
+        "Open tickets high: clear the queue first",
+        "Escalations high: review support process",
+        "Resolution slow: engage support leadership"
+      ]
+    },
+    {
+      "customer_id": "C-301",
+      "name": "Tidewater Bakery",
+      "segment": "smb",
+      "arr": 9000,
+      "overall_score": 38.8,
+      "band": "red",
+      "thresholds": {
+        "green_min": 65,
+        "yellow_min": 40
+      },
+      "dimensions": {
+        "usage": {
+          "score": 45.7,
+          "weight": 0.3,
+          "band": "yellow"
+        },
+        "engagement": {
+          "score": 48.0,
+          "weight": 0.25,
+          "band": "yellow"
+        },
+        "support": {
+          "score": 23.4,
+          "weight": 0.2,
+          "band": "red"
+        },
+        "relationship": {
+          "score": 33.7,
+          "weight": 0.25,
+          "band": "red"
+        }
+      },
+      "trends": {
+        "usage": "no_data",
+        "engagement": "no_data",
+        "support": "no_data",
+        "relationship": "no_data",
+        "overall": "no_data"
+      },
+      "priority": "critical",
+      "baseline_missing": true,
+      "data_coverage": 1.0,
+      "recommendations": [
+        "Ticket volume high: review root causes with support",
+        "Escalations high: review support process",
+        "Resolution slow: engage support leadership",
+        "Sponsor weak: book an executive alignment call",
+        "Renewal sentiment negative: start a save plan now"
+      ]
+    },
+    {
+      "customer_id": "A-101",
+      "name": "Northwind Logistics",
+      "segment": "enterprise",
+      "arr": 240000,
+      "overall_score": 86.6,
+      "band": "green",
+      "thresholds": {
+        "green_min": 75,
+        "yellow_min": 50
+      },
+      "dimensions": {
+        "usage": {
+          "score": 94.2,
+          "weight": 0.3,
+          "band": "green"
+        },
+        "engagement": {
+          "score": 83.2,
+          "weight": 0.25,
+          "band": "green"
+        },
+        "support": {
+          "score": 74.2,
+          "weight": 0.2,
+          "band": "yellow"
+        },
+        "relationship": {
+          "score": 90.9,
+          "weight": 0.25,
+          "band": "green"
+        }
+      },
+      "trends": {
+        "usage": "improving",
+        "engagement": "improving",
+        "support": "declining",
+        "relationship": "improving",
+        "overall": "improving"
+      },
+      "priority": "low",
+      "baseline_missing": false,
+      "data_coverage": 1.0,
+      "recommendations": []
+    },
+    {
+      "customer_id": "B-201",
+      "name": "Pinecrest Software",
+      "segment": "mid-market",
+      "arr": 48000,
+      "overall_score": 87.6,
+      "band": "green",
+      "thresholds": {
+        "green_min": 70,
+        "yellow_min": 45
+      },
+      "dimensions": {
+        "usage": {
+          "score": 98.4,
+          "weight": 0.3,
+          "band": "green"
+        },
+        "engagement": {
+          "score": 83.2,
+          "weight": 0.25,
+          "band": "green"
+        },
+        "support": {
+          "score": 64.2,
+          "weight": 0.2,
+          "band": "yellow"
+        },
+        "relationship": {
+          "score": 97.7,
+          "weight": 0.25,
+          "band": "green"
+        }
+      },
+      "trends": {
+        "usage": "improving",
+        "engagement": "stable",
+        "support": "declining",
+        "relationship": "improving",
+        "overall": "stable"
+      },
+      "priority": "low",
+      "baseline_missing": false,
+      "data_coverage": 1.0,
+      "recommendations": [
+        "Ticket volume high: review root causes with support"
+      ]
+    }
+  ]
+}
