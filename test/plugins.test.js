@@ -10,6 +10,7 @@ const {
   MANIFEST_KEYS,
   MANIFEST_REQUIRED,
   NAME_PATTERN,
+  expectedPluginName,
   validateMcpServer,
   listPluginNames,
   loadPluginPackage,
@@ -105,7 +106,7 @@ test('every shipped plugin package matches the closed Agent Plugins schema', () 
   for (const name of listPluginNames()) {
     const pkg = loadPluginPackage(name);
     assert.ok(pkg, `${name} should be a readable plugin package`);
-    assert.equal(pkg.manifest.name, `nexus-${name}`);
+    assert.equal(pkg.manifest.name, expectedPluginName(name));
     assert.ok(pkg.manifest.description, `${name} should declare a description`);
     assert.ok(pkg.patterns.length > 0, `${name} should claim at least one skill`);
 

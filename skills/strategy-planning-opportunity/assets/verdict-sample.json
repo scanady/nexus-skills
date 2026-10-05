@@ -1,0 +1,25 @@
+{
+  "opportunity": "Bookkeeping cleanup service for Shopify stores",
+  "profile": "bootstrapped",
+  "stage": "prototype",
+  "goal": "cash-flow",
+  "evidence": "medium",
+  "motion": "sales-led",
+  "price": 1500,
+  "scores": {
+    "pain": 8,
+    "market": 6,
+    "distribution": 4,
+    "monetization": 8,
+    "defensibility": 3,
+    "timing": 6,
+    "fit": 8,
+    "execution": 7,
+    "portfolio": 6
+  },
+  "fatal_flaw": "",
+  "riskiest": {
+    "category": "channel",
+    "assumption": "Store owners with messy books can be reached without paid ads"
+  }
+}

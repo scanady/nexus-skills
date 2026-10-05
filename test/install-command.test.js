@@ -24,11 +24,12 @@ test('resolveSkillsToInstall filters selected skills and reports invalid names',
   });
 });
 
-test('collectExistingSkills returns unique installed skills across targets', () => {
+test('collectExistingSkills returns unique installed skills across targets, ignoring folders without SKILL.md', () => {
   const existingPaths = new Set([
-    'one/alpha',
-    'two/alpha',
-    'two/beta'
+    'one/alpha/SKILL.md',
+    'two/alpha/SKILL.md',
+    'two/beta/SKILL.md',
+    'two/gamma'
   ]);
   const fsImpl = {
     existsSync(filePath) {

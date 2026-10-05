@@ -1,13 +1,17 @@
 {
   "skills": [
-    "engineering-agents-md-curator",
     "agents-design-persona-creator",
     "agents-design-visual-identity",
     "agents-skill-plugin-builder",
     "agents-skill-spec-builder",
-    "ai-prompt-engineer",
+    "content-copy-clear-writing",
+    "engineering-doc-agents-md-curator",
     "knowledge-context-curator",
     "knowledge-context-session-handover",
-    "knowledge-ops"
+    "knowledge-ops",
+    "skill-architect",
+    "skill-evaluator",
+    "skill-evaluator-catalog-builder",
+    "skill-reinterpreter"
   ]
 }

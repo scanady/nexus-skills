@@ -353,15 +353,40 @@ function buildMarkdown(pairs, clusters, skillCount, threshold, now) {
 
 // ── Arg parser ─────────────────────────────────────────────────────────────
 
+class AuditUsageError extends Error {
+  constructor(message) {
+    super(`${message}\n   Run "nxa --help" for audit-overlap options.`);
+    this.exitCode = 2;
+  }
+}
+
 function parseArgs(argv) {
   const opts = { threshold: 0.20, top: null, jsonOnly: false, mdOnly: false, outputDir: OUTPUT_DIR };
+  const takeValue = (i, flag) => {
+    const v = argv[i + 1];
+    if (v === undefined || v.startsWith('-')) throw new AuditUsageError(`Option "${flag}" needs a value.`);
+    return v;
+  };
+
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
-    if ((a === '--threshold' || a === '-t') && argv[i + 1]) opts.threshold = parseFloat(argv[++i]);
-    else if (a === '--top' && argv[i + 1])                  opts.top = parseInt(argv[++i], 10);
-    else if (a === '--json-only')                            opts.jsonOnly = true;
-    else if (a === '--md-only')                              opts.mdOnly = true;
-    else if ((a === '--output' || a === '-o') && argv[i + 1]) opts.outputDir = argv[++i];
+    if (a === '--threshold' || a === '-t') {
+      const v = Number(takeValue(i++, a));
+      if (!Number.isFinite(v) || v < 0 || v > 1) throw new AuditUsageError(`"${a}" must be a number from 0 to 1.`);
+      opts.threshold = v;
+    } else if (a === '--top') {
+      const v = Number(takeValue(i++, a));
+      if (!Number.isInteger(v) || v < 1) throw new AuditUsageError('"--top" must be a whole number of 1 or more.');
+      opts.top = v;
+    } else if (a === '--json-only') opts.jsonOnly = true;
+    else if (a === '--md-only') opts.mdOnly = true;
+    else if (a === '--output' || a === '-o') opts.outputDir = takeValue(i++, a);
+    else if (a.startsWith('-')) throw new AuditUsageError(`Unknown option "${a}".`);
+    else throw new AuditUsageError(`Unexpected argument "${a}".`);
+  }
+
+  if (opts.jsonOnly && opts.mdOnly) {
+    throw new AuditUsageError('"--json-only" and "--md-only" cannot be used together.');
   }
   return opts;
 }
@@ -483,7 +508,12 @@ function run(argv) {
 }
 
 if (require.main === module) {
-  run(process.argv.slice(2));
+  try {
+    run(process.argv.slice(2));
+  } catch (error) {
+    console.error(`\n❌ ${error.message}\n`);
+    process.exit(error.exitCode || 1);
+  }
 }
 
-module.exports = { run };
+module.exports = { parseArgs, run };

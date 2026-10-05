@@ -23,6 +23,7 @@ const {
   MANIFEST_KEYS,
   MANIFEST_REQUIRED,
   NAME_PATTERN,
+  expectedPluginName,
   validateMcpServer,
   listPluginNames,
   loadPluginPackage,
@@ -89,8 +90,9 @@ function validatePluginPackages(availableSkills) {
     if (manifest.name && manifest.name.length > 64) {
       issues.push(`plugin.json name "${manifest.name}" exceeds the 64-character limit`);
     }
-    if (manifest.name && manifest.name !== `nexus-${name}`) {
-      issues.push(`plugin.json name "${manifest.name}" does not match the directory (expected "nexus-${name}")`);
+    const expectedName = expectedPluginName(name);
+    if (manifest.name && manifest.name !== expectedName) {
+      issues.push(`plugin.json name "${manifest.name}" does not match the directory (expected "${expectedName}")`);
     }
 
     // mcp.schema.json requires both $schema and mcpServers. Every plugin here

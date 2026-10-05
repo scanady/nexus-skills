@@ -37,8 +37,8 @@ Identify the operation:
 | Operation | User intent |
 |---|---|
 | List | Discover available skills, packs, descriptions, or counts |
-| Install | Add skills or packs to a project or global skill directory |
-| Upgrade | Replace already-installed skills with newer copies |
+| Install | Add skills or plugins to a project or global skill directory |
+| Upgrade | Replace already-installed skills with newer copies (`upgrade`); keeps `.env` and `.env.local` |
 | Remove | Uninstall one installed skill from a project or global target directory |
 | Export | Package a skill for manual import into another platform |
 | Sync | Refresh generated installed copies from canonical source |
@@ -70,11 +70,13 @@ Before changing files, determine:
 - Source: local checkout, default package source, or explicit `--source-url` and `--source-ref`.
 - Scope: project by default; global only when the user asks for global or all-repo availability.
 - Agent target: default `agent-skills` unless the user names GitHub Copilot, Claude Code, Codex, or multiple agents.
-- Skill selection: specific `--skill`, one or more `--pack`, or all skills.
+- Skill selection: specific `--skill`, one or more `--plugin`, or all skills.
 - Upgrade intent: whether replacement of existing installed copies is intended.
 - Remove intent: whether the user wants one skill removed from project or global install targets.
 
-Read `references/cli-reference.md` before constructing command lines. Read `references/install-workflows.md` before install, upgrade, remove, export, or sync operations.
+Run `<runner> --help` first, with no command after it, and read the output. It is the current source for commands, flags, and defaults, and it changes more often than these references. If the help text and a reference disagree, follow the help text. Never append `--help` to a command such as `install --help`: older versions of the CLI ignore it and run the command.
+
+Read `references/cli-reference.md` for target paths and safe-use notes. Read `references/install-workflows.md` before install, upgrade, remove, export, or sync operations.
 
 ### 4. Plan the Command
 
@@ -85,17 +87,18 @@ Build the smallest safe command:
 - Add `--global` only for user-level installs across repositories.
 - Add `--project` when making project scope explicit reduces ambiguity.
 - Add repeated `-a` or `--agent` flags for multiple targets.
-- Add `--upgrade` only when replacement is intended.
-- Add `--overwrite` only when the user explicitly asked to skip confirmation.
+- Use `upgrade` (not `install --upgrade`) to refresh skills that are already installed. It never adds a skill.
+- Add `--yes` only when the user explicitly asked to skip confirmation. It takes the default answers: proceed, and keep `.env` files.
+- Add `--delete-env` to `remove` only when the user explicitly asked to delete `.env` files too.
 
 For destructive or broad changes, summarize what will be replaced before execution. If the CLI presents a confirmation prompt listing the affected skills, confirm only when that list matches the user's requested scope.
 
-For remove operations, follow this sequence because `nxa` currently has no uninstall command:
+For remove operations, use `nxa remove`:
 
-- Resolve the exact target directory from scope and agent target.
-- Confirm the exact skill folder name with the user intent.
-- Remove only that one folder from the selected target directory.
-- Verify the folder no longer exists and that no additional skill folders were removed.
+- Resolve the exact target from scope and agent target, and run `list --installed --full` with the same flags.
+- Confirm the exact skill name with the user intent.
+- Run `remove --skill <name> --yes` with that scope and agent. It keeps `.env` and `.env.local` by default. Add `--delete-env` only when the user asks to delete those files too.
+- Verify with `list --installed` that the skill is gone and no other skill was removed.
 
 ### 5. Execute or Provide the Command
 
@@ -120,7 +123,7 @@ If verification fails, read `references/troubleshooting.md`, repair the same ope
 
 | Topic | Reference | Load When |
 |---|---|---|
-| CLI commands and targets | `references/cli-reference.md` | Before constructing any `nxa` command |
+| CLI commands and targets | `references/cli-reference.md` | After reading `<runner> --help`, for target paths and safe-use notes |
 | Install, upgrade, remove, export, and sync workflows | `references/install-workflows.md` | Before changing installed skills or creating exports |
 | Troubleshooting | `references/troubleshooting.md` | When a command fails, a skill is missing, routing does not work, or installed copies are stale |
 
@@ -128,19 +131,21 @@ If verification fails, read `references/troubleshooting.md`, repair the same ope
 
 ### MUST DO
 
+- Run `<runner> --help` (bare, with no command) before building any command, and follow it over these references when they differ.
 - Use `node bin/nxa.js` inside a Nexus Skills checkout and `npx nxa` or the documented GitHub package runner outside the repo.
 - Default to project-scoped installs unless the user explicitly requests global availability.
 - Explain target scope, agent target, skill or pack selection, and replacement behavior before broad or destructive changes.
-- Prefer `--skill` or `--pack` over all-skill installs when the user names a specific skill or pack.
+- Prefer `--skill` or `--plugin` over all-skill installs when the user names a specific skill or pack.
 - Treat installed skill directories as generated copies; use the CLI to refresh them from canonical source.
-- For uninstall requests, remove only the requested skill directory from the resolved target path because `nxa` does not provide an uninstall command.
+- For uninstall requests, use `nxa remove --skill <name>`; never delete skill folders by hand.
 - Verify install, upgrade, export, or troubleshooting results with a focused command or file check.
 - Ask one focused clarifying question when scope, agent target, or source is ambiguous and the default could modify the wrong directory.
 
 ### MUST NOT DO
 
+- Do not guess flags or add `--help` after a command; run bare `<runner> --help` and read it.
 - Do not edit installed copies as the source of truth.
-- Do not run `--global`, `--upgrade`, or `--overwrite` unless the user requested that behavior or confirmed it after seeing the impact.
+- Do not run `--global`, `upgrade`, `remove`, `--yes`, or `--delete-env` unless the user requested that behavior or confirmed it after seeing the impact.
 - Do not replace all installed skills when the user asked for one skill or one pack.
 - Do not delete parent skill directories or unrelated skill folders when removing one installed skill.
 - Do not assume an API key, token, or credential implies permission to access a private source.
@@ -158,9 +163,9 @@ Runner: `[node bin/nxa.js|npx nxa|npm exec ... -- nxa]`
 Source: [local/default package/source URL and ref]
 Scope: [project/global]
 Agent target: [agent-skills/github-copilot/claude-code/codex]
-Selection: [skill(s)/pack(s)/all]
-Replacement behavior: [none/upgrade with confirmation/overwrite explicitly requested]
-Command: `[exact command or exact path removal command for uninstall]`
+Selection: [skill(s)/plugin(s)/all]
+Replacement behavior: [none/upgrade with confirmation/--yes explicitly requested]
+Command: `[exact command]`
 Verification: [focused post-command check]
 ```
 

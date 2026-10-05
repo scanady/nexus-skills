@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "workplace",
+  "version": "1.0.0",
+  "description": "Run the workday and reach your people — standard operating procedures, meeting records, internal announcements, and community updates. Make repeatable work repeatable and keep everyone informed.",
+  "keywords": [
+    "operations",
+    "sop",
+    "process-documentation",
+    "meeting-notes",
+    "productivity",
+    "internal-communications",
+    "announcements",
+    "employee-engagement",
+    "change-communication",
+    "video-call-background",
+    "workplace"
+  ]
+}

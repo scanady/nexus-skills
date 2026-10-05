@@ -1,0 +1,30 @@
+{
+  "market": "Fleet maintenance software for US regional trucking firms",
+  "profile": "b2b-saas",
+  "currency": "USD",
+  "top_down": {
+    "tam": [
+      {"name": "US fleet management software spend", "value": 3100000000, "low": 2600000000, "high": 3600000000, "source": "Analyst report A, 2026 edition"},
+      {"name": "maintenance module share of spend", "value": 0.22, "low": 0.10, "high": 0.30, "source": "Analyst report A, segment table"}
+    ],
+    "sam": [
+      {"name": "regional carriers (10-200 trucks) share", "value": 0.40, "low": 0.35, "high": 0.45, "source": "Industry association fleet census"}
+    ],
+    "som": [
+      {"name": "3-year attainable share", "value": 0.05, "low": 0.03, "high": 0.08, "source": ""}
+    ]
+  },
+  "bottom_up": {
+    "tam": [
+      {"name": "US carriers with 10+ trucks", "value": 41000, "low": 38000, "high": 44000, "source": "Federal carrier registry extract"},
+      {"name": "avg trucks per carrier", "value": 38, "low": 30, "high": 45, "source": "Registry extract, median-adjusted"},
+      {"name": "annual price per truck", "value": 240, "low": 180, "high": 360, "source": "Pricing pages of 6 vendors"}
+    ],
+    "sam": [
+      {"name": "regional carriers share of trucks", "value": 0.45, "low": 0.40, "high": 0.50, "source": "Registry extract"}
+    ],
+    "som": [
+      {"name": "3-year attainable share", "value": 0.05, "low": 0.03, "high": 0.08, "source": "Sales capacity model"}
+    ]
+  }
+}

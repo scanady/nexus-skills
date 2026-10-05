@@ -15,7 +15,7 @@
     {
       "id": 2,
       "prompt": "Update my installed skills, but only the agents-nexus-skills-manager skill.",
-      "expected_output": "A narrow upgrade plan that uses --upgrade with --skill agents-nexus-skills-manager, explains replacement behavior, and does not upgrade all installed skills.",
+      "expected_output": "A narrow upgrade plan that uses upgrade with --skill agents-nexus-skills-manager, explains replacement behavior, and does not upgrade all installed skills.",
       "assertions": [
         "The response uses a skill-specific upgrade.",
         "The response does not run or recommend a broad all-skill upgrade.",
@@ -26,9 +26,9 @@
     {
       "id": 3,
       "prompt": "Install the marketing pack globally for Claude Code and Codex.",
-      "expected_output": "A global pack install plan that uses --pack marketing, --global, and repeated agent flags for claude-code and codex, with confirmation of the global scope.",
+      "expected_output": "A global plugin install plan that uses --plugin marketing, --global, and repeated agent flags for claude-code and codex, with confirmation of the global scope.",
       "assertions": [
-        "The response includes --pack marketing.",
+        "The response includes --plugin marketing.",
         "The response includes --global because the user requested it.",
         "The response targets both claude-code and codex.",
         "The response explains the affected global target directories or scope."
@@ -40,7 +40,7 @@
       "expected_output": "A troubleshooting response that tells the user to decline the broad upgrade and rerun a skill-specific upgrade for skill-evaluator.",
       "assertions": [
         "The response tells the user not to proceed with the broad prompt.",
-        "The response recommends --upgrade --skill skill-evaluator.",
+        "The response recommends upgrade --skill skill-evaluator.",
         "The response identifies broad upgrade scope as the likely cause.",
         "The response includes a verification step after the corrected command."
       ]
@@ -53,6 +53,17 @@
         "The response does not run install or upgrade commands.",
         "The response classifies the request as skill authoring or review.",
         "The response names skill-architect or an equivalent authoring workflow."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "I forget the exact flags for removing a skill from my global install. Find out and tell me the command.",
+      "expected_output": "A response that runs the bare runner with --help to read current usage, then gives a remove command with --skill and --global, without appending --help to a command.",
+      "assertions": [
+        "The response reads current usage with the runner and --help before building the command.",
+        "The response does not run install --help, remove --help, or any command followed by --help.",
+        "The response uses remove with --skill and --global, and does not delete the folder by hand.",
+        "The response does not pass --yes or --delete-env unless the user asked for them."
       ]
     }
   ]

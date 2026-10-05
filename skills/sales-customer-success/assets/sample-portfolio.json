@@ -1,0 +1,68 @@
+{
+  "_note": "Synthetic demo portfolio. Fields feed health_scorer, churn_risk_scorer, and expansion_scorer.",
+  "customers": [
+    {
+      "customer_id": "A-101", "name": "Northwind Logistics", "segment": "enterprise", "arr": 240000, "contract_end_date": "2026-11-30",
+      "usage": {"login_frequency": 88, "feature_adoption": 74, "dau_mau_ratio": 0.46},
+      "engagement": {"support_ticket_volume": 3, "meeting_attendance": 92, "nps_score": 8, "csat_score": 4.3},
+      "support": {"open_tickets": 3, "escalation_rate": 0.05, "avg_resolution_hours": 20},
+      "relationship": {"executive_sponsor_engagement": 82, "multi_threading_depth": 4, "renewal_sentiment": "positive"},
+      "previous_period": {"usage_score": 80, "engagement_score": 78, "support_score": 82, "relationship_score": 76, "overall_score": 79},
+      "usage_decline": {"login_trend": 4, "feature_adoption_change": 3, "dau_mau_change": 0.02},
+      "engagement_drop": {"meeting_cancellations": 0, "response_time_days": 1, "nps_change": 1},
+      "support_issues": {"open_escalations": 0, "unresolved_critical": 0, "satisfaction_trend": "improving"},
+      "relationship_signals": {"champion_left": false, "sponsor_change": false, "competitor_mentions": 0},
+      "commercial_factors": {"contract_type": "annual", "pricing_complaints": false, "budget_cuts_mentioned": false},
+      "contract": {"licensed_seats": 200, "active_seats": 188, "plan_tier": "professional", "available_tiers": ["professional", "enterprise", "enterprise_plus"]},
+      "product_usage": {"core_platform": {"adopted": true, "usage_pct": 86}, "analytics_module": {"adopted": true, "usage_pct": 62}, "integrations_module": {"adopted": false, "usage_pct": 0}, "advanced_reporting": {"adopted": true, "usage_pct": 22}},
+      "departments": {"current": ["operations", "finance"], "potential": ["procurement", "sales"]}
+    },
+    {
+      "customer_id": "A-102", "name": "Harbor Health Group", "segment": "enterprise", "arr": 150000, "contract_end_date": "2026-07-15",
+      "usage": {"login_frequency": 66, "feature_adoption": 51, "dau_mau_ratio": 0.31},
+      "engagement": {"support_ticket_volume": 7, "meeting_attendance": 62, "nps_score": 6, "csat_score": 3.7},
+      "support": {"open_tickets": 8, "escalation_rate": 0.18, "avg_resolution_hours": 55},
+      "relationship": {"executive_sponsor_engagement": 52, "multi_threading_depth": 2, "renewal_sentiment": "neutral"},
+      "previous_period": {"usage_score": 78, "engagement_score": 74, "support_score": 70, "relationship_score": 72, "overall_score": 74},
+      "usage_decline": {"login_trend": -22, "feature_adoption_change": -12, "dau_mau_change": -0.09},
+      "engagement_drop": {"meeting_cancellations": 2, "response_time_days": 5, "nps_change": -3},
+      "support_issues": {"open_escalations": 1, "unresolved_critical": 1, "satisfaction_trend": "declining"},
+      "relationship_signals": {"champion_left": true, "sponsor_change": false, "competitor_mentions": 1},
+      "commercial_factors": {"contract_type": "annual", "pricing_complaints": false, "budget_cuts_mentioned": true},
+      "contract": {"licensed_seats": 120, "active_seats": 80, "plan_tier": "enterprise", "available_tiers": ["enterprise", "enterprise_plus"]},
+      "product_usage": {"core_platform": {"adopted": true, "usage_pct": 60}, "security_module": {"adopted": false, "usage_pct": 0}},
+      "departments": {"current": ["clinical-ops"], "potential": ["billing"]}
+    },
+    {
+      "customer_id": "B-201", "name": "Pinecrest Software", "segment": "mid-market", "arr": 48000, "contract_end_date": "2027-02-10",
+      "usage": {"login_frequency": 79, "feature_adoption": 69, "dau_mau_ratio": 0.39},
+      "engagement": {"support_ticket_volume": 6, "meeting_attendance": 80, "nps_score": 8, "csat_score": 4.1},
+      "support": {"open_tickets": 5, "escalation_rate": 0.1, "avg_resolution_hours": 40},
+      "relationship": {"executive_sponsor_engagement": 70, "multi_threading_depth": 3, "renewal_sentiment": "positive"},
+      "previous_period": {"usage_score": 90, "engagement_score": 88, "support_score": 84, "relationship_score": 86, "overall_score": 88},
+      "usage_decline": {"login_trend": -6, "feature_adoption_change": -4, "dau_mau_change": -0.02},
+      "engagement_drop": {"meeting_cancellations": 1, "response_time_days": 2, "nps_change": 0},
+      "support_issues": {"open_escalations": 0, "unresolved_critical": 0, "satisfaction_trend": "stable"},
+      "relationship_signals": {"champion_left": false, "sponsor_change": false, "competitor_mentions": 0},
+      "commercial_factors": {"contract_type": "annual", "pricing_complaints": false, "budget_cuts_mentioned": false},
+      "contract": {"licensed_seats": 60, "active_seats": 58, "plan_tier": "starter", "available_tiers": ["starter", "professional"]},
+      "product_usage": {"core_platform": {"adopted": true, "usage_pct": 80}, "api_access": {"adopted": false, "usage_pct": 0}},
+      "departments": {"current": ["engineering"], "potential": ["product"]}
+    },
+    {
+      "customer_id": "C-301", "name": "Tidewater Bakery", "segment": "smb", "arr": 9000, "contract_end_date": "2026-06-20",
+      "usage": {"login_frequency": 34, "feature_adoption": 28, "dau_mau_ratio": 0.12},
+      "engagement": {"support_ticket_volume": 9, "meeting_attendance": 30, "nps_score": 4, "csat_score": 3.0},
+      "support": {"open_tickets": 12, "escalation_rate": 0.35, "avg_resolution_hours": 100},
+      "relationship": {"executive_sponsor_engagement": 20, "multi_threading_depth": 1, "renewal_sentiment": "negative"},
+      "usage_decline": {"login_trend": -35, "feature_adoption_change": -20, "dau_mau_change": -0.12},
+      "engagement_drop": {"meeting_cancellations": 4, "response_time_days": 8, "nps_change": -5},
+      "support_issues": {"open_escalations": 3, "unresolved_critical": 2, "satisfaction_trend": "critical"},
+      "relationship_signals": {"champion_left": true, "sponsor_change": true, "competitor_mentions": 3},
+      "commercial_factors": {"contract_type": "month-to-month", "pricing_complaints": true, "budget_cuts_mentioned": true},
+      "contract": {"licensed_seats": 10, "active_seats": 4, "plan_tier": "starter", "available_tiers": ["starter", "professional"]},
+      "product_usage": {"core_platform": {"adopted": true, "usage_pct": 25}},
+      "departments": {"current": ["owner"], "potential": []}
+    }
+  ]
+}

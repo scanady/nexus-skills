@@ -1,0 +1,15 @@
+{
+  "_note": "Synthetic demo customers for segment_designer.",
+  "customers": [
+    {"customer_id": "S-1", "name": "Megacorp Industries", "arr": 420000, "tenure_months": 26, "annual_support_cost": 35000, "escalations_12mo": 1, "multi_year_contract": true, "current_tier": "enterprise",
+     "icp_fit_signals": {"in_target_industry": true, "in_target_size_range": true, "uses_target_workflow": true, "has_executive_sponsor": true, "advocates_publicly": true, "expansion_potential_high": true, "competitor_concentration_low": true}},
+    {"customer_id": "S-2", "name": "Midsize Partners", "arr": 38000, "tenure_months": 12, "annual_support_cost": 4500, "escalations_12mo": 0, "current_tier": "enterprise",
+     "icp_fit_signals": {"in_target_industry": true, "in_target_size_range": true, "uses_target_workflow": true, "has_executive_sponsor": false, "advocates_publicly": false, "expansion_potential_high": true, "competitor_concentration_low": true}},
+    {"customer_id": "S-3", "name": "Misfit Holdings", "arr": 12000, "tenure_months": 8, "annual_support_cost": 14000, "escalations_12mo": 3, "declining_industry": true,
+     "icp_fit_signals": {"in_target_industry": false, "in_target_size_range": true, "uses_target_workflow": false, "has_executive_sponsor": false, "advocates_publicly": false, "expansion_potential_high": false, "competitor_concentration_low": false}},
+    {"customer_id": "S-4", "name": "Corner Studio", "arr": 2400, "tenure_months": 4, "annual_support_cost": 500, "escalations_12mo": 0, "current_tier": "smb",
+     "icp_fit_signals": {"in_target_industry": true, "in_target_size_range": false, "uses_target_workflow": true, "has_executive_sponsor": false, "advocates_publicly": false, "expansion_potential_high": false, "competitor_concentration_low": true}},
+    {"customer_id": "S-5", "name": "Summit Retail", "arr": 9000, "tenure_months": 20, "annual_support_cost": 900, "escalations_12mo": 0, "current_tier": "smb",
+     "icp_fit_signals": {"in_target_industry": true, "in_target_size_range": true, "uses_target_workflow": true, "has_executive_sponsor": false, "advocates_publicly": false, "expansion_potential_high": false, "competitor_concentration_low": true}}
+  ]
+}

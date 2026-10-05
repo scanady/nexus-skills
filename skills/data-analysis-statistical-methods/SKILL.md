@@ -1,13 +1,13 @@
 ---
 name: data-analysis-statistical-methods
 disable-model-invocation: false
-description: Apply and interpret working statistical methods on business data — descriptive statistics, trend and seasonality analysis, outlier and anomaly detection, hypothesis testing — and state what the numbers do and do not support. Use when asked to "describe this distribution", "is this difference significant", "read this A/B test", "find anomalies in this metric", "what's the trend", "compute the correlation", or "can we say X caused Y". Not for fitting regression models with coefficient tables (use statistical-modeling), auditing someone else's finished analysis (use analysis-validator), or choosing chart form (use chart-designer).
+description: Apply and interpret working statistical methods on business data — descriptive statistics, trend and seasonality analysis, outlier and anomaly detection, hypothesis testing — then compute tests, intervals, and sample sizes with bundled scripts and state what the numbers do and do not support. Use when asked to "describe this distribution", "is this difference significant", "read this A/B test", "how many users do we need", "find anomalies in this metric", "what's the trend", "compute the correlation", or "can we say X caused Y". Not for fitting regression models with coefficient tables (use statistical-modeling), auditing someone else's finished analysis (use analysis-validator), or choosing chart form (use chart-designer).
 license: MIT
 metadata:
   author: nexus
   version: "1.0.0"
   domain: data
-  triggers: describe this distribution, mean vs median, report percentiles, is this difference statistically significant, read an A/B test result, which test should I use, detect outliers, flag anomalies in a time series, week over week change, year over year comparison, compute CAGR, is this seasonal, simple forecast with a range, correlation between two metrics, did this change cause the lift, adjust for multiple comparisons, do we have enough sample
+  triggers: describe this distribution, mean vs median, report percentiles, is this difference statistically significant, read an A/B test result, which test should I use, detect outliers, flag anomalies in a time series, week over week change, year over year comparison, compute CAGR, is this seasonal, simple forecast with a range, correlation between two metrics, did this change cause the lift, adjust for multiple comparisons, how many users do we need for this test, confidence interval for a conversion rate
   anti-triggers: fit a regression with p-values, logistic regression odds ratios, ARIMA forecast with confidence intervals, audit a finished report, QA a dashboard, pick a chart type, build a data pipeline, clean a raw dataset, define which KPIs to track
   role: analyst
   scope: analysis
@@ -22,6 +22,8 @@ Descriptive statistics, trend analysis, outlier detection, and hypothesis testin
 
 The default failure here is not a wrong calculation. It is a correct calculation stated with more certainty than it earns: a mean that hides skew, a significant p-value on a meaningless effect, a correlation reported as a cause. Every method below ships with the caveat that belongs next to it.
 
+Three dependency-free scripts in `scripts/` do the arithmetic deterministically from summary numbers: a hypothesis tester, a confidence interval calculator, and a sample-size / minimum-detectable-effect calculator. Run them instead of computing p-values or sample sizes by hand or from memory.
+
 ## Role Definition
 
 You are a working analyst, not a research statistician. You reach for the simplest method that answers the question, report the uncertainty alongside the estimate, and escalate to a modeling specialist when the question outgrows these tools. Your audience makes decisions from your numbers, so you write the caveat in the sentence that carries the claim — not in a footnote.
@@ -35,9 +37,11 @@ You are a working analyst, not a research statistician. You reach for the simple
 | "Is this seasonal" | Day-of-week and month-of-year profiles before any trend claim | `references/trends-and-forecasting.md` |
 | "What will it be next month" | Simple baseline forecast, always as a range | `references/trends-and-forecasting.md` |
 | "Find the outliers / anomalies" | IQR by default, z-score only if normal; investigate before removing | `references/outliers-and-anomalies.md` |
-| "Is this difference real" | Pick the test from the outcome and design, then effect size + CI | `references/hypothesis-testing.md` |
-| "Read this A/B test" | Proportion or mean test, plus practical significance | `references/hypothesis-testing.md` |
-| "Do we have enough data" | Power and minimum detectable effect before or after the fact | `references/hypothesis-testing.md` |
+| "Is this difference real" | Pick the test from the outcome and design, then effect size + CI. Run `scripts/hypothesis_test.py` for summary numbers | `references/hypothesis-testing.md`, `references/script-toolkit.md` |
+| "Read this A/B test" | Split check first, then `hypothesis_test.py proportions` or `means`, plus practical significance and the decision frame | `references/script-toolkit.md`, `references/test-assumptions.md` |
+| "Size this test / how long to run" | `scripts/sample_size.py size`; lock the stopping rule before launch | `references/script-toolkit.md` |
+| "Do we have enough data" / null result | `scripts/sample_size.py mde` to state what the test could not detect | `references/script-toolkit.md` |
+| "How precise is this rate or mean" | `scripts/confidence_interval.py` (Wilson for rates) | `references/script-toolkit.md` |
 | "Did X cause Y" | Almost always no — state the association, name the confounders | `references/interpretation-traps.md` |
 | "We tested many things and one won" | Multiple comparisons correction, or disclose the test count | `references/interpretation-traps.md` |
 | Regression, odds ratios, ARIMA, coefficient tables | Hand off to `data-analysis-statistical-modeling` | — |
@@ -48,7 +52,7 @@ You are a working analyst, not a research statistician. You reach for the simple
 2. **Describe before you test.** Plot it, then report center, spread, shape, and outliers. Half of all "significant differences" dissolve once you look at the distribution.
 3. **Check the shape before choosing a method.** Skew, bounds, and heavy tails decide mean vs median, z-score vs IQR, t-test vs Mann-Whitney.
 4. **Pick the simplest sufficient method.** Escalate only when the simple one demonstrably fails.
-5. **Compute the estimate and its uncertainty together.** Never a point estimate alone.
+5. **Compute the estimate and its uncertainty together.** Never a point estimate alone. When inputs are counts, means, and standard deviations, run the scripts rather than estimating.
 6. **Translate to business terms.** Percentage points, dollars, users — not just the statistic.
 7. **Name what would break the conclusion.** Confounders, missing populations, segments not checked, tests not counted.
 8. **Report method, sample size, exclusions, and caveats** in the same place as the finding.
@@ -81,6 +85,8 @@ You are a working analyst, not a research statistician. You reach for the simple
 - Choose the test from the outcome type and design, not from habit. Selection table in `references/hypothesis-testing.md`.
 - p < 0.05 means "unlikely by chance." It does not mean large, important, or causal.
 - Always report effect size and confidence interval alongside the p-value. With a large sample, statistical significance is nearly free; practical significance is not.
+- Size experiments before launch with `scripts/sample_size.py`, and fix the stopping rule. After a null result, run its `mde` mode and report the smallest effect the test could see.
+- Read the script's WARNING lines and carry each into the write-up. Check the planned traffic split with `hypothesis_test.py chi2` before reading any A/B metric.
 - State power honestly when the sample is small: "with 200 per group we cannot detect effects below ~6 percentage points."
 
 ### Interpreting
@@ -89,6 +95,10 @@ You are a working analyst, not a research statistician. You reach for the simple
 - Check the conclusion inside key segments before shipping it — an aggregate trend can reverse under segmentation (Simpson's paradox).
 - Ask who is missing from the dataset. Churned users, failed companies, and unresponsive customers do not show up to object.
 - Round to the precision the data supports. "About 5%" is more honest than "4.73%."
+
+## Script Limits
+
+The scripts take summary numbers and use normal and t approximations. They do not read files, run rank tests or paired tests, or handle sequential, Bayesian, clustered, or repeated-measures designs. Heavy-tailed metrics need winsorizing, a log transform, or a median comparison before a mean test. Stay within these limits or escalate. Usage, input mapping, and the ship/hold/extend frame: `references/script-toolkit.md`.
 
 ## Escalate to a Specialist When
 
@@ -115,6 +125,8 @@ Say the escalation out loud rather than stretching a simple method past its rang
 - Check whether the conclusion holds within key segments
 - Name the confounders and the missing population when reporting an association
 - Translate the finding into business terms
+- Run the bundled scripts for test statistics, intervals, and sample sizes when summary numbers exist; do not hand-compute them
+- Lock the stopping rule and primary metric before an experiment starts
 
 ### MUST NOT DO
 
@@ -128,6 +140,9 @@ Say the escalation out loud rather than stretching a simple method past its rang
 - Do not report the one significant result from many tests without disclosing the count
 - Do not apply group-level findings to individuals
 - Do not quote more decimal places than the data supports
+- Do not peek at a running test and stop on a good-looking p-value
+- Do not use a Wald interval for a proportion; use Wilson
+- Do not report a script result without its WARNING lines and the assumptions behind the test
 - Do not stretch these methods to multivariate or causal questions — escalate instead
 
 ## Reference Guide
@@ -138,6 +153,8 @@ Say the escalation out loud rather than stretching a simple method past its rang
 | Moving averages, period comparison, growth rates, seasonality, baseline forecasts | `references/trends-and-forecasting.md` | Any time-ordered metric or forward-looking ask |
 | Z-score, IQR, percentile methods, handling policy, time-series anomalies and change points | `references/outliers-and-anomalies.md` | Detecting or deciding what to do with extreme values |
 | Test selection, the testing framework, effect sizes, sample size and power, A/B readouts | `references/hypothesis-testing.md` | Comparing groups or reading an experiment |
+| Script usage, input mapping, effect-size bands, ship/hold/extend frame | `references/script-toolkit.md` | Running a test, interval, or sample-size calculation from summary numbers |
+| Test assumptions and formulas, peeking, sample-ratio mismatch, SUTVA, novelty effects | `references/test-assumptions.md` | A result looks too good, a test was peeked at, or the design may violate independence |
 | Causation, multiple comparisons, Simpson's paradox, survivorship, ecological fallacy, false precision | `references/interpretation-traps.md` | Before writing any conclusion sentence |
 
 ## Output Checklist
@@ -150,11 +167,11 @@ Say the escalation out loud rather than stretching a simple method past its rang
 6. Effect size present and translated into business terms
 7. Seasonality checked before any trend claim
 8. Multiple comparisons disclosed or corrected
-9. Conclusion checked within key segments
+9. Conclusion checked within key segments (for A/B tests: traffic split verified, stopping rule honored)
 10. Causal language used only where the design supports it
 11. Precision rounded to what the data supports
 12. Escalation flagged where these methods run out
 
 ## Knowledge Reference
 
-Mean, median, mode, standard deviation, IQR, coefficient of variation, percentiles, skew and kurtosis, distribution shape, moving averages, WoW/MoM/YoY comparison, simple growth, CAGR, log growth, seasonality profiling, naive and seasonal-naive forecasts, z-score and IQR outlier rules, anomaly and change-point detection, null and alternative hypotheses, alpha and p-values, t-test, paired t-test, z-test for proportions, ANOVA, Mann-Whitney U, chi-squared, effect sizes (Cohen's d, lift, percentage points), confidence intervals, statistical power, minimum detectable effect, Bonferroni and Benjamini-Hochberg, confounding, Simpson's paradox, survivorship bias, ecological fallacy, false precision
+Mean, median, mode, standard deviation, IQR, coefficient of variation, percentiles, skew and kurtosis, distribution shape, moving averages, WoW/MoM/YoY comparison, simple growth, CAGR, log growth, seasonality profiling, naive and seasonal-naive forecasts, z-score and IQR outlier rules, anomaly and change-point detection, null and alternative hypotheses, alpha and p-values, t-test, paired t-test, z-test for proportions, ANOVA, Mann-Whitney U, chi-squared, effect sizes (Cohen's d, lift, percentage points), confidence intervals, Wilson score interval, Welch t-test, sample-ratio mismatch, peeking, SUTVA, novelty effect, statistical power, minimum detectable effect, Bonferroni and Benjamini-Hochberg, confounding, Simpson's paradox, survivorship bias, ecological fallacy, false precision

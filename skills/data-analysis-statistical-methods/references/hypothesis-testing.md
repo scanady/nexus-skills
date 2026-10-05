@@ -61,6 +61,8 @@ Use `equal_var=False` (Welch's t-test) by default — equal variances are rarely
 
 ANOVA tells you *some* group differs, not which. Follow with pairwise tests and a multiple-comparisons correction.
 
+Working from summary numbers instead of raw rows? `scripts/hypothesis_test.py` runs the z-test, Welch t-test, and chi-squared with intervals and effect sizes, and no libraries. See `script-toolkit.md`.
+
 ## Practical vs Statistical Significance
 
 **Statistical significance** means the difference is unlikely due to chance.
@@ -101,6 +103,8 @@ from statsmodels.stats.proportion import proportion_effectsize
 n = NormalIndPower().solve_power(
     effect_size=proportion_effectsize(0.20, 0.18), alpha=0.05, power=0.8)
 ```
+
+`scripts/sample_size.py` does the same without statsmodels, and its `mde` mode answers the after-the-fact question.
 
 Run this **before** the test to size it, and **after** a null result to state the minimum detectable effect. "We could not detect anything smaller than a 3-point lift" is a useful finding; "no significant difference" alone is not.
 

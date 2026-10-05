@@ -1,0 +1,18 @@
+{
+  "product": "Shift scheduling app for independent clinics (fictional)",
+  "plans": [
+    {"name": "Solo", "price": 29, "customers": 210},
+    {"name": "Clinic", "price": 89, "customers": 140},
+    {"name": "Group", "price": 249, "customers": 25}
+  ],
+  "monthly_new_customers": 30,
+  "monthly_churn_pct": 2.8,
+  "funnel": {"type": "trial", "conversion_pct": 34},
+  "cogs_per_customer": 9,
+  "target_gross_margin_pct": 80,
+  "competitor_prices": [39, 99, 299],
+  "months_since_last_increase": 26,
+  "scenarios_pct": [0, 5, 10, 20, 30],
+  "rollout": {"mode": "grandfather", "grandfather_months": 3},
+  "assumptions": {"base_churn_per_10pct": 0.02, "new_customer_loss_per_10pct": 0.05}
+}

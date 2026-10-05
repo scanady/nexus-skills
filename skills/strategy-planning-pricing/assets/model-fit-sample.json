@@ -1,0 +1,24 @@
+{
+  "product": "Shift scheduling app for independent clinics (fictional)",
+  "profile": "vertical",
+  "acv": 1068,
+  "customers": 375,
+  "active_user_share": 0.35,
+  "usage_spread": 4,
+  "usage_volatility": "low",
+  "marginal_cost": "low",
+  "outcome": {
+    "measurable": true,
+    "attribution": "shared"
+  },
+  "fixed_budget_buyer": true,
+  "distinct_segments": true,
+  "motion": "self-serve",
+  "adoption": "bottom-up",
+  "network_effects": false,
+  "time_to_value_days": 3,
+  "competitor_models": [
+    "per_seat",
+    "feature_tiers"
+  ]
+}

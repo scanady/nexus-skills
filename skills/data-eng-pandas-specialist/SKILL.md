@@ -10,7 +10,7 @@ metadata:
   role: expert
   scope: implementation
   output-format: code
-  related-skills: python-pro, data-ai-ml-pipeline
+  related-skills: python-pro, ai-model-ml-pipeline
 ---
 
 # Pandas Specialist

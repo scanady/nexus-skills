@@ -1,0 +1,4 @@
+{"endpoints": {
+  "GET /orders/{id}": {"params": {"id": {"type": "string", "required": true}, "expand": {"type": "string", "required": false}}, "response": {"id": "string", "total": "number", "shipping_address_id": "string"}},
+  "POST /orders": {"params": {"cart_id": {"type": "string", "required": true}, "region": {"type": "string", "required": true}}, "response": {"id": "string"}}
+}}

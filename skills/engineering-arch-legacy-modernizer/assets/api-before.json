@@ -1,0 +1,4 @@
+{"endpoints": {
+  "GET /orders/{id}": {"params": {"id": {"type": "string", "required": true}}, "response": {"id": "string", "total": "number", "address": "string"}},
+  "POST /orders": {"params": {"cart_id": {"type": "string", "required": true}}, "response": {"id": "string"}}
+}}

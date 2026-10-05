@@ -1,0 +1,19 @@
+{
+  "tables": {
+    "orders": {
+      "columns": {
+        "id": {"type": "bigint", "nullable": false, "primary_key": true},
+        "customer_email": {"type": "varchar", "length": 120, "nullable": false},
+        "total_cents": {"type": "bigint", "nullable": false},
+        "shipping_address_id": {"type": "bigint", "nullable": true},
+        "region": {"type": "varchar", "length": 8, "nullable": false},
+        "status": {"type": "varchar", "length": 20, "nullable": true, "default": "pending"}
+      },
+      "foreign_keys": {"fk_orders_address": {"column": "shipping_address_id", "references": "addresses.id"}},
+      "indexes": {"idx_orders_status": {"columns": ["status"], "unique": false}}
+    },
+    "addresses": {
+      "columns": {"id": {"type": "bigint", "nullable": false, "primary_key": true}}
+    }
+  }
+}

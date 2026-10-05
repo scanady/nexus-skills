@@ -1,0 +1,17 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "nexus-git",
+  "version": "1.0.0",
+  "description": "Run the git and GitHub workflow — commits, branches, finishing work, repository scaffolding, and repository standards. Keep history clean and repos consistent.",
+  "keywords": [
+    "git",
+    "github",
+    "commit",
+    "branching",
+    "pull-request",
+    "repo-standards",
+    "scaffolding",
+    "gh-cli",
+    "workflow"
+  ]
+}

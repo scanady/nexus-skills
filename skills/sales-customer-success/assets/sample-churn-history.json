@@ -1,0 +1,3005 @@
+{
+ "_note": "Synthetic demo history. Replace with your own exported scores and outcomes.",
+ "customers": [
+  {
+   "customer_id": "H-ENT-001",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 87,
+     "engagement": 70,
+     "support": 88,
+     "relationship": 74
+    },
+    "60": {
+     "usage": 87,
+     "engagement": 78,
+     "support": 78,
+     "relationship": 72
+    },
+    "30": {
+     "usage": 77,
+     "engagement": 83,
+     "support": 71,
+     "relationship": 68
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-002",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 64,
+     "engagement": 79,
+     "support": 74,
+     "relationship": 68
+    },
+    "60": {
+     "usage": 80,
+     "engagement": 87,
+     "support": 80,
+     "relationship": 76
+    },
+    "30": {
+     "usage": 71,
+     "engagement": 69,
+     "support": 62,
+     "relationship": 75
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-003",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 88,
+     "engagement": 67,
+     "support": 83,
+     "relationship": 67
+    },
+    "60": {
+     "usage": 68,
+     "engagement": 85,
+     "support": 68,
+     "relationship": 73
+    },
+    "30": {
+     "usage": 86,
+     "engagement": 70,
+     "support": 64,
+     "relationship": 63
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-004",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 90,
+     "engagement": 81,
+     "support": 92,
+     "relationship": 81
+    },
+    "60": {
+     "usage": 85,
+     "engagement": 79,
+     "support": 77,
+     "relationship": 91
+    },
+    "30": {
+     "usage": 91,
+     "engagement": 86,
+     "support": 84,
+     "relationship": 70
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-005",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 84,
+     "engagement": 83,
+     "support": 75,
+     "relationship": 87
+    },
+    "60": {
+     "usage": 84,
+     "engagement": 70,
+     "support": 68,
+     "relationship": 77
+    },
+    "30": {
+     "usage": 75,
+     "engagement": 75,
+     "support": 78,
+     "relationship": 62
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-006",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 79,
+     "engagement": 82,
+     "support": 76,
+     "relationship": 88
+    },
+    "60": {
+     "usage": 87,
+     "engagement": 79,
+     "support": 78,
+     "relationship": 87
+    },
+    "30": {
+     "usage": 80,
+     "engagement": 73,
+     "support": 79,
+     "relationship": 79
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-007",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 81,
+     "engagement": 70,
+     "support": 73,
+     "relationship": 86
+    },
+    "60": {
+     "usage": 96,
+     "engagement": 80,
+     "support": 71,
+     "relationship": 87
+    },
+    "30": {
+     "usage": 85,
+     "engagement": 80,
+     "support": 72,
+     "relationship": 73
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-008",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 74,
+     "engagement": 70,
+     "support": 79,
+     "relationship": 56
+    },
+    "60": {
+     "usage": 72,
+     "engagement": 65,
+     "support": 74,
+     "relationship": 74
+    },
+    "30": {
+     "usage": 76,
+     "engagement": 57,
+     "support": 66,
+     "relationship": 65
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-009",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 79,
+     "engagement": 65,
+     "support": 81,
+     "relationship": 65
+    },
+    "60": {
+     "usage": 71,
+     "engagement": 62,
+     "support": 78,
+     "relationship": 62
+    },
+    "30": {
+     "usage": 71,
+     "engagement": 79,
+     "support": 64,
+     "relationship": 73
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-010",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 87,
+     "engagement": 76,
+     "support": 92,
+     "relationship": 80
+    },
+    "60": {
+     "usage": 69,
+     "engagement": 86,
+     "support": 84,
+     "relationship": 86
+    },
+    "30": {
+     "usage": 83,
+     "engagement": 81,
+     "support": 66,
+     "relationship": 72
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-011",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 84,
+     "engagement": 84,
+     "support": 78,
+     "relationship": 82
+    },
+    "60": {
+     "usage": 83,
+     "engagement": 85,
+     "support": 68,
+     "relationship": 82
+    },
+    "30": {
+     "usage": 96,
+     "engagement": 68,
+     "support": 82,
+     "relationship": 74
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-012",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 72,
+     "engagement": 78,
+     "support": 78,
+     "relationship": 56
+    },
+    "60": {
+     "usage": 60,
+     "engagement": 74,
+     "support": 77,
+     "relationship": 80
+    },
+    "30": {
+     "usage": 72,
+     "engagement": 61,
+     "support": 83,
+     "relationship": 65
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-013",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 60,
+     "engagement": 69,
+     "support": 83,
+     "relationship": 78
+    },
+    "60": {
+     "usage": 78,
+     "engagement": 85,
+     "support": 82,
+     "relationship": 73
+    },
+    "30": {
+     "usage": 59,
+     "engagement": 72,
+     "support": 78,
+     "relationship": 71
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-014",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 84,
+     "engagement": 73,
+     "support": 72,
+     "relationship": 85
+    },
+    "60": {
+     "usage": 70,
+     "engagement": 68,
+     "support": 85,
+     "relationship": 80
+    },
+    "30": {
+     "usage": 84,
+     "engagement": 71,
+     "support": 79,
+     "relationship": 89
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-015",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 84,
+     "engagement": 84,
+     "support": 87,
+     "relationship": 84
+    },
+    "60": {
+     "usage": 92,
+     "engagement": 72,
+     "support": 80,
+     "relationship": 87
+    },
+    "30": {
+     "usage": 91,
+     "engagement": 80,
+     "support": 91,
+     "relationship": 85
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-016",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 94,
+     "engagement": 84,
+     "support": 97,
+     "relationship": 90
+    },
+    "60": {
+     "usage": 86,
+     "engagement": 77,
+     "support": 80,
+     "relationship": 91
+    },
+    "30": {
+     "usage": 77,
+     "engagement": 82,
+     "support": 78,
+     "relationship": 95
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-017",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 86,
+     "engagement": 72,
+     "support": 88,
+     "relationship": 79
+    },
+    "60": {
+     "usage": 80,
+     "engagement": 79,
+     "support": 90,
+     "relationship": 82
+    },
+    "30": {
+     "usage": 88,
+     "engagement": 72,
+     "support": 77,
+     "relationship": 80
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-018",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 74,
+     "engagement": 65,
+     "support": 78,
+     "relationship": 67
+    },
+    "60": {
+     "usage": 88,
+     "engagement": 73,
+     "support": 64,
+     "relationship": 61
+    },
+    "30": {
+     "usage": 71,
+     "engagement": 74,
+     "support": 72,
+     "relationship": 79
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-019",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 94,
+     "engagement": 85,
+     "support": 75,
+     "relationship": 81
+    },
+    "60": {
+     "usage": 80,
+     "engagement": 79,
+     "support": 84,
+     "relationship": 78
+    },
+    "30": {
+     "usage": 88,
+     "engagement": 75,
+     "support": 77,
+     "relationship": 84
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-020",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 91,
+     "engagement": 81,
+     "support": 81,
+     "relationship": 83
+    },
+    "60": {
+     "usage": 88,
+     "engagement": 62,
+     "support": 76,
+     "relationship": 88
+    },
+    "30": {
+     "usage": 96,
+     "engagement": 72,
+     "support": 75,
+     "relationship": 79
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-021",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 82,
+     "engagement": 72,
+     "support": 91,
+     "relationship": 70
+    },
+    "60": {
+     "usage": 93,
+     "engagement": 82,
+     "support": 88,
+     "relationship": 76
+    },
+    "30": {
+     "usage": 80,
+     "engagement": 71,
+     "support": 78,
+     "relationship": 81
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-022",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 71,
+     "engagement": 62,
+     "support": 61,
+     "relationship": 60
+    },
+    "60": {
+     "usage": 65,
+     "engagement": 69,
+     "support": 78,
+     "relationship": 71
+    },
+    "30": {
+     "usage": 78,
+     "engagement": 67,
+     "support": 73,
+     "relationship": 59
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-023",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 73,
+     "engagement": 82,
+     "support": 77,
+     "relationship": 78
+    },
+    "60": {
+     "usage": 78,
+     "engagement": 86,
+     "support": 74,
+     "relationship": 81
+    },
+    "30": {
+     "usage": 81,
+     "engagement": 70,
+     "support": 77,
+     "relationship": 72
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-024",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 73,
+     "engagement": 66,
+     "support": 74,
+     "relationship": 76
+    },
+    "60": {
+     "usage": 74,
+     "engagement": 83,
+     "support": 74,
+     "relationship": 87
+    },
+    "30": {
+     "usage": 70,
+     "engagement": 62,
+     "support": 77,
+     "relationship": 76
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-025",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 86,
+     "engagement": 83,
+     "support": 86,
+     "relationship": 92
+    },
+    "60": {
+     "usage": 93,
+     "engagement": 97,
+     "support": 90,
+     "relationship": 82
+    },
+    "30": {
+     "usage": 91,
+     "engagement": 73,
+     "support": 84,
+     "relationship": 89
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-026",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 86,
+     "engagement": 81,
+     "support": 85,
+     "relationship": 86
+    },
+    "60": {
+     "usage": 86,
+     "engagement": 73,
+     "support": 85,
+     "relationship": 69
+    },
+    "30": {
+     "usage": 79,
+     "engagement": 87,
+     "support": 80,
+     "relationship": 68
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-027",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 90,
+     "engagement": 78,
+     "support": 78,
+     "relationship": 91
+    },
+    "60": {
+     "usage": 86,
+     "engagement": 74,
+     "support": 85,
+     "relationship": 78
+    },
+    "30": {
+     "usage": 73,
+     "engagement": 71,
+     "support": 81,
+     "relationship": 80
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-028",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 82,
+     "engagement": 74,
+     "support": 70,
+     "relationship": 81
+    },
+    "60": {
+     "usage": 84,
+     "engagement": 74,
+     "support": 78,
+     "relationship": 86
+    },
+    "30": {
+     "usage": 85,
+     "engagement": 79,
+     "support": 83,
+     "relationship": 81
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-029",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 96,
+     "engagement": 75,
+     "support": 77,
+     "relationship": 73
+    },
+    "60": {
+     "usage": 86,
+     "engagement": 74,
+     "support": 77,
+     "relationship": 84
+    },
+    "30": {
+     "usage": 70,
+     "engagement": 88,
+     "support": 74,
+     "relationship": 77
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-030",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 94,
+     "engagement": 70,
+     "support": 80,
+     "relationship": 81
+    },
+    "60": {
+     "usage": 83,
+     "engagement": 70,
+     "support": 75,
+     "relationship": 79
+    },
+    "30": {
+     "usage": 96,
+     "engagement": 79,
+     "support": 72,
+     "relationship": 65
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-031",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 81,
+     "engagement": 66,
+     "support": 82,
+     "relationship": 95
+    },
+    "60": {
+     "usage": 85,
+     "engagement": 73,
+     "support": 79,
+     "relationship": 73
+    },
+    "30": {
+     "usage": 77,
+     "engagement": 75,
+     "support": 82,
+     "relationship": 68
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-032",
+   "segment": "enterprise",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 98,
+     "engagement": 92,
+     "support": 96,
+     "relationship": 95
+    },
+    "60": {
+     "usage": 97,
+     "engagement": 81,
+     "support": 93,
+     "relationship": 91
+    },
+    "30": {
+     "usage": 98,
+     "engagement": 91,
+     "support": 98,
+     "relationship": 85
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-033",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 77,
+     "engagement": 70,
+     "support": 76,
+     "relationship": 62
+    },
+    "60": {
+     "usage": 53,
+     "engagement": 57,
+     "support": 86,
+     "relationship": 62
+    },
+    "30": {
+     "usage": 51,
+     "engagement": 41,
+     "support": 69,
+     "relationship": 47
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-034",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 54,
+     "engagement": 68,
+     "support": 67,
+     "relationship": 55
+    },
+    "60": {
+     "usage": 56,
+     "engagement": 64,
+     "support": 64,
+     "relationship": 58
+    },
+    "30": {
+     "usage": 40,
+     "engagement": 25,
+     "support": 56,
+     "relationship": 49
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-035",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 78,
+     "engagement": 64,
+     "support": 79,
+     "relationship": 59
+    },
+    "60": {
+     "usage": 71,
+     "engagement": 58,
+     "support": 76,
+     "relationship": 70
+    },
+    "30": {
+     "usage": 55,
+     "engagement": 70,
+     "support": 69,
+     "relationship": 61
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-036",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 57,
+     "engagement": 69,
+     "support": 85,
+     "relationship": 66
+    },
+    "60": {
+     "usage": 46,
+     "engagement": 57,
+     "support": 65,
+     "relationship": 47
+    },
+    "30": {
+     "usage": 51,
+     "engagement": 60,
+     "support": 68,
+     "relationship": 53
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-037",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 61,
+     "engagement": 81,
+     "support": 80,
+     "relationship": 64
+    },
+    "60": {
+     "usage": 67,
+     "engagement": 61,
+     "support": 89,
+     "relationship": 59
+    },
+    "30": {
+     "usage": 56,
+     "engagement": 59,
+     "support": 65,
+     "relationship": 54
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-038",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 56,
+     "engagement": 79,
+     "support": 57,
+     "relationship": 65
+    },
+    "60": {
+     "usage": 65,
+     "engagement": 63,
+     "support": 68,
+     "relationship": 60
+    },
+    "30": {
+     "usage": 45,
+     "engagement": 47,
+     "support": 69,
+     "relationship": 51
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-039",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 90,
+     "engagement": 55,
+     "support": 81,
+     "relationship": 66
+    },
+    "60": {
+     "usage": 70,
+     "engagement": 50,
+     "support": 69,
+     "relationship": 68
+    },
+    "30": {
+     "usage": 50,
+     "engagement": 66,
+     "support": 76,
+     "relationship": 49
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-040",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 63,
+     "engagement": 60,
+     "support": 82,
+     "relationship": 64
+    },
+    "60": {
+     "usage": 56,
+     "engagement": 54,
+     "support": 63,
+     "relationship": 49
+    },
+    "30": {
+     "usage": 38,
+     "engagement": 43,
+     "support": 57,
+     "relationship": 38
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-041",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 63,
+     "engagement": 66,
+     "support": 66,
+     "relationship": 60
+    },
+    "60": {
+     "usage": 48,
+     "engagement": 54,
+     "support": 67,
+     "relationship": 53
+    },
+    "30": {
+     "usage": 42,
+     "engagement": 45,
+     "support": 71,
+     "relationship": 39
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-042",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 73,
+     "engagement": 63,
+     "support": 88,
+     "relationship": 64
+    },
+    "60": {
+     "usage": 58,
+     "engagement": 64,
+     "support": 53,
+     "relationship": 59
+    },
+    "30": {
+     "usage": 47,
+     "engagement": 39,
+     "support": 74,
+     "relationship": 33
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-043",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 59,
+     "engagement": 57,
+     "support": 79,
+     "relationship": 60
+    },
+    "60": {
+     "usage": 54,
+     "engagement": 55,
+     "support": 52,
+     "relationship": 66
+    },
+    "30": {
+     "usage": 47,
+     "engagement": 43,
+     "support": 66,
+     "relationship": 47
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-044",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 59,
+     "engagement": 60,
+     "support": 60,
+     "relationship": 62
+    },
+    "60": {
+     "usage": 54,
+     "engagement": 52,
+     "support": 63,
+     "relationship": 44
+    },
+    "30": {
+     "usage": 52,
+     "engagement": 35,
+     "support": 60,
+     "relationship": 40
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-045",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 73,
+     "engagement": 67,
+     "support": 86,
+     "relationship": 70
+    },
+    "60": {
+     "usage": 62,
+     "engagement": 55,
+     "support": 65,
+     "relationship": 66
+    },
+    "30": {
+     "usage": 49,
+     "engagement": 58,
+     "support": 65,
+     "relationship": 53
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-046",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 70,
+     "engagement": 59,
+     "support": 77,
+     "relationship": 79
+    },
+    "60": {
+     "usage": 66,
+     "engagement": 60,
+     "support": 70,
+     "relationship": 57
+    },
+    "30": {
+     "usage": 54,
+     "engagement": 47,
+     "support": 81,
+     "relationship": 56
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-047",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 68,
+     "engagement": 68,
+     "support": 83,
+     "relationship": 65
+    },
+    "60": {
+     "usage": 65,
+     "engagement": 72,
+     "support": 76,
+     "relationship": 64
+    },
+    "30": {
+     "usage": 62,
+     "engagement": 61,
+     "support": 81,
+     "relationship": 65
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-048",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 65,
+     "engagement": 64,
+     "support": 75,
+     "relationship": 51
+    },
+    "60": {
+     "usage": 57,
+     "engagement": 62,
+     "support": 63,
+     "relationship": 41
+    },
+    "30": {
+     "usage": 49,
+     "engagement": 32,
+     "support": 70,
+     "relationship": 36
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-049",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 70,
+     "engagement": 62,
+     "support": 77,
+     "relationship": 64
+    },
+    "60": {
+     "usage": 63,
+     "engagement": 66,
+     "support": 79,
+     "relationship": 76
+    },
+    "30": {
+     "usage": 59,
+     "engagement": 66,
+     "support": 81,
+     "relationship": 52
+    }
+   }
+  },
+  {
+   "customer_id": "H-ENT-050",
+   "segment": "enterprise",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 74,
+     "engagement": 72,
+     "support": 88,
+     "relationship": 79
+    },
+    "60": {
+     "usage": 80,
+     "engagement": 69,
+     "support": 81,
+     "relationship": 68
+    },
+    "30": {
+     "usage": 64,
+     "engagement": 55,
+     "support": 72,
+     "relationship": 57
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-001",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 80,
+     "engagement": 68,
+     "support": 82,
+     "relationship": 73
+    },
+    "60": {
+     "usage": 79,
+     "engagement": 64,
+     "support": 77,
+     "relationship": 75
+    },
+    "30": {
+     "usage": 77,
+     "engagement": 69,
+     "support": 83,
+     "relationship": 79
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-002",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 64,
+     "engagement": 69,
+     "support": 72,
+     "relationship": 87
+    },
+    "60": {
+     "usage": 80,
+     "engagement": 68,
+     "support": 76,
+     "relationship": 70
+    },
+    "30": {
+     "usage": 79,
+     "engagement": 84,
+     "support": 76,
+     "relationship": 85
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-003",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 76,
+     "engagement": 59,
+     "support": 69,
+     "relationship": 85
+    },
+    "60": {
+     "usage": 80,
+     "engagement": 81,
+     "support": 68,
+     "relationship": 87
+    },
+    "30": {
+     "usage": 85,
+     "engagement": 61,
+     "support": 77,
+     "relationship": 80
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-004",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 80,
+     "engagement": 64,
+     "support": 74,
+     "relationship": 64
+    },
+    "60": {
+     "usage": 72,
+     "engagement": 69,
+     "support": 76,
+     "relationship": 76
+    },
+    "30": {
+     "usage": 85,
+     "engagement": 81,
+     "support": 59,
+     "relationship": 86
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-005",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 69,
+     "engagement": 60,
+     "support": 63,
+     "relationship": 72
+    },
+    "60": {
+     "usage": 69,
+     "engagement": 68,
+     "support": 79,
+     "relationship": 67
+    },
+    "30": {
+     "usage": 71,
+     "engagement": 62,
+     "support": 73,
+     "relationship": 63
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-006",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 86,
+     "engagement": 81,
+     "support": 98,
+     "relationship": 80
+    },
+    "60": {
+     "usage": 83,
+     "engagement": 66,
+     "support": 88,
+     "relationship": 86
+    },
+    "30": {
+     "usage": 93,
+     "engagement": 78,
+     "support": 74,
+     "relationship": 75
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-007",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 70,
+     "engagement": 70,
+     "support": 77,
+     "relationship": 72
+    },
+    "60": {
+     "usage": 68,
+     "engagement": 78,
+     "support": 65,
+     "relationship": 69
+    },
+    "30": {
+     "usage": 81,
+     "engagement": 64,
+     "support": 75,
+     "relationship": 79
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-008",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 86,
+     "engagement": 82,
+     "support": 76,
+     "relationship": 84
+    },
+    "60": {
+     "usage": 81,
+     "engagement": 74,
+     "support": 74,
+     "relationship": 66
+    },
+    "30": {
+     "usage": 78,
+     "engagement": 77,
+     "support": 83,
+     "relationship": 86
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-009",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 80,
+     "engagement": 71,
+     "support": 80,
+     "relationship": 80
+    },
+    "60": {
+     "usage": 70,
+     "engagement": 72,
+     "support": 73,
+     "relationship": 82
+    },
+    "30": {
+     "usage": 83,
+     "engagement": 74,
+     "support": 76,
+     "relationship": 77
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-010",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 75,
+     "engagement": 67,
+     "support": 79,
+     "relationship": 58
+    },
+    "60": {
+     "usage": 71,
+     "engagement": 64,
+     "support": 71,
+     "relationship": 67
+    },
+    "30": {
+     "usage": 64,
+     "engagement": 69,
+     "support": 67,
+     "relationship": 76
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-011",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 85,
+     "engagement": 71,
+     "support": 83,
+     "relationship": 90
+    },
+    "60": {
+     "usage": 91,
+     "engagement": 77,
+     "support": 71,
+     "relationship": 77
+    },
+    "30": {
+     "usage": 81,
+     "engagement": 77,
+     "support": 93,
+     "relationship": 77
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-012",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 82,
+     "engagement": 85,
+     "support": 88,
+     "relationship": 74
+    },
+    "60": {
+     "usage": 88,
+     "engagement": 76,
+     "support": 85,
+     "relationship": 80
+    },
+    "30": {
+     "usage": 84,
+     "engagement": 80,
+     "support": 75,
+     "relationship": 77
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-013",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 73,
+     "engagement": 77,
+     "support": 59,
+     "relationship": 60
+    },
+    "60": {
+     "usage": 77,
+     "engagement": 59,
+     "support": 77,
+     "relationship": 55
+    },
+    "30": {
+     "usage": 71,
+     "engagement": 63,
+     "support": 86,
+     "relationship": 53
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-014",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 78,
+     "engagement": 64,
+     "support": 77,
+     "relationship": 66
+    },
+    "60": {
+     "usage": 95,
+     "engagement": 66,
+     "support": 77,
+     "relationship": 67
+    },
+    "30": {
+     "usage": 74,
+     "engagement": 75,
+     "support": 69,
+     "relationship": 61
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-015",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 83,
+     "engagement": 73,
+     "support": 78,
+     "relationship": 83
+    },
+    "60": {
+     "usage": 90,
+     "engagement": 75,
+     "support": 87,
+     "relationship": 85
+    },
+    "30": {
+     "usage": 77,
+     "engagement": 74,
+     "support": 85,
+     "relationship": 81
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-016",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 70,
+     "engagement": 78,
+     "support": 86,
+     "relationship": 70
+    },
+    "60": {
+     "usage": 79,
+     "engagement": 64,
+     "support": 73,
+     "relationship": 77
+    },
+    "30": {
+     "usage": 83,
+     "engagement": 74,
+     "support": 74,
+     "relationship": 74
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-017",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 76,
+     "engagement": 62,
+     "support": 56,
+     "relationship": 77
+    },
+    "60": {
+     "usage": 69,
+     "engagement": 74,
+     "support": 69,
+     "relationship": 81
+    },
+    "30": {
+     "usage": 78,
+     "engagement": 58,
+     "support": 80,
+     "relationship": 76
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-018",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 75,
+     "engagement": 78,
+     "support": 88,
+     "relationship": 78
+    },
+    "60": {
+     "usage": 98,
+     "engagement": 89,
+     "support": 81,
+     "relationship": 80
+    },
+    "30": {
+     "usage": 81,
+     "engagement": 81,
+     "support": 81,
+     "relationship": 67
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-019",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 68,
+     "engagement": 80,
+     "support": 80,
+     "relationship": 77
+    },
+    "60": {
+     "usage": 88,
+     "engagement": 70,
+     "support": 84,
+     "relationship": 72
+    },
+    "30": {
+     "usage": 85,
+     "engagement": 66,
+     "support": 74,
+     "relationship": 67
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-020",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 73,
+     "engagement": 66,
+     "support": 78,
+     "relationship": 68
+    },
+    "60": {
+     "usage": 64,
+     "engagement": 70,
+     "support": 69,
+     "relationship": 82
+    },
+    "30": {
+     "usage": 71,
+     "engagement": 81,
+     "support": 65,
+     "relationship": 69
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-021",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 93,
+     "engagement": 75,
+     "support": 74,
+     "relationship": 76
+    },
+    "60": {
+     "usage": 85,
+     "engagement": 75,
+     "support": 71,
+     "relationship": 70
+    },
+    "30": {
+     "usage": 88,
+     "engagement": 77,
+     "support": 79,
+     "relationship": 68
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-022",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 92,
+     "engagement": 66,
+     "support": 80,
+     "relationship": 77
+    },
+    "60": {
+     "usage": 91,
+     "engagement": 82,
+     "support": 77,
+     "relationship": 79
+    },
+    "30": {
+     "usage": 88,
+     "engagement": 70,
+     "support": 70,
+     "relationship": 74
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-023",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 83,
+     "engagement": 63,
+     "support": 72,
+     "relationship": 82
+    },
+    "60": {
+     "usage": 74,
+     "engagement": 68,
+     "support": 75,
+     "relationship": 68
+    },
+    "30": {
+     "usage": 62,
+     "engagement": 70,
+     "support": 87,
+     "relationship": 75
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-024",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 80,
+     "engagement": 69,
+     "support": 60,
+     "relationship": 66
+    },
+    "60": {
+     "usage": 73,
+     "engagement": 66,
+     "support": 81,
+     "relationship": 72
+    },
+    "30": {
+     "usage": 59,
+     "engagement": 68,
+     "support": 70,
+     "relationship": 79
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-025",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 83,
+     "engagement": 81,
+     "support": 86,
+     "relationship": 68
+    },
+    "60": {
+     "usage": 83,
+     "engagement": 84,
+     "support": 84,
+     "relationship": 84
+    },
+    "30": {
+     "usage": 73,
+     "engagement": 74,
+     "support": 83,
+     "relationship": 71
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-026",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 78,
+     "engagement": 74,
+     "support": 80,
+     "relationship": 68
+    },
+    "60": {
+     "usage": 82,
+     "engagement": 60,
+     "support": 73,
+     "relationship": 66
+    },
+    "30": {
+     "usage": 74,
+     "engagement": 70,
+     "support": 96,
+     "relationship": 85
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-027",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 72,
+     "engagement": 60,
+     "support": 69,
+     "relationship": 59
+    },
+    "60": {
+     "usage": 83,
+     "engagement": 65,
+     "support": 75,
+     "relationship": 79
+    },
+    "30": {
+     "usage": 78,
+     "engagement": 73,
+     "support": 78,
+     "relationship": 75
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-028",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 80,
+     "engagement": 62,
+     "support": 71,
+     "relationship": 69
+    },
+    "60": {
+     "usage": 91,
+     "engagement": 66,
+     "support": 67,
+     "relationship": 72
+    },
+    "30": {
+     "usage": 80,
+     "engagement": 68,
+     "support": 89,
+     "relationship": 79
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-029",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 94,
+     "engagement": 86,
+     "support": 78,
+     "relationship": 95
+    },
+    "60": {
+     "usage": 98,
+     "engagement": 72,
+     "support": 96,
+     "relationship": 83
+    },
+    "30": {
+     "usage": 81,
+     "engagement": 89,
+     "support": 97,
+     "relationship": 75
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-030",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 73,
+     "engagement": 82,
+     "support": 93,
+     "relationship": 80
+    },
+    "60": {
+     "usage": 92,
+     "engagement": 77,
+     "support": 61,
+     "relationship": 66
+    },
+    "30": {
+     "usage": 78,
+     "engagement": 72,
+     "support": 90,
+     "relationship": 80
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-031",
+   "segment": "mid-market",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 75,
+     "engagement": 71,
+     "support": 63,
+     "relationship": 70
+    },
+    "60": {
+     "usage": 79,
+     "engagement": 68,
+     "support": 76,
+     "relationship": 61
+    },
+    "30": {
+     "usage": 63,
+     "engagement": 68,
+     "support": 80,
+     "relationship": 86
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-032",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 49,
+     "engagement": 56,
+     "support": 53,
+     "relationship": 47
+    },
+    "60": {
+     "usage": 59,
+     "engagement": 50,
+     "support": 70,
+     "relationship": 46
+    },
+    "30": {
+     "usage": 51,
+     "engagement": 36,
+     "support": 71,
+     "relationship": 34
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-033",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 78,
+     "engagement": 57,
+     "support": 79,
+     "relationship": 76
+    },
+    "60": {
+     "usage": 65,
+     "engagement": 58,
+     "support": 91,
+     "relationship": 57
+    },
+    "30": {
+     "usage": 62,
+     "engagement": 64,
+     "support": 69,
+     "relationship": 50
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-034",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 77,
+     "engagement": 69,
+     "support": 76,
+     "relationship": 63
+    },
+    "60": {
+     "usage": 55,
+     "engagement": 74,
+     "support": 66,
+     "relationship": 66
+    },
+    "30": {
+     "usage": 56,
+     "engagement": 53,
+     "support": 52,
+     "relationship": 56
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-035",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 64,
+     "engagement": 63,
+     "support": 89,
+     "relationship": 66
+    },
+    "60": {
+     "usage": 56,
+     "engagement": 46,
+     "support": 67,
+     "relationship": 51
+    },
+    "30": {
+     "usage": 47,
+     "engagement": 52,
+     "support": 66,
+     "relationship": 51
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-036",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 70,
+     "engagement": 69,
+     "support": 87,
+     "relationship": 69
+    },
+    "60": {
+     "usage": 65,
+     "engagement": 68,
+     "support": 85,
+     "relationship": 66
+    },
+    "30": {
+     "usage": 51,
+     "engagement": 52,
+     "support": 79,
+     "relationship": 44
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-037",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 66,
+     "engagement": 70,
+     "support": 65,
+     "relationship": 69
+    },
+    "60": {
+     "usage": 51,
+     "engagement": 63,
+     "support": 68,
+     "relationship": 66
+    },
+    "30": {
+     "usage": 51,
+     "engagement": 39,
+     "support": 57,
+     "relationship": 53
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-038",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 69,
+     "engagement": 54,
+     "support": 66,
+     "relationship": 52
+    },
+    "60": {
+     "usage": 58,
+     "engagement": 58,
+     "support": 82,
+     "relationship": 57
+    },
+    "30": {
+     "usage": 52,
+     "engagement": 57,
+     "support": 55,
+     "relationship": 37
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-039",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 77,
+     "engagement": 74,
+     "support": 92,
+     "relationship": 72
+    },
+    "60": {
+     "usage": 71,
+     "engagement": 67,
+     "support": 72,
+     "relationship": 69
+    },
+    "30": {
+     "usage": 54,
+     "engagement": 50,
+     "support": 78,
+     "relationship": 66
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-040",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 72,
+     "engagement": 61,
+     "support": 74,
+     "relationship": 64
+    },
+    "60": {
+     "usage": 57,
+     "engagement": 51,
+     "support": 71,
+     "relationship": 62
+    },
+    "30": {
+     "usage": 55,
+     "engagement": 44,
+     "support": 71,
+     "relationship": 59
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-041",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 45,
+     "engagement": 62,
+     "support": 77,
+     "relationship": 75
+    },
+    "60": {
+     "usage": 49,
+     "engagement": 65,
+     "support": 66,
+     "relationship": 52
+    },
+    "30": {
+     "usage": 46,
+     "engagement": 40,
+     "support": 79,
+     "relationship": 55
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-042",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 58,
+     "engagement": 53,
+     "support": 75,
+     "relationship": 83
+    },
+    "60": {
+     "usage": 55,
+     "engagement": 52,
+     "support": 60,
+     "relationship": 65
+    },
+    "30": {
+     "usage": 51,
+     "engagement": 38,
+     "support": 68,
+     "relationship": 53
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-043",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 50,
+     "engagement": 52,
+     "support": 56,
+     "relationship": 66
+    },
+    "60": {
+     "usage": 41,
+     "engagement": 32,
+     "support": 46,
+     "relationship": 29
+    },
+    "30": {
+     "usage": 46,
+     "engagement": 36,
+     "support": 43,
+     "relationship": 37
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-044",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 49,
+     "engagement": 65,
+     "support": 69,
+     "relationship": 57
+    },
+    "60": {
+     "usage": 57,
+     "engagement": 56,
+     "support": 69,
+     "relationship": 54
+    },
+    "30": {
+     "usage": 36,
+     "engagement": 54,
+     "support": 59,
+     "relationship": 50
+    }
+   }
+  },
+  {
+   "customer_id": "H-MM-045",
+   "segment": "mid-market",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 68,
+     "engagement": 60,
+     "support": 69,
+     "relationship": 54
+    },
+    "60": {
+     "usage": 52,
+     "engagement": 62,
+     "support": 61,
+     "relationship": 60
+    },
+    "30": {
+     "usage": 48,
+     "engagement": 51,
+     "support": 67,
+     "relationship": 52
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-001",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 80,
+     "engagement": 74,
+     "support": 90,
+     "relationship": 70
+    },
+    "60": {
+     "usage": 73,
+     "engagement": 82,
+     "support": 61,
+     "relationship": 58
+    },
+    "30": {
+     "usage": 70,
+     "engagement": 63,
+     "support": 74,
+     "relationship": 75
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-002",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 77,
+     "engagement": 74,
+     "support": 75,
+     "relationship": 61
+    },
+    "60": {
+     "usage": 87,
+     "engagement": 63,
+     "support": 65,
+     "relationship": 81
+    },
+    "30": {
+     "usage": 77,
+     "engagement": 81,
+     "support": 73,
+     "relationship": 63
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-003",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 62,
+     "engagement": 63,
+     "support": 62,
+     "relationship": 68
+    },
+    "60": {
+     "usage": 67,
+     "engagement": 52,
+     "support": 65,
+     "relationship": 59
+    },
+    "30": {
+     "usage": 76,
+     "engagement": 60,
+     "support": 78,
+     "relationship": 59
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-004",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 85,
+     "engagement": 73,
+     "support": 75,
+     "relationship": 80
+    },
+    "60": {
+     "usage": 94,
+     "engagement": 68,
+     "support": 71,
+     "relationship": 65
+    },
+    "30": {
+     "usage": 76,
+     "engagement": 58,
+     "support": 72,
+     "relationship": 84
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-005",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 59,
+     "engagement": 56,
+     "support": 74,
+     "relationship": 64
+    },
+    "60": {
+     "usage": 70,
+     "engagement": 52,
+     "support": 74,
+     "relationship": 64
+    },
+    "30": {
+     "usage": 79,
+     "engagement": 62,
+     "support": 61,
+     "relationship": 69
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-006",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 70,
+     "engagement": 61,
+     "support": 76,
+     "relationship": 65
+    },
+    "60": {
+     "usage": 80,
+     "engagement": 75,
+     "support": 66,
+     "relationship": 65
+    },
+    "30": {
+     "usage": 84,
+     "engagement": 60,
+     "support": 70,
+     "relationship": 86
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-007",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 59,
+     "engagement": 64,
+     "support": 70,
+     "relationship": 68
+    },
+    "60": {
+     "usage": 75,
+     "engagement": 65,
+     "support": 62,
+     "relationship": 71
+    },
+    "30": {
+     "usage": 67,
+     "engagement": 62,
+     "support": 69,
+     "relationship": 72
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-008",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 75,
+     "engagement": 58,
+     "support": 69,
+     "relationship": 68
+    },
+    "60": {
+     "usage": 67,
+     "engagement": 77,
+     "support": 62,
+     "relationship": 59
+    },
+    "30": {
+     "usage": 71,
+     "engagement": 58,
+     "support": 73,
+     "relationship": 73
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-009",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 76,
+     "engagement": 65,
+     "support": 79,
+     "relationship": 78
+    },
+    "60": {
+     "usage": 78,
+     "engagement": 65,
+     "support": 76,
+     "relationship": 65
+    },
+    "30": {
+     "usage": 72,
+     "engagement": 62,
+     "support": 80,
+     "relationship": 73
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-010",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 83,
+     "engagement": 68,
+     "support": 76,
+     "relationship": 74
+    },
+    "60": {
+     "usage": 84,
+     "engagement": 78,
+     "support": 65,
+     "relationship": 85
+    },
+    "30": {
+     "usage": 87,
+     "engagement": 73,
+     "support": 75,
+     "relationship": 71
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-011",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 76,
+     "engagement": 62,
+     "support": 60,
+     "relationship": 57
+    },
+    "60": {
+     "usage": 62,
+     "engagement": 52,
+     "support": 53,
+     "relationship": 57
+    },
+    "30": {
+     "usage": 68,
+     "engagement": 55,
+     "support": 53,
+     "relationship": 65
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-012",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 74,
+     "engagement": 74,
+     "support": 75,
+     "relationship": 73
+    },
+    "60": {
+     "usage": 75,
+     "engagement": 76,
+     "support": 79,
+     "relationship": 86
+    },
+    "30": {
+     "usage": 83,
+     "engagement": 79,
+     "support": 60,
+     "relationship": 69
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-013",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 66,
+     "engagement": 64,
+     "support": 67,
+     "relationship": 72
+    },
+    "60": {
+     "usage": 82,
+     "engagement": 76,
+     "support": 73,
+     "relationship": 65
+    },
+    "30": {
+     "usage": 66,
+     "engagement": 73,
+     "support": 65,
+     "relationship": 71
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-014",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 84,
+     "engagement": 74,
+     "support": 88,
+     "relationship": 72
+    },
+    "60": {
+     "usage": 74,
+     "engagement": 54,
+     "support": 71,
+     "relationship": 71
+    },
+    "30": {
+     "usage": 65,
+     "engagement": 83,
+     "support": 66,
+     "relationship": 65
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-015",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 86,
+     "engagement": 70,
+     "support": 71,
+     "relationship": 66
+    },
+    "60": {
+     "usage": 82,
+     "engagement": 73,
+     "support": 77,
+     "relationship": 70
+    },
+    "30": {
+     "usage": 81,
+     "engagement": 84,
+     "support": 64,
+     "relationship": 76
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-016",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 69,
+     "engagement": 59,
+     "support": 61,
+     "relationship": 78
+    },
+    "60": {
+     "usage": 72,
+     "engagement": 61,
+     "support": 72,
+     "relationship": 66
+    },
+    "30": {
+     "usage": 67,
+     "engagement": 64,
+     "support": 72,
+     "relationship": 57
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-017",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 77,
+     "engagement": 59,
+     "support": 59,
+     "relationship": 69
+    },
+    "60": {
+     "usage": 83,
+     "engagement": 65,
+     "support": 79,
+     "relationship": 73
+    },
+    "30": {
+     "usage": 80,
+     "engagement": 64,
+     "support": 76,
+     "relationship": 64
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-018",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 68,
+     "engagement": 62,
+     "support": 77,
+     "relationship": 76
+    },
+    "60": {
+     "usage": 81,
+     "engagement": 72,
+     "support": 81,
+     "relationship": 69
+    },
+    "30": {
+     "usage": 82,
+     "engagement": 62,
+     "support": 76,
+     "relationship": 53
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-019",
+   "segment": "smb",
+   "outcome": "retained",
+   "snapshots": {
+    "90": {
+     "usage": 84,
+     "engagement": 60,
+     "support": 62,
+     "relationship": 63
+    },
+    "60": {
+     "usage": 72,
+     "engagement": 80,
+     "support": 74,
+     "relationship": 80
+    },
+    "30": {
+     "usage": 75,
+     "engagement": 59,
+     "support": 72,
+     "relationship": 82
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-020",
+   "segment": "smb",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 70,
+     "engagement": 69,
+     "support": 78,
+     "relationship": 65
+    },
+    "60": {
+     "usage": 65,
+     "engagement": 70,
+     "support": 73,
+     "relationship": 54
+    },
+    "30": {
+     "usage": 57,
+     "engagement": 57,
+     "support": 82,
+     "relationship": 55
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-021",
+   "segment": "smb",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 66,
+     "engagement": 67,
+     "support": 80,
+     "relationship": 67
+    },
+    "60": {
+     "usage": 46,
+     "engagement": 39,
+     "support": 69,
+     "relationship": 60
+    },
+    "30": {
+     "usage": 56,
+     "engagement": 50,
+     "support": 65,
+     "relationship": 51
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-022",
+   "segment": "smb",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 54,
+     "engagement": 60,
+     "support": 71,
+     "relationship": 52
+    },
+    "60": {
+     "usage": 63,
+     "engagement": 67,
+     "support": 77,
+     "relationship": 46
+    },
+    "30": {
+     "usage": 37,
+     "engagement": 49,
+     "support": 63,
+     "relationship": 49
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-023",
+   "segment": "smb",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 66,
+     "engagement": 60,
+     "support": 62,
+     "relationship": 56
+    },
+    "60": {
+     "usage": 56,
+     "engagement": 63,
+     "support": 60,
+     "relationship": 49
+    },
+    "30": {
+     "usage": 37,
+     "engagement": 64,
+     "support": 69,
+     "relationship": 40
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-024",
+   "segment": "smb",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 74,
+     "engagement": 71,
+     "support": 91,
+     "relationship": 78
+    },
+    "60": {
+     "usage": 71,
+     "engagement": 71,
+     "support": 77,
+     "relationship": 73
+    },
+    "30": {
+     "usage": 48,
+     "engagement": 48,
+     "support": 73,
+     "relationship": 57
+    }
+   }
+  },
+  {
+   "customer_id": "H-SMB-025",
+   "segment": "smb",
+   "outcome": "churned",
+   "snapshots": {
+    "90": {
+     "usage": 62,
+     "engagement": 50,
+     "support": 66,
+     "relationship": 61
+    },
+    "60": {
+     "usage": 62,
+     "engagement": 45,
+     "support": 54,
+     "relationship": 45
+    },
+    "30": {
+     "usage": 42,
+     "engagement": 37,
+     "support": 65,
+     "relationship": 45
+    }
+   }
+  }
+ ]
+}

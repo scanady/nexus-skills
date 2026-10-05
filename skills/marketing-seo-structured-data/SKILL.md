@@ -11,7 +11,7 @@ metadata:
   role: seo-engineer
   scope: audit-generate-validate
   output-format: report+code
-  related-skills: marketing-seo-cro, content-meta-design, marketing-seo-adsense-review, engineering-data-scraper
+  related-skills: marketing-seo-cro, content-meta-design, marketing-seo-adsense-readiness, engineering-dev-data-scraper
 ---
 
 # Structured Data & Search Appearance Engineer

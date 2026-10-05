@@ -30,13 +30,13 @@ Only use global scope when requested:
 <runner> install --skill <skill-name> --global
 ```
 
-## Install a Pack
+## Install a Plugin
 
 ```bash
-<runner> install --pack <pack-name> --project
+<runner> install --plugin <plugin-name> --project
 ```
 
-Repeat `--pack` for multiple packs.
+Repeat `--plugin` for multiple plugins, or pass a comma-separated list. `--pack` is the old spelling.
 
 ## Install to Multiple Agents
 
@@ -58,23 +58,18 @@ For broad upgrades, first explain that installed copies will be deleted and repl
 <runner> install --upgrade
 ```
 
-Use `--overwrite` only if the user explicitly asked to skip confirmation.
+Use `--yes` (same as `--overwrite`) only if the user explicitly asked to skip confirmation.
 
 ## Remove or Uninstall One Installed Skill
 
-`nxa` does not currently have an uninstall command. Remove a skill by deleting that skill folder from the resolved target directory.
-
-Linux or macOS shell:
+Use `remove` with the same scope and agent flags as the install:
 
 ```bash
-rm -rf <target-dir>/<skill-name>
+<runner> list --installed --full [--global] [-a <agent>]
+<runner> remove --skill <skill-name> [--global] [-a <agent>]
 ```
 
-PowerShell:
-
-```powershell
-Remove-Item -Recurse -Force <target-dir>/<skill-name>
-```
+`remove` keeps `.env` and `.env.local` files in place by default and deletes everything else. `--yes` takes the defaults without prompting (proceed, keep `.env` files), so it is safe for unattended runs. Add `--delete-env` only when the user asks to delete those files too. It refuses a name that is not installed, and it never removes every skill.
 
 Before deleting:
 

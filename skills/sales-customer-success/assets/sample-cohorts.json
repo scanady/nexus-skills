@@ -1,0 +1,11 @@
+{
+  "_note": "Synthetic demo cohorts at the 12-month mark.",
+  "cohorts": [
+    {"name": "2025-Q1", "starting_arr": 2400000, "churned_arr": 120000, "contraction_arr": 80000, "expansion_arr": 360000, "starting_logos": 80, "churned_logos": 8,
+     "churn_reasons": {"product_fit": 3, "competitor_loss": 2, "no_value_realized": 1, "pricing": 1, "champion_left": 1, "company_event": 0, "tactical_failure": 0}},
+    {"name": "2025-Q2", "starting_arr": 3100000, "churned_arr": 310000, "contraction_arr": 165000, "expansion_arr": 280000, "starting_logos": 95, "churned_logos": 14,
+     "churn_reasons": {"product_fit": 6, "competitor_loss": 3, "no_value_realized": 2, "pricing": 2, "champion_left": 1, "company_event": 0, "tactical_failure": 0}},
+    {"name": "2025-Q3", "starting_arr": 3600000, "churned_arr": 540000, "contraction_arr": 180000, "expansion_arr": 760000, "starting_logos": 110, "churned_logos": 22,
+     "churn_reasons": {"product_fit": 9, "competitor_loss": 4, "no_value_realized": 5, "pricing": 2, "champion_left": 1, "company_event": 1, "tactical_failure": 0}}
+  ]
+}
