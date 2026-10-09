@@ -4,8 +4,8 @@ The script decides most of the quality. Viewers of AI explainers complain most a
 
 ## Research first
 
-1. Collect the facts the video will state. Sources, in order: what the user gave you, the project's docs (README, AGENTS.md, CLAUDE.md, docs/), then primary sources on the web.
-2. Write `facts.md` in the job folder: one fact per line, each with its source. Every claim in the script must trace to a line in this file.
+1. Collect the facts the video will state. Sources, in order: what the user gave you, the project folder's `shared/brief.md` and `shared/facts.md` (when they exist), the project's docs (README, AGENTS.md, CLAUDE.md, docs/), then primary sources on the web.
+2. Write `facts.md` in the job folder: one claim per line, as `- <claim> — <source>`, where the source is a URL, a file path, or `user (chat, <date>)`. `init.mjs` starts it with the lines of `shared/facts.md`; add yours below them. Every claim in the script must trace to a line in this file. `deliver.mjs` adds your new lines to `shared/facts.md`.
 3. Collect the user's own vocabulary: product names, feature names, the terms their docs use. Use those words. Do not coin terms.
 4. For a codebase explainer, map each beat to a real subsystem (a file or module). Explain what it does and how it works. Do not write marketing copy.
 

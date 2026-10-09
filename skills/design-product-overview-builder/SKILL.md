@@ -5,7 +5,7 @@ description: Build high-conversion product overview pages, feature tours, and pl
 license: MIT
 metadata:
   author: nexus-agents
-  version: "3.0.0"
+  version: "3.1.0"
   domain: design
   triggers: product overview, product tour, feature page, feature showcase, platform walkthrough, product marketing page, feature tour, explore the platform, product showcase, how it works page, feature highlights, product demo page, SaaS landing page, conversion page, architecture diagram, process flow, product screenshots
   role: expert
@@ -35,7 +35,7 @@ Your work combines three disciplines most designers treat separately: **visual s
 
 ### If $ARGUMENTS is empty or not provided:
 Respond with:
-"Product overview builder loaded. Give me a URL or repository to your product and describe the features you want to showcase. I'll capture screenshots and build a high-conversion product overview page."
+"Product overview builder loaded. Give me a URL or repository to your product and describe the features you want to showcase. Tell me which folder to keep the project in and what to name it. I'll capture screenshots and build a high-conversion product overview page."
 
 Then wait for the user's input.
 
@@ -50,6 +50,7 @@ Proceed immediately to Task Execution.
 **BLOCKING REQUIREMENT — DO NOT SKIP THIS STEP**
 
 Before doing ANYTHING else, use the Read tool to read ALL of the following:
+- `./references/project-folder.md`
 - `./references/page-patterns.md`
 - `./references/screenshot-capture.md`
 - `./references/image-generation.md`
@@ -58,13 +59,60 @@ Before doing ANYTHING else, use the Read tool to read ALL of the following:
 
 **DO NOT PROCEED** to Step 2 until all reference files are loaded into context.
 
-### 2. Discover the Product
+### 2. Join or Create the Project Folder
+
+The page and everything it uses live in a project folder that other skills can share: an explainer video, a demo recording, a scroll story. Each skill owns one subfolder and exchanges material through `shared/` and `project.json`. Follow `./references/project-folder.md` exactly; this step summarizes it.
+
+1. **Get the location.** Take the parent folder (`<parent>`) and the project name (`<project>`, lowercase with hyphens) from the prompt, or ask for both. Never put the project in the repository's `output/` folder. Below, `<project-dir>` means `<parent>/<project>`.
+2. **Join, create, or ask.**
+   - `<project-dir>/project.json` exists → join the project. Read `project.json` and everything in `shared/` before any research, capture, or generation.
+   - `<project-dir>` does not exist → create it with `project.json` (`{"schema": 1, "name": "<project>", "title": "<Product name>", "outputs": []}`), `README.md` (a `# <title>` heading), and an empty `shared/`.
+   - `<project-dir>` exists, is not empty, and has no `project.json` → stop and ask the user. Never adopt a folder you did not create.
+3. **Pick the output folder.** Use `overview`. When `project.json` already lists `overview` for another run, ask the user for a suffix, such as `overview-pricing`. Below, `overview/` means the folder you picked.
+4. **Create the folders:**
+   ```bash
+   mkdir -p <project-dir>/overview/screenshots <project-dir>/overview/generated <project-dir>/overview/work
+   ```
+5. **Register the output.** Add your entry to `project.json` → `outputs` by read, change, write, keeping every key and entry you do not own:
+   `{"dir": "overview", "skill": "design-product-overview-builder", "kind": "product-overview", "entry": null, "status": "in-progress", "updated": "<YYYY-MM-DD>"}`
+6. **Read what the project already has.** A missing file means you do that part of the work as usual, never an error.
+
+| Source | What it gives this page |
+|---|---|
+| `shared/brief.md` | Product name, audience, goal, tone, call to action. Step 3 starts from it. |
+| `shared/facts.md` | Claims, stats, and quotes with sources. Every claim on the page traces to a line here. |
+| `shared/brand.json` | Palette, fonts, logo, voice. It sets the page's design system and the colors in image prompts, in place of extracting them again. |
+| `shared/ui-map.md` | Real routes, exact labels, and flows. It drives the capture plan (Step 4a) and the How It Works steps. |
+| `shared/assets.json`, `shared/screenshots/` | Existing captures of the product. Reuse one when it shows what a section needs (Step 4a). |
+| `shared/images/` | Logos and generated art. Check each entry's `text`, `background`, and `rights` before use; confirm `third-party` with the user. |
+| `project.json` → `outputs` | An `explainer-video` or `demo-recording` output with a non-null `entry` can be embedded in the page (Step 7, Linked Outputs). |
+
+Final structure of your output folder:
+```
+<project-dir>/overview/
+├── index.html                # the page; open this
+├── screenshots/              # product UI the page shows
+│   ├── hero.png
+│   ├── feature-1-<name>.png
+│   ├── feature-2-<name>.png
+│   └── ... (one per feature)
+├── generated/                # Gemini-generated diagrams and visuals
+│   ├── generated-architecture-overview.png
+│   ├── generated-process-<name>.png
+│   └── ... (2-4 supplementary visuals)
+└── work/
+    └── capture-manifest.md   # what was captured, reused, and generated
+```
+
+### 3. Discover the Product
+
+Start from what `shared/` already holds. Research only what is missing, and do not repeat research the brief and facts already answer.
 
 Adapt your approach based on what the user provides:
 
 **If a live URL is provided:**
 - Browse the product site to understand its positioning, features, audience, and brand
-- Extract brand colors, typography, and visual language from the live site
+- Extract brand colors, typography, and visual language from the live site, unless `shared/brand.json` already gives them
 - Identify the product's key differentiators and value props from existing copy
 - Map the feature landscape — what screens/views exist, what's most visually impressive
 
@@ -90,28 +138,7 @@ From all sources, extract and confirm:
 
 For any missing information, apply smart defaults from **Defaults & Assumptions**.
 
-### 3. Create Output Directory
-
-```bash
-mkdir -p ./output/<product-name>/screenshots
-mkdir -p ./output/<product-name>/generated
-```
-
-Final structure:
-```
-./output/<product-name>/
-├── screenshots/              # Playwright-captured product UI
-│   ├── hero.png
-│   ├── feature-1-<name>.png
-│   ├── feature-2-<name>.png
-│   └── ... (one per feature)
-├── generated/                # Gemini-generated diagrams and visuals
-│   ├── generated-architecture-overview.png
-│   ├── generated-process-<name>.png
-│   └── ... (2-4 supplementary visuals)
-├── <product-name>-overview.html
-└── capture-manifest.md
-```
+Write each claim you intend to use (feature capability, metric, customer name, quote) to `shared/facts.md` as you find it, one per line with its source, unless the same claim is already there. A claim without a source does not go on the page.
 
 ### 4. Capture Screenshots with Playwright
 
@@ -121,6 +148,9 @@ Follow the detailed capture workflow in `./references/screenshot-capture.md`. Us
 
 #### 4a. Plan the capture session
 Map each feature to a specific URL, UI state, and capture scope. Create the capture plan before opening a browser.
+
+- Take routes, button labels, and flows from `shared/ui-map.md` when it exists.
+- Check `shared/assets.json` for `screenshot` entries of the same view. When an existing capture shows the state a section needs, copy it into `overview/screenshots/` under this skill's naming (for example `feature-2-analytics.png`) instead of capturing again. The page only references files inside `overview/`, so it stays self-contained.
 
 #### 4b. Launch Playwright browser at 1440×900 desktop viewport
 
@@ -133,7 +163,7 @@ Use Playwright MCP tools (`browser_navigate`, `browser_snapshot`, `browser_click
 - Navigate to the product's most visually impressive view
 - This screenshot carries the most weight — spend extra time getting the state right
 - Ensure populated, realistic data is visible (not empty states)
-- Save as `screenshots/hero.png`
+- Save as `overview/screenshots/hero.png`
 
 #### 4d. Capture each feature (3–8 screenshots)
 For each feature:
@@ -141,7 +171,7 @@ For each feature:
 2. Set up the ideal state — click tabs, expand panels, populate data
 3. Wait for animations to settle
 4. Capture at full viewport or element-specific scope
-5. Save as `screenshots/feature-N-<descriptive-name>.png`
+5. Save as `overview/screenshots/feature-N-<descriptive-name>.png`
 
 #### 4e. Capture interaction states (high-impact extras)
 - **Hover states** on key interactive elements
@@ -150,12 +180,13 @@ For each feature:
 - **Dark mode variants** if available
 
 #### 4f. Extract brand assets during capture
+Skip what `shared/brand.json` already gives. Otherwise:
 - Note primary/secondary/accent colors from the UI
 - Identify font families
 - Capture any logo from the navigation
 
 #### 4g. Write capture manifest
-Document every capture in `capture-manifest.md` with filename, description, URL, viewport, and notes.
+Document every capture in `overview/work/capture-manifest.md` with filename, description, URL, viewport, and notes. List reused shared screenshots too, with the `shared/screenshots/` file they came from.
 
 ### 4.5. Generate Supplementary Visuals with Google AI Studio
 
@@ -185,12 +216,12 @@ Check that `GOOGLE_AI_STUDIO_API_KEY` is available — either in `.env` file or 
 
 For each identified visual, use the bundled `scripts/generate.py` script:
 
-1. **Construct the prompt** using templates from `./references/image-generation.md` — always use brand colors extracted during screenshot capture (Step 4f)
+1. **Construct the prompt** using templates from `./references/image-generation.md` — always use brand colors from `shared/brand.json` or, when it is absent, those extracted during screenshot capture (Step 4f)
 2. **Run the script**:
    ```bash
    python3 ./scripts/generate.py \
      --prompt "Generate an image: [constructed prompt]" \
-     --output ./output/<product-name>/generated/generated-<type>-<descriptive-name>.png
+     --output <project-dir>/overview/generated/generated-<type>-<descriptive-name>.png
    ```
    Or for long prompts, save to a file first and use `--prompt-file`.
 3. **The script handles** model selection (defaults to `gemini-3-pro-image` with automatic fallback), retries on transient errors, and auto-corrects the output file extension based on actual format
@@ -198,14 +229,14 @@ For each identified visual, use the bundled `scripts/generate.py` script:
 
 **Prompt construction rules:**
 - Always specify aspect ratio ("wide 16:9" for diagrams, not square)
-- Use brand colors from Step 4f — never use default colors when brand colors are known
+- Use brand colors from `shared/brand.json` or Step 4f — never use default colors when brand colors are known
 - Include "professional quality, production-ready" for output quality
 - Keep labels short (2–3 words) — generated images with dense text become unreadable
 - Prefix prompt with "Generate an image:" to ensure image output mode
 
 #### 4.5d. Document generated images in the capture manifest
 
-Append generated images to `capture-manifest.md` with a separate "Generated Images" section:
+Append generated images to `overview/work/capture-manifest.md` with a separate "Generated Images" section. Keep each full prompt; Step 8 publishes it as the image's source:
 
 ```markdown
 ## Generated Images
@@ -259,7 +290,7 @@ ACTION           → CTA: "What do I do next?"
 
 ### 7. Design & Build the Page
 
-Build the page in iterative passes to avoid overloading context. Each pass produces a working file that the next pass extends. Generate the output at `./output/<product-name>/<product-name>-overview.html`.
+Build the page in iterative passes to avoid overloading context. Each pass produces a working file that the next pass extends. Generate the output at `<project-dir>/overview/index.html`. The page references images as `./screenshots/...` and `./generated/...`.
 
 **Do NOT attempt to generate the entire page in a single output.** Work through the passes below sequentially. After each pass, confirm the HTML is valid and renders correctly before moving on.
 
@@ -268,8 +299,8 @@ Build the page in iterative passes to avoid overloading context. Each pass produ
 Create the HTML file with:
 - Document skeleton (`<!DOCTYPE html>`, viewport meta, Open Graph tags)
 - CSS custom properties block defining the full design system:
-  - Colors: brand primary, accent, text primary/secondary/muted, backgrounds, borders (derive from product brand captured in Step 4f)
-  - Typography: display font + body font via Google Fonts (never default to Inter/Roboto/Arial unless the product uses them). Sizes: 56–72px hero, 40–48px section heads, 24–32px sub-heads. Weights: 700–900 headlines, 400 body.
+  - Colors: brand primary, accent, text primary/secondary/muted, backgrounds, borders (from `shared/brand.json`, or the product brand captured in Step 4f)
+  - Typography: display font + body font via Google Fonts (use `shared/brand.json` fonts when present; never default to Inter/Roboto/Arial unless the product uses them). Sizes: 56–72px hero, 40–48px section heads, 24–32px sub-heads. Weights: 700–900 headlines, 400 body.
   - Spacing: section padding (120–200px vertical), container max-width, grid gaps
 - Global reset and base styles
 - Responsive breakpoint structure (1280px, 768px, 375px)
@@ -331,7 +362,7 @@ Add two sections, incorporating generated images where available:
 
 **How It Works** (3–4 numbered steps):
 - Numbered step cards in a horizontal row with connecting lines between them
-- Each card: number badge (circle, brand color) + step title + 1–2 sentence description
+- Each card: number badge (circle, brand color) + step title + 1–2 sentence description. Take the steps and their labels from a flow in `shared/ui-map.md` when one fits; otherwise from what you observed during capture or from the user.
 - If a **process flow diagram** was generated in Step 4.5, display it as a full-width visual above or alongside the step cards
 - Image reference: `./generated/generated-process-<name>.png`
 - Mobile fallback: vertical stack with vertical connector lines
@@ -382,6 +413,16 @@ Add the remaining sections:
 
 **Checkpoint:** Scroll the full page top to bottom. All sections render, all animations fire, all interactive elements work.
 
+#### Linked Outputs (when present)
+
+When `project.json` lists an `explainer-video` or `demo-recording` output with a non-null `entry`, ask the user whether to show it on the page. If yes:
+- Link to the file in place; do not copy it. The path is `../` plus the `entry` value, for example `../video/why-is-the-sky-blue.mp4` or `../demo/index.html`.
+- A video file (`.mp4`, `.webm`): embed it with `<video controls preload="metadata" src="../video/<file>">` in the hero or the How It Works section, with a text label stating what it shows.
+- An HTML entry: link to it from a secondary CTA ("Watch the demo").
+- Never read the other output's `work/` folder.
+
+This link is the one file reference outside `overview/`. It works while the project folder stays together; moving `overview/` on its own breaks it. Say so in the delivery report.
+
 #### Design Rules (apply across all passes)
 
 - **Screenshots dominate**: 60% width minimum in their sections, framed with browser chrome or perspective shadow
@@ -389,17 +430,17 @@ Add the remaining sections:
 - **Grid breaking**: At least one section should break the standard container width (full-bleed background, overlapping elements, or asymmetric composition)
 - **Single CTA color**: Use ONE button color for all primary CTAs. Secondary CTAs use outline or muted variant.
 - **CSS custom properties everywhere**: Reference `var(--brand-primary)`, `var(--text-primary)`, etc. — never hardcode colors
-- **All code inline**: CSS in `<style>`, JS in `<script>` at the end of `<body>`. No external files except Google Fonts CDN.
+- **All code inline**: CSS in `<style>`, JS in `<script>` at the end of `<body>`. No external files except Google Fonts CDN and a linked output from the same project.
 - **Semantic HTML**: Proper heading hierarchy (h1 → h2 → h3), landmark elements, `alt` on all images, `loading="lazy"` for below-fold images
 
-### 8. Verify and Deliver
+### 8. Verify, Publish, and Deliver
 
 Verify iteratively — do NOT attempt all checks in one pass.
 
 #### Verification Pass 1: Visual Integrity
 - Open the HTML file in a browser
 - Scroll top to bottom — confirm all sections render without layout breaks
-- Confirm all screenshot images load (check for broken image icons)
+- Confirm all screenshot images load (check for broken image icons), and that a linked video or demo opens
 - Verify the typography looks intentional (fonts loaded, sizes hierarchical, weights correct)
 - Verify color consistency (brand colors used throughout, no orphaned default colors)
 - **Fix any issues found before proceeding**
@@ -425,11 +466,32 @@ Verify iteratively — do NOT attempt all checks in one pass.
 - Confirm ARIA attributes on tabs (`role="tablist"`, `role="tab"`, `aria-selected`)
 - Validate no external JS dependencies, no external CSS files (Google Fonts CDN excepted)
 
+#### Publish to the Project
+
+Add what this run produced to the project, so other skills can reuse it. Edit every JSON file by read, change, write, keeping keys and entries you do not own. Create `shared/assets.json` as `{"schema": 1, "assets": []}` when it is missing. Never overwrite a file another skill added; choose a new name. Never write API keys, `.env` files, or caches to `shared/`.
+
+1. **Screenshots.** Copy each new capture of the real product into `shared/screenshots/<product>-<detail>.png` (lowercase, hyphens). Add one `assets.json` entry for each: `kind: "screenshot"`, `by: "design-product-overview-builder"`, `source` (the URL captured), `width`, `height`, `text: true`, `background: "opaque"`, `rights: "user-product"`, and a `note` on the state shown (for example "Logged-in view, demo data"). Skip screenshots you reused from `shared/` and HTML/CSS mockups; a mockup is not the real product.
+2. **Generated visuals.** Copy each generated image into `shared/images/<product>-<detail>.png` and add an entry: `kind: "generated"`, `source` (the full prompt), `width`, `height`, `background: "opaque"`, `rights: "generated"`. Set `text` truthfully: `true` when the image has labels, as most diagrams do; `false` only when it has no readable words.
+3. **Facts.** Confirm every claim on the page has its line in `shared/facts.md`. Add any that are missing, with sources. Remove from the page any claim you cannot source.
+4. **Brief.** When `shared/brief.md` is missing, write it with the headings `## Subject`, `## Audience`, `## Goal`, `## Tone`, `## Call to action`, filled from Step 3. When it exists, add only new information under a heading; never rewrite another skill's text.
+5. **Brand.** When `shared/brand.json` is missing, write the `palette` and `fonts` the page uses (and `logo` when you saved one to `shared/images/`). Leave an existing file unchanged unless the user asked for a new look.
+6. **UI map.** When you captured the real product, add to `shared/ui-map.md` what you observed: a `## <route>` heading for each page you visited, with the fields and buttons and their exact labels, and under `## Flows` each sequence you clicked through. Add only what you saw in the browser, never what you inferred from code or copy. Add missing items under existing headings; do not repeat them.
+7. **Your output entry.** In `project.json`, set your entry to `"entry": "overview/index.html"`, `"status": "delivered"`, and today's date in `updated`.
+8. **README section.** In `README.md`, replace the text between your own markers, or add the section at the end when it is missing:
+   ```markdown
+   <!-- output:overview -->
+   ## Product overview
+   `overview/index.html`: <archetype> page with <N> screenshots and <N> generated visuals. Capture notes: `overview/work/capture-manifest.md`.
+   <!-- /output:overview -->
+   ```
+
 #### Delivery
 Tell the user:
-- Output directory path with file listing
-- Number of screenshots captured (via Playwright) and generated images (via Gemini) used
-- How to preview: "Open `<product-name>-overview.html` in a browser — keep the `screenshots/` and `generated/` folders alongside it"
+- Project folder and output folder path (`<project-dir>/overview/`) with file listing
+- Number of screenshots captured (via Playwright), reused from `shared/`, and generated images (via Gemini) used
+- How to preview: "Open `overview/index.html` in a browser — keep the `screenshots/` and `generated/` folders beside it"
+- When the page links another output: that the link works only while `overview/` stays inside the project folder
+- What was added to `shared/` (screenshots, images, facts, brief, brand, UI map)
 - Which page archetype was selected and why
 - Brief section-by-section summary of what was built
 
@@ -438,7 +500,9 @@ Tell the user:
 ## Constraints
 
 ### MUST DO
-- Read ALL reference files before starting any design or capture work (including `./references/image-generation.md`)
+- Read ALL reference files before starting any design or capture work (including `./references/image-generation.md` and `./references/project-folder.md`)
+- Join or create the project folder before research, and read `project.json` and `shared/` when joining
+- Trace every claim on the page — features, stats, customer names, quotes — to a line in `shared/facts.md`
 - Capture real screenshots from the live product using **Playwright** when a URL is provided — never substitute illustrations or placeholders when real UI is available
 - Use **Google AI Studio Gemini** via the bundled `scripts/generate.py` for generating supplementary visuals (architecture diagrams, process flows, integration maps) — never for faking product UI screenshots
 - Verify `GOOGLE_AI_STUDIO_API_KEY` is configured in `.env` or environment before attempting image generation — prompt the user if not configured
@@ -470,6 +534,8 @@ Tell the user:
 - Ignore the product's actual brand identity — extract and use real colors, fonts, and visual language
 - Skip the "How It Works" section — this is a critical friction-reduction pattern that directly impacts conversion
 - Create hover states that are jarring (large scale jumps, bright flashes) — all micro-interactions must be subtle and smooth
+- Write outside your own output folder, your `project.json` entry, your `README.md` section, and additions to `shared/`; never read another output's `work/` folder
+- Create the project inside the repository's `output/` folder
 
 ---
 
@@ -477,7 +543,7 @@ Tell the user:
 
 ### Headlines
 - Lead with the benefit, not the feature name
-- Add concrete specificity: "11.9% average revenue uplift" not "improve revenue"
+- Add concrete specificity: "11.9% average revenue uplift" not "improve revenue" — every number comes from `shared/facts.md`
 - Hero headline: 4–8 words maximum, answers "what does this do for me?"
 - Section headlines: set up the content below, create curiosity
 
@@ -494,7 +560,7 @@ Tell the user:
 - Never use "Click here" or "Submit"
 
 ### Social Proof
-- Stats include context ("$5B+ processed annually" not just "$5B+")
+- Stats include context ("$5B+ processed annually" not just "$5B+") and a source in `shared/facts.md`
 - Testimonials have full attribution: name, title, company
 - If no real testimonials exist, use realistic placeholder attribution and note it for the user to replace
 
@@ -503,29 +569,35 @@ Tell the user:
 ## Output Format
 
 ```
-./output/<product-name>/
-├── screenshots/                  # Playwright-captured product UI
-│   ├── hero.png
-│   ├── feature-1-<name>.png
-│   ├── feature-2-<name>.png
-│   ├── feature-3-<name>.png
-│   └── ...
-├── generated/                    # Gemini-generated diagrams and visuals
-│   ├── generated-architecture-overview.png
-│   ├── generated-process-<name>.png
-│   ├── generated-integration-ecosystem.png
-│   └── ...
-├── <product-name>-overview.html
-└── capture-manifest.md
+<project-dir>/
+├── project.json                  # your entry: dir "overview", kind "product-overview"
+├── README.md                     # your section: <!-- output:overview -->
+├── shared/                       # read first; add screenshots, images, facts, brief, brand, UI map
+└── overview/
+    ├── index.html
+    ├── screenshots/              # product UI the page shows (captured or copied from shared/)
+    │   ├── hero.png
+    │   ├── feature-1-<name>.png
+    │   ├── feature-2-<name>.png
+    │   ├── feature-3-<name>.png
+    │   └── ...
+    ├── generated/                # Gemini-generated diagrams and visuals
+    │   ├── generated-architecture-overview.png
+    │   ├── generated-process-<name>.png
+    │   ├── generated-integration-ecosystem.png
+    │   └── ...
+    └── work/
+        └── capture-manifest.md
 ```
 
-The HTML file inlines all CSS and JS. It references screenshots via relative paths and opens directly in any browser when the directory structure is preserved.
+`index.html` inlines all CSS and JS. It references screenshots and generated images via relative paths inside `overview/`, so the folder opens directly in any browser when copied whole. The only exception is a linked video or demo from the same project (`../<dir>/<file>`), which needs the project folder kept together.
 
 ---
 
 ## Quality Checklist (Self-Verification)
 
 ### Pre-Execution Check
+- [ ] I read `./references/project-folder.md` before starting
 - [ ] I read `./references/page-patterns.md` before starting
 - [ ] I read `./references/screenshot-capture.md` before starting
 - [ ] I read `./references/image-generation.md` before starting
@@ -534,20 +606,21 @@ The HTML file inlines all CSS and JS. It references screenshots via relative pat
 
 ### Screenshot Capture Check
 - [ ] Playwright used for all product UI captures
-- [ ] Output directory and screenshots/ folder created
+- [ ] Output folder `overview/` (or a suffixed name) created with `screenshots/`, `generated/`, and `work/`
+- [ ] Existing shared screenshots reused where they show what is needed, copied into `overview/screenshots/`
 - [ ] Hero screenshot captured at 1440×900
 - [ ] Each feature has a dedicated screenshot
 - [ ] Screenshots show realistic, populated UI states (not empty/loading)
-- [ ] capture-manifest.md documents all captures
+- [ ] `overview/work/capture-manifest.md` documents all captures
 - [ ] No screenshots of error states, spinners, or blank screens
 
 ### Generated Image Check
 - [ ] `GOOGLE_AI_STUDIO_API_KEY` verified before generation (or generation skipped gracefully)
 - [ ] Generated images limited to 2–4 per page
 - [ ] No generated fake UI screenshots — all UI visuals are Playwright captures
-- [ ] Brand colors from Step 4f used in all generated image prompts
-- [ ] Generated images saved to `./generated/` directory with `generated-` prefix
-- [ ] Generated images documented in capture-manifest.md
+- [ ] Brand colors from `shared/brand.json` or Step 4f used in all generated image prompts
+- [ ] Generated images saved to `overview/generated/` with `generated-` prefix
+- [ ] Generated images documented in `overview/work/capture-manifest.md`
 - [ ] Aspect ratio is 16:9 for diagrams (not square)
 
 ### Design Check
@@ -575,8 +648,16 @@ The HTML file inlines all CSS and JS. It references screenshots via relative pat
 - [ ] `prefers-reduced-motion` is respected
 - [ ] No janky or over-the-top motion
 
+### Project Folder Check
+- [ ] Joined an existing project after reading `project.json` and `shared/`, or created a new one; never adopted a foreign folder or used the repository's `output/` folder
+- [ ] Every claim on the page has a sourced line in `shared/facts.md`
+- [ ] New real screenshots and generated images copied to `shared/` with one `assets.json` entry each (`text` set truthfully)
+- [ ] `brief.md`, `brand.json` written only when absent; `ui-map.md` additions only observed routes and flows
+- [ ] `project.json` entry shows `overview/index.html`, `delivered`, today's date; other entries untouched
+- [ ] `README.md` section between `<!-- output:overview -->` markers updated
+
 ### Code Check
-- [ ] HTML file + screenshots directory structure is correct
+- [ ] `overview/` holds `index.html`, `screenshots/`, `generated/`, and `work/`
 - [ ] All CSS and JS inlined in the single HTML file
 - [ ] All image paths resolve correctly (relative paths)
 - [ ] Responsive at 375px, 768px, 1280px+
@@ -591,7 +672,7 @@ The HTML file inlines all CSS and JS. It references screenshots via relative pat
 
 ## Defaults & Assumptions
 
-- **Output location**: `./output/<product-name>/` with `screenshots/` subdirectory
+- **Output location**: `<parent>/<project>/overview/`, in a project folder the user names
 - **Capture viewport**: 1440×900 desktop primary, 375×812 mobile optional
 - **Page sections**: Hero → Platform Tour (tabbed) → 3–5 Feature Deep-Dives → Stats Bar → How It Works → Testimonials → Audience Tiers → Final CTA
 - **Animation level**: High (scroll reveals + hero sequence + tab transitions + hover states + animated counters). Scale down only if user requests "minimal" or "clean"

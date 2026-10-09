@@ -4,6 +4,8 @@
 Usage:
     python scripts/inspect-assets.py hero.png bg.jpg
     python scripts/inspect-assets.py assets/ --json
+    python scripts/inspect-assets.py path/to/project            # folder with project.json
+    python scripts/inspect-assets.py path/to/project/shared/assets.json
 
 For each image it reports:
     * format, mode, pixel size, file weight
@@ -11,6 +13,18 @@ For each image it reports:
     * hint: does the background probably need removing?
     * suggested depth level (0-5), advisory only
     * overrun against the per-depth edge and weight budget
+
+Project folders: given a folder that holds project.json or shared/assets.json,
+or the assets.json file itself, it inspects every image listed in
+shared/assets.json, plus any image in shared/images/ or shared/screenshots/
+that the list misses. Each result gains a "shared" block (kind, by, source,
+text, background, rights, note) and "flags" for the user:
+    background transparent  float candidate; flagged if the pixels disagree
+    background green        chroma key still to remove: needs keying, flagged
+    background opaque       fill, unless the user wants it to float
+    text true               readable words: keep it readable, real alt text
+    rights third-party      flagged: confirm before publishing
+    not in assets.json      flagged: source and rights unknown
 
 STATUS values
     CLEAN          real transparent pixels along the edge
@@ -20,11 +34,13 @@ STATUS values
     SOLID_MID      flat mid-tone colour along the edge
     COMPLEX        edge colour varies: scene, photo, or screenshot
     ERROR          file could not be read
+    MISSING        listed in shared/assets.json, but the file is not there
 
 The script finds the background. A person (or the agent, with the user)
 judges whether it matters. See references/asset-preparation.md.
 
 Exit codes: 0 ok, 1 no images found or any ERROR, 2 Pillow missing.
+MISSING does not fail the run: a missing shared file is never an error.
 Requires Pillow for analysis (pip install Pillow). --help works without it.
 """
 
@@ -53,8 +69,12 @@ DARK_MAX, LIGHT_MIN = 45, 210
 
 STATUS_ICON = {
     "CLEAN": "OK ", "OPAQUE_ALPHA": "!! ", "SOLID_DARK": "!! ", "SOLID_LIGHT": "!! ",
-    "SOLID_MID": "?? ", "COMPLEX": "-- ", "ERROR": "XX ",
+    "SOLID_MID": "?? ", "COMPLEX": "-- ", "ERROR": "XX ", "MISSING": "XX ",
 }
+
+MANIFEST = ("shared", "assets.json")
+SHARED_IMAGE_DIRS = (("shared", "images"), ("shared", "screenshots"))
+SHARED_FIELDS = ("kind", "by", "source", "text", "background", "rights", "note")
 
 
 def edge_points(w, h, n=EDGE_SAMPLES):
@@ -154,18 +174,27 @@ def suggest_depth(status, w, h):
     return 3, "Large image: hero or UI visual, confirm role."
 
 
-def inspect(path):
+def inspect(path, entry=None):
+    """Pixel checks for one image. `entry` is its shared/assets.json entry:
+    None outside a project, {} for an image in shared/ that the list misses."""
     try:
         from PIL import Image
     except ImportError:
         print("Pillow is not installed. Run: pip install Pillow", file=sys.stderr)
         sys.exit(2)
 
+    name = entry.get("file") if entry else None
     r = {
-        "file": path, "name": os.path.basename(path), "status": None, "format": None, "mode": None,
+        "file": path, "name": name or os.path.basename(path), "status": None, "format": None, "mode": None,
         "width": None, "height": None, "weight_kb": None, "edge_rgb": None,
         "removal": None, "depth_hint": None, "over_budget": [], "notes": [],
     }
+    if entry is not None:
+        r["shared"], r["flags"] = {k: entry[k] for k in SHARED_FIELDS if k in entry}, []
+        if not os.path.isfile(path):
+            r["status"] = "MISSING"
+            r["notes"].append("Listed in shared/assets.json, but the file is not there. Skip it.")
+            return r
     try:
         r["weight_kb"] = round(os.path.getsize(path) / 1024, 1)
         with Image.open(path) as img:
@@ -192,21 +221,102 @@ def inspect(path):
         r["over_budget"].append(f"edge {max(r['width'], r['height'])}px > {max_edge}px for depth {depth}")
     if r["weight_kb"] > max_kb:
         r["over_budget"].append(f"weight {r['weight_kb']}KB > {max_kb}KB for depth {depth}")
+
+    if entry is not None:
+        apply_shared(r, entry)
     return r
 
 
+def apply_shared(r, entry):
+    """Merge what shared/assets.json says with the pixel checks."""
+    if not entry:
+        r["flags"].append("In shared/ but not listed in shared/assets.json: source and rights unknown. Ask the user.")
+        return
+    bg = entry.get("background")
+    if bg == "transparent":
+        r["notes"].append("assets.json: transparent background. Float candidate.")
+        if r["status"] != "CLEAN":
+            r["flags"].append(f"assets.json says transparent, but the edge is {r['status']}. Check the file before floating it.")
+    elif bg == "green":
+        r["removal"] = "needs keying"
+        r["flags"].append("assets.json: green chroma-key background still to remove. Needs keying before it can float. Ask the user.")
+    elif bg == "opaque":
+        if r["removal"] in ("likely", "ambiguous"):
+            r["removal"] = "unlikely"
+        r["notes"].append("assets.json: opaque background. Use it as a fill unless the user wants it to float.")
+    if entry.get("text") is True:
+        r["notes"].append("assets.json: shows readable words. Keep it at a readable size, give it real alt text, keep it off fast or blurred layers.")
+    if entry.get("rights") == "third-party":
+        r["flags"].append("assets.json: third-party rights. Confirm the user may publish it before it ships.")
+
+
+def project_root(path):
+    """Project folder when `path` is one (project.json or shared/assets.json inside) or is an assets.json file."""
+    if os.path.isdir(path) and (
+        os.path.isfile(os.path.join(path, "project.json")) or os.path.isfile(os.path.join(path, *MANIFEST))
+    ):
+        return path
+    if os.path.isfile(path) and os.path.basename(path) == "assets.json":
+        return os.path.normpath(os.path.join(os.path.dirname(path), os.pardir))
+    return None
+
+
+def load_manifest(root):
+    """Return (entries, problem). No assets.json is not a problem."""
+    path = os.path.join(root, *MANIFEST)
+    if not os.path.isfile(path):
+        return [], None
+    try:
+        with open(path, encoding="utf-8") as fh:
+            data = json.load(fh)
+    except (OSError, ValueError) as exc:
+        return [], f"Could not read {path}: {exc}"
+    assets = data.get("assets") if isinstance(data, dict) else None
+    if not isinstance(assets, list):
+        return [], f"{path} has no \"assets\" list."
+    return [a for a in assets if isinstance(a, dict) and isinstance(a.get("file"), str)], None
+
+
+def collect_project(root):
+    """Return ([(path, entry)], warnings): listed images first, then unlisted ones in shared/."""
+    entries, problem = load_manifest(root)
+    items, warnings, listed = [], [problem] if problem else [], set()
+    for e in entries:
+        path = os.path.normpath(os.path.join(root, *e["file"].split("/")))
+        listed.add(path)
+        if e["file"].lower().endswith(IMAGE_EXTS):
+            items.append((path, e))
+        else:
+            warnings.append(f"Skipped (not an image): {e['file']}")
+    for parts in SHARED_IMAGE_DIRS:
+        folder = os.path.join(root, *parts)
+        if not os.path.isdir(folder):
+            continue
+        for name in sorted(os.listdir(folder)):
+            path = os.path.normpath(os.path.join(folder, name))
+            if name.lower().endswith(IMAGE_EXTS) and path not in listed:
+                items.append((path, {}))
+    return items, warnings
+
+
 def collect(paths):
-    found, missing = [], []
+    """Return ([(path, entry)], warnings) for plain files, folders, and project folders."""
+    items, warnings = [], []
     for p in paths:
-        if os.path.isdir(p):
+        root = project_root(p)
+        if root is not None:
+            found, warns = collect_project(root)
+            items.extend(found)
+            warnings.extend(warns)
+        elif os.path.isdir(p):
             for name in sorted(os.listdir(p)):
                 if name.lower().endswith(IMAGE_EXTS):
-                    found.append(os.path.join(p, name))
+                    items.append((os.path.join(p, name), None))
         elif os.path.isfile(p):
-            found.append(p)
+            items.append((p, None))
         else:
-            missing.append(p)
-    return found, missing
+            warnings.append(f"Not found: {p}")
+    return items, warnings
 
 
 def print_report(results):
@@ -214,7 +324,12 @@ def print_report(results):
     print(f"\nAsset inspection ({len(results)} file{'s' if len(results) != 1 else ''})\n{line}")
     for r in results:
         print(f"\n{STATUS_ICON.get(r['status'], '?? ')}{r['name']}")
-        if r["status"] == "ERROR":
+        if "shared" in r:
+            shared = "  ".join(f"{k}={r['shared'][k]}" for k in SHARED_FIELDS if k in r["shared"] and k != "note")
+            print(f"    shared:  {shared or 'not listed in shared/assets.json'}")
+            if r["shared"].get("note"):
+                print(f"    about:   {r['shared']['note']}")
+        if r["status"] in ("ERROR", "MISSING"):
             for n in r["notes"]:
                 print(f"    {n}")
             continue
@@ -225,28 +340,32 @@ def print_report(results):
             print(f"    budget:  {o}  -> resize or recompress")
         for n in r["notes"]:
             print(f"    note:    {n}")
+        for f in r.get("flags", []):
+            print(f"    FLAG:    {f}")
     counts = {}
     for r in results:
         counts[r["status"]] = counts.get(r["status"], 0) + 1
-    print(f"\n{line}\n" + "  ".join(f"{k}: {v}" for k, v in sorted(counts.items())))
+    flagged = sum(1 for r in results if r.get("flags"))
+    summary = "  ".join(f"{k}: {v}" for k, v in sorted(counts.items()))
+    print(f"\n{line}\n{summary}" + (f"  flagged: {flagged}" if flagged else ""))
     print("Next: judge float-or-fill for each flagged image, then tell the user.")
     print("See references/asset-preparation.md.\n")
 
 
 def main():
     ap = argparse.ArgumentParser(description="Read-only inspection of images for layered scroll scenes.")
-    ap.add_argument("paths", nargs="+", help="image files or folders")
+    ap.add_argument("paths", nargs="+", help="image files, folders, a project folder, or a shared/assets.json file")
     ap.add_argument("--json", action="store_true", help="print machine-readable JSON")
     args = ap.parse_args()
 
-    files, missing = collect(args.paths)
-    for m in missing:
-        print(f"Not found: {m}", file=sys.stderr)
-    if not files:
+    items, warnings = collect(args.paths)
+    for w in warnings:
+        print(w, file=sys.stderr)
+    if not items:
         print("No images found.", file=sys.stderr)
         sys.exit(1)
 
-    results = [inspect(f) for f in files]
+    results = [inspect(path, entry) for path, entry in items]
     if args.json:
         print(json.dumps(results, indent=2))
     else:

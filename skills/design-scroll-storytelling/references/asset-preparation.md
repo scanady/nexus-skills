@@ -2,16 +2,31 @@
 
 Flat images carry the whole depth illusion. A white box around a "floating" bottle kills it. Inspect, judge, tell the user, then build. Order matters: assets first, markup second.
 
-Agent inspects and advises. Agent never removes a background or edits an image on its own. `scripts/inspect-assets.py` is read-only.
+Agent inspects and advises. Agent never removes a background or edits an image on its own. `scripts/inspect-assets.py` is read-only. When the user asks for a cut-out and you make one, it is a new file: see section 8.
 
 ## 1. Inspect
 
 ```bash
 python scripts/inspect-assets.py path/to/images/ other.png
 python scripts/inspect-assets.py hero.jpg --json
+python scripts/inspect-assets.py path/to/project              # has project.json
+python scripts/inspect-assets.py path/to/project/shared/assets.json
 ```
 
 Needs Pillow (`pip install Pillow`). Per image it reports format, mode, size, file weight, border background class, suggested depth, and size overruns against the budget. Details in the script docstring.
+
+Given a project folder or its `shared/assets.json`, it inspects every image the list names, plus any image in `shared/images/` or `shared/screenshots/` the list misses. Each result shows the entry's fields (`shared:` line, `"shared"` in JSON) and `FLAG:` lines (`"flags"`) for what the user must answer:
+
+| `assets.json` says | Script does | You do |
+|---|---|---|
+| `background: transparent` | Float candidate; flags it when the edge is not `CLEAN` | Check the file when flagged |
+| `background: green` | Removal `needs keying`, flagged | Ask the user: key it out (section 8) or use another asset |
+| `background: opaque` | Removal `unlikely`: a fill | Float it only when the user says so |
+| `text: true` | Note | Keep it readable, give it real alt text, keep it off fast or blurred layers |
+| `rights: third-party` | Flagged | Confirm the user may publish it before the page ships |
+| Image not listed | Flagged | Ask the user where it came from |
+
+A listed file that is not there shows as `MISSING`. Skip it; it does not fail the run.
 
 | Status | Meaning |
 |---|---|
@@ -20,6 +35,7 @@ Needs Pillow (`pip install Pillow`). Per image it reports format, mode, size, fi
 | `COMPLEX` | Edge colours vary. Probably a scene, shot, or screenshot |
 | `OPAQUE_ALPHA` | Has an alpha channel but every pixel opaque. Cutout never done |
 | `ERROR` | Could not open |
+| `MISSING` | Listed in `shared/assets.json`, file not there |
 
 Script finds the background. YOU decide if it matters.
 
@@ -87,6 +103,14 @@ Keep image:
 
 > 🔵 **`dashboard.png`**: screenshot, keep its background, depth 3, 1200px
 
+Shared asset with flags:
+
+> ⚠️ **`shared/images/mascot-green.png`**: generated mascot on a green screen, third-party rights.
+> Role: companion, depth 2. Before it can float, the green must be keyed out, and you need to confirm it may be published.
+> Key it out and use it, or leave it out?
+
+In prototype mode, save the audit to `scroll/work/asset-audit.md`.
+
 ## 5. Blend Stand-In (Only If User Picks Option 2)
 
 ```css
@@ -116,6 +140,37 @@ Never on a cutout:
 - `border-radius` or parent `overflow: hidden` for shaping: clips transparency into a box.
 - `object-fit: cover`: stretches the cutout out of shape.
 - `background-color`: shows the bounding box.
+
+## 7. Copy Into The Deliverable
+
+The page uses copies, never files in a project's `shared/` folder. Copy each chosen image, resized to its level, into the deliverable's asset folder: `scroll/assets/` in prototype mode, the app's asset folder in-app. Keep the original name, or a shorter one in lowercase with hyphens. The page then works when the folder moves.
+
+## 8. Publish A Cut-Out To `shared/`
+
+Only when the user asked for it. When you make a new image from an asset, such as a background-removed or chroma-keyed cut-out, and a project folder is in use:
+
+1. Save it to `shared/images/` under a new name: `<subject>-<detail>-cutout.png` (or `.webp`). Never overwrite the original or any file another skill added.
+2. Add an entry to `shared/assets.json` (read, change, write; keep every entry you did not make):
+
+   ```json
+   {
+     "file": "shared/images/bottle-cutout.png",
+     "kind": "photo",
+     "by": "design-scroll-storytelling",
+     "source": "shared/images/bottle.jpg",
+     "width": 1200,
+     "height": 1600,
+     "text": false,
+     "background": "transparent",
+     "rights": "user-supplied",
+     "note": "Background removed from shared/images/bottle.jpg"
+   }
+   ```
+
+   `kind`, `text`, and `rights` come from the original's entry. For an original from outside the project, `source` is the path the user gave and `rights` is `user-supplied` unless the user says otherwise.
+3. Copy the cut-out into the deliverable's asset folder as in section 7.
+
+Without a project folder, save the cut-out next to the deliverable's assets under a new name. The original stays untouched either way.
 
 ## Handoff
 

@@ -42,18 +42,18 @@ cp .env.example .env
 # Generate with inline prompt
 python3 ./scripts/generate.py \
   --prompt "Generate an image: A wide 16:9 architecture diagram showing..." \
-  --output ./output/<product-name>/generated/generated-architecture-overview.png
+  --output <project-dir>/overview/generated/generated-architecture-overview.png
 
 # Generate from a prompt file (useful for long prompts)
 python3 ./scripts/generate.py \
-  --prompt-file ./prompts/architecture-prompt.txt \
-  --output ./output/<product-name>/generated/generated-architecture-overview.png
+  --prompt-file <project-dir>/overview/work/architecture-prompt.txt \
+  --output <project-dir>/overview/generated/generated-architecture-overview.png
 
 # Override model (optional)
 python3 ./scripts/generate.py \
   --prompt "Generate an image: ..." \
   --model gemini-3.1-flash-image \
-  --output ./output/<product-name>/generated/generated-process-flow.png
+  --output <project-dir>/overview/generated/generated-process-flow.png
 ```
 
 ### Script Behavior
@@ -158,17 +158,17 @@ POST https://generativelanguage.googleapis.com/v1beta/models/{MODEL_ID}:generate
 # Architecture diagram
 python3 ./scripts/generate.py \
   --prompt "Generate an image: A wide 16:9 aspect ratio technical architecture diagram showing a SaaS platform with microservices. Components: API gateway, auth service, data layer, client apps. Style: flat minimal, technical illustration. Colors: deep blue (#1E3A5F) and cyan (#00D4FF) on white background. Professional quality, production-ready." \
-  --output ./output/my-product/generated/generated-architecture-overview.png
+  --output ~/projects/my-product/overview/generated/generated-architecture-overview.png
 
 # Process flow
 python3 ./scripts/generate.py \
   --prompt "Generate an image: A wide 16:9 aspect ratio process flow diagram showing user onboarding. Steps: 1. Sign up, 2. Connect data, 3. Configure dashboard, 4. Go live. Style: flat minimal with numbered steps and connecting arrows. Colors: slate (#334155) and green (#059669) on light background. Professional quality, production-ready." \
-  --output ./output/my-product/generated/generated-process-onboarding.png
+  --output ~/projects/my-product/overview/generated/generated-process-onboarding.png
 
 # From a prompt file (useful for long prompts)
 python3 ./scripts/generate.py \
-  --prompt-file ./prompts/architecture-prompt.txt \
-  --output ./output/my-product/generated/generated-architecture-overview.png
+  --prompt-file ~/projects/my-product/overview/work/architecture-prompt.txt \
+  --output ~/projects/my-product/overview/generated/generated-architecture-overview.png
 ```
 
 ### Using cURL (fallback when script is unavailable)
@@ -304,7 +304,7 @@ generated-hero-background.png
 generated-concept-<descriptive-name>.png
 ```
 
-All generated images are saved to `./output/<product-name>/generated/`.
+All generated images are saved to `<project-dir>/overview/generated/` (the output folder inside the project folder). Keep prompt files in `<project-dir>/overview/work/`. In the publish step, a copy of each image goes to the project's `shared/images/` with an `assets.json` entry (`kind: "generated"`, the prompt as `source`, `text: true` when the image has labels).
 
 ---
 

@@ -34,6 +34,7 @@ They are authored once, in [.github/instructions/](.github/instructions/), and a
 - `SKILL.md` sits at the folder root. Optional subfolders: `references/` (knowledge the skill loads), `scripts/`, `assets/`, `agents/`.
 - One capability per skill. Do not bundle unrelated work.
 - **Self-contained.** A skill never points at repo files (`AGENTS.md`, `CLAUDE.md`, copilot instructions) or at paths outside its own folder. It names other skills by name only.
+- **Shared references.** When several skills need the same text, the canonical copy lives in `docs/shared-references/<file>`, and each skill carries a byte-identical copy at `references/<file>`. `SHARED_REFERENCES` in `scripts/validation/validate-skills.js` lists which skills carry each file; `npm run validate` fails on a missing or drifted copy. Edit the canonical file, then copy it into every listed skill. `project-folder.md` defines the project folder that the explainer-video, overview-builder, overview-recorder, and scroll-storytelling skills share.
 - Write or revise `description` and `triggers` with the `skill-architect` skill.
 - Plugin membership is a validation rule. `plugin-packages/<plugin>/skills.json` lists literal names or `prefix-*` globs. A skill that matches no plugin fails `npm run validate`. Add it in the same change.
 

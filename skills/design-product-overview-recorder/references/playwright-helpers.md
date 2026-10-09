@@ -38,26 +38,32 @@ async function injectCursor(page) {
 
 ## Subtitle Bar
 
-Fixed bar at viewport bottom. Shows step narration over semi-transparent background.
+Fixed bar at viewport bottom. Shows step narration over semi-transparent background. Colors and font come from `style`; the template's `subtitleStyle()` builds it from `shared/brand.json` (`palette.background` at 85% opacity, `palette.text`, the `body` font or the first font) and falls back to the values below.
 
 ```javascript
-async function injectSubtitleBar(page) {
-  await page.evaluate(() => {
+const DEFAULT_SUBTITLE_STYLE = {
+  background: 'rgba(0, 0, 0, 0.75)',
+  color: 'white',
+  fontFamily: '-apple-system, "Segoe UI", sans-serif',
+};
+
+async function injectSubtitleBar(page, style = DEFAULT_SUBTITLE_STYLE) {
+  await page.evaluate((s) => {
     if (document.getElementById('demo-subtitle')) return;
     const bar = document.createElement('div');
     bar.id = 'demo-subtitle';
     bar.style.cssText = `
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 999998;
       text-align: center; padding: 12px 24px;
-      background: rgba(0, 0, 0, 0.75);
-      color: white; font-family: -apple-system, "Segoe UI", sans-serif;
+      background: ${s.background};
+      color: ${s.color}; font-family: ${s.fontFamily};
       font-size: 16px; font-weight: 500; letter-spacing: 0.3px;
       transition: opacity 0.3s; pointer-events: none;
     `;
     bar.textContent = '';
     bar.style.opacity = '0';
     document.body.appendChild(bar);
-  });
+  }, style);
 }
 
 async function showSubtitle(page, text) {
@@ -219,3 +225,16 @@ await page.waitForTimeout(1500);
 ```
 
 Wait 1.5s after scroll for viewer to orient to new content position.
+
+---
+
+## Project Folder Helpers
+
+Defined in `scripts/demo-template.cjs`. Paths derive from the script's location in `demo/work/`. JSON edits are read-modify-write and keep every key and entry the script does not own.
+
+| Helper | Does |
+|---|---|
+| `captureStill(page, slug, note)` | With `--publish`: hides cursor and subtitle, saves the viewport to `shared/screenshots/<project>-<slug>.png`, adds a `screenshot` entry to `shared/assets.json` (`text: true`, `background: opaque`, `rights: user-product`, source URL, size). Picks `-2`, `-3`… when another skill owns the name |
+| `addToUiMap(routes, flows)` | Adds new `## <route>` sections and new flow lines to `shared/ui-map.md`. Never rewrites existing routes; returns and logs lines that differ (`UI-MAP DIFFERS`) |
+| `upsertAsset(entry)` | Adds or updates this skill's own entry in `shared/assets.json`; refuses entries owned by another skill |
+| `updateProject({ status })` | Updates this output's `project.json` entry (keyed by `dir`) and its `<!-- output:<dir> -->` section in the project `README.md`. Skips when `project.json` is missing |

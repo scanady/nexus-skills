@@ -50,12 +50,19 @@ Table-driven forms: map each input to its column header. Do not assume all numer
 
 ### Field Map Template
 
-```text
-/<route>:
-  - Field Name: <tag> (additional details)
-  - Button: <button> text="Exact Label"
-  - Table: describe inline-editable pattern
+Same format as `shared/ui-map.md` in the project folder, so the map can be published there after rehearsal:
+
+```markdown
+## /<route>
+- Field Name: <kind> (additional details)
+- Button: button "Exact Label"
+- Table: describe inline-editable pattern
+
+## Flows
+- <Flow name>: /<start> → "Button" → fill Fields → "Submit" → /<result>
 ```
+
+Save raw element dumps to `demo/work/discovery/<route>.json` so later fixes start from the last observation.
 
 ---
 
@@ -109,7 +116,7 @@ These timings tested across demo audiences. Faster = rushed. Slower = boring.
 | 4 | Cursor teleports | Clicking without `mouse.move` | Always use `moveAndClick` |
 | 5 | Select looks wrong | Instant value set without visual | Move to dropdown, click open, pick option |
 | 6 | Modal feels abrupt | No read pause before confirm | Add 1.5s pause before dismissing |
-| 7 | Video file path is random | Playwright uses temp dir | Copy to stable output name in `finally` block |
+| 7 | Video file path is random | Playwright uses temp dir | Record into `demo/work/raw/`; in the `finally` block copy to `demo/<project>-<flow>.webm` |
 | 8 | Selector failure swallowed | Empty catch block | Use helpers that log warnings — never silent catch |
 | 9 | Wrong field type assumed | Skipped discovery | Always complete Phase 1 before scripting |
 | 10 | Placeholder value selected | `value="0"` or "Select..." chosen | Dump options, skip placeholders |
