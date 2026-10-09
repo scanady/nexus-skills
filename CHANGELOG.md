@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.5.0](https://github.com/scanady/nexus-skills/compare/nexus-agents-v1.4.0...nexus-agents-v1.5.0) (2026-10-09)
+
+
+### Features
+
+* shared project folder for explainer, overview, recorder, and scroll skills ([934a390](https://github.com/scanady/nexus-skills/commit/934a390059a11506431252f74749323095ffe1b4))
+* shared project folder for explainer, overview, recorder, and scroll skills ([0d13a83](https://github.com/scanady/nexus-skills/commit/0d13a839b409b21807dea33349f84d8308e435a3))
+
+
+### Bug Fixes
+
+* track scaffolder starter .claude/CLAUDE.md shim ([c7aed2b](https://github.com/scanady/nexus-skills/commit/c7aed2b35af1df924676c67ba7974e8aed408e06))
+
 ## [1.4.0](https://github.com/scanady/nexus-skills/compare/nexus-agents-v1.3.0...nexus-agents-v1.4.0) (2026-10-04)
 
 
