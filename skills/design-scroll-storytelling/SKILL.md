@@ -4,7 +4,7 @@ disable-model-invocation: false
 description: 'Builds layered scroll-driven web experiences: parallax depth scenes, pinned chapters, clip-path section reveals, and products that travel between sections. Use when asked for "scroll storytelling", "parallax landing page", "Apple-style product scroll", "sections that overlap", "product floating between sections", or "text that lights up on scroll".'
 license: MIT
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   domain: design
   triggers: add scroll animation, build a parallax hero, pin a section while content changes, use GSAP ScrollTrigger, animate with Framer Motion scroll, make horizontal scroll panels, reveal a section with clip-path, use CSS scroll-timeline, check product PNG backgrounds, audit scroll motion accessibility
   role: specialist
@@ -21,6 +21,30 @@ Scroll = narrative device. Build experiences where scroll beats reveal meaning, 
 
 Senior scroll experience specialist. Treat scroll as cinematic medium — every pixel of travel planned. Deep library fluency across GSAP, Framer Motion, Locomotive Scroll, CSS native. Build depth from flat assets: layered scenes, directional reveals, objects that cross section borders. Strong performance intuition: know what to animate and what to leave still. Mobile-first by default. Accessibility non-negotiable.
 
+## Modes
+
+Pick the mode before Step 1. Load `references/project-folder.md` when the user names a project folder, or when you start prototype mode. It is the agreement with the other skills that share the folder.
+
+| Mode | When | Deliverable goes to |
+|---|---|---|
+| **In-app** (default) | The user has an app or repo to build into | The user's app: its components, styles, and asset folder |
+| **Prototype** | No app, or the user asks for a standalone page | `<project>/scroll/index.html` + `scroll/assets/` |
+
+**In-app.** Build as usual. When the user also points at a project folder (it has `project.json`), read `shared/` as input (Steps 1–2). Write nothing into the project except additions to `shared/` (Step 7). Register nothing in `project.json` and add no `README.md` section: the deliverable lives in the app, and `project.json` keys every output by a folder inside the project.
+
+**Prototype.** Join or create the project as `references/project-folder.md` says. Ask for `<parent>` and `<project>` unless the prompt gives them. Never create a project inside a repo's `output/` folder. Output folder `scroll/`; when `project.json` already lists `scroll` for another run, ask the user for a suffix (`scroll-mobile`). Layout:
+
+```text
+<project>/scroll/
+├── index.html     # the page; every path in it relative, e.g. assets/hero.webp
+├── assets/        # images copied in and resized; bundled scripts, if any
+└── work/          # narrative map, asset audit, validator report, drafts
+```
+
+At the start, add an `outputs` entry in `project.json` (`dir: "scroll"`, `skill: "design-scroll-storytelling"`, `kind: "scroll-story"`, `entry: null`, `status: "in-progress"`, `updated: <ISO date>`). Read, change, write: keep every key you do not own.
+
+No project folder and no `shared/` files → skip every project step below and work as before.
+
 ## Workflow
 
 ### 1. Assess Scroll Intent
@@ -33,18 +57,28 @@ Before code, answer:
 - Performance budget — animation on low-end devices required?
 - Which asset is the hero? Which images supplied by user?
 
-Output: scroll narrative map, device target, library choice.
+In a project, read `shared/` first and ask only what it leaves open:
+
+| File | Use |
+|---|---|
+| `brief.md` | Subject, audience, goal, tone, call to action: the source of the section beats |
+| `facts.md` | Every claim on the page traces to a line here. A new claim from the user goes in with its source; a claim without a source stays off the page |
+| `brand.json` | Palette and fonts for the page. Use it as is; change it only when the user asks |
+| `assets.json`, `images/`, `screenshots/` | The asset pool for Step 2 |
+
+Output: scroll narrative map, device target, library choice. In prototype mode, save the map to `scroll/work/narrative-map.md`.
 
 ### 2. Prepare Assets
 
-Skip when no images supplied. Otherwise inspect BEFORE any markup.
+Skip when no images supplied and no shared assets. Otherwise inspect BEFORE any markup.
 
-1. Run `python scripts/inspect-assets.py <files or folder>` (needs Pillow). Read-only.
+1. Run `python scripts/inspect-assets.py <files or folder>` (needs Pillow). Read-only. Given a project folder (or its `shared/assets.json`), it inspects every listed image and merges the `assets.json` fields: `background: transparent` → float candidate, `green` → needs keying (flagged), `opaque` → fill unless the user says otherwise; `text: true` → keep readable; `rights: third-party` → flagged, confirm before publishing.
 2. Judge each image: float or fill? Floats over content → background should go. Fills space or IS content (screenshot, artwork, bg photo) → keep.
 3. Assign depth level 0–5 and target size per image.
 4. Tell user per image, show audit, wait on flagged items. Never auto-remove a background.
+5. Copy each chosen file into the deliverable's asset folder (`scroll/assets/` in prototype mode, the app's asset folder in-app), resized to its level. The page never links into `shared/`, so it keeps working when moved.
 
-Details, message formats, blend stand-in: `references/asset-preparation.md`.
+Details, message formats, blend stand-in, cut-outs: `references/asset-preparation.md`.
 
 ### 3. Choose Library Stack
 
@@ -289,7 +323,31 @@ Then run the layer validator on the built page:
 node scripts/validate-layers.mjs path/to/index.html
 ```
 
-Fix every ERROR. Read every WARN, fix or justify. Validator reads source only: still test in a browser and on a phone.
+Fix every ERROR. Read every WARN, fix or justify. Validator reads source only: still test in a browser and on a phone. In prototype mode, save the report to `scroll/work/validate-layers.txt`.
+
+### 7. Deliver and Publish
+
+Prototype mode, in the project:
+
+1. Set the `outputs` entry for your folder: `entry: "scroll/index.html"`, `status: "delivered"`, `updated` to today.
+2. Write your `README.md` section, replacing only the text between your markers; append it when missing:
+
+   ```markdown
+   <!-- output:scroll -->
+   ## Scroll story
+   `scroll/index.html`: 5 sections, open in a browser. Images in `scroll/assets/`.
+   <!-- /output:scroll -->
+   ```
+
+3. To show another output, such as the explainer video, take its `entry` path from `project.json` and link it relatively (`../video/<file>.mp4`). Never read another output's `work/` folder.
+
+Both modes, when a project folder is in use, add to `shared/`:
+
+- A new asset you made with the user's consent, such as a background-removed cut-out: save it to `shared/images/` under a new name and add an `assets.json` entry (`by: "design-scroll-storytelling"`, `background: "transparent"`, `source` = the original file, `rights` inherited). Never overwrite the original. Details: `references/asset-preparation.md`.
+- `brand.json`, only when it is absent and the user settled a look: the palette and fonts the page uses.
+- `brief.md`, only when it is absent: fill the headings from Step 1's answers.
+
+Never write keys, `.env` files, or caches to `shared/`, `project.json`, or `README.md`.
 
 ## Reference Guide
 
@@ -303,14 +361,15 @@ Fix every ERROR. Read every WARN, fix or justify. Validator reads source only: s
 | Text animation techniques | `references/scroll-typography.md` | Any animated headline or prose |
 | Frame budget, asset weight, lite mode | `references/scroll-performance.md` | Before shipping, or when scroll janks |
 | Reduced motion, ARIA, keyboard, contrast | `references/scroll-accessibility.md` | Every build, before shipping |
-| Image inspection, background judgment, user notice | `references/asset-preparation.md` | User supplies images |
+| Image inspection, background judgment, user notice, cut-outs | `references/asset-preparation.md` | User supplies images, or a project has shared assets |
+| Shared project folder: layout, join or create, write rules, file formats | `references/project-folder.md` | At the start, when joining or creating a project |
 | Five whole-page plans | `references/blueprints.md` | Planning a full site by type |
 
 ## Bundled Scripts
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
-| `scripts/inspect-assets.py` | Read-only image audit: edge background, depth hint, budget overrun | `python scripts/inspect-assets.py <files or folder> [--json]` |
+| `scripts/inspect-assets.py` | Read-only image audit: edge background, depth hint, budget overrun; merges `shared/assets.json` fields for a project | `python scripts/inspect-assets.py <files, folder, project folder, or assets.json> [--json]` |
 | `scripts/validate-layers.mjs` | Static check: depth layers, aria, reduced motion, cost, scroll hijack, SRI | `node scripts/validate-layers.mjs <file.html> [--json] [--strict]` |
 
 ## Anti-Patterns
@@ -333,7 +392,7 @@ Fix every ERROR. Read every WARN, fix or justify. Validator reads source only: s
 - Animate `transform` and `opacity` by default. `clip-path` / `filter` only for bounded reveals (see `references/scroll-performance.md`)
 - Assign every element a depth level (0–5). Min 3 layers per scene
 - Mark decorative layers `aria-hidden="true"`, decorative images `alt=""`
-- Inspect supplied images before markup, judge float-or-fill, tell user before building
+- Inspect supplied and shared images before markup, judge float-or-fill, tell user before building
 - Test on real mobile device before shipping
 - Ensure all content readable without JavaScript
 - Choose one scroll library per project — no competing systems
@@ -348,6 +407,8 @@ Fix every ERROR. Read every WARN, fix or justify. Validator reads source only: s
 - Never mix Locomotive Scroll and GSAP without coordinated integration
 - Never add parallax layers without mobile fallback
 - Never remove or edit a user's image background without telling them and getting a choice
+- Never overwrite a file in a project's `shared/`; save new versions under new names
+- Never write into a project folder in in-app mode, except additions to `shared/`
 - Never set `will-change` on `*` or on dozens of static elements
 - Never freeze with `gsap.globalTimeline.timeScale(0)` as the reduced-motion fix
 - Never ship a CDN script tag without exact version + integrity hash (or bundle it)
@@ -355,8 +416,8 @@ Fix every ERROR. Read every WARN, fix or justify. Validator reads source only: s
 
 ## Output Checklist
 
-1. Scroll narrative map created — section beats documented
-2. Asset audit shown, depth + size per image, user choices recorded (if images supplied)
+1. Scroll narrative map created — section beats documented (from `shared/brief.md` when present)
+2. Asset audit shown, depth + size per image, user choices recorded (if images supplied or shared); third-party and green-screen flags answered
 3. Library chosen with rationale
 4. Depth level assigned to every element, 3+ layers per scene, one hero
 5. Parallax layers implemented with correct speed ratios
@@ -368,6 +429,7 @@ Fix every ERROR. Read every WARN, fix or justify. Validator reads source only: s
 11. No scroll hijacking in implementation
 12. Critical content accessible without animation
 13. `validate-layers.mjs` run, no ERROR left, WARNs justified
+14. Project folder (if used): claims trace to `shared/facts.md`; chosen assets copied into the deliverable; new cut-outs in `shared/images/` with `assets.json` entries. Prototype only: `scroll/index.html` + `scroll/assets/` complete, `project.json` entry `delivered`, `README.md` section written
 
 ## Knowledge Reference
 

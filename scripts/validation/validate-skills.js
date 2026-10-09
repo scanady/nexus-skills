@@ -147,6 +147,34 @@ function validatePluginPackages(availableSkills) {
   return { errors, report };
 }
 
+/*
+ * Skills must be self-contained, so a reference several skills share is copied
+ * into each of them. The canonical text lives in docs/shared-references/; every
+ * listed skill must carry a byte-identical copy at references/<file>.
+ */
+const SHARED_REFERENCES_DIR = path.join(__dirname, '..', '..', 'docs', 'shared-references');
+const SHARED_REFERENCES = {
+  'project-folder.md': [
+    'design-visual-explainer-video',
+    'design-product-overview-builder',
+    'design-product-overview-recorder',
+    'design-scroll-storytelling'
+  ]
+};
+
+function validateSharedReferences() {
+  const errors = [];
+  for (const [file, skills] of Object.entries(SHARED_REFERENCES)) {
+    const canonical = fs.readFileSync(path.join(SHARED_REFERENCES_DIR, file));
+    for (const skill of skills) {
+      const copy = path.join(SKILLS_DIR, skill, 'references', file);
+      if (!fs.existsSync(copy)) errors.push(`${skill}: missing references/${file} (copy docs/shared-references/${file})`);
+      else if (!canonical.equals(fs.readFileSync(copy))) errors.push(`${skill}: references/${file} differs from docs/shared-references/${file}`);
+    }
+  }
+  return errors;
+}
+
 function main() {
   const args = parseArgs(process.argv.slice(2));
   const all = getAvailableSkills();
@@ -189,6 +217,11 @@ function main() {
     console.log(`\n${plugins.report.join('\n')}`);
     console.log(`\nValidated ${listPluginNames().length} plugin packages — ${plugins.errors.length} error(s)`);
     errors += plugins.errors.length;
+
+    const shared = validateSharedReferences();
+    shared.forEach(e => console.log(`❌ ${e}`));
+    console.log(`\nChecked ${Object.keys(SHARED_REFERENCES).length} shared reference(s) — ${shared.length} error(s)`);
+    errors += shared.length;
   }
 
   if (errors > 0 || (args.strict && warnings > 0)) {

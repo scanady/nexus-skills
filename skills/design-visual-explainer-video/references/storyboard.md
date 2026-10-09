@@ -8,7 +8,7 @@ The user approves the plan by looking at it, not by reading it. `storyboard.mjs`
 - **Questions, images to generate, sources.**
 - **Copy feedback:** gathers every note and answer into one markdown block for the chat. Notes persist in the browser between reloads.
 
-It also writes `REVIEW.md`, a plain-text record of the same plan for the delivery folder.
+It also writes `REVIEW.md`, a plain-text record of the same plan. Both stay in `work/` and ship with the output folder.
 
 ## Where the key frames come from
 
@@ -66,7 +66,7 @@ It also writes `REVIEW.md`, a plain-text record of the same plan for the deliver
 - Every script line (by index in `lines.json`) belongs to exactly one scene, in order. Every image id is in `assets.json`, `assets/extra/`, or already made. `storyboard.mjs` checks both (exit 7).
 - `visual` describes one focal picture a person could sketch. `onScreen` holds the exact words, at most 8 per item.
 - `chapter` groups scenes on the timeline. Use 3–6 chapters that match the story's structure (for example: Why, What it is, How it works, What you keep, What's next).
-- `theme` feeds the sketch layouts. Take the colors from the palette and the families from `fonts.json`.
+- `theme` feeds the sketch layouts. Take the colors from the palette and the families from `fonts.json`. When the project has `shared/brand.json`, take the palette and fonts from it.
 
 ## Frame layouts (`assets/layouts.js`)
 

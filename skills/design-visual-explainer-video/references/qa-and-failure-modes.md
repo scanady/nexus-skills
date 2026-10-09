@@ -49,4 +49,4 @@ Crop to a detail with `node shots.mjs <t> --full` and open `shots/t<t>.jpg` when
 - [ ] `mix.mjs` reports the mix within ±1 LU of −16 LUFS and a true peak ≤ −1.5 dBTP.
 - [ ] `verify.mjs` exits 0, and `shots/verify.jpg` (frames from the encoded file) looks right.
 - [ ] Spend is within budget. `verify.mjs` prints the ledger.
-- [ ] The delivery folder has `video.mp4`, `index.html`, `captions.srt`, `README.md`, and `source/`.
+- [ ] The output folder `video/` has `<project>.mp4`, `index.html`, `<project>.srt`, `<project>.vtt`, `README.md` (TODOs filled), and `work/`. `project.json` lists it as `delivered`, and `deliver.mjs` reported what it published to `shared/`.

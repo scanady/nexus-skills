@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-10-05T03:39:53Z",
+  "generated_at": "2026-10-09T12:48:40Z",
   "sources": [
     {
       "id": "source-1",
@@ -3308,7 +3308,7 @@
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": "3.0.0",
+          "version": "3.1.0",
           "triggers": "product overview, product tour, feature page, feature showcase, platform walkthrough, product marketing page, feature tour, explore the platform, product showcase, how it works page, feature highlights, product demo page, SaaS landing page, conversion page, architecture diagram, process flow, product screenshots",
           "role": "expert",
           "scope": "creation",
@@ -3322,8 +3322,8 @@
         "has_agents": false,
         "has_assets": false,
         "has_license_file": false,
-        "file_count": 9,
-        "estimated_tokens": 3923,
+        "file_count": 10,
+        "estimated_tokens": 4247,
         "complexity_class": "comprehensive",
         "skill_pattern": "B"
       },
@@ -3404,7 +3404,7 @@
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": "1.0.0",
+          "version": "1.1.0",
           "triggers": "demo video, screen recording, ui walkthrough, product demo, feature tutorial, record demo, video recording, app walkthrough, ui demo, product walkthrough, onboarding video, record screen",
           "role": "specialist",
           "scope": "creation",
@@ -3418,8 +3418,8 @@
         "has_agents": false,
         "has_assets": false,
         "has_license_file": false,
-        "file_count": 4,
-        "estimated_tokens": 739,
+        "file_count": 5,
+        "estimated_tokens": 1095,
         "complexity_class": "compact",
         "skill_pattern": "B"
       },
@@ -3443,7 +3443,8 @@
           "rating": "medium",
           "rationale": "Evaluated from scanner signals.",
           "findings": [
-            "References credentials/secrets"
+            "References credentials/secrets",
+            "Uses execution patterns"
           ],
           "sub_scores": {
             "data_privacy": 3,
@@ -3751,7 +3752,7 @@
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": "1.1.0",
+          "version": "1.2.0",
           "triggers": "add scroll animation, build a parallax hero, pin a section while content changes, use GSAP ScrollTrigger, animate with Framer Motion scroll, make horizontal scroll panels, reveal a section with clip-path, use CSS scroll-timeline, check product PNG backgrounds, audit scroll motion accessibility",
           "role": "specialist",
           "scope": "implementation",
@@ -3765,8 +3766,8 @@
         "has_agents": false,
         "has_assets": false,
         "has_license_file": false,
-        "file_count": 13,
-        "estimated_tokens": 3108,
+        "file_count": 14,
+        "estimated_tokens": 3632,
         "complexity_class": "compact",
         "skill_pattern": "A"
       },
@@ -4243,7 +4244,7 @@
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": "1.0.0",
+          "version": "1.2.0",
           "triggers": "explain this codebase in a video, make an animated intro, produce a narrated animation, create a whiteboard animation, generate a promo video, turn a script into video, make a short video about a concept",
           "role": "specialist",
           "scope": "creation",
@@ -4257,8 +4258,8 @@
         "has_agents": false,
         "has_assets": true,
         "has_license_file": false,
-        "file_count": 42,
-        "estimated_tokens": 2264,
+        "file_count": 44,
+        "estimated_tokens": 2519,
         "complexity_class": "comprehensive",
         "skill_pattern": "B"
       },

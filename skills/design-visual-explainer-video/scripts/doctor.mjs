@@ -54,7 +54,7 @@ const m = config.music;
 if (m.provider === "file" && !(m.file && fs.existsSync(m.file))) bad("music", "EXPLAINER_MUSIC_FILE missing");
 else ok("music", `${m.provider}${m.provider === "openrouter" ? ` ${m.model}` : ""}`);
 ok("video", `${config.video.width}x${config.video.height} @ ${config.video.fps} fps, crf ${config.video.crf}, maxrate ${config.video.maxrate}`);
-if (config.outputDir) ok("output dir", config.outputDir); else warn("output dir", "EXPLAINER_OUTPUT_DIR not set: ask the user where to deliver");
+if (config.outputDir) ok("output dir", `${config.outputDir} (default --in for init.mjs)`); else warn("output dir", "EXPLAINER_OUTPUT_DIR not set: ask the user which parent folder holds the project folder");
 
 const w = Math.max(...rows.map(r => r[1].length));
 for (const [s, k, v] of rows) console.log(`${s}  ${k.padEnd(w)}  ${v}`);

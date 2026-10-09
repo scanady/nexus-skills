@@ -42,7 +42,7 @@ A reviewer called AI explainers "flashy slide decks" and "office templates". Wha
 - **Backgrounds:** light `#f6f7fb`; UI panels drawn in code with `rrect` (never generate UI screenshots with text in them).
 - **Fonts:** `"Inter:wght@400;700"` or `"Plus+Jakarta+Sans:wght@500;800"`.
 - **Motion:** crisp `outQuint`, cards that slide and stack, cursor or highlight to guide the eye, `fade` transitions.
-- For real product UI, use real screenshots put in `assets/extra/` (and consider the `design-product-overview-recorder` skill for live recordings).
+- For real product UI, use real screenshots put in `assets/extra/`: copy them from the project's `shared/screenshots/` when it has them (check `rights` in `shared/assets.json`), and consider the `design-product-overview-recorder` skill for live recordings.
 
 ## 6. Chalkboard
 

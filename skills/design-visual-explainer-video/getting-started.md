@@ -32,10 +32,10 @@ Windows, macOS, and Linux all work. You do not need a system ffmpeg: the `ffmpeg
    ```ini
    OPENROUTER_API_KEY=sk-or-...
    EXPLAINER_BUDGET_USD=10
-   EXPLAINER_OUTPUT_DIR=C:/Users/you/Videos/explainers   # optional; the agent asks when it is empty
+   EXPLAINER_OUTPUT_DIR=C:/Users/you/Videos/explainers   # optional default parent for project folders; the agent asks when it is empty
    ```
 
-   A `.env` in a job folder overrides the skill-level one. Real environment variables override both.
+   A `.env` in a job folder (`<project>/video/work/`) overrides the skill-level one. Real environment variables override both.
 
 3. **Recommended:** give the key a credit limit in the OpenRouter dashboard (Keys → Edit → Credit limit). The scripts keep their own ledger, but the key limit is the stop that holds whatever happens.
 
@@ -50,8 +50,8 @@ Windows, macOS, and Linux all work. You do not need a system ffmpeg: the `ffmpeg
 This renders the built-in three-line example with a silent voice and synthesized music. It proves the toolchain end to end in about 2 minutes.
 
 ```bash
-node <skill>/scripts/init.mjs ./explainer-test --example
-cd explainer-test
+node <skill>/scripts/init.mjs --in . --name explainer-test --example
+cd explainer-test/video/work
 node <skill>/scripts/tts.mjs --provider silent
 node <skill>/scripts/timeline.mjs
 node <skill>/scripts/fonts.mjs "Caveat:wght@700" "Nunito:wght@400;800"
@@ -67,7 +67,7 @@ node <skill>/scripts/verify.mjs
 
 On Windows PowerShell, set the variable with `$env:EXPLAINER_MUSIC_PROVIDER="synth"` on its own line first.
 
-Open `out.html` in a browser to play it, or open `video.mp4`.
+Open `out.html` in a browser to play it, or open `video.mp4`. To finish the output, run `node <skill>/scripts/deliver.mjs`: it moves the video to `explainer-test/video/explainer-test.mp4` and fills in `explainer-test/project.json`, `README.md`, and `shared/`.
 
 ## Using it
 
@@ -81,13 +81,19 @@ Expect 30–90 minutes of agent time for a 60 s video. API spend is typically $0
 
 ## What you get
 
+Tell the agent where the project goes and what to call it, for example "in `./scratchpad`, named `why-is-the-sky-blue`". The project folder can hold other outputs about the same subject, made by other skills (a product overview page, a demo recording, a scroll story). They share a brief, facts, brand, and images through `shared/`, so they match. The video lands in the project's `video/` folder:
+
 | File | What it is |
 |---|---|
-| `<name>.mp4` | H.264 + AAC, 1080p30, −16 LUFS, soft captions embedded |
-| `index.html` | Self-contained player: fonts, art, and audio embedded; works offline |
-| `<name>.srt` / `.vtt` | Captions |
-| `README.md` | Script, models, spend, limitations, rebuild steps |
-| `source/` | `lines.json`, `scenes.js`, `assets.json`, `music.json`, cues: everything needed to edit and rebuild |
+| `video/<project>.mp4` | H.264 + AAC, 1080p30, −16 LUFS, soft captions embedded |
+| `video/index.html` | Self-contained player: fonts, art, and audio embedded; works offline |
+| `video/<project>.srt` / `.vtt` | Captions |
+| `video/README.md` | Script, models, spend, limitations, rebuild steps |
+| `video/work/` | The working files: `lines.json`, `scenes.js`, `storyboard.html`, `assets.json`, `music.json`, cues, cached voice and art, `.env`, `spend.json`. Everything needed to edit and rebuild |
+| `project.json`, `README.md` | The project's list of outputs; the video has its own entry and section |
+| `shared/` | What the video adds for other outputs: facts with sources, the palette and fonts (`brand.json`, when none exists yet), and the generated images with their prompts (`images/`, `assets.json`) |
+
+A second video for the same project (a vertical cut, another language) goes in its own folder: ask for `video-vertical`, and the file is `<project>-vertical.mp4`.
 
 ## Settings
 

@@ -198,7 +198,7 @@ Use lowercase, hyphens for spaces. Names should describe what's shown, not where
 
 ### Capture Manifest
 
-Always create `capture-manifest.md` documenting what was captured. This serves as both a record and a reference when building the HTML page:
+Always create `overview/work/capture-manifest.md` (in the output folder's `work/` folder) documenting what was captured. This serves as both a record and a reference when building the HTML page. Note captures reused from the project's `shared/screenshots/` with their source file:
 
 ```markdown
 # Screenshot Capture Manifest
@@ -219,6 +219,7 @@ Always create `capture-manifest.md` documenting what was captured. This serves a
 | feature-2-analytics.png | Analytics dashboard | /analytics | Set range to "Last 30 days" | Charts fully rendered |
 | feature-3-team.png | Team management | /team | Click "Invite member" | Modal visible |
 | mobile-dashboard.png | Mobile dashboard | /dashboard | Viewport 375×812 | Responsive layout |
+| feature-4-reports.png | Reports list | /reports | Reused from shared/screenshots/acme-reports-list.png | Not recaptured |
 ```
 
 ---
