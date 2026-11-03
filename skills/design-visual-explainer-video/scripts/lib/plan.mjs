@@ -2,9 +2,26 @@
 // Shared by storyboard.mjs (storyboard.html + REVIEW.md).
 import fs from "node:fs";
 import { config, jobPath, readJson } from "./config.mjs";
-import { loadLines } from "./lines.mjs";
+import { loadLines, spokenText } from "./lines.mjs";
 
 const words = s => s.split(/\s+/).filter(Boolean).length;
+const numbersIn = s => (s.replace(/https?:\/\/\S+/g, "").match(/\d[\d,.]*\d|\d/g) ?? []).map(n => n.replace(/,/g, ""));
+
+// What the sketches cannot show: a hook, short on-screen text, time to read it, and numbers with a source.
+// The same floors as lint.mjs: reading time is 1 s + the words at 180 wpm. Digits only: "forty" is not checked.
+export function contentNotes({ lines, scenes, facts = "", userFacts = [] }) {
+  const notes = [];
+  if (scenes.length && !scenes[0].onScreen?.length) notes.push(`first scene "${scenes[0].name}" has no onScreen text: plan the hook as large text by 3 s`);
+  for (const s of scenes) {
+    const items = s.onScreen ?? [], n = items.reduce((sum, x) => sum + words(x), 0), need = 1 + n * 60 / 180, has = s.b0 - s.a0;
+    for (const x of items) if (words(x) > 8) notes.push(`scene "${s.name}": "${x.slice(0, 50)}" has ${words(x)} words; aim for at most 8`);
+    if (n >= 3 && has < need) notes.push(`scene "${s.name}" has ${has.toFixed(1)} s; its ${n} on-screen words need at least ${need.toFixed(1)} s`);
+  }
+  const known = new Set(numbersIn(`${facts} ${userFacts.join(" ")}`));
+  const planned = [...lines.map(l => l.text), ...scenes.flatMap(s => s.onScreen ?? [])];
+  for (const n of new Set(planned.flatMap(numbersIn))) if (!known.has(n)) notes.push(`number ${n} is in the plan but not in facts.md: add it with a source, or cut it`);
+  return notes;
+}
 
 export function loadPlan() {
   const brief = readJson("brief.json", {});
@@ -52,6 +69,12 @@ export function loadPlan() {
   const target = brief.lengthSec;
   if (target && Math.abs(end - target) / target > 0.15) notes.push(`estimated length ${fmt(end)} is more than 15% off the ${fmt(target)} target`);
   if (wpm > 170) notes.push(`pace ${Math.round(wpm)} wpm is fast; aim for 140–160`);
+  if (!brief.terms?.length) notes.push("brief.json lists no terms: add the words this audience searches for");
+  const said = spokenText(lines), shown = (sb.scenes ?? []).flatMap(sc => sc.onScreen ?? []).join(" ").toLowerCase();
+  for (const term of brief.terms ?? []) {
+    if (!said.includes(term.toLowerCase())) notes.push(`term "${term}" is not in the script`);
+    if (!shown.includes(term.toLowerCase())) notes.push(`term "${term}" is in no scene's onScreen list`);
+  }
 
   // Scenes with times
   const scenes = (sb.scenes ?? []).map((sc, n) => {
@@ -61,6 +84,7 @@ export function loadPlan() {
   });
   // Scene spans for the animatic: each scene runs from its first line to the next scene's first line.
   scenes.forEach((s, k) => { s.a0 = k === 0 ? 0 : s.a - 0.3; s.b0 = k === scenes.length - 1 ? end : scenes[k + 1].a - 0.3; });
+  notes.push(...contentNotes({ lines, scenes, facts, userFacts: sb.userFacts }));
 
   // Estimates
   const toMake = (assets.images ?? []).filter(x => !manifest[x.id]);

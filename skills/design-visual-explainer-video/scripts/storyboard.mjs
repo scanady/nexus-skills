@@ -5,6 +5,7 @@
 //   scenes are drawn from their `frame` spec with assets/layouts.js (--sketch-all forces sketches).
 //   Animatic audio: lines already voiced play their real clip; new lines use the browser's speech voice.
 // Exit 0 = written; 7 = the plan has errors (also shown at the top of the page).
+import "./lib/job.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { args, config, ASSETS_DIR, ff, jobPath } from "./lib/config.mjs";
@@ -98,9 +99,40 @@ html = html.replace("/*{{SB}}*/", () => safeJson(payload));
 fs.writeFileSync(jobPath("storyboard.html"), html);
 fs.writeFileSync(jobPath("REVIEW.md"), reviewMarkdown(P));
 
+// ---------- plan-pack/: what a fresh reviewer reads before the user sees the plan (references/reviewer-brief.md) ----------
+// Holds what the viewer will get. Never add the chat, questions, notes, costs, or an earlier review.
+const pack = jobPath("plan-pack");
+fs.rmSync(pack, { recursive: true, force: true });
+fs.mkdirSync(pack);
+const frameFile = k => `frame-${String(k + 1).padStart(2, "0")}.jpg`;
+frames.forEach((f, k) => { if (f) fs.writeFileSync(path.join(pack, frameFile(k)), Buffer.from(f.split(",")[1], "base64")); });
+if (fs.existsSync(jobPath("facts.md"))) fs.copyFileSync(jobPath("facts.md"), path.join(pack, "facts.md"));
+fs.writeFileSync(path.join(pack, "PLAN.md"), `# Video plan under review
+
+Length about ${fmt(P.end)}. ${Math.round(P.wpm)} wpm.
+
+Audience: ${P.brief.audience || "not stated"}
+What it must do: ${P.brief.goal || "not stated"}
+Call to action: ${P.brief.cta || "none"}
+Words this audience searches for: ${(P.brief.terms ?? []).join(", ") || "not stated"}
+
+Each frame is one still from its scene. A sketch shows layout and words, not final art. It uses a fixed layout, so when it differs from the "Picture" line, the "Picture" line is the plan. "Motion" says what moves. "IMAGE TO GENERATE" marks art that does not exist yet.
+${fs.existsSync(jobPath("facts.md")) ? "`facts.md` holds the sourced claims." : "There is no `facts.md`: mark truth as unverifiable."}
+
+${P.scenes.map((s, k) => `## Scene ${s.n}: ${fmt(s.a0)}–${fmt(s.b0)}
+
+Frame: ${frames[k] ? `\`${frameFile(k)}\` (${kinds[k] === "render" ? "from the current video" : "sketch"})` : "none"}
+Words spoken:
+${(s.lines ?? []).map(i => `- ${P.lines[i]?.text ?? "?"}`).join("\n")}
+Picture: ${s.visual ?? "not stated"}
+On screen: ${(s.onScreen ?? []).map(x => `"${x}"`).join(", ") || "nothing"}
+Motion and sound: ${s.motion || "not stated"}
+`).join("\n")}`);
+
 const counts = kinds.reduce((m, k) => ((m[k] = (m[k] ?? 0) + 1), m), {});
 console.log(`storyboard.html ${(Buffer.byteLength(html) / 1048576).toFixed(1)} MB: ${P.scenes.length} scenes (${Object.entries(counts).map(([k, v]) => `${v} ${k}`).join(", ")}), ${fmt(P.end)}, ${P.lines.length} lines (${lineAudio.filter(Boolean).length} with real voice), build cost about $${P.costTotal.toFixed(2)}`);
 console.log("REVIEW.md: text record of the same plan");
+console.log("plan-pack/: hand it to a new agent with the plan review in references/reviewer-brief.md, before the user sees the plan");
 P.errors.forEach(e => console.log("ERROR " + e));
 P.notes.forEach(n => console.log("note  " + n));
 process.exitCode = P.errors.length ? 7 : 0;

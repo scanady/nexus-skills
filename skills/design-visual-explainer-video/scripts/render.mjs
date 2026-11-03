@@ -3,6 +3,7 @@
 // Usage: node render.mjs [--out video.mp4] [--workers 4] [--draft] [--from 10 --to 20] [--no-subs]
 //   --draft   half resolution, 15 fps, fast preset: a quick full-length check before the final render
 // Audio: mix.wav (from mix.mjs); falls back to narration.wav with a warning. Captions: captions.srt as a soft track.
+import "./lib/job.mjs";
 import fs from "node:fs";
 import os from "node:os";
 import { spawn } from "node:child_process";

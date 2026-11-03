@@ -10,6 +10,7 @@ All paid calls go through `scripts/lib/openrouter.mjs` (or the ElevenLabs branch
 | Speech | `POST /api/v1/audio/speech` (`model`, `input`, `voice`, `response_format`, `provider.options.<provider>.speech_metadata.style`) → raw audio bytes. Gemini TTS accepts only `response_format: "pcm"` and returns `audio/pcm;rate=24000;channels=1` (16-bit). `tts.mjs` wraps it into WAV, and retries once with the format a 400 error names | `GET /api/v1/generation?id=<X-Generation-Id>` → `data.total_cost`; the script estimates the cost when the lookup fails |
 | Music | `POST /api/v1/chat/completions` with `stream: true`, `modalities: ["text","audio"]`, `audio.format` → base64 slices in `choices[0].delta.audio.data` | `usage.cost` in the last chunk |
 | Key status | `GET /api/v1/key` → `limit`, `limit_remaining`, `usage` | used by `doctor.mjs` |
+| Speech check | Local Whisper through Transformers.js: `onnx-community/whisper-base.en_timestamped` for English, `onnx-community/whisper-small_timestamped` for other languages. The first run downloads the model from huggingface.co into `~/.cache/nexus-explainer-video/models` | Free. No audio leaves the machine |
 
 A 402 response means the key's credit limit or the account balance is used up. The scripts stop and do not retry.
 

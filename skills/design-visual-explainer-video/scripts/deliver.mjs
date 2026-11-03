@@ -6,16 +6,14 @@
 // Publishes to shared/: new facts.md lines → facts.md; the look → brand.json (only when it does not exist yet);
 // generated images → images/<stem>-<id>.png with assets.json entries. Sources and caches stay in work/.
 // README sections marked TODO are for you to fill (what each scene shows, known limitations).
+import "./lib/job.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { JOB, config, jobPath, readJson, ledger, die, SCRIPTS_DIR } from "./lib/config.mjs";
 import { SKILL, addSharedImage, appendFacts, factLines, pngSize, readJsonFile, setReadmeSection, stemFor, upsertOutput, writeJsonFile } from "./lib/project.mjs";
 
 const to = path.dirname(JOB), root = path.dirname(to), outDir = path.basename(to);
-const project = path.basename(JOB) === "work" ? readJsonFile(path.join(root, "project.json")) : null;
-if (!project) die(`run deliver.mjs from <project>/<dir>/work (the job folder init.mjs made), not ${JOB}`);
-const own = (project.outputs ?? []).find(o => o.dir === outDir);
-if (own?.skill !== SKILL) die(`project.json does not list "${outDir}/" for ${SKILL}: run init.mjs for this project first`);
+const project = readJsonFile(path.join(root, "project.json"));
 const slug = stemFor(project.name || path.basename(root), outDir);
 const video = path.join(to, `${slug}.mp4`);
 // Move, not copy: one copy of the MP4 in the output folder. A re-render writes work/video.mp4 again; deliver again to replace it.
@@ -46,6 +44,7 @@ ${brief.goal ? brief.goal + "\n\n" : ""}| | |
 | Player | \`index.html\`: self-contained, works offline, open it in any browser |
 | Captions | \`${slug}.srt\`, \`${slug}.vtt\` |
 | Storyboard | \`work/storyboard.html\` (approved plan), \`work/REVIEW.md\` |
+| Fresh review | \`work/reviews/\`: each reviewer's scores and defects, when a review ran |
 | Sources | \`work/\`: script, facts, storyboard, scenes, cached voice and art |
 | Project | \`../README.md\`: the other outputs; \`../shared/\`: brief, facts, brand, images |
 | Language | ${brief.language ?? config.language} |
@@ -58,7 +57,7 @@ ${cues.map(c => `| ${c.i} | ${fmt(c.start)} | ${c.text.replace(/\|/g, "\\|")} | 
 
 ## How it was made
 
-- Narration: ${vo[0]?.provider ?? "?"}${vo[0]?.provider === "openrouter" ? ` \`${(lines.voice && lines.voice.model) || config.tts.model}\`` : ""}, voice \`${(lines.voice && lines.voice.voice) || config.tts.voice}\`; word timings ${cues.some(c => c.timing === "estimated") ? "estimated from line length" : "from the TTS provider"}.
+- Narration: ${vo[0]?.provider ?? "?"}${vo[0]?.provider === "openrouter" ? ` \`${(lines.voice && lines.voice.model) || config.tts.model}\`` : ""}, voice \`${(lines.voice && lines.voice.voice) || config.tts.voice}\`; word timings ${cues.some(c => c.timing === "estimated") ? "estimated from line length" : cues.some(c => c.timing === "measured") ? "measured by local Whisper" : "from the TTS provider"}.
 - Images: ${models.length ? models.map(m => `\`${m}\``).join(", ") : "none (all drawn in code)"} (${Object.keys(im).length} generated).
 - Music: ${mm.provider === "openrouter" ? `\`${mm.model}\` (generated; carries a SynthID watermark)` : mm.provider === "file" ? "supplied track" : mm.provider === "synth" ? "synthesised in code" : "none"}.
 - Animation: code-driven canvas (\`work/scenes.js\`), rendered frame by frame in headless Chromium, encoded with ffmpeg (H.264 + AAC, −16 LUFS).
@@ -66,11 +65,11 @@ ${cues.map(c => `| ${c.i} | ${fmt(c.start)} | ${c.text.replace(/\|/g, "\\|")} | 
 
 ## Known limitations
 
-TODO: say what you could not verify (for example: audio checked by measurement only, sync of estimated word timings).
+TODO: say what you could not verify (for example: no person listened to the audio, sync of estimated word timings, fixes made after the last review).
 
 ## Rebuild
 
-The pipeline scripts live in the \`design-visual-explainer-video\` skill (\`${SCRIPTS_DIR.replace(/\\/g, "/")}\`). Edit the files in \`work/\`, then run \`tts.mjs\`, \`timeline.mjs\`, \`fonts.mjs\`, \`images.mjs\`, \`music.mjs\`, \`build.mjs\`, \`mix.mjs\`, \`build.mjs\`, \`render.mjs\`, \`verify.mjs\`, \`deliver.mjs\` from inside \`work/\`. Cached voice and image files are kept there, so only changed lines and images cost again.
+The pipeline scripts live in the \`design-visual-explainer-video\` skill (\`${SCRIPTS_DIR.replace(/\\/g, "/")}\`). Edit the files in \`work/\`, then run \`tts.mjs\`, \`align.mjs\`, \`timeline.mjs\`, \`fonts.mjs\`, \`images.mjs\`, \`music.mjs\`, \`build.mjs\`, \`mix.mjs\`, \`build.mjs\`, \`render.mjs\`, \`verify.mjs\`, \`deliver.mjs\` from inside \`work/\`. Cached voice and image files are kept there, so only changed lines and images cost again.
 `;
 fs.writeFileSync(path.join(to, "README.md"), readme);
 

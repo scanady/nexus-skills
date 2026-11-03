@@ -9,6 +9,7 @@
     "playwright": "^1.55.0"
   },
   "optionalDependencies": {
+    "@huggingface/transformers": "3.8.1",
     "msedge-tts": "^2.0.0"
   }
 }

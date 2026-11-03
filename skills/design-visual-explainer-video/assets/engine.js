@@ -134,7 +134,7 @@ function recordText(str, o, wMax, nLines, lh) {
   const pts = [[x0, -size * 0.8], [x0 + wMax, -size * 0.8], [x0, (nLines - 1) * lh + size * 0.25], [x0 + wMax, (nLines - 1) * lh + size * 0.25]]
     .map(([px, py]) => [m.a * px + m.c * py + m.e, m.b * px + m.d * py + m.f]);
   const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
-  FRAME_TEXT.push({ str: String(str), x0: Math.min(...xs), y0: Math.min(...ys), x1: Math.max(...xs), y1: Math.max(...ys), alpha: +ctx.globalAlpha.toFixed(2), revealed: o.reveal === undefined || o.reveal >= 1 });
+  FRAME_TEXT.push({ str: String(str), x0: Math.min(...xs), y0: Math.min(...ys), x1: Math.max(...xs), y1: Math.max(...ys), px: +(size * Math.hypot(m.c, m.d)).toFixed(1), alpha: +ctx.globalAlpha.toFixed(2), revealed: o.reveal === undefined || o.reveal >= 1 });
 }
 // text(str, x, y, {font,size,weight,color,align,baseline,maxWidth,lineHeight,reveal,alpha,stroke,rot})
 // reveal 0..1 types the text on by characters. Returns the drawn block size {w, h, lines}.
@@ -300,7 +300,7 @@ function tornEdge(t0, x, dir) { // jagged vertical edge path for wipe transition
 const HOOKS = { before: [], after: [] };
 function overlay(fn) { HOOKS.after.push(fn); }
 function underlay(fn) { HOOKS.before.push(fn); }
-const FINISH = { grain: 0.05, vignette: 0.3, fadeIn: 0.4, fadeOut: 0.7 };
+const FINISH = { grain: 0.05, vignette: 0.3, fadeIn: 0, fadeOut: 0.7 };
 
 function drawFrame(t) {
   FRAME_TEXT.length = 0;
@@ -329,7 +329,7 @@ function drawFrame(t) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   if (FINISH.vignette) vignette(FINISH.vignette);
   grain(t, FINISH.grain);
-  const fade = Math.max(1 - seg(t, 0, FINISH.fadeIn), seg(t, DUR - FINISH.fadeOut, DUR));
+  const fade = Math.max(FINISH.fadeIn ? 1 - seg(t, 0, FINISH.fadeIn) : 0, seg(t, DUR - FINISH.fadeOut, DUR));
   if (fade > 0) { ctx.globalAlpha = fade; bg("#000"); ctx.globalAlpha = 1; }
 }
 
@@ -345,6 +345,8 @@ function captions(t, o = {}) {
   const size = o.size ?? 46, y = o.y ?? H - 110;
   ctx.save(); ctx.font = font({ size, weight: 700, font: o.font });
   const full = words.map(w => w.w).join(" "), wFull = ctx.measureText(full).width;
+  // lint.mjs checks captions for size, overlaps, and the safe area. reveal < 1 keeps them out of the reading-time, hook, and terms checks.
+  ctx.translate(W / 2, y); recordText(full, { size, align: "center", reveal: 0.5 }, wFull, 1, size); ctx.translate(-W / 2, -y);
   if (o.box !== false) rrect(W / 2 - wFull / 2 - 28, y - size * 1.05, wFull + 56, size * 1.55, 14, { fill: o.box ?? "rgba(0,0,0,.62)" });
   let x = W / 2 - wFull / 2;
   ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
@@ -459,7 +461,7 @@ async function boot() {
   if (typeof setup === "function") await setup();
   SCENES.sort((a, b) => a.start - b.start);
   for (const s of SCENES) if (!(s.end > s.start)) console.error(`scene "${s.name}" has end <= start`);
-  window.__meta = { dur: DUR, fps: FPS, width: W, height: H, scenes: SCENES.map(s => ({ name: s.name, start: s.start, end: s.end })), sfx: SFX.length, music: !!MUSIC };
+  window.__meta = { dur: DUR, fps: FPS, width: W, height: H, scenes: SCENES.map(s => ({ name: s.name, start: s.start, end: s.end })), sfx: SFX.length, music: !!MUSIC, shakes: CAM.shake };
   window.__render = t => drawFrame(t);
   window.__renderAudio = renderAudio;
   window.__canvas = canvas;

@@ -9,6 +9,7 @@
 //  - background "scene": full-frame image, no keying.
 //  - ref: ids of already-generated images sent as input references to keep a character or style consistent.
 // Out: assets/<id>.png, assets/manifest.json. Existing files are kept unless --force or the prompt changed.
+import "./lib/job.mjs";
 import fs from "node:fs";
 import { args, config, ff, hash, jobPath, readJson, writeJson, pool, spent, die, isStop } from "./lib/config.mjs";
 import { generateImage } from "./lib/openrouter.mjs";

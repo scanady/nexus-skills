@@ -7,9 +7,9 @@ This skill makes a narrated, animated explainer video from a prompt. The agent w
 | Item | Notes |
 |---|---|
 | Node.js 20.10+ | `node -v` |
-| About 400 MB of disk | Playwright's Chromium (≈115 MB) plus npm packages and ffmpeg |
+| About 700 MB of disk | Playwright's Chromium (≈115 MB), npm packages and ffmpeg (≈480 MB), and the speech check model (≈80 MB) |
 | An OpenRouter account and API key | https://openrouter.ai/settings/keys |
-| Network access | openrouter.ai, fonts.googleapis.com, fonts.gstatic.com, and npm during setup |
+| Network access | openrouter.ai, fonts.googleapis.com, fonts.gstatic.com, npm during setup, and huggingface.co for the first speech check |
 
 Windows, macOS, and Linux all work. You do not need a system ffmpeg: the `ffmpeg-static` package supplies one.
 
@@ -32,7 +32,7 @@ Windows, macOS, and Linux all work. You do not need a system ffmpeg: the `ffmpeg
    ```ini
    OPENROUTER_API_KEY=sk-or-...
    EXPLAINER_BUDGET_USD=10
-   EXPLAINER_OUTPUT_DIR=C:/Users/you/Videos/explainers   # optional default parent for project folders; the agent asks when it is empty
+   EXPLAINER_OUTPUT_DIR=C:/Users/you/Videos/explainers   # optional: the location the agent suggests when it asks you; it still asks
    ```
 
    A `.env` in a job folder (`<project>/video/work/`) overrides the skill-level one. Real environment variables override both.
@@ -50,8 +50,8 @@ Windows, macOS, and Linux all work. You do not need a system ffmpeg: the `ffmpeg
 This renders the built-in three-line example with a silent voice and synthesized music. It proves the toolchain end to end in about 2 minutes.
 
 ```bash
-node <skill>/scripts/init.mjs --in . --name explainer-test --example
-cd explainer-test/video/work
+node <skill>/scripts/init.mjs --in <full path to a folder> --name explainer-test --example
+cd <full path to that folder>/explainer-test/video/work
 node <skill>/scripts/tts.mjs --provider silent
 node <skill>/scripts/timeline.mjs
 node <skill>/scripts/fonts.mjs "Caveat:wght@700" "Nunito:wght@400;800"
@@ -66,6 +66,8 @@ node <skill>/scripts/verify.mjs
 ```
 
 On Windows PowerShell, set the variable with `$env:EXPLAINER_MUSIC_PROVIDER="synth"` on its own line first.
+
+Every video file stays in the project folder you chose. `init.mjs` needs its full path. The other scripts stop without writing when they do not run from the job folder. The only files outside are tools: the `npm install` files in this skill's folder, the browser that Playwright downloads, the Whisper model in `~/.cache/nexus-explainer-video/models`, and a browser profile in the system temp folder while a script runs.
 
 Open `out.html` in a browser to play it, or open `video.mp4`. To finish the output, run `node <skill>/scripts/deliver.mjs`: it moves the video to `explainer-test/video/explainer-test.mp4` and fills in `explainer-test/project.json`, `README.md`, and `shared/`.
 
@@ -102,7 +104,7 @@ Every setting and its default is in `.env.example`. The ones people change most:
 | Variable | Use |
 |---|---|
 | `EXPLAINER_TTS_VOICE` | Gemini voice name (`Charon`, `Puck`, `Kore`, `Aoede`, …; list in `references/audio.md`) |
-| `EXPLAINER_TTS_PROVIDER` | `openrouter`, `elevenlabs` (exact word timing, own key), `edge` (free, unofficial), `silent` |
+| `EXPLAINER_TTS_PROVIDER` | `openrouter` (word timing measured by local Whisper), `elevenlabs` (exact word timing, own key), `edge` (free, unofficial), `silent` |
 | `EXPLAINER_MUSIC_PROVIDER` | `openrouter` (Lyria), `synth` (free), `file`, `none` |
 | `EXPLAINER_IMAGE_MODEL` | e.g. `google/gemini-3-pro-image` for more detail |
 | `EXPLAINER_WIDTH` / `EXPLAINER_HEIGHT` | `1080` / `1920` for vertical video |
@@ -116,6 +118,7 @@ Every setting and its default is in `.env.example`. The ones people change most:
 | `402 payment_required` | The key's credit limit or the account balance is used up |
 | "model not found" | Model slugs change. List them: `curl -s "https://openrouter.ai/api/v1/models?output_modalities=image"` (or `speech`, `audio`), then set the model variable |
 | Music generation fails | Set `EXPLAINER_MUSIC_PROVIDER=synth` and re-run `music.mjs` and `mix.mjs` |
+| `align.mjs` exits 8 | The speech check cannot run. Run `npm install` in `scripts/`, and allow huggingface.co for the first run. The video still builds, with estimated word times |
 | Text shows in a plain system font | Run `fonts.mjs` before `build.mjs`. Check the family names in `fonts.json` |
 | Garbled characters (`â€™`) | Keep `<meta charset="utf-8">` as the first line of `assets/player.html` |
 | Render is slow | Raise `EXPLAINER_RENDER_WORKERS` (up to the number of CPU cores), or use `render.mjs --draft` for checks |

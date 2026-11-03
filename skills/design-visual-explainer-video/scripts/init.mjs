@@ -3,7 +3,8 @@
 //   <parent>/<project>/<dir>/                            deliverables, written later by deliver.mjs
 //   <parent>/<project>/<dir>/work/                       the job folder: every other script runs in it
 // Usage: node <skill>/scripts/init.mjs --in <parent-dir> --name <project> [--dir video] [--title "…"] [--example]
-//   --in       where the project folder is or goes (default: EXPLAINER_OUTPUT_DIR)
+//   --in       the full path of the folder the user chose for the project folder. Required, with no default:
+//              a relative path or "~" would land wherever this script happens to run
 //   --name     the project folder name, chosen by the user; it also names the video file
 //   --dir      this video's output folder (default "video"); a second video in the same project needs its own,
 //              e.g. video-vertical (file <project>-vertical.mp4)
@@ -13,19 +14,22 @@
 // and lists the other shared files to read. It copies no images; pick them yourself.
 import fs from "node:fs";
 import path from "node:path";
-import { ASSETS_DIR, SCRIPTS_DIR, args, config, die } from "./lib/config.mjs";
+import { ASSETS_DIR, SCRIPTS_DIR, SKILL_ROOT, args, die } from "./lib/config.mjs";
 import { DEFAULT_DIR, SKILL, readJsonFile, setReadmeSection, today, upsertOutput, writeJsonFile } from "./lib/project.mjs";
 
 const a = args();
-const parent = typeof a.in === "string" ? a.in : config.outputDir;
+const parent = typeof a.in === "string" ? a.in : "";
 const name = typeof a.name === "string" ? a.name.trim() : "";
 const outDir = typeof a.dir === "string" ? a.dir.trim() : DEFAULT_DIR;
-if (!parent || !name) die("usage: node init.mjs --in <parent-dir> --name <project> [--dir video] [--title \"…\"] [--example]; ask the user where the project goes and what to name it (EXPLAINER_OUTPUT_DIR sets a default --in)");
+if (!parent || !name) die("usage: node init.mjs --in <parent-dir> --name <project> [--dir video] [--title \"…\"] [--example]; ask the user where the project goes and what to name it");
+if (!path.isAbsolute(parent)) die(`--in must be a full path, not "${parent}": a relative path or "~" lands wherever this script runs. Ask the user for the full path.`);
 if (/[\\/]/.test(name) || name === "." || name === "..") die(`--name must be one folder name, not a path: "${name}"`);
 if (!/^[a-z0-9][a-z0-9-]*$/.test(outDir) || ["shared", "work"].includes(outDir)) die(`--dir must be one lowercase folder name such as video or video-vertical, not "${outDir}"`);
 
 const root = path.resolve(parent, name);
 const manifest = path.join(root, "project.json");
+const inSkill = path.relative(SKILL_ROOT, root);
+if (!inSkill.startsWith("..") && !path.isAbsolute(inSkill)) die(`${root} is inside this skill's folder. Ask the user for another location.`);
 
 // Join or create the project.
 if (fs.existsSync(manifest)) {
@@ -74,11 +78,11 @@ const section = (md, h) => { const m = md.match(new RegExp(`^## ${h}\\s*\\n([\\s
 const briefMd = fs.existsSync(shared("brief.md")) ? fs.readFileSync(shared("brief.md"), "utf8") : "";
 put("brief.json", JSON.stringify({
   title: project.title ?? "", seed: name, audience: section(briefMd, "Audience"), goal: section(briefMd, "Goal"),
-  language: "en", lengthSec: 60, style: "", cta: section(briefMd, "Call to action"), sources: [],
+  language: "en", lengthSec: 60, style: "", cta: section(briefMd, "Call to action"), terms: [], sources: [],
 }, null, 2) + "\n");
 // facts.md: start from the project's facts; deliver.mjs adds the new lines back to shared/facts.md.
 if (fs.existsSync(shared("facts.md"))) put("facts.md", fs.readFileSync(shared("facts.md"), "utf8"));
-put(".gitignore", ["vo/", "assets/raw/", "stems/", "render/", "shots/", "music/", "fonts/", "*.wav", "*.mp3", "*.m4a", "draft.mp4", "narration.*", "storyboard-audio/", "spend.json", ".env", ""].join("\n"));
+put(".gitignore", ["vo/", "assets/raw/", "stems/", "render/", "shots/", "music/", "fonts/", "*.wav", "*.mp3", "*.m4a", "draft.mp4", "narration.*", "storyboard-audio/", "plan-pack/", "review-pack/", "spend.json", ".env", ""].join("\n"));
 
 const found = ["brief.md", "facts.md", "brand.json", "ui-map.md", "assets.json", "images/", "screenshots/"].filter(f => fs.existsSync(shared(f)));
 const others = (project.outputs ?? []).filter(o => o.dir !== outDir && o.entry).map(o => `${o.entry} (${o.kind})`);

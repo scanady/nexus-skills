@@ -10,6 +10,7 @@
 //   synth       no file: mix.mjs renders the engine's built-in bed from music({...}) in scenes.js
 //   none        no music
 // Out: music/music.<ext>, music/manifest.json
+import "./lib/job.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { args, config, ff, hash, jobPath, readJson, writeJson, die, isStop } from "./lib/config.mjs";

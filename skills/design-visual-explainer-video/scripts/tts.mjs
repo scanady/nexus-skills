@@ -1,17 +1,19 @@
 // Narration: one TTS call per line, cached by content hash so edits only re-voice changed lines.
 // Usage: node tts.mjs [--provider openrouter|elevenlabs|edge|silent] [--voice X] [--model Y] [--only 3,5]
 //        node tts.mjs --sample "Text to audition" --voice Puck   (writes vo/sample-<voice>.mp3, one paid call)
-// Out:   vo/raw/<hash>.<ext>, vo/manifest.json [{i, file, words?}]  → then run timeline.mjs
+// Out:   vo/raw/<hash>.<ext>, vo/manifest.json [{i, file, words?}]  → then run align.mjs, timeline.mjs
 // Providers:
-//   openrouter  POST /audio/speech (default model google/gemini-3.8-flash-tts). No word timings: timeline.mjs estimates them.
+//   openrouter  POST /audio/speech (default model google/gemini-3.8-flash-tts). No word timings: align.mjs measures them.
 //   elevenlabs  /v1/text-to-speech/{voice}/with-timestamps: exact word timings. Needs ELEVENLABS_API_KEY + ELEVENLABS_VOICE_ID.
 //   edge        Microsoft Edge read-aloud voices via msedge-tts: free, exact word timings, UNOFFICIAL endpoint (can break).
 //   silent      Silent clips with estimated length: free animatic timing before any paid voice.
+import "./lib/job.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { args, config, env, ff, hash, jobPath, writeJson, die, done, record, assertBudget } from "./lib/config.mjs";
 import { loadLines } from "./lib/lines.mjs";
 import { speech } from "./lib/openrouter.mjs";
+import { alignFile } from "./lib/align.mjs";
 
 const a = args();
 const { voice: voiceDoc, lines } = loadLines();
@@ -115,9 +117,10 @@ for (const [i, line] of lines.entries()) {
   const r = await synth(spoken, key);
   const file = `vo/raw/${key}.${r.ext}`;
   fs.writeFileSync(jobPath(file), r.buffer);
+  fs.rmSync(jobPath(alignFile(file)), { force: true });
   if (r.words) fs.writeFileSync(metaFile, JSON.stringify(r.words));
   manifest.push({ i, file, words: r.words, provider });
   console.log(`line ${i}: ${provider} ${voice} ${r.note ?? ""}`);
 }
 writeJson("vo/manifest.json", manifest);
-console.log(`vo/manifest.json: ${manifest.length} clips. Next: node timeline.mjs`);
+console.log(`vo/manifest.json: ${manifest.length} clips. Next: ${provider === "silent" ? "node timeline.mjs" : "node align.mjs"}`);
