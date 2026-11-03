@@ -1,6 +1,6 @@
 # Voice, music, and mix
 
-You cannot listen to the output. Choose settings from the rules below, and check the result by measurement (`mix.mjs` and `verify.mjs` print loudness numbers).
+You cannot listen to the output. Choose settings from the rules below, and check the result by measurement: `mix.mjs` and `verify.mjs` print loudness numbers, and `align.mjs` and `verify.mjs` use local Whisper to report what the voice said.
 
 ## Voice
 
@@ -10,6 +10,7 @@ You cannot listen to the output. Choose settings from the rules below, and check
 - Words in the style note change the pace a lot. Measured with Sulafat: "unhurried" gave 114 wpm and a 145 s video; "natural conversational pace with gentle energy" gave 131 wpm and 127 s. Avoid "slow", "unhurried", and "calm" unless you want a slow read. Check the wpm that `timeline.mjs` prints after every re-voice.
 - Audition before you voice the whole script: `node tts.mjs --sample "<the hook line>" --voice Puck`. Each sample is one small paid call. Try at most 2–3 voices.
 - Commenters said one voice type is "overused like crazy". Match the voice to the audience. Do not use the same voice for every video.
+- After every re-voice, run `align.mjs` before `timeline.mjs`. Gemini voices give no word times, so `align.mjs` measures them. It cannot check Japanese, Chinese, or Thai, because it matches words by spaces: those word times stay estimated.
 
 Gemini voices (their published character):
 
@@ -32,7 +33,7 @@ Gemini voices (their published character):
 | Sadaltager | knowledgeable | Sulafat | warm |
 
 Other providers (`--provider` or `EXPLAINER_TTS_PROVIDER`):
-- `elevenlabs`: exact word timings, so visual sync is tighter. Needs your own ElevenLabs key and voice id. Use it only when the user asks or has already configured it.
+- `elevenlabs`: exact word timings from the provider. Needs your own ElevenLabs key and voice id. Use it only when the user asks or has already configured it.
 - `edge`: free Microsoft Edge voices with exact word timings (e.g. `en-US-AndrewMultilingualNeural`, `en-US-AvaMultilingualNeural`). The endpoint is unofficial and can break. Use it only when the user wants zero TTS cost.
 - `silent`: silent clips of estimated length. Use it for a free animatic before any paid voice, and as the fallback when voice generation is blocked.
 - Any other OpenRouter speech model works through `--model` (e.g. `openai/gpt-4o-mini-tts-2025-12-15`, `minimax/speech-2.8-hd`). Voice names differ per model.
@@ -70,6 +71,6 @@ Other providers (`--provider` or `EXPLAINER_TTS_PROVIDER`):
 | SFX | engine levels × `EXPLAINER_SFX_GAIN` (0.8) |
 | Final | −16 LUFS integrated, ≤ −1.5 dBTP, 48 kHz stereo |
 
-- Music that is too loud was the single fix needed in one reported one-shot run. When in doubt, raise `--under` (e.g. 18–20) and re-run `mix.mjs`. It is free and takes seconds.
+- Music that is too loud was the single fix needed in one reported one-shot run. When in doubt, or when `verify.mjs` reports that too little of the script is understood, raise `--under` (e.g. 18–20) and re-run `mix.mjs`. It is free and takes seconds.
 - A mono narration measures about 3 LU quieter than the same voice in the stereo mix. Compare like with like.
 - Long silences in the finished video (> 2.5 s) fail `verify.mjs`. Check the pauses in `lines.json` and the length of the tail.

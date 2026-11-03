@@ -3,7 +3,8 @@
 // Exit 0 = ready; 2 = blocking problem (the message says what to fix).
 import fs from "node:fs";
 import path from "node:path";
-import { args, config, ENV_FILES, SCRIPTS_DIR, ffmpegBin, ff, setQuiet } from "./lib/config.mjs";
+import { args, config, ENV_FILES, JOB, SCRIPTS_DIR, ffmpegBin, ff, setQuiet } from "./lib/config.mjs";
+import { jobProblem } from "./lib/project.mjs";
 
 const a = args();
 setQuiet(true);
@@ -50,11 +51,15 @@ if (t.provider === "elevenlabs" && !(config.elevenlabs.apiKey && config.elevenla
 else if (t.provider === "edge") {
   try { await import("msedge-tts"); warn("tts", "edge: free but UNOFFICIAL endpoint; may rate-limit or break"); } catch { bad("tts", "edge needs `npm install msedge-tts` in scripts/"); }
 } else ok("tts", `${t.provider}${t.provider === "openrouter" ? ` ${t.model} voice ${t.voice}` : ""}`);
+try { await import("@huggingface/transformers"); ok("speech check", "local Whisper; the first align.mjs run downloads the model (about 80 MB)"); }
+catch { warn("speech check", "@huggingface/transformers is missing: run `npm install` in scripts/. Without it, word times stay estimated and nothing checks what the voice said"); }
 const m = config.music;
 if (m.provider === "file" && !(m.file && fs.existsSync(m.file))) bad("music", "EXPLAINER_MUSIC_FILE missing");
 else ok("music", `${m.provider}${m.provider === "openrouter" ? ` ${m.model}` : ""}`);
 ok("video", `${config.video.width}x${config.video.height} @ ${config.video.fps} fps, crf ${config.video.crf}, maxrate ${config.video.maxrate}`);
-if (config.outputDir) ok("output dir", `${config.outputDir} (default --in for init.mjs)`); else warn("output dir", "EXPLAINER_OUTPUT_DIR not set: ask the user which parent folder holds the project folder");
+const jobIssue = jobProblem();
+if (!jobIssue) ok("job folder", JOB);
+else warn("job folder", `not in one yet: ask the user where the project goes${config.outputDir ? `, and suggest EXPLAINER_OUTPUT_DIR (${config.outputDir})` : ""}, then run init.mjs`);
 
 const w = Math.max(...rows.map(r => r[1].length));
 for (const [s, k, v] of rows) console.log(`${s}  ${k.padEnd(w)}  ${v}`);

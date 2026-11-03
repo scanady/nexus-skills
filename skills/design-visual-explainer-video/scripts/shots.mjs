@@ -4,6 +4,7 @@
 //        node shots.mjs --scene recap,hook     → the same three moments for the named scene(s)
 //        node shots.mjs 12.4 --full            → also writes shots/t12.4.jpg at full resolution (for detail checks)
 // Prints console errors and the text visible at each moment.
+import "./lib/job.mjs";
 import fs from "node:fs";
 import { args, jobPath } from "./lib/config.mjs";
 import { launch, openPage } from "./lib/browser.mjs";

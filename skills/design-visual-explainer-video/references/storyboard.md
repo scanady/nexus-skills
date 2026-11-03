@@ -88,8 +88,9 @@ A sketch shows layout, content, and look, not the final motion. Put the motion i
 
 ## The review loop
 
-1. Run `storyboard.mjs`. Screenshot the page or open it, and fix frames that overflow or overlap before the user sees them.
-2. Send the path and a 3–5 line summary. Stop.
-3. The user pastes feedback, or replies in their own words. Apply it: script edits go to `lines.json`, scene edits to `storyboard.json`, image edits to `assets.json`. Add a line to `changes` for each.
-4. Run `storyboard.mjs` again and list what changed. Repeat until the user approves.
-5. Build from the approved plan. Keep `storyboard.json` in step with `scenes.js` if the build forces a change, and tell the user.
+1. Run `storyboard.mjs`. Screenshot the page or open it, and fix frames that overflow or overlap before the user sees them. Fix the plan notes it prints: no hook text, an `onScreen` item over 8 words, too little time to read a scene, or a number that is not in `facts.md`.
+2. Get the plan review in `references/reviewer-brief.md`, fix what you agree with, and run `storyboard.mjs` again.
+3. Send the path, a 3–5 line summary, and what the plan review found. Stop.
+4. The user pastes feedback, or replies in their own words. Apply it: script edits go to `lines.json`, scene edits to `storyboard.json`, image edits to `assets.json`. Add a line to `changes` for each.
+5. Run `storyboard.mjs` again and list what changed. Repeat until the user approves.
+6. Build from the approved plan. Keep `storyboard.json` in step with `scenes.js` if the build forces a change, and tell the user. `lint.mjs` warns when a scene name or an `onScreen` item from `storyboard.json` is missing from the video.

@@ -14,3 +14,6 @@ export function loadLines(file = "lines.json") {
   });
   return { voice: doc.voice ?? {}, lines };
 }
+
+// Everything the narration says, lowercased, to look up brief.json terms.
+export const spokenText = lines => lines.map(l => `${l.text} ${l.say ?? ""}`).join(" ").toLowerCase();

@@ -4,6 +4,7 @@
 //   --duck   extra dB the music drops during speech versus the gaps between lines (default 8)
 // In:  narration.wav, cues.json, timeline.json, music/manifest.json (music.mjs), out.html (for SFX + synth bed)
 // Out: stems/sfx.wav, stems/music.wav, mix.wav (final, 48 kHz stereo), mix.m4a (for the HTML player)
+import "./lib/job.mjs";
 import fs from "node:fs";
 import { args, config, ff, jobPath, readJson, loudnorm, loudness, mediaDuration, die } from "./lib/config.mjs";
 import { launch, openPage } from "./lib/browser.mjs";

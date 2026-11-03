@@ -1,6 +1,7 @@
 // Assemble a self-contained out.html from the skill's player + engine and the job's scenes.js,
 // embedding fonts, images, per-word cues and the best available audio (mix.m4a > narration).
 // Usage: node build.mjs [--title "..."] [--seed name] [--publish <dir>]   (--publish copies to <dir>/index.html)
+import "./lib/job.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { args, config, ff, jobPath, readJson, die } from "./lib/config.mjs";

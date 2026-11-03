@@ -55,7 +55,7 @@ scene({
 - Put scene changes in the pause before a line, not on its first word: a boundary at `lineStart(k) - 0.45` with a 0.7 s transition finishes just as line `k` begins. A boundary at `lineStart(k)` makes the new scene's first text fade in over the old scene's text.
 - The incoming scene draws over the outgoing scene during the overlap. Make each scene's `start` at least `tlen` before the previous scene's `end`. A gap between scenes shows black frames, and `lint.mjs` reports it as an error.
 - `underlay(fn)` draws `fn(t)` under every scene. `overlay(fn)` draws `fn(t)` over every scene (captions, a logo bug, a progress bar).
-- `FINISH` controls the frame finish: `{grain: 0.05, vignette: 0.3, fadeIn: 0.4, fadeOut: 0.7}`. Set a value to `0` to turn that effect off.
+- `FINISH` controls the frame finish: `{grain: 0.05, vignette: 0.3, fadeIn: 0, fadeOut: 0.7}`. Set a value to `0` to turn that effect off. `fadeIn` is off because the first frame is the thumbnail: draw a finished picture at `t = 0`, with the first scene starting at 0.
 - Camera: a slow drift is always on. `CAM.drift = 0` turns it off. `shake(time, amp = 10, len = 0.35)` adds an impact shake.
 
 ## Drawing helpers

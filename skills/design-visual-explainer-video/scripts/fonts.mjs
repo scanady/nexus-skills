@@ -2,6 +2,7 @@
 // Usage: node fonts.mjs "Caveat:wght@700" "Nunito:wght@400;800" [--subsets latin,latin-ext | all]
 // Order matters: DATA.fontFamilies[0] is the first family, [1] the second, and so on.
 // Out: fonts/*.woff2, fonts.json
+import "./lib/job.mjs";
 import fs from "node:fs";
 import { args, jobPath, writeJson, die, env } from "./lib/config.mjs";
 

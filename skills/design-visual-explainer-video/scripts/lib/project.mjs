@@ -3,7 +3,7 @@
 // its README section, and what it adds to shared/. JSON is edited read → change → write, keeping unknown keys.
 import fs from "node:fs";
 import path from "node:path";
-import { die } from "./config.mjs";
+import { JOB, die } from "./config.mjs";
 
 export const SKILL = "design-visual-explainer-video";
 export const KIND = "explainer-video";
@@ -17,6 +17,14 @@ export function readJsonFile(file, fallback) {
   try { return JSON.parse(fs.readFileSync(file, "utf8")); } catch (e) { die(`${file} is not valid JSON: ${e.message}`); }
 }
 export const writeJsonFile = (file, data) => fs.writeFileSync(file, JSON.stringify(data, null, 2) + "\n");
+
+// Why the current folder is not a job folder init.mjs made (<project>/<dir>/work, with <dir> listed for this skill), or null.
+export function jobProblem() {
+  const to = path.dirname(JOB);
+  const project = path.basename(JOB) === "work" ? readJsonFile(path.join(path.dirname(to), "project.json")) : null;
+  if ((project?.outputs ?? []).some(o => o.dir === path.basename(to) && o.skill === SKILL)) return null;
+  return `${JOB} is not a job folder, so nothing was written. Run this script from <project>/<dir>/work: init.mjs prints the path. With no project yet, ask the user where it goes, then run init.mjs`;
+}
 
 // Read project.json, let `change` edit it in place, write it back. Returns the edited object.
 export function updateProject(root, change) {

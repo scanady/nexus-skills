@@ -41,7 +41,7 @@
         "Why is the sky blue?",
         "not the water"
       ],
-      "motion": "Question pops at 0.3 s; sun on 'sunlight'; red note on 'water'",
+      "motion": "Question on screen from frame 0; underline writes on; sun and red note on 'sunlight'",
       "assets": [
         "sun"
       ],
@@ -58,11 +58,13 @@
       "lines": [
         1
       ],
-      "visual": "Six colored light rays; the blue and violet ones bounce off an air molecule",
+      "visual": "Six colored rays reach a cluster of air molecules; red to green pass straight through, and blue and violet fly off to every side",
       "onScreen": [
-        "Short blue waves bounce around the most"
+        "Short blue waves bounce around the most",
+        "Blue scatters",
+        "Red passes through"
       ],
-      "motion": "Rays draw on; the bounce and a sparkle on 'scatters'",
+      "motion": "Rays draw on; the air pops in on 'air'; the rays split with a sparkle on 'scatters'; labels on 'short' and 'waves'",
       "assets": [],
       "frame": {
         "layout": "diagram",

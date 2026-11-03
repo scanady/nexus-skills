@@ -1,14 +1,18 @@
 // Place narration clips on the timeline.
-// In:  lines.json, vo/manifest.json (from tts.mjs)
+// In:  lines.json, vo/manifest.json (from tts.mjs), vo/raw/<hash>.align.json (from align.mjs, when it ran)
+// Word times, best first: exact from the provider, measured by align.mjs, estimated from the line length.
 // Out: vo/line<i>.wav (trimmed, loudness-normalised), narration.wav, cues.json (per-word times),
 //      timeline.json {dur}, captions.srt, captions.vtt
 // Env/flags: --start 0.8 (first line), --gap 0.55 (default pause between lines), --tail 2.5 (after last word)
 // The video length is decided here, once. build.mjs, mix.mjs and render.mjs read it from timeline.json.
+import "./lib/job.mjs";
 import fs from "node:fs";
 import { args, config, ff, mediaDuration, loudnorm, readJson, writeJson, jobPath, die } from "./lib/config.mjs";
 import { loadLines } from "./lib/lines.mjs";
+import { alignFile, timesForText } from "./lib/align.mjs";
 
 const a = args();
+const language = readJson("brief.json", {}).language ?? config.language;
 const START = +(a.start ?? 0.8), GAP = +(a.gap ?? 0.55), TAIL = +(a.tail ?? 2.5);
 const { lines } = loadLines();
 const manifest = readJson("vo/manifest.json");
@@ -47,11 +51,13 @@ for (const [i, line] of lines.entries()) {
   fs.rmSync(trimmed);
   const dur = mediaDuration(out);
   const exact = Array.isArray(clip.words) && clip.words.length && !line.say;
-  const words = exact
-    ? clip.words.map(w => ({ w: w.w, t: +Math.min(dur, Math.max(0, w.t - lead)).toFixed(3) }))
+  const measured = !exact && fs.existsSync(jobPath(alignFile(clip.file))) ? timesForText(line.text, readJson(alignFile(clip.file)).words, language) : null;
+  const known = exact ? clip.words : measured;
+  const words = known
+    ? known.map(w => ({ w: w.w, t: +Math.min(dur, Math.max(0, w.t - lead)).toFixed(3) }))
     : estimateWords(line.text, dur);
   cues.push({
-    i, start: +t.toFixed(3), dur: +dur.toFixed(3), text: line.text, timing: exact ? "exact" : "estimated",
+    i, start: +t.toFixed(3), dur: +dur.toFixed(3), text: line.text, timing: exact ? "exact" : measured ? "measured" : "estimated",
     words: words.map(w => ({ w: w.w, t: +(t + w.t).toFixed(3) })),
   });
   t += dur + (line.pauseAfter ?? GAP);

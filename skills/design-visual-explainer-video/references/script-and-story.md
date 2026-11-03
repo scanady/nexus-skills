@@ -6,7 +6,7 @@ The script decides most of the quality. Viewers of AI explainers complain most a
 
 1. Collect the facts the video will state. Sources, in order: what the user gave you, the project folder's `shared/brief.md` and `shared/facts.md` (when they exist), the project's docs (README, AGENTS.md, CLAUDE.md, docs/), then primary sources on the web.
 2. Write `facts.md` in the job folder: one claim per line, as `- <claim> — <source>`, where the source is a URL, a file path, or `user (chat, <date>)`. `init.mjs` starts it with the lines of `shared/facts.md`; add yours below them. Every claim in the script must trace to a line in this file. `deliver.mjs` adds your new lines to `shared/facts.md`.
-3. Collect the user's own vocabulary: product names, feature names, the terms their docs use. Use those words. Do not coin terms.
+3. Collect the user's own vocabulary: product names, feature names, the terms their docs use. Use those words. Do not coin terms. List the words this audience searches for in `brief.json` → `terms`. The video must say and show each one: an explainer on bloom filters that never says "false positive" fails its viewers.
 4. For a codebase explainer, map each beat to a real subsystem (a file or module). Explain what it does and how it works. Do not write marketing copy.
 
 ## Length and pace
@@ -24,7 +24,7 @@ The script decides most of the quality. Viewers of AI explainers complain most a
 
 ## Structure
 
-1. **Hook (line 0, ≤ 5 s):** a question, a surprising fact, or the problem, in concrete words. Not "In this video we will…".
+1. **Hook (line 0, ≤ 5 s):** a question, a surprising fact, or the problem, in concrete words. Not "In this video we will…". Feeds autoplay muted and use the first frame as the thumbnail, so the hook is large on-screen text by 3 s, ideally on the first frame.
 2. **Setup (1–2 lines):** who has the problem and why it matters.
 3. **Mechanism (3–6 lines):** how it works, in causal order. Each line adds one new step. Show the mechanism on screen, not stock imagery.
 4. **Payoff (1–2 lines):** what changes for the viewer. Use a concrete number only if it is in `facts.md`.
@@ -38,7 +38,7 @@ For a story-driven brief ("tell the story of someone's struggle"), put a charact
 - No filler openers ("Imagine…", "Let's dive in", "Here's the thing"). No aphorisms or slogans that restate the previous line.
 - No repeated point. If two lines say the same thing, cut one.
 - Numbers: write them the way the voice should say them ("about forty percent"). Keep the digits in `text` for captions, and put the spoken form in `say`.
-- Hard names: keep `text` correct for captions and give TTS a phonetic `say`. Example: `{"text": "Friendr.nl", "say": "Friender dot N L"}`. `say` turns off provider word timings for that line, so timing becomes estimated.
+- Hard names: keep `text` correct for captions and give TTS a phonetic `say`. Example: `{"text": "Friendr.nl", "say": "Friender dot N L"}`. `say` turns off provider word timings for that line, and `align.mjs` measures them instead.
 - The language of **all** speech and **all** on-screen text is the user's requested language (default English). Write natively in that language. Do not translate word for word.
 
 ## Script self-review (do this before any TTS call)
@@ -47,6 +47,7 @@ For a story-driven brief ("tell the story of someone's struggle"), put a charact
 - [ ] No term appears that is not in the user's material or in common use. List any coined term and replace it.
 - [ ] No two lines make the same point.
 - [ ] The hook works with the sound off (the on-screen text says it too).
+- [ ] Each `terms` word in `brief.json` is in the script.
 - [ ] Word count matches the target length (see the table).
 - [ ] Each mechanism line names something a viewer could draw on paper. If you cannot picture the visual, rewrite the line.
 
