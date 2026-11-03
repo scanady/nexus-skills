@@ -1,6 +1,6 @@
 {
   "catalog_version": "1.0.0",
-  "generated_at": "2026-10-09T12:48:40Z",
+  "generated_at": "2026-11-03T02:03:09Z",
   "sources": [
     {
       "id": "source-1",
@@ -4244,7 +4244,7 @@
         "compatibility": null,
         "allowed_tools": null,
         "metadata": {
-          "version": "1.2.0",
+          "version": "1.3.0",
           "triggers": "explain this codebase in a video, make an animated intro, produce a narrated animation, create a whiteboard animation, generate a promo video, turn a script into video, make a short video about a concept",
           "role": "specialist",
           "scope": "creation",
@@ -4258,8 +4258,8 @@
         "has_agents": false,
         "has_assets": true,
         "has_license_file": false,
-        "file_count": 44,
-        "estimated_tokens": 2519,
+        "file_count": 50,
+        "estimated_tokens": 2705,
         "complexity_class": "comprehensive",
         "skill_pattern": "B"
       },
@@ -4273,6 +4273,7 @@
           "findings": [
             "References credentials/secrets",
             "Makes outbound network calls",
+            "Uses execution patterns",
             "Uses install commands"
           ],
           "rationale": "Evaluated from scanner signals."
